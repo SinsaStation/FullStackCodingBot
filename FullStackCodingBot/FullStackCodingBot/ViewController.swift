@@ -9,8 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private lazy var perspectiveView: UIView = {
-        let view = UIView()
+    private lazy var perspectiveView: UnitPerspectiveView = {
+        let view = UnitPerspectiveView()
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.gray.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -25,8 +25,15 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-    private var layers = [CALayer]()
+
+    private let units = [Unit(imageName: "swift"),
+                         Unit(imageName: "java"),
+                         Unit(imageName: "cpp"),
+                         Unit(imageName: "kotlin"),
+                         Unit(imageName: "swift"),
+                         Unit(imageName: "java"),
+                         Unit(imageName: "cpp"),
+                         Unit(imageName: "kotlin")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,57 +53,17 @@ class ViewController: UIViewController {
             tempButton.topAnchor.constraint(equalTo: perspectiveView.bottomAnchor, constant: 50),
             tempButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
         ])
-        
-        
-        for _ in 0..<Int(unitCount) {
-            layers.append(newLayer())
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        fillStartingUnits()
+        perspectiveView.configure(with: units)
+        perspectiveView.fillUnits()
     }
-    
-    private func newLayer() -> CALayer {
-        let layer = CALayer()
-        layer.backgroundColor = UIColor.orange.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowColor = UIColor.gray.cgColor
-        return layer
-    }
-    
-    private let unitCount: CGFloat = 8
-    private lazy var maxSize = CGSize(width: perspectiveView.frame.width * 0.8, height: perspectiveView.frame.width * 0.6)
-    private lazy var minSize = CGSize(width: perspectiveView.frame.width * 0.1, height: perspectiveView.frame.width * 0.075)
-    
-    private func fillStartingUnits() {
-        layers.enumerated().forEach { (order, layer) in
-            let order = CGFloat(order)
-            let layerSize = CGSize(width: maxSize.width - ((maxSize.width - minSize.width) / unitCount) * order,
-                                   height: maxSize.height - ((maxSize.height - minSize.height) / unitCount) * order)
-            let layerOrigin = CGPoint(x: (perspectiveView.frame.width - layerSize.width) * 0.5,
-                                      y: (perspectiveView.frame.height / unitCount) * (unitCount-order) - layerSize.height)
-            layer.frame = CGRect(origin: layerOrigin, size: layerSize)
-            layer.zPosition = -order
-            perspectiveView.layer.addSublayer(layer)
-        }
-    }
-    
+
     @objc private func buttonAction(_ sender: UIButton) {
-        removeFirstUnit()
-        layers.append(newLayer())
-        fillStartingUnits()
-    }
-    
-    private func removeFirstUnit() {
-        layers.forEach { layer in
-            layer.removeFromSuperlayer()
-        }
-        layers.remove(at: 0)
-    }
-    
-    private func refillLastUnit() {
-        layers.append(newLayer())
+        perspectiveView.removeFirstUnit()
+        perspectiveView.refillLastUnit(with: units.randomElement()!)
+        perspectiveView.fillUnits()
     }
 }
