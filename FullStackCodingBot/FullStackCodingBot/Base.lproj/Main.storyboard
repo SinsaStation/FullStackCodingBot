@@ -77,6 +77,14 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="H6e-U9-JW6" customClass="ButtonController" customModule="FullStackCodingBot" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="moveToVCButtons" destination="FCw-mX-H1M" collectionClass="NSMutableArray" id="nRa-qz-YTt"/>
+                        <outletCollection property="moveToVCButtons" destination="Uhf-Y1-Fgl" collectionClass="NSMutableArray" id="vYc-rd-tdw"/>
+                        <outletCollection property="moveToVCButtons" destination="fAJ-Py-m2J" collectionClass="NSMutableArray" id="ENl-NL-IWl"/>
+                        <outletCollection property="moveToVCButtons" destination="wi2-BU-Z6q" collectionClass="NSMutableArray" id="5kA-d8-ncK"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="15.942028985507248" y="88.392857142857139"/>
         </scene>
