@@ -4,7 +4,6 @@ import RxCocoa
 
 final class SceneCoordinator: SceneCoordinatorType {
     
-    private let bag = DisposeBag()
     private var window: UIWindow
     private var currentVC: UIViewController
     
@@ -32,6 +31,7 @@ final class SceneCoordinator: SceneCoordinatorType {
             currentVC = target
             
         case .modal:
+            target.modalPresentationStyle = .overCurrentContext
             currentVC.present(target, animated: animated) {
                 subject.onCompleted()
             }
