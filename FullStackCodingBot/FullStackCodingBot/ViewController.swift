@@ -2,11 +2,25 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var buttonController: ButtonController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.layer.masksToBounds = true
-        view.layer.cornerRadius = 5
+        setup()
     }
 
 }
 
+private extension ViewController {
+    
+    private func setup() {
+        setupButtonController()
+    }
+    
+    private func setupButtonController() {
+        buttonController.setupButton()
+        buttonController.bind { type in
+            print(type)
+        }
+    }
+}

@@ -33,4 +33,13 @@ final class ButtonController: NSObject {
     func setupButton() {
         self.moveToVCMapper = ButtonMapper(from: moveToVCButtons)
     }
+    
+    @IBAction func buttonTouched(sender: UIButton)  {
+        guard let vc = moveToVCMapper?[sender] else { return }
+        buttonTouchedHandler(vc)
+    }
+    
+    func bind(action: @escaping (ViewControllerType) -> ()) {
+        self.buttonTouchedHandler = action
+    }
 }
