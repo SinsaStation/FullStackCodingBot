@@ -1,7 +1,7 @@
 import UIKit
 
-class ViewController: UIViewController {
-
+final class MainViewController: UIViewController {
+    
     @IBOutlet var buttonController: ButtonController!
     
     override func viewDidLoad() {
@@ -11,7 +11,7 @@ class ViewController: UIViewController {
 
 }
 
-private extension ViewController {
+private extension MainViewController {
     
     private func setup() {
         setupButtonController()
@@ -20,7 +20,7 @@ private extension ViewController {
     private func setupButtonController() {
         buttonController.setupButton()
         buttonController.bind { type in
-            print(type)
+            
         }
     }
 }

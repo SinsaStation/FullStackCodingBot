@@ -1,10 +1,10 @@
 import UIKit
 
 enum ViewControllerType: CaseIterable {
-    case gift
-    case ad
-    case rank
-    case item
+    case giftVC
+    case advertiseVC
+    case rankVC
+    case itemVC
 }
 
 final class ButtonMapper {
