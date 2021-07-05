@@ -148,7 +148,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.80995315313339233" green="0.79268093109717963" blue="0.68963362163562225" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.80995315313339233" green="0.79491388243187211" blue="0.45366022927600086" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="ANf-R9-HMw" firstAttribute="width" secondItem="Ixa-u3-L2J" secondAttribute="width" multiplier="0.843195" id="6f4-Wf-iPZ"/>
                                     <constraint firstItem="ANf-R9-HMw" firstAttribute="height" secondItem="Ixa-u3-L2J" secondAttribute="height" multiplier="0.302326" id="IXc-Fn-IE2"/>
@@ -168,6 +168,7 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="bxF-Fc-17p" id="dZW-5Y-5bF"/>
+                        <outlet property="confirmButton" destination="wNl-F3-V1X" id="lZk-gD-wEN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzg-5D-7gu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
