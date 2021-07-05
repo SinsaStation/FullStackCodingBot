@@ -25,19 +25,20 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
-    private let units = [Unit(imageName: "swift"),
-                         Unit(imageName: "java"),
-                         Unit(imageName: "cpp"),
-                         Unit(imageName: "kotlin"),
-                         Unit(imageName: "swift"),
-                         Unit(imageName: "java"),
-                         Unit(imageName: "cpp"),
-                         Unit(imageName: "kotlin")]
+    
+    private let unitCount = 8
+    private let allUnits = [Unit(image: .swift),
+                            Unit(image: .kotlin),
+                            Unit(image: .java),
+                            Unit(image: .cPlusPlus)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addTempViews()
+    }
+    
+    private func addTempViews() {
         view.addSubview(perspectiveView)
         NSLayoutConstraint.activate([
             perspectiveView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
@@ -57,13 +58,27 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        perspectiveView.configure(with: units)
-        perspectiveView.fillUnits()
+        
+        gameStart()
     }
 
+    private func gameStart() {
+        let startingUnits = generateStartingUnits(count: unitCount)
+        perspectiveView.configure(with: startingUnits)
+        perspectiveView.fillUnits()
+    }
+    
     @objc private func buttonAction(_ sender: UIButton) {
         perspectiveView.removeFirstUnit()
-        perspectiveView.refillLastUnit(with: units.randomElement()!)
+        perspectiveView.refillLastUnit(with: newRandomUnit())
         perspectiveView.fillUnits()
+    }
+    
+    private func generateStartingUnits(count: Int) -> [Unit] {
+        return (0..<count).map{ allUnits[$0 % 4] }
+    }
+    
+    private func newRandomUnit() -> Unit {
+        return allUnits.randomElement()!
     }
 }

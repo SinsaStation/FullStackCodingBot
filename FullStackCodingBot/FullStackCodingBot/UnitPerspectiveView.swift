@@ -11,14 +11,22 @@ final class UnitPerspectiveView: UIView {
     
     private var unitLayers = [CALayer]()
     private var unitCount: Int?
-    private lazy var maxSize = CGSize(width: frame.width * 0.8, height: frame.width * 0.6)
-    private lazy var minSize = CGSize(width: frame.width * 0.1, height: frame.width * 0.075)
+    
+    enum Multiplier {
+        static let height: CGFloat = 0.75
+        static let minSize: CGFloat = 0.125
+    }
+    
+    private lazy var maxWidth = frame.width * 0.8
+    private lazy var maxSize = CGSize(width: maxWidth, height: maxWidth * Multiplier.height)
+    private lazy var minSize = CGSize(width: maxWidth * Multiplier.minSize,
+                                      height: maxWidth * Multiplier.minSize * Multiplier.height)
     
     func configure(with startingUnits: [Unit]) {
         self.unitCount = startingUnits.count
         
         startingUnits.forEach { unit in
-            let imageName = unit.imageName
+            let imageName = unit.image.name
             self.unitLayers.append(newLayer(with: imageName))
         }
     }
@@ -34,21 +42,26 @@ final class UnitPerspectiveView: UIView {
     }
     
     func fillUnits() {
-        guard let unitCountInt = unitCount else { return }
-        let unitCount = CGFloat(unitCountInt)
+        guard let unitCount = unitCount else { return }
+        let maxWeight = CGFloat(unitCount)
         
-        unitLayers.enumerated().forEach { (order, layer) in
-            let order = CGFloat(order)
-            let layerSize = CGSize(width: maxSize.width - ((maxSize.width - minSize.width) / unitCount) * order,
-                                   height: maxSize.height - ((maxSize.height - minSize.height) / unitCount) * order)
-            let layerOrigin = CGPoint(x: (frame.width - layerSize.width) * 0.5,
-                                      y: (frame.height / unitCount) * (unitCount-order) - layerSize.height)
-            layer.frame = CGRect(origin: layerOrigin, size: layerSize)
-            layer.zPosition = -order
+        unitLayers.enumerated().forEach { (index, layer) in
+            let weight = CGFloat(index)
+            layer.frame = layerFrame(weight: weight, maxWeight: maxWeight)
+            layer.zPosition = -weight
+            
             self.layer.addSublayer(layer)
         }
     }
     
+    private func layerFrame(weight: CGFloat, maxWeight: CGFloat) -> CGRect {
+        let layerSize = CGSize(width: maxSize.width - ((maxSize.width - minSize.width) / maxWeight) * weight,
+                               height: maxSize.height - ((maxSize.height - minSize.height) / maxWeight) * weight)
+        let layerOrigin = CGPoint(x: (frame.width - layerSize.width) * 0.5,
+                                  y: (frame.height / maxWeight) * (maxWeight - weight) - layerSize.height)
+        return CGRect(origin: layerOrigin, size: layerSize)
+    }
+
     func removeFirstUnit() {
         unitLayers.forEach { layer in
             layer.removeFromSuperlayer()
@@ -57,7 +70,7 @@ final class UnitPerspectiveView: UIView {
     }
     
     func refillLastUnit(with newUnit: Unit) {
-        let imageName = newUnit.imageName
+        let imageName = newUnit.image.name
         unitLayers.append(newLayer(with: imageName))
     }
 }
