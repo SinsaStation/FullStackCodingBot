@@ -8,25 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="I3n-Xp-2iZ">
-            <objects>
-                <viewController id="lqZ-kY-2Gf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RDl-fE-h66">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="KRi-JE-xUB"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="naM-va-moA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-711" y="-147"/>
-        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="MainVC" storyboardIdentifier="MainVC" id="BYZ-38-t0r" customClass="MainViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,7 +106,7 @@
         <!--Gift View Controller-->
         <scene sceneID="xnF-VP-sQH">
             <objects>
-                <viewController restorationIdentifier="giftVC" storyboardIdentifier="giftVC" id="KRn-s9-dLg" customClass="GiftViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="GiftVC" storyboardIdentifier="GiftVC" id="KRn-s9-dLg" customClass="GiftViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xs7-IX-xOw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,7 +121,7 @@
         <!--Advertise View Controller-->
         <scene sceneID="hvU-v5-1mI">
             <objects>
-                <viewController restorationIdentifier="advertiseVC" storyboardIdentifier="advertiseVC" id="3Vq-C1-5wU" customClass="AdvertiseViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="AdvertiseVC" storyboardIdentifier="AdvertiseVC" id="3Vq-C1-5wU" customClass="AdvertiseViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CQM-tR-ocH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,7 +136,7 @@
         <!--Rank View Controller-->
         <scene sceneID="ROW-M9-iZ2">
             <objects>
-                <viewController restorationIdentifier="rankVC" storyboardIdentifier="rankVC" id="1kH-ul-UPf" customClass="RankViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="RankVC" storyboardIdentifier="RankVC" id="1kH-ul-UPf" customClass="RankViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7lq-Vh-bdN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,7 +151,7 @@
         <!--Item View Controller-->
         <scene sceneID="FPc-g9-zF6">
             <objects>
-                <viewController restorationIdentifier="itemVC" storyboardIdentifier="itemVC" id="ntp-Vg-6kg" customClass="ItemViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ItemVC" storyboardIdentifier="ItemVC" id="ntp-Vg-6kg" customClass="ItemViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1rK-Sy-CWX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
