@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-FullStackCodingBot/Pods-FullStackCodingBot-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Action/Action.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/NSObject+Rx/NSObject_Rx.framework
 ${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework

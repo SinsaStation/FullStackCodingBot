@@ -9,6 +9,6 @@ final class RankViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
-        print(1)
+        print("\(self)")
     }
 }

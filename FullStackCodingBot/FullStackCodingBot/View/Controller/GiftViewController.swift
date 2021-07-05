@@ -9,6 +9,6 @@ final class GiftViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
-        print(1)
+        print("\(self)")
     }
 }

@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class MainViewController: UIViewController, ViewModelBindableType {
    
@@ -11,7 +13,7 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
-        print(1)
+        print("\(self)")
     }
     
 }
@@ -24,8 +26,8 @@ private extension MainViewController {
     
     private func setupButtonController() {
         buttonController.setupButton()
-        buttonController.bind { type in
-            
+        buttonController.bind { [unowned self] viewController in
+            self.viewModel.makeMoveAction(to: viewController)
         }
     }
 }

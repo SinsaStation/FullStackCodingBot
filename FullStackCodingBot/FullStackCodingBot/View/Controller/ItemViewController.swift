@@ -9,6 +9,6 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
-        print(1)
+        print("\(self)")
     }
 }

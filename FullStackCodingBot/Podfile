@@ -10,5 +10,6 @@ target 'FullStackCodingBot' do
   pod 'RxCocoa'
   pod 'NSObject+Rx'
   pod 'Alamofire'
+  pod 'Action'
 
 end

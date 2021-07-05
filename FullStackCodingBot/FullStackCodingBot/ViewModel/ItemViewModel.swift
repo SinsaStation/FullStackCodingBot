@@ -1,5 +1,5 @@
 import Foundation
 
-class ItemViewModel {
+class ItemViewModel: CommonViewModel {
     
 }

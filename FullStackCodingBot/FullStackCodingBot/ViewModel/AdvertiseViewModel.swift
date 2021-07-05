@@ -1,5 +1,5 @@
 import Foundation
 
-class AdvertiseViewModel {
+class AdvertiseViewModel:CommonViewModel {
     
 }
