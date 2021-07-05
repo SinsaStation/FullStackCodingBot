@@ -130,6 +130,35 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
+		71DF6556269301A000557693 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				E45B0AB42692929D006FDE3D /* Main.storyboard */,
+				E45B0AB92692929F006FDE3D /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		71DF6557269301B000557693 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				E45B0AAE2692929D006FDE3D /* AppDelegate.swift */,
+				E45B0AB02692929D006FDE3D /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		71DF6558269301D100557693 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				71DF6557269301B000557693 /* Delegate */,
+				71DF6556269301A000557693 /* Storyboard */,
+				71DF653A2692F8D400557693 /* Scene */,
+				71DF64B72692C06100557693 /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		91C85886B6EEF29FAF5218C5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,15 +189,10 @@
 		E45B0AAD2692929D006FDE3D /* FullStackCodingBot */ = {
 			isa = PBXGroup;
 			children = (
-				71DF654B2692FA5600557693 /* Constant */,
+				71DF6558269301D100557693 /* View */,
 				71DF653F2692F94000557693 /* ViewModel */,
-				71DF653A2692F8D400557693 /* Scene */,
-				71DF64B72692C06100557693 /* Controller */,
-				E45B0AAE2692929D006FDE3D /* AppDelegate.swift */,
-				E45B0AB02692929D006FDE3D /* SceneDelegate.swift */,
-				E45B0AB42692929D006FDE3D /* Main.storyboard */,
+				71DF654B2692FA5600557693 /* Constant */,
 				E45B0AB72692929F006FDE3D /* Assets.xcassets */,
-				E45B0AB92692929F006FDE3D /* LaunchScreen.storyboard */,
 				E45B0ABC2692929F006FDE3D /* Info.plist */,
 			);
 			path = FullStackCodingBot;
