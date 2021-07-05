@@ -18,8 +18,10 @@ extension Scene {
             guard var mainVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.main) as? MainViewController else {
                 fatalError()
             }
+            mainVC.bind(viewModel: viewModel)
+            return mainVC
         default:
-            <#code#>
+            break
         }
     }
     
