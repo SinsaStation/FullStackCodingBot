@@ -5,3 +5,7 @@ enum TransitionStyle {
     case fullScreen
     case modal
 }
+
+enum TransitionError:Error {
+    case unknown
+}

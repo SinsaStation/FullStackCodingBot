@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class SceneCoordinator: SceneCoordinatorType {
+final class SceneCoordinator: SceneCoordinatorType {
     
     private let bag = DisposeBag()
     private var window: UIWindow
@@ -13,13 +13,46 @@ class SceneCoordinator: SceneCoordinatorType {
         currentVC = window.rootViewController!
     }
     
+    @discardableResult
     func transition(to scene: Scene, using style: TransitionStyle, animated: Bool) -> Completable {
-        <#code#>
+        let subject = PublishSubject<Void>()
+        let target = scene.instantiate()
+        
+        switch style {
+        case .root:
+            currentVC = target
+            window.rootViewController = target
+            subject.onCompleted()
+            
+        case .fullScreen:
+            target.modalPresentationStyle = .fullScreen
+            currentVC.present(target, animated: animated) {
+                subject.onCompleted()
+            }
+            currentVC = target
+            
+        case .modal:
+            currentVC.present(target, animated: animated) {
+                subject.onCompleted()
+            }
+            currentVC = target
+        }
+        return subject.ignoreElements().asCompletable()
     }
     
+    @discardableResult
     func close(animated: Bool) -> Completable {
-        <#code#>
+        let subject = PublishSubject<Void>()
+        
+        if let presentingVC = self.currentVC.presentingViewController {
+            self.currentVC.dismiss(animated: animated) {
+                self.currentVC = presentingVC
+                subject.onCompleted()
+            }
+        } else {
+            subject.onError(TransitionError.unknown)
+        }
+        
+        return subject.ignoreElements().asCompletable()
     }
-    
-    
 }

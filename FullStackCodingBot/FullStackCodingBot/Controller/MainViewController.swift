@@ -11,7 +11,7 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
-        <#code#>
+        print(1)
     }
     
 }

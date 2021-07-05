@@ -20,9 +20,34 @@ extension Scene {
             }
             mainVC.bind(viewModel: viewModel)
             return mainVC
-        default:
-            break
+            
+        case .gift(let viewModel):
+            guard var giftVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.gift) as? GiftViewController else {
+                fatalError()
+            }
+            giftVC.bind(viewModel: viewModel)
+            return giftVC
+        
+        case .ad(let viewModel):
+            guard var advertiseVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.ad) as? AdvertiseViewController else {
+                fatalError()
+            }
+            advertiseVC.bind(viewModel: viewModel)
+            return advertiseVC
+            
+        case .rank(let viewModel):
+            guard var rankVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.rank) as? RankViewController else {
+                fatalError()
+            }
+            rankVC.bind(viewModel: viewModel)
+            return rankVC
+            
+        case .item(let viewModel):
+            guard var itemVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.item) as? ItemViewController else {
+                fatalError()
+            }
+            itemVC.bind(viewModel: viewModel)
+            return itemVC
         }
     }
-    
 }

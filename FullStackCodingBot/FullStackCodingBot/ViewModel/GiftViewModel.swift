@@ -1,5 +1,5 @@
 import Foundation
 
-class GiftViewModel {
+class GiftViewModel: CommonViewModel {
     
 }
