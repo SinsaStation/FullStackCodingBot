@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController restorationIdentifier="MainVC" storyboardIdentifier="MainVC" id="BYZ-38-t0r" customClass="MainViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xmD-fg-w6S">
+                                <rect key="frame" x="30.5" y="777" width="353" height="77.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCw-mX-H1M">
+                                        <rect key="frame" x="0.0" y="0.0" width="81" height="77.5"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <state key="normal" title="선물"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="VX4-E3-HfM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uhf-Y1-Fgl">
+                                        <rect key="frame" x="91" y="0.0" width="80.5" height="77.5"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <state key="normal" title="광고"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="aLh-IW-eHq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAJ-Py-m2J">
+                                        <rect key="frame" x="181.5" y="0.0" width="81" height="77.5"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <state key="normal" title="랭킹"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="unu-nu-oCe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wi2-BU-Z6q">
+                                        <rect key="frame" x="272.5" y="0.0" width="80.5" height="77.5"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <state key="normal" title="아이템"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="UNx-Lk-ph2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xmD-fg-w6S" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" multiplier="0.99" constant="1" id="GRh-Kt-7o7"/>
+                            <constraint firstItem="xmD-fg-w6S" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="b2k-mR-hoe"/>
+                            <constraint firstItem="xmD-fg-w6S" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.852657" id="iYI-Ql-Rp4"/>
+                            <constraint firstItem="xmD-fg-w6S" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.085" constant="1" id="r9V-0Z-Iyy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonController" destination="H6e-U9-JW6" id="BOh-G8-9Vs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="H6e-U9-JW6" customClass="ButtonController" customModule="FullStackCodingBot" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="moveToVCButtons" destination="FCw-mX-H1M" collectionClass="NSMutableArray" id="nRa-qz-YTt"/>
+                        <outletCollection property="moveToVCButtons" destination="Uhf-Y1-Fgl" collectionClass="NSMutableArray" id="vYc-rd-tdw"/>
+                        <outletCollection property="moveToVCButtons" destination="fAJ-Py-m2J" collectionClass="NSMutableArray" id="ENl-NL-IWl"/>
+                        <outletCollection property="moveToVCButtons" destination="wi2-BU-Z6q" collectionClass="NSMutableArray" id="5kA-d8-ncK"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="15.942028985507248" y="88.392857142857139"/>
+        </scene>
+        <!--Gift View Controller-->
+        <scene sceneID="xnF-VP-sQH">
+            <objects>
+                <viewController restorationIdentifier="GiftVC" storyboardIdentifier="GiftVC" id="KRn-s9-dLg" customClass="GiftViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xs7-IX-xOw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixa-u3-L2J">
+                                <rect key="frame" x="38" y="340.5" width="338" height="215"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ANf-R9-HMw">
+                                        <rect key="frame" x="26.5" y="139" width="285" height="65"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNl-F3-V1X">
+                                                <rect key="frame" x="0.0" y="0.0" width="137.5" height="65"/>
+                                                <color key="backgroundColor" red="0.67109303580000002" green="0.53517999729999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="확인">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxF-Fc-17p">
+                                                <rect key="frame" x="147.5" y="0.0" width="137.5" height="65"/>
+                                                <color key="backgroundColor" red="0.67109303580000002" green="0.53517999729999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="취소">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.80995315313339233" green="0.79491388243187211" blue="0.45366022927600086" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="ANf-R9-HMw" firstAttribute="width" secondItem="Ixa-u3-L2J" secondAttribute="width" multiplier="0.843195" id="6f4-Wf-iPZ"/>
+                                    <constraint firstItem="ANf-R9-HMw" firstAttribute="height" secondItem="Ixa-u3-L2J" secondAttribute="height" multiplier="0.302326" id="IXc-Fn-IE2"/>
+                                    <constraint firstItem="ANf-R9-HMw" firstAttribute="centerX" secondItem="Ixa-u3-L2J" secondAttribute="centerX" id="SN7-bV-BJx"/>
+                                    <constraint firstAttribute="bottom" secondItem="ANf-R9-HMw" secondAttribute="bottom" multiplier="1.05" constant="1" id="WAx-Fd-btA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BVS-bL-EVd"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ixa-u3-L2J" firstAttribute="height" secondItem="xs7-IX-xOw" secondAttribute="height" multiplier="0.239955" id="cFP-8V-418"/>
+                            <constraint firstItem="Ixa-u3-L2J" firstAttribute="width" secondItem="xs7-IX-xOw" secondAttribute="width" multiplier="0.816425" id="fwT-Ip-uYd"/>
+                            <constraint firstItem="Ixa-u3-L2J" firstAttribute="centerX" secondItem="xs7-IX-xOw" secondAttribute="centerX" id="utd-1p-dzU"/>
+                            <constraint firstItem="Ixa-u3-L2J" firstAttribute="centerY" secondItem="xs7-IX-xOw" secondAttribute="centerY" id="v8r-IY-Bwo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="bxF-Fc-17p" id="dZW-5Y-5bF"/>
+                        <outlet property="confirmButton" destination="wNl-F3-V1X" id="lZk-gD-wEN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lzg-5D-7gu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="747.82608695652175" y="87.723214285714278"/>
+        </scene>
+        <!--Advertise View Controller-->
+        <scene sceneID="hvU-v5-1mI">
+            <objects>
+                <viewController restorationIdentifier="AdvertiseVC" storyboardIdentifier="AdvertiseVC" id="3Vq-C1-5wU" customClass="AdvertiseViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CQM-tR-ocH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="IHC-np-lc7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r3q-AJ-VdX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1448" y="88"/>
+        </scene>
+        <!--Rank View Controller-->
+        <scene sceneID="ROW-M9-iZ2">
+            <objects>
+                <viewController restorationIdentifier="RankVC" storyboardIdentifier="RankVC" id="1kH-ul-UPf" customClass="RankViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7lq-Vh-bdN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="U16-Yk-PMt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7C8-E0-ojx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2133" y="88"/>
+        </scene>
+        <!--Item View Controller-->
+        <scene sceneID="FPc-g9-zF6">
+            <objects>
+                <viewController restorationIdentifier="ItemVC" storyboardIdentifier="ItemVC" id="ntp-Vg-6kg" customClass="ItemViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1rK-Sy-CWX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="5fe-6O-12x"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GGa-4d-chh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2803" y="88"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
