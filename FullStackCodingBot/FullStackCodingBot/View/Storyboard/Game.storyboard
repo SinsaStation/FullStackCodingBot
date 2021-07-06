@@ -46,13 +46,23 @@
                                     <action selector="rightButtonTouched:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xon-GR-GEC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emQ-J6-eks">
+                                <rect key="frame" x="28" y="55" width="55" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="BACK"/>
+                                <connections>
+                                    <action selector="backButtonTouched:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="B8c-tX-shv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LTf-oP-M9v" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.35" id="40p-tQ-ujU"/>
                             <constraint firstItem="ffT-Vy-DnI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="6Vj-Cr-o1k"/>
+                            <constraint firstItem="emQ-J6-eks" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="11" id="Ljk-GN-X8T"/>
                             <constraint firstItem="Pup-xc-6r8" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.5" id="Ngp-IJ-xYr"/>
+                            <constraint firstItem="emQ-J6-eks" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="28" id="PM5-ck-weo"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LTf-oP-M9v" secondAttribute="trailing" constant="20" id="Sqx-XQ-eCj"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ffT-Vy-DnI" secondAttribute="bottom" constant="50" id="UVH-XX-Dd0"/>
                             <constraint firstItem="ffT-Vy-DnI" firstAttribute="top" secondItem="Pup-xc-6r8" secondAttribute="bottom" constant="80" id="eTU-jb-Y0e"/>
@@ -62,6 +72,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="emQ-J6-eks" id="cyv-LM-RSI"/>
                         <outlet property="unitPerspectiveView" destination="Pup-xc-6r8" id="Bgj-LD-YeL"/>
                     </connections>
                 </viewController>

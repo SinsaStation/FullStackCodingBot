@@ -3,6 +3,7 @@ import UIKit
 final class GameViewController: UIViewController, ViewModelBindableType {
     
     @IBOutlet weak var unitPerspectiveView: UnitPerspectiveView!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var viewModel: GameViewModel!
     
@@ -18,7 +19,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
-        print("\(self)")
+        cancelButton.rx.action = viewModel.cancelAction
     }
     
     private func gameStart() {
@@ -35,7 +36,6 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         buttonAction()
     }
     
-    
     private func buttonAction() {
         unitPerspectiveView.removeFirstUnit()
         unitPerspectiveView.refillLastUnit(with: newRandomUnit())
@@ -48,5 +48,9 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     
     private func newRandomUnit() -> Unit {
         return allUnits.randomElement()!
+    }
+    
+    @IBAction func backButtonTouched(_ sender: Any) {
+        
     }
 }
