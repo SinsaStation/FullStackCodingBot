@@ -33,15 +33,15 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     }
     
     @IBAction func leftButtonTouched(_ sender: UIButton) {
-        buttonAction()
+        buttonAction(to: .left)
     }
     
     @IBAction func rightButtonTouched(_ sender: UIButton) {
-        buttonAction()
+        buttonAction(to: .right)
     }
     
-    private func buttonAction() {
-        unitPerspectiveView.removeFirstUnit()
+    private func buttonAction(to direction: Direction) {
+        unitPerspectiveView.removeFirstUnit(to: direction)
         unitPerspectiveView.refillLastUnit(with: newRandomUnit())
         unitPerspectiveView.fillUnits()
     }
