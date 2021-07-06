@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -212,16 +213,57 @@
                     <view key="view" contentMode="scaleToFill" id="1rK-Sy-CWX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5aK-J8-fCg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="308"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보관함" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dlE-fi-nVR">
+                                        <rect key="frame" x="147" y="46.5" width="120" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eiy-7U-oCk">
+                                        <rect key="frame" x="345.5" y="37" width="48" height="49"/>
+                                        <color key="tintColor" systemColor="systemYellowColor"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Eiy-7U-oCk" firstAttribute="centerY" secondItem="5aK-J8-fCg" secondAttribute="centerY" multiplier="0.4" id="8dY-ne-49q"/>
+                                    <constraint firstItem="dlE-fi-nVR" firstAttribute="centerX" secondItem="5aK-J8-fCg" secondAttribute="centerX" id="F1B-V3-8rY"/>
+                                    <constraint firstItem="Eiy-7U-oCk" firstAttribute="height" secondItem="5aK-J8-fCg" secondAttribute="height" multiplier="0.159091" id="Fix-jK-5jv"/>
+                                    <constraint firstItem="dlE-fi-nVR" firstAttribute="centerY" secondItem="5aK-J8-fCg" secondAttribute="centerY" multiplier="0.4" id="FrR-aS-Gcv"/>
+                                    <constraint firstAttribute="trailing" secondItem="Eiy-7U-oCk" secondAttribute="trailing" multiplier="1.05" constant="1" id="Svc-fw-UUB"/>
+                                    <constraint firstItem="Eiy-7U-oCk" firstAttribute="width" secondItem="5aK-J8-fCg" secondAttribute="width" multiplier="0.115942" id="WlI-Yr-lpO"/>
+                                    <constraint firstItem="dlE-fi-nVR" firstAttribute="height" secondItem="5aK-J8-fCg" secondAttribute="height" multiplier="0.0974026" id="Z1y-zX-nKw"/>
+                                    <constraint firstItem="dlE-fi-nVR" firstAttribute="width" secondItem="5aK-J8-fCg" secondAttribute="width" multiplier="0.289855" id="udn-8H-G2n"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="5fe-6O-12x"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5aK-J8-fCg" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.34375" id="Qmk-zY-8Xo"/>
+                            <constraint firstItem="5aK-J8-fCg" firstAttribute="trailing" secondItem="5fe-6O-12x" secondAttribute="trailing" id="cHf-20-KO2"/>
+                            <constraint firstItem="5aK-J8-fCg" firstAttribute="top" secondItem="1rK-Sy-CWX" secondAttribute="top" id="hK8-hC-ltL"/>
+                            <constraint firstItem="5aK-J8-fCg" firstAttribute="leading" secondItem="5fe-6O-12x" secondAttribute="leading" id="khB-Zn-3lL"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="Eiy-7U-oCk" id="34d-NV-1AC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGa-4d-chh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2803" y="88"/>
+            <point key="canvasLocation" x="2802.898550724638" y="87.723214285714278"/>
         </scene>
     </scenes>
     <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
