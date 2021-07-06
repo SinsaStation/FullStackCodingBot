@@ -6,6 +6,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -230,10 +231,33 @@
                                             <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
                                         </state>
                                     </button>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Jf-hN-o9I">
+                                        <rect key="frame" x="37" y="92" width="340" height="206"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AF6-oZ-9uk">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZBV-uL-mhU" customClass="ItemCell" customModule="FullStackCodingBot" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="39" width="128" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wWL-0z-3Nj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="7Jf-hN-o9I" secondAttribute="bottom" multiplier="1.03" constant="1" id="0Jl-rC-gZO"/>
+                                    <constraint firstItem="7Jf-hN-o9I" firstAttribute="centerX" secondItem="5aK-J8-fCg" secondAttribute="centerX" id="4gg-eu-KJR"/>
                                     <constraint firstItem="Eiy-7U-oCk" firstAttribute="centerY" secondItem="5aK-J8-fCg" secondAttribute="centerY" multiplier="0.4" id="8dY-ne-49q"/>
+                                    <constraint firstItem="7Jf-hN-o9I" firstAttribute="width" secondItem="5aK-J8-fCg" secondAttribute="width" multiplier="0.821256" id="C1U-Cc-Hq5"/>
                                     <constraint firstItem="dlE-fi-nVR" firstAttribute="centerX" secondItem="5aK-J8-fCg" secondAttribute="centerX" id="F1B-V3-8rY"/>
                                     <constraint firstItem="Eiy-7U-oCk" firstAttribute="height" secondItem="5aK-J8-fCg" secondAttribute="height" multiplier="0.159091" id="Fix-jK-5jv"/>
                                     <constraint firstItem="dlE-fi-nVR" firstAttribute="centerY" secondItem="5aK-J8-fCg" secondAttribute="centerY" multiplier="0.4" id="FrR-aS-Gcv"/>
@@ -241,6 +265,7 @@
                                     <constraint firstItem="Eiy-7U-oCk" firstAttribute="width" secondItem="5aK-J8-fCg" secondAttribute="width" multiplier="0.115942" id="WlI-Yr-lpO"/>
                                     <constraint firstItem="dlE-fi-nVR" firstAttribute="height" secondItem="5aK-J8-fCg" secondAttribute="height" multiplier="0.0974026" id="Z1y-zX-nKw"/>
                                     <constraint firstItem="dlE-fi-nVR" firstAttribute="width" secondItem="5aK-J8-fCg" secondAttribute="width" multiplier="0.289855" id="udn-8H-G2n"/>
+                                    <constraint firstItem="7Jf-hN-o9I" firstAttribute="height" secondItem="5aK-J8-fCg" secondAttribute="height" multiplier="0.668831" id="vMr-VL-EiU"/>
                                 </constraints>
                             </view>
                         </subviews>

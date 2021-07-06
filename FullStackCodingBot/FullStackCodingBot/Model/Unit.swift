@@ -2,6 +2,8 @@ import Foundation
 
 struct Unit {
     let image: UnitImage
+    let level: Int
+    let count: Int
 }
 
 enum UnitImage {
