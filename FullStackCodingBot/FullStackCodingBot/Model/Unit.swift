@@ -1,6 +1,7 @@
 import Foundation
 
-struct Unit {
+struct Unit: Equatable {
+    let uuid: Int
     let image: UnitImage
     let level: Int
     let count: Int
