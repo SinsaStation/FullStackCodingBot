@@ -16,17 +16,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pup-xc-6r8" customClass="UnitPerspectiveView" customModule="FullStackCodingBot" customModuleProvider="target">
-                                <rect key="frame" x="103.5" y="129.5" width="207" height="414"/>
+                                <rect key="frame" x="103.5" y="256" width="207" height="331"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Pup-xc-6r8" secondAttribute="height" multiplier="1:2" id="WLF-cn-ceV"/>
+                                    <constraint firstAttribute="width" secondItem="Pup-xc-6r8" secondAttribute="height" multiplier="1:1.6" id="WLF-cn-ceV"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffT-Vy-DnI" userLabel="Left Button">
-                                <rect key="frame" x="20" y="623.5" width="145" height="188.5"/>
+                                <rect key="frame" x="20" y="667" width="145" height="145"/>
                                 <color key="backgroundColor" red="0.84841342750000004" green="0.94130822380000001" blue="0.2035008059" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ffT-Vy-DnI" secondAttribute="height" multiplier="1:1.3" id="pFI-Wl-eHC"/>
+                                    <constraint firstAttribute="width" secondItem="ffT-Vy-DnI" secondAttribute="height" multiplier="1:1" id="pFI-Wl-eHC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="◀️"/>
@@ -35,10 +35,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTf-oP-M9v" userLabel="Right Button">
-                                <rect key="frame" x="249" y="623.5" width="145" height="188.5"/>
+                                <rect key="frame" x="249" y="667" width="145" height="145"/>
                                 <color key="backgroundColor" red="0.84841342750000004" green="0.94130822380000001" blue="0.2035008059" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="LTf-oP-M9v" secondAttribute="height" multiplier="1:1.3" id="paE-Gb-85S"/>
+                                    <constraint firstAttribute="width" secondItem="LTf-oP-M9v" secondAttribute="height" multiplier="1:1" id="paE-Gb-85S"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="▶️"/>
