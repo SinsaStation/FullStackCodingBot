@@ -6,7 +6,7 @@ class GiftViewModel: CommonViewModel {
     let confirmAction: Action<String, Void>
     let cancelAction: CocoaAction
     
-    init(sceneCoordinator: SceneCoordinatorType, confirmAction: Action<String, Void>? = nil ,cancelAction: CocoaAction? = nil) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, confirmAction: Action<String, Void>? = nil ,cancelAction: CocoaAction? = nil) {
         
         self.confirmAction = Action<String, Void> { input in
             if let action = confirmAction {
@@ -22,6 +22,6 @@ class GiftViewModel: CommonViewModel {
             return sceneCoordinator.close(animated: true).asObservable().map{ _ in }
         }
         
-        super.init(sceneCoordinator: sceneCoordinator)
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
 }
