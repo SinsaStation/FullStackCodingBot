@@ -54,12 +54,47 @@ final class UnitPerspectiveView: UIView {
                                   y: (frame.height / maxWeight) * (maxWeight - weight) - layerSize.height)
         return CGRect(origin: layerOrigin, size: layerSize)
     }
-
-    func removeFirstUnit() {
+    
+    func removeFirstUnit(to direction: Direction) {
+        let layerToAnimate = unitLayers.removeFirst()
+        
+        animate(layer: layerToAnimate, to: direction)
+        
         unitLayers.forEach { layer in
             layer.removeFromSuperlayer()
         }
-        unitLayers.remove(at: 0)
+    }
+    
+    private func animate(layer: CALayer, to direction: Direction) {
+        let currentLocation = layer.position
+        
+        CATransaction.setCompletionBlock {
+            layer.removeFromSuperlayer()
+        }
+        
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(1)
+
+        let positionKey = #keyPath(CALayer.position)
+        let positionAnimation = CASpringAnimation(keyPath: positionKey)
+        positionAnimation.fromValue = currentLocation
+        positionAnimation.toValue = locationToSendUnit(for: layer, baseOn: direction)
+        positionAnimation.duration = 1
+        layer.add(positionAnimation, forKey: positionKey)
+        
+        CATransaction.commit()
+    }
+    
+    private func locationToSendUnit(for layer: CALayer, baseOn direction: Direction) -> CGPoint {
+        let extraMovementX = layer.bounds.width
+        let positionY = -layer.bounds.height * 2
+        
+        switch direction {
+        case .left:
+            return CGPoint(x: 0 - extraMovementX, y: positionY)
+        case .right:
+            return CGPoint(x: self.bounds.width + extraMovementX, y: positionY)
+        }
     }
     
     func refillLastUnit(with newUnit: Unit) {

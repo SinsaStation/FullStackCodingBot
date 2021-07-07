@@ -26,3 +26,8 @@ enum UnitImage {
         }
     }
 }
+
+enum Direction {
+    case left
+    case right
+}

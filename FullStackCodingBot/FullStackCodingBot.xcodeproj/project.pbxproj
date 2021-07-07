@@ -37,6 +37,7 @@
 		E4D7C6422693E7B200D58BA2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7C6412693E7B200D58BA2 /* MainViewController.swift */; };
 		E4D7C6452693E7C200D58BA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D7C6432693E7C200D58BA2 /* Main.storyboard */; };
 		E4D7C6492693E8E500D58BA2 /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D7C6482693E8E500D58BA2 /* Game.storyboard */; };
+		E4D7C64B26953C6200D58BA2 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7C64A26953C6200D58BA2 /* ScreenSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		E4D7C6412693E7B200D58BA2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E4D7C6442693E7C200D58BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E4D7C6482693E8E500D58BA2 /* Game.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
+		E4D7C64A26953C6200D58BA2 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				71DF654C2692FA6200557693 /* IdentifierManager.swift */,
+				E4D7C64A26953C6200D58BA2 /* ScreenSize.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				715BB20626943CDE00286B31 /* ItemStorageType.swift in Sources */,
 				71DF654D2692FA6200557693 /* IdentifierManager.swift in Sources */,
 				71DF653C2692F90100557693 /* TransitionModel.swift in Sources */,
+				E4D7C64B26953C6200D58BA2 /* ScreenSize.swift in Sources */,
 				71DF653E2692F92700557693 /* Scene.swift in Sources */,
 				71DF64BF2692C1C600557693 /* ItemViewController.swift in Sources */,
 				710A9DAC2692AD5C0090B38A /* ButtonController.swift in Sources */,
