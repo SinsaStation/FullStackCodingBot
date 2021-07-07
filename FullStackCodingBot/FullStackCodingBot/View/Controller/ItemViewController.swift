@@ -6,8 +6,10 @@ import NSObject_Rx
 final class ItemViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: ItemViewModel!
+    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var itemCollectionView: UICollectionView!
+    @IBOutlet weak var mainItemImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +19,10 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
     func bindViewModel() {
         
         viewModel.itemStorage
-            .drive(itemCollectionView.rx.items(cellIdentifier: ItemCell.identifier, cellType: ItemCell.self)) { _, unit, cell in
+            .drive(itemCollectionView.rx.items(cellIdentifier: ItemCell.identifier, cellType: ItemCell.self)) { [unowned self] row, unit, cell in
+                if row == 0 {
+                    self.mainItemImageView.image = UIImage(named: unit.image)
+                }
                 cell.configure(unit: unit)
             }.disposed(by: rx.disposeBag)
         
@@ -34,6 +39,11 @@ private extension ItemViewController {
     
     private func setupDelegate() {
         itemCollectionView.rx.setDelegate(self).disposed(by: rx.disposeBag)
+        
+        itemCollectionView.rx.modelSelected(Unit.self)
+            .subscribe(onNext: { [unowned self] unit in
+                self.mainItemImageView.image = UIImage(named: unit.image)
+            }).disposed(by: rx.disposeBag)
     }
 }
 
