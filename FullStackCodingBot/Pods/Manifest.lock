@@ -11,6 +11,7 @@ PODS:
   - RxRelay (6.1.0):
     - RxSwift (= 6.1.0)
   - RxSwift (6.1.0)
+  - SwiftLint (0.43.1)
 
 DEPENDENCIES:
   - Action
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - "NSObject+Rx"
   - RxCocoa
   - RxSwift
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
@@ -27,6 +29,7 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Action: 9891cd1b0a9047557d7e58e8dfae743e19d08197
@@ -35,7 +38,8 @@ SPEC CHECKSUMS:
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
+  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: bc8740ece57b742489fe9cb381bf035102a65162
+PODFILE CHECKSUM: 20b8ca89f79c4ab5bb6abbae9105cb85863d14cf
 
 COCOAPODS: 1.10.1

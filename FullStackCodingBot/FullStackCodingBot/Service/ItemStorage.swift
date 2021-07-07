@@ -3,8 +3,8 @@ import RxSwift
 
 class ItemStorage: ItemStorageType {
     
-    private var storage:[Unit] = [
-        //Dummy Data
+    private var storage: [Unit] = [
+        // DummyData
         Unit(uuid: 0, image: .cPlusPlus, level: 1, count: 1),
         Unit(uuid: 1, image: .java, level: 1, count: 1),
         Unit(uuid: 2, image: .kotlin, level: 1, count: 1),

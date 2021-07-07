@@ -11,5 +11,6 @@ target 'FullStackCodingBot' do
   pod 'NSObject+Rx'
   pod 'Alamofire'
   pod 'Action'
+  pod 'SwiftLint'
 
 end

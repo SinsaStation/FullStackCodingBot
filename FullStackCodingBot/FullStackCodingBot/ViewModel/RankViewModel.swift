@@ -1,5 +1,5 @@
 import Foundation
 
-class RankViewModel:CommonViewModel {
+class RankViewModel: CommonViewModel {
     
 }
