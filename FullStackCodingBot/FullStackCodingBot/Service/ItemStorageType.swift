@@ -3,6 +3,8 @@ import RxSwift
 
 protocol ItemStorageType {
     
+    func itemList() -> [Unit]
+    
     @discardableResult
     func create(item: Unit) -> Observable<Unit>
     

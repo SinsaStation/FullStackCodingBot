@@ -4,14 +4,23 @@ import RxSwift
 class ItemStorage: ItemStorageType {
     
     private var storage: [Unit] = [
-        // DummyData
-        Unit(uuid: 0, image: .cPlusPlus, level: 1, count: 1),
-        Unit(uuid: 1, image: .java, level: 1, count: 1),
-        Unit(uuid: 2, image: .kotlin, level: 1, count: 1),
-        Unit(uuid: 3, image: .swift, level: 1, count: 1)
+        Unit(info: .cPlusPlus, level: 1),
+        Unit(info: .java, level: 1),
+        Unit(info: .swift, level: 3),
+        Unit(info: .kotlin, level: 1),
+        Unit(info: .python, level: 1),
+        Unit(info: .cSharp, level: 2),
+        Unit(info: .php, level: 1),
+        Unit(info: .javaScript, level: 2),
+        Unit(info: .ruby, level: 2),
+        Unit(info: .theC, level: 1)
     ]
     
     private lazy var unitStorage = BehaviorSubject(value: storage)
+    
+    func itemList() -> [Unit] {
+        return storage
+    }
     
     @discardableResult
     func create(item: Unit) -> Observable<Unit> {

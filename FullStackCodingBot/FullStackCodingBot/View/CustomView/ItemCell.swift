@@ -5,7 +5,7 @@ class ItemCell: UICollectionViewCell {
     @IBOutlet weak var itemImageView: UIImageView!
     
     func configure(unit: Unit) {
-        itemImageView.image = UIImage(named: unit.image.name)
+        itemImageView.image = UIImage(named: unit.image)
     }
 }
 

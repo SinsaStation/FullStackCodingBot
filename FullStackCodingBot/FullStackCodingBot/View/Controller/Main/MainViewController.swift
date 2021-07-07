@@ -3,7 +3,7 @@ import UIKit
 final class MainViewController: UIViewController, ViewModelBindableType {
    
     var viewModel: MainViewModel!
-    @IBOutlet var buttonController: ButtonController!
+    @IBOutlet var buttonController: MainButtonController!
     
     func bindViewModel() {
        buttonController.setupButton()
