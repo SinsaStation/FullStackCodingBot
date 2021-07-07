@@ -19,7 +19,7 @@ final class UnitPerspectiveView: UIView {
         self.unitCount = startingUnits.count
         
         startingUnits.forEach { unit in
-            let imageName = unit.image.name
+            let imageName = unit.image
             self.unitLayers.append(newLayer(with: imageName))
         }
     }
@@ -98,7 +98,7 @@ final class UnitPerspectiveView: UIView {
     }
     
     func refillLastUnit(with newUnit: Unit) {
-        let imageName = newUnit.image.name
+        let imageName = newUnit.image
         unitLayers.append(newLayer(with: imageName))
     }
 }

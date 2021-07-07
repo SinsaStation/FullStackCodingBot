@@ -26,7 +26,6 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
 }
 
 // MARK: Setup
-
 private extension ItemViewController {
     
     private func setup() {
@@ -40,9 +39,15 @@ private extension ItemViewController {
 
 // MARK: Setup CellSize
 extension ItemViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = itemCollectionView.frame.width * 0.3
         let height = itemCollectionView.frame.height * 0.8
         return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let xInset = itemCollectionView.frame.width * 0.1
+        return UIEdgeInsets(top: 0, left: xInset, bottom: xInset, right: 0)
     }
 }

@@ -8,10 +8,12 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     var viewModel: GameViewModel!
     
     private let unitCount = 8
-    private let allUnits = [Unit(uuid: 0, image: .swift, level: 1, count: 1),
-                            Unit(uuid: 1, image: .kotlin, level: 1, count: 1),
-                            Unit(uuid: 2, image: .java, level: 1, count: 1),
-                            Unit(uuid: 3, image: .cPlusPlus, level: 1, count: 1)]
+    private let allUnits = [
+        Unit(info: .cPlusPlus, level: 1),
+        Unit(info: .java, level: 1),
+        Unit(info: .swift, level: 3),
+        Unit(info: .kotlin, level: 1)
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
