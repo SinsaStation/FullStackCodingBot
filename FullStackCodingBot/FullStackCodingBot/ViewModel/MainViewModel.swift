@@ -9,11 +9,6 @@ class MainViewModel:CommonViewModel {
             let giftScene = Scene.gift(giftViewModel)
             self.sceneCoordinator.transition(to: giftScene, using: .modal, animated: true)
             
-        case .advertiseVC:
-            let advertiseViewModel = AdvertiseViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
-            let advertiseScene = Scene.ad(advertiseViewModel)
-            self.sceneCoordinator.transition(to: advertiseScene, using: .modal, animated: true)
-            
         case .rankVC:
             let rankViewModel = RankViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
             let rankScene = Scene.rank(rankViewModel)
@@ -25,7 +20,7 @@ class MainViewModel:CommonViewModel {
             self.sceneCoordinator.transition(to: itemScene, using: .fullScreen, animated: true)
             
         case .gameVC:
-            let gameViewModel = GameViewModel(sceneCoordinator: self.sceneCoordinator)
+            let gameViewModel = GameViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
             let gameScene = Scene.game(gameViewModel)
             self.sceneCoordinator.transition(to: gameScene, using: .fullScreen, animated: true)
         }

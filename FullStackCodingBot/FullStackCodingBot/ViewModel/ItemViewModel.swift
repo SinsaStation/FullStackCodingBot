@@ -1,7 +1,12 @@
 import Foundation
+import RxSwift
 import Action
 
 class ItemViewModel: CommonViewModel {
+    
+    var itemStorage: Observable<[Unit]> {
+        return storage.list()
+    }
     
     let cancelAction: CocoaAction
     

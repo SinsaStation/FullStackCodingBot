@@ -16,14 +16,12 @@
 		715BB20626943CDE00286B31 /* ItemStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BB20526943CDE00286B31 /* ItemStorageType.swift */; };
 		715BB20826943D5600286B31 /* ItemStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BB20726943D5600286B31 /* ItemStorage.swift */; };
 		71DF64B92692C13A00557693 /* GiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64B82692C13A00557693 /* GiftViewController.swift */; };
-		71DF64BB2692C16900557693 /* AdvertiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64BA2692C16900557693 /* AdvertiseViewController.swift */; };
 		71DF64BD2692C18F00557693 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64BC2692C18F00557693 /* RankViewController.swift */; };
 		71DF64BF2692C1C600557693 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64BE2692C1C600557693 /* ItemViewController.swift */; };
 		71DF653C2692F90100557693 /* TransitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF653B2692F90100557693 /* TransitionModel.swift */; };
 		71DF653E2692F92700557693 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF653D2692F92700557693 /* Scene.swift */; };
 		71DF65412692F94E00557693 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF65402692F94E00557693 /* MainViewModel.swift */; };
 		71DF65432692F95800557693 /* GiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF65422692F95800557693 /* GiftViewModel.swift */; };
-		71DF65452692F96700557693 /* AdvertiseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF65442692F96700557693 /* AdvertiseViewModel.swift */; };
 		71DF65472692F97000557693 /* RankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF65462692F97000557693 /* RankViewModel.swift */; };
 		71DF65492692F97900557693 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF65482692F97900557693 /* ItemViewModel.swift */; };
 		71DF654D2692FA6200557693 /* IdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF654C2692FA6200557693 /* IdentifierManager.swift */; };
@@ -54,14 +52,12 @@
 		715BB20526943CDE00286B31 /* ItemStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStorageType.swift; sourceTree = "<group>"; };
 		715BB20726943D5600286B31 /* ItemStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStorage.swift; sourceTree = "<group>"; };
 		71DF64B82692C13A00557693 /* GiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftViewController.swift; sourceTree = "<group>"; };
-		71DF64BA2692C16900557693 /* AdvertiseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertiseViewController.swift; sourceTree = "<group>"; };
 		71DF64BC2692C18F00557693 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		71DF64BE2692C1C600557693 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		71DF653B2692F90100557693 /* TransitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionModel.swift; sourceTree = "<group>"; };
 		71DF653D2692F92700557693 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		71DF65402692F94E00557693 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		71DF65422692F95800557693 /* GiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftViewModel.swift; sourceTree = "<group>"; };
-		71DF65442692F96700557693 /* AdvertiseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertiseViewModel.swift; sourceTree = "<group>"; };
 		71DF65462692F97000557693 /* RankViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewModel.swift; sourceTree = "<group>"; };
 		71DF65482692F97900557693 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		71DF654C2692FA6200557693 /* IdentifierManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierManager.swift; sourceTree = "<group>"; };
@@ -119,7 +115,6 @@
 				E4D7C6412693E7B200D58BA2 /* MainViewController.swift */,
 				710A9DAB2692AD5C0090B38A /* ButtonController.swift */,
 				71DF64B82692C13A00557693 /* GiftViewController.swift */,
-				71DF64BA2692C16900557693 /* AdvertiseViewController.swift */,
 				71DF64BC2692C18F00557693 /* RankViewController.swift */,
 				71DF64BE2692C1C600557693 /* ItemViewController.swift */,
 				71DF654E2692FB4C00557693 /* ViewModelBindableType.swift */,
@@ -144,7 +139,6 @@
 			children = (
 				71DF65402692F94E00557693 /* MainViewModel.swift */,
 				71DF65422692F95800557693 /* GiftViewModel.swift */,
-				71DF65442692F96700557693 /* AdvertiseViewModel.swift */,
 				71DF65462692F97000557693 /* RankViewModel.swift */,
 				71DF65482692F97900557693 /* ItemViewModel.swift */,
 				710D0D432693EA6900244A16 /* GameViewModel.swift */,
@@ -379,7 +373,6 @@
 				71DF653E2692F92700557693 /* Scene.swift in Sources */,
 				71DF64BF2692C1C600557693 /* ItemViewController.swift in Sources */,
 				710A9DAC2692AD5C0090B38A /* ButtonController.swift in Sources */,
-				71DF64BB2692C16900557693 /* AdvertiseViewController.swift in Sources */,
 				71DF65532692FBE500557693 /* SceneCoordinator.swift in Sources */,
 				71DF64BD2692C18F00557693 /* RankViewController.swift in Sources */,
 				71DF65552692FD1400557693 /* CommonViewModel.swift in Sources */,
@@ -393,7 +386,6 @@
 				71DF65472692F97000557693 /* RankViewModel.swift in Sources */,
 				71DF654F2692FB4C00557693 /* ViewModelBindableType.swift in Sources */,
 				710D0D4C2693F2CC00244A16 /* XibView.swift in Sources */,
-				71DF65452692F96700557693 /* AdvertiseViewModel.swift in Sources */,
 				71DF65412692F94E00557693 /* MainViewModel.swift in Sources */,
 				E4D7C6402693E7A100D58BA2 /* SceneDelegate.swift in Sources */,
 			);

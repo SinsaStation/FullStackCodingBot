@@ -3,7 +3,6 @@ import UIKit
 enum Scene {
     case main(MainViewModel)
     case gift(GiftViewModel)
-    case ad(AdvertiseViewModel)
     case rank(RankViewModel)
     case item(ItemViewModel)
     case game(GameViewModel)
@@ -28,13 +27,6 @@ extension Scene {
             }
             giftVC.bind(viewModel: viewModel)
             return giftVC
-        
-        case .ad(let viewModel):
-            guard var advertiseVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.ad) as? AdvertiseViewController else {
-                fatalError()
-            }
-            advertiseVC.bind(viewModel: viewModel)
-            return advertiseVC
             
         case .rank(let viewModel):
             guard var rankVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.rank) as? RankViewController else {

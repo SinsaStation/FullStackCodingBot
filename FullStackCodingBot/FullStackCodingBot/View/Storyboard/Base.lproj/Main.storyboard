@@ -6,7 +6,6 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +21,7 @@
                                 <rect key="frame" x="30.5" y="777" width="353" height="77.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCw-mX-H1M">
-                                        <rect key="frame" x="0.0" y="0.0" width="81" height="77.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="111" height="77.5"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <state key="normal" title="선물"/>
                                         <userDefinedRuntimeAttributes>
@@ -35,22 +34,8 @@
                                             <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="VX4-E3-HfM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uhf-Y1-Fgl">
-                                        <rect key="frame" x="91" y="0.0" width="80.5" height="77.5"/>
-                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                        <state key="normal" title="광고"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="aLh-IW-eHq"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAJ-Py-m2J">
-                                        <rect key="frame" x="181.5" y="0.0" width="81" height="77.5"/>
+                                        <rect key="frame" x="121" y="0.0" width="111" height="77.5"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <state key="normal" title="랭킹"/>
                                         <userDefinedRuntimeAttributes>
@@ -64,7 +49,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wi2-BU-Z6q">
-                                        <rect key="frame" x="272.5" y="0.0" width="80.5" height="77.5"/>
+                                        <rect key="frame" x="242" y="0.0" width="111" height="77.5"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <state key="normal" title="아이템"/>
                                         <userDefinedRuntimeAttributes>
@@ -111,7 +96,6 @@
                 <customObject id="H6e-U9-JW6" customClass="ButtonController" customModule="FullStackCodingBot" customModuleProvider="target">
                     <connections>
                         <outletCollection property="moveToVCButtons" destination="FCw-mX-H1M" collectionClass="NSMutableArray" id="nRa-qz-YTt"/>
-                        <outletCollection property="moveToVCButtons" destination="Uhf-Y1-Fgl" collectionClass="NSMutableArray" id="vYc-rd-tdw"/>
                         <outletCollection property="moveToVCButtons" destination="fAJ-Py-m2J" collectionClass="NSMutableArray" id="ENl-NL-IWl"/>
                         <outletCollection property="moveToVCButtons" destination="wi2-BU-Z6q" collectionClass="NSMutableArray" id="5kA-d8-ncK"/>
                         <outletCollection property="moveToVCButtons" destination="Pa3-jZ-hVU" collectionClass="NSMutableArray" id="Rq6-LS-yB8"/>
@@ -246,33 +230,10 @@
                                             <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
                                         </state>
                                     </button>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Jf-hN-o9I">
-                                        <rect key="frame" x="37" y="92" width="340" height="206"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AF6-oZ-9uk">
-                                            <size key="itemSize" width="128" height="128"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZBV-uL-mhU" customClass="ItemCell" customModule="FullStackCodingBot" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="39" width="128" height="128"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wWL-0z-3Nj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </collectionViewCellContentView>
-                                            </collectionViewCell>
-                                        </cells>
-                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="7Jf-hN-o9I" secondAttribute="bottom" multiplier="1.03" constant="1" id="0Jl-rC-gZO"/>
-                                    <constraint firstItem="7Jf-hN-o9I" firstAttribute="centerX" secondItem="5aK-J8-fCg" secondAttribute="centerX" id="4gg-eu-KJR"/>
                                     <constraint firstItem="Eiy-7U-oCk" firstAttribute="centerY" secondItem="5aK-J8-fCg" secondAttribute="centerY" multiplier="0.4" id="8dY-ne-49q"/>
-                                    <constraint firstItem="7Jf-hN-o9I" firstAttribute="width" secondItem="5aK-J8-fCg" secondAttribute="width" multiplier="0.821256" id="C1U-Cc-Hq5"/>
                                     <constraint firstItem="dlE-fi-nVR" firstAttribute="centerX" secondItem="5aK-J8-fCg" secondAttribute="centerX" id="F1B-V3-8rY"/>
                                     <constraint firstItem="Eiy-7U-oCk" firstAttribute="height" secondItem="5aK-J8-fCg" secondAttribute="height" multiplier="0.159091" id="Fix-jK-5jv"/>
                                     <constraint firstItem="dlE-fi-nVR" firstAttribute="centerY" secondItem="5aK-J8-fCg" secondAttribute="centerY" multiplier="0.4" id="FrR-aS-Gcv"/>
@@ -280,7 +241,6 @@
                                     <constraint firstItem="Eiy-7U-oCk" firstAttribute="width" secondItem="5aK-J8-fCg" secondAttribute="width" multiplier="0.115942" id="WlI-Yr-lpO"/>
                                     <constraint firstItem="dlE-fi-nVR" firstAttribute="height" secondItem="5aK-J8-fCg" secondAttribute="height" multiplier="0.0974026" id="Z1y-zX-nKw"/>
                                     <constraint firstItem="dlE-fi-nVR" firstAttribute="width" secondItem="5aK-J8-fCg" secondAttribute="width" multiplier="0.289855" id="udn-8H-G2n"/>
-                                    <constraint firstItem="7Jf-hN-o9I" firstAttribute="height" secondItem="5aK-J8-fCg" secondAttribute="height" multiplier="0.668831" id="vMr-VL-EiU"/>
                                 </constraints>
                             </view>
                         </subviews>

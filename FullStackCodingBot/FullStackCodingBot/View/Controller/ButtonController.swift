@@ -2,7 +2,6 @@ import UIKit
 
 enum ViewControllerType: CaseIterable {
     case giftVC
-    case advertiseVC
     case rankVC
     case itemVC
     case gameVC

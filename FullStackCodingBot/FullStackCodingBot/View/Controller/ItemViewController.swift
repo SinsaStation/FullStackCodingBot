@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class ItemViewController: UIViewController, ViewModelBindableType {
     
@@ -10,6 +12,10 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
+        
+//        viewModel.itemStorage
+//            .bind(to: <#T##[Unit]...##[Unit]#>)
+        
         cancelButton.rx.action = viewModel.cancelAction
     }
 }
