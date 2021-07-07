@@ -37,7 +37,7 @@ enum UnitInfo {
         case .python:
             return ("python", 4)
         case .theC:
-            return ("c", 5)
+            return ("theC", 5)
         case .php:
             return ("php", 6)
         case .javaScript:
