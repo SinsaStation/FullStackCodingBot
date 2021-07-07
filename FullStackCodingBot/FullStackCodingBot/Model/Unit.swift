@@ -49,8 +49,3 @@ enum UnitInfo {
         }
     }
 }
-
-enum Direction {
-    case left
-    case right
-}

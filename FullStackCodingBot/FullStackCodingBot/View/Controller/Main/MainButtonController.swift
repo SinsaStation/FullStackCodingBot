@@ -7,7 +7,7 @@ enum ViewControllerType: CaseIterable {
     case gameVC
 }
 
-final class ButtonMapper {
+final class MainButtonMapper {
     private var map: [UIButton: ViewControllerType]
     
     init(from buttons: [UIButton]) {
@@ -19,11 +19,11 @@ final class ButtonMapper {
     }
 }
 
-final class ButtonController: NSObject {
+final class MainButtonController: NSObject {
     
     @IBOutlet var moveToVCButtons: [UIButton]!
     
-    private var moveToVCMapper: ButtonMapper?
+    private var moveToVCMapper: MainButtonMapper?
     private var buttonTouchedHandler: (ViewControllerType) -> Void
     
     override init() {
@@ -31,7 +31,7 @@ final class ButtonController: NSObject {
     }
     
     func setupButton() {
-        self.moveToVCMapper = ButtonMapper(from: moveToVCButtons)
+        self.moveToVCMapper = MainButtonMapper(from: moveToVCButtons)
     }
     
     @IBAction func buttonTouched(sender: UIButton) {

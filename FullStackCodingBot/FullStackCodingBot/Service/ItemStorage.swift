@@ -18,6 +18,10 @@ class ItemStorage: ItemStorageType {
     
     private lazy var unitStorage = BehaviorSubject(value: storage)
     
+    func itemList() -> [Unit] {
+        return storage
+    }
+    
     @discardableResult
     func create(item: Unit) -> Observable<Unit> {
         storage.append(item)

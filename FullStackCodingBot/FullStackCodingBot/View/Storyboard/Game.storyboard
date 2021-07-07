@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -13,18 +13,18 @@
             <objects>
                 <viewController restorationIdentifier="GameVC" storyboardIdentifier="GameVC" id="Y6W-OH-hqX" customClass="GameViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pup-xc-6r8" customClass="UnitPerspectiveView" customModule="FullStackCodingBot" customModuleProvider="target">
-                                <rect key="frame" x="256" y="38.5" width="512" height="819"/>
+                                <rect key="frame" x="97.666666666666686" y="231.66666666666663" width="195" height="312"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Pup-xc-6r8" secondAttribute="height" multiplier="1:1.6" id="WLF-cn-ceV"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffT-Vy-DnI" userLabel="Left Button">
-                                <rect key="frame" x="20" y="937.5" width="358.5" height="358.5"/>
+                                <rect key="frame" x="20" y="623.66666666666663" width="136.66666666666666" height="136.33333333333337"/>
                                 <color key="backgroundColor" red="0.84841342750000004" green="0.94130822380000001" blue="0.2035008059" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ffT-Vy-DnI" secondAttribute="height" multiplier="1:1" id="pFI-Wl-eHC"/>
@@ -32,11 +32,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="◀️"/>
                                 <connections>
-                                    <action selector="leftButtonTouched:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="oW9-eT-niC"/>
+                                    <action selector="buttonTouchedWithSender:" destination="URX-A4-k8e" eventType="touchUpInside" id="OdJ-qw-i7d"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTf-oP-M9v" userLabel="Right Button">
-                                <rect key="frame" x="645.5" y="937.5" width="358.5" height="358.5"/>
+                                <rect key="frame" x="233.66666666666663" y="623.66666666666663" width="136.33333333333337" height="136.33333333333337"/>
                                 <color key="backgroundColor" red="0.84841342750000004" green="0.94130822380000001" blue="0.2035008059" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LTf-oP-M9v" secondAttribute="height" multiplier="1:1" id="paE-Gb-85S"/>
@@ -44,16 +44,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="▶️"/>
                                 <connections>
-                                    <action selector="rightButtonTouched:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xon-GR-GEC"/>
+                                    <action selector="buttonTouchedWithSender:" destination="URX-A4-k8e" eventType="touchUpInside" id="nv3-SV-tpF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emQ-J6-eks">
-                                <rect key="frame" x="28" y="11" width="55" height="36"/>
+                                <rect key="frame" x="28" y="55" width="55" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="BACK"/>
-                                <connections>
-                                    <action selector="backButtonTouched:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="B8c-tX-shv"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -73,11 +70,18 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonController" destination="URX-A4-k8e" id="8gF-qm-WsD"/>
                         <outlet property="cancelButton" destination="emQ-J6-eks" id="cyv-LM-RSI"/>
                         <outlet property="unitPerspectiveView" destination="Pup-xc-6r8" id="Bgj-LD-YeL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="URX-A4-k8e" customClass="GameButtonController" customModule="FullStackCodingBot" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="moveUnitButtons" destination="ffT-Vy-DnI" collectionClass="NSMutableArray" id="yKB-Ei-IDv"/>
+                        <outletCollection property="moveUnitButtons" destination="LTf-oP-M9v" collectionClass="NSMutableArray" id="GdH-eq-pgF"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="15.942028985507248" y="88.392857142857139"/>
         </scene>

@@ -22,6 +22,7 @@ final class UnitPerspectiveView: UIView {
             let imageName = unit.image
             self.unitLayers.append(newLayer(with: imageName))
         }
+        fillUnits()
     }
     
     private func newLayer(with imageName: String) -> CALayer {
@@ -34,7 +35,7 @@ final class UnitPerspectiveView: UIView {
         return layer
     }
     
-    func fillUnits() {
+    private func fillUnits() {
         guard let unitCount = unitCount else { return }
         let maxWeight = CGFloat(unitCount)
         
@@ -100,5 +101,6 @@ final class UnitPerspectiveView: UIView {
     func refillLastUnit(with newUnit: Unit) {
         let imageName = newUnit.image
         unitLayers.append(newLayer(with: imageName))
+        fillUnits()
     }
 }
