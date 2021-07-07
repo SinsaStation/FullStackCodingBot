@@ -67,28 +67,41 @@ final class UnitPerspectiveView: UIView {
     }
     
     private func animate(layer: CALayer, to direction: Direction) {
-        let currentLocation = layer.position
-        
         CATransaction.setCompletionBlock {
             layer.removeFromSuperlayer()
         }
         
         CATransaction.begin()
-        CATransaction.setAnimationDuration(1)
-
+        
+        let rotateKey = "transform.rotation"
+        let rotateAnimation = CABasicAnimation(keyPath: rotateKey)
+        rotateAnimation.fromValue = 0
+        rotateAnimation.toValue = 359
+        
         let positionKey = #keyPath(CALayer.position)
         let positionAnimation = CASpringAnimation(keyPath: positionKey)
-        positionAnimation.fromValue = currentLocation
+        positionAnimation.damping = 10
+        positionAnimation.fromValue = layer.position
         positionAnimation.toValue = locationToSendUnit(for: layer, baseOn: direction)
-        positionAnimation.duration = 1
-        layer.add(positionAnimation, forKey: positionKey)
+        
+        let opacityKey = #keyPath(CALayer.opacity)
+        let opacityAnimation = CABasicAnimation(keyPath: opacityKey)
+        opacityAnimation.fromValue = 1
+        opacityAnimation.toValue = 0
+        
+        let totalAnimationGroup = CAAnimationGroup()
+        totalAnimationGroup.animations = [rotateAnimation, positionAnimation, opacityAnimation]
+        totalAnimationGroup.duration = 1.5
+        totalAnimationGroup.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        
+        layer.add(totalAnimationGroup, forKey: "totalAnimation")
         
         CATransaction.commit()
     }
     
     private func locationToSendUnit(for layer: CALayer, baseOn direction: Direction) -> CGPoint {
         let extraMovementX = layer.bounds.width
-        let positionY = -layer.bounds.height * 2
+        let positionY = -layer.bounds.height * 3
         
         switch direction {
         case .left:
