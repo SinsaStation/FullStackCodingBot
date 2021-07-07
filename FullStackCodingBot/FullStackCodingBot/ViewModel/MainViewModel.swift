@@ -25,7 +25,7 @@ class MainViewModel:CommonViewModel {
             self.sceneCoordinator.transition(to: itemScene, using: .fullScreen, animated: true)
             
         case .gameVC:
-            let gameViewModel = GameViewModel(sceneCoordinator: self.sceneCoordinator)
+            let gameViewModel = GameViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
             let gameScene = Scene.game(gameViewModel)
             self.sceneCoordinator.transition(to: gameScene, using: .fullScreen, animated: true)
         }
