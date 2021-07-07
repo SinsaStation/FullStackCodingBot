@@ -6,4 +6,5 @@ enum IdentifierVC {
     static let ad = "AdvertiseVC"
     static let rank = "RankVC"
     static let item = "ItemVC"
+    static let game = "GameVC"
 }
