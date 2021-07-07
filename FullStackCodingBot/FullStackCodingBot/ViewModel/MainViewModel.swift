@@ -5,14 +5,9 @@ class MainViewModel:CommonViewModel {
     func makeMoveAction(to viewController: ViewControllerType) {
         switch viewController {
         case .giftVC:
-            let giftViewModel = GiftViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
-            let giftScene = Scene.gift(giftViewModel)
-            self.sceneCoordinator.transition(to: giftScene, using: .modal, animated: true)
-            
-        case .advertiseVC:
-            let advertiseViewModel = AdvertiseViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
-            let advertiseScene = Scene.ad(advertiseViewModel)
-            self.sceneCoordinator.transition(to: advertiseScene, using: .modal, animated: true)
+            let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
+            let shopScene = Scene.shop(shopViewModel)
+            self.sceneCoordinator.transition(to: shopScene, using: .fullScreen, animated: true)
             
         case .rankVC:
             let rankViewModel = RankViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)

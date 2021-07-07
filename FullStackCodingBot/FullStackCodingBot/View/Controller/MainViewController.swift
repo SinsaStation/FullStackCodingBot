@@ -6,7 +6,7 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     @IBOutlet var buttonController: ButtonController!
     
     func bindViewModel() {
-        buttonController.setupButton()
+       buttonController.setupButton()
         buttonController.bind { [unowned self] viewController in
             self.viewModel.makeMoveAction(to: viewController)
         }

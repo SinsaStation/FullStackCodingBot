@@ -29,13 +29,6 @@ final class SceneCoordinator: SceneCoordinatorType {
                 subject.onCompleted()
             }
             currentVC = target
-            
-        case .modal:
-            target.modalPresentationStyle = .overCurrentContext
-            currentVC.present(target, animated: animated) {
-                subject.onCompleted()
-            }
-            currentVC = target
         }
         return subject.ignoreElements().asCompletable()
     }
@@ -56,3 +49,4 @@ final class SceneCoordinator: SceneCoordinatorType {
         return subject.ignoreElements().asCompletable()
     }
 }
+

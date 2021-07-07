@@ -2,8 +2,7 @@ import UIKit
 
 enum Scene {
     case main(MainViewModel)
-    case gift(GiftViewModel)
-    case ad(AdvertiseViewModel)
+    case shop(ShopViewModel)
     case rank(RankViewModel)
     case item(ItemViewModel)
     case game(GameViewModel)
@@ -22,19 +21,12 @@ extension Scene {
             mainVC.bind(viewModel: viewModel)
             return mainVC
             
-        case .gift(let viewModel):
-            guard var giftVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.gift) as? GiftViewController else {
+        case .shop(let viewModel):
+            guard var shopVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.shop) as? ShopViewController else {
                 fatalError()
             }
-            giftVC.bind(viewModel: viewModel)
-            return giftVC
-        
-        case .ad(let viewModel):
-            guard var advertiseVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.ad) as? AdvertiseViewController else {
-                fatalError()
-            }
-            advertiseVC.bind(viewModel: viewModel)
-            return advertiseVC
+            shopVC.bind(viewModel: viewModel)
+            return shopVC
             
         case .rank(let viewModel):
             guard var rankVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.rank) as? RankViewController else {

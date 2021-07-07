@@ -1,7 +1,13 @@
 import Foundation
+import RxSwift
+import RxCocoa
 import Action
 
 class ItemViewModel: CommonViewModel {
+    
+    var itemStorage: Driver<[Unit]> {
+        return storage.list().asDriver(onErrorJustReturn: [])
+    }
     
     let cancelAction: CocoaAction
     
