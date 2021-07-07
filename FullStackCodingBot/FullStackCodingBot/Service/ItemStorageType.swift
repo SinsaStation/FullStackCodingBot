@@ -11,5 +11,4 @@ protocol ItemStorageType {
     
     @discardableResult
     func update(previous: Unit, new: Unit) -> Observable<Unit>
-    
 }

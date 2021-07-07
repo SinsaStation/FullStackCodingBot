@@ -49,4 +49,3 @@ final class SceneCoordinator: SceneCoordinatorType {
         return subject.ignoreElements().asCompletable()
     }
 }
-

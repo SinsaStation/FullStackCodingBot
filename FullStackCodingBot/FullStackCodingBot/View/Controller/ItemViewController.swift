@@ -3,7 +3,6 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 
-
 final class ItemViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: ItemViewModel!
@@ -26,7 +25,7 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
     }
 }
 
-//MARK: -Setup
+// MARK: Setup
 
 private extension ItemViewController {
     
@@ -39,7 +38,7 @@ private extension ItemViewController {
     }
 }
 
-//MARK: -Setup CellSize
+// MARK: Setup CellSize
 extension ItemViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = itemCollectionView.frame.width * 0.3

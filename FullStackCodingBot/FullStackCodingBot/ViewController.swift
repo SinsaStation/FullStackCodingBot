@@ -75,7 +75,7 @@ class ViewController: UIViewController {
     }
     
     private func generateStartingUnits(count: Int) -> [Unit] {
-        return (0..<count).map{ allUnits[$0 % 4] }
+        return (0..<count).map { allUnits[$0 % 4] }
     }
     
     private func newRandomUnit() -> Unit {

@@ -24,7 +24,7 @@ final class ButtonController: NSObject {
     @IBOutlet var moveToVCButtons: [UIButton]!
     
     private var moveToVCMapper: ButtonMapper?
-    private var buttonTouchedHandler: (ViewControllerType) -> ()
+    private var buttonTouchedHandler: (ViewControllerType) -> Void
     
     override init() {
         buttonTouchedHandler = { _ in }
@@ -34,12 +34,12 @@ final class ButtonController: NSObject {
         self.moveToVCMapper = ButtonMapper(from: moveToVCButtons)
     }
     
-    @IBAction func buttonTouched(sender: UIButton)  {
-        guard let vc = moveToVCMapper?[sender] else { return }
-        buttonTouchedHandler(vc)
+    @IBAction func buttonTouched(sender: UIButton) {
+        guard let viewController = moveToVCMapper?[sender] else { return }
+        buttonTouchedHandler(viewController)
     }
     
-    func bind(action: @escaping (ViewControllerType) -> ()) {
+    func bind(action: @escaping (ViewControllerType) -> Void) {
         self.buttonTouchedHandler = action
     }
 }

@@ -7,7 +7,6 @@ class ItemCell: UICollectionViewCell {
     func configure(unit: Unit) {
         itemImageView.image = UIImage(named: unit.image.name)
     }
-    
 }
 
 extension UICollectionViewCell {
