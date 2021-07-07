@@ -66,7 +66,7 @@ final class UnitPerspectiveView: UIView {
     }
     
     private func animate(layer: CALayer, to direction: Direction) {
-        let currentLocation = layer.frame.origin
+        let currentLocation = layer.position
         
         CATransaction.setCompletionBlock {
             layer.removeFromSuperlayer()
@@ -78,19 +78,22 @@ final class UnitPerspectiveView: UIView {
         let positionKey = #keyPath(CALayer.position)
         let positionAnimation = CASpringAnimation(keyPath: positionKey)
         positionAnimation.fromValue = currentLocation
-        positionAnimation.toValue = locationToSendUnit(baseOn: direction)
+        positionAnimation.toValue = locationToSendUnit(for: layer, baseOn: direction)
         positionAnimation.duration = 1
         layer.add(positionAnimation, forKey: positionKey)
         
         CATransaction.commit()
     }
     
-    private func locationToSendUnit(baseOn direction: Direction) -> CGPoint {
+    private func locationToSendUnit(for layer: CALayer, baseOn direction: Direction) -> CGPoint {
+        let extraMovementX = layer.bounds.width
+        let positionY = -layer.bounds.height * 2
+        
         switch direction {
         case .left:
-            return CGPoint(x: -200, y: 0)
+            return CGPoint(x: 0 - extraMovementX, y: positionY)
         case .right:
-            return CGPoint(x: 400, y: 0)
+            return CGPoint(x: self.bounds.width + extraMovementX, y: positionY)
         }
     }
     
