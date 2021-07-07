@@ -104,72 +104,33 @@
             </objects>
             <point key="canvasLocation" x="15.942028985507248" y="88.392857142857139"/>
         </scene>
-        <!--Gift View Controller-->
+        <!--Shop View Controller-->
         <scene sceneID="xnF-VP-sQH">
             <objects>
-                <viewController restorationIdentifier="GiftVC" storyboardIdentifier="GiftVC" id="KRn-s9-dLg" customClass="GiftViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ShopVC" storyboardIdentifier="ShopVC" id="KRn-s9-dLg" customClass="ShopViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xs7-IX-xOw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixa-u3-L2J">
-                                <rect key="frame" x="38" y="340.5" width="338" height="215"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ANf-R9-HMw">
-                                        <rect key="frame" x="26.5" y="139" width="285" height="65"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNl-F3-V1X">
-                                                <rect key="frame" x="0.0" y="0.0" width="137.5" height="65"/>
-                                                <color key="backgroundColor" red="0.67109303580000002" green="0.53517999729999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="확인">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxF-Fc-17p">
-                                                <rect key="frame" x="147.5" y="0.0" width="137.5" height="65"/>
-                                                <color key="backgroundColor" red="0.67109303580000002" green="0.53517999729999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="취소">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.80995315313339233" green="0.79491388243187211" blue="0.45366022927600086" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstItem="ANf-R9-HMw" firstAttribute="width" secondItem="Ixa-u3-L2J" secondAttribute="width" multiplier="0.843195" id="6f4-Wf-iPZ"/>
-                                    <constraint firstItem="ANf-R9-HMw" firstAttribute="height" secondItem="Ixa-u3-L2J" secondAttribute="height" multiplier="0.302326" id="IXc-Fn-IE2"/>
-                                    <constraint firstItem="ANf-R9-HMw" firstAttribute="centerX" secondItem="Ixa-u3-L2J" secondAttribute="centerX" id="SN7-bV-BJx"/>
-                                    <constraint firstAttribute="bottom" secondItem="ANf-R9-HMw" secondAttribute="bottom" multiplier="1.05" constant="1" id="WAx-Fd-btA"/>
-                                </constraints>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3G-k2-a1u">
+                                <rect key="frame" x="1" y="805" width="72" height="58"/>
+                                <color key="tintColor" systemColor="systemYellowColor"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrowshape.turn.up.backward.fill" catalog="system" symbolScale="large"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BVS-bL-EVd"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ixa-u3-L2J" firstAttribute="height" secondItem="xs7-IX-xOw" secondAttribute="height" multiplier="0.239955" id="cFP-8V-418"/>
-                            <constraint firstItem="Ixa-u3-L2J" firstAttribute="width" secondItem="xs7-IX-xOw" secondAttribute="width" multiplier="0.816425" id="fwT-Ip-uYd"/>
-                            <constraint firstItem="Ixa-u3-L2J" firstAttribute="centerX" secondItem="xs7-IX-xOw" secondAttribute="centerX" id="utd-1p-dzU"/>
-                            <constraint firstItem="Ixa-u3-L2J" firstAttribute="centerY" secondItem="xs7-IX-xOw" secondAttribute="centerY" id="v8r-IY-Bwo"/>
+                            <constraint firstItem="L3G-k2-a1u" firstAttribute="bottom" secondItem="BVS-bL-EVd" secondAttribute="bottom" constant="1" id="3El-ia-vFY"/>
+                            <constraint firstItem="L3G-k2-a1u" firstAttribute="height" secondItem="xs7-IX-xOw" secondAttribute="height" multiplier="0.0647321" id="620-8Q-ktN"/>
+                            <constraint firstItem="L3G-k2-a1u" firstAttribute="leading" secondItem="BVS-bL-EVd" secondAttribute="leading" multiplier="1.05" constant="1" id="Nfd-uE-4G0"/>
+                            <constraint firstItem="L3G-k2-a1u" firstAttribute="width" secondItem="xs7-IX-xOw" secondAttribute="width" multiplier="0.173913" id="jUb-ub-qrA"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="bxF-Fc-17p" id="dZW-5Y-5bF"/>
-                        <outlet property="confirmButton" destination="wNl-F3-V1X" id="lZk-gD-wEN"/>
+                        <outlet property="cancelButton" destination="L3G-k2-a1u" id="ecH-hw-FU0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzg-5D-7gu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -263,6 +224,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
