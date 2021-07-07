@@ -33,6 +33,7 @@ private extension ItemViewController {
     private func setup() {
         setupDelegate()
     }
+    
     private func setupDelegate() {
         itemCollectionView.rx.setDelegate(self).disposed(by: rx.disposeBag)
     }
@@ -41,7 +42,7 @@ private extension ItemViewController {
 //MARK: -Setup CellSize
 extension ItemViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = itemCollectionView.frame.width * 0.4
+        let width = itemCollectionView.frame.width * 0.3
         let height = itemCollectionView.frame.height * 0.8
         return CGSize(width: width, height: height)
     }
