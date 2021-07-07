@@ -10,9 +10,7 @@
 		710A9DAC2692AD5C0090B38A /* ButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710A9DAB2692AD5C0090B38A /* ButtonController.swift */; };
 		710D0D422693EA3200244A16 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D412693EA3200244A16 /* GameViewController.swift */; };
 		710D0D442693EA6900244A16 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D432693EA6900244A16 /* GameViewModel.swift */; };
-		710D0D4C2693F2CC00244A16 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D4B2693F2CB00244A16 /* XibView.swift */; };
 		710D0D4F2693F6E500244A16 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D4D2693F6E500244A16 /* ItemCell.swift */; };
-		710D0D502693F6E500244A16 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 710D0D4E2693F6E500244A16 /* ItemCell.xib */; };
 		715BB20626943CDE00286B31 /* ItemStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BB20526943CDE00286B31 /* ItemStorageType.swift */; };
 		715BB20826943D5600286B31 /* ItemStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BB20726943D5600286B31 /* ItemStorage.swift */; };
 		71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64B82692C13A00557693 /* ShopViewController.swift */; };
@@ -46,9 +44,7 @@
 		710A9DAB2692AD5C0090B38A /* ButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonController.swift; sourceTree = "<group>"; };
 		710D0D412693EA3200244A16 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		710D0D432693EA6900244A16 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
-		710D0D4B2693F2CB00244A16 /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		710D0D4D2693F6E500244A16 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
-		710D0D4E2693F6E500244A16 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		715BB20526943CDE00286B31 /* ItemStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStorageType.swift; sourceTree = "<group>"; };
 		715BB20726943D5600286B31 /* ItemStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStorage.swift; sourceTree = "<group>"; };
 		71DF64B82692C13A00557693 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
@@ -231,9 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				E45B0AC62692F42D006FDE3D /* UnitPerspectiveView.swift */,
-				710D0D4B2693F2CB00244A16 /* XibView.swift */,
 				710D0D4D2693F6E500244A16 /* ItemCell.swift */,
-				710D0D4E2693F6E500244A16 /* ItemCell.xib */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -307,7 +301,6 @@
 			files = (
 				E4D7C6492693E8E500D58BA2 /* Game.storyboard in Resources */,
 				E45B0ABB2692929F006FDE3D /* LaunchScreen.storyboard in Resources */,
-				710D0D502693F6E500244A16 /* ItemCell.xib in Resources */,
 				E45B0AB82692929F006FDE3D /* Assets.xcassets in Resources */,
 				E4D7C6452693E7C200D58BA2 /* Main.storyboard in Resources */,
 			);
@@ -385,7 +378,6 @@
 				71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */,
 				71DF65472692F97000557693 /* RankViewModel.swift in Sources */,
 				71DF654F2692FB4C00557693 /* ViewModelBindableType.swift in Sources */,
-				710D0D4C2693F2CC00244A16 /* XibView.swift in Sources */,
 				71DF65412692F94E00557693 /* MainViewModel.swift in Sources */,
 				E4D7C6402693E7A100D58BA2 /* SceneDelegate.swift in Sources */,
 			);
