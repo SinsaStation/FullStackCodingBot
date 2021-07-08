@@ -5,7 +5,7 @@ import Action
 
 class ItemViewModel: CommonViewModel {
     
-    let isAvailableLevelUp = BehaviorRelay<Bool>(value: false)
+    let isPossibleToLevelUp = BehaviorRelay<Bool>(value: false)
     
     var itemStorage: Driver<[Unit]> {
         return storage.list().asDriver(onErrorJustReturn: [])
@@ -29,9 +29,9 @@ class ItemViewModel: CommonViewModel {
     
     func checkLevelUpPrice(to level: Int) {
         if (level * 100) <= money {
-            isAvailableLevelUp.accept(true)
+            isPossibleToLevelUp.accept(true)
         } else {
-            isAvailableLevelUp.accept(false)
+            isPossibleToLevelUp.accept(false)
         }
     }
 }

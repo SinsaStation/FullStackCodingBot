@@ -25,7 +25,7 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
                 cell.configure(unit: unit)
             }.disposed(by: rx.disposeBag)
         
-        viewModel.isAvailableLevelUp
+        viewModel.isPossibleToLevelUp
             .subscribe(onNext: { [unowned self] levelUp in
                 self.setupLevelUpButton(levelUp)
             }).disposed(by: rx.disposeBag)
