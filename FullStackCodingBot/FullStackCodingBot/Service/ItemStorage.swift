@@ -16,7 +16,7 @@ class ItemStorage: ItemStorageType {
         Unit(info: .theC, level: 1)
     ]
     
-    private var money = 1_000
+    private var money = 200
     
     private lazy var unitStorage = BehaviorSubject(value: storage)
     

@@ -10,6 +10,7 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var mainItemView: MainItemView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var itemCollectionView: UICollectionView!
+    @IBOutlet weak var levelUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +21,14 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
         
         viewModel.itemStorage
             .drive(itemCollectionView.rx.items(cellIdentifier: ItemCell.identifier, cellType: ItemCell.self)) { [unowned self] row, unit, cell in
-                if row == 0 { self.mainItemView.configure(unit) }
+                if row == 0 { self.setupItemInfomation(from: unit) }
                 cell.configure(unit: unit)
             }.disposed(by: rx.disposeBag)
+        
+        viewModel.isAvailableLevelUp
+            .subscribe(onNext: { [unowned self] levelUp in
+                self.setupLevelUpButton(levelUp)
+            }).disposed(by: rx.disposeBag)
         
         cancelButton.rx.action = viewModel.cancelAction
     }
@@ -40,8 +46,24 @@ private extension ItemViewController {
         
         itemCollectionView.rx.modelSelected(Unit.self)
             .subscribe(onNext: { [unowned self] unit in
-                self.mainItemView.configure(unit)
+                self.setupItemInfomation(from: unit)
             }).disposed(by: rx.disposeBag)
+    }
+    
+    private func setupItemInfomation(from unit: Unit) {
+        mainItemView.configure(unit)
+        viewModel.checkLevelUpPrice(to: unit.level)
+    }
+    
+    private func setupLevelUpButton(_ levelUp: Bool) {
+        switch levelUp {
+        case true:
+            levelUpButton.isEnabled = true
+            levelUpButton.setTitleColor(.black, for: .normal)
+        case false:
+            levelUpButton.isEnabled = false
+            levelUpButton.setTitleColor(.gray, for: .normal)
+        }
     }
 }
 
