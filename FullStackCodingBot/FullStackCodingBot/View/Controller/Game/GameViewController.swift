@@ -20,12 +20,17 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         gameStart()
     }
     
+    private func gameStart() {
+        unitPerspectiveView.configure(with: viewModel.execute())
+    }
+    
     func bindViewModel() {
         buttonController.setupButton()
         buttonController.bind { [unowned self] direction in
             self.viewModel.moveUnitAction(to: direction)
-            self.updateScoreLabel()
         }
+        
+        cancelButton.rx.action = viewModel.cancelAction
         
         viewModel.logic
             .subscribe(onNext: { [weak self] logic in
@@ -33,36 +38,37 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                 self?.buttonAction(to: logic)
             }).disposed(by: rx.disposeBag)
         
-        cancelButton.rx.action = viewModel.cancelAction
-    }
-    
-    private func updateScoreLabel() {
-        scoreLabel.rx.text
-            .asObserver()
-            .onNext("\(viewModel.score)")
+        viewModel.score
+            .scan(0) { $0 + $1 }
+            .subscribe(onNext: { [weak self] score in
+            self?.scoreLabel.text = "\(score)"
+        }).disposed(by: rx.disposeBag)
         
-        // 임시
-        update(unitStackView: leftUnitStackView, with: viewModel.leftStackUnits)
-        update(unitStackView: rightUnitStackView, with: viewModel.rightStackUnits)
-    }
-    
-    private func update(unitStackView: UIStackView, with storage: [Unit]) {
-        for (index, subview) in unitStackView.arrangedSubviews.reversed().enumerated() {
-            guard let imageView = subview as? UIImageView,
-                  storage.count > index else { break }
-            
-            let imageName = storage[index].image
-            imageView.image = UIImage(named: imageName)
-        }
-    }
-    
-    private func gameStart() {
-        unitPerspectiveView.configure(with: viewModel.execute())
-        updateScoreLabel()
+        viewModel.stackMemberUnit
+            .subscribe(onNext: { [weak self] newStackUnit in
+                guard let self = self,
+                      let newStackUnit = newStackUnit else { return }
+                switch newStackUnit.direction {
+                case .left:
+                    self.updateImage(of: newStackUnit, to: self.leftUnitStackView)
+                case .right:
+                    self.updateImage(of: newStackUnit, to: self.rightUnitStackView)
+                }
+        }).disposed(by: rx.disposeBag)
     }
     
     private func buttonAction(to direction: Direction) {
         unitPerspectiveView.removeFirstUnit(to: direction)
         unitPerspectiveView.refillLastUnit(with: viewModel.newRandomUnit())
+    }
+    
+    private func updateImage(of newStackMember: StackMemberUnit, to stackView: UIStackView) {
+        let subviews = stackView.arrangedSubviews
+        let targetIndex = subviews.count-newStackMember.order-1
+        
+        guard let imageView = subviews[targetIndex] as? UIImageView else { return }
+        
+        let unitImage = UIImage(named: newStackMember.content.image)
+        imageView.image = unitImage
     }
 }

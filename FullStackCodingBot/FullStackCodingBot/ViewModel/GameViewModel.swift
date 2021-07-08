@@ -3,19 +3,25 @@ import RxSwift
 import RxCocoa
 import Action
 
-class GameViewModel: CommonViewModel {
+struct StackMemberUnit {
+    let content: Unit
+    let order: Int
+    let direction: Direction
+}
 
-    let cancelAction: CocoaAction
+class GameViewModel: CommonViewModel {
     
-    var score: Int
     private var unitCount: Int
     private var unitScored: Int
     private var allUnits: [Unit]
     private var unusedUnits: [Unit]
-    var leftStackUnits: [Unit]
-    var rightStackUnits: [Unit]
+    private var leftStackUnits: [Unit]
+    private var rightStackUnits: [Unit]
     private var units: [Unit]
     
+    let cancelAction: CocoaAction
+    let score = BehaviorRelay<Int>(value: 0)
+    let stackMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     let logic = BehaviorRelay<Direction?>(value: nil)
     
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, cancelAction: CocoaAction? = nil) {
@@ -25,7 +31,6 @@ class GameViewModel: CommonViewModel {
             }
             return sceneCoordinator.close(animated: true).asObservable().map {_ in}
         }
-        self.score = 0
         self.unitScored = 0
         self.unitCount = 2
         self.allUnits = []
@@ -44,8 +49,17 @@ class GameViewModel: CommonViewModel {
     private func setUnits() {
         self.allUnits = storage.itemList()
         self.unusedUnits = allUnits.shuffled()
+        
         self.leftStackUnits = [unusedUnits.removeLast()]
+        sendNewStackMember(leftStackUnits[0], order: 0, to: .left)
+        
         self.rightStackUnits = [unusedUnits.removeLast()]
+        sendNewStackMember(rightStackUnits[0], order: 0, to: .right)
+    }
+    
+    private func sendNewStackMember(_ newMemberUnit: Unit, order: Int, to direction: Direction) {
+        let newStackMember = StackMemberUnit(content: newMemberUnit, order: order, direction: direction)
+        stackMemberUnit.accept(newStackMember)
     }
 
     private func generateStartingUnits() -> [Unit] {
@@ -79,7 +93,7 @@ class GameViewModel: CommonViewModel {
     }
     
     private func raiseScore(for unit: Unit) {
-        self.score += unit.score()
+        score.accept(unit.score())
         self.unitScored += 1
         
         if unitCount < Perspective.maxUnitCount && unitScored >= unitCount * 10 {
@@ -93,8 +107,10 @@ class GameViewModel: CommonViewModel {
         
         if unitCount % 2 == 0 {
             leftStackUnits.append(newUnit)
+            sendNewStackMember(newUnit, order: leftStackUnits.count-1, to: .left)
         } else {
             rightStackUnits.append(newUnit)
+            sendNewStackMember(newUnit, order: rightStackUnits.count-1, to: .right)
         }
     }
     
