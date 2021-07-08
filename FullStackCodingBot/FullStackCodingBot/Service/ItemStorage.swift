@@ -16,7 +16,13 @@ class ItemStorage: ItemStorageType {
         Unit(info: .theC, level: 1)
     ]
     
+    private var money = 1_000
+    
     private lazy var unitStorage = BehaviorSubject(value: storage)
+    
+    func availableMoeny() -> Int {
+        return money
+    }
     
     func itemList() -> [Unit] {
         return storage

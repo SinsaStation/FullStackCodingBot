@@ -9,6 +9,10 @@ class ItemViewModel: CommonViewModel {
         return storage.list().asDriver(onErrorJustReturn: [])
     }
     
+    var money: Int {
+        return storage.availableMoeny()
+    }
+    
     let cancelAction: CocoaAction
     
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, cancelAction: CocoaAction? = nil) {
