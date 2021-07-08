@@ -17,14 +17,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pup-xc-6r8" customClass="UnitPerspectiveView" customModule="FullStackCodingBot" customModuleProvider="target">
-                                <rect key="frame" x="97.666666666666686" y="231.66666666666663" width="195" height="312"/>
+                                <rect key="frame" x="89.666666666666686" y="192.66666666666666" width="211" height="337.66666666666674"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Pup-xc-6r8" secondAttribute="height" multiplier="1:1.6" id="WLF-cn-ceV"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffT-Vy-DnI" userLabel="Left Button">
-                                <rect key="frame" x="20" y="623.66666666666663" width="136.66666666666666" height="136.33333333333337"/>
+                                <rect key="frame" x="20.000000000000007" y="609.66666666666663" width="126.66666666666669" height="126.66666666666663"/>
                                 <color key="backgroundColor" red="0.84841342750000004" green="0.94130822380000001" blue="0.2035008059" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ffT-Vy-DnI" secondAttribute="height" multiplier="1:1" id="pFI-Wl-eHC"/>
@@ -36,7 +36,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTf-oP-M9v" userLabel="Right Button">
-                                <rect key="frame" x="233.66666666666663" y="623.66666666666663" width="136.33333333333337" height="136.33333333333337"/>
+                                <rect key="frame" x="243.33333333333337" y="609.66666666666663" width="126.66666666666666" height="126.66666666666663"/>
                                 <color key="backgroundColor" red="0.84841342750000004" green="0.94130822380000001" blue="0.2035008059" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LTf-oP-M9v" secondAttribute="height" multiplier="1:1" id="paE-Gb-85S"/>
@@ -56,16 +56,16 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LTf-oP-M9v" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.35" id="40p-tQ-ujU"/>
+                            <constraint firstItem="ffT-Vy-DnI" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.15" id="0sx-Rc-IAk"/>
                             <constraint firstItem="ffT-Vy-DnI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="6Vj-Cr-o1k"/>
+                            <constraint firstItem="Pup-xc-6r8" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.4" id="KBy-aU-Tb9"/>
                             <constraint firstItem="emQ-J6-eks" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="11" id="Ljk-GN-X8T"/>
-                            <constraint firstItem="Pup-xc-6r8" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.5" id="Ngp-IJ-xYr"/>
                             <constraint firstItem="emQ-J6-eks" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="28" id="PM5-ck-weo"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LTf-oP-M9v" secondAttribute="trailing" constant="20" id="Sqx-XQ-eCj"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ffT-Vy-DnI" secondAttribute="bottom" constant="50" id="UVH-XX-Dd0"/>
-                            <constraint firstItem="ffT-Vy-DnI" firstAttribute="top" secondItem="Pup-xc-6r8" secondAttribute="bottom" constant="80" id="eTU-jb-Y0e"/>
-                            <constraint firstItem="ffT-Vy-DnI" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.35" id="hju-ir-ndx"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="LTf-oP-M9v" secondAttribute="bottom" constant="50" id="mlu-1a-koo"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ffT-Vy-DnI" secondAttribute="bottom" multiplier="1.1" id="UVH-XX-Dd0"/>
+                            <constraint firstItem="ffT-Vy-DnI" firstAttribute="top" secondItem="Pup-xc-6r8" secondAttribute="bottom" multiplier="1.15" id="eTU-jb-Y0e"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="LTf-oP-M9v" secondAttribute="bottom" multiplier="1.1" id="mlu-1a-koo"/>
+                            <constraint firstItem="LTf-oP-M9v" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.15" id="mqT-yq-bH9"/>
                             <constraint firstItem="Pup-xc-6r8" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ygu-te-bgD"/>
                         </constraints>
                     </view>
