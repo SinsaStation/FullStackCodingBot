@@ -82,7 +82,7 @@ class GameViewModel: CommonViewModel {
         self.score += unit.score()
         self.unitScored += 1
         
-        if unitCount <= 8 && unitScored >= unitCount * 10 {
+        if unitCount < Perspective.maxUnitCount && unitScored >= unitCount * 10 {
             additionalUnit()
             unitCount += 1
         }
