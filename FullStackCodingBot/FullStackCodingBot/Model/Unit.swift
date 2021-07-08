@@ -10,6 +10,10 @@ struct Unit: Equatable {
         image = info.detail.image
         self.level = level
     }
+    
+    func score() -> Int {
+        return level + 10
+    }
 }
 
 enum UnitInfo {
