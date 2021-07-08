@@ -10,12 +10,11 @@ class GameViewModel: CommonViewModel {
     var score: Int
     private var unitCount: Int
     private var unitScored: Int
-
-    private var leftStackIds: [Int]
-    private var rightStackIds: [Int]
-    private var unusedUnitIds: [Int]
     private var allUnits: [Unit]
+    private var unusedUnits: [Unit]
     private var unitsToUse: [Unit]
+    var leftStackUnits: [Unit]
+    var rightStackUnits: [Unit]
     private var units: [Unit]
     
     let logic = BehaviorRelay<Direction?>(value: nil)
@@ -30,11 +29,11 @@ class GameViewModel: CommonViewModel {
         self.score = 0
         self.unitScored = 0
         self.unitCount = 2
-        self.unusedUnitIds = (0...UnitInfo.lastId).map { $0 }.shuffled()
-        self.leftStackIds = [unusedUnitIds.removeLast()]
-        self.rightStackIds = [unusedUnitIds.removeLast()]
         self.allUnits = []
+        self.unusedUnits = []
         self.unitsToUse = []
+        self.leftStackUnits = []
+        self.rightStackUnits = []
         self.units = []
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
@@ -46,19 +45,12 @@ class GameViewModel: CommonViewModel {
     
     private func setUnits() {
         self.allUnits = storage.itemList()
-        self.unitsToUse = leftStackIds.compactMap { unit(for: $0) } + rightStackIds.compactMap { unit(for: $0) }
+        self.unusedUnits = allUnits.shuffled()
+        self.leftStackUnits = [unusedUnits.removeLast()]
+        self.rightStackUnits = [unusedUnits.removeLast()]
+        self.unitsToUse = leftStackUnits + rightStackUnits
     }
-    
-    private func unit(for targetId: Int) -> Unit? {
-        var targetUnit: Unit?
-        
-        for unit in allUnits where unit.uuid == targetId {
-            targetUnit = unit
-            break
-        }
-        return targetUnit
-    }
-    
+
     private func generateStartingUnits() -> [Unit] {
         (0..<Perspective.count).forEach { _ in
             units.append(unitsToUse.randomElement() ?? unitsToUse[0])
@@ -71,14 +63,14 @@ class GameViewModel: CommonViewModel {
 
         switch direction {
         case .left:
-            if leftStackIds.contains(currentUnit.uuid) {
+            if leftStackUnits.contains(currentUnit) {
                 logic.accept(.left)
                 raiseScore(for: currentUnit)
             } else {
                 print("틀렸음!")
             }
         case .right:
-            if rightStackIds.contains(currentUnit.uuid) {
+            if rightStackUnits.contains(currentUnit) {
                 logic.accept(.right)
                 raiseScore(for: currentUnit)
             } else {

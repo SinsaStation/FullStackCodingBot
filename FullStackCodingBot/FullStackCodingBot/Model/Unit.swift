@@ -14,6 +14,10 @@ struct Unit: Equatable {
     func score() -> Int {
         return level + 10
     }
+    
+    static func == (lhs: Unit, rhs: Unit) -> Bool {
+        return lhs.uuid == rhs.uuid
+    }
 }
 
 enum UnitInfo: CaseIterable {
