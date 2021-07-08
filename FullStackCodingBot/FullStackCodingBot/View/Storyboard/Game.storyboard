@@ -151,7 +151,7 @@
                                     <constraint firstItem="I9s-OQ-iTY" firstAttribute="top" secondItem="sga-9e-KSj" secondAttribute="bottom" constant="10" id="yNN-Zx-gjh"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333333333" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="35" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2zQ-Sc-iAk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333333333" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="35" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2zQ-Sc-iAk" userLabel="Score Label">
                                 <rect key="frame" x="20" y="121.33333333333331" width="388" height="139"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="61"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -186,6 +186,7 @@
                     <connections>
                         <outlet property="buttonController" destination="URX-A4-k8e" id="8gF-qm-WsD"/>
                         <outlet property="cancelButton" destination="emQ-J6-eks" id="cyv-LM-RSI"/>
+                        <outlet property="scoreLabel" destination="2zQ-Sc-iAk" id="6S7-CT-cag"/>
                         <outlet property="unitPerspectiveView" destination="Pup-xc-6r8" id="Bgj-LD-YeL"/>
                     </connections>
                 </viewController>

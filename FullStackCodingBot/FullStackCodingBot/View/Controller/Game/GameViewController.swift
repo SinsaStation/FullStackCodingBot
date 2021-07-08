@@ -2,6 +2,7 @@ import UIKit
 
 final class GameViewController: UIViewController, ViewModelBindableType {
     
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet var buttonController: GameButtonController!
     @IBOutlet weak var unitPerspectiveView: UnitPerspectiveView!
     @IBOutlet weak var cancelButton: UIButton!
@@ -21,6 +22,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         buttonController.setupButton()
         buttonController.bind { [unowned self] direction in
             self.viewModel.moveUnitAction(to: direction)
+            self.updateScoreLabel()
         }
         
         viewModel.logic
@@ -30,10 +32,17 @@ final class GameViewController: UIViewController, ViewModelBindableType {
             }).disposed(by: rx.disposeBag)
         
         cancelButton.rx.action = viewModel.cancelAction
+        updateScoreLabel()
+    }
+    
+    private func updateScoreLabel() {
+        scoreLabel.rx.text
+            .asObserver()
+            .onNext("\(viewModel.score)")
     }
     
     private func gameStart() {
-        unitPerspectiveView.configure(with: viewModel.generateStartingUnits())
+        unitPerspectiveView.configure(with: viewModel.execute())
     }
     
     private func buttonAction(to direction: Direction) {

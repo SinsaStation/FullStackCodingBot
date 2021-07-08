@@ -16,7 +16,7 @@ struct Unit: Equatable {
     }
 }
 
-enum UnitInfo {
+enum UnitInfo: CaseIterable {
     case swift
     case kotlin
     case java
@@ -51,5 +51,9 @@ enum UnitInfo {
         case .ruby:
             return ("ruby", 9)
         }
+    }
+    
+    static var lastId: Int {
+        return UnitInfo.allCases.count-1
     }
 }
