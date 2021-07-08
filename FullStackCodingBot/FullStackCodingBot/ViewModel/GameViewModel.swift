@@ -12,7 +12,6 @@ class GameViewModel: CommonViewModel {
     private var unitScored: Int
     private var allUnits: [Unit]
     private var unusedUnits: [Unit]
-    private var unitsToUse: [Unit]
     var leftStackUnits: [Unit]
     var rightStackUnits: [Unit]
     private var units: [Unit]
@@ -31,7 +30,6 @@ class GameViewModel: CommonViewModel {
         self.unitCount = 2
         self.allUnits = []
         self.unusedUnits = []
-        self.unitsToUse = []
         self.leftStackUnits = []
         self.rightStackUnits = []
         self.units = []
@@ -48,10 +46,11 @@ class GameViewModel: CommonViewModel {
         self.unusedUnits = allUnits.shuffled()
         self.leftStackUnits = [unusedUnits.removeLast()]
         self.rightStackUnits = [unusedUnits.removeLast()]
-        self.unitsToUse = leftStackUnits + rightStackUnits
     }
 
     private func generateStartingUnits() -> [Unit] {
+        let unitsToUse = leftStackUnits + rightStackUnits
+        
         (0..<Perspective.count).forEach { _ in
             units.append(unitsToUse.randomElement() ?? unitsToUse[0])
         }
@@ -82,10 +81,26 @@ class GameViewModel: CommonViewModel {
     private func raiseScore(for unit: Unit) {
         self.score += unit.score()
         self.unitScored += 1
+        
+        if unitCount <= 8 && unitScored >= unitCount * 10 {
+            additionalUnit()
+            unitCount += 1
+        }
+    }
+    
+    private func additionalUnit() {
+        let newUnit = unusedUnits.removeLast()
+        
+        if unitCount % 2 == 0 {
+            leftStackUnits.append(newUnit)
+        } else {
+            rightStackUnits.append(newUnit)
+        }
     }
     
     func newRandomUnit() -> Unit {
         units.remove(at: 0)
+        let unitsToUse = leftStackUnits + rightStackUnits
         let newUnit = unitsToUse.randomElement() ?? unitsToUse[0]
         self.units.append(newUnit)
         return newUnit
