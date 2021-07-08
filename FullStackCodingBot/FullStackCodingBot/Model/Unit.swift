@@ -56,8 +56,4 @@ enum UnitInfo: CaseIterable {
             return ("ruby", 9)
         }
     }
-    
-    static var lastId: Int {
-        return UnitInfo.allCases.count-1
-    }
 }
