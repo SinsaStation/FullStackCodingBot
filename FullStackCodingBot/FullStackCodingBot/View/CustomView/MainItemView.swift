@@ -3,7 +3,11 @@ import UIKit
 final class MainItemView: UIView {
     
     @IBOutlet var contentView: UIView!
-    
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadXib()
@@ -12,6 +16,12 @@ final class MainItemView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadXib()
+    }
+    
+    func configure(_ info: Unit) {
+        itemImageView.image = UIImage(named: info.image)
+        nameLabel.text = info.image
+        levelLabel.text = "\(info.level)"
     }
     
     private func loadXib() {

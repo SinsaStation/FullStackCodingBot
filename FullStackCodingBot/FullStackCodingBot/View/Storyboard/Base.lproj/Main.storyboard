@@ -213,31 +213,32 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MdP-rW-JDf">
-                                <rect key="frame" x="94.5" y="89" width="225" height="225"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rc-0B-pTr" customClass="MainItemView" customModule="FullStackCodingBot" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="278"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5fe-6O-12x"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5fe-6O-12x" firstAttribute="trailing" secondItem="jmc-H9-Akc" secondAttribute="trailing" id="0Cx-Su-XyJ"/>
-                            <constraint firstItem="MdP-rW-JDf" firstAttribute="width" secondItem="1rK-Sy-CWX" secondAttribute="width" multiplier="0.543478" id="7WC-29-vJI"/>
-                            <constraint firstItem="MdP-rW-JDf" firstAttribute="centerX" secondItem="1rK-Sy-CWX" secondAttribute="centerX" id="Q7a-LK-P1P"/>
+                            <constraint firstItem="8rc-0B-pTr" firstAttribute="top" secondItem="1rK-Sy-CWX" secondAttribute="top" id="52U-M4-dLQ"/>
                             <constraint firstItem="jmc-H9-Akc" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.174107" id="SJa-SJ-jqz"/>
                             <constraint firstItem="5fe-6O-12x" firstAttribute="bottom" secondItem="Eiy-7U-oCk" secondAttribute="bottom" constant="1" id="V3S-4V-vpU"/>
+                            <constraint firstItem="8rc-0B-pTr" firstAttribute="leading" secondItem="5fe-6O-12x" secondAttribute="leading" id="ZN1-Aw-BVf"/>
                             <constraint firstItem="jmc-H9-Akc" firstAttribute="leading" secondItem="5fe-6O-12x" secondAttribute="leading" id="di5-nm-ynq"/>
-                            <constraint firstItem="MdP-rW-JDf" firstAttribute="top" secondItem="5fe-6O-12x" secondAttribute="top" multiplier="2" constant="1" id="fRm-oj-Ga5"/>
-                            <constraint firstItem="MdP-rW-JDf" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.251116" id="iTK-fv-npm"/>
+                            <constraint firstItem="8rc-0B-pTr" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.310268" id="jrp-4h-vL0"/>
                             <constraint firstItem="Eiy-7U-oCk" firstAttribute="top" secondItem="jmc-H9-Akc" secondAttribute="bottom" multiplier="1.01" constant="1" id="opu-Of-97s"/>
                             <constraint firstItem="Eiy-7U-oCk" firstAttribute="width" secondItem="1rK-Sy-CWX" secondAttribute="width" multiplier="0.173913" id="sQQ-e6-XaM"/>
                             <constraint firstItem="Eiy-7U-oCk" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.0647321" id="sbD-k8-05v"/>
+                            <constraint firstItem="5fe-6O-12x" firstAttribute="trailing" secondItem="8rc-0B-pTr" secondAttribute="trailing" id="uin-di-MJu"/>
                             <constraint firstItem="Eiy-7U-oCk" firstAttribute="leading" secondItem="5fe-6O-12x" secondAttribute="leading" multiplier="1.05" constant="1" id="xGO-eL-Bg8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="Eiy-7U-oCk" id="34d-NV-1AC"/>
                         <outlet property="itemCollectionView" destination="jmc-H9-Akc" id="CUZ-2Y-fDp"/>
-                        <outlet property="mainItemImageView" destination="MdP-rW-JDf" id="Xt3-mN-2aI"/>
+                        <outlet property="mainItemView" destination="8rc-0B-pTr" id="HxY-Ua-SSp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGa-4d-chh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
