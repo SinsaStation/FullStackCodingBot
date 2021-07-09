@@ -8,6 +8,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var rightUnitStackView: UIStackView!
     @IBOutlet weak var leftUnitStackView: UIStackView!
+    @IBOutlet weak var timeView: TimeProgressView!
     
     var viewModel: GameViewModel!
     
