@@ -100,10 +100,12 @@ class GameViewModel: CommonViewModel {
     }
     
     private func gameMayOver() {
-        if timeProgress.completedUnitCount <= 0 {
-            timer.cancel()
-            timeProgress.cancel()
-            makeMoveAction(to: .gameOverVC)
+        guard timeProgress.completedUnitCount <= 0  else { return }
+        timer.cancel()
+        timeProgress.cancel()
+        
+        DispatchQueue.main.async {
+            self.makeMoveAction(to: .gameOverVC)
         }
     }
     
