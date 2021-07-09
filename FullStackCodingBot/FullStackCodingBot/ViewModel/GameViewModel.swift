@@ -11,14 +11,16 @@ struct StackMemberUnit {
 
 class GameViewModel: CommonViewModel {
     
-    private var unitCount: Int
-    private var unitScored: Int
-    private var allUnits: [Unit]
-    private var unusedUnits: [Unit]
-    private var leftStackUnits: [Unit]
-    private var rightStackUnits: [Unit]
-    private var units: [Unit]
+    private var unitCount = 2
+    private var unitScored = 0
+    private var allUnits = [Unit]()
+    private var unusedUnits = [Unit]()
+    private var leftStackUnits = [Unit]()
+    private var rightStackUnits = [Unit]()
+    private var units = [Unit]()
+    private var timer = DispatchSource.makeTimerSource()
     
+    var timeProgress = Progress(totalUnitCount: Perspective.startingTime)
     let cancelAction: CocoaAction
     let score = BehaviorRelay<Int>(value: 0)
     let stackMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
@@ -31,18 +33,14 @@ class GameViewModel: CommonViewModel {
             }
             return sceneCoordinator.close(animated: true).asObservable().map {_ in}
         }
-        self.unitScored = 0
-        self.unitCount = 2
-        self.allUnits = []
-        self.unusedUnits = []
-        self.leftStackUnits = []
-        self.rightStackUnits = []
-        self.units = []
+        
+        timeProgress.becomeCurrent(withPendingUnitCount: Perspective.startingTime)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
     
     func execute() -> [Unit] {
         setUnits()
+        timerStart()
         return generateStartingUnits()
     }
     
@@ -55,6 +53,15 @@ class GameViewModel: CommonViewModel {
         
         self.rightStackUnits = [unusedUnits.removeLast()]
         sendNewStackMember(rightStackUnits[0], order: 0, to: .right)
+    }
+    
+    private func timerStart() {
+        timer.schedule(deadline: .now(), repeating: .seconds(1))
+        timer.setEventHandler { [weak self] in
+            self?.timeProgress.completedUnitCount -= 1
+            self?.gameMayOver()
+        }
+        timer.activate()
     }
     
     private func sendNewStackMember(_ newMemberUnit: Unit, order: Int, to direction: Direction) {
@@ -76,19 +83,27 @@ class GameViewModel: CommonViewModel {
 
         switch direction {
         case .left:
-            if leftStackUnits.contains(currentUnit) {
-                logic.accept(.left)
-                raiseScore(for: currentUnit)
-            } else {
-                print("틀렸음!")
-            }
+            leftStackUnits.contains(currentUnit) ? correctAction(for: .left, currentUnit) : wrongAction()
         case .right:
-            if rightStackUnits.contains(currentUnit) {
-                logic.accept(.right)
-                raiseScore(for: currentUnit)
-            } else {
-                print("틀렸음!")
-            }
+            rightStackUnits.contains(currentUnit) ? correctAction(for: .right, currentUnit) : wrongAction()
+        }
+    }
+    
+    private func correctAction(for direction: Direction, _ currentUnit: Unit) {
+        logic.accept(direction)
+        raiseScore(for: currentUnit)
+    }
+    
+    private func wrongAction() {
+        timeProgress.completedUnitCount -= Perspective.wrongTime
+        gameMayOver()
+    }
+    
+    private func gameMayOver() {
+        if timeProgress.completedUnitCount <= 0 {
+            print("겜 오바")
+            timer.cancel()
+            timeProgress.cancel()
         }
     }
     

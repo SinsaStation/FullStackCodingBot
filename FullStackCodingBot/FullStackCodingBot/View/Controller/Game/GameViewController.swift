@@ -42,7 +42,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         viewModel.score
             .scan(0) { $0 + $1 }
             .subscribe(onNext: { [weak self] score in
-            self?.scoreLabel.text = "\(score)"
+                self?.scoreLabel.text = "\(score)"
         }).disposed(by: rx.disposeBag)
         
         viewModel.stackMemberUnit
@@ -56,6 +56,8 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                     self.updateImage(of: newStackUnit, to: self.rightUnitStackView)
                 }
         }).disposed(by: rx.disposeBag)
+        
+        timeView.observedProgress = viewModel.timeProgress
     }
     
     private func buttonAction(to direction: Direction) {
