@@ -101,9 +101,9 @@ class GameViewModel: CommonViewModel {
     
     private func gameMayOver() {
         if timeProgress.completedUnitCount <= 0 {
-            print("겜 오바")
             timer.cancel()
             timeProgress.cancel()
+            makeMoveAction(to: .gameOverVC)
         }
     }
     
@@ -135,5 +135,17 @@ class GameViewModel: CommonViewModel {
         let newUnit = unitsToUse.randomElement() ?? unitsToUse[0]
         self.units.append(newUnit)
         return newUnit
+    }
+    
+    private func makeMoveAction(to viewController: ViewControllerType) {
+        switch viewController {
+        case .gameOverVC:
+            let gameOverViewModel = GameOverViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
+            let gameOverScene = Scene.gameOver(gameOverViewModel)
+            self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
+            
+        default:
+            assert(false)
+        }
     }
 }
