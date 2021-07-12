@@ -13,6 +13,7 @@ class GameViewModel: CommonViewModel {
     private(set) var score = BehaviorRelay<Int>(value: 0)
     private(set) var stackMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     private(set) var logic = BehaviorRelay<Direction?>(value: nil)
+    private(set) var onGameUnits = BehaviorRelay<[Unit]?>(value: nil)
     
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, cancelAction: CocoaAction? = nil) {
         self.cancelAction = CocoaAction {
@@ -28,10 +29,12 @@ class GameViewModel: CommonViewModel {
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
     
-    func execute() -> [Unit] {
+    func execute() {
         newGame()
         timerStart()
-        return gameUnitManager!.generateStartings()
+        
+        let newUnits = gameUnitManager?.startings()
+        onGameUnits.accept(newUnits)
     }
     
     private func newGame() {
@@ -43,7 +46,7 @@ class GameViewModel: CommonViewModel {
     
     private func sendNewUnitToStack(by count: Int) {
         (0..<count).forEach { _ in
-            let newMember = gameUnitManager!.newMember()
+            let newMember = gameUnitManager?.newMember()
             stackMemberUnit.accept(newMember)
         }
     }
@@ -65,6 +68,7 @@ class GameViewModel: CommonViewModel {
     
     private func gameMayOver() {
         guard timeProgress.completedUnitCount <= 0  else { return }
+        
         timer?.cancel()
 
         DispatchQueue.main.async {
@@ -73,8 +77,10 @@ class GameViewModel: CommonViewModel {
     }
     
     func moveUnitAction(to direction: Direction) {
-        let currentUnit = gameUnitManager!.onGames[0]
-        let isAnswerCorrect = gameUnitManager!.isMoveActionCorrect(to: direction)
+        guard let gameUnitManager = gameUnitManager else { return }
+        
+        let currentUnit = gameUnitManager.onGames[0]
+        let isAnswerCorrect = gameUnitManager.isMoveActionCorrect(to: direction)
         isAnswerCorrect ? correctAction(for: direction, currentUnit) : wrongAction()
     }
     
@@ -84,15 +90,14 @@ class GameViewModel: CommonViewModel {
         gameUnitManager!.raiseAnswerCount()
         
         if gameUnitManager!.isTimeToLevelUp() { sendNewUnitToStack(by: 1) }
+        
+        let currentUnits = gameUnitManager?.removeAndRefilled()
+        onGameUnits.accept(currentUnits)
     }
     
     private func wrongAction() {
         timeMinus(by: Perspective.wrongTime)
         gameMayOver()
-    }
-    
-    func newRandomUnit() -> Unit {
-        return gameUnitManager!.new()
     }
     
     private func makeMoveAction(to viewController: ViewControllerType) {

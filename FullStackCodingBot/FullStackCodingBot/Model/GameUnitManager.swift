@@ -6,7 +6,7 @@ struct StackMemberUnit {
     let direction: Direction
 }
 
-class GameUnitManager {
+final class GameUnitManager {
     
     private var allKinds: [Unit]
     private var unused: [Unit]
@@ -35,21 +35,26 @@ class GameUnitManager {
         answerCount = .zero
     }
     
-    func generateStartings() -> [Unit] {
+    func startings() -> [Unit] {
         let unitsToUse = leftStack + rightStack
-        
-        (0..<Perspective.count).forEach { _ in
-            onGames.append(unitsToUse.randomElement() ?? unitsToUse[0])
-        }
-        return self.onGames
+        generateNewUnit(from: unitsToUse, count: Perspective.count)
+        return onGames
     }
     
-    func new() -> Unit {
+    func removeAndRefilled() -> [Unit] {
         onGames.remove(at: 0)
+        
         let unitsToUse = leftStack + rightStack
-        let newUnit = unitsToUse.randomElement() ?? unitsToUse[0]
-        self.onGames.append(newUnit)
-        return newUnit
+        generateNewUnit(from: unitsToUse, count: 1)
+        
+        return onGames
+    }
+    
+    private func generateNewUnit(from stack: [Unit], count: Int) {
+        (0..<count).forEach { _ in
+            let newUnit = stack.randomElement() ?? stack[0]
+            onGames.append(newUnit)
+        }
     }
     
     func isMoveActionCorrect(to direction: Direction) -> Bool {

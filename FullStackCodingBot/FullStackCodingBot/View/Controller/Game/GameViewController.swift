@@ -25,7 +25,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         clear(stackView: rightUnitStackView)
         clear(stackView: leftUnitStackView)
         unitPerspectiveView.clearAll()
-        unitPerspectiveView.configure(with: viewModel.execute())
+        viewModel.execute()
     }
 
     func bindViewModel() {
@@ -37,10 +37,11 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         cancelButton.rx.action = viewModel.cancelAction
         
         viewModel.logic
-            .subscribe(onNext: { [weak self] logic in
-                guard let logic = logic else { return }
-                self?.buttonAction(to: logic)
-            }).disposed(by: rx.disposeBag)
+            .subscribe(onNext: { [weak self] direction in
+                guard let self = self,
+                      let direction = direction else { return }
+                self.unitPerspectiveView.removeFirstUnitLayer(to: direction)
+        }).disposed(by: rx.disposeBag)
         
         viewModel.score
             .subscribe(onNext: { [weak self] score in
@@ -61,6 +62,14 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                 }
         }).disposed(by: rx.disposeBag)
         
+        viewModel.onGameUnits
+            .subscribe(onNext: { [weak self] newUnits in
+                guard let self = self,
+                      let newUnits = newUnits else { return }
+                let unitImages = newUnits.map { $0.image }
+                self.unitPerspectiveView.configure(with: unitImages)
+        }).disposed(by: rx.disposeBag)
+        
         timeView.observedProgress = viewModel.timeProgress
     }
     
@@ -69,11 +78,6 @@ final class GameViewController: UIViewController, ViewModelBindableType {
             guard let imageView = view as? UIImageView else { return }
             imageView.image = nil
         }
-    }
-    
-    private func buttonAction(to direction: Direction) {
-        unitPerspectiveView.removeFirstUnit(to: direction)
-        unitPerspectiveView.refillLastUnit(with: viewModel.newRandomUnit())
     }
     
     private func updateImage(of newStackMember: StackMemberUnit, to stackView: UIStackView) {
