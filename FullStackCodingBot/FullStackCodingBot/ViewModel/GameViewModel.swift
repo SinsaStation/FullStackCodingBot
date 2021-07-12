@@ -22,6 +22,7 @@ class GameViewModel: CommonViewModel {
     
     var timeProgress = Progress(totalUnitCount: Perspective.startingTime)
     let cancelAction: CocoaAction
+    var currentScore = 0
     let score = BehaviorRelay<Int>(value: 0)
     let stackMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     let logic = BehaviorRelay<Direction?>(value: nil)
@@ -33,7 +34,7 @@ class GameViewModel: CommonViewModel {
             }
             return sceneCoordinator.close(animated: true).asObservable().map {_ in}
         }
-        
+
         timeProgress.becomeCurrent(withPendingUnitCount: Perspective.startingTime)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
@@ -53,6 +54,7 @@ class GameViewModel: CommonViewModel {
         leftStackUnits = []
         rightStackUnits = []
         units = []
+        score.accept(-currentScore)
         timeProgress.completedUnitCount = Perspective.startingTime
     }
     
@@ -154,12 +156,9 @@ class GameViewModel: CommonViewModel {
     private func makeMoveAction(to viewController: ViewControllerType) {
         switch viewController {
         case .gameOverVC:
-            score.scan(0) { $0 + $1 }.bind { [weak self] finalScore in
-                guard let self = self else { return }
-                let gameOverViewModel = GameOverViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, finalScore: finalScore)
-                let gameOverScene = Scene.gameOver(gameOverViewModel)
-                self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
-            }.disposed(by: rx.disposeBag)
+            let gameOverViewModel = GameOverViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, finalScore: currentScore)
+            let gameOverScene = Scene.gameOver(gameOverViewModel)
+            self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
         default:
             assert(false)
         }

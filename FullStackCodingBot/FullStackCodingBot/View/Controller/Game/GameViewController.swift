@@ -41,9 +41,10 @@ final class GameViewController: UIViewController, ViewModelBindableType {
             }).disposed(by: rx.disposeBag)
         
         viewModel.score
-            .scan(0) { $0 + $1 }
             .subscribe(onNext: { [weak self] score in
-                self?.scoreLabel.text = "\(score)"
+                guard let self = self else { return }
+                self.viewModel.currentScore += score
+                self.scoreLabel.text = "\(self.viewModel.currentScore)"
         }).disposed(by: rx.disposeBag)
         
         viewModel.stackMemberUnit
