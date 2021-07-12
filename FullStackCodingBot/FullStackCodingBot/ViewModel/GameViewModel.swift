@@ -18,7 +18,7 @@ class GameViewModel: CommonViewModel {
     private var leftStackUnits = [Unit]()
     private var rightStackUnits = [Unit]()
     private var units = [Unit]()
-    private var timer = DispatchSource.makeTimerSource()
+    private var timer: DispatchSourceTimer?
     
     var timeProgress = Progress(totalUnitCount: Perspective.startingTime)
     let cancelAction: CocoaAction
@@ -53,8 +53,6 @@ class GameViewModel: CommonViewModel {
         leftStackUnits = []
         rightStackUnits = []
         units = []
-        score.accept(-score.value)
-        // score.
         timeProgress.completedUnitCount = Perspective.startingTime
     }
     
@@ -70,12 +68,13 @@ class GameViewModel: CommonViewModel {
     }
     
     private func timerStart() {
-        timer.schedule(deadline: .now(), repeating: .seconds(1))
-        timer.setEventHandler { [weak self] in
+        timer = DispatchSource.makeTimerSource()
+        timer?.schedule(deadline: .now()+1, repeating: .seconds(1))
+        timer?.setEventHandler { [weak self] in
             self?.timeProgress.completedUnitCount -= 1
             self?.gameMayOver()
         }
-        timer.activate()
+        timer?.activate()
     }
     
     private func sendNewStackMember(_ newMemberUnit: Unit, order: Int, to direction: Direction) {
@@ -115,7 +114,7 @@ class GameViewModel: CommonViewModel {
     
     private func gameMayOver() {
         guard timeProgress.completedUnitCount <= 0  else { return }
-        timer.cancel()
+        timer?.cancel()
 
         DispatchQueue.main.async {
             self.makeMoveAction(to: .gameOverVC)
