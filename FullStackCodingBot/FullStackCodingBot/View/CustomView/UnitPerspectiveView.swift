@@ -116,4 +116,11 @@ final class UnitPerspectiveView: UIView {
         unitLayers.append(newLayer(with: imageName))
         fillUnits()
     }
+    
+    func clearAll() {
+        unitLayers.forEach { layer in
+            layer.removeFromSuperlayer()
+        }
+        unitLayers = []
+    }
 }
