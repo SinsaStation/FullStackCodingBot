@@ -22,10 +22,12 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     }
     
     private func gameStart() {
+        clear(stackView: rightUnitStackView)
+        clear(stackView: leftUnitStackView)
         unitPerspectiveView.clearAll()
         unitPerspectiveView.configure(with: viewModel.execute())
     }
-    
+
     func bindViewModel() {
         buttonController.setupButton()
         buttonController.bind { [unowned self] direction in
@@ -60,6 +62,13 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         }).disposed(by: rx.disposeBag)
         
         timeView.observedProgress = viewModel.timeProgress
+    }
+    
+    private func clear(stackView: UIStackView) {
+        stackView.arrangedSubviews.forEach { view in
+            guard let imageView = view as? UIImageView else { return }
+            imageView.image = nil
+        }
     }
     
     private func buttonAction(to direction: Direction) {
