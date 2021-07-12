@@ -73,7 +73,7 @@ class GameViewModel: CommonViewModel {
         timer?.cancel()
 
         DispatchQueue.main.async {
-            self.makeMoveAction(to: .gameOverVC)
+            self.gameOver()
         }
     }
     
@@ -107,14 +107,9 @@ class GameViewModel: CommonViewModel {
         gameMayOver()
     }
     
-    private func makeMoveAction(to viewController: ViewControllerType) {
-        switch viewController {
-        case .gameOverVC:
-            let gameOverViewModel = GameOverViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, finalScore: currentScore)
-            let gameOverScene = Scene.gameOver(gameOverViewModel)
-            self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
-        default:
-            assert(false)
-        }
+    private func gameOver() {
+        let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, finalScore: currentScore)
+        let gameOverScene = Scene.gameOver(gameOverViewModel)
+        self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
     }
 }

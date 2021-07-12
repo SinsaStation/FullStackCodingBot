@@ -48,4 +48,20 @@ final class SceneCoordinator: SceneCoordinatorType {
         
         return subject.ignoreElements().asCompletable()
     }
+    
+    @discardableResult
+    func toMain(animated: Bool) -> Completable {
+        let subject = PublishSubject<Void>()
+        
+        if let rootVC = window.rootViewController {
+            rootVC.dismiss(animated: animated) {
+                self.currentVC = rootVC
+                subject.onCompleted()
+            }
+        } else {
+            subject.onError(TransitionError.unknown)
+        }
+        
+        return subject.ignoreElements().asCompletable()
+    }
 }

@@ -5,17 +5,19 @@ import Action
 
 class GameOverViewModel: CommonViewModel {
     
-    let cancelAction: CocoaAction
-    var finalScore: Int
+    private(set) var finalScore: Int
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, finalScore: Int, cancelAction: CocoaAction? = nil) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, finalScore: Int) {
         self.finalScore = finalScore
-        self.cancelAction = CocoaAction {
-            if let action = cancelAction {
-                action.execute(())
-            }
-            return sceneCoordinator.close(animated: true).asObservable().map {_ in}
-        }
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+    }
+    
+    func makeMoveAction(to viewController: GameOverViewControllerType) {
+        switch viewController {
+        case .gameVC:
+            sceneCoordinator.close(animated: true)
+        case .mainVC:
+            sceneCoordinator.toMain(animated: true)
+        }
     }
 }

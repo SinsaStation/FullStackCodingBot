@@ -235,6 +235,17 @@
                                 <rect key="frame" x="165.66666666666666" y="424" width="83" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="restart"/>
+                                <connections>
+                                    <action selector="buttonTouchedWithSender:" destination="vuL-dj-Gdd" eventType="touchUpInside" id="Cez-jR-qoo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Clk-sX-RFS">
+                                <rect key="frame" x="170" y="492" width="74" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="home"/>
+                                <connections>
+                                    <action selector="buttonTouchedWithSender:" destination="vuL-dj-Gdd" eventType="touchUpInside" id="BMJ-QZ-IRf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sip-mU-qdp"/>
@@ -243,19 +254,27 @@
                             <constraint firstItem="WsA-9F-azQ" firstAttribute="centerX" secondItem="dSa-wJ-4x7" secondAttribute="centerX" id="2AE-tn-U9s"/>
                             <constraint firstItem="TZP-Qb-t8F" firstAttribute="leading" secondItem="sip-mU-qdp" secondAttribute="leading" constant="20" id="9U5-RT-MVS"/>
                             <constraint firstItem="sip-mU-qdp" firstAttribute="trailing" secondItem="TZP-Qb-t8F" secondAttribute="trailing" constant="20" id="HYa-gf-BSo"/>
+                            <constraint firstItem="Clk-sX-RFS" firstAttribute="centerX" secondItem="dSa-wJ-4x7" secondAttribute="centerX" id="HfG-gf-BRf"/>
                             <constraint firstItem="sip-mU-qdp" firstAttribute="trailing" secondItem="auM-zH-D8j" secondAttribute="trailing" constant="20" id="HfW-1a-P9X"/>
                             <constraint firstItem="auM-zH-D8j" firstAttribute="top" secondItem="TZP-Qb-t8F" secondAttribute="bottom" constant="15" id="M94-AU-9dJ"/>
                             <constraint firstItem="auM-zH-D8j" firstAttribute="leading" secondItem="sip-mU-qdp" secondAttribute="leading" constant="20" id="aKH-yc-oJD"/>
                             <constraint firstItem="TZP-Qb-t8F" firstAttribute="top" secondItem="sip-mU-qdp" secondAttribute="top" constant="100" id="mwV-xl-4vP"/>
                             <constraint firstItem="WsA-9F-azQ" firstAttribute="centerY" secondItem="dSa-wJ-4x7" secondAttribute="centerY" id="qQu-yM-LpJ"/>
+                            <constraint firstItem="Clk-sX-RFS" firstAttribute="top" secondItem="WsA-9F-azQ" secondAttribute="bottom" constant="20" id="uUV-Cd-7y9"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="restartButton" destination="WsA-9F-azQ" id="kxV-OG-cdt"/>
+                        <outlet property="buttonController" destination="vuL-dj-Gdd" id="SDX-6R-G0r"/>
                         <outlet property="scoreLabel" destination="auM-zH-D8j" id="hqy-aK-ehr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dED-eF-uii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="vuL-dj-Gdd" customClass="GameOverButtonController" customModule="FullStackCodingBot" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="moveUnitButtons" destination="WsA-9F-azQ" collectionClass="NSMutableArray" id="nCN-V9-ZYI"/>
+                        <outletCollection property="moveUnitButtons" destination="Clk-sX-RFS" collectionClass="NSMutableArray" id="WRL-gh-zEP"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="724.63768115942037" y="87.723214285714278"/>
         </scene>
