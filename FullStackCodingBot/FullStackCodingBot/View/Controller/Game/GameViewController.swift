@@ -36,21 +36,21 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         
         cancelButton.rx.action = viewModel.cancelAction
         
-        viewModel.logic
+        viewModel.newDirection
             .subscribe(onNext: { [weak self] direction in
                 guard let self = self,
                       let direction = direction else { return }
                 self.unitPerspectiveView.removeFirstUnitLayer(to: direction)
         }).disposed(by: rx.disposeBag)
         
-        viewModel.score
-            .subscribe(onNext: { [weak self] score in
+        viewModel.scoreAdded
+            .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                self.viewModel.currentScore += score
-                self.scoreLabel.text = "\(self.viewModel.currentScore)"
+                let newScore = self.viewModel.currentScore
+                self.scoreLabel.text = "\(newScore)"
         }).disposed(by: rx.disposeBag)
         
-        viewModel.stackMemberUnit
+        viewModel.newMemberUnit
             .subscribe(onNext: { [weak self] newStackUnit in
                 guard let self = self,
                       let newStackUnit = newStackUnit else { return }
@@ -62,7 +62,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                 }
         }).disposed(by: rx.disposeBag)
         
-        viewModel.onGameUnits
+        viewModel.newOnGameUnits
             .subscribe(onNext: { [weak self] newUnits in
                 guard let self = self,
                       let newUnits = newUnits else { return }

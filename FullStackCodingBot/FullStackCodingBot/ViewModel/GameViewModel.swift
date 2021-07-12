@@ -9,11 +9,11 @@ class GameViewModel: CommonViewModel {
     private var gameUnitManager: GameUnitManager?
     private var timer: DispatchSourceTimer?
     private(set) var timeProgress = Progress(totalUnitCount: Perspective.startingTime)
-    var currentScore = 0
-    private(set) var score = BehaviorRelay<Int>(value: 0)
-    private(set) var stackMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
-    private(set) var logic = BehaviorRelay<Direction?>(value: nil)
-    private(set) var onGameUnits = BehaviorRelay<[Unit]?>(value: nil)
+    private(set) var currentScore = 0
+    private(set) var scoreAdded = BehaviorRelay<Int>(value: 0)
+    private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
+    private(set) var newDirection = BehaviorRelay<Direction?>(value: nil)
+    private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
     
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, cancelAction: CocoaAction? = nil) {
         self.cancelAction = CocoaAction {
@@ -25,7 +25,6 @@ class GameViewModel: CommonViewModel {
 
         gameUnitManager = GameUnitManager(allKinds: storage.itemList())
         timeProgress.becomeCurrent(withPendingUnitCount: Perspective.startingTime)
-        
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
     
@@ -34,20 +33,21 @@ class GameViewModel: CommonViewModel {
         timerStart()
         
         let newUnits = gameUnitManager?.startings()
-        onGameUnits.accept(newUnits)
+        newOnGameUnits.accept(newUnits)
     }
     
     private func newGame() {
         gameUnitManager?.resetAll()
         sendNewUnitToStack(by: Perspective.startingCount)
-        score.accept(-currentScore)
+        currentScore = .zero
+        scoreAdded.accept(0)
         timeProgress.completedUnitCount = Perspective.startingTime
     }
     
     private func sendNewUnitToStack(by count: Int) {
         (0..<count).forEach { _ in
             let newMember = gameUnitManager?.newMember()
-            stackMemberUnit.accept(newMember)
+            newMemberUnit.accept(newMember)
         }
     }
     
@@ -55,6 +55,7 @@ class GameViewModel: CommonViewModel {
         let timeUnit = 1
         timer = DispatchSource.makeTimerSource()
         timer?.schedule(deadline: .now()+1, repeating: .seconds(timeUnit))
+        
         timer?.setEventHandler { [weak self] in
             self?.timeMinus(by: timeUnit)
             self?.gameMayOver()
@@ -79,20 +80,26 @@ class GameViewModel: CommonViewModel {
     func moveUnitAction(to direction: Direction) {
         guard let gameUnitManager = gameUnitManager else { return }
         
-        let currentUnit = gameUnitManager.onGames[0]
+        let currentUnitScore = gameUnitManager.onGames[0].score()
         let isAnswerCorrect = gameUnitManager.isMoveActionCorrect(to: direction)
-        isAnswerCorrect ? correctAction(for: direction, currentUnit) : wrongAction()
+        
+        isAnswerCorrect ? correctAction(for: direction, currentUnitScore) : wrongAction()
     }
     
-    private func correctAction(for direction: Direction, _ currentUnit: Unit) {
-        logic.accept(direction)
-        score.accept(currentUnit.score())
+    private func correctAction(for direction: Direction, _ scoreGained: Int) {
+        newDirection.accept(direction)
+        currentScore += scoreGained
+        scoreAdded.accept(scoreGained)
         gameUnitManager!.raiseAnswerCount()
         
         if gameUnitManager!.isTimeToLevelUp() { sendNewUnitToStack(by: 1) }
         
+        onGameUnitNeedsChange()
+    }
+    
+    private func onGameUnitNeedsChange() {
         let currentUnits = gameUnitManager?.removeAndRefilled()
-        onGameUnits.accept(currentUnits)
+        newOnGameUnits.accept(currentUnits)
     }
     
     private func wrongAction() {
