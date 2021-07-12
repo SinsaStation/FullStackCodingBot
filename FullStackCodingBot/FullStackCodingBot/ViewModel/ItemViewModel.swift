@@ -11,9 +11,11 @@ class ItemViewModel: CommonViewModel {
         return storage.list().asDriver(onErrorJustReturn: [])
     }
     
-    var money: Int {
-        return storage.availableMoeny()
+    var money: Driver<Int> {
+        return storage.availableMoeny().asDriver(onErrorJustReturn: 0)
     }
+    
+    private var targetUnit: Unit?
     
     let cancelAction: CocoaAction
     
@@ -27,11 +29,23 @@ class ItemViewModel: CommonViewModel {
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
     
-    func checkLevelUpPrice(to level: Int) {
-        if (level * 100) <= money {
-            isPossibleToLevelUp.accept(true)
-        } else {
-            isPossibleToLevelUp.accept(false)
+    func checkLevelUpPrice(from unit: Unit) {
+        targetUnit = unit
+        
+        storage.availableMoeny()
+            .subscribe(onNext: { [unowned self] availableMoney in
+                if availableMoney >= (unit.level * 100) {
+                    self.isPossibleToLevelUp.accept(true)
+                } else {
+                    self.isPossibleToLevelUp.accept(false)
+                }
+            }).disposed(by: rx.disposeBag)
+    }
+    
+    func makeActionLeveUp() {
+        if let unit = targetUnit {
+            let requiredMoney = unit.level * 100
+            storage.raiseLevel(to: unit, using: requiredMoney)
         }
     }
 }

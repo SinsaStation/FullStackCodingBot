@@ -30,6 +30,11 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
                 self.observeLevelUpButton(levelUp)
             }).disposed(by: rx.disposeBag)
         
+        viewModel.money
+            .map {String($0)}
+            .drive(mainItemView.availableMoneyLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+        
         cancelButton.rx.action = viewModel.cancelAction
     }
 }
@@ -53,13 +58,13 @@ private extension ItemViewController {
     
     private func setupItemInfomation(from unit: Unit) {
         mainItemView.configure(unit)
-        viewModel.checkLevelUpPrice(to: unit.level)
+        viewModel.checkLevelUpPrice(from: unit)
     }
     
     private func setupButtonAction() {
         levelUpButton.rx.tap
-            .subscribe(onNext: { _ in
-                // 구매동작 구현
+            .subscribe(onNext: { [unowned self] _ in
+                self.viewModel.makeActionLeveUp()
             }).disposed(by: rx.disposeBag)
     }
     

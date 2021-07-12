@@ -3,7 +3,7 @@ import RxSwift
 
 protocol ItemStorageType {
     
-    func availableMoeny() -> Int
+    func availableMoeny() -> Observable<Int>
     
     func itemList() -> [Unit]
     
@@ -15,4 +15,6 @@ protocol ItemStorageType {
     
     @discardableResult
     func update(previous: Unit, new: Unit) -> Observable<Unit>
+    
+    func raiseLevel(to unit: Unit, using money: Int)
 }
