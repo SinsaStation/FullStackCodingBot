@@ -49,11 +49,6 @@
                                 </constraints>
                                 <state key="normal" title="정지"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emQ-J6-eks">
-                                <rect key="frame" x="20" y="55" width="55" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="BACK"/>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4s7-Py-xLI" userLabel="Main View">
                                 <rect key="frame" x="20" y="279.33333333333331" width="374" height="411.99999999999994"/>
                                 <subviews>
@@ -173,9 +168,7 @@
                             <constraint firstItem="ffT-Vy-DnI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="6Vj-Cr-o1k"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4s7-Py-xLI" secondAttribute="trailing" constant="20" id="7dA-1c-KYH"/>
                             <constraint firstItem="2zQ-Sc-iAk" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.15" id="BvJ-6j-4T9"/>
-                            <constraint firstItem="emQ-J6-eks" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="11" id="Ljk-GN-X8T"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vTf-XR-DdY" secondAttribute="trailing" constant="20" id="O1x-2l-9FK"/>
-                            <constraint firstItem="emQ-J6-eks" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="PM5-ck-weo"/>
                             <constraint firstItem="vTf-XR-DdY" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.12" id="QiC-zp-CQ3"/>
                             <constraint firstItem="4s7-Py-xLI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="REt-jO-7w1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LTf-oP-M9v" secondAttribute="trailing" constant="20" id="Sqx-XQ-eCj"/>
@@ -193,8 +186,8 @@
                     </view>
                     <connections>
                         <outlet property="buttonController" destination="URX-A4-k8e" id="8gF-qm-WsD"/>
-                        <outlet property="cancelButton" destination="emQ-J6-eks" id="cyv-LM-RSI"/>
                         <outlet property="leftUnitStackView" destination="2Uq-RD-u1v" id="tiF-cC-0H3"/>
+                        <outlet property="pauseButton" destination="vTf-XR-DdY" id="iGt-ma-uS3"/>
                         <outlet property="rightUnitStackView" destination="sga-9e-KSj" id="KGT-eO-GR3"/>
                         <outlet property="scoreLabel" destination="2zQ-Sc-iAk" id="6S7-CT-cag"/>
                         <outlet property="timeView" destination="ilI-4e-lnS" id="v6F-uT-dFe"/>

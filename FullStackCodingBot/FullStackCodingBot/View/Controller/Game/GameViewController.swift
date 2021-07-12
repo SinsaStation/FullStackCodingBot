@@ -5,10 +5,10 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet var buttonController: GameButtonController!
     @IBOutlet weak var unitPerspectiveView: UnitPerspectiveView!
-    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var rightUnitStackView: UIStackView!
     @IBOutlet weak var leftUnitStackView: UIStackView!
     @IBOutlet weak var timeView: TimeProgressView!
+    @IBOutlet weak var pauseButton: UIButton!
     
     var viewModel: GameViewModel!
     
@@ -16,25 +16,13 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        gameStart()
-    }
-    
-    private func gameStart() {
-        clear(stackView: rightUnitStackView)
-        clear(stackView: leftUnitStackView)
-        unitPerspectiveView.clearAll()
-        viewModel.execute()
-    }
-
     func bindViewModel() {
         buttonController.setupButton()
         buttonController.bind { [unowned self] direction in
             self.viewModel.moveUnitAction(to: direction)
         }
         
-        cancelButton.rx.action = viewModel.cancelAction
+        pauseButton.rx.action = viewModel.pauseAction
         
         viewModel.newDirection
             .subscribe(onNext: { [weak self] direction in
@@ -71,8 +59,26 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         }).disposed(by: rx.disposeBag)
         
         timeView.observedProgress = viewModel.timeProgress
+        
+        viewModel.newGameStatus
+            .subscribe(onNext: { [weak self] gameStatus in
+                guard let self = self else { return }
+                switch gameStatus {
+                case .new:
+                    self.gameStart()
+                default:
+                    assert(true)
+                }
+        }).disposed(by: rx.disposeBag)
     }
     
+    private func gameStart() {
+        clear(stackView: rightUnitStackView)
+        clear(stackView: leftUnitStackView)
+        unitPerspectiveView.clearAll()
+        viewModel.execute()
+    }
+
     private func clear(stackView: UIStackView) {
         stackView.arrangedSubviews.forEach { view in
             guard let imageView = view as? UIImageView else { return }

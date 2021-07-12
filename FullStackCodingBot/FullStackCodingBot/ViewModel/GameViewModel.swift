@@ -3,9 +3,15 @@ import RxSwift
 import RxCocoa
 import Action
 
+enum GameStatus {
+    case new
+    case pause
+    case restart
+}
+
 class GameViewModel: CommonViewModel {
-    
-    private(set) var cancelAction: CocoaAction
+
+    private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
     private var gameUnitManager: GameUnitManagerType
     private var timer: DispatchSourceTimer?
     private(set) var timeProgress = Progress(totalUnitCount: Perspective.startingTime)
@@ -15,13 +21,13 @@ class GameViewModel: CommonViewModel {
     private(set) var newDirection = BehaviorRelay<Direction?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, cancelAction: CocoaAction? = nil, gameUnitManager: GameUnitManagerType, totalTime: Int64 = Perspective.startingTime) {
-        self.cancelAction = CocoaAction {
-            if let action = cancelAction {
-                action.execute(())
-            }
-            return sceneCoordinator.close(animated: true).asObservable().map {_ in}
-        }
+    private(set) lazy var pauseAction: Action<Void, Void> = Action {
+        self.timer?.cancel()
+        self.newGameStatus.accept(.pause)
+        return self.pause().asObservable().map { _ in }
+    }
+    
+    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, pauseAction: CocoaAction? = nil, gameUnitManager: GameUnitManagerType, totalTime: Int64 = Perspective.startingTime) {
         self.gameUnitManager = gameUnitManager
         timeProgress.becomeCurrent(withPendingUnitCount: totalTime)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
@@ -105,8 +111,14 @@ class GameViewModel: CommonViewModel {
     }
     
     private func gameOver() {
-        let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, finalScore: currentScore)
+        let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, finalScore: currentScore, newGameStatus: newGameStatus)
         let gameOverScene = Scene.gameOver(gameOverViewModel)
         self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
+    }
+    
+    @discardableResult
+    private func pause() -> Completable {
+        print("일시정지!")
+        return Completable.empty()
     }
 }
