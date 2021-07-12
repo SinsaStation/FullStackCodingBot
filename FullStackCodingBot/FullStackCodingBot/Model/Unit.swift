@@ -3,7 +3,7 @@ import Foundation
 struct Unit: Equatable {
     let uuid: Int
     let image: String
-    let level: Int
+    var level: Int
     
     init(info: UnitInfo, level: Int) {
         uuid = info.detail.id
@@ -11,6 +11,10 @@ struct Unit: Equatable {
         self.level = level
     }
     
+    mutating func levelup() {
+        level += 1
+    }
+
     func score() -> Int {
         return level + 10
     }

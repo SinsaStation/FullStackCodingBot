@@ -213,23 +213,44 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rc-0B-pTr" customClass="MainItemView" customModule="FullStackCodingBot" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="380"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJR-TU-ocn">
+                                <rect key="frame" x="119" y="388.5" width="176" height="93"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="레벨업">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5fe-6O-12x"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5fe-6O-12x" firstAttribute="trailing" secondItem="jmc-H9-Akc" secondAttribute="trailing" id="0Cx-Su-XyJ"/>
+                            <constraint firstItem="8rc-0B-pTr" firstAttribute="top" secondItem="1rK-Sy-CWX" secondAttribute="top" id="52U-M4-dLQ"/>
+                            <constraint firstItem="MJR-TU-ocn" firstAttribute="top" secondItem="8rc-0B-pTr" secondAttribute="bottom" multiplier="1.02" constant="1" id="7da-h7-KGM"/>
+                            <constraint firstItem="MJR-TU-ocn" firstAttribute="centerX" secondItem="1rK-Sy-CWX" secondAttribute="centerX" id="AuK-aC-Um7"/>
                             <constraint firstItem="jmc-H9-Akc" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.174107" id="SJa-SJ-jqz"/>
                             <constraint firstItem="5fe-6O-12x" firstAttribute="bottom" secondItem="Eiy-7U-oCk" secondAttribute="bottom" constant="1" id="V3S-4V-vpU"/>
+                            <constraint firstItem="MJR-TU-ocn" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.103795" id="Z13-MH-gcc"/>
+                            <constraint firstItem="8rc-0B-pTr" firstAttribute="leading" secondItem="5fe-6O-12x" secondAttribute="leading" id="ZN1-Aw-BVf"/>
                             <constraint firstItem="jmc-H9-Akc" firstAttribute="leading" secondItem="5fe-6O-12x" secondAttribute="leading" id="di5-nm-ynq"/>
+                            <constraint firstItem="MJR-TU-ocn" firstAttribute="width" secondItem="1rK-Sy-CWX" secondAttribute="width" multiplier="0.425121" id="fdG-AK-Zda"/>
                             <constraint firstItem="Eiy-7U-oCk" firstAttribute="top" secondItem="jmc-H9-Akc" secondAttribute="bottom" multiplier="1.01" constant="1" id="opu-Of-97s"/>
+                            <constraint firstItem="8rc-0B-pTr" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.424107" id="qpj-BE-CJJ"/>
                             <constraint firstItem="Eiy-7U-oCk" firstAttribute="width" secondItem="1rK-Sy-CWX" secondAttribute="width" multiplier="0.173913" id="sQQ-e6-XaM"/>
                             <constraint firstItem="Eiy-7U-oCk" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.0647321" id="sbD-k8-05v"/>
+                            <constraint firstItem="5fe-6O-12x" firstAttribute="trailing" secondItem="8rc-0B-pTr" secondAttribute="trailing" id="uin-di-MJu"/>
                             <constraint firstItem="Eiy-7U-oCk" firstAttribute="leading" secondItem="5fe-6O-12x" secondAttribute="leading" multiplier="1.05" constant="1" id="xGO-eL-Bg8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="Eiy-7U-oCk" id="34d-NV-1AC"/>
                         <outlet property="itemCollectionView" destination="jmc-H9-Akc" id="CUZ-2Y-fDp"/>
+                        <outlet property="levelUpButton" destination="MJR-TU-ocn" id="o6o-Fa-L4K"/>
+                        <outlet property="mainItemView" destination="8rc-0B-pTr" id="HxY-Ua-SSp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGa-4d-chh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

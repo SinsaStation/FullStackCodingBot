@@ -13,6 +13,8 @@
 		710D0D4F2693F6E500244A16 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D4D2693F6E500244A16 /* ItemCell.swift */; };
 		715BB20626943CDE00286B31 /* ItemStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BB20526943CDE00286B31 /* ItemStorageType.swift */; };
 		715BB20826943D5600286B31 /* ItemStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BB20726943D5600286B31 /* ItemStorage.swift */; };
+		7164BFD2269679C6009769E4 /* MainItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7164BFD1269679C6009769E4 /* MainItemView.swift */; };
+		7164BFD626967BBE009769E4 /* MainItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7164BFD526967BBE009769E4 /* MainItemView.xib */; };
 		7165CDDB2695789300891214 /* UnitCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165CDDA2695789300891214 /* UnitCount.swift */; };
 		7165CDDF26957DE400891214 /* GameButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165CDDE26957DE400891214 /* GameButtonController.swift */; };
 		71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64B82692C13A00557693 /* ShopViewController.swift */; };
@@ -52,6 +54,8 @@
 		710D0D4D2693F6E500244A16 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		715BB20526943CDE00286B31 /* ItemStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStorageType.swift; sourceTree = "<group>"; };
 		715BB20726943D5600286B31 /* ItemStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStorage.swift; sourceTree = "<group>"; };
+		7164BFD1269679C6009769E4 /* MainItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainItemView.swift; sourceTree = "<group>"; };
+		7164BFD526967BBE009769E4 /* MainItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemView.xib; sourceTree = "<group>"; };
 		7165CDDA2695789300891214 /* UnitCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitCount.swift; sourceTree = "<group>"; };
 		7165CDDE26957DE400891214 /* GameButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButtonController.swift; sourceTree = "<group>"; };
 		71DF64B82692C13A00557693 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 			children = (
 				E45B0AC62692F42D006FDE3D /* UnitPerspectiveView.swift */,
 				710D0D4D2693F6E500244A16 /* ItemCell.swift */,
+				7164BFD1269679C6009769E4 /* MainItemView.swift */,
+				7164BFD526967BBE009769E4 /* MainItemView.xib */,
 				E4779C642697E92F00B92D24 /* TimeProgressView.swift */,
 			);
 			path = CustomView;
@@ -331,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7164BFD626967BBE009769E4 /* MainItemView.xib in Resources */,
 				E4D7C6492693E8E500D58BA2 /* Game.storyboard in Resources */,
 				E45B0ABB2692929F006FDE3D /* LaunchScreen.storyboard in Resources */,
 				E45B0AB82692929F006FDE3D /* Assets.xcassets in Resources */,
@@ -404,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7164BFD2269679C6009769E4 /* MainItemView.swift in Sources */,
 				710D0D4F2693F6E500244A16 /* ItemCell.swift in Sources */,
 				E4D7C63E2693E79800D58BA2 /* AppDelegate.swift in Sources */,
 				E45B0AC92692F9CF006FDE3D /* Unit.swift in Sources */,
@@ -571,7 +579,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				VALIDATE_PRODUCT = YES;
+				 FullStackCodingBot/FullStackCodingBot.xcodeproj/project.pbxprojVALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};

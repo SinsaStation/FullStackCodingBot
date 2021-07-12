@@ -16,7 +16,14 @@ class ItemStorage: ItemStorageType {
         Unit(info: .theC, level: 1)
     ]
     
+    private var myMoney = 200
+    
     private lazy var unitStorage = BehaviorSubject(value: storage)
+    private lazy var moneyStatue = BehaviorSubject(value: myMoney)
+    
+    func availableMoeny() -> Observable<Int> {
+        return moneyStatue
+    }
     
     func itemList() -> [Unit] {
         return storage
@@ -31,7 +38,7 @@ class ItemStorage: ItemStorageType {
     
     @discardableResult
     func list() -> Observable<[Unit]> {
-        return unitStorage.asObservable()
+        return unitStorage
     }
     
     @discardableResult
@@ -42,5 +49,14 @@ class ItemStorage: ItemStorageType {
         }
         unitStorage.onNext(storage)
         return Observable.just(new)
+    }
+    
+    func raiseLevel(to unit: Unit, using money: Int) {
+        if let index = storage.firstIndex(where: { $0.uuid == unit.uuid}) {
+            storage[index].levelup()
+            myMoney -= money
+        }
+        moneyStatue.onNext(myMoney)
+        unitStorage.onNext(storage)
     }
 }
