@@ -6,7 +6,7 @@ struct StackMemberUnit {
     let direction: Direction
 }
 
-final class GameUnitManager {
+final class GameUnitManager: GameUnitManagerType {
     
     private var allKinds: [Unit]
     private var unused: [Unit]
@@ -66,6 +66,11 @@ final class GameUnitManager {
         case .right:
             return rightStack.contains(currentUnit)
         }
+    }
+    
+    func currentHeadUnitScore() -> Int? {
+        guard !onGames.isEmpty else { return nil }
+        return onGames[0].score()
     }
     
     func raiseAnswerCount() {

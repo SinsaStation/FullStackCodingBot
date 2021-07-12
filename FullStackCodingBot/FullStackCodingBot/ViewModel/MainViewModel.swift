@@ -20,11 +20,10 @@ class MainViewModel: CommonViewModel {
             self.sceneCoordinator.transition(to: itemScene, using: .fullScreen, animated: true)
             
         case .gameVC:
-            let gameViewModel = GameViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
+            let gameUnitManager = GameUnitManager(allKinds: self.storage.itemList())
+            let gameViewModel = GameViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, gameUnitManager: gameUnitManager)
             let gameScene = Scene.game(gameViewModel)
             self.sceneCoordinator.transition(to: gameScene, using: .fullScreen, animated: true)
-        default:
-            assert(false)
         }
     }
     
