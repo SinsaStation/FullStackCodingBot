@@ -10,9 +10,17 @@ struct Unit: Equatable {
         image = info.detail.image
         self.level = level
     }
+    
+    func score() -> Int {
+        return level + 10
+    }
+    
+    static func == (lhs: Unit, rhs: Unit) -> Bool {
+        return lhs.uuid == rhs.uuid
+    }
 }
 
-enum UnitInfo {
+enum UnitInfo: CaseIterable {
     case swift
     case kotlin
     case java

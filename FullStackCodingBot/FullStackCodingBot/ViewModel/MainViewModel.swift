@@ -23,6 +23,8 @@ class MainViewModel: CommonViewModel {
             let gameViewModel = GameViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
             let gameScene = Scene.game(gameViewModel)
             self.sceneCoordinator.transition(to: gameScene, using: .fullScreen, animated: true)
+        default:
+            assert(false)
         }
     }
     
