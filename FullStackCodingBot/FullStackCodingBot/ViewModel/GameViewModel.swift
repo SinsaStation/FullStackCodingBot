@@ -39,9 +39,23 @@ class GameViewModel: CommonViewModel {
     }
     
     func execute() -> [Unit] {
+        resetAll()
         setUnits()
         timerStart()
         return generateStartingUnits()
+    }
+    
+    private func resetAll() {
+        unitCount = 2
+        unitScored = 0
+        allUnits = []
+        unusedUnits = []
+        leftStackUnits = []
+        rightStackUnits = []
+        units = []
+        score.accept(-score.value)
+        // score.
+        timeProgress.completedUnitCount = Perspective.startingTime
     }
     
     private func setUnits() {
@@ -102,8 +116,7 @@ class GameViewModel: CommonViewModel {
     private func gameMayOver() {
         guard timeProgress.completedUnitCount <= 0  else { return }
         timer.cancel()
-        timeProgress.cancel()
-        
+
         DispatchQueue.main.async {
             self.makeMoveAction(to: .gameOverVC)
         }
@@ -142,10 +155,12 @@ class GameViewModel: CommonViewModel {
     private func makeMoveAction(to viewController: ViewControllerType) {
         switch viewController {
         case .gameOverVC:
-            let gameOverViewModel = GameOverViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
-            let gameOverScene = Scene.gameOver(gameOverViewModel)
-            self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
-            
+            score.scan(0) { $0 + $1 }.bind { [weak self] finalScore in
+                guard let self = self else { return }
+                let gameOverViewModel = GameOverViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, finalScore: finalScore)
+                let gameOverScene = Scene.gameOver(gameOverViewModel)
+                self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
+            }.disposed(by: rx.disposeBag)
         default:
             assert(false)
         }

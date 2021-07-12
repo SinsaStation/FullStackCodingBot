@@ -16,12 +16,13 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         gameStart()
     }
     
     private func gameStart() {
+        unitPerspectiveView.clearAll()
         unitPerspectiveView.configure(with: viewModel.execute())
     }
     

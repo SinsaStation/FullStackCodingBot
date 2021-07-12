@@ -2,6 +2,9 @@ import UIKit
 
 final class GameOverViewController: UIViewController, ViewModelBindableType {
     
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var restartButton: UIButton!
+    
     var viewModel: GameOverViewModel!
     
     override func viewDidLoad() {
@@ -9,6 +12,7 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
-        print("\(self)")
+        scoreLabel.text = "\(viewModel.finalScore)"
+        restartButton.rx.action = viewModel.cancelAction
     }
 }

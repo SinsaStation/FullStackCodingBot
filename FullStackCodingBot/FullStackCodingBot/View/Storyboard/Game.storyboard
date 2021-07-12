@@ -218,13 +218,46 @@
                     <view key="view" contentMode="scaleToFill" id="dSa-wJ-4x7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="your score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZP-Qb-t8F">
+                                <rect key="frame" x="20" y="144" width="374" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333333333" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="35" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auM-zH-D8j" userLabel="Score Label">
+                                <rect key="frame" x="20" y="195" width="374" height="73"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="61"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsA-9F-azQ">
+                                <rect key="frame" x="165.66666666666666" y="424" width="83" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="restart"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="sip-mU-qdp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WsA-9F-azQ" firstAttribute="centerX" secondItem="dSa-wJ-4x7" secondAttribute="centerX" id="2AE-tn-U9s"/>
+                            <constraint firstItem="TZP-Qb-t8F" firstAttribute="leading" secondItem="sip-mU-qdp" secondAttribute="leading" constant="20" id="9U5-RT-MVS"/>
+                            <constraint firstItem="sip-mU-qdp" firstAttribute="trailing" secondItem="TZP-Qb-t8F" secondAttribute="trailing" constant="20" id="HYa-gf-BSo"/>
+                            <constraint firstItem="sip-mU-qdp" firstAttribute="trailing" secondItem="auM-zH-D8j" secondAttribute="trailing" constant="20" id="HfW-1a-P9X"/>
+                            <constraint firstItem="auM-zH-D8j" firstAttribute="top" secondItem="TZP-Qb-t8F" secondAttribute="bottom" constant="15" id="M94-AU-9dJ"/>
+                            <constraint firstItem="auM-zH-D8j" firstAttribute="leading" secondItem="sip-mU-qdp" secondAttribute="leading" constant="20" id="aKH-yc-oJD"/>
+                            <constraint firstItem="TZP-Qb-t8F" firstAttribute="top" secondItem="sip-mU-qdp" secondAttribute="top" constant="100" id="mwV-xl-4vP"/>
+                            <constraint firstItem="WsA-9F-azQ" firstAttribute="centerY" secondItem="dSa-wJ-4x7" secondAttribute="centerY" id="qQu-yM-LpJ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="restartButton" destination="WsA-9F-azQ" id="kxV-OG-cdt"/>
+                        <outlet property="scoreLabel" destination="auM-zH-D8j" id="hqy-aK-ehr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dED-eF-uii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="725" y="88"/>
+            <point key="canvasLocation" x="724.63768115942037" y="87.723214285714278"/>
         </scene>
     </scenes>
     <resources>
