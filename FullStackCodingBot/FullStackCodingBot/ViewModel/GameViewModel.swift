@@ -6,7 +6,7 @@ import Action
 enum GameStatus {
     case new
     case pause
-    case restart
+    case resume
 }
 
 class GameViewModel: CommonViewModel {
@@ -56,7 +56,7 @@ class GameViewModel: CommonViewModel {
         }
     }
     
-    private func timerStart() {
+    func timerStart() {
         let timeUnit = 1
         timer = DispatchSource.makeTimerSource()
         timer?.schedule(deadline: .now()+1, repeating: .seconds(timeUnit))
@@ -118,7 +118,8 @@ class GameViewModel: CommonViewModel {
     
     @discardableResult
     private func pause() -> Completable {
-        print("일시정지!")
-        return Completable.empty()
+        let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, currentScore: currentScore, newGameStatus: newGameStatus)
+        let pauseScene = Scene.pause(pauseViewModel)
+        return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, animated: false)
     }
 }

@@ -66,8 +66,10 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                 switch gameStatus {
                 case .new:
                     self.gameStart()
-                default:
-                    assert(true)
+                case .pause:
+                    print("일시정지")
+                case .resume:
+                    self.viewModel.timerStart()
                 }
         }).disposed(by: rx.disposeBag)
     }
