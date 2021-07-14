@@ -3,166 +3,124 @@ import RxSwift
 import RxCocoa
 import Action
 
-struct StackMemberUnit {
-    let content: Unit
-    let order: Int
-    let direction: Direction
+enum GameStatus {
+    case new
+    case pause
+    case resume
 }
 
 class GameViewModel: CommonViewModel {
+
+    private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
+    private var gameUnitManager: GameUnitManagerType
+    private var timer: DispatchSourceTimer?
+    private(set) var timeProgress = Progress(totalUnitCount: Perspective.startingTime)
+    private(set) var currentScore = 0
+    private(set) var scoreAdded = BehaviorRelay<Int>(value: 0)
+    private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
+    private(set) var newDirection = BehaviorRelay<Direction?>(value: nil)
+    private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
     
-    private var unitCount = 2
-    private var unitScored = 0
-    private var allUnits = [Unit]()
-    private var unusedUnits = [Unit]()
-    private var leftStackUnits = [Unit]()
-    private var rightStackUnits = [Unit]()
-    private var units = [Unit]()
-    private var timer = DispatchSource.makeTimerSource()
+    private(set) lazy var pauseAction: Action<Void, Void> = Action {
+        self.timer?.cancel()
+        self.newGameStatus.accept(.pause)
+        return self.pause().asObservable().map { _ in }
+    }
     
-    var timeProgress = Progress(totalUnitCount: Perspective.startingTime)
-    let cancelAction: CocoaAction
-    let score = BehaviorRelay<Int>(value: 0)
-    let stackMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
-    let logic = BehaviorRelay<Direction?>(value: nil)
-    
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, cancelAction: CocoaAction? = nil) {
-        self.cancelAction = CocoaAction {
-            if let action = cancelAction {
-                action.execute(())
-            }
-            return sceneCoordinator.close(animated: true).asObservable().map {_ in}
-        }
-        
-        timeProgress.becomeCurrent(withPendingUnitCount: Perspective.startingTime)
+    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, pauseAction: CocoaAction? = nil, gameUnitManager: GameUnitManagerType, totalTime: Int64 = Perspective.startingTime) {
+        self.gameUnitManager = gameUnitManager
+        timeProgress.becomeCurrent(withPendingUnitCount: totalTime)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
     
-    func execute() -> [Unit] {
-        resetAll()
-        setUnits()
+    func execute() {
+        newGame()
         timerStart()
-        return generateStartingUnits()
+        
+        let newUnits = gameUnitManager.startings()
+        newOnGameUnits.accept(newUnits)
     }
     
-    private func resetAll() {
-        unitCount = 2
-        unitScored = 0
-        allUnits = []
-        unusedUnits = []
-        leftStackUnits = []
-        rightStackUnits = []
-        units = []
-        score.accept(-score.value)
-        // score.
+    private func newGame() {
+        gameUnitManager.resetAll()
+        sendNewUnitToStack(by: Perspective.startingCount)
+        currentScore = .zero
+        scoreAdded.accept(0)
         timeProgress.completedUnitCount = Perspective.startingTime
     }
     
-    private func setUnits() {
-        self.allUnits = storage.itemList()
-        self.unusedUnits = allUnits.shuffled()
-        
-        self.leftStackUnits = [unusedUnits.removeLast()]
-        sendNewStackMember(leftStackUnits[0], order: 0, to: .left)
-        
-        self.rightStackUnits = [unusedUnits.removeLast()]
-        sendNewStackMember(rightStackUnits[0], order: 0, to: .right)
+    private func sendNewUnitToStack(by count: Int) {
+        (0..<count).forEach { _ in
+            let newMember = gameUnitManager.newMember()
+            newMemberUnit.accept(newMember)
+        }
     }
     
-    private func timerStart() {
-        timer.schedule(deadline: .now(), repeating: .seconds(1))
-        timer.setEventHandler { [weak self] in
-            self?.timeProgress.completedUnitCount -= 1
+    func timerStart() {
+        let timeUnit = 1
+        timer = DispatchSource.makeTimerSource()
+        timer?.schedule(deadline: .now()+1, repeating: .seconds(timeUnit))
+        
+        timer?.setEventHandler { [weak self] in
+            self?.timeMinus(by: timeUnit)
             self?.gameMayOver()
         }
-        timer.activate()
+        timer?.activate()
     }
     
-    private func sendNewStackMember(_ newMemberUnit: Unit, order: Int, to direction: Direction) {
-        let newStackMember = StackMemberUnit(content: newMemberUnit, order: order, direction: direction)
-        stackMemberUnit.accept(newStackMember)
-    }
-
-    private func generateStartingUnits() -> [Unit] {
-        let unitsToUse = leftStackUnits + rightStackUnits
-        
-        (0..<Perspective.count).forEach { _ in
-            units.append(unitsToUse.randomElement() ?? unitsToUse[0])
-        }
-        return self.units
-    }
-    
-    func moveUnitAction(to direction: Direction) {
-        let currentUnit = units[0]
-
-        switch direction {
-        case .left:
-            leftStackUnits.contains(currentUnit) ? correctAction(for: .left, currentUnit) : wrongAction()
-        case .right:
-            rightStackUnits.contains(currentUnit) ? correctAction(for: .right, currentUnit) : wrongAction()
-        }
-    }
-    
-    private func correctAction(for direction: Direction, _ currentUnit: Unit) {
-        logic.accept(direction)
-        raiseScore(for: currentUnit)
-    }
-    
-    private func wrongAction() {
-        timeProgress.completedUnitCount -= Perspective.wrongTime
-        gameMayOver()
+    private func timeMinus(by second: Int) {
+        timeProgress.completedUnitCount -= Int64(second)
     }
     
     private func gameMayOver() {
         guard timeProgress.completedUnitCount <= 0  else { return }
-        timer.cancel()
+        
+        timer?.cancel()
 
         DispatchQueue.main.async {
-            self.makeMoveAction(to: .gameOverVC)
+            self.gameOver()
         }
     }
     
-    private func raiseScore(for unit: Unit) {
-        score.accept(unit.score())
-        self.unitScored += 1
+    func moveUnitAction(to direction: Direction) {
+        guard let currentUnitScore = gameUnitManager.currentHeadUnitScore() else { return }
+        let isAnswerCorrect = gameUnitManager.isMoveActionCorrect(to: direction)
         
-        if unitCount < Perspective.maxUnitCount && unitScored >= unitCount * 10 {
-            additionalUnit()
-            unitCount += 1
-        }
+        isAnswerCorrect ? correctAction(for: direction, currentUnitScore) : wrongAction()
     }
     
-    private func additionalUnit() {
-        let newUnit = unusedUnits.removeLast()
+    private func correctAction(for direction: Direction, _ scoreGained: Int) {
+        newDirection.accept(direction)
+        currentScore += scoreGained
+        scoreAdded.accept(scoreGained)
+        gameUnitManager.raiseAnswerCount()
         
-        if unitCount % 2 == 0 {
-            leftStackUnits.append(newUnit)
-            sendNewStackMember(newUnit, order: leftStackUnits.count-1, to: .left)
-        } else {
-            rightStackUnits.append(newUnit)
-            sendNewStackMember(newUnit, order: rightStackUnits.count-1, to: .right)
-        }
+        if gameUnitManager.isTimeToLevelUp() { sendNewUnitToStack(by: 1) }
+        
+        onGameUnitNeedsChange()
     }
     
-    func newRandomUnit() -> Unit {
-        units.remove(at: 0)
-        let unitsToUse = leftStackUnits + rightStackUnits
-        let newUnit = unitsToUse.randomElement() ?? unitsToUse[0]
-        self.units.append(newUnit)
-        return newUnit
+    private func onGameUnitNeedsChange() {
+        let currentUnits = gameUnitManager.removeAndRefilled()
+        newOnGameUnits.accept(currentUnits)
     }
     
-    private func makeMoveAction(to viewController: ViewControllerType) {
-        switch viewController {
-        case .gameOverVC:
-            score.scan(0) { $0 + $1 }.bind { [weak self] finalScore in
-                guard let self = self else { return }
-                let gameOverViewModel = GameOverViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, finalScore: finalScore)
-                let gameOverScene = Scene.gameOver(gameOverViewModel)
-                self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
-            }.disposed(by: rx.disposeBag)
-        default:
-            assert(false)
-        }
+    private func wrongAction() {
+        timeMinus(by: Perspective.wrongTime)
+        gameMayOver()
+    }
+    
+    @discardableResult
+    private func gameOver() -> Completable {
+        let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, finalScore: currentScore, newGameStatus: newGameStatus)
+        let gameOverScene = Scene.gameOver(gameOverViewModel)
+        return self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
+    }
+    
+    @discardableResult
+    private func pause() -> Completable {
+        let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, currentScore: currentScore, newGameStatus: newGameStatus)
+        let pauseScene = Scene.pause(pauseViewModel)
+        return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, animated: false)
     }
 }
