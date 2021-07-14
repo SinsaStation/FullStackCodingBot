@@ -21,10 +21,12 @@ class ItemStorage: ItemStorageType {
     private lazy var unitStorage = BehaviorSubject(value: storage)
     private lazy var moneyStatue = BehaviorSubject(value: myMoney)
     
+    @discardableResult
     func availableMoeny() -> Observable<Int> {
         return moneyStatue
     }
     
+    @discardableResult
     func itemList() -> [Unit] {
         return storage
     }

@@ -3,8 +3,10 @@ import RxSwift
 
 protocol ItemStorageType {
     
+    @discardableResult
     func availableMoeny() -> Observable<Int>
     
+    @discardableResult
     func itemList() -> [Unit]
     
     @discardableResult
