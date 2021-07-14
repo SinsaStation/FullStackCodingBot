@@ -11,8 +11,9 @@ struct Unit: Equatable {
         self.level = level
     }
     
-    mutating func levelup() {
-        level += 1
+    init(original: Unit, level: Int) {
+        self = original
+        self.level = level
     }
 
     func score() -> Int {

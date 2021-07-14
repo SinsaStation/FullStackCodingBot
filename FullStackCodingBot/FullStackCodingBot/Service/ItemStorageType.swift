@@ -16,5 +16,6 @@ protocol ItemStorageType {
     @discardableResult
     func update(previous: Unit, new: Unit) -> Observable<Unit>
     
-    func raiseLevel(to unit: Unit, using money: Int)
+    @discardableResult
+    func raiseLevel(to unit: Unit, using money: Int) -> Unit
 }

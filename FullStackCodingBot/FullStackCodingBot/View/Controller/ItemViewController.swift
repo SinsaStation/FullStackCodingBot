@@ -20,8 +20,7 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
     func bindViewModel() {
         
         viewModel.itemStorage
-            .drive(itemCollectionView.rx.items(cellIdentifier: ItemCell.identifier, cellType: ItemCell.self)) { [unowned self] row, unit, cell in
-                if row == 0 { self.setupItemInfomation(from: unit) }
+            .drive(itemCollectionView.rx.items(cellIdentifier: ItemCell.identifier, cellType: ItemCell.self)) { _, unit, cell in
                 cell.configure(unit: unit)
             }.disposed(by: rx.disposeBag)
         
@@ -30,11 +29,16 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
                 self.observeLevelUpButton(levelUp)
             }).disposed(by: rx.disposeBag)
         
+        viewModel.selectedUnit
+            .subscribe(onNext: { [unowned self] unit in
+                self.setupItemInfomation(from: unit)
+            }).disposed(by: rx.disposeBag)
+        
         viewModel.money
             .map {String($0)}
             .drive(mainItemView.availableMoneyLabel.rx.text)
             .disposed(by: rx.disposeBag)
-        
+                
         cancelButton.rx.action = viewModel.cancelAction
     }
 }
@@ -52,13 +56,13 @@ private extension ItemViewController {
         
         itemCollectionView.rx.modelSelected(Unit.self)
             .subscribe(onNext: { [unowned self] unit in
-                self.setupItemInfomation(from: unit)
+                self.viewModel.selectedUnit.accept(unit)
             }).disposed(by: rx.disposeBag)
     }
     
     private func setupItemInfomation(from unit: Unit) {
         mainItemView.configure(unit)
-        viewModel.checkLevelUpPrice(from: unit)
+        viewModel.checkLevelUpPrice()
     }
     
     private func setupButtonAction() {

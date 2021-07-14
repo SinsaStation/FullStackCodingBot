@@ -288,8 +288,8 @@
 				E45B0AA72692929D006FDE3D /* Sources */,
 				E45B0AA82692929D006FDE3D /* Frameworks */,
 				E45B0AA92692929D006FDE3D /* Resources */,
-				129AEE1E6D04784C52352342 /* [CP] Embed Pods Frameworks */,
 				7165CDD92695687300891214 /* ShellScript */,
+				E252EF102B4561E31318430A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -348,23 +348,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		129AEE1E6D04784C52352342 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FullStackCodingBot/Pods-FullStackCodingBot-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FullStackCodingBot/Pods-FullStackCodingBot-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FullStackCodingBot/Pods-FullStackCodingBot-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		42A2D7741E7A77BCCDEAFE3F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -403,6 +386,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		E252EF102B4561E31318430A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FullStackCodingBot/Pods-FullStackCodingBot-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FullStackCodingBot/Pods-FullStackCodingBot-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FullStackCodingBot/Pods-FullStackCodingBot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -565,6 +565,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FullStackCodingBot/FullStackCodingBot.xcodeproj/project.pbxprojVALIDATE_PRODUCT = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -579,7 +580,6 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				 FullStackCodingBot/FullStackCodingBot.xcodeproj/project.pbxprojVALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};

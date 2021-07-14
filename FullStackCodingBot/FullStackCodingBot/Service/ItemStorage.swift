@@ -43,7 +43,7 @@ class ItemStorage: ItemStorageType {
     
     @discardableResult
     func update(previous: Unit, new: Unit) -> Observable<Unit> {
-        if let index = storage.firstIndex(where: { $0.uuid == previous.uuid}) {
+        if let index = storage.firstIndex(where: { $0 == previous}) {
             storage.remove(at: index)
             storage.insert(new, at: index)
         }
@@ -51,12 +51,12 @@ class ItemStorage: ItemStorageType {
         return Observable.just(new)
     }
     
-    func raiseLevel(to unit: Unit, using money: Int) {
-        if let index = storage.firstIndex(where: { $0.uuid == unit.uuid}) {
-            storage[index].levelup()
-            myMoney -= money
-        }
+    @discardableResult
+    func raiseLevel(to unit: Unit, using money: Int) -> Unit {
+        let new = Unit(original: unit, level: unit.level+1)
+        update(previous: unit, new: new)
+        myMoney -= money
         moneyStatue.onNext(myMoney)
-        unitStorage.onNext(storage)
+        return new
     }
 }
