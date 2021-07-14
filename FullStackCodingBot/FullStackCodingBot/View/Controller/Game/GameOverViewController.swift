@@ -22,6 +22,7 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
         
         scoreLabel.text = "\(viewModel.finalScore)"
         gainedCoinLabel.text = "\(viewModel.moneyGained)"
+        
         viewModel.currentMoney
             .subscribe(onNext: { [unowned self] currentMoney in
                 self.totalCoinLabel.text = "\(currentMoney)"

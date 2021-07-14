@@ -110,10 +110,11 @@ class GameViewModel: CommonViewModel {
         gameMayOver()
     }
     
-    private func gameOver() {
+    @discardableResult
+    private func gameOver() -> Completable {
         let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, finalScore: currentScore, newGameStatus: newGameStatus)
         let gameOverScene = Scene.gameOver(gameOverViewModel)
-        self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
+        return self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
     }
     
     @discardableResult

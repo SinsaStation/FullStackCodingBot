@@ -26,23 +26,20 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         pauseButton.rx.action = viewModel.pauseAction
         
         viewModel.newDirection
-            .subscribe(onNext: { [weak self] direction in
-                guard let self = self,
-                      let direction = direction else { return }
+            .subscribe(onNext: { [unowned self] direction in
+                guard let direction = direction else { return }
                 self.unitPerspectiveView.removeFirstUnitLayer(to: direction)
         }).disposed(by: rx.disposeBag)
         
         viewModel.scoreAdded
-            .subscribe(onNext: { [weak self] _ in
-                guard let self = self else { return }
+            .subscribe(onNext: { [unowned self] _ in
                 let newScore = self.viewModel.currentScore
                 self.scoreLabel.text = "\(newScore)"
         }).disposed(by: rx.disposeBag)
         
         viewModel.newMemberUnit
-            .subscribe(onNext: { [weak self] newStackUnit in
-                guard let self = self,
-                      let newStackUnit = newStackUnit else { return }
+            .subscribe(onNext: { [unowned self] newStackUnit in
+                guard let newStackUnit = newStackUnit else { return }
                 switch newStackUnit.direction {
                 case .left:
                     self.updateImage(of: newStackUnit, to: self.leftUnitStackView)
@@ -52,9 +49,8 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         }).disposed(by: rx.disposeBag)
         
         viewModel.newOnGameUnits
-            .subscribe(onNext: { [weak self] newUnits in
-                guard let self = self,
-                      let newUnits = newUnits else { return }
+            .subscribe(onNext: { [unowned self] newUnits in
+                guard let newUnits = newUnits else { return }
                 let unitImages = newUnits.map { $0.image }
                 self.unitPerspectiveView.configure(with: unitImages)
         }).disposed(by: rx.disposeBag)
@@ -62,13 +58,12 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         timeView.observedProgress = viewModel.timeProgress
         
         viewModel.newGameStatus
-            .subscribe(onNext: { [weak self] gameStatus in
-                guard let self = self else { return }
+            .subscribe(onNext: { [unowned self] gameStatus in
                 switch gameStatus {
                 case .new:
                     self.gameStart()
                 case .pause:
-                    print("일시정지")
+                    assert(true)
                 case .resume:
                     self.viewModel.timerStart()
                 }
@@ -76,13 +71,17 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     }
     
     private func gameStart() {
-        clear(stackView: rightUnitStackView)
-        clear(stackView: leftUnitStackView)
-        unitPerspectiveView.clearAll()
+        clearViews()
         viewModel.execute()
     }
+    
+    private func clearViews() {
+        clear(rightUnitStackView)
+        clear(leftUnitStackView)
+        unitPerspectiveView.clearAll()
+    }
 
-    private func clear(stackView: UIStackView) {
+    private func clear(_ stackView: UIStackView) {
         stackView.arrangedSubviews.forEach { view in
             guard let imageView = view as? UIImageView else { return }
             imageView.image = nil
