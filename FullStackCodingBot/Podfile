@@ -6,11 +6,11 @@ target 'FullStackCodingBot' do
   use_frameworks!
 
   # Pods for FullStackCodingBot
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod 'NSObject+Rx'
-  pod 'Alamofire'
-  pod 'Action'
-  pod 'SwiftLint'
-
+   pod 'RxSwift'
+   pod 'RxCocoa'
+   pod 'NSObject+Rx'
+   pod 'Alamofire'
+   pod 'Action'
+   pod 'SwiftLint'
+   pod 'RxDataSources'
 end

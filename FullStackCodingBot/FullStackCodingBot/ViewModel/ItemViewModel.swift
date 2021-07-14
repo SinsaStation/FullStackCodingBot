@@ -5,7 +5,9 @@ import Action
 
 class ItemViewModel: CommonViewModel {
     
-    let isPossibleToLevelUp = BehaviorRelay<Bool>(value: false)
+    private var defaultUnit: Unit {
+        return storage.itemList().first!
+    }
     
     var itemStorage: Driver<[Unit]> {
         return storage.list().asDriver(onErrorJustReturn: [])
@@ -15,9 +17,9 @@ class ItemViewModel: CommonViewModel {
         return storage.availableMoeny().asDriver(onErrorJustReturn: 0)
     }
     
-    private var targetUnit: Unit?
-    
+    let isPossibleToLevelUp = BehaviorRelay<Bool>(value: false)
     let cancelAction: CocoaAction
+    lazy var selectedUnit = BehaviorRelay<Unit>(value: defaultUnit)
     
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, cancelAction: CocoaAction? = nil) {
         self.cancelAction = CocoaAction {
@@ -29,12 +31,10 @@ class ItemViewModel: CommonViewModel {
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
     
-    func checkLevelUpPrice(from unit: Unit) {
-        targetUnit = unit
-        
+    func checkLevelUpPrice() {
         storage.availableMoeny()
             .subscribe(onNext: { [unowned self] availableMoney in
-                if availableMoney >= (unit.level * 100) {
+                if availableMoney >= (selectedUnit.value.level * 100) {
                     self.isPossibleToLevelUp.accept(true)
                 } else {
                     self.isPossibleToLevelUp.accept(false)
@@ -43,9 +43,8 @@ class ItemViewModel: CommonViewModel {
     }
     
     func makeActionLeveUp() {
-        if let unit = targetUnit {
-            let requiredMoney = unit.level * 100
-            storage.raiseLevel(to: unit, using: requiredMoney)
-        }
+        let requiredMoney = selectedUnit.value.level * 100
+        let new = storage.raiseLevel(to: selectedUnit.value, using: requiredMoney)
+        selectedUnit.accept(new)
     }
 }
