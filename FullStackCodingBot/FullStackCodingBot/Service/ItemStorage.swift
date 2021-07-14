@@ -61,4 +61,9 @@ class ItemStorage: ItemStorageType {
         moneyStatue.onNext(myMoney)
         return new
     }
+    
+    func raiseMoney(by money: Int) {
+        myMoney += money
+        moneyStatue.onNext(myMoney)
+    }
 }

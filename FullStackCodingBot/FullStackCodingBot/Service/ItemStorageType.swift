@@ -20,4 +20,6 @@ protocol ItemStorageType {
     
     @discardableResult
     func raiseLevel(to unit: Unit, using money: Int) -> Unit
+    
+    func raiseMoney(by money: Int)
 }
