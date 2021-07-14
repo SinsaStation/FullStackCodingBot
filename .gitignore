@@ -89,6 +89,8 @@ iOSInjectionProject/
 ## DS_Store
 **/.DS_Store
 
+## Pods
+FullStackCodingBot/Pods
 
 ## Gcc Patch
 /*.gcno
