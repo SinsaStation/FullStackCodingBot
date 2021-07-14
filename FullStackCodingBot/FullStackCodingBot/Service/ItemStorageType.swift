@@ -17,4 +17,6 @@ protocol ItemStorageType {
     func update(previous: Unit, new: Unit) -> Observable<Unit>
     
     func raiseLevel(to unit: Unit, using money: Int)
+    
+    func raiseMoney(by money: Int)
 }

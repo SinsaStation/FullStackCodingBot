@@ -1,4 +1,5 @@
 import UIKit
+import RxCocoa
 
 final class GameViewController: UIViewController, ViewModelBindableType {
     
