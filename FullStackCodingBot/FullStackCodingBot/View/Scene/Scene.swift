@@ -6,6 +6,7 @@ enum Scene {
     case rank(RankViewModel)
     case item(ItemViewModel)
     case game(GameViewModel)
+    case pause(PauseViewModel)
     case gameOver(GameOverViewModel)
 }
 
@@ -50,6 +51,14 @@ extension Scene {
             }
             gameVC.bind(viewModel: viewModel)
             return gameVC
+            
+        case .pause(let viewModel):
+            let gameStoryboard = UIStoryboard(name: "Game", bundle: nil)
+            guard var pauseVC = gameStoryboard.instantiateViewController(withIdentifier: IdentifierVC.pause) as? PauseViewController else {
+                fatalError()
+            }
+            pauseVC.bind(viewModel: viewModel)
+            return pauseVC
             
         case .gameOver(let viewModel):
             let gameStoryboard = UIStoryboard(name: "Game", bundle: nil)
