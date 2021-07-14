@@ -9,4 +9,7 @@ protocol SceneCoordinatorType {
     @discardableResult
     func close(animated: Bool) -> Completable
     
+    @discardableResult
+    func toMain(animated: Bool) -> Completable
+    
 }

@@ -3,7 +3,7 @@ import UIKit
 final class UnitPerspectiveView: UIView {
     
     private var unitLayers = [CALayer]()
-    private var unitCount: Int?
+    private var unitCount = Perspective.count
     
     enum Multiplier {
         static let height: CGFloat = 0.75
@@ -15,28 +15,24 @@ final class UnitPerspectiveView: UIView {
     private lazy var minSize = CGSize(width: maxWidth * Multiplier.minSize,
                                       height: maxWidth * Multiplier.minSize * Multiplier.height)
     
-    func configure(with startingUnits: [Unit]) {
-        self.unitCount = startingUnits.count
-        
-        startingUnits.forEach { unit in
-            let imageName = unit.image
-            self.unitLayers.append(newLayer(with: imageName))
+    func configure(with unitImages: [String]) {
+        unitLayers.isEmpty ? fillLayers(with: unitImages) : fillLayers(with: [unitImages.last!])
+        drawUnitLayers()
+    }
+    
+    private func fillLayers(with imageNames: [String]) {
+        imageNames.forEach { imageName in
+            let layer = CALayer()
+            let logoImage = UIImage(named: imageName)?.cgImage
+            layer.contents = logoImage
+            layer.contentsGravity = .resizeAspect
+            layer.shadowOpacity = 0.3
+            layer.shadowColor = UIColor.gray.cgColor
+            unitLayers.append(layer)
         }
-        fillUnits()
     }
     
-    private func newLayer(with imageName: String) -> CALayer {
-        let layer = CALayer()
-        let logoImage = UIImage(named: imageName)?.cgImage
-        layer.contents = logoImage
-        layer.contentsGravity = .resizeAspect
-        layer.shadowOpacity = 0.3
-        layer.shadowColor = UIColor.gray.cgColor
-        return layer
-    }
-    
-    private func fillUnits() {
-        guard let unitCount = unitCount else { return }
+    private func drawUnitLayers() {
         let maxWeight = CGFloat(unitCount)
         
         unitLayers.enumerated().forEach { (index, layer) in
@@ -56,7 +52,7 @@ final class UnitPerspectiveView: UIView {
         return CGRect(origin: layerOrigin, size: layerSize)
     }
     
-    func removeFirstUnit(to direction: Direction) {
+    func removeFirstUnitLayer(to direction: Direction) {
         let layerToAnimate = unitLayers.removeFirst()
         
         animate(layer: layerToAnimate, to: direction)
@@ -111,16 +107,10 @@ final class UnitPerspectiveView: UIView {
         }
     }
     
-    func refillLastUnit(with newUnit: Unit) {
-        let imageName = newUnit.image
-        unitLayers.append(newLayer(with: imageName))
-        fillUnits()
-    }
-    
     func clearAll() {
         unitLayers.forEach { layer in
             layer.removeFromSuperlayer()
         }
-        unitLayers = []
+        unitLayers.removeAll()
     }
 }
