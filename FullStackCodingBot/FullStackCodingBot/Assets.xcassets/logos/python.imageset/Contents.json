@@ -1,16 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "python.png",
+      "filename" : "python-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "python 2.png",
+      "filename" : "python-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "python.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

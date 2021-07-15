@@ -1,16 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "theC.png",
+      "filename" : "C-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "theC 2.png",
+      "filename" : "C-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "C.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
