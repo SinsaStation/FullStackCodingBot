@@ -114,7 +114,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="15.942028985507248" y="88.392857142857139"/>
+            <point key="canvasLocation" x="15.384615384615383" y="88.151658767772503"/>
         </scene>
         <!--Shop View Controller-->
         <scene sceneID="xnF-VP-sQH">
@@ -145,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzg-5D-7gu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="747.82608695652175" y="87.723214285714278"/>
+            <point key="canvasLocation" x="744.61538461538464" y="87.440758293838854"/>
         </scene>
         <!--Rank View Controller-->
         <scene sceneID="ROW-M9-iZ2">
