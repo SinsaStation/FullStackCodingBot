@@ -12,6 +12,7 @@ enum Scene {
 
 extension Scene {
     
+    // swiftlint:disable:next cyclomatic_complexity
     func instantiate(from storyboard: String) -> UIViewController {
         let storyboard = UIStoryboard(name: storyboard, bundle: nil)
         
