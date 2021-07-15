@@ -1,6 +1,13 @@
 import Foundation
 
-enum StoryboardType {
-    static let main = "Main"
-    static let game = "Game"
+enum StoryboardType: CaseIterable {
+    case main
+    case game
+    
+    var name: String {
+        switch self {
+        case .main: return "Main"
+        case .game: return "Game"
+        }
+    }
 }
