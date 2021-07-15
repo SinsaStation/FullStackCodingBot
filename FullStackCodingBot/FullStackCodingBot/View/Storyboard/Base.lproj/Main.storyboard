@@ -75,22 +75,33 @@
                                     <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="sLQ-Eg-Om0"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FullStack Coding Bot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qha-bS-eDq" customClass="TypewriterLabel" customModule="GhostTypewriter">
+                                <rect key="frame" x="0.0" y="44" width="414" height="79"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="qha-bS-eDq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0yP-V3-OAC"/>
+                            <constraint firstItem="qha-bS-eDq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7ZZ-aW-8ez"/>
                             <constraint firstItem="Pa3-jZ-hVU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.555556" id="ET7-Rd-ygw"/>
                             <constraint firstItem="xmD-fg-w6S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Kcx-0d-boe"/>
                             <constraint firstItem="xmD-fg-w6S" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="b2k-mR-hoe"/>
                             <constraint firstItem="Pa3-jZ-hVU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eGX-d0-gkY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qha-bS-eDq" secondAttribute="trailing" id="gGz-LH-cZS"/>
                             <constraint firstItem="xmD-fg-w6S" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.852657" id="iYI-Ql-Rp4"/>
                             <constraint firstItem="Pa3-jZ-hVU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.16183" id="mBw-Se-tfU"/>
                             <constraint firstItem="xmD-fg-w6S" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.085" constant="1" id="r9V-0Z-Iyy"/>
+                            <constraint firstItem="qha-bS-eDq" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0881696" id="vcl-QT-y0u"/>
                             <constraint firstItem="Pa3-jZ-hVU" firstAttribute="top" secondItem="xmD-fg-w6S" secondAttribute="bottom" multiplier="1.05" constant="1" id="vlA-JF-HeO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="buttonController" destination="H6e-U9-JW6" id="BOh-G8-9Vs"/>
+                        <outlet property="titleLabel" destination="qha-bS-eDq" id="kBp-2A-Zfs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

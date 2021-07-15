@@ -3,9 +3,9 @@ PODS:
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
   - Alamofire (5.4.3)
+  - GhostTypewriter (2.1.0)
   - "NSObject+Rx (5.2.1)":
     - RxSwift (~> 6.0)
-  - Ophiuchus (1.0.3)
   - RxCocoa (6.2.0):
     - RxRelay (= 6.2.0)
     - RxSwift (= 6.2.0)
@@ -17,8 +17,8 @@ PODS:
 DEPENDENCIES:
   - Action
   - Alamofire
+  - GhostTypewriter
   - "NSObject+Rx"
-  - Ophiuchus
   - RxCocoa
   - RxSwift
   - SwiftLint
@@ -27,8 +27,8 @@ SPEC REPOS:
   trunk:
     - Action
     - Alamofire
+    - GhostTypewriter
     - "NSObject+Rx"
-    - Ophiuchus
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -37,13 +37,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Action: 9891cd1b0a9047557d7e58e8dfae743e19d08197
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  GhostTypewriter: 62540772d227fbfe633bfa728d08fe8af5b4d805
   "NSObject+Rx": 49ffbf55ad0bbc29a44547db63a9e33caf0c5d60
-  Ophiuchus: 486de58f85284047835a26e23ac9fe4fe2255391
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: 94845de9e4fe029ba21e8022bc7fbf364cc1aaeb
+PODFILE CHECKSUM: 631bcf792523ae56661fc8ade75c6edca43925dd
 
 COCOAPODS: 1.10.1
