@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "swift 2.png",
+      "filename" : "swift-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "swift-1 2.png",
+      "filename" : "swift-2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "swift-2 2.png",
+      "filename" : "swift.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
