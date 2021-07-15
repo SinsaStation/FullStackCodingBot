@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xmD-fg-w6S">
-                                <rect key="frame" x="30.5" y="777" width="353" height="77.5"/>
+                                <rect key="frame" x="30.5" y="409.5" width="353" height="77"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCw-mX-H1M">
-                                        <rect key="frame" x="0.0" y="0.0" width="111" height="77.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="111" height="77"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <state key="normal" title="선물"/>
                                         <userDefinedRuntimeAttributes>
@@ -36,7 +36,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAJ-Py-m2J">
-                                        <rect key="frame" x="121" y="0.0" width="111" height="77.5"/>
+                                        <rect key="frame" x="121" y="0.0" width="111" height="77"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <state key="normal" title="랭킹"/>
                                         <userDefinedRuntimeAttributes>
@@ -50,7 +50,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wi2-BU-Z6q">
-                                        <rect key="frame" x="242" y="0.0" width="111" height="77.5"/>
+                                        <rect key="frame" x="242" y="0.0" width="111" height="77"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <state key="normal" title="아이템"/>
                                         <userDefinedRuntimeAttributes>
@@ -66,7 +66,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pa3-jZ-hVU">
-                                <rect key="frame" x="92" y="375.5" width="230" height="145"/>
+                                <rect key="frame" x="92" y="512" width="230" height="145"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Game Start">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -80,13 +80,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Pa3-jZ-hVU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.555556" id="ET7-Rd-ygw"/>
-                            <constraint firstItem="xmD-fg-w6S" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" multiplier="0.99" constant="1" id="GRh-Kt-7o7"/>
-                            <constraint firstItem="Pa3-jZ-hVU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Tfj-9P-dDN"/>
+                            <constraint firstItem="xmD-fg-w6S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Kcx-0d-boe"/>
                             <constraint firstItem="xmD-fg-w6S" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="b2k-mR-hoe"/>
                             <constraint firstItem="Pa3-jZ-hVU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eGX-d0-gkY"/>
                             <constraint firstItem="xmD-fg-w6S" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.852657" id="iYI-Ql-Rp4"/>
                             <constraint firstItem="Pa3-jZ-hVU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.16183" id="mBw-Se-tfU"/>
                             <constraint firstItem="xmD-fg-w6S" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.085" constant="1" id="r9V-0Z-Iyy"/>
+                            <constraint firstItem="Pa3-jZ-hVU" firstAttribute="top" secondItem="xmD-fg-w6S" secondAttribute="bottom" multiplier="1.05" constant="1" id="vlA-JF-HeO"/>
                         </constraints>
                     </view>
                     <connections>
