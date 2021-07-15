@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "cpp.png",
+      "filename" : "c++-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "cpp-1.png",
+      "filename" : "c++-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "cpp-2.png",
+      "filename" : "c++.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
