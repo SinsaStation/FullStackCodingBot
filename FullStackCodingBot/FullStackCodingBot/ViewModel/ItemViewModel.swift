@@ -3,7 +3,7 @@ import RxSwift
 import RxCocoa
 import Action
 
-class ItemViewModel: CommonViewModel {
+final class ItemViewModel: CommonViewModel {
     
     private var defaultUnit: Unit {
         return storage.itemList().first!

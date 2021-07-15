@@ -1,7 +1,7 @@
 import Foundation
 import Action
 
-class ShopViewModel: CommonViewModel {
+final class ShopViewModel: CommonViewModel {
     
     let confirmAction: Action<String, Void>
     let cancelAction: CocoaAction

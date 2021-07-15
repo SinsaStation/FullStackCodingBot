@@ -1,6 +1,6 @@
 import Foundation
 
-class CommonViewModel: NSObject {
+final class CommonViewModel: NSObject {
     
     let sceneCoordinator: SceneCoordinatorType
     let storage: ItemStorageType

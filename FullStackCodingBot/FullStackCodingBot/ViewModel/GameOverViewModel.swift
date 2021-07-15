@@ -3,7 +3,7 @@ import RxSwift
 import RxCocoa
 import Action
 
-class GameOverViewModel: CommonViewModel {
+final class GameOverViewModel: CommonViewModel {
     
     private(set) var finalScore: Int
     private(set) var moneyGained: Int

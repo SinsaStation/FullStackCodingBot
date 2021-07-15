@@ -9,7 +9,7 @@ enum GameStatus {
     case resume
 }
 
-class GameViewModel: CommonViewModel {
+final class GameViewModel: CommonViewModel {
 
     private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
     private var gameUnitManager: GameUnitManagerType

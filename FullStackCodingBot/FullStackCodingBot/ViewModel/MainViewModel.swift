@@ -1,6 +1,6 @@
 import Foundation
 
-class MainViewModel: CommonViewModel {
+final class MainViewModel: CommonViewModel {
     
     func makeMoveAction(to viewController: ViewControllerType) {
         switch viewController {
