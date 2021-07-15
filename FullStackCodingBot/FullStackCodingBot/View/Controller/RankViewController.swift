@@ -3,12 +3,13 @@ import UIKit
 final class RankViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: RankViewModel!
+    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     func bindViewModel() {
-        print("\(self)")
+        cancelButton.rx.action = viewModel.cancelAction
     }
 }

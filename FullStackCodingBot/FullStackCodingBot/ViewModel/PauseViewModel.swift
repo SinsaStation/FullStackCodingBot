@@ -3,7 +3,7 @@ import RxSwift
 import RxCocoa
 import Action
 
-class PauseViewModel: CommonViewModel {
+final class PauseViewModel: CommonViewModel {
 
     private(set) var currentScore: Int
     private var newGameStatus: BehaviorRelay<GameStatus>

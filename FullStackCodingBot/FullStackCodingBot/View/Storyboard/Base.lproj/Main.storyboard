@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController restorationIdentifier="MainVC" storyboardIdentifier="MainVC" id="BYZ-38-t0r" customClass="MainViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xmD-fg-w6S">
-                                <rect key="frame" x="30.5" y="777" width="353" height="77.5"/>
+                                <rect key="frame" x="28.666666666666657" y="512.33333333333337" width="332.66666666666674" height="72.666666666666629"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCw-mX-H1M">
-                                        <rect key="frame" x="0.0" y="0.0" width="111" height="77.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="104.33333333333333" height="72.666666666666671"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <state key="normal" title="선물"/>
                                         <userDefinedRuntimeAttributes>
@@ -36,7 +36,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAJ-Py-m2J">
-                                        <rect key="frame" x="121" y="0.0" width="111" height="77.5"/>
+                                        <rect key="frame" x="114.33333333333331" y="0.0" width="104" height="72.666666666666671"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <state key="normal" title="랭킹"/>
                                         <userDefinedRuntimeAttributes>
@@ -50,7 +50,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wi2-BU-Z6q">
-                                        <rect key="frame" x="242" y="0.0" width="111" height="77.5"/>
+                                        <rect key="frame" x="228.33333333333334" y="0.0" width="104.33333333333334" height="72.666666666666671"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <state key="normal" title="아이템"/>
                                         <userDefinedRuntimeAttributes>
@@ -66,7 +66,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pa3-jZ-hVU">
-                                <rect key="frame" x="92" y="375.5" width="230" height="145"/>
+                                <rect key="frame" x="86.666666666666671" y="615.33333333333337" width="216.66666666666663" height="136.33333333333337"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Game Start">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,22 +75,33 @@
                                     <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="sLQ-Eg-Om0"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FullStack Coding Bot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qha-bS-eDq" customClass="TypewriterLabel" customModule="GhostTypewriter">
+                                <rect key="frame" x="0.0" y="68.333333333333343" width="390" height="74.333333333333343"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="qha-bS-eDq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7ZZ-aW-8ez"/>
                             <constraint firstItem="Pa3-jZ-hVU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.555556" id="ET7-Rd-ygw"/>
-                            <constraint firstItem="xmD-fg-w6S" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" multiplier="0.99" constant="1" id="GRh-Kt-7o7"/>
-                            <constraint firstItem="Pa3-jZ-hVU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Tfj-9P-dDN"/>
+                            <constraint firstItem="xmD-fg-w6S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.3" id="Kcx-0d-boe"/>
                             <constraint firstItem="xmD-fg-w6S" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="b2k-mR-hoe"/>
+                            <constraint firstItem="qha-bS-eDq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.25" id="csY-WP-eyA"/>
                             <constraint firstItem="Pa3-jZ-hVU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eGX-d0-gkY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qha-bS-eDq" secondAttribute="trailing" id="gGz-LH-cZS"/>
                             <constraint firstItem="xmD-fg-w6S" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.852657" id="iYI-Ql-Rp4"/>
                             <constraint firstItem="Pa3-jZ-hVU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.16183" id="mBw-Se-tfU"/>
                             <constraint firstItem="xmD-fg-w6S" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.085" constant="1" id="r9V-0Z-Iyy"/>
+                            <constraint firstItem="qha-bS-eDq" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0881696" id="vcl-QT-y0u"/>
+                            <constraint firstItem="Pa3-jZ-hVU" firstAttribute="top" secondItem="xmD-fg-w6S" secondAttribute="bottom" multiplier="1.05" constant="1" id="vlA-JF-HeO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="buttonController" destination="H6e-U9-JW6" id="BOh-G8-9Vs"/>
+                        <outlet property="titleLabel" destination="qha-bS-eDq" id="kBp-2A-Zfs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -103,18 +114,18 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="15.942028985507248" y="88.392857142857139"/>
+            <point key="canvasLocation" x="15.384615384615383" y="88.151658767772503"/>
         </scene>
         <!--Shop View Controller-->
         <scene sceneID="xnF-VP-sQH">
             <objects>
                 <viewController restorationIdentifier="ShopVC" storyboardIdentifier="ShopVC" id="KRn-s9-dLg" customClass="ShopViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xs7-IX-xOw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3G-k2-a1u">
-                                <rect key="frame" x="1" y="805" width="72" height="58"/>
+                                <rect key="frame" x="1" y="756.33333333333337" width="67.666666666666671" height="54.666666666666629"/>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <state key="normal" image="swift"/>
                             </button>
@@ -134,53 +145,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzg-5D-7gu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="747.82608695652175" y="87.723214285714278"/>
-        </scene>
-        <!--Advertise View Controller-->
-        <scene sceneID="hvU-v5-1mI">
-            <objects>
-                <viewController restorationIdentifier="AdvertiseVC" storyboardIdentifier="AdvertiseVC" id="3Vq-C1-5wU" customClass="AdvertiseViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CQM-tR-ocH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="IHC-np-lc7"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r3q-AJ-VdX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1448" y="88"/>
+            <point key="canvasLocation" x="744.61538461538464" y="87.440758293838854"/>
         </scene>
         <!--Rank View Controller-->
         <scene sceneID="ROW-M9-iZ2">
             <objects>
                 <viewController restorationIdentifier="RankVC" storyboardIdentifier="RankVC" id="1kH-ul-UPf" customClass="RankViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7lq-Vh-bdN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uQ-sS-SQM">
+                                <rect key="frame" x="1" y="754.33333333333337" width="67.666666666666671" height="54.666666666666629"/>
+                                <color key="tintColor" systemColor="systemYellowColor"/>
+                                <state key="normal" image="swift"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="U16-Yk-PMt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5uQ-sS-SQM" firstAttribute="leading" secondItem="U16-Yk-PMt" secondAttribute="leading" constant="1" id="5z5-bt-spS"/>
+                            <constraint firstItem="U16-Yk-PMt" firstAttribute="bottom" secondItem="5uQ-sS-SQM" secondAttribute="bottom" constant="1" id="IsM-4L-8SJ"/>
+                            <constraint firstItem="5uQ-sS-SQM" firstAttribute="height" secondItem="7lq-Vh-bdN" secondAttribute="height" multiplier="0.0647709" id="Vr1-ua-Alj"/>
+                            <constraint firstItem="5uQ-sS-SQM" firstAttribute="width" secondItem="7lq-Vh-bdN" secondAttribute="width" multiplier="0.173504" id="aCK-gl-vf5"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="5uQ-sS-SQM" id="FTf-21-DxA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7C8-E0-ojx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2133" y="88"/>
+            <point key="canvasLocation" x="1438" y="88"/>
         </scene>
         <!--Item View Controller-->
         <scene sceneID="FPc-g9-zF6">
             <objects>
                 <viewController restorationIdentifier="ItemVC" storyboardIdentifier="ItemVC" id="ntp-Vg-6kg" customClass="ItemViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1rK-Sy-CWX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eiy-7U-oCk">
-                                <rect key="frame" x="1" y="803" width="72" height="58"/>
+                                <rect key="frame" x="1" y="754.33333333333337" width="67.666666666666671" height="54.666666666666629"/>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <state key="normal" image="swift"/>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jmc-H9-Akc">
-                                <rect key="frame" x="0.0" y="638" width="414" height="156"/>
+                                <rect key="frame" x="0.0" y="599" width="390" height="147"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qzV-fO-4Zg">
                                     <size key="itemSize" width="128" height="128"/>
@@ -190,7 +202,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ItemCell" reuseIdentifier="ItemCell" id="LIR-ze-whG" customClass="ItemCell" customModule="FullStackCodingBot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="9.6666666666666661" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Qld-28-lVQ">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -214,11 +226,11 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rc-0B-pTr" customClass="MainItemView" customModule="FullStackCodingBot" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="380"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="358"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJR-TU-ocn">
-                                <rect key="frame" x="119" y="388.5" width="176" height="93"/>
+                                <rect key="frame" x="112" y="366" width="166" height="87.666666666666686"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="레벨업">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -255,11 +267,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGa-4d-chh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2802.898550724638" y="87.723214285714278"/>
+            <point key="canvasLocation" x="2128" y="88"/>
         </scene>
     </scenes>
     <resources>
-        <image name="swift" width="558" height="362"/>
+        <image name="swift" width="372" height="241.33332824707031"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -12,7 +12,8 @@ enum Scene {
 
 extension Scene {
     
-    func instantiate(from storyboard: String = "Main") -> UIViewController {
+    // swiftlint:disable:next cyclomatic_complexity
+    func instantiate(from storyboard: String) -> UIViewController {
         let storyboard = UIStoryboard(name: storyboard, bundle: nil)
         
         switch self {
@@ -43,30 +44,27 @@ extension Scene {
             }
             itemVC.bind(viewModel: viewModel)
             return itemVC
-            
         case .game(let viewModel):
-            let gameStoryboard = UIStoryboard(name: "Game", bundle: nil)
-            guard var gameVC = gameStoryboard.instantiateViewController(withIdentifier: IdentifierVC.game) as? GameViewController else {
+            guard var gameVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.game) as? GameViewController else {
                 fatalError()
             }
             gameVC.bind(viewModel: viewModel)
             return gameVC
             
         case .pause(let viewModel):
-            let gameStoryboard = UIStoryboard(name: "Game", bundle: nil)
-            guard var pauseVC = gameStoryboard.instantiateViewController(withIdentifier: IdentifierVC.pause) as? PauseViewController else {
+            guard var pauseVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.pause) as? PauseViewController else {
                 fatalError()
             }
             pauseVC.bind(viewModel: viewModel)
             return pauseVC
             
         case .gameOver(let viewModel):
-            let gameStoryboard = UIStoryboard(name: "Game", bundle: nil)
-            guard var gameOverVC = gameStoryboard.instantiateViewController(withIdentifier: IdentifierVC.gameOver) as? GameOverViewController else {
+            guard var gameOverVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.gameOver) as? GameOverViewController else {
                 fatalError()
             }
             gameOverVC.bind(viewModel: viewModel)
             return gameOverVC
+            
         }
     }
 }

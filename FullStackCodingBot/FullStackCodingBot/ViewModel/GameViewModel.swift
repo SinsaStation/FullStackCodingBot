@@ -9,7 +9,7 @@ enum GameStatus {
     case resume
 }
 
-class GameViewModel: CommonViewModel {
+final class GameViewModel: CommonViewModel {
 
     private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
     private var gameUnitManager: GameUnitManagerType
@@ -114,13 +114,13 @@ class GameViewModel: CommonViewModel {
     private func gameOver() -> Completable {
         let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, finalScore: currentScore, newGameStatus: newGameStatus)
         let gameOverScene = Scene.gameOver(gameOverViewModel)
-        return self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
+        return self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, with: StoryboardType.game, animated: true)
     }
     
     @discardableResult
     private func pause() -> Completable {
         let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, currentScore: currentScore, newGameStatus: newGameStatus)
         let pauseScene = Scene.pause(pauseViewModel)
-        return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, animated: false)
+        return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, with: StoryboardType.game, animated: false)
     }
 }
