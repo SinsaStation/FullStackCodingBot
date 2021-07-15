@@ -12,6 +12,11 @@ final class MainViewController: UIViewController, ViewModelBindableType {
         titleLabel.startTypewritingAnimation()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        titleLabel.restartTypewritingAnimation()
+    }
+    
     func bindViewModel() {
         buttonController.setupButton()
         buttonController.bind { [unowned self] viewController in
