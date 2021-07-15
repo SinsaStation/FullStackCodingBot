@@ -12,5 +12,5 @@ target 'FullStackCodingBot' do
   pod 'Alamofire'
   pod 'Action'
   pod 'SwiftLint'
-  pod 'RxDataSources'
+  pod 'Ophiuchus'
 end
