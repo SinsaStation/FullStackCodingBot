@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "background_property_upgrade-2.png",
+      "filename" : "background_icon_coin.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "background_property_upgrade-1.png",
+      "filename" : "background_icon_coin-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "background_property_upgrade.png",
+      "filename" : "background_icon_coin-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
