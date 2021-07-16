@@ -29,7 +29,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCD-gx-YvC" userLabel="Desk View">
                                         <rect key="frame" x="0.0" y="352" width="428" height="574"/>
-                                        <color key="backgroundColor" red="0.66666668653488159" green="0.51934413384027545" blue="0.39151177004048937" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.66666666666666663" green="0.51764705882352935" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
                                 </subviews>
                                 <constraints>
