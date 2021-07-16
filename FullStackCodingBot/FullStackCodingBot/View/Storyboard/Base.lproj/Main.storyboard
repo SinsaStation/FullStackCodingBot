@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -13,16 +13,16 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController restorationIdentifier="MainVC" storyboardIdentifier="MainVC" id="BYZ-38-t0r" customClass="MainViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="MainVC" storyboardIdentifier="MainVC" id="BYZ-38-t0r" customClass="MainViewController" customModule="Full_Stack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xmD-fg-w6S">
-                                <rect key="frame" x="28.666666666666657" y="512.33333333333337" width="332.66666666666674" height="72.666666666666629"/>
+                                <rect key="frame" x="31.666666666666657" y="562" width="364.66666666666674" height="79.666666666666629"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCw-mX-H1M">
-                                        <rect key="frame" x="0.0" y="0.0" width="104.33333333333333" height="72.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="115" height="79.666666666666671"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <state key="normal" title="선물"/>
                                         <userDefinedRuntimeAttributes>
@@ -36,7 +36,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAJ-Py-m2J">
-                                        <rect key="frame" x="114.33333333333331" y="0.0" width="104" height="72.666666666666671"/>
+                                        <rect key="frame" x="124.99999999999997" y="0.0" width="114.66666666666666" height="79.666666666666671"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <state key="normal" title="랭킹"/>
                                         <userDefinedRuntimeAttributes>
@@ -50,7 +50,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wi2-BU-Z6q">
-                                        <rect key="frame" x="228.33333333333334" y="0.0" width="104.33333333333334" height="72.666666666666671"/>
+                                        <rect key="frame" x="249.66666666666663" y="0.0" width="115" height="79.666666666666671"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <state key="normal" title="아이템"/>
                                         <userDefinedRuntimeAttributes>
@@ -66,7 +66,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pa3-jZ-hVU">
-                                <rect key="frame" x="86.666666666666671" y="615.33333333333337" width="216.66666666666663" height="136.33333333333337"/>
+                                <rect key="frame" x="95" y="675" width="238" height="149.66666666666663"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Game Start">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,7 +76,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FullStack Coding Bot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qha-bS-eDq" customClass="TypewriterLabel" customModule="GhostTypewriter">
-                                <rect key="frame" x="0.0" y="68.333333333333343" width="390" height="74.333333333333343"/>
+                                <rect key="frame" x="0.0" y="75" width="428" height="81.666666666666686"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -105,7 +105,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <customObject id="H6e-U9-JW6" customClass="MainButtonController" customModule="FullStackCodingBot" customModuleProvider="target">
+                <customObject id="H6e-U9-JW6" customClass="MainButtonController" customModule="Full_Stack" customModuleProvider="target">
                     <connections>
                         <outletCollection property="moveToVCButtons" destination="FCw-mX-H1M" collectionClass="NSMutableArray" id="nRa-qz-YTt"/>
                         <outletCollection property="moveToVCButtons" destination="fAJ-Py-m2J" collectionClass="NSMutableArray" id="ENl-NL-IWl"/>
@@ -119,24 +119,26 @@
         <!--Shop View Controller-->
         <scene sceneID="xnF-VP-sQH">
             <objects>
-                <viewController restorationIdentifier="ShopVC" storyboardIdentifier="ShopVC" id="KRn-s9-dLg" customClass="ShopViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ShopVC" storyboardIdentifier="ShopVC" id="KRn-s9-dLg" customClass="ShopViewController" customModule="Full_Stack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xs7-IX-xOw">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3G-k2-a1u">
-                                <rect key="frame" x="1" y="756.33333333333337" width="67.666666666666671" height="54.666666666666629"/>
+                                <rect key="frame" x="10" y="807.33333333333337" width="85.666666666666671" height="85.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="L3G-k2-a1u" secondAttribute="height" multiplier="1:1" id="5A2-RG-qDf"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
-                                <state key="normal" image="swift"/>
+                                <state key="normal" backgroundImage="button_action_left_off"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BVS-bL-EVd"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="L3G-k2-a1u" firstAttribute="bottom" secondItem="BVS-bL-EVd" secondAttribute="bottom" constant="1" id="3El-ia-vFY"/>
-                            <constraint firstItem="L3G-k2-a1u" firstAttribute="height" secondItem="xs7-IX-xOw" secondAttribute="height" multiplier="0.0647321" id="620-8Q-ktN"/>
-                            <constraint firstItem="L3G-k2-a1u" firstAttribute="leading" secondItem="BVS-bL-EVd" secondAttribute="leading" multiplier="1.05" constant="1" id="Nfd-uE-4G0"/>
-                            <constraint firstItem="L3G-k2-a1u" firstAttribute="width" secondItem="xs7-IX-xOw" secondAttribute="width" multiplier="0.173913" id="jUb-ub-qrA"/>
+                            <constraint firstItem="L3G-k2-a1u" firstAttribute="leading" secondItem="BVS-bL-EVd" secondAttribute="leading" multiplier="1.05" constant="10" id="Nfd-uE-4G0"/>
+                            <constraint firstItem="L3G-k2-a1u" firstAttribute="width" secondItem="xs7-IX-xOw" secondAttribute="width" multiplier="0.2" id="jUb-ub-qrA"/>
                         </constraints>
                     </view>
                     <connections>
@@ -150,24 +152,26 @@
         <!--Rank View Controller-->
         <scene sceneID="ROW-M9-iZ2">
             <objects>
-                <viewController restorationIdentifier="RankVC" storyboardIdentifier="RankVC" id="1kH-ul-UPf" customClass="RankViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="RankVC" storyboardIdentifier="RankVC" id="1kH-ul-UPf" customClass="RankViewController" customModule="Full_Stack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7lq-Vh-bdN">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uQ-sS-SQM">
-                                <rect key="frame" x="1" y="754.33333333333337" width="67.666666666666671" height="54.666666666666629"/>
+                                <rect key="frame" x="10" y="805.33333333333337" width="85.666666666666671" height="85.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5uQ-sS-SQM" secondAttribute="height" multiplier="1:1" id="UkK-zD-jCF"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
-                                <state key="normal" image="swift"/>
+                                <state key="normal" backgroundImage="button_action_left_off"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U16-Yk-PMt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5uQ-sS-SQM" firstAttribute="leading" secondItem="U16-Yk-PMt" secondAttribute="leading" constant="1" id="5z5-bt-spS"/>
+                            <constraint firstItem="5uQ-sS-SQM" firstAttribute="leading" secondItem="U16-Yk-PMt" secondAttribute="leading" constant="10" id="5z5-bt-spS"/>
                             <constraint firstItem="U16-Yk-PMt" firstAttribute="bottom" secondItem="5uQ-sS-SQM" secondAttribute="bottom" constant="1" id="IsM-4L-8SJ"/>
-                            <constraint firstItem="5uQ-sS-SQM" firstAttribute="height" secondItem="7lq-Vh-bdN" secondAttribute="height" multiplier="0.0647709" id="Vr1-ua-Alj"/>
-                            <constraint firstItem="5uQ-sS-SQM" firstAttribute="width" secondItem="7lq-Vh-bdN" secondAttribute="width" multiplier="0.173504" id="aCK-gl-vf5"/>
+                            <constraint firstItem="5uQ-sS-SQM" firstAttribute="width" secondItem="7lq-Vh-bdN" secondAttribute="width" multiplier="0.2" id="aCK-gl-vf5"/>
                         </constraints>
                     </view>
                     <connections>
@@ -181,18 +185,21 @@
         <!--Item View Controller-->
         <scene sceneID="FPc-g9-zF6">
             <objects>
-                <viewController restorationIdentifier="ItemVC" storyboardIdentifier="ItemVC" id="ntp-Vg-6kg" customClass="ItemViewController" customModule="FullStackCodingBot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ItemVC" storyboardIdentifier="ItemVC" id="ntp-Vg-6kg" customClass="ItemViewController" customModule="Full_Stack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1rK-Sy-CWX">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eiy-7U-oCk">
-                                <rect key="frame" x="1" y="754.33333333333337" width="67.666666666666671" height="54.666666666666629"/>
+                                <rect key="frame" x="10" y="805.33333333333337" width="85.666666666666671" height="85.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Eiy-7U-oCk" secondAttribute="height" multiplier="1:1" id="MXN-pB-wMI"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
-                                <state key="normal" image="swift"/>
+                                <state key="normal" backgroundImage="button_action_left_off"/>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jmc-H9-Akc">
-                                <rect key="frame" x="0.0" y="599" width="390" height="147"/>
+                                <rect key="frame" x="0.0" y="635.33333333333337" width="428" height="161"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qzV-fO-4Zg">
                                     <size key="itemSize" width="128" height="128"/>
@@ -201,8 +208,8 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ItemCell" reuseIdentifier="ItemCell" id="LIR-ze-whG" customClass="ItemCell" customModule="FullStackCodingBot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="9.6666666666666661" width="128" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ItemCell" reuseIdentifier="ItemCell" id="LIR-ze-whG" customClass="ItemCell" customModule="Full_Stack" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="16.666666666666668" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Qld-28-lVQ">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -225,12 +232,12 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rc-0B-pTr" customClass="MainItemView" customModule="FullStackCodingBot" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="358"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rc-0B-pTr" customClass="MainItemView" customModule="Full_Stack" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="392.66666666666669"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJR-TU-ocn">
-                                <rect key="frame" x="112" y="366" width="166" height="87.666666666666686"/>
+                                <rect key="frame" x="123" y="401.66666666666669" width="182" height="96"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="레벨업">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -252,10 +259,9 @@
                             <constraint firstItem="MJR-TU-ocn" firstAttribute="width" secondItem="1rK-Sy-CWX" secondAttribute="width" multiplier="0.425121" id="fdG-AK-Zda"/>
                             <constraint firstItem="Eiy-7U-oCk" firstAttribute="top" secondItem="jmc-H9-Akc" secondAttribute="bottom" multiplier="1.01" constant="1" id="opu-Of-97s"/>
                             <constraint firstItem="8rc-0B-pTr" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.424107" id="qpj-BE-CJJ"/>
-                            <constraint firstItem="Eiy-7U-oCk" firstAttribute="width" secondItem="1rK-Sy-CWX" secondAttribute="width" multiplier="0.173913" id="sQQ-e6-XaM"/>
-                            <constraint firstItem="Eiy-7U-oCk" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.0647321" id="sbD-k8-05v"/>
+                            <constraint firstItem="Eiy-7U-oCk" firstAttribute="width" secondItem="1rK-Sy-CWX" secondAttribute="width" multiplier="0.2" id="sQQ-e6-XaM"/>
                             <constraint firstItem="5fe-6O-12x" firstAttribute="trailing" secondItem="8rc-0B-pTr" secondAttribute="trailing" id="uin-di-MJu"/>
-                            <constraint firstItem="Eiy-7U-oCk" firstAttribute="leading" secondItem="5fe-6O-12x" secondAttribute="leading" multiplier="1.05" constant="1" id="xGO-eL-Bg8"/>
+                            <constraint firstItem="Eiy-7U-oCk" firstAttribute="leading" secondItem="5fe-6O-12x" secondAttribute="leading" multiplier="1.05" constant="10" id="xGO-eL-Bg8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -271,7 +277,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="swift" width="372" height="241.33332824707031"/>
+        <image name="button_action_left_off" width="85.333335876464844" height="85.333335876464844"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
