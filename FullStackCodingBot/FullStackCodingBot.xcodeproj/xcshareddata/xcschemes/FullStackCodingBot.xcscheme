@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E45B0AAA2692929D006FDE3D"
-               BuildableName = "FullStackCodingBot.app"
-               BlueprintName = "FullStackCodingBot"
+               BuildableName = "Full Stack.app"
+               BlueprintName = "Full Stack"
                ReferencedContainer = "container:FullStackCodingBot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E45B0AAA2692929D006FDE3D"
-            BuildableName = "FullStackCodingBot.app"
-            BlueprintName = "FullStackCodingBot"
+            BuildableName = "Full Stack.app"
+            BlueprintName = "Full Stack"
             ReferencedContainer = "container:FullStackCodingBot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E45B0AAA2692929D006FDE3D"
-            BuildableName = "FullStackCodingBot.app"
-            BlueprintName = "FullStackCodingBot"
+            BuildableName = "Full Stack.app"
+            BlueprintName = "Full Stack"
             ReferencedContainer = "container:FullStackCodingBot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
