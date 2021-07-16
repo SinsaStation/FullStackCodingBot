@@ -248,6 +248,11 @@
                                                 <rect key="frame" x="0.0" y="5" width="374" height="10.5"/>
                                                 <color key="progressTintColor" name="digital_green"/>
                                                 <color key="trackTintColor" systemColor="systemGray6Color"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </progressView>
                                         </subviews>
                                         <constraints>
