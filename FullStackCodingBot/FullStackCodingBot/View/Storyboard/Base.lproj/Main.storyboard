@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,13 +19,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xmD-fg-w6S">
-                                <rect key="frame" x="31.666666666666657" y="562" width="364.66666666666674" height="79.666666666666629"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xmD-fg-w6S">
+                                <rect key="frame" x="12" y="500.00000000000006" width="404" height="118.66666666666669"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCw-mX-H1M">
-                                        <rect key="frame" x="0.0" y="0.0" width="115" height="79.666666666666671"/>
-                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                        <state key="normal" title="선물"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCw-mX-H1M" userLabel="Present Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="129.33333333333334" height="118.66666666666667"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="FCw-mX-H1M" secondAttribute="height" multiplier="12:11" id="5dy-Ci-Fgt"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="button_mainMenu_present"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -35,10 +38,12 @@
                                             <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="VX4-E3-HfM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAJ-Py-m2J">
-                                        <rect key="frame" x="124.99999999999997" y="0.0" width="114.66666666666666" height="79.666666666666671"/>
-                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                        <state key="normal" title="랭킹"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAJ-Py-m2J" userLabel="Ranking Button">
+                                        <rect key="frame" x="137.33333333333331" y="0.0" width="129.33333333333331" height="118.66666666666667"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="fAJ-Py-m2J" secondAttribute="height" multiplier="12:11" id="uGx-EK-v7o"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="button_mainMenu_ranking"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -49,10 +54,12 @@
                                             <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="unu-nu-oCe"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wi2-BU-Z6q">
-                                        <rect key="frame" x="249.66666666666663" y="0.0" width="115" height="79.666666666666671"/>
-                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                        <state key="normal" title="아이템"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wi2-BU-Z6q" userLabel="Item Button">
+                                        <rect key="frame" x="274.66666666666669" y="0.0" width="129.33333333333331" height="118.66666666666667"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="wi2-BU-Z6q" secondAttribute="height" multiplier="12:11" id="mCk-wD-flm"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="button_mainMenu_item"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -66,10 +73,13 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pa3-jZ-hVU">
-                                <rect key="frame" x="95" y="675" width="238" height="149.66666666666663"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Game Start">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="95" y="650.66666666666663" width="238" height="118.66666666666663"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Pa3-jZ-hVU" secondAttribute="height" multiplier="2:1" id="nz7-4y-QkH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <state key="normal" title="Start" backgroundImage="button_start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="sLQ-Eg-Om0"/>
@@ -87,16 +97,14 @@
                         <constraints>
                             <constraint firstItem="qha-bS-eDq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7ZZ-aW-8ez"/>
                             <constraint firstItem="Pa3-jZ-hVU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.555556" id="ET7-Rd-ygw"/>
-                            <constraint firstItem="xmD-fg-w6S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.3" id="Kcx-0d-boe"/>
-                            <constraint firstItem="xmD-fg-w6S" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="b2k-mR-hoe"/>
                             <constraint firstItem="qha-bS-eDq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.25" id="csY-WP-eyA"/>
                             <constraint firstItem="Pa3-jZ-hVU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eGX-d0-gkY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qha-bS-eDq" secondAttribute="trailing" id="gGz-LH-cZS"/>
-                            <constraint firstItem="xmD-fg-w6S" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.852657" id="iYI-Ql-Rp4"/>
-                            <constraint firstItem="Pa3-jZ-hVU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.16183" id="mBw-Se-tfU"/>
-                            <constraint firstItem="xmD-fg-w6S" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.085" constant="1" id="r9V-0Z-Iyy"/>
+                            <constraint firstItem="xmD-fg-w6S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="rNR-hK-MPk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xmD-fg-w6S" secondAttribute="trailing" constant="12" id="rce-NB-T61"/>
                             <constraint firstItem="qha-bS-eDq" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0881696" id="vcl-QT-y0u"/>
                             <constraint firstItem="Pa3-jZ-hVU" firstAttribute="top" secondItem="xmD-fg-w6S" secondAttribute="bottom" multiplier="1.05" constant="1" id="vlA-JF-HeO"/>
+                            <constraint firstItem="xmD-fg-w6S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.1" constant="50" id="zt1-5o-pK2"/>
                         </constraints>
                     </view>
                     <connections>
@@ -278,6 +286,10 @@
     </scenes>
     <resources>
         <image name="button_action_left_off" width="85.333335876464844" height="85.333335876464844"/>
+        <image name="button_mainMenu_item" width="128" height="117.33333587646484"/>
+        <image name="button_mainMenu_present" width="128" height="117.33333587646484"/>
+        <image name="button_mainMenu_ranking" width="128" height="117.33333587646484"/>
+        <image name="button_start" width="170.66667175292969" height="85.333335876464844"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
