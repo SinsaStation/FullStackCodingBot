@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "button_mainMenu_present-2.png",
+      "filename" : "button_mainMenu_coin2-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "button_mainMenu_present-1.png",
+      "filename" : "button_mainMenu_coin2-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "button_mainMenu_present.png",
+      "filename" : "button_mainMenu_coin2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

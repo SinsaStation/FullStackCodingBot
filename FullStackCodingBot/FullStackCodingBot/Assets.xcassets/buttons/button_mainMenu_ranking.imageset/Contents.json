@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "button_mainMenu_ranking-1.png",
+      "filename" : "button_mainMenu_ranking2-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "button_mainMenu_ranking-2.png",
+      "filename" : "button_mainMenu_ranking2-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "button_mainMenu_ranking.png",
+      "filename" : "button_mainMenu_ranking2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
