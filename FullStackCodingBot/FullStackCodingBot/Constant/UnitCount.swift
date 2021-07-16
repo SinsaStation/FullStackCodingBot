@@ -7,3 +7,7 @@ enum Perspective {
     static let wrongTime = 10
     static let startingCount = 2
 }
+
+enum Text {
+    static let title = "Full Stack \nCoding Master"
+}

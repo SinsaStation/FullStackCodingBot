@@ -9,12 +9,18 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTitleLabel()
         titleLabel.startTypewritingAnimation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         titleLabel.restartTypewritingAnimation()
+    }
+    
+    private func setupTitleLabel() {
+        titleLabel.font = .systemFont(ofSize: view.bounds.width * 0.04)
+        titleLabel.text = Text.title
     }
     
     func bindViewModel() {
