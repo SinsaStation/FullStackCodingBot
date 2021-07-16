@@ -3,7 +3,7 @@ import UIKit
 final class UnitPerspectiveView: UIView {
     
     private var unitLayers = [CALayer]()
-    private var unitCount = Perspective.count
+    private var unitCount = GameSetting.count
     
     enum Multiplier {
         static let height: CGFloat = 0.75

@@ -1,6 +1,6 @@
 import Foundation
 
-enum Perspective {
+enum GameSetting {
     static let count = 8
     static let maxUnitCount = 8
     static let startingTime: Int64 = 60
