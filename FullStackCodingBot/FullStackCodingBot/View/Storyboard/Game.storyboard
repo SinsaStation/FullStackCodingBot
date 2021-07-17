@@ -357,6 +357,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tSh-tg-sUp" customClass="ReplicateAnimationView" customModule="Full_Stack" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3jL-yk-k2D" userLabel="Result View">
                                 <rect key="frame" x="20.5" y="358.5" width="373" height="179"/>
                                 <subviews>
@@ -479,12 +482,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="28" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TZP-Qb-t8F">
-                                <rect key="frame" x="20" y="262.5" width="374" height="66"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="55"/>
-                                <color key="textColor" name="digital_green"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAe-Nv-4Zv" userLabel="Total Coin View">
                                 <rect key="frame" x="15" y="59" width="186.5" height="42"/>
                                 <subviews>
@@ -523,24 +520,26 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sip-mU-qdp"/>
-                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        <color key="backgroundColor" name="red"/>
                         <constraints>
                             <constraint firstItem="htW-5y-Ro9" firstAttribute="centerX" secondItem="dSa-wJ-4x7" secondAttribute="centerX" id="6Pb-5t-pNL"/>
-                            <constraint firstItem="TZP-Qb-t8F" firstAttribute="leading" secondItem="sip-mU-qdp" secondAttribute="leading" constant="20" id="9U5-RT-MVS"/>
-                            <constraint firstItem="sip-mU-qdp" firstAttribute="trailing" secondItem="TZP-Qb-t8F" secondAttribute="trailing" constant="20" id="HYa-gf-BSo"/>
+                            <constraint firstItem="tSh-tg-sUp" firstAttribute="leading" secondItem="sip-mU-qdp" secondAttribute="leading" id="8Cl-Kn-bas"/>
                             <constraint firstItem="htW-5y-Ro9" firstAttribute="top" secondItem="3jL-yk-k2D" secondAttribute="bottom" constant="15" id="Mg5-3i-qwE"/>
-                            <constraint firstItem="3jL-yk-k2D" firstAttribute="top" secondItem="TZP-Qb-t8F" secondAttribute="bottom" constant="30" id="OS8-aN-VmJ"/>
+                            <constraint firstAttribute="bottom" secondItem="tSh-tg-sUp" secondAttribute="bottom" id="N1k-4s-fCC"/>
                             <constraint firstItem="aAe-Nv-4Zv" firstAttribute="leading" secondItem="sip-mU-qdp" secondAttribute="leading" constant="15" id="PEP-Vr-g4R"/>
+                            <constraint firstItem="tSh-tg-sUp" firstAttribute="top" secondItem="dSa-wJ-4x7" secondAttribute="top" id="UIT-eS-GbP"/>
                             <constraint firstItem="3jL-yk-k2D" firstAttribute="width" secondItem="dSa-wJ-4x7" secondAttribute="width" multiplier="0.9" id="ih2-JD-i6X"/>
                             <constraint firstItem="aAe-Nv-4Zv" firstAttribute="width" secondItem="dSa-wJ-4x7" secondAttribute="width" multiplier="0.45" id="k98-Yh-Pl2"/>
                             <constraint firstItem="htW-5y-Ro9" firstAttribute="width" secondItem="dSa-wJ-4x7" secondAttribute="width" multiplier="0.55" id="nDs-fb-OVv"/>
                             <constraint firstItem="3jL-yk-k2D" firstAttribute="height" secondItem="dSa-wJ-4x7" secondAttribute="height" multiplier="0.2" id="qCW-v5-kdi"/>
+                            <constraint firstItem="sip-mU-qdp" firstAttribute="trailing" secondItem="tSh-tg-sUp" secondAttribute="trailing" id="r3s-DH-ksY"/>
                             <constraint firstItem="3jL-yk-k2D" firstAttribute="centerX" secondItem="dSa-wJ-4x7" secondAttribute="centerX" id="woW-HL-9o0"/>
                             <constraint firstItem="3jL-yk-k2D" firstAttribute="centerY" secondItem="dSa-wJ-4x7" secondAttribute="centerY" id="yBB-Ls-zXf"/>
                             <constraint firstItem="aAe-Nv-4Zv" firstAttribute="top" secondItem="sip-mU-qdp" secondAttribute="top" constant="15" id="zxb-Xr-dmC"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="tSh-tg-sUp" id="C2D-YD-ySa"/>
                         <outlet property="buttonController" destination="vuL-dj-Gdd" id="SDX-6R-G0r"/>
                         <outlet property="gainedCoinLabel" destination="Rfg-gf-7jl" id="bqg-qc-WiM"/>
                         <outlet property="scoreLabel" destination="auM-zH-D8j" id="hqy-aK-ehr"/>
@@ -576,14 +575,14 @@
         <namedColor name="digital_green">
             <color red="0.1289999932050705" green="0.96100002527236938" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="red">
+            <color red="0.87058823529411766" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
