@@ -4,11 +4,17 @@ final class PauseViewController: UIViewController, ViewModelBindableType {
 
     @IBOutlet var buttonController: PauseButtonController!
     @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var backgroundView: ReplicateAnimationView!
     
     var viewModel: PauseViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        backgroundView.draw(withImage: .paused)
     }
     
     func bindViewModel() {

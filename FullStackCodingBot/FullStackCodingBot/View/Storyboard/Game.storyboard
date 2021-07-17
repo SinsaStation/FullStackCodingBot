@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HyU-WD-yc9">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HyU-WD-yc9" customClass="ReplicateAnimationView" customModule="Full_Stack" customModuleProvider="target">
                                 <rect key="frame" x="16.5" y="45" width="381" height="806"/>
                                 <color key="backgroundColor" name="digital_green"/>
                                 <userDefinedRuntimeAttributes>
@@ -114,6 +114,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="HyU-WD-yc9" id="L1b-Yr-dWR"/>
                         <outlet property="buttonController" destination="XVX-so-Kam" id="OTN-q9-AwW"/>
                         <outlet property="scoreLabel" destination="hRD-XQ-D7Z" id="I3K-wu-6pJ"/>
                     </connections>
