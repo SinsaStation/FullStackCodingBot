@@ -14,7 +14,7 @@ final class PauseViewController: UIViewController, ViewModelBindableType {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        backgroundView.draw(withImage: .paused)
+        backgroundView.draw(withImage: .paused, countPerLine: 3.2)
     }
     
     func bindViewModel() {

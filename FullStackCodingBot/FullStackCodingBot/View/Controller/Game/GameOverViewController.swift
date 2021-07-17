@@ -17,7 +17,7 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        backgroundView.draw(withImage: .gameover)
+        backgroundView.draw(withImage: .gameover, countPerLine: 2.5)
     }
     
     func bindViewModel() {
