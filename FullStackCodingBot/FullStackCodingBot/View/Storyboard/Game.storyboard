@@ -19,9 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HyU-WD-yc9" customClass="ReplicateAnimationView" customModule="Full_Stack" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HyU-WD-yc9" customClass="ReplicateAnimationView" customModule="Full_Stack" customModuleProvider="target">
                                 <rect key="frame" x="16.5" y="45" width="381" height="806"/>
-                                <color key="backgroundColor" name="digital_green"/>
+                                <color key="backgroundColor" name="darkblue"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="15"/>
@@ -570,6 +570,9 @@
         <image name="button_pause" width="64" height="64"/>
         <image name="button_replay" width="192" height="176"/>
         <image name="button_resume" width="192" height="176"/>
+        <namedColor name="darkblue">
+            <color red="0.14901960784313725" green="0.12941176470588234" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="digital_green">
             <color red="0.1289999932050705" green="0.96100002527236938" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
