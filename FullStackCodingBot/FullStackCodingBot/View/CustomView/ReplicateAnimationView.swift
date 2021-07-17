@@ -16,91 +16,69 @@ final class ReplicateAnimationView: UIView {
         }
     }
     
-    private func imageLayer(imageName: String, direction: Bool) -> CALayer {
-        let imageLayer = CALayer()
-        let image = UIImage(named: imageName)
-        imageLayer.contents = image?.cgImage
-         
-        let imageSize = image?.size ?? CGSize()
-        imageLayer.frame.size = imageSize
+    enum Row: CaseIterable {
+        case even
+        case odd
         
-        let positionKey = #keyPath(CALayer.position)
-        let animation = CABasicAnimation(keyPath: positionKey)
-        animation.duration = 3.5
-        
-        let position = imageLayer.position
-        let toPosition = CGPoint(x: position.x - imageSize.width, y: position.y)
-        animation.fromValue = direction ? position : toPosition
-        
-        animation.toValue = direction ? toPosition : position
-        animation.repeatCount = .infinity
-        imageLayer.add(animation, forKey: positionKey)
-        
-        return imageLayer
+        func origin(imageSize: CGSize) -> CGPoint {
+            switch self {
+            case .even:
+                return CGPoint(x: 0, y: 0)
+            case .odd:
+                return CGPoint(x: imageSize.width/2 * -1, y: imageSize.height)
+            }
+        }
     }
 
     func draw(withImage imageType: Image) {
-        let imageLayer = imageLayer(imageName: imageType.name, direction: true)
+        let imageName = imageType.name
+        Row.allCases.forEach { replicates(for: $0, imageName: imageName) }
+    }
+    
+    private func replicates(for row: Row, imageName: String) {
+        let imageLayer = imageLayer(imageName: imageName, for: row)
         let imageSize = imageLayer.bounds.size
         
-        let replicatorLayer = CAReplicatorLayer()
-        replicatorLayer.frame.size = CGSize(width: frame.width + imageSize.width,
-                                            height: frame.height)
-        replicatorLayer.masksToBounds = true
-        replicatorLayer.addSublayer(imageLayer)
-        layer.addSublayer(replicatorLayer)
+        let horizontalReplicatorLayer = CAReplicatorLayer()
+        horizontalReplicatorLayer.frame.size = CGSize(width: frame.width + imageSize.width, height: frame.height)
+        horizontalReplicatorLayer.frame.origin = row.origin(imageSize: imageSize)
+        horizontalReplicatorLayer.masksToBounds = true
+        horizontalReplicatorLayer.addSublayer(imageLayer)
+        layer.addSublayer(horizontalReplicatorLayer)
         
-        let instanceCount = frame.width / imageSize.width + 2
-        replicatorLayer.instanceCount = Int(ceil(instanceCount))
-        
-        replicatorLayer.instanceTransform = CATransform3DMakeTranslation(
-            imageSize.width, 0, 0
-        )
+        let horizontalCountInFloat = (frame.width/imageSize.width) + 3
+        horizontalReplicatorLayer.instanceCount = Int(horizontalCountInFloat)
+        horizontalReplicatorLayer.instanceTransform = CATransform3DMakeTranslation(imageSize.width, 0, 0)
 
         let verticalReplicatorLayer = CAReplicatorLayer()
         verticalReplicatorLayer.frame.size = frame.size
         verticalReplicatorLayer.masksToBounds = true
         layer.addSublayer(verticalReplicatorLayer)
 
-        let verticalInstanceCount = frame.height / imageSize.height
-        verticalReplicatorLayer.instanceCount = Int(ceil(verticalInstanceCount))
-
-        verticalReplicatorLayer.instanceTransform = CATransform3DMakeTranslation(
-            0, imageSize.height*2, 0
-        )
-
-        verticalReplicatorLayer.addSublayer(replicatorLayer)
+        let verticalCountInFloat = (frame.height/imageSize.height)/2 + 1
+        verticalReplicatorLayer.instanceCount = Int(verticalCountInFloat)
+        verticalReplicatorLayer.instanceTransform = CATransform3DMakeTranslation(0, imageSize.height * 2, 0)
+        verticalReplicatorLayer.addSublayer(horizontalReplicatorLayer)
+    }
+    
+    private func imageLayer(imageName: String, for row: Row) -> CALayer {
+        let imageLayer = CALayer()
+        let image = UIImage(named: imageName)
+        let imageSize = image?.size ?? CGSize()
+        imageLayer.contents = image?.cgImage
+        imageLayer.frame.size = imageSize
+    
+        let positionKey = #keyPath(CALayer.position)
+        let animation = CABasicAnimation(keyPath: positionKey)
+        animation.duration = 3.5
+        animation.repeatCount = .infinity
         
-        // 짝수 줄
-        let imageLayer2 = self.imageLayer(imageName: imageType.name, direction: false)
-
-        let replicatorLayer2 = CAReplicatorLayer()
-        replicatorLayer2.frame.size = CGSize(width: frame.width + imageSize.width,
-                                            height: frame.height)
-        replicatorLayer2.frame.origin = CGPoint(x: -imageSize.width/2, y: imageSize.height)
-        replicatorLayer2.masksToBounds = true
-        replicatorLayer2.addSublayer(imageLayer2)
-        layer.addSublayer(replicatorLayer2)
+        let originalPosition = imageLayer.position
+        let finalPosition = CGPoint(x: originalPosition.x - imageSize.width, y: originalPosition.y)
+        animation.fromValue = row == .even ? originalPosition : finalPosition
+        animation.toValue = row == .even ? finalPosition : originalPosition
         
-        let instanceCount2 = frame.width / imageSize.width + 2
-        replicatorLayer2.instanceCount = Int(ceil(instanceCount2))
-        
-        replicatorLayer2.instanceTransform = CATransform3DMakeTranslation(
-            imageSize.width, 0, 0
-        )
-        
-        let verticalReplicatorLayer2 = CAReplicatorLayer()
-        verticalReplicatorLayer2.frame.size = frame.size
-        verticalReplicatorLayer2.masksToBounds = true
-        layer.addSublayer(verticalReplicatorLayer2)
-
-        verticalReplicatorLayer2.instanceCount = Int(ceil(verticalInstanceCount))
-
-        verticalReplicatorLayer2.instanceTransform = CATransform3DMakeTranslation(
-            0, imageSize.height*2, 0
-        )
-
-        verticalReplicatorLayer2.addSublayer(replicatorLayer2)
-
+        imageLayer.add(animation, forKey: positionKey)
+        return imageLayer
     }
 }
