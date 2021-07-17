@@ -37,7 +37,7 @@ final class GameUnitManager: GameUnitManagerType {
     
     func startings() -> [Unit] {
         let unitsToUse = leftStack + rightStack
-        generateNewUnit(from: unitsToUse, count: Perspective.count)
+        generateNewUnit(from: unitsToUse, count: GameSetting.count)
         return onGames
     }
     
@@ -78,7 +78,7 @@ final class GameUnitManager: GameUnitManagerType {
     }
     
     func isTimeToLevelUp() -> Bool {
-        return memberCount < Perspective.maxUnitCount && answerCount >= memberCount * 10
+        return memberCount < GameSetting.maxUnitCount && answerCount >= memberCount * 10
     }
     
     func newMember() -> StackMemberUnit {

@@ -14,7 +14,7 @@ final class GameViewModel: CommonViewModel {
     private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
     private var gameUnitManager: GameUnitManagerType
     private var timer: DispatchSourceTimer?
-    private(set) var timeProgress = Progress(totalUnitCount: Perspective.startingTime)
+    private(set) var timeProgress = Progress(totalUnitCount: GameSetting.startingTime)
     private(set) var currentScore = 0
     private(set) var scoreAdded = BehaviorRelay<Int>(value: 0)
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
@@ -27,7 +27,7 @@ final class GameViewModel: CommonViewModel {
         return self.pause().asObservable().map { _ in }
     }
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, pauseAction: CocoaAction? = nil, gameUnitManager: GameUnitManagerType, totalTime: Int64 = Perspective.startingTime) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, pauseAction: CocoaAction? = nil, gameUnitManager: GameUnitManagerType, totalTime: Int64 = GameSetting.startingTime) {
         self.gameUnitManager = gameUnitManager
         timeProgress.becomeCurrent(withPendingUnitCount: totalTime)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
@@ -43,10 +43,10 @@ final class GameViewModel: CommonViewModel {
     
     private func newGame() {
         gameUnitManager.resetAll()
-        sendNewUnitToStack(by: Perspective.startingCount)
+        sendNewUnitToStack(by: GameSetting.startingCount)
         currentScore = .zero
         scoreAdded.accept(0)
-        timeProgress.completedUnitCount = Perspective.startingTime
+        timeProgress.completedUnitCount = GameSetting.startingTime
     }
     
     private func sendNewUnitToStack(by count: Int) {
@@ -106,7 +106,7 @@ final class GameViewModel: CommonViewModel {
     }
     
     private func wrongAction() {
-        timeMinus(by: Perspective.wrongTime)
+        timeMinus(by: GameSetting.wrongTime)
         gameMayOver()
     }
     
