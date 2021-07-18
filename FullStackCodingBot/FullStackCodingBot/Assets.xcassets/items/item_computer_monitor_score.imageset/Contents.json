@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "button_home-4.png",
+      "filename" : "item_computer_monitor_score-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "button_home-3.png",
+      "filename" : "item_computer_monitor_score-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "button_home-2.png",
+      "filename" : "item_computer_monitor_score.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

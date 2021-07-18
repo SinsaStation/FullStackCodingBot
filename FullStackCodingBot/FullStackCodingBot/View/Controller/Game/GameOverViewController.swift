@@ -2,16 +2,22 @@ import UIKit
 
 final class GameOverViewController: UIViewController, ViewModelBindableType {
     
+    @IBOutlet var buttonController: GameOverButtonController!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var gainedCoinLabel: UILabel!
     @IBOutlet weak var totalCoinLabel: UILabel!
-    @IBOutlet var buttonController: GameOverButtonController!
+    @IBOutlet var backgroundView: ReplicateAnimationView!
     
     var viewModel: GameOverViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.execute()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        backgroundView.draw(withImage: .gameover, countPerLine: 2.5)
     }
     
     func bindViewModel() {

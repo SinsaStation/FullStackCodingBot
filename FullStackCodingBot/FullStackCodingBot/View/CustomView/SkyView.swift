@@ -2,9 +2,10 @@ import UIKit
 
 final class SkyView: UIView {
     
+    private var cloudLayers = [CALayer]()
     private let cloudImageName = "item_cloud"
     private let positionKey = #keyPath(CALayer.position)
-    private let cloudCount = 7
+    private let movingCloudCount = 6
     private let imageCount = 3
     
     enum Direction {
@@ -13,30 +14,40 @@ final class SkyView: UIView {
     }
     
     func startCloudAnimation() {
-        for count in 1...cloudCount {
-            makeCloudAnimation(for: count)
-        }
+        clearAll()
+        (1...movingCloudCount).forEach { makeCloudMove(weight: $0) }
     }
     
-    private func makeCloudAnimation(for count: Int) {
-        let cloudHeight = bounds.height/7 * CGFloat.random(in: 0.8...1.3)
+    private func clearAll() {
+        cloudLayers.forEach { $0.removeFromSuperlayer() }
+    }
+    
+    private func makeCloudMove(weight: Int) {
+        let cloudFrame = cloudFrame(weight: weight)
+        let cloudLayer = cloudLayer(frame: cloudFrame)
+        layer.addSublayer(cloudLayer)
+        cloudLayers.append(cloudLayer)
+
+        let animation = positionAnimation(from: cloudFrame.origin,
+                                          to: CGPoint(x: bounds.width+cloudFrame.width,
+                                                      y: cloudFrame.origin.y),
+                                          duration: Double.random(in: 5...15),
+                                          direction: weight % 2 == 0 ? .toLeft : .toRight)
+        
+        cloudLayer.add(animation, forKey: positionKey)
+    }
+    
+    private func cloudFrame(weight: Int) -> CGRect {
+        let cloudHeight = bounds.height/5 * CGFloat.random(in: 0.8...1.3)
         let cloudWidth = cloudHeight * 2.5
         let cloudSize = CGSize(width: cloudWidth, height: cloudHeight)
         
-        let weight = CGFloat(count)
-        let yPoint = bounds.height/8 * weight - cloudHeight/2
-        let cloudOrigin = CGPoint(x: -cloudWidth, y: yPoint)
-        let cloudFrame = CGRect(origin: cloudOrigin, size: cloudSize)
-    
-        let cloudLayer = cloudLayer(frame: cloudFrame)
-        layer.addSublayer(cloudLayer)
-
-        let animation = positionAnimation(from: cloudOrigin,
-                                          to: CGPoint(x: bounds.width+cloudWidth, y: yPoint),
-                                          duration: Double.random(in: 5...15),
-                                          direction: count % 2 == 0 ? .toLeft : .toRight)
+        let weight = CGFloat(weight)
+        let xPoint = -cloudWidth
+        let yPoint = bounds.height/8 * weight
+        let cloudOrigin = CGPoint(x: xPoint, y: yPoint)
         
-        cloudLayer.add(animation, forKey: positionKey)
+        return CGRect(origin: cloudOrigin, size: cloudSize)
     }
     
     private func cloudLayer(frame: CGRect) -> CALayer {
