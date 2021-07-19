@@ -31,6 +31,9 @@ class StorageTest: XCTestCase {
 class MockStorage: NSObject, ItemStorageType {
     
     var availableMoenyMethodCallCount = 0
+    var raiseLevelupMethodCallCount = 0
+    var raiseMoneyMethodCallCount = 0
+    var updateMethodCallCount = 0
     
     private var myMoney = 1_000
     private lazy var moneyStatus = BehaviorSubject<Int>(value: myMoney)
@@ -64,6 +67,7 @@ class MockStorage: NSObject, ItemStorageType {
     
     @discardableResult
     func update(previous: Unit, new: Unit) -> Observable<Unit> {
+        updateMethodCallCount += 1
         if let index = items.firstIndex(where: { $0 == previous}) {
             items.remove(at: index)
             items.insert(new, at: index)
@@ -74,6 +78,7 @@ class MockStorage: NSObject, ItemStorageType {
     
     @discardableResult
     func raiseLevel(to unit: Unit, using money: Int) -> Unit {
+        raiseLevelupMethodCallCount += 1
         let new = Unit(original: unit, level: unit.level+1)
         update(previous: unit, new: new)
         myMoney -= money
@@ -82,6 +87,7 @@ class MockStorage: NSObject, ItemStorageType {
     }
     
     func raiseMoney(by money: Int) {
+        raiseMoneyMethodCallCount += 1
         myMoney += money
         moneyStatus.onNext(myMoney)
     }
@@ -91,12 +97,15 @@ class MockStorage: NSObject, ItemStorageType {
         availableMoeny()
         XCTAssertEqual(availableMoenyMethodCallCount, 1)
         raiseMoney(by: money)
+        XCTAssertEqual(raiseMoneyMethodCallCount, 1)
         XCTAssertEqual(myMoney, 2_000)
     }
     
     func verifyLevelupMethod(to unit: Unit, using money: Int) {
         let updated = raiseLevel(to: unit, using: money)
+        XCTAssertEqual(raiseLevelupMethodCallCount, 1)
         XCTAssertEqual(updated.level, 3)
+        XCTAssertEqual(updateMethodCallCount, 1)
         XCTAssertEqual(800, myMoney)
     }
 }
