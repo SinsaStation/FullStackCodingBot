@@ -5,8 +5,12 @@ import Action
 
 final class PauseViewModel: CommonViewModel {
 
-    private(set) var currentScore = BehaviorRelay<Int>(value: 0)
+    private let currentScore = BehaviorRelay<Int>(value: 0)
     private var newGameStatus: BehaviorRelay<GameStatus>
+    
+    lazy var currentScoreInfo: Driver<String> = {
+        return currentScore.map {String($0)}.asDriver(onErrorJustReturn: "")
+    }()
     
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, currentScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
         self.newGameStatus = newGameStatus

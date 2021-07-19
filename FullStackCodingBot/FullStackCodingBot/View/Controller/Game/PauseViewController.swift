@@ -23,9 +23,7 @@ final class PauseViewController: UIViewController, ViewModelBindableType {
             self.viewModel.makeMoveAction(to: viewController)
         }
         
-        viewModel.currentScore
-            .map {String($0)}
-            .asDriver(onErrorJustReturn: "")
+        viewModel.currentScoreInfo
             .drive(scoreLabel.rx.text)
             .disposed(by: rx.disposeBag)
     }

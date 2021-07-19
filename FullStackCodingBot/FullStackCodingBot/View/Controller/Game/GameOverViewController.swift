@@ -27,20 +27,14 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
         }
         
         viewModel.finalScore
-            .map {String($0)}
-            .asDriver(onErrorJustReturn: "")
             .drive(scoreLabel.rx.text)
             .disposed(by: rx.disposeBag)
         
-        viewModel.moneyGained
-            .map {String($0)}
-            .asDriver(onErrorJustReturn: "")
+        viewModel.gainedMoney
             .drive(gainedCoinLabel.rx.text)
             .disposed(by: rx.disposeBag)
         
         viewModel.currentMoney
-            .map {String($0)}
-            .asDriver(onErrorJustReturn: "")
             .drive(totalCoinLabel.rx.text)
             .disposed(by: rx.disposeBag)
     }
