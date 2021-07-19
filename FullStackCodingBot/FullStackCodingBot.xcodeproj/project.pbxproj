@@ -15,6 +15,7 @@
 		71307A8926A529F400C3191F /* LevelUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71307A8826A529F400C3191F /* LevelUpButton.swift */; };
 		71307A8B26A52A1F00C3191F /* LevelUpButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71307A8A26A52A1F00C3191F /* LevelUpButton.xib */; };
 		71307AB126A53C7B00C3191F /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71307AB026A53C7B00C3191F /* AlertMessage.swift */; };
+		71307AB926A5437C00C3191F /* Full_StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71307AB826A5437C00C3191F /* Full_StackTests.swift */; };
 		715A83EE269FE96300C9CEFF /* StoryboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A83ED269FE96300C9CEFF /* StoryboardType.swift */; };
 		715BB20626943CDE00286B31 /* ItemStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BB20526943CDE00286B31 /* ItemStorageType.swift */; };
 		715BB20826943D5600286B31 /* ItemStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BB20726943D5600286B31 /* ItemStorage.swift */; };
@@ -59,6 +60,16 @@
 		E4DD682126A138D900B9F9CE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DD682026A138D900B9F9CE /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		71307ABB26A5437C00C3191F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E45B0AA32692929C006FDE3D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E45B0AAA2692929D006FDE3D;
+			remoteInfo = "Full Stack";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5A7E8DA0D6B983048B3C188B /* Pods-Full Stack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Full Stack.release.xcconfig"; path = "Target Support Files/Pods-Full Stack/Pods-Full Stack.release.xcconfig"; sourceTree = "<group>"; };
 		6008A8CD833E66FA64680DE0 /* Pods-FullStackCodingBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FullStackCodingBot.release.xcconfig"; path = "Target Support Files/Pods-FullStackCodingBot/Pods-FullStackCodingBot.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +81,9 @@
 		71307A8826A529F400C3191F /* LevelUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpButton.swift; sourceTree = "<group>"; };
 		71307A8A26A52A1F00C3191F /* LevelUpButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelUpButton.xib; sourceTree = "<group>"; };
 		71307AB026A53C7B00C3191F /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
+		71307AB626A5437C00C3191F /* Full StackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Full StackTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		71307AB826A5437C00C3191F /* Full_StackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Full_StackTests.swift; sourceTree = "<group>"; };
+		71307ABA26A5437C00C3191F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		715A83ED269FE96300C9CEFF /* StoryboardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardType.swift; sourceTree = "<group>"; };
 		715BB20526943CDE00286B31 /* ItemStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStorageType.swift; sourceTree = "<group>"; };
 		715BB20726943D5600286B31 /* ItemStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStorage.swift; sourceTree = "<group>"; };
@@ -120,6 +134,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		71307AB326A5437C00C3191F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E45B0AA82692929D006FDE3D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -139,6 +160,15 @@
 				A9E77F924F0C6B24A39E65B2 /* Pods_Full_Stack.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		71307AB726A5437C00C3191F /* Full StackTests */ = {
+			isa = PBXGroup;
+			children = (
+				71307AB826A5437C00C3191F /* Full_StackTests.swift */,
+				71307ABA26A5437C00C3191F /* Info.plist */,
+			);
+			path = "Full StackTests";
 			sourceTree = "<group>";
 		};
 		715BB20426943CD100286B31 /* Service */ = {
@@ -269,6 +299,7 @@
 			children = (
 				E4DD681F26A138A800B9F9CE /* Full Stack.entitlements */,
 				E45B0AAD2692929D006FDE3D /* FullStackCodingBot */,
+				71307AB726A5437C00C3191F /* Full StackTests */,
 				E45B0AAC2692929D006FDE3D /* Products */,
 				91C85886B6EEF29FAF5218C5 /* Pods */,
 				59663E81570F2404FB4C14BE /* Frameworks */,
@@ -279,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				E45B0AAB2692929D006FDE3D /* Full Stack.app */,
+				71307AB626A5437C00C3191F /* Full StackTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -326,6 +358,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		71307AB526A5437C00C3191F /* Full StackTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71307ABF26A5437C00C3191F /* Build configuration list for PBXNativeTarget "Full StackTests" */;
+			buildPhases = (
+				71307AB226A5437C00C3191F /* Sources */,
+				71307AB326A5437C00C3191F /* Frameworks */,
+				71307AB426A5437C00C3191F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				71307ABC26A5437C00C3191F /* PBXTargetDependency */,
+			);
+			name = "Full StackTests";
+			productName = "Full StackTests";
+			productReference = 71307AB626A5437C00C3191F /* Full StackTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E45B0AAA2692929D006FDE3D /* Full Stack */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E45B0ABF2692929F006FDE3D /* Build configuration list for PBXNativeTarget "Full Stack" */;
@@ -355,6 +405,10 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					71307AB526A5437C00C3191F = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = E45B0AAA2692929D006FDE3D;
+					};
 					E45B0AAA2692929D006FDE3D = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -374,11 +428,19 @@
 			projectRoot = "";
 			targets = (
 				E45B0AAA2692929D006FDE3D /* Full Stack */,
+				71307AB526A5437C00C3191F /* Full StackTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		71307AB426A5437C00C3191F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E45B0AA92692929D006FDE3D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -454,6 +516,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		71307AB226A5437C00C3191F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71307AB926A5437C00C3191F /* Full_StackTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E45B0AA72692929D006FDE3D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -505,6 +575,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		71307ABC26A5437C00C3191F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E45B0AAA2692929D006FDE3D /* Full Stack */;
+			targetProxy = 71307ABB26A5437C00C3191F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		E45B0AB92692929F006FDE3D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -525,6 +603,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		71307ABD26A5437C00C3191F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Full StackTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Ray.Full-StackTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Full Stack.app/Full Stack";
+			};
+			name = Debug;
+		};
+		71307ABE26A5437C00C3191F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Full StackTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Ray.Full-StackTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Full Stack.app/Full Stack";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		E45B0ABD2692929F006FDE3D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -690,6 +809,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		71307ABF26A5437C00C3191F /* Build configuration list for PBXNativeTarget "Full StackTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71307ABD26A5437C00C3191F /* Debug */,
+				71307ABE26A5437C00C3191F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E45B0AA62692929C006FDE3D /* Build configuration list for PBXProject "FullStackCodingBot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
