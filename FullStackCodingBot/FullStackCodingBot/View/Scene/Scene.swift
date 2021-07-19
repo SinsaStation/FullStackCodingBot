@@ -45,6 +45,7 @@ extension Scene {
             }
             itemVC.bind(viewModel: viewModel)
             return itemVC
+            
         case .game(let viewModel):
             guard var gameVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.game) as? GameViewController else {
                 fatalError()
