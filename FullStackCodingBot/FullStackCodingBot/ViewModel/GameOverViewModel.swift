@@ -5,16 +5,25 @@ import Action
 
 final class GameOverViewModel: CommonViewModel {
     
-    private(set) var finalScore: Int
-    private(set) var moneyGained: Int
-    private(set) lazy var currentMoney: Observable<Int> = {
-        return storage.availableMoeny()
-    }()
+    private let scoreInfo = BehaviorRelay<Int>(value: 0)
+    private let moneyInfo = BehaviorRelay<Int>(value: 0)
     private var newGameStatus: BehaviorRelay<GameStatus>
     
+    lazy var finalScore: Driver<String> = {
+        return scoreInfo.map {String($0)}.asDriver(onErrorJustReturn: "")
+    }()
+    
+    lazy var gainedMoney: Driver<String> = {
+        return moneyInfo.map {String($0)}.asDriver(onErrorJustReturn: "")
+    }()
+    
+    lazy var currentMoney: Driver<String> = {
+        return storage.availableMoeny().map {String($0)}.asDriver(onErrorJustReturn: "")
+    }()
+    
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, finalScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
-        self.finalScore = finalScore
-        self.moneyGained = finalScore / 10
+        self.scoreInfo.accept(finalScore)
+        self.moneyInfo.accept(finalScore/10)
         self.newGameStatus = newGameStatus
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
@@ -24,7 +33,7 @@ final class GameOverViewModel: CommonViewModel {
     }
     
     private func storeReward() {
-        storage.raiseMoney(by: self.moneyGained)
+        storage.raiseMoney(by: moneyInfo.value)
     }
     
     func makeMoveAction(to viewController: GameOverViewControllerType) {

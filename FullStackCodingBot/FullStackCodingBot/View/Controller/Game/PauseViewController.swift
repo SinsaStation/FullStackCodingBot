@@ -1,12 +1,12 @@
 import UIKit
 
 final class PauseViewController: UIViewController, ViewModelBindableType {
-
+    
+    var viewModel: PauseViewModel!
+    
     @IBOutlet var buttonController: PauseButtonController!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var backgroundView: ReplicateAnimationView!
-    
-    var viewModel: PauseViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,8 @@ final class PauseViewController: UIViewController, ViewModelBindableType {
             self.viewModel.makeMoveAction(to: viewController)
         }
         
-        scoreLabel.text = "\(viewModel.currentScore)"
+        viewModel.currentScoreInfo
+            .drive(scoreLabel.rx.text)
+            .disposed(by: rx.disposeBag)
     }
 }
