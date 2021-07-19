@@ -20,7 +20,7 @@ final class GameViewModel: CommonViewModel {
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     private(set) var newDirection = BehaviorRelay<Direction?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
-    
+    private var feedbackGenerator: UINotificationFeedbackGenerator?
     private(set) lazy var pauseAction: Action<Void, Void> = Action {
         self.timer?.cancel()
         self.newGameStatus.accept(.pause)
@@ -31,6 +31,7 @@ final class GameViewModel: CommonViewModel {
         self.gameUnitManager = gameUnitManager
         timeProgress.becomeCurrent(withPendingUnitCount: totalTime)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        setupFeedbackGenerator()
     }
     
     func execute() {
@@ -106,6 +107,7 @@ final class GameViewModel: CommonViewModel {
     }
     
     private func wrongAction() {
+        feedbackGenerator?.notificationOccurred(.error)
         timeMinus(by: GameSetting.wrongTime)
         gameMayOver()
     }
@@ -122,5 +124,10 @@ final class GameViewModel: CommonViewModel {
         let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, currentScore: currentScore, newGameStatus: newGameStatus)
         let pauseScene = Scene.pause(pauseViewModel)
         return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, with: StoryboardType.game, animated: false)
+    }
+    
+    private func setupFeedbackGenerator() {
+        feedbackGenerator = UINotificationFeedbackGenerator()
+        feedbackGenerator?.prepare()
     }
 }
