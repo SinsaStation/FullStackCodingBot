@@ -2,7 +2,7 @@ import UIKit
 
 final class LevelUpButton: UIButton {
     
-    @IBOutlet var contentView: LevelUpButton!
+    @IBOutlet var contentView: UIView!
     @IBOutlet weak var requiredMoneyLabel: UILabel!
     
     required init?(coder: NSCoder) {
@@ -14,7 +14,7 @@ final class LevelUpButton: UIButton {
         super.init(frame: frame)
         loadXib()
     }
-    
+        
     func configure(_ unit: Unit) {
         requiredMoneyLabel.text = "\(unit.level*100)"
     }

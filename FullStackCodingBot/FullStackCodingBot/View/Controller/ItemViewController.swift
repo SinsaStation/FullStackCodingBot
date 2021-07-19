@@ -64,12 +64,7 @@ private extension ItemViewController {
     private func setupButtonAction() {
         levelUpButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
-                switch self.viewModel.isPossibleToLevelUp.value {
-                case true:
-                    viewModel.makeActionLeveUp()
-                case false:
-                    break
-                }
+                self.viewModel.makeActionLeveUp()
             }).disposed(by: rx.disposeBag)
     }
 }
