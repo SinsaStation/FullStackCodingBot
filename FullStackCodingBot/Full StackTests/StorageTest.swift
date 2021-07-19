@@ -25,7 +25,11 @@ class StorageTest: XCTestCase {
         let requiredMoney = unit.level * 100
         mockStorage.verifyLevelupMethod(to: unit, using: requiredMoney)
     }
-
+    
+    func test_ShouldCreate() {
+        let unit = Unit(info: .cSharp, level: 1)
+        mockStorage.verifyCreatMethod(unit: unit)
+    }
 }
 
 class MockStorage: NSObject, ItemStorageType {
@@ -34,6 +38,7 @@ class MockStorage: NSObject, ItemStorageType {
     var raiseLevelupMethodCallCount = 0
     var raiseMoneyMethodCallCount = 0
     var updateMethodCallCount = 0
+    var createdMethodCallCount = 0
     
     private var myMoney = 1_000
     private lazy var moneyStatus = BehaviorSubject<Int>(value: myMoney)
@@ -55,6 +60,7 @@ class MockStorage: NSObject, ItemStorageType {
     
     @discardableResult
     func create(item: Unit) -> Observable<Unit> {
+        createdMethodCallCount += 1
         items.append(item)
         store.onNext(items)
         return Observable.just(item)
@@ -107,5 +113,12 @@ class MockStorage: NSObject, ItemStorageType {
         XCTAssertEqual(updated.level, 3)
         XCTAssertEqual(updateMethodCallCount, 1)
         XCTAssertEqual(800, myMoney)
+    }
+    
+    func verifyCreatMethod(unit: Unit) {
+        create(item: unit)
+        XCTAssertEqual(createdMethodCallCount, 1)
+        XCTAssertEqual(itemList().count, 2)
+        XCTAssertEqual(itemList().last!, unit)
     }
 }
