@@ -10,7 +10,7 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var mainItemView: MainItemView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var itemCollectionView: UICollectionView!
-    @IBOutlet weak var levelUpButton: UIButton!
+    @IBOutlet weak var levelUpButton: LevelUpButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ private extension ItemViewController {
     
     private func setupItemInfomation(from unit: Unit) {
         mainItemView.configure(unit)
-        levelUpButton.titleLabel?.text = "\(unit.level * 100)"
+        levelUpButton.configure(unit)
         viewModel.checkLevelUpPrice()
     }
     
