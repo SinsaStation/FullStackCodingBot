@@ -24,11 +24,6 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
                 cell.configure(unit: unit)
             }.disposed(by: rx.disposeBag)
         
-        viewModel.isPossibleToLevelUp
-            .subscribe(onNext: { [unowned self] levelUp in
-                self.observeLevelUpButton(levelUp)
-            }).disposed(by: rx.disposeBag)
-        
         viewModel.selectedUnit
             .subscribe(onNext: { [unowned self] unit in
                 self.setupItemInfomation(from: unit)
@@ -62,25 +57,20 @@ private extension ItemViewController {
     
     private func setupItemInfomation(from unit: Unit) {
         mainItemView.configure(unit)
+        levelUpButton.titleLabel?.text = "\(unit.level * 100)"
         viewModel.checkLevelUpPrice()
     }
     
     private func setupButtonAction() {
         levelUpButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
-                self.viewModel.makeActionLeveUp()
+                switch self.viewModel.isPossibleToLevelUp.value {
+                case true:
+                    viewModel.makeActionLeveUp()
+                case false:
+                    break
+                }
             }).disposed(by: rx.disposeBag)
-    }
-    
-    private func observeLevelUpButton(_ levelUp: Bool) {
-        switch levelUp {
-        case true:
-            levelUpButton.isEnabled = true
-            levelUpButton.setTitleColor(.black, for: .normal)
-        case false:
-            levelUpButton.isEnabled = false
-            levelUpButton.setTitleColor(.gray, for: .normal)
-        }
     }
 }
 
