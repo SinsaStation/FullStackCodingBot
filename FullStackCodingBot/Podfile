@@ -13,4 +13,16 @@ target 'Full Stack' do
    pod 'Action'
    pod 'SwiftLint'
    pod 'GhostTypewriter'
+
+   target 'Full StackTests' do
+
+     # Pods for FullStackTest
+     pod 'RxSwift'
+     pod 'RxCocoa'
+     pod 'NSObject+Rx'
+     pod 'Alamofire'
+     pod 'Action'
+     pod 'SwiftLint'
+     pod 'GhostTypewriter'
+  end
 end
