@@ -1,24 +1,36 @@
 import XCTest
 import RxSwift
 import RxCocoa
+import NSObject_Rx
 
 class StorageTest: XCTestCase {
     
+    private var mockStorage: MockStorage!
+    private var disposeBag: DisposeBag!
+    
     override func setUpWithError() throws {
+        mockStorage = MockStorage()
+        disposeBag = DisposeBag()
     }
 
     override func tearDownWithError() throws {
     }
 
-    func testExample() throws {
+    func test_ShouldRaiseMoney() {
+        mockStorage.verifyMoneyMethod(get: 1_000)
     }
 
-    func testPerformanceExample() throws {
+    func test_ShouldRaiseLevel() {
+        let unit = Unit(info: .cPlusPlus, level: 2)
+        let requiredMoney = unit.level * 100
+        mockStorage.verifyLevelupMethod(to: unit, using: requiredMoney)
     }
 
 }
 
-class MockStorage: ItemStorageType {
+class MockStorage: NSObject, ItemStorageType {
+    
+    var availableMoenyMethodCallCount = 0
     
     private var myMoney = 1_000
     private lazy var moneyStatus = BehaviorSubject<Int>(value: myMoney)
@@ -26,8 +38,10 @@ class MockStorage: ItemStorageType {
     private var items = [Unit(info: .cPlusPlus, level: 1)]
     private lazy var store = BehaviorSubject<[Unit]>(value: items)
     
+    // Default Implementation
     @discardableResult
     func availableMoeny() -> Observable<Int> {
+        availableMoenyMethodCallCount+=1
         return moneyStatus
     }
     
@@ -70,5 +84,19 @@ class MockStorage: ItemStorageType {
     func raiseMoney(by money: Int) {
         myMoney += money
         moneyStatus.onNext(myMoney)
+    }
+    
+    // Test
+    func verifyMoneyMethod(get money: Int) {
+        availableMoeny()
+        XCTAssertEqual(availableMoenyMethodCallCount, 1)
+        raiseMoney(by: money)
+        XCTAssertEqual(myMoney, 2_000)
+    }
+    
+    func verifyLevelupMethod(to unit: Unit, using money: Int) {
+        let updated = raiseLevel(to: unit, using: money)
+        XCTAssertEqual(updated.level, 3)
+        XCTAssertEqual(800, myMoney)
     }
 }
