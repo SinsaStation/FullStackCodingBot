@@ -5,12 +5,12 @@ import Action
 
 final class PauseViewModel: CommonViewModel {
 
-    private(set) var currentScore: Int
+    private(set) var currentScore = BehaviorRelay<Int>(value: 0)
     private var newGameStatus: BehaviorRelay<GameStatus>
     
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, currentScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
         self.newGameStatus = newGameStatus
-        self.currentScore = currentScore
+        self.currentScore.accept(currentScore)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
     
