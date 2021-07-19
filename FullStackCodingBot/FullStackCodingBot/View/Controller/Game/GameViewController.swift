@@ -3,6 +3,8 @@ import RxCocoa
 
 final class GameViewController: UIViewController, ViewModelBindableType {
     
+    var viewModel: GameViewModel!
+    
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet var buttonController: GameButtonController!
     @IBOutlet weak var unitPerspectiveView: UnitPerspectiveView!
@@ -10,8 +12,6 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var leftUnitStackView: UIStackView!
     @IBOutlet weak var timeView: TimeProgressView!
     @IBOutlet weak var pauseButton: UIButton!
-    
-    var viewModel: GameViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,18 +23,14 @@ final class GameViewController: UIViewController, ViewModelBindableType {
             self.viewModel.moveUnitAction(to: direction)
         }
         
-        pauseButton.rx.action = viewModel.pauseAction
-        
         viewModel.newDirection
             .subscribe(onNext: { [unowned self] direction in
-                guard let direction = direction else { return }
-                self.unitPerspectiveView.removeFirstUnitLayer(to: direction)
+                self.checkRemove(to: direction)
         }).disposed(by: rx.disposeBag)
         
         viewModel.scoreAdded
             .subscribe(onNext: { [unowned self] _ in
-                let newScore = self.viewModel.currentScore
-                self.scoreLabel.text = "\(newScore)"
+                self.setupScoreLabel(self.viewModel.currentScore)
         }).disposed(by: rx.disposeBag)
         
         viewModel.newMemberUnit
@@ -50,12 +46,8 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         
         viewModel.newOnGameUnits
             .subscribe(onNext: { [unowned self] newUnits in
-                guard let newUnits = newUnits else { return }
-                let unitImages = newUnits.map { $0.image }
-                self.unitPerspectiveView.configure(with: unitImages)
+                self.setupPerspectiveView(newUnits)
         }).disposed(by: rx.disposeBag)
-        
-        timeView.observedProgress = viewModel.timeProgress
         
         viewModel.newGameStatus
             .subscribe(onNext: { [unowned self] gameStatus in
@@ -68,7 +60,15 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                     self.viewModel.timerStart()
                 }
         }).disposed(by: rx.disposeBag)
+        
+        pauseButton.rx.action = viewModel.pauseAction
+        
+        timeView.observedProgress = viewModel.timeProgress
     }
+}
+
+// MARK: Game Logic
+private extension GameViewController {
     
     private func gameStart() {
         clearViews()
@@ -96,5 +96,20 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         
         let unitImage = UIImage(named: newStackMember.content.image)
         imageView.image = unitImage
+    }
+    
+    private func checkRemove(to direction: Direction?) {
+        guard let direction = direction else { return }
+        unitPerspectiveView.removeFirstUnitLayer(to: direction)
+    }
+    
+    private func setupScoreLabel(_ score: Int) {
+        scoreLabel.text = "\(score)"
+    }
+    
+    private func setupPerspectiveView(_ newUnits: [Unit]?) {
+        guard let newUnits = newUnits else { return }
+        let unitImages = newUnits.map { $0.image }
+        unitPerspectiveView.configure(with: unitImages)
     }
 }
