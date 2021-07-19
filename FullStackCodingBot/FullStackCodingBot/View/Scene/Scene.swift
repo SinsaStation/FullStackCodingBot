@@ -8,6 +8,7 @@ enum Scene {
     case game(GameViewModel)
     case pause(PauseViewModel)
     case gameOver(GameOverViewModel)
+    case alert(AlertMessage)
 }
 
 extension Scene {
@@ -44,6 +45,7 @@ extension Scene {
             }
             itemVC.bind(viewModel: viewModel)
             return itemVC
+            
         case .game(let viewModel):
             guard var gameVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.game) as? GameViewController else {
                 fatalError()
@@ -64,7 +66,12 @@ extension Scene {
             }
             gameOverVC.bind(viewModel: viewModel)
             return gameOverVC
-            
+        
+        case .alert(let message):
+            let alertScene = UIAlertController(title: message.content.title, message: message.content.content, preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: message.content.confirm, style: .cancel)
+            alertScene.addAction(confirmAction)
+            return alertScene
         }
     }
 }

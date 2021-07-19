@@ -43,8 +43,14 @@ final class ItemViewModel: CommonViewModel {
     }
     
     func makeActionLeveUp() {
-        let requiredMoney = selectedUnit.value.level * 100
-        let new = storage.raiseLevel(to: selectedUnit.value, using: requiredMoney)
-        selectedUnit.accept(new)
+        switch isPossibleToLevelUp.value {
+        case true:
+            let requiredMoney = selectedUnit.value.level * 100
+            let new = storage.raiseLevel(to: selectedUnit.value, using: requiredMoney)
+            selectedUnit.accept(new)
+        case false:
+            let alertScene = Scene.alert(AlertMessage.levelUp)
+            self.sceneCoordinator.transition(to: alertScene, using: .alert, with: StoryboardType.main, animated: true)
+        }
     }
 }
