@@ -5,12 +5,13 @@ target 'Full Stack' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for FullStackCodingBot
-   pod 'RxSwift'
-   pod 'RxCocoa'
-   pod 'NSObject+Rx'
-   pod 'Alamofire'
-   pod 'Action'
-   pod 'SwiftLint'
-   pod 'GhostTypewriter'
+  # Pods for Full Stack
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'NSObject+Rx'
+  pod 'Alamofire'
+  pod 'Action'
+  pod 'SwiftLint'
+  pod 'GhostTypewriter'
+
 end
