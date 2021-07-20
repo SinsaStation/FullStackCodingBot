@@ -95,7 +95,7 @@ final class GameViewModel: CommonViewModel {
         scoreAdded.accept(scoreGained)
         gameUnitManager.raiseAnswerCount()
         
-        if gameUnitManager.isTimeToLevelUp() { sendNewUnitToStack(by: 1) }
+        if gameUnitManager.isTimeToLevelUp() { sendNewUnitToStack(by: GameSetting.timeUnit) }
         
         onGameUnitNeedsChange()
     }
