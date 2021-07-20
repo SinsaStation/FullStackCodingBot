@@ -1,5 +1,6 @@
 import UIKit
 import GoogleMobileAds
+
 final class ShopViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: ShopViewModel!
