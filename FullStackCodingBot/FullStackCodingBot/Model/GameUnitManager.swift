@@ -78,7 +78,19 @@ final class GameUnitManager: GameUnitManagerType {
     }
     
     func isTimeToLevelUp() -> Bool {
-        return memberCount < GameSetting.maxUnitCount && answerCount >= memberCount * 15
+        
+        guard memberCount < GameSetting.maxUnitCount else { return false }
+        
+        switch memberCount {
+        case 2:
+            return answerCount >= memberCount * 20
+        case 3:
+            return answerCount >= memberCount * 30
+        case 4:
+            return answerCount >= memberCount * 50
+        default:
+            return answerCount >= memberCount * 60
+        }
     }
     
     func newMember() -> StackMemberUnit {
