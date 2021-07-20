@@ -6,13 +6,13 @@ class ItemStorage: ItemStorageType {
     private var storage: [Unit] = [
         Unit(info: .cPlusPlus, level: 1),
         Unit(info: .java, level: 1),
-        Unit(info: .swift, level: 3),
+        Unit(info: .swift, level: 1),
         Unit(info: .kotlin, level: 1),
         Unit(info: .python, level: 1),
         Unit(info: .cSharp, level: 2),
         Unit(info: .php, level: 1),
-        Unit(info: .javaScript, level: 2),
-        Unit(info: .ruby, level: 2),
+        Unit(info: .javaScript, level: 1),
+        Unit(info: .ruby, level: 1),
         Unit(info: .theC, level: 1)
     ]
     

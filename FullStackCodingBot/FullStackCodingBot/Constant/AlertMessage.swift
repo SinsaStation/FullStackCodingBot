@@ -3,6 +3,7 @@ import Foundation
 enum AlertMessage {
     case levelUp
     
+    // swiftlint:disable:next large_tuple
     var content: (title: String, content: String, confirm: String) {
         switch self {
         case .levelUp:

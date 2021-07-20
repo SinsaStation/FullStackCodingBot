@@ -59,7 +59,7 @@ final class GameUnitManager: GameUnitManagerType {
     
     func isMoveActionCorrect(to direction: Direction) -> Bool {
         let currentUnit = onGames[0]
-
+        
         switch direction {
         case .left:
             return leftStack.contains(currentUnit)
@@ -78,17 +78,31 @@ final class GameUnitManager: GameUnitManagerType {
     }
     
     func isTimeToLevelUp() -> Bool {
-        return memberCount < GameSetting.maxUnitCount && answerCount >= memberCount * 10
+        
+        guard memberCount < GameSetting.maxUnitCount else { return false }
+        
+        switch memberCount {
+        case 2:
+            return answerCount >= memberCount * 20
+        case 3:
+            return answerCount >= memberCount * 30
+        case 4:
+            return answerCount >= memberCount * 50
+        default:
+            return answerCount >= memberCount * 60
+        }
     }
     
     func newMember() -> StackMemberUnit {
         let newUnit = unused.removeLast()
         memberCount += 1
         
-        if memberCount % 2 == 0 {
+        switch memberCount % 2 == 0 {
+        
+        case true:
             leftStack.append(newUnit)
             return StackMemberUnit(content: newUnit, order: leftStack.count-1, direction: .left)
-        } else {
+        case false:
             rightStack.append(newUnit)
             return StackMemberUnit(content: newUnit, order: rightStack.count-1, direction: .right)
         }
