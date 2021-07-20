@@ -58,12 +58,11 @@ final class GameViewModel: CommonViewModel {
     }
     
     func timerStart() {
-        let timeUnit = 1
         timer = DispatchSource.makeTimerSource()
-        timer?.schedule(deadline: .now()+1, repeating: .seconds(timeUnit))
+        timer?.schedule(deadline: .now()+1, repeating: .seconds(GameSetting.timeUnit))
         
         timer?.setEventHandler { [weak self] in
-            self?.timeMinus(by: timeUnit)
+            self?.timeMinus(by: GameSetting.timeUnit)
             self?.gameMayOver()
         }
         timer?.activate()
