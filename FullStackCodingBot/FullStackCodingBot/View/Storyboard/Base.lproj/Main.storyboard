@@ -182,21 +182,6 @@
             </objects>
             <point key="canvasLocation" x="14.018691588785046" y="88.120950323974085"/>
         </scene>
-        <!--Google Ads View Controller-->
-        <scene sceneID="fQ7-lL-mPF">
-            <objects>
-                <viewController restorationIdentifier="AdsVC" storyboardIdentifier="AdsVC" id="q1k-DA-Ul0" customClass="GoogleAdsViewController" customModule="Full_Stack" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2jv-Re-hsN">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="khj-AF-7UM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zV3-dm-Gef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="744" y="-570"/>
-        </scene>
         <!--Shop View Controller-->
         <scene sceneID="xnF-VP-sQH">
             <objects>
@@ -216,7 +201,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajL-uC-MS9">
                                 <rect key="frame" x="68.666666666666686" y="391" width="291" height="144"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="광고보고 보상 두배로 받기">
+                                <state key="normal" title="광고보고 선물받기">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
