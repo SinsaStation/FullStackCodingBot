@@ -182,8 +182,8 @@
 		715BB20426943CD100286B31 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				715BB20526943CDE00286B31 /* ItemStorageType.swift */,
-				715BB20726943D5600286B31 /* ItemStorage.swift */,
+				717EAD3B26A656E200E0CDB7 /* GameManager */,
+				717EAD3A26A656D600E0CDB7 /* MemoryStorage */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -208,6 +208,24 @@
 				E41C85DE269C5149008F2E91 /* PauseButtonController.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		717EAD3A26A656D600E0CDB7 /* MemoryStorage */ = {
+			isa = PBXGroup;
+			children = (
+				715BB20526943CDE00286B31 /* ItemStorageType.swift */,
+				715BB20726943D5600286B31 /* ItemStorage.swift */,
+			);
+			path = MemoryStorage;
+			sourceTree = "<group>";
+		};
+		717EAD3B26A656E200E0CDB7 /* GameManager */ = {
+			isa = PBXGroup;
+			children = (
+				E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */,
+				E41C85D3269BFB84008F2E91 /* GameUnitManager.swift */,
+			);
+			path = GameManager;
 			sourceTree = "<group>";
 		};
 		71DF64B72692C06100557693 /* Controller */ = {
@@ -359,8 +377,6 @@
 			isa = PBXGroup;
 			children = (
 				E45B0AC82692F9CF006FDE3D /* Unit.swift */,
-				E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */,
-				E41C85D3269BFB84008F2E91 /* GameUnitManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
