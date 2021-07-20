@@ -42,7 +42,8 @@ final class GameUnitManager: GameUnitManagerType {
     }
     
     func removeAndRefilled() -> [Unit] {
-        onGames.remove(at: 0)
+        guard !onGames.isEmpty else { return [] }
+        onGames.removeFirst()
         
         let unitsToUse = leftStack + rightStack
         generateNewUnit(from: unitsToUse, count: 1)
@@ -51,14 +52,16 @@ final class GameUnitManager: GameUnitManagerType {
     }
     
     private func generateNewUnit(from stack: [Unit], count: Int) {
+        guard let firstUnit = stack.first else { return }
+        
         (0..<count).forEach { _ in
-            let newUnit = stack.randomElement() ?? stack[0]
+            let newUnit = stack.randomElement() ?? firstUnit
             onGames.append(newUnit)
         }
     }
     
     func isMoveActionCorrect(to direction: Direction) -> Bool {
-        let currentUnit = onGames[0]
+        guard let currentUnit = onGames.first else { return false }
         
         switch direction {
         case .left:
@@ -69,8 +72,8 @@ final class GameUnitManager: GameUnitManagerType {
     }
     
     func currentHeadUnitScore() -> Int? {
-        guard !onGames.isEmpty else { return nil }
-        return onGames[0].score()
+        guard let headUnit = onGames.first else { return nil }
+        return headUnit.score()
     }
     
     func raiseAnswerCount() {
