@@ -191,8 +191,11 @@
 		7165CDDC26957DC300891214 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				71DF654E2692FB4C00557693 /* ViewModelBindableType.swift */,
 				E4D7C6412693E7B200D58BA2 /* MainViewController.swift */,
-				710A9DAB2692AD5C0090B38A /* MainButtonController.swift */,
+				71DF64B82692C13A00557693 /* ShopViewController.swift */,
+				71DF64BC2692C18F00557693 /* RankViewController.swift */,
+				71DF64BE2692C1C600557693 /* ItemViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -201,11 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				710D0D412693EA3200244A16 /* GameViewController.swift */,
-				7165CDDE26957DE400891214 /* GameButtonController.swift */,
 				E4779C6626983F5700B92D24 /* GameOverViewController.swift */,
-				E41C85D5269C1C35008F2E91 /* GameOverButtonController.swift */,
 				E41C85D9269C4E8F008F2E91 /* PauseViewController.swift */,
-				E41C85DE269C5149008F2E91 /* PauseButtonController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -228,15 +228,31 @@
 			path = GameManager;
 			sourceTree = "<group>";
 		};
+		717EAD3C26A6576600E0CDB7 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				7165CDDE26957DE400891214 /* GameButtonController.swift */,
+				E41C85D5269C1C35008F2E91 /* GameOverButtonController.swift */,
+				710A9DAB2692AD5C0090B38A /* MainButtonController.swift */,
+				E41C85DE269C5149008F2E91 /* PauseButtonController.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		717EAD3D26A6578200E0CDB7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7165CDDC26957DC300891214 /* Main */,
+				7165CDDD26957DD600891214 /* Game */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		71DF64B72692C06100557693 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7165CDDD26957DD600891214 /* Game */,
-				7165CDDC26957DC300891214 /* Main */,
-				71DF64B82692C13A00557693 /* ShopViewController.swift */,
-				71DF64BC2692C18F00557693 /* RankViewController.swift */,
-				71DF64BE2692C1C600557693 /* ItemViewController.swift */,
-				71DF654E2692FB4C00557693 /* ViewModelBindableType.swift */,
+				717EAD3D26A6578200E0CDB7 /* ViewController */,
+				717EAD3C26A6576600E0CDB7 /* Button */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
