@@ -3,10 +3,10 @@ import GoogleMobileAds
 final class ShopViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: ShopViewModel!
+    private var rewardedAd: GADRewardedAd?
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var moveToAdsButton: UIButton!
-    var rewardedAd: GADRewardedAd?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,5 +54,10 @@ private extension ShopViewController {
 
 // MARK: Google Ads
 extension ShopViewController: GADFullScreenContentDelegate {
-    
+    // swiftlint:disable:next identifier_name
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ads dismissed")
+        // 같은 광고를 다시 셋업해서 에러가 나는 거 같음 수정필요 (No ad to show)
+        setupGoogleAds()
+    }
 }
