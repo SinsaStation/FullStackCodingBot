@@ -9,3 +9,7 @@ enum IdentifierVC {
     static let pause = "PauseVC"
     static let gameOver = "GameOverVC"
 }
+
+enum IdentiferAD {
+    static let test = "ca-app-pub-3940256099942544/1712485313"
+}

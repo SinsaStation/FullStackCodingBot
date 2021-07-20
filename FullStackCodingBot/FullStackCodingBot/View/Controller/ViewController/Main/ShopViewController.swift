@@ -6,38 +6,53 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var moveToAdsButton: UIButton!
-    var rewaredAd: GADRewardedAd?
+    var rewardedAd: GADRewardedAd?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let request = GADRequest()
-        GADRewardedAd.load(withAdUnitID: "ca-app-pub-3940256099942544/1712485313", request: request) {ad, error in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                self.rewaredAd = ad
-                print("Ad Loaded")
-                self.rewaredAd?.fullScreenContentDelegate = self
-            }
-        }
+        setup()
     }
     
     func bindViewModel() {
         
         moveToAdsButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-                if self.rewaredAd != nil {
-                    self.rewaredAd?.present(fromRootViewController: self, userDidEarnRewardHandler: {
-                        print("money money")
-                    })
-                }
+                self.loadGoogleAds(rewardedAd)
             }).disposed(by: rx.disposeBag)
         
         cancelButton.rx.action = viewModel.cancelAction
     }
 }
 
+// MARK: Setup
+private extension ShopViewController {
+    private func setup() {
+        setupGoogleAds()
+    }
+    
+    private func setupGoogleAds() {
+        let request = GADRequest()
+        // 하기 ID는 Test ID로 앱 베포시에 변경해야 함!
+        GADRewardedAd.load(withAdUnitID: IdentiferAD.test, request: request) { ads, error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                self.rewardedAd = ads
+                print("Ad Loaded")
+                self.rewardedAd?.fullScreenContentDelegate = self
+            }
+        }
+    }
+    
+    private func loadGoogleAds(_ status: GADRewardedAd?) {
+        guard status != nil else { return }
+        rewardedAd?.present(fromRootViewController: self) {
+            print("Get Moeny")
+        }
+    }
+}
+
+// MARK: Google Ads
 extension ShopViewController: GADFullScreenContentDelegate {
     
 }
