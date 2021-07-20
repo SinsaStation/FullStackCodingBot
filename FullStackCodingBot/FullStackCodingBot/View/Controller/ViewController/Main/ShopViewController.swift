@@ -30,6 +30,7 @@ private extension ShopViewController {
         setupGoogleAds()
     }
     
+    // 해당 메서드 개선 필요, 사용자가 광고를 보기 위해 일정시간(약 2초) 대기 필요
     private func setupGoogleAds() {
         let request = GADRequest()
         // 하기 ID는 Test ID로 앱 베포시에 변경해야 함!
