@@ -198,22 +198,34 @@
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <state key="normal" backgroundImage="button_action_left_off"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajL-uC-MS9">
+                                <rect key="frame" x="68.666666666666686" y="391" width="291" height="144"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="광고보고 선물받기">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BVS-bL-EVd"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ajL-uC-MS9" firstAttribute="height" secondItem="xs7-IX-xOw" secondAttribute="height" multiplier="0.155508" id="2d9-1Z-MFh"/>
                             <constraint firstItem="L3G-k2-a1u" firstAttribute="bottom" secondItem="BVS-bL-EVd" secondAttribute="bottom" constant="1" id="3El-ia-vFY"/>
+                            <constraint firstItem="ajL-uC-MS9" firstAttribute="centerX" secondItem="xs7-IX-xOw" secondAttribute="centerX" id="5wA-35-ZJ5"/>
                             <constraint firstItem="L3G-k2-a1u" firstAttribute="leading" secondItem="BVS-bL-EVd" secondAttribute="leading" multiplier="1.05" constant="10" id="Nfd-uE-4G0"/>
                             <constraint firstItem="L3G-k2-a1u" firstAttribute="width" secondItem="xs7-IX-xOw" secondAttribute="width" multiplier="0.2" id="jUb-ub-qrA"/>
+                            <constraint firstItem="ajL-uC-MS9" firstAttribute="width" secondItem="xs7-IX-xOw" secondAttribute="width" multiplier="0.679907" id="qRy-IS-Mto"/>
+                            <constraint firstItem="ajL-uC-MS9" firstAttribute="centerY" secondItem="xs7-IX-xOw" secondAttribute="centerY" id="tnd-w3-8U9"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="L3G-k2-a1u" id="ecH-hw-FU0"/>
+                        <outlet property="moveToAdsButton" destination="ajL-uC-MS9" id="2dO-PP-lke"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzg-5D-7gu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="744.61538461538464" y="87.440758293838854"/>
+            <point key="canvasLocation" x="744.3925233644859" y="86.825053995680349"/>
         </scene>
         <!--Rank View Controller-->
         <scene sceneID="ROW-M9-iZ2">

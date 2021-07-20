@@ -13,6 +13,7 @@ target 'Full Stack' do
    pod 'Action'
    pod 'SwiftLint'
    pod 'GhostTypewriter'
+   pod 'Google-Mobile-Ads-SDK'
 
    target 'Full StackTests' do
 
