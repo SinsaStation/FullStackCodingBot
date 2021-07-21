@@ -1,5 +1,6 @@
 import UIKit
 import GoogleMobileAds
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -8,6 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        FirebaseApp.configure()
         let coordinator = SceneCoordinator(window: window!)
         let storage = ItemStorage()
         let mainViewModel = MainViewModel(sceneCoordinator: coordinator, storage: storage)
