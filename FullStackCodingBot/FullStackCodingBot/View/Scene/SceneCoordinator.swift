@@ -13,9 +13,9 @@ final class SceneCoordinator: SceneCoordinatorType {
     }
     
     @discardableResult
-    func transition(to scene: Scene, using style: TransitionStyle, animated: Bool) -> Completable {
+    func transition(to scene: Scene, using style: TransitionStyle, with type: StoryboardType, animated: Bool) -> Completable {
         let subject = PublishSubject<Void>()
-        let target = scene.instantiate()
+        let target = scene.instantiate(from: type.name)
         
         switch style {
         case .root:
@@ -29,6 +29,11 @@ final class SceneCoordinator: SceneCoordinatorType {
                 subject.onCompleted()
             }
             currentVC = target
+        
+        case .alert:
+            currentVC.present(target, animated: animated) {
+                subject.onCompleted()
+            }
         }
         return subject.ignoreElements().asCompletable()
     }

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "cSharp.png",
+      "filename" : "c sharp-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "c sharp-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "c sharp.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

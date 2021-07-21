@@ -9,28 +9,29 @@ enum GameStatus {
     case resume
 }
 
-class GameViewModel: CommonViewModel {
+final class GameViewModel: CommonViewModel {
 
     private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
     private var gameUnitManager: GameUnitManagerType
     private var timer: DispatchSourceTimer?
-    private(set) var timeProgress = Progress(totalUnitCount: Perspective.startingTime)
+    private(set) var timeProgress = Progress(totalUnitCount: GameSetting.startingTime)
     private(set) var currentScore = 0
     private(set) var scoreAdded = BehaviorRelay<Int>(value: 0)
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     private(set) var newDirection = BehaviorRelay<Direction?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
-    
+    private var feedbackGenerator: UINotificationFeedbackGenerator?
     private(set) lazy var pauseAction: Action<Void, Void> = Action {
         self.timer?.cancel()
         self.newGameStatus.accept(.pause)
         return self.pause().asObservable().map { _ in }
     }
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, pauseAction: CocoaAction? = nil, gameUnitManager: GameUnitManagerType, totalTime: Int64 = Perspective.startingTime) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, pauseAction: CocoaAction? = nil, gameUnitManager: GameUnitManagerType, totalTime: Int64 = GameSetting.startingTime) {
         self.gameUnitManager = gameUnitManager
         timeProgress.becomeCurrent(withPendingUnitCount: totalTime)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        setupFeedbackGenerator()
     }
     
     func execute() {
@@ -43,10 +44,10 @@ class GameViewModel: CommonViewModel {
     
     private func newGame() {
         gameUnitManager.resetAll()
-        sendNewUnitToStack(by: Perspective.startingCount)
+        sendNewUnitToStack(by: GameSetting.startingCount)
         currentScore = .zero
         scoreAdded.accept(0)
-        timeProgress.completedUnitCount = Perspective.startingTime
+        timeProgress.completedUnitCount = GameSetting.startingTime
     }
     
     private func sendNewUnitToStack(by count: Int) {
@@ -57,12 +58,11 @@ class GameViewModel: CommonViewModel {
     }
     
     func timerStart() {
-        let timeUnit = 1
         timer = DispatchSource.makeTimerSource()
-        timer?.schedule(deadline: .now()+1, repeating: .seconds(timeUnit))
+        timer?.schedule(deadline: .now()+1, repeating: .seconds(GameSetting.timeUnit))
         
         timer?.setEventHandler { [weak self] in
-            self?.timeMinus(by: timeUnit)
+            self?.timeMinus(by: GameSetting.timeUnit)
             self?.gameMayOver()
         }
         timer?.activate()
@@ -95,7 +95,7 @@ class GameViewModel: CommonViewModel {
         scoreAdded.accept(scoreGained)
         gameUnitManager.raiseAnswerCount()
         
-        if gameUnitManager.isTimeToLevelUp() { sendNewUnitToStack(by: 1) }
+        if gameUnitManager.isTimeToLevelUp() { sendNewUnitToStack(by: GameSetting.timeUnit) }
         
         onGameUnitNeedsChange()
     }
@@ -106,7 +106,8 @@ class GameViewModel: CommonViewModel {
     }
     
     private func wrongAction() {
-        timeMinus(by: Perspective.wrongTime)
+        feedbackGenerator?.notificationOccurred(.error)
+        timeMinus(by: GameSetting.wrongTime)
         gameMayOver()
     }
     
@@ -114,13 +115,18 @@ class GameViewModel: CommonViewModel {
     private func gameOver() -> Completable {
         let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, finalScore: currentScore, newGameStatus: newGameStatus)
         let gameOverScene = Scene.gameOver(gameOverViewModel)
-        return self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, animated: true)
+        return self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, with: StoryboardType.game, animated: true)
     }
     
     @discardableResult
     private func pause() -> Completable {
         let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, currentScore: currentScore, newGameStatus: newGameStatus)
         let pauseScene = Scene.pause(pauseViewModel)
-        return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, animated: false)
+        return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, with: StoryboardType.game, animated: false)
+    }
+    
+    private func setupFeedbackGenerator() {
+        feedbackGenerator = UINotificationFeedbackGenerator()
+        feedbackGenerator?.prepare()
     }
 }

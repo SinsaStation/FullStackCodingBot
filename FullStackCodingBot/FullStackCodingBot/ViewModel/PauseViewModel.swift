@@ -3,14 +3,18 @@ import RxSwift
 import RxCocoa
 import Action
 
-class PauseViewModel: CommonViewModel {
+final class PauseViewModel: CommonViewModel {
 
-    private(set) var currentScore: Int
+    private let currentScore = BehaviorRelay<Int>(value: 0)
     private var newGameStatus: BehaviorRelay<GameStatus>
+    
+    lazy var currentScoreInfo: Driver<String> = {
+        return currentScore.map {String($0)}.asDriver(onErrorJustReturn: "")
+    }()
     
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, currentScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
         self.newGameStatus = newGameStatus
-        self.currentScore = currentScore
+        self.currentScore.accept(currentScore)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
     
