@@ -36,5 +36,6 @@ final class MainViewController: UIViewController, ViewModelBindableType {
         buttonController.bind { [unowned self] viewController in
             self.viewModel.makeMoveAction(to: viewController)
         }
+        viewModel.execute()
     }
 }
