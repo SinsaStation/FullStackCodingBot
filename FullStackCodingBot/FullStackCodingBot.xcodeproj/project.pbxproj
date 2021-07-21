@@ -868,10 +868,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S62XM62ANC;
 				INFOPLIST_FILE = FullStackCodingBot/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = sinsasoft.fullstack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -891,10 +887,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S62XM62ANC;
 				INFOPLIST_FILE = FullStackCodingBot/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = sinsasoft.fullstack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

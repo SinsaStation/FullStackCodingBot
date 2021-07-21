@@ -9,6 +9,11 @@ enum GameSetting {
     static let timeUnit = 1
 }
 
+enum ShopSetting {
+    static let freeReward = 1
+    static let adForADay = 5
+}
+
 enum Text {
     static let title = "Full Stack \nCoding Master"
 }
