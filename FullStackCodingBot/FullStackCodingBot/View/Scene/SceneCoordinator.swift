@@ -29,6 +29,11 @@ final class SceneCoordinator: SceneCoordinatorType {
                 subject.onCompleted()
             }
             currentVC = target
+        
+        case .alert:
+            currentVC.present(target, animated: animated) {
+                subject.onCompleted()
+            }
         }
         return subject.ignoreElements().asCompletable()
     }

@@ -20,7 +20,7 @@ final class GameViewModel: CommonViewModel {
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     private(set) var newDirection = BehaviorRelay<Direction?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
-    
+    private var feedbackGenerator: UINotificationFeedbackGenerator?
     private(set) lazy var pauseAction: Action<Void, Void> = Action {
         self.timer?.cancel()
         self.newGameStatus.accept(.pause)
@@ -31,6 +31,7 @@ final class GameViewModel: CommonViewModel {
         self.gameUnitManager = gameUnitManager
         timeProgress.becomeCurrent(withPendingUnitCount: totalTime)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        setupFeedbackGenerator()
     }
     
     func execute() {
@@ -57,12 +58,11 @@ final class GameViewModel: CommonViewModel {
     }
     
     func timerStart() {
-        let timeUnit = 1
         timer = DispatchSource.makeTimerSource()
-        timer?.schedule(deadline: .now()+1, repeating: .seconds(timeUnit))
+        timer?.schedule(deadline: .now()+1, repeating: .seconds(GameSetting.timeUnit))
         
         timer?.setEventHandler { [weak self] in
-            self?.timeMinus(by: timeUnit)
+            self?.timeMinus(by: GameSetting.timeUnit)
             self?.gameMayOver()
         }
         timer?.activate()
@@ -95,7 +95,7 @@ final class GameViewModel: CommonViewModel {
         scoreAdded.accept(scoreGained)
         gameUnitManager.raiseAnswerCount()
         
-        if gameUnitManager.isTimeToLevelUp() { sendNewUnitToStack(by: 1) }
+        if gameUnitManager.isTimeToLevelUp() { sendNewUnitToStack(by: GameSetting.timeUnit) }
         
         onGameUnitNeedsChange()
     }
@@ -106,6 +106,7 @@ final class GameViewModel: CommonViewModel {
     }
     
     private func wrongAction() {
+        feedbackGenerator?.notificationOccurred(.error)
         timeMinus(by: GameSetting.wrongTime)
         gameMayOver()
     }
@@ -122,5 +123,10 @@ final class GameViewModel: CommonViewModel {
         let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, currentScore: currentScore, newGameStatus: newGameStatus)
         let pauseScene = Scene.pause(pauseViewModel)
         return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, with: StoryboardType.game, animated: false)
+    }
+    
+    private func setupFeedbackGenerator() {
+        feedbackGenerator = UINotificationFeedbackGenerator()
+        feedbackGenerator?.prepare()
     }
 }
