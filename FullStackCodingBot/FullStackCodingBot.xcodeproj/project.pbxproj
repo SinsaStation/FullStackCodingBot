@@ -862,7 +862,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Full Stack.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = S62XM62ANC;
 				INFOPLIST_FILE = FullStackCodingBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -885,7 +885,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Full Stack.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = S62XM62ANC;
 				INFOPLIST_FILE = FullStackCodingBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

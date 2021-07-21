@@ -59,9 +59,9 @@
                                             <constraint firstAttribute="width" secondItem="EIP-b4-gNF" secondAttribute="height" multiplier="512:336" id="imL-Q4-HIG"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coding Master" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qha-bS-eDq" customClass="TypewriterLabel" customModule="GhostTypewriter">
-                                        <rect key="frame" x="161" y="102.33333333333334" width="106.33333333333331" height="12"/>
-                                        <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="10"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coding Master" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="qha-bS-eDq" customClass="TypewriterLabel" customModule="GhostTypewriter">
+                                        <rect key="frame" x="131.33333333333331" y="93.666666666666686" width="165.33333333333331" height="29.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="25"/>
                                         <color key="textColor" name="digital_green"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -141,7 +141,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Pa3-jZ-hVU" secondAttribute="height" multiplier="2:1" id="nz7-4y-QkH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="32"/>
+                                <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="25"/>
                                 <state key="normal" title="Start" backgroundImage="button_start">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
