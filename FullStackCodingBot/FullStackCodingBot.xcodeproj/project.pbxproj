@@ -56,6 +56,7 @@
 		E4779C6926983F8000B92D24 /* GameOverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4779C6826983F8000B92D24 /* GameOverViewModel.swift */; };
 		E4C2C34D26A24666007BDF81 /* SkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34C26A24665007BDF81 /* SkyView.swift */; };
 		E4C2C34F26A292BB007BDF81 /* ReplicateAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */; };
+		E4CA08B926A8287B00AA6F03 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA08B826A8287B00AA6F03 /* Font.swift */; };
 		E4D7C63E2693E79800D58BA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7C63D2693E79800D58BA2 /* AppDelegate.swift */; };
 		E4D7C6422693E7B200D58BA2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7C6412693E7B200D58BA2 /* MainViewController.swift */; };
 		E4D7C6452693E7C200D58BA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D7C6432693E7C200D58BA2 /* Main.storyboard */; };
@@ -132,6 +133,7 @@
 		E4779C6826983F8000B92D24 /* GameOverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewModel.swift; sourceTree = "<group>"; };
 		E4C2C34C26A24665007BDF81 /* SkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyView.swift; sourceTree = "<group>"; };
 		E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicateAnimationView.swift; sourceTree = "<group>"; };
+		E4CA08B826A8287B00AA6F03 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		E4D7C63D2693E79800D58BA2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4D7C6412693E7B200D58BA2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E4D7C6442693E7C200D58BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				7165CDDA2695789300891214 /* SyetemSettings.swift */,
 				715A83ED269FE96300C9CEFF /* StoryboardType.swift */,
 				71307AB026A53C7B00C3191F /* AlertMessage.swift */,
+				E4CA08B826A8287B00AA6F03 /* Font.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				71DF65512692FBCC00557693 /* SceneCoordinatorType.swift in Sources */,
 				715A83EE269FE96300C9CEFF /* StoryboardType.swift in Sources */,
 				71307AB126A53C7B00C3191F /* AlertMessage.swift in Sources */,
+				E4CA08B926A8287B00AA6F03 /* Font.swift in Sources */,
 				71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */,
 				71DF65472692F97000557693 /* RankViewModel.swift in Sources */,
 				E4779C652697E92F00B92D24 /* TimeProgressView.swift in Sources */,

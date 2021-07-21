@@ -25,8 +25,10 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     }
     
     private func setupTitleLabel() {
-        titleLabel.font = .systemFont(ofSize: view.bounds.width * 0.04)
-        titleLabel.text = Text.title
+        let font = UIFont(name: Font.joystix, size: view.bounds.width * 0.04) ?? UIFont()
+        let attributedString = NSMutableAttributedString(string: Text.title)
+        attributedString.addAttribute(.font, value: font, range: .init(location: 0, length: Text.title.count))
+        titleLabel.attributedText = attributedString
     }
     
     func bindViewModel() {
