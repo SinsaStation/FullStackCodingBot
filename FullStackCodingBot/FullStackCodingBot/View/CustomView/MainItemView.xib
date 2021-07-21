@@ -9,6 +9,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="JoystixMonospace-Regular.ttf">
+            <string>JoystixMonospace-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainItemView" customModule="Full_Stack" customModuleProvider="target">
             <connections>
@@ -57,8 +62,8 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2v-tb-pTN" userLabel="Name Label">
-                                    <rect key="frame" x="80.666666666666686" y="10" width="65.333333333333314" height="23"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                    <rect key="frame" x="80.666666666666686" y="13" width="65.333333333333314" height="17"/>
+                                    <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="14"/>
                                     <color key="textColor" name="digital_green"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -93,12 +98,12 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ebL-tE-1Wf" userLabel="Level Label">
-                                    <rect key="frame" x="88.333333333333343" y="10.666666666666687" width="50" height="21.666666666666671"/>
+                                    <rect key="frame" x="88.333333333333343" y="11.666666666666684" width="50" height="19.333333333333329"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="cvp-lm-oS3"/>
                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="keb-Sy-tw4"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                    <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -138,8 +143,8 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000000000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cTi-QY-dhF" userLabel="Balance Label">
-                            <rect key="frame" x="68.333333333333329" y="14.999999999999998" width="133.66666666666669" height="20.333333333333329"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="75.666666666666657" y="18.666666666666664" width="118.66666666666666" height="13.333333333333336"/>
+                            <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="11"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>

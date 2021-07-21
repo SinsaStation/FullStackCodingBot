@@ -10,6 +10,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="JoystixMonospace-Regular.ttf">
+            <string>JoystixMonospace-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Pause View Controller-->
         <scene sceneID="dUk-aK-9aM">
@@ -79,8 +84,8 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="hRD-XQ-D7Z">
-                                        <rect key="frame" x="10" y="11.999999999999996" width="322.66666666666669" height="52.666666666666657"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="44"/>
+                                        <rect key="frame" x="10" y="20.666666666666629" width="322.66666666666669" height="35"/>
+                                        <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -289,8 +294,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="412" height="91.666666666666671"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333333333" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="35" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMc-tt-TX6" userLabel="Score Label">
-                                        <rect key="frame" x="10" y="14.666666666666675" width="392" height="62.333333333333343"/>
-                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="52"/>
+                                        <rect key="frame" x="10" y="23.333333333333325" width="392" height="44.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="37"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -374,7 +379,7 @@
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3333333333" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="35" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auM-zH-D8j" userLabel="Score Label">
                                                 <rect key="frame" x="0.0" y="31.999999999999993" width="308" height="86.333333333333314"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="44"/>
+                                                <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="27"/>
                                                 <color key="textColor" name="digitalgreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -386,7 +391,7 @@
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rfg-gf-7jl">
                                                 <rect key="frame" x="0.0" y="207" width="308" height="39.333333333333343"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -461,8 +466,8 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="aiU-qD-tg7">
-                                        <rect key="frame" x="52.333333333333336" y="11.66666666666667" width="82.333333333333314" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="52.333333333333336" y="11.333333333333329" width="80.333333333333314" height="21"/>
+                                        <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -534,7 +539,7 @@
         <image name="text_coin" width="26.666666030883789" height="12"/>
         <image name="text_yourscore" width="62.666667938232422" height="12"/>
         <namedColor name="darkblue">
-            <color red="0.14901960784313725" green="0.12941176470588234" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.14900000393390656" green="0.1289999932050705" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="digital_green">
             <color red="0.1289999932050705" green="0.96100002527236938" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -543,7 +548,7 @@
             <color red="0.1289999932050705" green="0.96100002527236938" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red">
-            <color red="0.87058823529411766" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.87099999189376831" green="0.2669999897480011" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
