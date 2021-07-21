@@ -14,6 +14,8 @@ target 'Full Stack' do
    pod 'SwiftLint'
    pod 'GhostTypewriter'
    pod 'Google-Mobile-Ads-SDK'
+   pod 'Firebase/Core'
+   pod 'Firebase/Database'
 
    target 'Full StackTests' do
 
