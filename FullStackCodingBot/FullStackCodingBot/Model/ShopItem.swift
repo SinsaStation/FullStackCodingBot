@@ -6,14 +6,14 @@ enum ShopItem {
     case gift(Int)
     case taken
     
-    var image: String {
+    var image: String? {
         switch self {
         case .adMob:
             return "item_gift_red_ad"
         case .gift:
             return "item_gift_red"
         case .taken:
-            return ""
+            return nil
         }
     }
 }
