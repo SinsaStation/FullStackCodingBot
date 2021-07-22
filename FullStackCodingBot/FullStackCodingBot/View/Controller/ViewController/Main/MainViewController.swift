@@ -1,6 +1,7 @@
 import UIKit
 import GhostTypewriter
 import GameKit
+import Firebase
 
 final class MainViewController: UIViewController, ViewModelBindableType {
     
@@ -24,7 +25,6 @@ final class MainViewController: UIViewController, ViewModelBindableType {
         skyView.startCloudAnimation()
     }
 
-    
     func bindViewModel() {
         buttonController.setupButton()
         buttonController.bind { [unowned self] viewController in
@@ -40,17 +40,30 @@ private extension MainViewController {
         setupTitleLabel()
         titleLabel.startTypewritingAnimation()
     }
-    
-    
+        
     private func setupTitleLabel() {
         titleLabel.font = .systemFont(ofSize: view.bounds.width * 0.04)
         titleLabel.text = Text.title
     }
     
     private func setupAppleGameCenterLogin() {
-        GKLocalPlayer.local.authenticateHandler = { gcViewController , error in
+        GKLocalPlayer.local.authenticateHandler = { gcViewController, error in
+            guard error == nil else { return }
+            
             if GKLocalPlayer.local.isAuthenticated {
-                print("FireBase")
+                GameCenterAuthProvider.getCredential { credential, error in
+                    guard error == nil else { return }
+                    
+                    Auth.auth().signIn(with: credential!) { user, error in
+                        guard error == nil else { return }
+                        
+                        if let user = user {
+                            print("LogIn Success: ", user)
+                        }
+                    }
+                }
+            } else if let gcViewController = gcViewController {
+                print(gcViewController)
             }
         }
     }
