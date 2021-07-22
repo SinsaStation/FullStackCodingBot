@@ -46,6 +46,7 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
 
 // MARK: Setup
 private extension ShopViewController {
+    
     private func setup() {
         setupDelegate()
     }
@@ -65,14 +66,14 @@ private extension ShopViewController {
 extension ShopViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = shopCollectionView.frame.width * 0.3
+        let width = shopCollectionView.frame.width * 0.33
         let height = width
         return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let heightInset = shopCollectionView.frame.height - (shopCollectionView.frame.width * 0.6)
-        return UIEdgeInsets(top: heightInset/2, left: 0, bottom: heightInset/2, right: 0)
+        let yInset = (shopCollectionView.frame.height - (shopCollectionView.frame.width * 0.66)) / 2
+        return UIEdgeInsets(top: yInset, left: 0, bottom: yInset, right: 0)
     }
 }
 
@@ -90,5 +91,4 @@ extension ShopViewController: GADFullScreenContentDelegate {
             self.viewModel.adDidFinished(adMob)
         }
     }
-
 }
