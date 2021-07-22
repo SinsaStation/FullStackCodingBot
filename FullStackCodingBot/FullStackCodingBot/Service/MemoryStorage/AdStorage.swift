@@ -7,6 +7,12 @@ final class AdStorage: AdStorageType {
     private var giftCount = 0
     private var ads = [GADRewardedAd]()
     
+    private lazy var itemStorage = BehaviorSubject(value: items())
+    
+    private func items() -> [ShopItem] {
+        return ads.map { ShopItem.adMob($0) } + (0..<giftCount).map { _ in ShopItem.gift }
+    }
+    
     // 시간 로직 필요 & 저장된 광고가 있다면 우선 불러오기
     func setup() {
         setAds()
@@ -17,13 +23,13 @@ final class AdStorage: AdStorageType {
         (1...ShopSetting.adForADay).forEach { _ in
             let request = GADRequest()
             
-            GADRewardedAd.load(withAdUnitID: IdentiferAD.test, request: request) { ads, error in
+            GADRewardedAd.load(withAdUnitID: IdentiferAD.test, request: request) { [unowned self] ads, error in
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
                     guard let newAd = ads else { return }
                     self.ads.append(newAd)
-                    print("광고 개수:", self.ads.count, "개")
+                    self.itemStorage.onNext(self.items())
                 }
             }
         }
@@ -33,18 +39,22 @@ final class AdStorage: AdStorageType {
         giftCount = ShopSetting.freeReward
     }
     
-    func adToShow() -> GADRewardedAd? {
-        return ads.last
-    }
-    
     func availableItems() -> Observable<[ShopItem]> {
-        let items = ads.map { ShopItem.adMob($0) } + (0..<giftCount).map { _ in ShopItem.gift }
-        return BehaviorSubject(value: items)
+        return itemStorage
     }
     
-    func adDidFinished(with successStatus: Bool) {
-        ads.removeLast()
-        print("남은 광고:", ads.count, "개")
+    func adDidFinished(_ finishedAd: GADRewardedAd) {
+        ads.enumerated().forEach { index, targetAd in
+            if targetAd == finishedAd {
+                ads.remove(at: index)
+            }
+        }
+        itemStorage.onNext(items())
+    }
+    
+    func giftTaken() {
+        giftCount -= 1
+        itemStorage.onNext(items())
     }
     
 }

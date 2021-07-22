@@ -38,16 +38,18 @@ final class ShopViewModel: AdViewModel {
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage)
     }
     
-    func availableAd() -> GADRewardedAd? {
-        return adStorage.adToShow()
+    func giftTaken() {
+        adStorage.giftTaken()
+        addCoin()
     }
     
-    func adDidFinished(with successStatus: Bool) {
-        adStorage.adDidFinished(with: successStatus)
-    }
-    
-    func addCoin() {
+    private func addCoin() {
         let moneyToRaise = ShopSetting.reward()
         storage.raiseMoney(by: moneyToRaise)
+    }
+    
+    func adDidFinished(_ finishedAd: GADRewardedAd) {
+        adStorage.adDidFinished(finishedAd)
+        addCoin()
     }
 }

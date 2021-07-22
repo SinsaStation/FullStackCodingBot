@@ -30,7 +30,7 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
                 case .adMob(let adMob):
                     self.show(adMob)
                 case .gift:
-                    self.rewarded()
+                    self.giftTaken()
                 }
             }).disposed(by: rx.disposeBag)
         
@@ -77,25 +77,16 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
 // MARK: Google Ads
 extension ShopViewController: GADFullScreenContentDelegate {
     
-    private func rewarded() {
-        viewModel.addCoin()
+    private func giftTaken() {
+        viewModel.giftTaken()
     }
     
     private func show(_ adMob: GADRewardedAd) {
         adMob.fullScreenContentDelegate = self
         
         adMob.present(fromRootViewController: self) { [unowned self] in
-            self.rewarded()
+            self.viewModel.adDidFinished(adMob)
         }
     }
-    
-    // swiftlint:disable:next identifier_name
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        viewModel.adDidFinished(with: false)
-    }
-    
-    // swiftlint:disable:next identifier_name
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        viewModel.adDidFinished(with: true)
-    }
+
 }

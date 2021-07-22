@@ -6,10 +6,10 @@ protocol AdStorageType {
     
     func setup()
     
-    func adToShow() -> GADRewardedAd?
-    
     func availableItems() -> Observable<[ShopItem]>
     
-    func adDidFinished(with successStatus: Bool)
+    func adDidFinished(_ finishedAd: GADRewardedAd)
+    
+    func giftTaken()
 
 }
