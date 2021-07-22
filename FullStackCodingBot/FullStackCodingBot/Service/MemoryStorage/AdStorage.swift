@@ -1,11 +1,6 @@
 import Foundation
 import GoogleMobileAds
 
-enum ShopItem {
-    case adMob
-    case gift
-}
-
 final class AdStorage: AdStorageType {
     
     private var giftCount = 0

@@ -66,6 +66,7 @@
 		E4DF613B26A845670061F6E9 /* AdStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF613A26A845670061F6E9 /* AdStorageType.swift */; };
 		E4DF613D26A845DA0061F6E9 /* AdStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF613C26A845DA0061F6E9 /* AdStorage.swift */; };
 		E4DF613F26A847330061F6E9 /* AdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF613E26A847330061F6E9 /* AdViewModel.swift */; };
+		E4DF614126A92CE00061F6E9 /* ShopItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF614026A92CE00061F6E9 /* ShopItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,7 @@
 		E4DF613A26A845670061F6E9 /* AdStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdStorageType.swift; sourceTree = "<group>"; };
 		E4DF613C26A845DA0061F6E9 /* AdStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdStorage.swift; sourceTree = "<group>"; };
 		E4DF613E26A847330061F6E9 /* AdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdViewModel.swift; sourceTree = "<group>"; };
+		E4DF614026A92CE00061F6E9 /* ShopItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				E45B0AC82692F9CF006FDE3D /* Unit.swift */,
+				E4DF614026A92CE00061F6E9 /* ShopItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				71DF65492692F97900557693 /* ItemViewModel.swift in Sources */,
 				E4C2C34F26A292BB007BDF81 /* ReplicateAnimationView.swift in Sources */,
 				71307A8926A529F400C3191F /* LevelUpButton.swift in Sources */,
+				E4DF614126A92CE00061F6E9 /* ShopItem.swift in Sources */,
 				E4D7C6422693E7B200D58BA2 /* MainViewController.swift in Sources */,
 				710D0D422693EA3200244A16 /* GameViewController.swift in Sources */,
 				71DF65432692F95800557693 /* ShopViewModel.swift in Sources */,
