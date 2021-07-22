@@ -27,9 +27,9 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
                 guard let item = item else { return }
                 switch item {
                 case .adMob(let adMob):
-                    self.load(adMob)
+                    self.show(adMob)
                 case .gift:
-                    print("머니머니")
+                    self.rewarded()
                 }
             }).disposed(by: rx.disposeBag)
 
@@ -72,9 +72,15 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
 // MARK: Google Ads
 extension ShopViewController: GADFullScreenContentDelegate {
     
-    private func load(_ gooleAd: GADRewardedAd) {
-        gooleAd.present(fromRootViewController: self) {
-            print("Get Money")
+    private func rewarded() {
+        viewModel.addCoin()
+    }
+    
+    private func show(_ adMob: GADRewardedAd) {
+        adMob.fullScreenContentDelegate = self
+        
+        adMob.present(fromRootViewController: self) { [unowned self] in
+            self.rewarded()
         }
     }
     

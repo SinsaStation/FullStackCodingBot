@@ -12,6 +12,10 @@ enum GameSetting {
 enum ShopSetting {
     static let freeReward = 1
     static let adForADay = 5
+    
+    static func reward() -> Int {
+        return 500 + Int.random(in: 0...1000)
+    }
 }
 
 enum Text {

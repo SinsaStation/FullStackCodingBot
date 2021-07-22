@@ -41,4 +41,9 @@ final class ShopViewModel: AdViewModel {
     func adDidFinished(with successStatus: Bool) {
         adStorage.adDidFinished(with: successStatus)
     }
+    
+    func addCoin() {
+        let moneyToRaise = ShopSetting.reward()
+        storage.raiseMoney(by: moneyToRaise)
+    }
 }
