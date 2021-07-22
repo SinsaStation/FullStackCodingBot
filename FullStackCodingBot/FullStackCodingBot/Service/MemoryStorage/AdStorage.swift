@@ -4,9 +4,18 @@ import GoogleMobileAds
 
 final class AdStorage: AdStorageType {
     
-    private var gifts: [Int?] = Array(repeating: nil, count: ShopSetting.freeReward)
-    private var ads: [GADRewardedAd?] = Array(repeating: nil, count: ShopSetting.adForADay)
+    private var lastUpdate: Date
+    private var gifts: [Int?]
+    private var ads: [GADRewardedAd?]
     private lazy var itemStorage = BehaviorSubject(value: items())
+    
+    init(lastUpdate: Date = Date(timeIntervalSince1970: 0),
+         gifts: [Int?] = Array(repeating: nil, count: ShopSetting.freeReward),
+         ads: [GADRewardedAd?] = Array(repeating: nil, count: ShopSetting.adForADay)) {
+        self.lastUpdate = lastUpdate
+        self.gifts = gifts
+        self.ads = ads
+    }
     
     private func items() -> [ShopItem] {
         let adItems = ads.map { $0 != nil ? ShopItem.adMob($0!) : ShopItem.taken }
@@ -14,9 +23,21 @@ final class AdStorage: AdStorageType {
         return adItems + giftItems
     }
     
-    func setup() {
-        setAds()
-        setGifts()
+    func setup() -> Bool {
+        if isUpdatable() {
+            setAds()
+            setGifts()
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func isUpdatable() -> Bool {
+        let today = Date()
+        let isUpdated = Calendar.current.isDate(today, inSameDayAs: lastUpdate)
+        lastUpdate = today
+        return !isUpdated
     }
     
     private func setAds() {
@@ -56,5 +77,4 @@ final class AdStorage: AdStorageType {
         gifts[takenGift] = nil
         itemStorage.onNext(items())
     }
-    
 }

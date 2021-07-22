@@ -4,7 +4,8 @@ import GoogleMobileAds
 
 protocol AdStorageType {
     
-    func setup()
+    @discardableResult
+    func setup() -> Bool
     
     func availableItems() -> Observable<[ShopItem]>
     
