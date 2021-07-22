@@ -13,11 +13,12 @@ final class ShopViewModel: AdViewModel {
         return adStorage.availableItems().asDriver(onErrorJustReturn: [])
     }
     
-    lazy var selectedItem = BehaviorRelay<ShopItem?>(value: nil)
-    
     lazy var currentMoney: Driver<String> = {
         return storage.availableMoeny().map {String($0)}.asDriver(onErrorJustReturn: "")
     }()
+    
+    lazy var selectedItem = BehaviorRelay<ShopItem?>(value: nil)
+    lazy var reward = BehaviorRelay<Int?>(value: nil)
     
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, adStorage: AdStorageType, confirmAction: Action<String, Void>? = nil, cancelAction: CocoaAction? = nil) {
         
@@ -46,6 +47,7 @@ final class ShopViewModel: AdViewModel {
     private func addCoin() {
         let moneyToRaise = ShopSetting.reward()
         storage.raiseMoney(by: moneyToRaise)
+        reward.accept(moneyToRaise)
     }
     
     func adDidFinished(_ finishedAd: GADRewardedAd) {

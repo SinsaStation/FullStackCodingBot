@@ -17,7 +17,6 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
-
         viewModel.itemStorage
             .drive(shopCollectionView.rx.items(cellIdentifier: ShopCell.identifier, cellType: ShopCell.self)) { _, item, cell in
                 cell.configure(item: item)
@@ -26,27 +25,36 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
         viewModel.selectedItem
             .subscribe(onNext: { [unowned self] item in
                 guard let item = item else { return }
-                switch item {
-                case .adMob(let adMob):
-                    self.show(adMob)
-                case .gift(let number):
-                    self.giftTaken(number)
-                case .taken:
-                    print("이미 없어진 기프트!")
-                }
+                self.action(for: item)
             }).disposed(by: rx.disposeBag)
         
         viewModel.currentMoney
             .drive(totalCoinLabel.rx.text)
             .disposed(by: rx.disposeBag)
+        
+        viewModel.reward
+            .subscribe(onNext: { [unowned self] reward in
+                guard let reward = reward else { return }
+                print("리워드를 받았다!", reward)
+            }).disposed(by: rx.disposeBag)
 
         cancelButton.rx.action = viewModel.cancelAction
+    }
+    
+    private func action(for item: ShopItem) {
+        switch item {
+        case .adMob(let adMob):
+            self.show(adMob)
+        case .gift(let number):
+            self.giftTaken(number)
+        case .taken:
+            print("이미 없어진 기프트!")
+        }
     }
 }
 
 // MARK: Setup
 private extension ShopViewController {
-    
     private func setup() {
         setupDelegate()
     }
@@ -64,7 +72,6 @@ private extension ShopViewController {
 
 // MARK: Setup CellSize
 extension ShopViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = shopCollectionView.frame.width * 0.33
         let height = width
@@ -79,7 +86,6 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: Google Ads
 extension ShopViewController: GADFullScreenContentDelegate {
-    
     private func giftTaken(_ takenGift: Int) {
         viewModel.giftTaken(takenGift)
     }
