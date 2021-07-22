@@ -4,13 +4,13 @@ import GoogleMobileAds
 
 final class AdStorage: AdStorageType {
     
-    private var gifts = Array(repeating: false, count: ShopSetting.freeReward)
+    private var gifts: [Int?] = Array(repeating: nil, count: ShopSetting.freeReward)
     private var ads: [GADRewardedAd?] = Array(repeating: nil, count: ShopSetting.adForADay)
     private lazy var itemStorage = BehaviorSubject(value: items())
     
     private func items() -> [ShopItem] {
         let adItems = ads.map { $0 != nil ? ShopItem.adMob($0!) : ShopItem.taken }
-        let giftItems = gifts.map { $0 ? ShopItem.gift : ShopItem.taken }
+        let giftItems = gifts.map { $0 != nil ? ShopItem.gift($0!) : ShopItem.taken }
         return adItems + giftItems
     }
     
@@ -36,7 +36,7 @@ final class AdStorage: AdStorageType {
     }
     
     private func setGifts() {
-        gifts = Array(repeating: true, count: ShopSetting.freeReward)
+        gifts = (0..<ShopSetting.freeReward).map { $0 }
     }
     
     func availableItems() -> Observable<[ShopItem]> {
@@ -52,8 +52,8 @@ final class AdStorage: AdStorageType {
         itemStorage.onNext(items())
     }
     
-    func giftTaken() {
-        gifts[0] = false
+    func giftTaken(_ takenGift: Int) {
+        gifts[takenGift] = nil
         itemStorage.onNext(items())
     }
     

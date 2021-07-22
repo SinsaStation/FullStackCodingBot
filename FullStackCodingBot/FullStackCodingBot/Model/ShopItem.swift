@@ -3,7 +3,7 @@ import GoogleMobileAds
 
 enum ShopItem {
     case adMob(GADRewardedAd)
-    case gift
+    case gift(Int)
     case taken
     
     var image: String {

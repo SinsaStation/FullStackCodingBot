@@ -10,6 +10,6 @@ protocol AdStorageType {
     
     func adDidFinished(_ finishedAd: GADRewardedAd)
     
-    func giftTaken()
+    func giftTaken(_ takenGift: Int)
 
 }
