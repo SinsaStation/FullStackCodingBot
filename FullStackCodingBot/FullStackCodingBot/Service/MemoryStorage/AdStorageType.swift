@@ -3,12 +3,12 @@ import GoogleMobileAds
 
 protocol AdStorageType {
     
+    func setup()
+    
     func adToShow() -> GADRewardedAd?
     
-    func availableAdCount() -> Int
+    func availableItems() -> [ShopItem]
     
-    func adDidFinished()
-    
-    func setup(count: Int)
-    
+    func adDidFinished(with successStatus: Bool)
+
 }

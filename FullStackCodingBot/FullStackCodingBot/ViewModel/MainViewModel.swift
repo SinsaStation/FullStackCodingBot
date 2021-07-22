@@ -3,7 +3,7 @@ import Foundation
 final class MainViewModel: AdViewModel {
     
     func execute() {
-        adStorage.setup(count: ShopSetting.adForADay)
+        adStorage.setup()
     }
     
     func makeMoveAction(to viewController: ViewControllerType) {

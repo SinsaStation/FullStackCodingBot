@@ -31,6 +31,6 @@ final class ShopViewModel: AdViewModel {
     }
     
     func adDidFinished(with successStatus: Bool) {
-        adStorage.adDidFinished()
+        adStorage.adDidFinished(with: successStatus)
     }
 }
