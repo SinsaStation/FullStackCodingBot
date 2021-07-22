@@ -1,4 +1,6 @@
 import Foundation
+import RxSwift
+import RxCocoa
 import Action
 import GoogleMobileAds
 
@@ -6,6 +8,12 @@ final class ShopViewModel: AdViewModel {
     
     let confirmAction: Action<String, Void>
     let cancelAction: CocoaAction
+    
+    var itemStorage: Driver<[ShopItem]> {
+        return adStorage.availableItems().asDriver(onErrorJustReturn: [])
+    }
+    
+    lazy var selectedItem = BehaviorRelay<ShopItem?>(value: nil)
     
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, adStorage: AdStorageType, confirmAction: Action<String, Void>? = nil, cancelAction: CocoaAction? = nil) {
         

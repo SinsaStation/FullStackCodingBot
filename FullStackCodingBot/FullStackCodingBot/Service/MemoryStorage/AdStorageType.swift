@@ -1,4 +1,5 @@
 import Foundation
+import RxSwift
 import GoogleMobileAds
 
 protocol AdStorageType {
@@ -7,7 +8,7 @@ protocol AdStorageType {
     
     func adToShow() -> GADRewardedAd?
     
-    func availableItems() -> [ShopItem]
+    func availableItems() -> Observable<[ShopItem]>
     
     func adDidFinished(with successStatus: Bool)
 

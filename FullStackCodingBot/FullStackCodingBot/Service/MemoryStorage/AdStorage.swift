@@ -1,4 +1,5 @@
 import Foundation
+import RxSwift
 import GoogleMobileAds
 
 final class AdStorage: AdStorageType {
@@ -36,8 +37,9 @@ final class AdStorage: AdStorageType {
         return ads.last
     }
     
-    func availableItems() -> [ShopItem] {
-        return ads.map { _ in ShopItem.adMob } + (0..<giftCount).map { _ in ShopItem.gift }
+    func availableItems() -> Observable<[ShopItem]> {
+        let items = ads.map { ShopItem.adMob($0) } + (0..<giftCount).map { _ in ShopItem.gift }
+        return BehaviorSubject(value: items)
     }
     
     func adDidFinished(with successStatus: Bool) {

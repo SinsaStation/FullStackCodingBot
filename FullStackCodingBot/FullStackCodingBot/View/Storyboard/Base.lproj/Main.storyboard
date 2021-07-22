@@ -233,10 +233,10 @@
                                                     <constraint firstAttribute="trailing" secondItem="PoY-t6-vkc" secondAttribute="trailing" id="sxk-FX-mP4"/>
                                                 </constraints>
                                             </view>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jrB-JR-LHy" userLabel="Item Collection View">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jrB-JR-LHy" userLabel="Item Collection View">
                                                 <rect key="frame" x="0.0" y="102.66666666666666" width="336" height="389.33333333333337"/>
-                                                <color key="backgroundColor" red="0.57020545651469678" green="0.44872855518331767" blue="0.33960405307618885" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mZs-lW-mKL">
+                                                <color key="backgroundColor" name="darkblue"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mZs-lW-mKL">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -244,17 +244,17 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShopCell" id="0h2-xH-W9N" customClass="ShopCell" customModule="Full_Stack" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="133.33333333333337" height="133.33333333333334"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CKs-mV-pam">
-                                                            <rect key="frame" x="0.0" y="0.0" width="133.33333333333337" height="133.33333333333334"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_box" translatesAutoresizingMaskIntoConstraints="NO" id="NmP-QL-ZuS" userLabel="Background Image View">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="133.33333333333334" height="133.33333333333334"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                                 </imageView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item_gift_red_ad" translatesAutoresizingMaskIntoConstraints="NO" id="RyS-Mb-c4j" userLabel="Item Image View">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="133.33333333333334" height="133.33333333333334"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <constraints>
@@ -318,6 +318,7 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="L3G-k2-a1u" id="ecH-hw-FU0"/>
+                        <outlet property="shopCollectionView" destination="jrB-JR-LHy" id="7qh-U5-dNQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzg-5D-7gu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -1,7 +1,8 @@
 import Foundation
+import GoogleMobileAds
 
 enum ShopItem {
-    case adMob
+    case adMob(GADRewardedAd)
     case gift
     
     var image: String {
