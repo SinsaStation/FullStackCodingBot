@@ -15,6 +15,10 @@ final class ShopViewModel: AdViewModel {
     
     lazy var selectedItem = BehaviorRelay<ShopItem?>(value: nil)
     
+    lazy var currentMoney: Driver<String> = {
+        return storage.availableMoeny().map {String($0)}.asDriver(onErrorJustReturn: "")
+    }()
+    
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, adStorage: AdStorageType, confirmAction: Action<String, Void>? = nil, cancelAction: CocoaAction? = nil) {
         
         self.confirmAction = Action<String, Void> { input in

@@ -7,6 +7,7 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: ShopViewModel!
     
+    @IBOutlet weak var totalCoinLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var shopCollectionView: UICollectionView!
     
@@ -32,6 +33,10 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
                     self.rewarded()
                 }
             }).disposed(by: rx.disposeBag)
+        
+        viewModel.currentMoney
+            .drive(totalCoinLabel.rx.text)
+            .disposed(by: rx.disposeBag)
 
         cancelButton.rx.action = viewModel.cancelAction
     }
