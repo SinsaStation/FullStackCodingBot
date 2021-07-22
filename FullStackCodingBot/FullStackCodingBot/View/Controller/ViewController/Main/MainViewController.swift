@@ -58,7 +58,7 @@ private extension MainViewController {
                         guard error == nil else { return }
                         
                         if let user = user {
-                            print("LogIn Success: ", user)
+                            self.viewModel.database.initializeDatabase(user.user.uid)
                         }
                     }
                 }

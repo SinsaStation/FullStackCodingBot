@@ -28,6 +28,8 @@
 		7165CDDB2695789300891214 /* SyetemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165CDDA2695789300891214 /* SyetemSettings.swift */; };
 		7165CDDF26957DE400891214 /* GameButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165CDDE26957DE400891214 /* GameButtonController.swift */; };
 		719DA2B126A7FC9900624C61 /* JoystixMonospace-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */; };
+		71A5518026A91C280083A4B0 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5517F26A91C280083A4B0 /* DatabaseManager.swift */; };
+		71A5518226A9277C0083A4B0 /* DatabaseManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */; };
 		71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64B82692C13A00557693 /* ShopViewController.swift */; };
 		71DF64BD2692C18F00557693 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64BC2692C18F00557693 /* RankViewController.swift */; };
 		71DF64BF2692C1C600557693 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64BE2692C1C600557693 /* ItemViewController.swift */; };
@@ -101,6 +103,8 @@
 		7165CDDA2695789300891214 /* SyetemSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyetemSettings.swift; sourceTree = "<group>"; };
 		7165CDDE26957DE400891214 /* GameButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButtonController.swift; sourceTree = "<group>"; };
 		719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JoystixMonospace-Regular.ttf"; sourceTree = "<group>"; };
+		71A5517F26A91C280083A4B0 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerType.swift; sourceTree = "<group>"; };
 		71DF64B82692C13A00557693 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		71DF64BC2692C18F00557693 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		71DF64BE2692C1C600557693 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 		715BB20426943CD100286B31 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				71A5517E26A91C160083A4B0 /* FirebaseStorage */,
 				717EAD3B26A656E200E0CDB7 /* GameManager */,
 				717EAD3A26A656D600E0CDB7 /* MemoryStorage */,
 			);
@@ -251,6 +256,15 @@
 				7165CDDD26957DD600891214 /* Game */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		71A5517E26A91C160083A4B0 /* FirebaseStorage */ = {
+			isa = PBXGroup;
+			children = (
+				71A5517F26A91C280083A4B0 /* DatabaseManager.swift */,
+				71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */,
+			);
+			path = FirebaseStorage;
 			sourceTree = "<group>";
 		};
 		71DF64B72692C06100557693 /* Controller */ = {
@@ -631,6 +645,7 @@
 				E45B0AC72692F42D006FDE3D /* UnitPerspectiveView.swift in Sources */,
 				E41C85D4269BFB84008F2E91 /* GameUnitManager.swift in Sources */,
 				715BB20826943D5600286B31 /* ItemStorage.swift in Sources */,
+				71A5518026A91C280083A4B0 /* DatabaseManager.swift in Sources */,
 				715BB20626943CDE00286B31 /* ItemStorageType.swift in Sources */,
 				E4779C6926983F8000B92D24 /* GameOverViewModel.swift in Sources */,
 				71DF654D2692FA6200557693 /* IdentifierManager.swift in Sources */,
@@ -640,6 +655,7 @@
 				E4D7C64B26953C6200D58BA2 /* ScreenSize.swift in Sources */,
 				71DF653E2692F92700557693 /* Scene.swift in Sources */,
 				71DF64BF2692C1C600557693 /* ItemViewController.swift in Sources */,
+				71A5518226A9277C0083A4B0 /* DatabaseManagerType.swift in Sources */,
 				710A9DAC2692AD5C0090B38A /* MainButtonController.swift in Sources */,
 				E41C85DD269C50F0008F2E91 /* PauseViewModel.swift in Sources */,
 				E41C85DF269C5149008F2E91 /* PauseButtonController.swift in Sources */,
