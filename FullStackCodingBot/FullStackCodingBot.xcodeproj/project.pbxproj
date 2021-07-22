@@ -30,6 +30,7 @@
 		719DA2B126A7FC9900624C61 /* JoystixMonospace-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */; };
 		71A5518026A91C280083A4B0 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5517F26A91C280083A4B0 /* DatabaseManager.swift */; };
 		71A5518226A9277C0083A4B0 /* DatabaseManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */; };
+		71BC752E26A940A10021BA1A /* FirebaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC752D26A940A10021BA1A /* FirebaseDataManager.swift */; };
 		71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64B82692C13A00557693 /* ShopViewController.swift */; };
 		71DF64BD2692C18F00557693 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64BC2692C18F00557693 /* RankViewController.swift */; };
 		71DF64BF2692C1C600557693 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64BE2692C1C600557693 /* ItemViewController.swift */; };
@@ -105,6 +106,7 @@
 		719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JoystixMonospace-Regular.ttf"; sourceTree = "<group>"; };
 		71A5517F26A91C280083A4B0 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerType.swift; sourceTree = "<group>"; };
+		71BC752D26A940A10021BA1A /* FirebaseDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataManager.swift; sourceTree = "<group>"; };
 		71DF64B82692C13A00557693 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		71DF64BC2692C18F00557693 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		71DF64BE2692C1C600557693 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		715BB20426943CD100286B31 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				71BC752C26A940870021BA1A /* DataFormatManager */,
 				71A5517E26A91C160083A4B0 /* FirebaseStorage */,
 				717EAD3B26A656E200E0CDB7 /* GameManager */,
 				717EAD3A26A656D600E0CDB7 /* MemoryStorage */,
@@ -265,6 +268,14 @@
 				71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */,
 			);
 			path = FirebaseStorage;
+			sourceTree = "<group>";
+		};
+		71BC752C26A940870021BA1A /* DataFormatManager */ = {
+			isa = PBXGroup;
+			children = (
+				71BC752D26A940A10021BA1A /* FirebaseDataManager.swift */,
+			);
+			path = DataFormatManager;
 			sourceTree = "<group>";
 		};
 		71DF64B72692C06100557693 /* Controller */ = {
@@ -672,6 +683,7 @@
 				710D0D422693EA3200244A16 /* GameViewController.swift in Sources */,
 				71DF65432692F95800557693 /* ShopViewModel.swift in Sources */,
 				71DF65512692FBCC00557693 /* SceneCoordinatorType.swift in Sources */,
+				71BC752E26A940A10021BA1A /* FirebaseDataManager.swift in Sources */,
 				715A83EE269FE96300C9CEFF /* StoryboardType.swift in Sources */,
 				71307AB126A53C7B00C3191F /* AlertMessage.swift in Sources */,
 				71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */,

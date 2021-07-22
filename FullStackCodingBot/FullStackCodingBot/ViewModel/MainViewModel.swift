@@ -27,4 +27,13 @@ final class MainViewModel: CommonViewModel {
         }
     }
     
+    func getUserInformation(from uuid: String) {
+        database.initializeDatabase(uuid)
+        database.getFirebaseData(uuid)
+            .subscribe(onNext: { [unowned self] data in
+                data.forEach { self.storage.create(item: $0) }
+            }, onError: { error in
+                print(error)
+            }).disposed(by: rx.disposeBag)
+    }
 }
