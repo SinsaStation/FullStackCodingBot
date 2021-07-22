@@ -67,6 +67,7 @@
 		E4DF613D26A845DA0061F6E9 /* AdStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF613C26A845DA0061F6E9 /* AdStorage.swift */; };
 		E4DF613F26A847330061F6E9 /* AdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF613E26A847330061F6E9 /* AdViewModel.swift */; };
 		E4DF614126A92CE00061F6E9 /* ShopItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF614026A92CE00061F6E9 /* ShopItem.swift */; };
+		E4DF614326A93FFB0061F6E9 /* ShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF614226A93FFB0061F6E9 /* ShopCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,7 @@
 		E4DF613C26A845DA0061F6E9 /* AdStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdStorage.swift; sourceTree = "<group>"; };
 		E4DF613E26A847330061F6E9 /* AdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdViewModel.swift; sourceTree = "<group>"; };
 		E4DF614026A92CE00061F6E9 /* ShopItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItem.swift; sourceTree = "<group>"; };
+		E4DF614226A93FFB0061F6E9 /* ShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,6 +404,7 @@
 				E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */,
 				71307A8826A529F400C3191F /* LevelUpButton.swift */,
 				71307A8A26A52A1F00C3191F /* LevelUpButton.xib */,
+				E4DF614226A93FFB0061F6E9 /* ShopCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				71DF653E2692F92700557693 /* Scene.swift in Sources */,
 				71DF64BF2692C1C600557693 /* ItemViewController.swift in Sources */,
 				710A9DAC2692AD5C0090B38A /* MainButtonController.swift in Sources */,
+				E4DF614326A93FFB0061F6E9 /* ShopCell.swift in Sources */,
 				E41C85DD269C50F0008F2E91 /* PauseViewModel.swift in Sources */,
 				E41C85DF269C5149008F2E91 /* PauseButtonController.swift in Sources */,
 				E4779C6726983F5700B92D24 /* GameOverViewController.swift in Sources */,

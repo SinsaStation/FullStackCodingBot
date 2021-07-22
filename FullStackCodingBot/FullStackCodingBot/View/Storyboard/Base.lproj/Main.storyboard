@@ -243,7 +243,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShopCell" id="0h2-xH-W9N">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShopCell" id="0h2-xH-W9N" customClass="ShopCell" customModule="Full_Stack" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="133.33333333333337" height="133.33333333333334"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CKs-mV-pam">
@@ -268,6 +268,9 @@
                                                                 <constraint firstItem="RyS-Mb-c4j" firstAttribute="height" secondItem="NmP-QL-ZuS" secondAttribute="height" id="qzY-GQ-9ld"/>
                                                             </constraints>
                                                         </collectionViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="itemImageView" destination="RyS-Mb-c4j" id="MRO-Mx-Rid"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
