@@ -31,6 +31,8 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
                     self.show(adMob)
                 case .gift:
                     self.giftTaken()
+                case .taken:
+                    print("이미 없어진 기프트!")
                 }
             }).disposed(by: rx.disposeBag)
         

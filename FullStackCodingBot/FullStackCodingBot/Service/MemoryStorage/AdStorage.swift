@@ -4,23 +4,23 @@ import GoogleMobileAds
 
 final class AdStorage: AdStorageType {
     
-    private var giftCount = 0
-    private var ads = [GADRewardedAd]()
-    
+    private var gifts = Array(repeating: false, count: ShopSetting.freeReward)
+    private var ads: [GADRewardedAd?] = Array(repeating: nil, count: ShopSetting.adForADay)
     private lazy var itemStorage = BehaviorSubject(value: items())
     
     private func items() -> [ShopItem] {
-        return ads.map { ShopItem.adMob($0) } + (0..<giftCount).map { _ in ShopItem.gift }
+        let adItems = ads.map { $0 != nil ? ShopItem.adMob($0!) : ShopItem.taken }
+        let giftItems = gifts.map { $0 ? ShopItem.gift : ShopItem.taken }
+        return adItems + giftItems
     }
     
-    // 시간 로직 필요 & 저장된 광고가 있다면 우선 불러오기
     func setup() {
         setAds()
         setGifts()
     }
     
     private func setAds() {
-        (1...ShopSetting.adForADay).forEach { _ in
+        (0..<ShopSetting.adForADay).forEach { index in
             let request = GADRequest()
             
             GADRewardedAd.load(withAdUnitID: IdentiferAD.test, request: request) { [unowned self] ads, error in
@@ -28,7 +28,7 @@ final class AdStorage: AdStorageType {
                     print(error.localizedDescription)
                 } else {
                     guard let newAd = ads else { return }
-                    self.ads.append(newAd)
+                    self.ads[index] = newAd
                     self.itemStorage.onNext(self.items())
                 }
             }
@@ -36,7 +36,7 @@ final class AdStorage: AdStorageType {
     }
     
     private func setGifts() {
-        giftCount = ShopSetting.freeReward
+        gifts = Array(repeating: true, count: ShopSetting.freeReward)
     }
     
     func availableItems() -> Observable<[ShopItem]> {
@@ -46,14 +46,14 @@ final class AdStorage: AdStorageType {
     func adDidFinished(_ finishedAd: GADRewardedAd) {
         ads.enumerated().forEach { index, targetAd in
             if targetAd == finishedAd {
-                ads.remove(at: index)
+                ads[index] = nil
             }
         }
         itemStorage.onNext(items())
     }
     
     func giftTaken() {
-        giftCount -= 1
+        gifts[0] = false
         itemStorage.onNext(items())
     }
     
