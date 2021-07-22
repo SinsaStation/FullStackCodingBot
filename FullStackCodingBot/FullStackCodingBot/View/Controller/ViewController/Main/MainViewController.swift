@@ -1,5 +1,6 @@
 import UIKit
 import GhostTypewriter
+import GameKit
 
 final class MainViewController: UIViewController, ViewModelBindableType {
     
@@ -10,8 +11,7 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTitleLabel()
-        titleLabel.startTypewritingAnimation()
+        setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,16 +23,42 @@ final class MainViewController: UIViewController, ViewModelBindableType {
         super.viewDidAppear(animated)
         skyView.startCloudAnimation()
     }
-    
-    private func setupTitleLabel() {
-        titleLabel.font = .systemFont(ofSize: view.bounds.width * 0.04)
-        titleLabel.text = Text.title
-    }
+
     
     func bindViewModel() {
         buttonController.setupButton()
         buttonController.bind { [unowned self] viewController in
             self.viewModel.makeMoveAction(to: viewController)
         }
+    }
+}
+
+private extension MainViewController {
+    
+    private func setup() {
+        setupAppleGameCenterLogin()
+        setupTitleLabel()
+        titleLabel.startTypewritingAnimation()
+    }
+    
+    
+    private func setupTitleLabel() {
+        titleLabel.font = .systemFont(ofSize: view.bounds.width * 0.04)
+        titleLabel.text = Text.title
+    }
+    
+    private func setupAppleGameCenterLogin() {
+        GKLocalPlayer.local.authenticateHandler = { gcViewController , error in
+            if GKLocalPlayer.local.isAuthenticated {
+                print("FireBase")
+            }
+        }
+    }
+}
+
+extension MainViewController: GKGameCenterControllerDelegate {
+    
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        print("GCVC DID FINISHED")
     }
 }
