@@ -56,6 +56,7 @@ final class ItemViewModel: CommonViewModel {
             selectedUnit.accept(new)
             upgradedUnit.accept(new)
             status.accept(Text.levelUpSuccessed(unitType: unitName, to: new.level))
+            feedbackGenerator?.notificationOccurred(.success)
         case false:
             status.accept(Text.levelUpFailed(coinNeeded: requiredMoney))
             feedbackGenerator?.notificationOccurred(.error)
