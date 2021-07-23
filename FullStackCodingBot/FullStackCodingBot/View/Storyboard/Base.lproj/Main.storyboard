@@ -426,8 +426,22 @@
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <state key="normal" backgroundImage="button_action_left_off"/>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lc1-fv-jRA" userLabel="Stack Info View">
+                                <rect key="frame" x="0.0" y="577" width="175" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stacks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xp0-Y2-aIy">
+                                        <rect key="frame" x="61" y="17" width="52" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jmc-H9-Akc">
-                                <rect key="frame" x="0.0" y="635.33333333333337" width="428" height="161"/>
+                                <rect key="frame" x="0.0" y="629.66666666666663" width="428" height="166.66666666666663"/>
                                 <color key="backgroundColor" red="0.66666668650000005" green="0.42912865090000002" blue="0.55818016790000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qzV-fO-4Zg">
                                     <size key="itemSize" width="128" height="128"/>
@@ -437,10 +451,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ItemCell" reuseIdentifier="ItemCell" id="LIR-ze-whG" customClass="ItemCell" customModule="Full_Stack" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="16.666666666666668" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="19.333333333333332" width="128" height="127.99999999999997"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Qld-28-lVQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="127.99999999999997"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3pq-Wk-Jff">
@@ -461,14 +475,14 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rc-0B-pTr" customClass="MainItemView" customModule="Full_Stack" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="107.33333333333334" width="428" height="416.66666666666663"/>
+                                <rect key="frame" x="0.0" y="107.33333333333334" width="428" height="370.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJR-TU-ocn" customClass="LevelUpButton" customModule="Full_Stack" customModuleProvider="target">
-                                <rect key="frame" x="123" y="535.66666666666663" width="182" height="96"/>
+                                <rect key="frame" x="123" y="488.33333333333326" width="182" height="96"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                <state key="normal">
+                                <state key="normal" backgroundImage="item_cloud1">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
@@ -519,7 +533,7 @@
                             <constraint firstItem="MJR-TU-ocn" firstAttribute="centerX" secondItem="1rK-Sy-CWX" secondAttribute="centerX" id="AuK-aC-Um7"/>
                             <constraint firstItem="cQk-8V-hJe" firstAttribute="width" secondItem="1rK-Sy-CWX" secondAttribute="width" multiplier="0.45" id="JOL-dA-wIv"/>
                             <constraint firstItem="cQk-8V-hJe" firstAttribute="width" secondItem="cQk-8V-hJe" secondAttribute="height" multiplier="640:144" id="NqX-2r-vbp"/>
-                            <constraint firstItem="jmc-H9-Akc" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.174107" id="SJa-SJ-jqz"/>
+                            <constraint firstItem="jmc-H9-Akc" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.18" id="SJa-SJ-jqz"/>
                             <constraint firstItem="5fe-6O-12x" firstAttribute="bottom" secondItem="Eiy-7U-oCk" secondAttribute="bottom" constant="1" id="V3S-4V-vpU"/>
                             <constraint firstItem="MJR-TU-ocn" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.103795" id="Z13-MH-gcc"/>
                             <constraint firstItem="8rc-0B-pTr" firstAttribute="leading" secondItem="5fe-6O-12x" secondAttribute="leading" id="ZN1-Aw-BVf"/>
@@ -527,7 +541,7 @@
                             <constraint firstItem="MJR-TU-ocn" firstAttribute="width" secondItem="1rK-Sy-CWX" secondAttribute="width" multiplier="0.425121" id="fdG-AK-Zda"/>
                             <constraint firstItem="cQk-8V-hJe" firstAttribute="top" secondItem="5fe-6O-12x" secondAttribute="top" constant="10" id="k6R-vi-08r"/>
                             <constraint firstItem="Eiy-7U-oCk" firstAttribute="top" secondItem="jmc-H9-Akc" secondAttribute="bottom" multiplier="1.01" constant="1" id="opu-Of-97s"/>
-                            <constraint firstItem="8rc-0B-pTr" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.45" id="qpj-BE-CJJ"/>
+                            <constraint firstItem="8rc-0B-pTr" firstAttribute="height" secondItem="1rK-Sy-CWX" secondAttribute="height" multiplier="0.4" id="qpj-BE-CJJ"/>
                             <constraint firstItem="Eiy-7U-oCk" firstAttribute="width" secondItem="1rK-Sy-CWX" secondAttribute="width" multiplier="0.2" id="sQQ-e6-XaM"/>
                             <constraint firstItem="5fe-6O-12x" firstAttribute="trailing" secondItem="8rc-0B-pTr" secondAttribute="trailing" id="uin-di-MJu"/>
                             <constraint firstItem="cQk-8V-hJe" firstAttribute="leading" secondItem="5fe-6O-12x" secondAttribute="leading" constant="10" id="w3L-c0-ffb"/>
@@ -558,6 +572,7 @@
         <image name="button_mainMenu_present" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_mainMenu_ranking" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_start" width="170.66667175292969" height="85.333335876464844"/>
+        <image name="item_cloud1" width="40" height="21.333333969116211"/>
         <image name="item_coffeeMachine" width="341.33334350585938" height="112"/>
         <image name="item_computer_monitor" width="170.66667175292969" height="112"/>
         <image name="item_computer_mouse" width="170.66667175292969" height="53.333332061767578"/>
@@ -579,6 +594,9 @@
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
