@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "item_coffee-2.png",
+      "filename" : "background_carpet-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "item_coffee-1.png",
+      "filename" : "background_carpet-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "item_coffee.png",
+      "filename" : "background_carpet.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
