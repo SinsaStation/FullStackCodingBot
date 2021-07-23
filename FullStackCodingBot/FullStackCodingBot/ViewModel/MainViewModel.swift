@@ -1,11 +1,15 @@
 import Foundation
 
-final class MainViewModel: CommonViewModel {
+final class MainViewModel: AdViewModel {
+    
+    func execute() {
+        adStorage.setup()
+    }
     
     func makeMoveAction(to viewController: ViewControllerType) {
         switch viewController {
         case .giftVC:
-            let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
+            let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, adStorage: self.adStorage)
             let shopScene = Scene.shop(shopViewModel)
             self.sceneCoordinator.transition(to: shopScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
@@ -26,5 +30,4 @@ final class MainViewModel: CommonViewModel {
             self.sceneCoordinator.transition(to: gameScene, using: .fullScreen, with: StoryboardType.game, animated: true)
         }
     }
-    
 }
