@@ -1,20 +1,14 @@
 import Foundation
 import RxSwift
+import CoreData
 
 class ItemStorage: ItemStorageType {
     
-    private var storage: [Unit] = [
-        Unit(info: .cPlusPlus, level: 1),
-        Unit(info: .java, level: 1),
-        Unit(info: .swift, level: 1),
-        Unit(info: .kotlin, level: 1),
-        Unit(info: .python, level: 1),
-        Unit(info: .cSharp, level: 2),
-        Unit(info: .php, level: 1),
-        Unit(info: .javaScript, level: 1),
-        Unit(info: .ruby, level: 1),
-        Unit(info: .theC, level: 1)
-    ]
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private lazy var context = appDelegate.persistentContainer.viewContext
+    private lazy var entity = NSEntityDescription.entity(forEntityName: "ItemInformation", in: context)
+    
+    private var storage: [Unit] = []
     
     private var myMoney = 200
     
@@ -33,6 +27,18 @@ class ItemStorage: ItemStorageType {
     
     @discardableResult
     func create(item: Unit) -> Observable<Unit> {
+        if let entity = entity {
+            let info = NSManagedObject(entity: entity, insertInto: context)
+            info.setValue(item.uuid, forKey: "uuid")
+            info.setValue(item.image, forKey: "image")
+            info.setValue(item.level, forKey: "level")
+            
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
         storage.append(item)
         unitStorage.onNext(storage)
         return Observable.just(item)

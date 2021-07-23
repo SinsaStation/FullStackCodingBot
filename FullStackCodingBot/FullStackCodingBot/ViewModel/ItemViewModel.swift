@@ -21,14 +21,14 @@ final class ItemViewModel: CommonViewModel {
     let cancelAction: CocoaAction
     lazy var selectedUnit = BehaviorRelay<Unit>(value: defaultUnit)
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, cancelAction: CocoaAction? = nil) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, database: DatabaseManagerType, cancelAction: CocoaAction? = nil) {
         self.cancelAction = CocoaAction {
             if let action = cancelAction {
                 action.execute(())
             }
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
     }
     
     func checkLevelUpPrice() {
