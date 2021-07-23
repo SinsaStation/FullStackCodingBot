@@ -9,6 +9,20 @@ enum GameSetting {
     static let timeUnit = 1
 }
 
+enum ShopSetting {
+    static let freeReward = 1
+    static let adForADay = 5
+    
+    static func reward() -> Int {
+        return 500 + Int.random(in: 0...1000)
+    }
+}
+
 enum Text {
     static let title = "Full Stack \nCoding Master"
+    static let shopReset = "Shop resets at 12:00AM!"
+    
+    static func reward(amount: Int) -> String {
+        return "Got \(amount) Coins!"
+    }
 }

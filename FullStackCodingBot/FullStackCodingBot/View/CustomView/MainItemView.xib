@@ -61,10 +61,10 @@
                                         <constraint firstAttribute="width" secondItem="5WZ-KD-8RA" secondAttribute="height" multiplier="48:128" id="6WO-z7-L8M"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2v-tb-pTN" userLabel="Name Label">
-                                    <rect key="frame" x="80.666666666666686" y="13" width="65.333333333333314" height="17"/>
-                                    <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="14"/>
-                                    <color key="textColor" name="digital_green"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j2v-tb-pTN" userLabel="Name Label">
+                                    <rect key="frame" x="80.666666666666686" y="11" width="65.333333333333314" height="21"/>
+                                    <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="18"/>
+                                    <color key="textColor" name="digitalgreen"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -98,7 +98,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ebL-tE-1Wf" userLabel="Level Label">
-                                    <rect key="frame" x="88.333333333333343" y="11.666666666666684" width="50" height="19.333333333333329"/>
+                                    <rect key="frame" x="88.333333333333343" y="12.000000000000002" width="50" height="18.666666666666671"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="cvp-lm-oS3"/>
                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="keb-Sy-tw4"/>
@@ -143,8 +143,8 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000000000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cTi-QY-dhF" userLabel="Balance Label">
-                            <rect key="frame" x="75.666666666666657" y="18.666666666666664" width="118.66666666666666" height="13.333333333333336"/>
-                            <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="11"/>
+                            <rect key="frame" x="66.333333333333329" y="13.999999999999998" width="137.33333333333337" height="22.333333333333329"/>
+                            <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="19"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -194,7 +194,7 @@
         <image name="background_nametag_mid" width="85.333335876464844" height="42.666667938232422"/>
         <image name="background_nametag_right" width="16" height="42.666667938232422"/>
         <image name="background_propertybox" width="170.66667175292969" height="48"/>
-        <namedColor name="digital_green">
+        <namedColor name="digitalgreen">
             <color red="0.1289999932050705" green="0.96100002527236938" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemYellowColor">
