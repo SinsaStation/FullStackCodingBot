@@ -32,6 +32,13 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
                 self.setupItemInfomation(from: unit)
             }).disposed(by: rx.disposeBag)
         
+        viewModel.upgradedUnit
+            .subscribe(onNext: { [unowned self] unit in
+                guard let unitId = unit?.uuid else { return }
+                let colors = Colors.unitGradient[unitId]
+                self.mainItemView.startAnimation(with: colors)
+            }).disposed(by: rx.disposeBag)
+        
         viewModel.money
             .map {String($0)}
             .drive(availableMoneyLabel.rx.text)

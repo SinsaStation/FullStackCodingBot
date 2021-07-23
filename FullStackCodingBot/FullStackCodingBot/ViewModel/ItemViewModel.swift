@@ -21,6 +21,7 @@ final class ItemViewModel: CommonViewModel {
     let cancelAction: CocoaAction
     lazy var selectedUnit = BehaviorRelay<Unit>(value: defaultUnit)
     lazy var status = BehaviorRelay<String>(value: Text.levelUp)
+    lazy var upgradedUnit = BehaviorRelay<Unit?>(value: nil)
     
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, database: DatabaseManagerType, cancelAction: CocoaAction? = nil) {
         self.cancelAction = CocoaAction {
@@ -51,6 +52,7 @@ final class ItemViewModel: CommonViewModel {
         case true:
             let new = storage.raiseLevel(to: selectedUnit.value, using: requiredMoney)
             selectedUnit.accept(new)
+            upgradedUnit.accept(new)
             status.accept(Text.levelUpSuccessed(unitType: unitName, to: new.level))
         case false:
             status.accept(Text.levelUpFailed(coinNeeded: requiredMoney))

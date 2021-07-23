@@ -31,4 +31,8 @@ final class MainItemView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
+    
+    func startAnimation(with colors: [UIColor]) {
+        print(colors)
+    }
 }
