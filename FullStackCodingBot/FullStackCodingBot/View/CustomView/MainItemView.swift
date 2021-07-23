@@ -21,7 +21,7 @@ final class MainItemView: UIView {
     func configure(_ info: Unit) {
         itemImageView.image = UIImage(named: info.image)
         nameLabel.text = info.image
-        levelLabel.text = "\(info.level)"
+        levelLabel.text = "Lv. \(info.level)"
     }
     
     private func loadXib() {

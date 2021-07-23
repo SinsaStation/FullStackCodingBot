@@ -52,7 +52,6 @@ private extension ItemViewController {
     private func setup() {
         setupDelegate()
         setupButtonAction()
-        // setupInfoLabel(text: Text.levelUp)
     }
     
     private func setupDelegate() {

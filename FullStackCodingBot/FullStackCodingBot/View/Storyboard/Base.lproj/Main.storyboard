@@ -512,7 +512,7 @@
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jmc-H9-Akc">
                                                 <rect key="frame" x="0.0" y="41.333333333333371" width="408" height="165"/>
-                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                <color key="backgroundColor" name="yellow"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qzV-fO-4Zg">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -548,24 +548,32 @@
                                                         <integer key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="15"/>
+                                                        <integer key="value" value="0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Vy-M9-Z9d" userLabel="Index view">
-                                                <rect key="frame" x="10" y="0.0" width="163.33333333333334" height="41.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="163.33333333333334" height="41.333333333333336"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stacks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xp0-Y2-aIy">
-                                                        <rect key="frame" x="53" y="9" width="57" height="23"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_stack_index" translatesAutoresizingMaskIntoConstraints="NO" id="orf-b0-Tv6">
+                                                        <rect key="frame" x="0.0" y="0.0" width="163.33333333333334" height="41.333333333333336"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stacks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xp0-Y2-aIy">
+                                                        <rect key="frame" x="5" y="12.333333333333371" width="153.33333333333334" height="23"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="xp0-Y2-aIy" firstAttribute="centerY" secondItem="5Vy-M9-Z9d" secondAttribute="centerY" id="d18-SD-e5W"/>
-                                                    <constraint firstItem="xp0-Y2-aIy" firstAttribute="centerX" secondItem="5Vy-M9-Z9d" secondAttribute="centerX" id="d8G-Wd-lDo"/>
+                                                    <constraint firstAttribute="trailing" secondItem="xp0-Y2-aIy" secondAttribute="trailing" constant="5" id="9Fa-Ca-9ZD"/>
+                                                    <constraint firstItem="orf-b0-Tv6" firstAttribute="leading" secondItem="5Vy-M9-Z9d" secondAttribute="leading" id="Cjk-nZ-VmR"/>
+                                                    <constraint firstAttribute="trailing" secondItem="orf-b0-Tv6" secondAttribute="trailing" id="b66-Wx-DJQ"/>
+                                                    <constraint firstItem="xp0-Y2-aIy" firstAttribute="centerY" secondItem="5Vy-M9-Z9d" secondAttribute="centerY" multiplier="1.15" id="bgs-Fy-Pof"/>
+                                                    <constraint firstItem="xp0-Y2-aIy" firstAttribute="centerX" secondItem="5Vy-M9-Z9d" secondAttribute="centerX" id="lXm-Pc-5oa"/>
+                                                    <constraint firstItem="xp0-Y2-aIy" firstAttribute="leading" relation="lessThanOrEqual" secondItem="5Vy-M9-Z9d" secondAttribute="leading" constant="5" id="lm7-Wr-nFJ"/>
+                                                    <constraint firstItem="orf-b0-Tv6" firstAttribute="top" secondItem="5Vy-M9-Z9d" secondAttribute="top" id="mL3-B0-Qpy"/>
+                                                    <constraint firstAttribute="bottom" secondItem="orf-b0-Tv6" secondAttribute="bottom" id="pyC-mX-Y92"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -577,7 +585,7 @@
                                             <constraint firstAttribute="bottom" secondItem="jmc-H9-Akc" secondAttribute="bottom" id="XKe-Fc-UyM"/>
                                             <constraint firstItem="5Vy-M9-Z9d" firstAttribute="height" secondItem="Lc1-fv-jRA" secondAttribute="height" multiplier="0.2" id="Y0H-bo-HYR"/>
                                             <constraint firstItem="jmc-H9-Akc" firstAttribute="leading" secondItem="Lc1-fv-jRA" secondAttribute="leading" id="kCI-qc-SMz"/>
-                                            <constraint firstItem="5Vy-M9-Z9d" firstAttribute="leading" secondItem="Lc1-fv-jRA" secondAttribute="leading" constant="10" id="lJt-Hp-Qze"/>
+                                            <constraint firstItem="5Vy-M9-Z9d" firstAttribute="leading" secondItem="Lc1-fv-jRA" secondAttribute="leading" id="lJt-Hp-Qze"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -660,6 +668,7 @@
         <image name="background_coffeeMachine" width="341.33334350585938" height="74.666664123535156"/>
         <image name="background_icon_moneybag" width="42.666667938232422" height="48"/>
         <image name="background_propertybox" width="170.66667175292969" height="48"/>
+        <image name="background_stack_index" width="170.66667175292969" height="48"/>
         <image name="button_action_left_off" width="85.333335876464844" height="85.333335876464844"/>
         <image name="button_highscore" width="61.333332061767578" height="21.333333969116211"/>
         <image name="button_mainMenu_item" width="106.66666412353516" height="106.66666412353516"/>
@@ -681,6 +690,9 @@
         </namedColor>
         <namedColor name="lightbrown">
             <color red="0.66699999570846558" green="0.51800000667572021" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="yellow">
+            <color red="1" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

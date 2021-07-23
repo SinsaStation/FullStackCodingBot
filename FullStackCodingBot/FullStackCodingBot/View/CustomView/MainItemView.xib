@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -29,9 +28,9 @@
             <rect key="frame" x="0.0" y="0.0" width="500" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pT3-0T-w61" userLabel="Background Image View">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_unit" translatesAutoresizingMaskIntoConstraints="NO" id="pT3-0T-w61" userLabel="Background Image View">
                     <rect key="frame" x="0.0" y="0.0" width="500" height="400"/>
-                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                    <color key="backgroundColor" name="darkgreen"/>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8PL-Qd-AdW" userLabel="Unit Image View">
                     <rect key="frame" x="110" y="22" width="280" height="280"/>
@@ -84,46 +83,51 @@
                                 <constraint firstItem="Vji-kK-zOO" firstAttribute="height" secondItem="5QS-ea-ZVm" secondAttribute="height" id="zJs-br-fq1"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWk-VD-mCv" userLabel="Level View">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTP-uH-SqU" userLabel="Name Tag View">
                             <rect key="frame" x="0.0" y="34.333333333333371" width="227" height="34.333333333333343"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_level_box" translatesAutoresizingMaskIntoConstraints="NO" id="iTF-IB-z6a">
-                                    <rect key="frame" x="81" y="0.0" width="65" height="34.333333333333336"/>
-                                </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_level_left" translatesAutoresizingMaskIntoConstraints="NO" id="8Mj-Pw-WqE">
-                                    <rect key="frame" x="39.333333333333343" y="0.0" width="38.666666666666657" height="34.333333333333336"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_nametag_left" translatesAutoresizingMaskIntoConstraints="NO" id="Ajd-Sk-XYV">
+                                    <rect key="frame" x="57.666666666666686" y="0.0" width="13" height="34.333333333333336"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="8Mj-Pw-WqE" secondAttribute="height" multiplier="48:43" id="Xh9-N9-Eem"/>
+                                        <constraint firstAttribute="width" secondItem="Ajd-Sk-XYV" secondAttribute="height" multiplier="48:128" id="di8-FK-ZCI"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ebL-tE-1Wf" userLabel="Level Label">
-                                    <rect key="frame" x="88.333333333333343" y="7.6666666666666305" width="50" height="18.666666666666671"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="cvp-lm-oS3"/>
-                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="keb-Sy-tw4"/>
-                                    </constraints>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_nametag_mid" translatesAutoresizingMaskIntoConstraints="NO" id="4NY-Hn-njB">
+                                    <rect key="frame" x="70.666666666666686" y="0.0" width="85.333333333333314" height="34.333333333333336"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv. 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ebL-tE-1Wf" userLabel="Level Label">
+                                    <rect key="frame" x="80.666666666666686" y="7.6666666666666305" width="65.333333333333314" height="18.666666666666671"/>
                                     <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="16"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_nametag_right" translatesAutoresizingMaskIntoConstraints="NO" id="xAx-lE-NAS">
+                                    <rect key="frame" x="156.00000000000003" y="0.0" width="13" height="34.333333333333336"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="xAx-lE-NAS" secondAttribute="height" multiplier="48:128" id="O9s-XC-TTS"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="iTF-IB-z6a" firstAttribute="centerY" secondItem="mWk-VD-mCv" secondAttribute="centerY" id="8Ol-sI-jaw"/>
-                                <constraint firstItem="iTF-IB-z6a" firstAttribute="height" secondItem="mWk-VD-mCv" secondAttribute="height" id="Was-PB-v2R"/>
-                                <constraint firstItem="ebL-tE-1Wf" firstAttribute="centerY" secondItem="mWk-VD-mCv" secondAttribute="centerY" id="cdG-Ai-U2X"/>
-                                <constraint firstItem="8Mj-Pw-WqE" firstAttribute="height" secondItem="mWk-VD-mCv" secondAttribute="height" id="d9j-7y-oGf"/>
-                                <constraint firstItem="8Mj-Pw-WqE" firstAttribute="top" secondItem="mWk-VD-mCv" secondAttribute="top" id="eol-Rf-t3k"/>
-                                <constraint firstItem="iTF-IB-z6a" firstAttribute="leading" secondItem="8Mj-Pw-WqE" secondAttribute="trailing" constant="3" id="iA9-z4-49O"/>
-                                <constraint firstItem="ebL-tE-1Wf" firstAttribute="centerX" secondItem="mWk-VD-mCv" secondAttribute="centerX" id="kxP-YU-9bo"/>
-                                <constraint firstAttribute="bottom" secondItem="8Mj-Pw-WqE" secondAttribute="bottom" id="mwE-uW-e7D"/>
-                                <constraint firstItem="iTF-IB-z6a" firstAttribute="width" secondItem="ebL-tE-1Wf" secondAttribute="width" multiplier="1.3" id="u9N-ov-UDD"/>
-                                <constraint firstItem="iTF-IB-z6a" firstAttribute="centerX" secondItem="mWk-VD-mCv" secondAttribute="centerX" id="y5s-Ka-UPF"/>
+                                <constraint firstItem="Ajd-Sk-XYV" firstAttribute="top" secondItem="KTP-uH-SqU" secondAttribute="top" id="39f-2K-10m"/>
+                                <constraint firstItem="Ajd-Sk-XYV" firstAttribute="height" secondItem="KTP-uH-SqU" secondAttribute="height" id="6Ud-Tn-klj"/>
+                                <constraint firstItem="4NY-Hn-njB" firstAttribute="centerX" secondItem="KTP-uH-SqU" secondAttribute="centerX" id="8Od-0s-AaK"/>
+                                <constraint firstItem="4NY-Hn-njB" firstAttribute="centerY" secondItem="KTP-uH-SqU" secondAttribute="centerY" id="Agz-kS-tsi"/>
+                                <constraint firstItem="ebL-tE-1Wf" firstAttribute="centerY" secondItem="KTP-uH-SqU" secondAttribute="centerY" id="F4S-QW-gJC"/>
+                                <constraint firstItem="xAx-lE-NAS" firstAttribute="leading" secondItem="4NY-Hn-njB" secondAttribute="trailing" id="Lz2-vU-Ctv"/>
+                                <constraint firstItem="xAx-lE-NAS" firstAttribute="height" secondItem="KTP-uH-SqU" secondAttribute="height" id="RjT-gh-hNz"/>
+                                <constraint firstItem="ebL-tE-1Wf" firstAttribute="centerX" secondItem="KTP-uH-SqU" secondAttribute="centerX" id="SW0-no-9MF"/>
+                                <constraint firstItem="4NY-Hn-njB" firstAttribute="height" secondItem="KTP-uH-SqU" secondAttribute="height" id="TC9-L0-KBO"/>
+                                <constraint firstItem="xAx-lE-NAS" firstAttribute="top" secondItem="KTP-uH-SqU" secondAttribute="top" id="XTK-Iq-vdZ"/>
+                                <constraint firstAttribute="bottom" secondItem="xAx-lE-NAS" secondAttribute="bottom" id="XaS-r0-Xls"/>
+                                <constraint firstAttribute="bottom" secondItem="Ajd-Sk-XYV" secondAttribute="bottom" id="ZEz-gk-owb"/>
+                                <constraint firstItem="4NY-Hn-njB" firstAttribute="leading" secondItem="Ajd-Sk-XYV" secondAttribute="trailing" id="eaa-Jd-Z8L"/>
+                                <constraint firstItem="4NY-Hn-njB" firstAttribute="width" secondItem="ebL-tE-1Wf" secondAttribute="width" multiplier="1.3" id="mCC-Tb-pCw"/>
                             </constraints>
                         </view>
                     </subviews>
                     <constraints>
                         <constraint firstItem="5QS-ea-ZVm" firstAttribute="height" secondItem="i1u-cf-kmb" secondAttribute="height" multiplier="0.5" id="RY3-9d-c9p"/>
-                        <constraint firstItem="mWk-VD-mCv" firstAttribute="height" secondItem="i1u-cf-kmb" secondAttribute="height" multiplier="0.5" id="yqA-nX-9cY"/>
                     </constraints>
                 </stackView>
             </subviews>
@@ -147,16 +151,15 @@
         </view>
     </objects>
     <resources>
-        <image name="background_level_box" width="106.66666412353516" height="42.666667938232422"/>
-        <image name="background_level_left" width="48" height="42.666667938232422"/>
         <image name="background_nametag_left" width="16" height="42.666667938232422"/>
         <image name="background_nametag_mid" width="85.333335876464844" height="42.666667938232422"/>
         <image name="background_nametag_right" width="16" height="42.666667938232422"/>
+        <image name="background_unit" width="341.33334350585938" height="266.66665649414062"/>
+        <namedColor name="darkgreen">
+            <color red="0.027450980392156862" green="0.10588235294117647" blue="0.015686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="digitalgreen">
             <color red="0.1289999932050705" green="0.96100002527236938" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

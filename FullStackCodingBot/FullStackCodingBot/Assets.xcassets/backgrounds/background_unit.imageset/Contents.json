@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "background_level_left-4.png",
+      "filename" : "background_unit-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "background_level_left-3.png",
+      "filename" : "background_unit-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "background_level_left-2.png",
+      "filename" : "background_unit.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
