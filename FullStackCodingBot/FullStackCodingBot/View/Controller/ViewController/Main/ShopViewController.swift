@@ -8,7 +8,6 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: ShopViewModel!
     
-    @IBOutlet weak var backgroundView: ReplicateAnimationView!
     @IBOutlet weak var totalCoinLabel: UILabel!
     @IBOutlet weak var rewardInfoLabel: TypewriterLabel!
     @IBOutlet weak var cancelButton: UIButton!
@@ -19,11 +18,6 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        backgroundView.draw(withImage: .paused, countPerLine: 3.2)
     }
     
     func bindViewModel() {

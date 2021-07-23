@@ -20,7 +20,7 @@ enum ShopSetting {
 
 enum Text {
     static let title = "Full Stack \nCoding Master"
-    static let shopReset = "Shop resets at 12:00AM!"
+    static let shopReset = "Coffee refills at 12AM!"
     
     static func reward(amount: Int) -> String {
         return "Got \(amount) Coins!"
