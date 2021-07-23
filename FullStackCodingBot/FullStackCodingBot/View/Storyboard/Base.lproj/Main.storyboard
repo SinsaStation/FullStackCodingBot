@@ -430,16 +430,16 @@
                                 <rect key="frame" x="10" y="107.33333333333331" width="408" height="688"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCf-hH-G0s" userLabel="Screen View">
-                                        <rect key="frame" x="0.0" y="0.0" width="408" height="410.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="408" height="348.66666666666669"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iLa-34-Kpi">
-                                                <rect key="frame" x="14.333333333333343" y="14.333333333333343" width="379.33333333333326" height="382"/>
+                                                <rect key="frame" x="14.333333333333343" y="12.333333333333343" width="379.33333333333326" height="324"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xuV-g1-pQb" userLabel="Info View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="379.33333333333331" height="57.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="379.33333333333331" height="48.666666666666664"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level up! Swift 2 -&gt; 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="nGC-iO-vut" customClass="TypewriterLabel" customModule="GhostTypewriter">
-                                                                <rect key="frame" x="10" y="14.999999999999988" width="359.33333333333331" height="27.666666666666671"/>
+                                                                <rect key="frame" x="10" y="10.33333333333333" width="359.33333333333331" height="27.666666666666671"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                                 <color key="textColor" name="digitalgreen"/>
                                                                 <nil key="highlightedColor"/>
@@ -454,7 +454,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rc-0B-pTr" customClass="MainItemView" customModule="Full_Stack" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="65.333333333333343" width="379.33333333333331" height="316.66666666666663"/>
+                                                        <rect key="frame" x="0.0" y="56.666666666666657" width="379.33333333333331" height="267.33333333333337"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                 <integer key="value" value="15"/>
@@ -487,16 +487,16 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sgo-0I-kap" userLabel="Level Up View">
-                                        <rect key="frame" x="0.0" y="418.66666666666669" width="408" height="55"/>
+                                        <rect key="frame" x="0.0" y="356.66666666666669" width="408" height="117"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJR-TU-ocn" customClass="LevelUpButton" customModule="Full_Stack" customModuleProvider="target">
-                                                <rect key="frame" x="127" y="5.3333333333333712" width="154" height="44"/>
+                                                <rect key="frame" x="107.33333333333333" y="11.666666666666686" width="193.33333333333337" height="93.666666666666671"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="MJR-TU-ocn" secondAttribute="height" multiplier="7:2" id="p7D-wY-Bse"/>
+                                                    <constraint firstAttribute="width" secondItem="MJR-TU-ocn" secondAttribute="height" multiplier="512:248" id="p7D-wY-Bse"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                                <state key="normal" backgroundImage="button_highscore">
+                                                <state key="normal">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                             </button>
@@ -512,7 +512,7 @@
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jmc-H9-Akc">
                                                 <rect key="frame" x="0.0" y="41.333333333333371" width="408" height="165"/>
-                                                <color key="backgroundColor" name="yellow"/>
+                                                <color key="backgroundColor" name="mildgreen"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qzV-fO-4Zg">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -561,7 +561,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stacks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xp0-Y2-aIy">
                                                         <rect key="frame" x="5" y="12.333333333333371" width="153.33333333333334" height="23"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -590,7 +590,7 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Sgo-0I-kap" firstAttribute="height" secondItem="Z3X-nP-Gs0" secondAttribute="height" multiplier="0.08" id="TPU-SI-vbi"/>
+                                    <constraint firstItem="Sgo-0I-kap" firstAttribute="height" secondItem="Z3X-nP-Gs0" secondAttribute="height" multiplier="0.17" id="TPU-SI-vbi"/>
                                     <constraint firstItem="Lc1-fv-jRA" firstAttribute="height" secondItem="Z3X-nP-Gs0" secondAttribute="height" multiplier="0.3" id="gPU-ly-l8S"/>
                                 </constraints>
                             </stackView>
@@ -670,7 +670,6 @@
         <image name="background_propertybox" width="170.66667175292969" height="48"/>
         <image name="background_stack_index" width="170.66667175292969" height="48"/>
         <image name="button_action_left_off" width="85.333335876464844" height="85.333335876464844"/>
-        <image name="button_highscore" width="61.333332061767578" height="21.333333969116211"/>
         <image name="button_mainMenu_item" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_mainMenu_present" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_mainMenu_ranking" width="106.66666412353516" height="106.66666412353516"/>
@@ -691,8 +690,8 @@
         <namedColor name="lightbrown">
             <color red="0.66699999570846558" green="0.51800000667572021" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="yellow">
-            <color red="1" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="mildgreen">
+            <color red="0.19215686274509802" green="0.29803921568627451" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
