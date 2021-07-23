@@ -20,7 +20,6 @@ final class ShopViewModel: AdViewModel {
     lazy var selectedItem = BehaviorRelay<ShopItem?>(value: nil)
     lazy var reward = BehaviorRelay<Int?>(value: nil)
         
-    
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, adStorage: AdStorageType, database: DatabaseManagerType, confirmAction: Action<String, Void>? = nil, cancelAction: CocoaAction? = nil) {
         self.confirmAction = Action<String, Void> { input in
             if let action = confirmAction {

@@ -9,7 +9,7 @@ final class MainViewModel: AdViewModel {
     func makeMoveAction(to viewController: ViewControllerType) {
         switch viewController {
         case .giftVC:
-            let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, database: database, adStorage: adStorage)
+            let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, adStorage: adStorage, database: database)
             let shopScene = Scene.shop(shopViewModel)
             self.sceneCoordinator.transition(to: shopScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
