@@ -22,6 +22,7 @@ final class ItemViewModel: CommonViewModel {
     lazy var selectedUnit = BehaviorRelay<Unit>(value: defaultUnit)
     lazy var status = BehaviorRelay<String>(value: Text.levelUp)
     lazy var upgradedUnit = BehaviorRelay<Unit?>(value: nil)
+    private var feedbackGenerator: UINotificationFeedbackGenerator?
     
     init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, database: DatabaseManagerType, cancelAction: CocoaAction? = nil) {
         self.cancelAction = CocoaAction {
@@ -31,6 +32,7 @@ final class ItemViewModel: CommonViewModel {
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
+        setupFeedbackGenerator()
     }
     
     func checkLevelUpPrice() {
@@ -56,6 +58,12 @@ final class ItemViewModel: CommonViewModel {
             status.accept(Text.levelUpSuccessed(unitType: unitName, to: new.level))
         case false:
             status.accept(Text.levelUpFailed(coinNeeded: requiredMoney))
+            feedbackGenerator?.notificationOccurred(.error)
         }
+    }
+    
+    private func setupFeedbackGenerator() {
+        feedbackGenerator = UINotificationFeedbackGenerator()
+        feedbackGenerator?.prepare()
     }
 }
