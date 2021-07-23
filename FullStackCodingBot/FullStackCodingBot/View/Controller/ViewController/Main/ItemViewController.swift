@@ -2,11 +2,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NSObject_Rx
+import GhostTypewriter
 
 final class ItemViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: ItemViewModel!
     
+    @IBOutlet weak var infoLabel: TypewriterLabel!
     @IBOutlet weak var mainItemView: MainItemView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var itemCollectionView: UICollectionView!
@@ -34,6 +36,11 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
             .map {String($0)}
             .drive(availableMoneyLabel.rx.text)
             .disposed(by: rx.disposeBag)
+        
+        viewModel.status
+            .subscribe(onNext: { [unowned self] message in
+                self.setupInfoLabel(text: message)
+            }).disposed(by: rx.disposeBag)
                 
         cancelButton.rx.action = viewModel.cancelAction
     }
@@ -45,6 +52,7 @@ private extension ItemViewController {
     private func setup() {
         setupDelegate()
         setupButtonAction()
+        // setupInfoLabel(text: Text.levelUp)
     }
     
     private func setupDelegate() {
@@ -68,19 +76,28 @@ private extension ItemViewController {
                 self.viewModel.makeActionLeveUp()
             }).disposed(by: rx.disposeBag)
     }
+    
+    private func setupInfoLabel(text: String) {
+        let font = UIFont(name: Font.joystix, size: view.bounds.width * 0.04) ?? UIFont()
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttribute(.font, value: font, range: .init(location: 0, length: text.count))
+        infoLabel.attributedText = attributedString
+        infoLabel.restartTypewritingAnimation()
+    }
 }
 
 // MARK: Setup CellSize
 extension ItemViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = itemCollectionView.frame.width * 0.3
         let height = itemCollectionView.frame.height * 0.8
+        let width = height
         return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let yInset = itemCollectionView.frame.height * 0.1
         let xInset = itemCollectionView.frame.width * 0.05
-        return UIEdgeInsets(top: 0, left: xInset, bottom: xInset, right: 0)
+        return UIEdgeInsets(top: yInset, left: xInset, bottom: yInset, right: xInset)
     }
 }

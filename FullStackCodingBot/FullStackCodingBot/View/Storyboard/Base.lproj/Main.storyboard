@@ -438,7 +438,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xuV-g1-pQb" userLabel="Info View">
                                                         <rect key="frame" x="0.0" y="0.0" width="379.33333333333331" height="57.333333333333336"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level up! Swift 2 -&gt; 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="nGC-iO-vut">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level up! Swift 2 -&gt; 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="nGC-iO-vut" customClass="TypewriterLabel" customModule="GhostTypewriter">
                                                                 <rect key="frame" x="10" y="14.999999999999988" width="359.33333333333331" height="27.666666666666671"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                                 <color key="textColor" name="digitalgreen"/>
@@ -643,6 +643,7 @@
                     <connections>
                         <outlet property="availableMoneyLabel" destination="b3i-P5-hMw" id="f0x-Fk-Sqe"/>
                         <outlet property="cancelButton" destination="Eiy-7U-oCk" id="34d-NV-1AC"/>
+                        <outlet property="infoLabel" destination="nGC-iO-vut" id="SCt-2X-gNg"/>
                         <outlet property="itemCollectionView" destination="jmc-H9-Akc" id="CUZ-2Y-fDp"/>
                         <outlet property="levelUpButton" destination="MJR-TU-ocn" id="o6o-Fa-L4K"/>
                         <outlet property="mainItemView" destination="8rc-0B-pTr" id="HxY-Ua-SSp"/>
