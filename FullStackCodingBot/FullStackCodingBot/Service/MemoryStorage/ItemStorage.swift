@@ -4,6 +4,7 @@ import CoreData
 
 class ItemStorage: ItemStorageType {
     
+    // swiftlint:disable force_cast
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private lazy var context = appDelegate.persistentContainer.viewContext
     private lazy var entity = NSEntityDescription.entity(forEntityName: "ItemInformation", in: context)
