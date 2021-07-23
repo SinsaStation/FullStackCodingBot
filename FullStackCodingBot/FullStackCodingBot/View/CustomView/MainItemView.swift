@@ -7,7 +7,6 @@ final class MainItemView: UIView {
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var availableMoneyLabel: UILabel!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)

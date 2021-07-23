@@ -11,6 +11,7 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var itemCollectionView: UICollectionView!
     @IBOutlet weak var levelUpButton: LevelUpButton!
+    @IBOutlet weak var availableMoneyLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,7 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
         
         viewModel.money
             .map {String($0)}
-            .drive(mainItemView.availableMoneyLabel.rx.text)
+            .drive(availableMoneyLabel.rx.text)
             .disposed(by: rx.disposeBag)
                 
         cancelButton.rx.action = viewModel.cancelAction
