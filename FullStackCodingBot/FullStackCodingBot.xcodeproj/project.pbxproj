@@ -20,6 +20,8 @@
 		71307AB926A5437C00C3191F /* StorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71307AB826A5437C00C3191F /* StorageTest.swift */; };
 		71307AC026A5456500C3191F /* ItemStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BB20526943CDE00286B31 /* ItemStorageType.swift */; };
 		71307AC126A5461700C3191F /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B0AC82692F9CF006FDE3D /* Unit.swift */; };
+		71310C2C26AA596B00733361 /* CoreDataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71310C2A26AA596B00733361 /* CoreDataStorage.xcdatamodeld */; };
+		71310C2D26AA596B00733361 /* CoreDataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71310C2A26AA596B00733361 /* CoreDataStorage.xcdatamodeld */; };
 		715A83EE269FE96300C9CEFF /* StoryboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A83ED269FE96300C9CEFF /* StoryboardType.swift */; };
 		715BB20626943CDE00286B31 /* ItemStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BB20526943CDE00286B31 /* ItemStorageType.swift */; };
 		715BB20826943D5600286B31 /* ItemStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715BB20726943D5600286B31 /* ItemStorage.swift */; };
@@ -96,6 +98,7 @@
 		71307AB626A5437C00C3191F /* Full StackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Full StackTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71307AB826A5437C00C3191F /* StorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTest.swift; sourceTree = "<group>"; };
 		71307ABA26A5437C00C3191F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71310C2B26AA596B00733361 /* CoreDataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataStorage.xcdatamodel; sourceTree = "<group>"; };
 		715A83ED269FE96300C9CEFF /* StoryboardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardType.swift; sourceTree = "<group>"; };
 		715BB20526943CDE00286B31 /* ItemStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStorageType.swift; sourceTree = "<group>"; };
 		715BB20726943D5600286B31 /* ItemStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStorage.swift; sourceTree = "<group>"; };
@@ -401,6 +404,7 @@
 				E45B0AB72692929F006FDE3D /* Assets.xcassets */,
 				E45B0ABC2692929F006FDE3D /* Info.plist */,
 				712F500926A831D900186948 /* GoogleService-Info.plist */,
+				71310C2A26AA596B00733361 /* CoreDataStorage.xcdatamodeld */,
 			);
 			path = FullStackCodingBot;
 			sourceTree = "<group>";
@@ -638,6 +642,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71310C2D26AA596B00733361 /* CoreDataStorage.xcdatamodeld in Sources */,
 				71307AC126A5461700C3191F /* Unit.swift in Sources */,
 				71307AC026A5456500C3191F /* ItemStorageType.swift in Sources */,
 				71307AB926A5437C00C3191F /* StorageTest.swift in Sources */,
@@ -650,6 +655,7 @@
 			files = (
 				E4C2C34D26A24666007BDF81 /* SkyView.swift in Sources */,
 				7164BFD2269679C6009769E4 /* MainItemView.swift in Sources */,
+				71310C2C26AA596B00733361 /* CoreDataStorage.xcdatamodeld in Sources */,
 				710D0D4F2693F6E500244A16 /* ItemCell.swift in Sources */,
 				E4D7C63E2693E79800D58BA2 /* AppDelegate.swift in Sources */,
 				E45B0AC92692F9CF006FDE3D /* Unit.swift in Sources */,
@@ -964,6 +970,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		71310C2A26AA596B00733361 /* CoreDataStorage.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				71310C2B26AA596B00733361 /* CoreDataStorage.xcdatamodel */,
+			);
+			currentVersion = 71310C2B26AA596B00733361 /* CoreDataStorage.xcdatamodel */;
+			path = CoreDataStorage.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E45B0AA32692929C006FDE3D /* Project object */;
 }
