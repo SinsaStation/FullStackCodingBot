@@ -40,25 +40,18 @@ final class MainItemView: UIView {
         let width = frame.width
         let height = frame.height
         let center = CGPoint(x: width/2, y: height/2*0.9)
-        let finalWidth = width * 1.5
+        let finalWidth = width*2
         
-        let outerCircle = CALayer()
-        outerCircle.backgroundColor = color.cgColor
-        outerCircle.bounds.size = CGSize(width: finalWidth*1.2, height: finalWidth*1.2)
-        outerCircle.cornerRadius = finalWidth*0.6
-        outerCircle.position = center
-        backgroundView.layer.addSublayer(outerCircle)
-        
-        let innerCircle = CALayer()
-        innerCircle.backgroundColor = UIColor(named: "darkgreen")?.cgColor
-        innerCircle.bounds.size = CGSize(width: finalWidth, height: finalWidth)
-        innerCircle.cornerRadius = finalWidth*0.5
-        innerCircle.position = center
-        backgroundView.layer.addSublayer(innerCircle)
-        
+        let ring = CALayer()
+        ring.position = center
+        ring.bounds.size = CGSize(width: finalWidth, height: finalWidth)
+        ring.cornerRadius = finalWidth/2
+        ring.borderWidth = finalWidth*0.1
+        ring.borderColor = color.cgColor
+        backgroundView.layer.addSublayer(ring)
+
         CATransaction.setCompletionBlock {
-            innerCircle.removeFromSuperlayer()
-            outerCircle.removeFromSuperlayer()
+            ring.removeFromSuperlayer()
         }
         
         CATransaction.begin()
@@ -66,13 +59,11 @@ final class MainItemView: UIView {
         let scaleKey = "transform.scale"
         let scaleAnimation = CAKeyframeAnimation(keyPath: scaleKey)
         
-        scaleAnimation.values = [0.01, 0.45, 1.0]
+        scaleAnimation.values = [0.001, 0.3, 1.0]
         scaleAnimation.keyTimes = [0.0, 0.25, 0.8]
         scaleAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         scaleAnimation.duration = 0.8
-
-        innerCircle.add(scaleAnimation, forKey: scaleKey)
-        outerCircle.add(scaleAnimation, forKey: scaleKey)
+        ring.add(scaleAnimation, forKey: scaleKey)
         
         CATransaction.commit()
     }
