@@ -6,7 +6,7 @@ import Action
 final class ItemViewModel: CommonViewModel {
     
     private var defaultUnit: Unit {
-        return storage.itemList().first!
+        return storage.itemList().first ?? Unit(info: .cPlusPlus, level: 1)
     }
     
     var itemStorage: Driver<[Unit]> {

@@ -11,7 +11,7 @@ class ItemStorage: ItemStorageType {
     
     private var storage: [Unit] = []
     
-    private var myMoney = 200
+    private var myMoney = 200000000
     
     private lazy var unitStorage = BehaviorSubject(value: storage)
     private lazy var moneyStatue = BehaviorSubject(value: myMoney)

@@ -16,7 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainItemView" customModule="Full_Stack" customModuleProvider="target">
             <connections>
-                <outlet property="backgroundImageView" destination="pT3-0T-w61" id="xUY-CQ-Kou"/>
+                <outlet property="backgroundView" destination="cKg-75-LBQ" id="y89-jk-ha5"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="cpa-fh-dI9"/>
                 <outlet property="itemImageView" destination="8PL-Qd-AdW" id="NmW-Bt-Vah"/>
                 <outlet property="levelLabel" destination="ebL-tE-1Wf" id="WyA-fA-43p"/>
@@ -28,9 +28,12 @@
             <rect key="frame" x="0.0" y="0.0" width="500" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_unit" translatesAutoresizingMaskIntoConstraints="NO" id="pT3-0T-w61" userLabel="Background Image View">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKg-75-LBQ" userLabel="Background View">
                     <rect key="frame" x="0.0" y="0.0" width="500" height="400"/>
                     <color key="backgroundColor" name="darkgreen"/>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_unit" translatesAutoresizingMaskIntoConstraints="NO" id="pT3-0T-w61" userLabel="Dimension Image View">
+                    <rect key="frame" x="0.0" y="0.0" width="500" height="400"/>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8PL-Qd-AdW" userLabel="Unit Image View">
                     <rect key="frame" x="110" y="22" width="280" height="280"/>
@@ -138,9 +141,13 @@
                 <constraint firstAttribute="bottom" secondItem="pT3-0T-w61" secondAttribute="bottom" id="3xr-QA-nk3"/>
                 <constraint firstItem="pT3-0T-w61" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FSn-FZ-Kv0"/>
                 <constraint firstAttribute="bottom" secondItem="i1u-cf-kmb" secondAttribute="bottom" multiplier="1.05" constant="1" id="LW4-R5-zLm"/>
+                <constraint firstAttribute="bottom" secondItem="cKg-75-LBQ" secondAttribute="bottom" id="N5E-et-YdO"/>
                 <constraint firstItem="i1u-cf-kmb" firstAttribute="width" secondItem="pT3-0T-w61" secondAttribute="width" multiplier="0.454" id="TpK-ev-sMX"/>
                 <constraint firstItem="8PL-Qd-AdW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VJa-uE-oHN"/>
+                <constraint firstAttribute="trailing" secondItem="cKg-75-LBQ" secondAttribute="trailing" id="amF-2b-34z"/>
+                <constraint firstItem="cKg-75-LBQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bLK-JB-Bcw"/>
                 <constraint firstItem="i1u-cf-kmb" firstAttribute="height" secondItem="pT3-0T-w61" secondAttribute="height" multiplier="0.172" id="ceq-TT-PJ1"/>
+                <constraint firstItem="cKg-75-LBQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eIX-0p-8aJ"/>
                 <constraint firstItem="i1u-cf-kmb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="goG-Re-hJ5"/>
                 <constraint firstItem="pT3-0T-w61" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="pDx-Yy-Di2"/>
                 <constraint firstItem="pT3-0T-w61" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vfR-36-aHi"/>
