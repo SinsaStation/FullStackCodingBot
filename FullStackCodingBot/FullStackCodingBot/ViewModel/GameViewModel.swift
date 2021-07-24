@@ -9,6 +9,12 @@ enum GameStatus {
     case resume
 }
 
+enum UserActionStatus {
+    case correct(Direction)
+    case wrong
+    case feverWrong
+}
+
 final class GameViewModel: CommonViewModel {
 
     private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
@@ -24,9 +30,8 @@ final class GameViewModel: CommonViewModel {
     private(set) var currentScore = 0
     private(set) var scoreAdded = BehaviorRelay<Int>(value: 0)
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
-    private(set) var newDirection = BehaviorRelay<Direction?>(value: nil)
+    private(set) var userAction = BehaviorRelay<UserActionStatus?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
-    private var feedbackGenerator: UINotificationFeedbackGenerator?
     private(set) lazy var pauseAction: Action<Void, Void> = Action {
         self.timer?.cancel()
         self.newGameStatus.accept(.pause)
@@ -37,7 +42,6 @@ final class GameViewModel: CommonViewModel {
         self.gameUnitManager = gameUnitManager
         timeProgress.becomeCurrent(withPendingUnitCount: totalTime)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
-        setupFeedbackGenerator()
     }
     
     func execute() {
@@ -104,7 +108,7 @@ final class GameViewModel: CommonViewModel {
     }
     
     private func correctAction(for direction: Direction, _ scoreGained: Int) {
-        newDirection.accept(direction)
+        userAction.accept(.correct(direction))
         currentScore += scoreGained
         scoreAdded.accept(scoreGained)
         gameUnitManager.raiseAnswerCount()
@@ -141,13 +145,15 @@ final class GameViewModel: CommonViewModel {
     }
     
     private func wrongAction() {
-        feedbackGenerator?.notificationOccurred(.error)
-        
-        if !isFeverOn {
-            timeMinus(by: GameSetting.wrongTime)
-            feverGauge = 0
-            gameMayOver()
+        guard !isFeverOn else {
+            userAction.accept(.feverWrong)
+            return
         }
+        
+        userAction.accept(.wrong)
+        timeMinus(by: GameSetting.wrongTime)
+        feverGauge = 0
+        gameMayOver()
     }
     
     @discardableResult
@@ -162,10 +168,5 @@ final class GameViewModel: CommonViewModel {
         let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database, currentScore: currentScore, newGameStatus: newGameStatus)
         let pauseScene = Scene.pause(pauseViewModel)
         return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, with: StoryboardType.game, animated: false)
-    }
-    
-    private func setupFeedbackGenerator() {
-        feedbackGenerator = UINotificationFeedbackGenerator()
-        feedbackGenerator?.prepare()
     }
 }

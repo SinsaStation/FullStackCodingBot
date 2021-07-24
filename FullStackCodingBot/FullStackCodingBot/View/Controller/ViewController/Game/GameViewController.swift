@@ -14,16 +14,32 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var feverTimeView: FeverTimeView!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var backgroundView: GameBackgroundView!
-
+    private var feedbackGenerator: UINotificationFeedbackGenerator?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupFeedbackGenerator()
+    }
+    
     func bindViewModel() {
         buttonController.setupButton()
         buttonController.bind { [unowned self] direction in
             self.viewModel.moveUnitAction(to: direction)
         }
         
-        viewModel.newDirection
-            .subscribe(onNext: { [unowned self] direction in
-                self.checkRemove(to: direction)
+        viewModel.userAction
+            .subscribe(onNext: { [unowned self] status in
+                guard let status = status else { return }
+                switch status {
+                case .correct(let direction):
+                    self.checkRemove(to: direction)
+                case .wrong:
+                    self.backgroundView.playWrongMode()
+                    self.timeView.playWrongMode()
+                    fallthrough
+                case .feverWrong:
+                    self.feedbackGenerator?.notificationOccurred(.error)
+                }
         }).disposed(by: rx.disposeBag)
         
         viewModel.scoreAdded
@@ -67,6 +83,14 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         pauseButton.rx.action = viewModel.pauseAction
         
         timeView.observedProgress = viewModel.timeProgress
+    }
+}
+
+// MARK: - Setup
+private extension GameViewController {
+    private func setupFeedbackGenerator() {
+        feedbackGenerator = UINotificationFeedbackGenerator()
+        feedbackGenerator?.prepare()
     }
 }
 
