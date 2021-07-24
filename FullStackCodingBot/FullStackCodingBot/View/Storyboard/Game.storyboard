@@ -251,25 +251,37 @@
                                             <constraint firstAttribute="width" secondItem="2Uq-RD-u1v" secondAttribute="height" multiplier="1:4" id="WUB-Og-baI"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9s-OQ-iTY" userLabel="Time View">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9s-OQ-iTY" userLabel="Time View">
                                         <rect key="frame" x="0.0" y="404.66666666666663" width="388" height="21.333333333333314"/>
                                         <subviews>
-                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="ilI-4e-lnS" customClass="TimeProgressView" customModule="Full_Stack" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5.3333333333333703" width="388" height="10.666666666666664"/>
-                                                <color key="progressTintColor" name="digital_green"/>
-                                                <color key="trackTintColor" systemColor="systemGray6Color"/>
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6ec-WQ-ttv">
+                                                <rect key="frame" x="0.0" y="1.3333333333333712" width="388" height="19"/>
+                                                <subviews>
+                                                    <progressView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="ilI-4e-lnS" customClass="TimeProgressView" customModule="Full_Stack" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="388" height="1"/>
+                                                        <color key="progressTintColor" name="digitalgreen"/>
+                                                        <color key="trackTintColor" systemColor="systemGray6Color"/>
+                                                    </progressView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FQj-lB-eLc" userLabel="Fever Time View" customClass="FeverTimeView" customModule="Full_Stack" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="388" height="19"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="FQj-lB-eLc" firstAttribute="height" secondItem="6ec-WQ-ttv" secondAttribute="height" id="HBL-BL-Pka"/>
+                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                         <integer key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                            </progressView>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="ilI-4e-lnS" secondAttribute="trailing" id="EkJ-GR-JC7"/>
-                                            <constraint firstItem="ilI-4e-lnS" firstAttribute="centerY" secondItem="I9s-OQ-iTY" secondAttribute="centerY" id="F3C-L1-nT1"/>
-                                            <constraint firstItem="ilI-4e-lnS" firstAttribute="height" secondItem="I9s-OQ-iTY" secondAttribute="height" multiplier="0.5" id="WVa-rH-144"/>
-                                            <constraint firstItem="ilI-4e-lnS" firstAttribute="leading" secondItem="I9s-OQ-iTY" secondAttribute="leading" id="alN-oc-g3M"/>
+                                            <constraint firstItem="6ec-WQ-ttv" firstAttribute="leading" secondItem="I9s-OQ-iTY" secondAttribute="leading" id="SVJ-QR-yhe"/>
+                                            <constraint firstItem="6ec-WQ-ttv" firstAttribute="height" secondItem="I9s-OQ-iTY" secondAttribute="height" multiplier="0.9" id="YbS-hf-EOL"/>
+                                            <constraint firstItem="6ec-WQ-ttv" firstAttribute="centerY" secondItem="I9s-OQ-iTY" secondAttribute="centerY" id="z8E-UX-hb9"/>
+                                            <constraint firstAttribute="trailing" secondItem="6ec-WQ-ttv" secondAttribute="trailing" id="zHM-dM-iOy"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -345,6 +357,7 @@
                     <connections>
                         <outlet property="backgroundView" destination="YCT-bB-HP4" id="FD7-Ay-Zdm"/>
                         <outlet property="buttonController" destination="URX-A4-k8e" id="8gF-qm-WsD"/>
+                        <outlet property="feverTimeView" destination="FQj-lB-eLc" id="71U-QI-32K"/>
                         <outlet property="leftUnitStackView" destination="2Uq-RD-u1v" id="tiF-cC-0H3"/>
                         <outlet property="pauseButton" destination="vTf-XR-DdY" id="iGt-ma-uS3"/>
                         <outlet property="rightUnitStackView" destination="sga-9e-KSj" id="KGT-eO-GR3"/>
@@ -549,9 +562,6 @@
         <image name="text_yourscore" width="62.666667938232422" height="12"/>
         <namedColor name="darkblue">
             <color red="0.14900000393390656" green="0.1289999932050705" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="digital_green">
-            <color red="0.1289999932050705" green="0.96100002527236938" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="digitalgreen">
             <color red="0.1289999932050705" green="0.96100002527236938" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

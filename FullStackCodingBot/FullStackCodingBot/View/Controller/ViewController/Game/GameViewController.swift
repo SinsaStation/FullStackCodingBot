@@ -11,13 +11,10 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var rightUnitStackView: UIStackView!
     @IBOutlet weak var leftUnitStackView: UIStackView!
     @IBOutlet weak var timeView: TimeProgressView!
+    @IBOutlet weak var feverTimeView: FeverTimeView!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var backgroundView: GameBackgroundView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+
     func bindViewModel() {
         buttonController.setupButton()
         buttonController.bind { [unowned self] direction in
@@ -64,16 +61,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         
         viewModel.newFeverStatus
             .subscribe(onNext: { [unowned self] feverStatus in
-                switch feverStatus {
-                case true:
-                    DispatchQueue.main.async {
-                        self.backgroundView.startFever()
-                    }
-                case false:
-                    DispatchQueue.main.async {
-                        self.backgroundView.stopFever()
-                    }
-                }
+                self.setupTimeView(isFeverOn: feverStatus)
         }).disposed(by: rx.disposeBag)
         
         pauseButton.rx.action = viewModel.pauseAction
@@ -126,5 +114,19 @@ private extension GameViewController {
         guard let newUnits = newUnits else { return }
         let unitImages = newUnits.map { $0.image }
         unitPerspectiveView.configure(with: unitImages)
+    }
+    
+    private func setupTimeView(isFeverOn: Bool) {
+        DispatchQueue.main.async {
+            self.timeView.isHidden = isFeverOn
+            self.feverTimeView.isHidden = !isFeverOn
+            
+            if isFeverOn {
+                self.feverTimeView.setup()
+                self.backgroundView.startFever()
+            } else {
+                self.backgroundView.stopFever()
+            }
+        }
     }
 }
