@@ -12,6 +12,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var leftUnitStackView: UIStackView!
     @IBOutlet weak var timeView: TimeProgressView!
     @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var backgroundView: GameBackgroundView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                     self.updateImage(of: newStackUnit, to: self.leftUnitStackView)
                 case .right:
                     self.updateImage(of: newStackUnit, to: self.rightUnitStackView)
+                    self.backgroundView.stopFever()
                 }
         }).disposed(by: rx.disposeBag)
         
@@ -54,6 +56,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                 switch gameStatus {
                 case .new:
                     self.gameStart()
+                    self.backgroundView.startFever()
                 case .pause:
                     assert(true)
                 case .resume:
