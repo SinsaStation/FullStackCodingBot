@@ -71,6 +71,7 @@ final class SkyView: UIView {
         positionAnimation.toValue = direction == .toRight ? toPosition : fromPosition
         positionAnimation.duration = duration
         positionAnimation.repeatCount = .infinity
+        positionAnimation.isRemovedOnCompletion = false
         return positionAnimation
     }
 }

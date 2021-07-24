@@ -65,6 +65,8 @@ final class UnitPerspectiveView: UIView {
     }
     
     private func animate(layer: CALayer, to direction: Direction) {
+        layer.opacity = 0
+        
         CATransaction.setCompletionBlock {
             layer.removeFromSuperlayer()
         }

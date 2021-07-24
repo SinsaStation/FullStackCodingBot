@@ -54,6 +54,7 @@
 		E41C85DA269C4E8F008F2E91 /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D9269C4E8F008F2E91 /* PauseViewController.swift */; };
 		E41C85DD269C50F0008F2E91 /* PauseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85DC269C50F0008F2E91 /* PauseViewModel.swift */; };
 		E41C85DF269C5149008F2E91 /* PauseButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85DE269C5149008F2E91 /* PauseButtonController.swift */; };
+		E43B64A026ABB4A3001D9896 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B649F26ABB4A2001D9896 /* UIImageExtension.swift */; };
 		E45B0AB82692929F006FDE3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E45B0AB72692929F006FDE3D /* Assets.xcassets */; };
 		E45B0ABB2692929F006FDE3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E45B0AB92692929F006FDE3D /* LaunchScreen.storyboard */; };
 		E45B0AC72692F42D006FDE3D /* UnitPerspectiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B0AC62692F42D006FDE3D /* UnitPerspectiveView.swift */; };
@@ -139,6 +140,7 @@
 		E41C85D9269C4E8F008F2E91 /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
 		E41C85DC269C50F0008F2E91 /* PauseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewModel.swift; sourceTree = "<group>"; };
 		E41C85DE269C5149008F2E91 /* PauseButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButtonController.swift; sourceTree = "<group>"; };
+		E43B649F26ABB4A2001D9896 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E45B0AAB2692929D006FDE3D /* Full Stack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Full Stack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E45B0AB72692929F006FDE3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E45B0ABA2692929F006FDE3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				71307A8826A529F400C3191F /* LevelUpButton.swift */,
 				71307A8A26A52A1F00C3191F /* LevelUpButton.xib */,
 				E4DF614226A93FFB0061F6E9 /* ShopCell.swift */,
+				E43B649F26ABB4A2001D9896 /* UIImageExtension.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				71310C2C26AA596B00733361 /* CoreDataStorage.xcdatamodeld in Sources */,
 				710D0D4F2693F6E500244A16 /* ItemCell.swift in Sources */,
 				E4D7C63E2693E79800D58BA2 /* AppDelegate.swift in Sources */,
+				E43B64A026ABB4A3001D9896 /* UIImageExtension.swift in Sources */,
 				E45B0AC92692F9CF006FDE3D /* Unit.swift in Sources */,
 				E45B0AC72692F42D006FDE3D /* UnitPerspectiveView.swift in Sources */,
 				E41C85D4269BFB84008F2E91 /* GameUnitManager.swift in Sources */,
