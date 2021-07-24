@@ -33,10 +33,8 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
             }).disposed(by: rx.disposeBag)
         
         viewModel.upgradedUnit
-            .subscribe(onNext: { [unowned self] unit in
-                guard let unitId = unit?.uuid else { return }
-                let colors = Colors.unitGradient[unitId]
-                self.mainItemView.startAnimation(with: colors)
+            .subscribe(onNext: { [unowned self] _ in
+                self.mainItemView.startAnimation()
             }).disposed(by: rx.disposeBag)
         
         viewModel.money

@@ -32,8 +32,9 @@ final class MainItemView: UIView {
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
-    func startAnimation(with colors: [UIColor]) {
-        circleAnimation(color: colors[0])
+    func startAnimation() {
+        let circleColor = itemImageView.image?.averageColor ?? UIColor()
+        circleAnimation(color: circleColor)
     }
     
     private func circleAnimation(color: UIColor) {
