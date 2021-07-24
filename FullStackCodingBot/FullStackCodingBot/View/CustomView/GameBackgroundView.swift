@@ -26,8 +26,8 @@ final class GameBackgroundView: ReplicateAnimationView {
         backgroundColorAnimation.calculationMode = .linear
         backgroundColorAnimation.repeatCount = .infinity
         backgroundColorAnimation.isRemovedOnCompletion = false
-        layer.addSublayer(feverLayer)
         feverLayer.add(backgroundColorAnimation, forKey: backgroundColorKey)
+        layer.addSublayer(self.feverLayer)
     }
     
     func stopFever() {

@@ -4,6 +4,8 @@ enum GameSetting {
     static let count = 7
     static let maxUnitCount = 8
     static let startingTime: Int64 = 60
+    static let feverGaugeMax = 20
+    static let feverTime = 10
     static let wrongTime = 10
     static let startingCount = 2
     static let timeUnit = 1

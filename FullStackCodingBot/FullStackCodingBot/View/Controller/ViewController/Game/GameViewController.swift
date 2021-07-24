@@ -42,7 +42,6 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                     self.updateImage(of: newStackUnit, to: self.leftUnitStackView)
                 case .right:
                     self.updateImage(of: newStackUnit, to: self.rightUnitStackView)
-                    self.backgroundView.stopFever()
                 }
         }).disposed(by: rx.disposeBag)
         
@@ -56,11 +55,24 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                 switch gameStatus {
                 case .new:
                     self.gameStart()
-                    self.backgroundView.startFever()
                 case .pause:
                     assert(true)
                 case .resume:
                     self.viewModel.timerStart()
+                }
+        }).disposed(by: rx.disposeBag)
+        
+        viewModel.newFeverStatus
+            .subscribe(onNext: { [unowned self] feverStatus in
+                switch feverStatus {
+                case true:
+                    DispatchQueue.main.async {
+                        self.backgroundView.startFever()
+                    }
+                case false:
+                    DispatchQueue.main.async {
+                        self.backgroundView.stopFever()
+                    }
                 }
         }).disposed(by: rx.disposeBag)
         

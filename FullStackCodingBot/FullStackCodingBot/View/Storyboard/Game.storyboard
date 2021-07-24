@@ -151,7 +151,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YCT-bB-HP4" customClass="GameBackgroundView" customModule="Full_Stack" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="429" height="926"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffT-Vy-DnI" userLabel="Left Button">
                                 <rect key="frame" x="20" y="727" width="139" height="139"/>
@@ -164,7 +165,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTf-oP-M9v" userLabel="Right Button">
-                                <rect key="frame" x="270" y="727" width="139" height="139"/>
+                                <rect key="frame" x="269" y="727" width="139" height="139"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LTf-oP-M9v" secondAttribute="height" multiplier="1:1" id="paE-Gb-85S"/>
                                 </constraints>
@@ -174,20 +175,20 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTf-XR-DdY">
-                                <rect key="frame" x="357.33333333333331" y="55" width="51.666666666666686" height="51.333333333333343"/>
+                                <rect key="frame" x="356.66666666666669" y="55" width="51.333333333333314" height="51.333333333333343"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vTf-XR-DdY" secondAttribute="height" multiplier="1:1" id="JDS-8v-JhC"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="button_pause"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4s7-Py-xLI" userLabel="Main View">
-                                <rect key="frame" x="20" y="290" width="389" height="426"/>
+                                <rect key="frame" x="20" y="290" width="388" height="426"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pup-xc-6r8" customClass="UnitPerspectiveView" customModule="Full_Stack" customModuleProvider="target">
-                                        <rect key="frame" x="77.666666666666671" y="11.333333333333314" width="233.33333333333331" height="383.33333333333331"/>
+                                        <rect key="frame" x="77.666666666666671" y="11.333333333333314" width="232.66666666666663" height="383.33333333333331"/>
                                     </view>
                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="top" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sga-9e-KSj" userLabel="Left Unit Stack View">
-                                        <rect key="frame" x="319" y="114.66666666666669" width="70" height="280"/>
+                                        <rect key="frame" x="318" y="115.33333333333331" width="70" height="279.33333333333331"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nnB-lY-HVn">
                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -196,19 +197,19 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3HK-Lb-UuD">
-                                                <rect key="frame" x="0.0" y="70" width="70" height="70"/>
+                                                <rect key="frame" x="0.0" y="70" width="70" height="69.666666666666686"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="3HK-Lb-UuD" secondAttribute="height" multiplier="1:1" id="THq-g0-LDP"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5yw-ta-Yac">
-                                                <rect key="frame" x="0.0" y="139.99999999999994" width="70" height="70"/>
+                                                <rect key="frame" x="0.0" y="139.66666666666669" width="70" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="5yw-ta-Yac" secondAttribute="height" multiplier="1:1" id="mnX-SI-Tlj"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1HD-fn-gNj">
-                                                <rect key="frame" x="0.0" y="209.99999999999994" width="70" height="70"/>
+                                                <rect key="frame" x="0.0" y="209.66666666666669" width="70" height="69.666666666666686"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="1HD-fn-gNj" secondAttribute="height" multiplier="1:1" id="R1O-Tr-rOe"/>
                                                 </constraints>
@@ -219,7 +220,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="top" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2Uq-RD-u1v" userLabel="Right Unit Stack View">
-                                        <rect key="frame" x="0.0" y="114.66666666666669" width="70" height="280"/>
+                                        <rect key="frame" x="0.0" y="115.33333333333331" width="70" height="279.33333333333331"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r5H-72-twg">
                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -228,19 +229,19 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l3f-4x-oNh">
-                                                <rect key="frame" x="0.0" y="70" width="70" height="70"/>
+                                                <rect key="frame" x="0.0" y="70" width="70" height="69.666666666666686"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="l3f-4x-oNh" secondAttribute="height" multiplier="1:1" id="H7i-k8-dyk"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4R2-B8-575">
-                                                <rect key="frame" x="0.0" y="139.99999999999994" width="70" height="70"/>
+                                                <rect key="frame" x="0.0" y="139.66666666666669" width="70" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="4R2-B8-575" secondAttribute="height" multiplier="1:1" id="2Vv-FB-Qig"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zY6-6v-fJ2">
-                                                <rect key="frame" x="0.0" y="209.99999999999994" width="70" height="70"/>
+                                                <rect key="frame" x="0.0" y="209.66666666666669" width="70" height="69.666666666666686"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="zY6-6v-fJ2" secondAttribute="height" multiplier="1:1" id="asV-lQ-tcH"/>
                                                 </constraints>
@@ -251,10 +252,10 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9s-OQ-iTY" userLabel="Time View">
-                                        <rect key="frame" x="0.0" y="404.66666666666663" width="389" height="21.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="404.66666666666663" width="388" height="21.333333333333314"/>
                                         <subviews>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="ilI-4e-lnS" customClass="TimeProgressView" customModule="Full_Stack" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5.3333333333333703" width="389" height="10.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="5.3333333333333703" width="388" height="10.666666666666664"/>
                                                 <color key="progressTintColor" name="digital_green"/>
                                                 <color key="trackTintColor" systemColor="systemGray6Color"/>
                                                 <userDefinedRuntimeAttributes>
@@ -286,19 +287,18 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="4s7-Py-xLI" secondAttribute="height" multiplier="1:1.2" id="n7d-1O-51l"/>
                                     <constraint firstItem="2Uq-RD-u1v" firstAttribute="width" secondItem="4s7-Py-xLI" secondAttribute="width" multiplier="0.18" id="qtF-dW-uco"/>
                                     <constraint firstItem="Pup-xc-6r8" firstAttribute="height" secondItem="4s7-Py-xLI" secondAttribute="height" multiplier="0.9" id="rys-ck-q5N"/>
-                                    <constraint firstItem="sga-9e-KSj" firstAttribute="leading" secondItem="4s7-Py-xLI" secondAttribute="trailing" constant="-70" id="tsT-ss-QjB"/>
                                     <constraint firstItem="2Uq-RD-u1v" firstAttribute="leading" secondItem="4s7-Py-xLI" secondAttribute="leading" id="wbP-WI-ZEy"/>
                                     <constraint firstItem="I9s-OQ-iTY" firstAttribute="top" secondItem="sga-9e-KSj" secondAttribute="bottom" constant="10" id="yNN-Zx-gjh"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajD-XV-8ww" userLabel="Score View">
-                                <rect key="frame" x="8" y="126.33333333333331" width="413" height="92"/>
+                                <rect key="frame" x="8" y="126.33333333333331" width="412" height="91.666666666666686"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_score" translatesAutoresizingMaskIntoConstraints="NO" id="j3E-Vj-ONP">
-                                        <rect key="frame" x="0.0" y="0.0" width="413" height="92"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="412" height="91.666666666666671"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333333333" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="35" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMc-tt-TX6" userLabel="Score Label">
-                                        <rect key="frame" x="10" y="22.000000000000014" width="393" height="48"/>
+                                        <rect key="frame" x="10" y="21.666666666666671" width="392" height="48"/>
                                         <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="41"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>

@@ -12,6 +12,12 @@ enum GameStatus {
 final class GameViewModel: CommonViewModel {
 
     private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
+    
+    private(set) var newFeverStatus = BehaviorRelay<Bool>(value: false)
+    private var isFeverOn = false
+    private var feverTime = 0
+    private var feverGauge = 0
+    
     private var gameUnitManager: GameUnitManagerType
     private var timer: DispatchSourceTimer?
     private(set) var timeProgress = Progress(totalUnitCount: GameSetting.startingTime)
@@ -46,6 +52,8 @@ final class GameViewModel: CommonViewModel {
         gameUnitManager.resetAll()
         sendNewUnitToStack(by: GameSetting.startingCount)
         currentScore = .zero
+        feverGauge = .zero
+        isFeverOn = false
         scoreAdded.accept(0)
         timeProgress.completedUnitCount = GameSetting.startingTime
     }
@@ -69,7 +77,13 @@ final class GameViewModel: CommonViewModel {
     }
     
     private func timeMinus(by second: Int) {
-        timeProgress.completedUnitCount -= Int64(second)
+        if isFeverOn {
+            feverTime -= second
+            feverMayOver()
+        } else {
+            timeProgress.completedUnitCount -= Int64(second)
+            if feverGauge >= 1 { feverGauge -= 1 }
+        }
     }
     
     private func gameMayOver() {
@@ -98,6 +112,7 @@ final class GameViewModel: CommonViewModel {
         if gameUnitManager.isTimeToLevelUp() { sendNewUnitToStack(by: GameSetting.timeUnit) }
         
         onGameUnitNeedsChange()
+        feverMayStart()
     }
     
     private func onGameUnitNeedsChange() {
@@ -105,10 +120,34 @@ final class GameViewModel: CommonViewModel {
         newOnGameUnits.accept(currentUnits)
     }
     
+    private func feverMayStart() {
+        guard !isFeverOn else { return }
+        
+        feverGauge += 1
+        
+        if feverGauge >= GameSetting.feverGaugeMax {
+            isFeverOn = true
+            newFeverStatus.accept(isFeverOn)
+            feverTime = GameSetting.feverTime
+        }
+    }
+    
+    private func feverMayOver() {
+        if feverTime <= 0 {
+            isFeverOn = false
+            newFeverStatus.accept(isFeverOn)
+            feverGauge = 0
+        }
+    }
+    
     private func wrongAction() {
         feedbackGenerator?.notificationOccurred(.error)
-        timeMinus(by: GameSetting.wrongTime)
-        gameMayOver()
+        
+        if !isFeverOn {
+            timeMinus(by: GameSetting.wrongTime)
+            feverGauge = 0
+            gameMayOver()
+        }
     }
     
     @discardableResult
