@@ -61,7 +61,7 @@ private extension MainViewController {
                         guard error == nil else { return }
                         
                         if let user = user {
-                            self.viewModel.getUserInformation(from: user.user.uid)
+                            //self.viewModel.getUserInformation(from: user.user.uid)
                         }
                     }
                 }
