@@ -35,7 +35,7 @@ final class MainViewModel: AdViewModel {
         database.initializeDatabase(uuid)
         database.getFirebaseData(uuid)
             .subscribe(onNext: { [unowned self] data in
-                data.forEach { self.storage.create(item: $0) }
+                data.forEach { self.storage.append(unit: $0) }
             }, onError: { error in
                 print(error)
             }).disposed(by: rx.disposeBag)

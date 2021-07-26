@@ -12,9 +12,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID]
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         let coordinator = SceneCoordinator(window: window!)
-        let storage = ItemStorage()
+        let storage = PersistenceStorage()
         if !UserDefaults.standard.bool(forKey: IdentifierUD.hasLaunchedOnce) {
-            Unit.initialValues().forEach { storage.create(item: $0) }
+            storage.initializeData(Unit.initialValues(), 0)
+        } else {
+            storage.fetchStoredData()
         }
         let database = DatabaseManager(Database.database().reference())
         let adStorage = AdStorage()

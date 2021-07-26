@@ -5,12 +5,12 @@ import Action
 
 final class ItemViewModel: CommonViewModel {
     
-    private var defaultUnit: Unit {
-        return storage.itemList().first ?? Unit(info: .cPlusPlus, level: 1)
+    var defaultUnit: Unit {
+        return storage.itemList().first!
     }
     
     var itemStorage: Driver<[Unit]> {
-        return storage.list().asDriver(onErrorJustReturn: [])
+        return storage.listUnit().asDriver(onErrorJustReturn: [])
     }
     
     var money: Driver<Int> {
@@ -24,7 +24,7 @@ final class ItemViewModel: CommonViewModel {
     lazy var upgradedUnit = BehaviorRelay<Unit?>(value: nil)
     private var feedbackGenerator: UINotificationFeedbackGenerator?
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, database: DatabaseManagerType, cancelAction: CocoaAction? = nil) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: DatabaseManagerType, cancelAction: CocoaAction? = nil) {
         self.cancelAction = CocoaAction {
             if let action = cancelAction {
                 action.execute(())
@@ -52,7 +52,7 @@ final class ItemViewModel: CommonViewModel {
         
         switch isPossibleToLevelUp.value {
         case true:
-            let new = storage.raiseLevel(to: selectedUnit.value, using: requiredMoney)
+            let new = storage.raiseLevel(of: selectedUnit.value, using: requiredMoney)
             selectedUnit.accept(new)
             upgradedUnit.accept(new)
             status.accept(Text.levelUpSuccessed(unitType: unitName, to: new.level))
@@ -67,4 +67,5 @@ final class ItemViewModel: CommonViewModel {
         feedbackGenerator = UINotificationFeedbackGenerator()
         feedbackGenerator?.prepare()
     }
+
 }

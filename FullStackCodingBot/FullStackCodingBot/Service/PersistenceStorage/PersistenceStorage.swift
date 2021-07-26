@@ -24,6 +24,25 @@ final class PersistenceStorage: PersistenceStorageType {
     private lazy var moneyStatus = BehaviorSubject<Int>(value: moneyStore)
     
     @discardableResult
+    func itemList() -> [Unit] {
+        return unitStore
+    }
+    
+    func initializeData(_ units: [Unit], _ money: Int) {
+        units.forEach{append(unit: $0)}
+        appendMoenyInfo(money)
+    }
+    
+    func fetchStoredData() {
+        for info in fetchUnit() {
+            unitStore.append(DataFormatManager.transformToUnit(info))
+        }
+        unitList.onNext(unitStore)
+        moneyStore = fetchMoneyInfo().map{DataFormatManager.transformToMoney($0)}.first ?? 0
+        moneyStatus.onNext(moneyStore)
+    }
+    
+    @discardableResult
     func append(unit: Unit) -> Observable<Unit> {
         unitStore.append(unit)
         addItemInfo(from: unit)
@@ -37,7 +56,7 @@ final class PersistenceStorage: PersistenceStorageType {
     }
     
     @discardableResult
-    func raiseLevel(of unit: Unit, using moeny: Int) -> Observable<Unit> {
+    func raiseLevel(of unit: Unit, using moeny: Int) -> Unit {
         let newUnit = Unit(original: unit, level: unit.level+1)
         if let index = unitStore.firstIndex(where: { $0 == unit}) {
             unitStore.remove(at: index)
@@ -49,7 +68,7 @@ final class PersistenceStorage: PersistenceStorageType {
         }
         unitList.onNext(unitStore)
         moneyStatus.onNext(moeny)
-        return Observable.just(newUnit)
+        return newUnit
     }
     
     @discardableResult
@@ -104,6 +123,23 @@ final class PersistenceStorage: PersistenceStorageType {
     private func updateMoney(money: Int) {
         let previousInfo = fetchMoneyInfo().first!
         context.delete(previousInfo)
+        appendMoenyInfo(money)
+    }
+    
+    private func fetchMoneyInfo() -> [MoneyInformation] {
+        do {
+            guard let fetchResult = try context.fetch(MoneyInformation.fetchRequest()) as? [MoneyInformation] else {
+                return []
+            }
+            print("MONEY: ", fetchResult)
+            return fetchResult
+        } catch {
+            print(error)
+            return []
+        }
+    }
+    
+    private func appendMoenyInfo(_ money: Int) {
         if let entity = NSEntityDescription.entity(forEntityName: "MoneyInformation", in: context) {
             let info = NSManagedObject(entity: entity, insertInto: context)
             info.setValue(money, forKey: "myMoney")
@@ -114,18 +150,7 @@ final class PersistenceStorage: PersistenceStorageType {
                 print(error)
             }
         }
-        
-    }
-    
-    private func fetchMoneyInfo() -> [MoneyInformation] {
-        do {
-            guard let fetchResult = try context.fetch(MoneyInformation.fetchRequest()) as? [MoneyInformation] else {
-                return []
-            }
-            return fetchResult
-        } catch {
-            print(error)
-            return []
-        }
+        moneyStore = money
+        moneyStatus.onNext(moneyStore)
     }
 }

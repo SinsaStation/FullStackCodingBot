@@ -4,6 +4,13 @@ import RxSwift
 
 protocol PersistenceStorageType {
     
+    func initializeData(_ units: [Unit], _ money: Int)
+    
+    func fetchStoredData()
+    
+    @discardableResult
+    func itemList() -> [Unit]
+    
     @discardableResult
     func append(unit: Unit) -> Observable<Unit>
     
@@ -11,7 +18,7 @@ protocol PersistenceStorageType {
     func listUnit() -> Observable<[Unit]>
     
     @discardableResult
-    func raiseLevel(of unit: Unit, using moeny: Int) -> Observable<Unit>
+    func raiseLevel(of unit: Unit, using moeny: Int) -> Unit
     
     @discardableResult
     func availableMoeny() -> Observable<Int>

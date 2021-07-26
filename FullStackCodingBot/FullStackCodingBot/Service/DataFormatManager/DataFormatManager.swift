@@ -41,4 +41,8 @@ final class DataFormatManager {
         let level = Int(info.level)
         return Unit(uuid: uuid, image: image, level: level)
     }
+    
+    static func transformToMoney(_ info: MoneyInformation) -> Int {
+        return Int(info.myMoney)
+    }
 }
