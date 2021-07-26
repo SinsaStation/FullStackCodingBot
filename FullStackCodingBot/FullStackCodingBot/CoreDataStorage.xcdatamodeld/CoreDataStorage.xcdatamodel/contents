@@ -5,7 +5,11 @@
         <attribute name="level" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="uuid" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="MoneyInformation" representedClassName="MoneyInformation" syncable="YES" codeGenerationType="class">
+        <attribute name="myMoney" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <elements>
-        <element name="ItemInformation" positionX="-54" positionY="-9" width="128" height="74"/>
+        <element name="ItemInformation" positionX="-46.871826171875" positionY="-17.46929931640625" width="128" height="74"/>
+        <element name="MoneyInformation" positionX="105.4285888671875" positionY="17.93038940429688" width="128" height="44"/>
     </elements>
 </model>

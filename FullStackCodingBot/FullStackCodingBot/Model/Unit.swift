@@ -5,6 +5,12 @@ struct Unit: Equatable, Codable {
     let image: String
     var level: Int
     
+    init(uuid: Int, image: String, level: Int) {
+        self.uuid = uuid
+        self.image = image
+        self.level = level
+    }
+    
     init(info: UnitInfo, level: Int) {
         uuid = info.detail.id
         image = info.detail.image

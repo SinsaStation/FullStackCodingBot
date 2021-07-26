@@ -16,7 +16,7 @@ final class DatabaseManager: DatabaseManagerType {
             guard error == nil else { return }
             
             if !snapshot.exists() {
-                let jsonString = FirebaseDataManager.transformToString(uuid)
+                let jsonString = DataFormatManager.transformToString(uuid)
                 self.ref.child("users").child(uuid).setValue(["units": jsonString])
             }
         }
@@ -31,7 +31,7 @@ final class DatabaseManager: DatabaseManagerType {
                 }
                 
                 if let data = snapshot.value as? [String: Any] {
-                    observer.onNext(FirebaseDataManager.transformToStruct(data))
+                    observer.onNext(DataFormatManager.transformToStruct(data))
                 }
             }
             return Disposables.create()
