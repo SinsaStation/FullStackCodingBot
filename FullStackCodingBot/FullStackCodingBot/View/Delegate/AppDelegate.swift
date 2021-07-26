@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         let coordinator = SceneCoordinator(window: window!)
         let storage = ItemStorage()
-        if !UserDefaults.standard.bool(forKey: IdentifierUD.firstLaunched) {
+        if !UserDefaults.standard.bool(forKey: IdentifierUD.hasLaunchedOnce) {
             Unit.initialValues().forEach { storage.create(item: $0) }
         }
         let database = DatabaseManager(Database.database().reference())

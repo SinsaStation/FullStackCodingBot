@@ -15,5 +15,5 @@ enum IdentiferAD {
 }
 
 enum IdentifierUD {
-    static let firstLaunched = "FirstLaunched"
+    static let hasLaunchedOnce = "hasLaunchedOnce"
 }
