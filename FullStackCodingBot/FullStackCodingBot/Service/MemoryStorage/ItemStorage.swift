@@ -4,11 +4,6 @@ import CoreData
 
 class ItemStorage: ItemStorageType {
     
-    // swiftlint:disable force_cast
-    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    private lazy var context = appDelegate.persistentContainer.viewContext
-    private lazy var entity = NSEntityDescription.entity(forEntityName: "ItemInformation", in: context)
-    
     private var storage: [Unit] = []
     
     private var myMoney = 200000000
@@ -28,18 +23,6 @@ class ItemStorage: ItemStorageType {
     
     @discardableResult
     func create(item: Unit) -> Observable<Unit> {
-        if let entity = entity {
-            let info = NSManagedObject(entity: entity, insertInto: context)
-            info.setValue(item.uuid, forKey: "uuid")
-            info.setValue(item.image, forKey: "image")
-            info.setValue(item.level, forKey: "level")
-            
-            do {
-                try context.save()
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
         storage.append(item)
         unitStorage.onNext(storage)
         return Observable.just(item)

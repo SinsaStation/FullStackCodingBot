@@ -1,7 +1,6 @@
 import UIKit
 import GoogleMobileAds
 import Firebase
-import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,28 +22,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainScene = Scene.main(mainViewModel)
         coordinator.transition(to: mainScene, using: .root, with: StoryboardType.main, animated: false)
         return true
-    }
-    
-    // MARK: - Core Data Stack
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "CoreDataStorage")
-        container.loadPersistentStores { storeDescription, error in
-            if let error = error as NSError? {
-                fatalError("\(error), \(error.userInfo)")
-            }
-        }
-        return container
-    }()
-    
-    func saveContext() {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("\(nserror), \(nserror.userInfo)")
-            }
-        }
     }
 }
