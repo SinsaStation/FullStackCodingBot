@@ -3,18 +3,6 @@ import RxSwift
 import RxCocoa
 import Action
 
-enum GameStatus {
-    case new
-    case pause
-    case resume
-}
-
-enum UserActionStatus {
-    case correct(Direction)
-    case wrong
-    case feverWrong
-}
-
 final class GameViewModel: CommonViewModel {
 
     private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
