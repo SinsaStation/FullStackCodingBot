@@ -9,7 +9,7 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     @IBOutlet var buttonController: MainButtonController!
     @IBOutlet weak var titleLabel: TypewriterLabel!
     @IBOutlet weak var skyView: SkyView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -61,7 +61,8 @@ private extension MainViewController {
                         guard error == nil else { return }
                         
                         if let user = user {
-                            self.viewModel.getUserInformation(from: user.user.uid)
+                            UserDefaults.standard.set(true, forKey: IdentifierUD.hasLaunchedOnce)
+                            //self.viewModel.getUserInformation(from: user.user.uid)
                         }
                     }
                 }

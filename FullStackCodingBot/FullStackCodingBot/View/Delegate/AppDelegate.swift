@@ -14,6 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         let coordinator = SceneCoordinator(window: window!)
         let storage = ItemStorage()
+        if !UserDefaults.standard.bool(forKey: IdentifierUD.hasLaunchedOnce) {
+            Unit.initialValues().forEach { storage.create(item: $0) }
+        }
         let database = DatabaseManager(Database.database().reference())
         let adStorage = AdStorage()
         let mainViewModel = MainViewModel(sceneCoordinator: coordinator, storage: storage, adStorage: adStorage, database: database)
@@ -23,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Core Data Stack
-    lazy var persistentContainer : NSPersistentContainer = {
+    lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CoreDataStorage")
         container.loadPersistentStores { storeDescription, error in
             if let error = error as NSError? {
