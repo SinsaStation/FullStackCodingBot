@@ -66,6 +66,7 @@
 		E4779C6926983F8000B92D24 /* GameOverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4779C6826983F8000B92D24 /* GameOverViewModel.swift */; };
 		E4BF70FF26AEF3F700E8645F /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF70FE26AEF3F700E8645F /* GameStatus.swift */; };
 		E4BF710126AFB0AD00E8645F /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF710026AFB0AD00E8645F /* TimerManager.swift */; };
+		E4BF710326AFCC7500E8645F /* FeverTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF710226AFCC7500E8645F /* FeverTimeManager.swift */; };
 		E4C2C34D26A24666007BDF81 /* SkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34C26A24665007BDF81 /* SkyView.swift */; };
 		E4C2C34F26A292BB007BDF81 /* ReplicateAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */; };
 		E4CA08B926A8287B00AA6F03 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA08B826A8287B00AA6F03 /* Font.swift */; };
@@ -158,6 +159,7 @@
 		E4779C6826983F8000B92D24 /* GameOverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewModel.swift; sourceTree = "<group>"; };
 		E4BF70FE26AEF3F700E8645F /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		E4BF710026AFB0AD00E8645F /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		E4BF710226AFCC7500E8645F /* FeverTimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeverTimeManager.swift; sourceTree = "<group>"; };
 		E4C2C34C26A24665007BDF81 /* SkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyView.swift; sourceTree = "<group>"; };
 		E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicateAnimationView.swift; sourceTree = "<group>"; };
 		E4CA08B826A8287B00AA6F03 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */,
 				E41C85D3269BFB84008F2E91 /* GameUnitManager.swift */,
 				E4BF710026AFB0AD00E8645F /* TimerManager.swift */,
+				E4BF710226AFCC7500E8645F /* FeverTimeManager.swift */,
 			);
 			path = GameManager;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				71307A8926A529F400C3191F /* LevelUpButton.swift in Sources */,
 				E4DF614126A92CE00061F6E9 /* ShopItem.swift in Sources */,
 				E4D7C6422693E7B200D58BA2 /* MainViewController.swift in Sources */,
+				E4BF710326AFCC7500E8645F /* FeverTimeManager.swift in Sources */,
 				710D0D422693EA3200244A16 /* GameViewController.swift in Sources */,
 				71DF65432692F95800557693 /* ShopViewModel.swift in Sources */,
 				71DF65512692FBCC00557693 /* SceneCoordinatorType.swift in Sources */,

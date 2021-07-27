@@ -32,7 +32,7 @@ final class GameViewModel: CommonViewModel {
     func execute() {
         timerManager.newStart()
         
-        timerManager.newTimerStatus.subscribe(onNext: { [unowned self] timerMode in
+        timerManager.newTimerMode.subscribe(onNext: { [unowned self] timerMode in
             switch timerMode {
             case .normal:
                 self.newFeverStatus.accept(false)

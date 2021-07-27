@@ -8,30 +8,32 @@ enum TimerMode {
 
 final class TimerManager {
     
-    private var totalTime = 0
-    private var timerMode = TimerMode.normal
-    private var feverTime = 0
-    private var feverGauge = 0
-    
-    var newTimerStatus = BehaviorSubject<TimerMode>(value: .normal)
+    var newTimerMode = BehaviorSubject<TimerMode>(value: .normal)
     var timeLeft = BehaviorSubject<Int>(value: Int(GameSetting.startingTime))
-        
+    private var totalTime: Int
+    private var timerMode: TimerMode
+    private var feverTimeManager: FeverTimeManager
+    
+    init(totalTime: Int = Int(GameSetting.startingTime),
+         timerMode: TimerMode = .normal,
+         fiverTimeManager: FeverTimeManager = FeverTimeManager()) {
+        self.totalTime = totalTime
+        self.timerMode = timerMode
+        self.feverTimeManager = fiverTimeManager
+    }
+
     func newStart() {
         reset()
     }
     
     private func reset() {
         timerMode = .normal
-        newTimerStatus.onNext(timerMode)
+        newTimerMode.onNext(timerMode)
         
         totalTime = Int(GameSetting.startingTime)
         timeLeft.onNext(totalTime)
         
-        resetFever()
-    }
-    
-    private func resetFever() {
-        feverGauge = .zero
+        feverTimeManager.reset()
     }
     
     func timeMinus(by second: Int) {
@@ -40,55 +42,31 @@ final class TimerManager {
             totalTime -= second
             if totalTime < 0 { totalTime = 0 }
             timeLeft.onNext(totalTime)
-            
-            reduceFever()
+            feverTimeManager.reduceGauge()
         case .fever:
-            feverTime -= 1
-            if feverMayOver() { newTimerStatus.onNext(.normal) }
-        }
-    }
-    
-    private func reduceFever() {
-        feverGauge -= 1
-        
-        if feverGauge < 0 {
-            feverGauge = 0
+            feverTimeManager.reduceTime()
+            
+            if feverTimeManager.feverMayOver() {
+                timerMode = .normal
+                newTimerMode.onNext(.normal)
+            }
         }
     }
     
     func correct() {
-        if feverMayStart() {
-            newTimerStatus.onNext(.fever)
-        }
-    }
-    
-    private func feverMayStart() -> Bool {
-        guard timerMode == .normal else { return false }
-
-        feverGauge += 1
+        guard timerMode == .normal else { return }
         
-        if feverGauge >= GameSetting.feverGaugeMax {
+        if feverTimeManager.feverMayStart() {
             timerMode = .fever
-            feverTime = GameSetting.feverTime
-            return true
+            newTimerMode.onNext(.fever)
         }
-        return false
-    }
-    
-    private func feverMayOver() -> Bool {
-        if feverTime <= 0 {
-            timerMode = .normal
-            feverGauge = 0
-            return true
-        }
-        return false
     }
     
     func wrong() -> UserActionStatus {
         guard timerMode == .normal else { return .feverWrong }
         
         timeMinus(by: GameSetting.wrongTime)
-        feverGauge = 0
+        feverTimeManager.reset()
         
         return .wrong
     }
