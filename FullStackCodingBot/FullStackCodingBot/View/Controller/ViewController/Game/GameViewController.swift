@@ -10,8 +10,8 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var unitPerspectiveView: UnitPerspectiveView!
     @IBOutlet weak var rightUnitStackView: UIStackView!
     @IBOutlet weak var leftUnitStackView: UIStackView!
-    @IBOutlet weak var timeView: TimeProgressView!
-    @IBOutlet weak var feverTimeView: FeverTimeView!
+    @IBOutlet weak var normalTimeView: TimeBarView!
+    @IBOutlet weak var feverTimeView: FeverTimeBarView!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var backgroundView: GameBackgroundView!
     private var feedbackGenerator: UINotificationFeedbackGenerator?
@@ -21,13 +21,18 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         setup()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        normalTimeView.setup()
+    }
+    
     func bindViewModel() {
         bindButtonController()
         bindScore()
         bindUnits()
-        bindUserAction()
         bindTimeProgress()
         bindGameStates()
+        bindUserAction()
     }
     
     private func bindButtonController() {
@@ -72,7 +77,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                     self.checkRemove(to: direction)
                 case .wrong:
                     self.backgroundView.playWrongMode()
-                    self.timeView.playWrongMode()
+                    self.normalTimeView.playWrongMode()
                     fallthrough
                 case .feverWrong:
                     self.feedbackGenerator?.notificationOccurred(.error)
@@ -83,7 +88,12 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     }
     
     private func bindTimeProgress() {
-        timeView.observedProgress = viewModel.timeProgress
+        viewModel.timeLeftPercentage
+            .subscribe(onNext: { [unowned self] percentage in
+                DispatchQueue.main.async {
+                    self.normalTimeView.timeAdjust(to: percentage, for: 1)
+                }
+            }).disposed(by: rx.disposeBag)
     }
     
     private func bindGameStates() {
@@ -96,6 +106,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                     assert(true)
                 case .resume:
                     self.viewModel.startTimer()
+                    self.normalTimeView.setup()
                 }
         }).disposed(by: rx.disposeBag)
         
@@ -125,7 +136,7 @@ private extension GameViewController {
     
     private func setupTimeView(isFeverOn: Bool) {
         DispatchQueue.main.async {
-            self.timeView.isHidden = isFeverOn
+            self.normalTimeView.isHidden = isFeverOn
             self.feverTimeView.isHidden = !isFeverOn
             
             if isFeverOn {

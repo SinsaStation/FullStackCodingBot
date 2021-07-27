@@ -7,7 +7,6 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -257,17 +256,17 @@
                                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6ec-WQ-ttv">
                                                 <rect key="frame" x="0.0" y="1.3333333333333712" width="388" height="19"/>
                                                 <subviews>
-                                                    <progressView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="ilI-4e-lnS" customClass="TimeProgressView" customModule="Full_Stack" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="388" height="1"/>
-                                                        <color key="progressTintColor" name="digitalgreen"/>
-                                                        <color key="trackTintColor" systemColor="systemGray6Color"/>
-                                                    </progressView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FQj-lB-eLc" userLabel="Fever Time View" customClass="FeverTimeView" customModule="Full_Stack" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WTI-8T-T1Y" userLabel="Normal Time View" customClass="TimeBarView" customModule="Full_Stack" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="388" height="0.0"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FQj-lB-eLc" userLabel="Fever Time View" customClass="FeverTimeBarView" customModule="Full_Stack" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="388" height="19"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="WTI-8T-T1Y" firstAttribute="height" secondItem="6ec-WQ-ttv" secondAttribute="height" priority="750" id="CT7-pt-jWg"/>
                                                     <constraint firstItem="FQj-lB-eLc" firstAttribute="height" secondItem="6ec-WQ-ttv" secondAttribute="height" id="HBL-BL-Pka"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -359,10 +358,10 @@
                         <outlet property="buttonController" destination="URX-A4-k8e" id="8gF-qm-WsD"/>
                         <outlet property="feverTimeView" destination="FQj-lB-eLc" id="71U-QI-32K"/>
                         <outlet property="leftUnitStackView" destination="2Uq-RD-u1v" id="tiF-cC-0H3"/>
+                        <outlet property="normalTimeView" destination="WTI-8T-T1Y" id="D1u-1X-av8"/>
                         <outlet property="pauseButton" destination="vTf-XR-DdY" id="iGt-ma-uS3"/>
                         <outlet property="rightUnitStackView" destination="sga-9e-KSj" id="KGT-eO-GR3"/>
                         <outlet property="scoreLabel" destination="YMc-tt-TX6" id="Y0v-bh-S5l"/>
-                        <outlet property="timeView" destination="ilI-4e-lnS" id="v6F-uT-dFe"/>
                         <outlet property="unitPerspectiveView" destination="Pup-xc-6r8" id="Bgj-LD-YeL"/>
                     </connections>
                 </viewController>
@@ -569,8 +568,5 @@
         <namedColor name="red">
             <color red="0.87099999189376831" green="0.2669999897480011" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

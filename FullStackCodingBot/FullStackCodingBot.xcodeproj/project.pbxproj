@@ -56,7 +56,7 @@
 		E41C85DF269C5149008F2E91 /* PauseButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85DE269C5149008F2E91 /* PauseButtonController.swift */; };
 		E43B64A026ABB4A3001D9896 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B649F26ABB4A2001D9896 /* UIImageExtension.swift */; };
 		E43B64A226ABD81C001D9896 /* GameBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */; };
-		E43B64A426AC2384001D9896 /* FeverTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B64A326AC2384001D9896 /* FeverTimeView.swift */; };
+		E43B64A426AC2384001D9896 /* TimeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B64A326AC2384001D9896 /* TimeBarView.swift */; };
 		E45B0AB82692929F006FDE3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E45B0AB72692929F006FDE3D /* Assets.xcassets */; };
 		E45B0ABB2692929F006FDE3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E45B0AB92692929F006FDE3D /* LaunchScreen.storyboard */; };
 		E45B0AC72692F42D006FDE3D /* UnitPerspectiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B0AC62692F42D006FDE3D /* UnitPerspectiveView.swift */; };
@@ -149,7 +149,7 @@
 		E41C85DE269C5149008F2E91 /* PauseButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButtonController.swift; sourceTree = "<group>"; };
 		E43B649F26ABB4A2001D9896 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBackgroundView.swift; sourceTree = "<group>"; };
-		E43B64A326AC2384001D9896 /* FeverTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeverTimeView.swift; sourceTree = "<group>"; };
+		E43B64A326AC2384001D9896 /* TimeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBarView.swift; sourceTree = "<group>"; };
 		E45B0AAB2692929D006FDE3D /* Full Stack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Full Stack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E45B0AB72692929F006FDE3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E45B0ABA2692929F006FDE3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -460,7 +460,7 @@
 				71307A8A26A52A1F00C3191F /* LevelUpButton.xib */,
 				E4DF614226A93FFB0061F6E9 /* ShopCell.swift */,
 				E43B649F26ABB4A2001D9896 /* UIImageExtension.swift */,
-				E43B64A326AC2384001D9896 /* FeverTimeView.swift */,
+				E43B64A326AC2384001D9896 /* TimeBarView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -723,7 +723,7 @@
 				71DF64BF2692C1C600557693 /* ItemViewController.swift in Sources */,
 				71A5518226A9277C0083A4B0 /* DatabaseManagerType.swift in Sources */,
 				710A9DAC2692AD5C0090B38A /* MainButtonController.swift in Sources */,
-				E43B64A426AC2384001D9896 /* FeverTimeView.swift in Sources */,
+				E43B64A426AC2384001D9896 /* TimeBarView.swift in Sources */,
 				E4DF614326A93FFB0061F6E9 /* ShopCell.swift in Sources */,
 				E41C85DD269C50F0008F2E91 /* PauseViewModel.swift in Sources */,
 				E41C85DF269C5149008F2E91 /* PauseButtonController.swift in Sources */,

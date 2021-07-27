@@ -9,13 +9,13 @@ final class GameViewModel: CommonViewModel {
     private var gameUnitManager: GameUnitManagerType
     private var timeManager: TimeManagerType
     private var timer: DispatchSourceTimer?
-    private(set) var timeProgress = Progress(totalUnitCount: GameSetting.startingTime)
     
     // Game Status
     private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
     private(set) var newFeverStatus = BehaviorRelay<Bool>(value: false)
     
     // Game Properties
+    private(set) var timeLeftPercentage = BehaviorRelay<Float>(value: 1)
     private(set) var currentScore = BehaviorSubject<Int>(value: 0)
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
@@ -37,7 +37,6 @@ final class GameViewModel: CommonViewModel {
          totalTime: Int64 = GameSetting.startingTime) {
         self.gameUnitManager = gameUnitManager
         self.timeManager = timeManager
-        timeProgress.becomeCurrent(withPendingUnitCount: totalTime)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
     }
 }
@@ -55,19 +54,24 @@ extension GameViewModel {
         
         timeManager.newTimerMode
             .subscribe(onNext: { [unowned self] timerMode in
-            switch timerMode {
-            case .normal:
-                self.newFeverStatus.accept(false)
-            case .fever:
-                self.newFeverStatus.accept(true)
-            }
+                switch timerMode {
+                case .normal:
+                    self.newFeverStatus.accept(false)
+                case .fever:
+                    self.newFeverStatus.accept(true)
+                }
         }).disposed(by: rx.disposeBag)
         
         timeManager.timeLeft
             .subscribe(onNext: { [unowned self] timeLeft in
-            timeProgress.completedUnitCount = Int64(timeLeft)
-            self.gameMayOver(timeLeft)
+                self.timeLeftPercentage.accept(timePercentage(left: timeLeft))
+                self.gameMayOver(timeLeft)
         }).disposed(by: rx.disposeBag)
+    }
+    
+    private func timePercentage(left: Int) -> Float {
+        let totalTime = Float(GameSetting.startingTime)
+        return Float(left) / totalTime
     }
     
     private func gameMayOver(_ timeLeft: Int) {
@@ -121,9 +125,9 @@ extension GameViewModel {
     
     private func correctAction(for direction: Direction, _ scoreGained: Int) {
         guard updateScore(with: scoreGained) else { return }
+        userAction.accept(.correct(direction))
         timeManager.correct()
         onGameUnitNeedsChange()
-        userAction.accept(.correct(direction))
     }
     
     private func updateScore(with scoreGained: Int) -> Bool {
