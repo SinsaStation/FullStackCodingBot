@@ -7,6 +7,8 @@ protocol TimeManagerType {
     
     var timeLeft: BehaviorSubject<Int> { get }
     
+    var feverTimeLeft: BehaviorSubject<Int?> { get }
+    
     func newStart()
     
     func timeMinus(by second: Int)

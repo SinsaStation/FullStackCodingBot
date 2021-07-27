@@ -16,6 +16,7 @@ final class GameViewModel: CommonViewModel {
     
     // Game Properties
     private(set) var timeLeftPercentage = BehaviorRelay<Float>(value: 1)
+    private(set) var feverTimeLeftPercentage = BehaviorRelay<Float>(value: 1)
     private(set) var currentScore = BehaviorSubject<Int>(value: 0)
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
@@ -64,14 +65,29 @@ extension GameViewModel {
         
         timeManager.timeLeft
             .subscribe(onNext: { [unowned self] timeLeft in
-                self.timeLeftPercentage.accept(timePercentage(left: timeLeft))
+                let percentage = timePercentage(left: timeLeft, timeMode: .normal)
+                self.timeLeftPercentage.accept(percentage)
                 self.gameMayOver(timeLeft)
+        }).disposed(by: rx.disposeBag)
+        
+        timeManager.feverTimeLeft
+            .subscribe(onNext: { [unowned self] feverTimeLeft in
+                guard let feverTimeLeft = feverTimeLeft else { return }
+                let percentage = timePercentage(left: feverTimeLeft, timeMode: .fever)
+                self.feverTimeLeftPercentage.accept(percentage)
         }).disposed(by: rx.disposeBag)
     }
     
-    private func timePercentage(left: Int) -> Float {
-        let totalTime = Float(GameSetting.startingTime)
-        return Float(left) / totalTime
+    private func timePercentage(left: Int, timeMode: TimeMode) -> Float {
+        let realTimeAdjustMent = Float(left-1)
+        var totalTime: Float
+        switch timeMode {
+        case .normal:
+            totalTime = Float(GameSetting.startingTime)
+        case .fever:
+            totalTime = Float(GameSetting.feverTime)
+        }
+        return realTimeAdjustMent / totalTime
     }
     
     private func gameMayOver(_ timeLeft: Int) {

@@ -69,6 +69,7 @@
 		E4BF710326AFCC7500E8645F /* FeverManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF710226AFCC7500E8645F /* FeverManager.swift */; };
 		E4BF710526AFD45A00E8645F /* TimeManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF710426AFD45A00E8645F /* TimeManagerType.swift */; };
 		E4BF710726AFD51700E8645F /* FeverManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF710626AFD51700E8645F /* FeverManagerType.swift */; };
+		E4BF710926B00EF600E8645F /* FeverTimeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF710826B00EF600E8645F /* FeverTimeBarView.swift */; };
 		E4C2C34D26A24666007BDF81 /* SkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34C26A24665007BDF81 /* SkyView.swift */; };
 		E4C2C34F26A292BB007BDF81 /* ReplicateAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */; };
 		E4CA08B926A8287B00AA6F03 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA08B826A8287B00AA6F03 /* Font.swift */; };
@@ -164,6 +165,7 @@
 		E4BF710226AFCC7500E8645F /* FeverManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeverManager.swift; sourceTree = "<group>"; };
 		E4BF710426AFD45A00E8645F /* TimeManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagerType.swift; sourceTree = "<group>"; };
 		E4BF710626AFD51700E8645F /* FeverManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeverManagerType.swift; sourceTree = "<group>"; };
+		E4BF710826B00EF600E8645F /* FeverTimeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeverTimeBarView.swift; sourceTree = "<group>"; };
 		E4C2C34C26A24665007BDF81 /* SkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyView.swift; sourceTree = "<group>"; };
 		E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicateAnimationView.swift; sourceTree = "<group>"; };
 		E4CA08B826A8287B00AA6F03 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 				E4DF614226A93FFB0061F6E9 /* ShopCell.swift */,
 				E43B649F26ABB4A2001D9896 /* UIImageExtension.swift */,
 				E43B64A326AC2384001D9896 /* TimeBarView.swift */,
+				E4BF710826B00EF600E8645F /* FeverTimeBarView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 				71A5518226A9277C0083A4B0 /* DatabaseManagerType.swift in Sources */,
 				710A9DAC2692AD5C0090B38A /* MainButtonController.swift in Sources */,
 				E43B64A426AC2384001D9896 /* TimeBarView.swift in Sources */,
+				E4BF710926B00EF600E8645F /* FeverTimeBarView.swift in Sources */,
 				E4DF614326A93FFB0061F6E9 /* ShopCell.swift in Sources */,
 				E41C85DD269C50F0008F2E91 /* PauseViewModel.swift in Sources */,
 				E41C85DF269C5149008F2E91 /* PauseButtonController.swift in Sources */,

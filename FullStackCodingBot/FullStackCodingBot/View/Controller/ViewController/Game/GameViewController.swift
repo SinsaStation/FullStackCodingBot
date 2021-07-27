@@ -23,7 +23,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        normalTimeView.setup()
+        self.normalTimeView.setup()
     }
     
     func bindViewModel() {
@@ -91,7 +91,14 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         viewModel.timeLeftPercentage
             .subscribe(onNext: { [unowned self] percentage in
                 DispatchQueue.main.async {
-                    self.normalTimeView.timeAdjust(to: percentage, for: 1)
+                    self.normalTimeView.adjust(to: percentage)
+                }
+            }).disposed(by: rx.disposeBag)
+        
+        viewModel.feverTimeLeftPercentage
+            .subscribe(onNext: { [unowned self] percentage in
+                DispatchQueue.main.async {
+                    self.feverTimeView.adjust(to: percentage, duration: 1)
                 }
             }).disposed(by: rx.disposeBag)
     }
@@ -106,7 +113,6 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                     assert(true)
                 case .resume:
                     self.viewModel.startTimer()
-                    self.normalTimeView.setup()
                 }
         }).disposed(by: rx.disposeBag)
         
