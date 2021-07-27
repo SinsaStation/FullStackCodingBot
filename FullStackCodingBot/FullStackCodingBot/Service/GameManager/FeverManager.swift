@@ -14,8 +14,8 @@ final class FeverManager: FeverManagerType {
         gauge = .zero
     }
     
-    func reduceGauge(by amount: Int = -1) {
-        updateGuage(by: amount)
+    func reduceGauge(by amount: Int) {
+        updateGuage(by: -amount)
 
         if gauge < 0 {
             reset()
@@ -26,7 +26,7 @@ final class FeverManager: FeverManagerType {
         gauge += amount
     }
 
-    func feverMayStart(afterFilledBy amount: Int = 1) -> Bool {
+    func feverMayStart(afterFilledBy amount: Int) -> Bool {
         updateGuage(by: amount)
         
         if gauge >= GameSetting.feverGaugeMax {
@@ -37,7 +37,7 @@ final class FeverManager: FeverManagerType {
         }
     }
     
-    func feverMayOver(after seconds: Int = 1) -> Bool {
+    func feverMayOver(after seconds: Int) -> Bool {
         reduceTime(by: seconds)
         
         if timeLeft <= 0 {
