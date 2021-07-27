@@ -9,6 +9,9 @@ protocol PersistenceStorageType {
     func fetchStoredData()
     
     @discardableResult
+    func myMoney() -> Int
+    
+    @discardableResult
     func itemList() -> [Unit]
     
     @discardableResult
