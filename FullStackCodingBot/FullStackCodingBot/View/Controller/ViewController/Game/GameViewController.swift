@@ -21,11 +21,6 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         setup()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.normalTimeView.setup()
-    }
-    
     func bindViewModel() {
         bindButtonController()
         bindScore()
@@ -106,6 +101,8 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         viewModel.newGameStatus
             .subscribe(onNext: { [unowned self] gameStatus in
                 switch gameStatus {
+                case .ready:
+                    self.getReady()
                 case .new:
                     self.gameStart()
                 case .pause:
@@ -127,6 +124,7 @@ private extension GameViewController {
     private func setup() {
         setupFeedbackGenerator()
         buttonController.changeButtonStatus(to: false)
+        pauseButton.isEnabled = false
     }
     
     private func setupFeedbackGenerator() {
@@ -167,16 +165,23 @@ private extension GameViewController {
 
 // MARK: Game Logic Methods
 private extension GameViewController {
-    private func gameStart() {
-        clearViews()
+    private func getReady() {
         viewModel.execute()
-        buttonController.changeButtonStatus(to: true)
+        clearViews()
     }
     
     private func clearViews() {
         clear(rightUnitStackView)
         clear(leftUnitStackView)
         unitPerspectiveView.clearAll()
+        backgroundView.stopFever()
+    }
+    
+    private func gameStart() {
+        normalTimeView.setup()
+        pauseButton.isEnabled = true
+        normalTimeView.isHidden = false
+        buttonController.changeButtonStatus(to: true)
     }
 
     private func clear(_ stackView: UIStackView) {

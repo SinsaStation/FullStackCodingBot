@@ -24,7 +24,7 @@ final class PauseViewModel: CommonViewModel {
             newGameStatus.accept(.resume)
             sceneCoordinator.close(animated: true)
         case .restart:
-            newGameStatus.accept(.new)
+            newGameStatus.accept(.ready)
             sceneCoordinator.close(animated: true)
         case .toMain:
             sceneCoordinator.toMain(animated: true)

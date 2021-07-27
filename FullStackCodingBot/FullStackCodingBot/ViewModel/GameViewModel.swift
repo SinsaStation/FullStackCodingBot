@@ -11,7 +11,7 @@ final class GameViewModel: CommonViewModel {
     private var timer: DispatchSourceTimer?
     
     // Game Status
-    private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
+    private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .ready)
     private(set) var newFeverStatus = BehaviorRelay<Bool>(value: false)
     
     // Game Properties
@@ -34,8 +34,7 @@ final class GameViewModel: CommonViewModel {
          database: DatabaseManagerType,
          pauseAction: CocoaAction? = nil,
          gameUnitManager: GameUnitManagerType,
-         timeManager: TimeManagerType = TimeManager(),
-         totalTime: Int64 = GameSetting.startingTime) {
+         timeManager: TimeManagerType = TimeManager()) {
         self.gameUnitManager = gameUnitManager
         self.timeManager = timeManager
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
@@ -45,9 +44,12 @@ final class GameViewModel: CommonViewModel {
 // MARK: - Setup
 extension GameViewModel {
     func execute() {
-        setTimeManager()
-        setGame()
-        startTimer()
+        DispatchQueue.main.asyncAfter(deadline: .now()+GameSetting.readyTime) {
+            self.newGameStatus.accept(.new)
+            self.setTimeManager()
+            self.setGame()
+            self.startTimer()
+        }
     }
     
     private func setTimeManager() {
