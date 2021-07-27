@@ -11,17 +11,6 @@ final class DatabaseManager: DatabaseManagerType {
         self.ref = ref
     }
     
-    func initializeDatabase(_ uuid: String) {
-        ref.child("users").child(uuid).getData { [unowned self] error, snapshot in
-            guard error == nil else { return }
-            
-            if !snapshot.exists() {
-                //let jsonString = DataFormatManager.transformToString(uuid)
-                //self.ref.child("users").child(uuid).setValue(["units": jsonString])
-            }
-        }
-    }
-    
     func updateDatabase(_ units: [Unit]) {
         let uuid = Auth.auth().currentUser?.uid ?? ""
         let jsonString = DataFormatManager.transformToString(units)

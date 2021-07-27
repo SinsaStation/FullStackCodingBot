@@ -41,7 +41,6 @@ final class MainViewModel: AdViewModel {
     }
     
     func getUserInformation(from uuid: String) {
-        database.initializeDatabase(uuid)
         database.getFirebaseData(uuid)
             .subscribe(onNext: { [unowned self] data in
                 data.forEach { self.storage.append(unit: $0) }
