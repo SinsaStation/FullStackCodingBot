@@ -15,7 +15,6 @@ final class MainViewModel: AdViewModel {
         }
     }
     
-    
     func makeMoveAction(to viewController: ViewControllerType) {
         switch viewController {
         case .giftVC:

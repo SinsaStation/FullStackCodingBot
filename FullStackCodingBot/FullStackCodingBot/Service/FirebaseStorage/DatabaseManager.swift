@@ -22,7 +22,7 @@ final class DatabaseManager: DatabaseManagerType {
         }
     }
     
-    func updateDatabase(_ units:[Unit]) {
+    func updateDatabase(_ units: [Unit]) {
         let uuid = Auth.auth().currentUser?.uid ?? ""
         let jsonString = DataFormatManager.transformToString(units)
         ref.child("users").child(uuid).setValue(["units": jsonString])
