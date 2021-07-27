@@ -6,14 +6,11 @@ import Action
 final class GameViewModel: CommonViewModel {
 
     private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
-    
     private(set) var newFeverStatus = BehaviorRelay<Bool>(value: false)
-    private var isFeverOn = false
-    private var feverTime = 0
-    private var feverGauge = 0
-    
     private var gameUnitManager: GameUnitManagerType
+    private var timerManager = TimerManager()
     private var timer: DispatchSourceTimer?
+    
     private(set) var timeProgress = Progress(totalUnitCount: GameSetting.startingTime)
     private(set) var currentScore = 0
     private(set) var scoreAdded = BehaviorRelay<Int>(value: 0)
@@ -21,7 +18,7 @@ final class GameViewModel: CommonViewModel {
     private(set) var userAction = BehaviorRelay<UserActionStatus?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
     private(set) lazy var pauseAction: Action<Void, Void> = Action {
-        self.timer?.cancel()
+        self.stopTimer()
         self.newGameStatus.accept(.pause)
         return self.pause().asObservable().map { _ in }
     }
@@ -33,21 +30,49 @@ final class GameViewModel: CommonViewModel {
     }
     
     func execute() {
+        timerManager.newStart()
+        
+        timerManager.newTimerStatus.subscribe(onNext: { [unowned self] timerMode in
+            switch timerMode {
+            case .normal:
+                self.newFeverStatus.accept(false)
+            case .fever:
+                self.newFeverStatus.accept(true)
+            }
+        }).disposed(by: rx.disposeBag)
+        
+        timerManager.timeLeft.subscribe(onNext: { [unowned self] timeLeft in
+            timeProgress.completedUnitCount = Int64(timeLeft)
+            
+            self.gameMayOver(timeLeft: timeLeft)
+        }).disposed(by: rx.disposeBag)
+        
         newGame()
-        timerStart()
         
         let newUnits = gameUnitManager.startings()
         newOnGameUnits.accept(newUnits)
+    }
+    
+    func timerStart() {
+        timer = DispatchSource.makeTimerSource()
+        timer?.schedule(deadline: .now()+1, repeating: .seconds(GameSetting.timeUnit))
+        
+        timer?.setEventHandler { [weak self] in
+            self?.timerManager.timeMinus(by: GameSetting.timeUnit)
+        }
+        timer?.activate()
+    }
+    
+    private func stopTimer() {
+        self.timer?.cancel()
     }
     
     private func newGame() {
         gameUnitManager.resetAll()
         sendNewUnitToStack(by: GameSetting.startingCount)
         currentScore = .zero
-        feverGauge = .zero
-        isFeverOn = false
-        scoreAdded.accept(0)
-        timeProgress.completedUnitCount = GameSetting.startingTime
+        timerStart()
+        scoreAdded.accept(currentScore)
     }
     
     private func sendNewUnitToStack(by count: Int) {
@@ -57,34 +82,12 @@ final class GameViewModel: CommonViewModel {
         }
     }
     
-    func timerStart() {
-        timer = DispatchSource.makeTimerSource()
-        timer?.schedule(deadline: .now()+1, repeating: .seconds(GameSetting.timeUnit))
+    private func gameMayOver(timeLeft: Int) {
+        guard timeLeft == 0 else { return }
         
-        timer?.setEventHandler { [weak self] in
-            self?.timeMinus(by: GameSetting.timeUnit)
-            self?.gameMayOver()
-        }
-        timer?.activate()
-    }
-    
-    private func timeMinus(by second: Int) {
-        if isFeverOn {
-            feverTime -= second
-            feverMayOver()
-        } else {
-            timeProgress.completedUnitCount -= Int64(second)
-            if feverGauge >= 1 { feverGauge -= 1 }
-        }
-    }
-    
-    private func gameMayOver() {
-        guard timeProgress.completedUnitCount <= 0  else { return }
-        
-        timer?.cancel()
-
         DispatchQueue.main.async {
             self.gameOver()
+            self.stopTimer()
         }
     }
     
@@ -104,7 +107,7 @@ final class GameViewModel: CommonViewModel {
         if gameUnitManager.isTimeToLevelUp() { sendNewUnitToStack(by: GameSetting.timeUnit) }
         
         onGameUnitNeedsChange()
-        feverMayStart()
+        timerManager.correct()
     }
     
     private func onGameUnitNeedsChange() {
@@ -112,36 +115,8 @@ final class GameViewModel: CommonViewModel {
         newOnGameUnits.accept(currentUnits)
     }
     
-    private func feverMayStart() {
-        guard !isFeverOn else { return }
-        
-        feverGauge += 1
-        
-        if feverGauge >= GameSetting.feverGaugeMax {
-            isFeverOn = true
-            newFeverStatus.accept(isFeverOn)
-            feverTime = GameSetting.feverTime
-        }
-    }
-    
-    private func feverMayOver() {
-        if feverTime <= 0 {
-            isFeverOn = false
-            newFeverStatus.accept(isFeverOn)
-            feverGauge = 0
-        }
-    }
-    
     private func wrongAction() {
-        guard !isFeverOn else {
-            userAction.accept(.feverWrong)
-            return
-        }
-        
-        userAction.accept(.wrong)
-        timeMinus(by: GameSetting.wrongTime)
-        feverGauge = 0
-        gameMayOver()
+        userAction.accept(timerManager.wrong())
     }
     
     @discardableResult
