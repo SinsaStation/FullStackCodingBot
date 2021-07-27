@@ -8,7 +8,7 @@ final class GameViewModel: CommonViewModel {
     private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
     private(set) var newFeverStatus = BehaviorRelay<Bool>(value: false)
     private var gameUnitManager: GameUnitManagerType
-    private var timerManager = TimerManager()
+    private var timerManager = TimeManager()
     private var timer: DispatchSourceTimer?
     
     private(set) var timeProgress = Progress(totalUnitCount: GameSetting.startingTime)
