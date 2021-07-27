@@ -71,7 +71,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                 case .pause:
                     assert(true)
                 case .resume:
-                    self.viewModel.timerStart()
+                    self.viewModel.startTimer()
                 }
         }).disposed(by: rx.disposeBag)
         

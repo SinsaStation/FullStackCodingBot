@@ -19,7 +19,7 @@ final class GameViewModel: CommonViewModel {
     private(set) lazy var pauseAction: Action<Void, Void> = Action {
         self.stopTimer()
         self.newGameStatus.accept(.pause)
-        return self.pause().asObservable().map { _ in }
+        return self.toPauseScene().asObservable().map { _ in }
     }
     
     init(sceneCoordinator: SceneCoordinatorType,
@@ -34,8 +34,17 @@ final class GameViewModel: CommonViewModel {
         timeProgress.becomeCurrent(withPendingUnitCount: totalTime)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
     }
-    
+}
+
+// MARK: - Setup
+extension GameViewModel {
     func execute() {
+        setTimeManager()
+        setGame()
+        startTimer()
+    }
+    
+    private func setTimeManager() {
         timeManager.newStart()
         
         timeManager.newTimerMode.subscribe(onNext: { [unowned self] timerMode in
@@ -49,17 +58,38 @@ final class GameViewModel: CommonViewModel {
         
         timeManager.timeLeft.subscribe(onNext: { [unowned self] timeLeft in
             timeProgress.completedUnitCount = Int64(timeLeft)
-            
-            self.gameMayOver(timeLeft: timeLeft)
+            self.gameMayOver(timeLeft)
         }).disposed(by: rx.disposeBag)
+    }
+    
+    private func gameMayOver(_ timeLeft: Int) {
+        guard timeLeft == 0 else { return }
         
-        newGame()
+        DispatchQueue.main.async {
+            self.toGameOverScene()
+            self.stopTimer()
+        }
+    }
+    
+    private func setGame() {
+        gameUnitManager.resetAll()
         
+        currentScore = .zero
+        scoreAdded.accept(currentScore)
+        
+        sendNewUnitToStack(by: GameSetting.startingCount)
         let newUnits = gameUnitManager.startings()
         newOnGameUnits.accept(newUnits)
     }
     
-    func timerStart() {
+    private func sendNewUnitToStack(by count: Int) {
+        (0..<count).forEach { _ in
+            let newMember = gameUnitManager.newMember()
+            newMemberUnit.accept(newMember)
+        }
+    }
+    
+    func startTimer() {
         timer = DispatchSource.makeTimerSource()
         timer?.schedule(deadline: .now()+1, repeating: .seconds(GameSetting.timeUnit))
         
@@ -72,31 +102,10 @@ final class GameViewModel: CommonViewModel {
     private func stopTimer() {
         self.timer?.cancel()
     }
-    
-    private func newGame() {
-        gameUnitManager.resetAll()
-        sendNewUnitToStack(by: GameSetting.startingCount)
-        currentScore = .zero
-        timerStart()
-        scoreAdded.accept(currentScore)
-    }
-    
-    private func sendNewUnitToStack(by count: Int) {
-        (0..<count).forEach { _ in
-            let newMember = gameUnitManager.newMember()
-            newMemberUnit.accept(newMember)
-        }
-    }
-    
-    private func gameMayOver(timeLeft: Int) {
-        guard timeLeft == 0 else { return }
-        
-        DispatchQueue.main.async {
-            self.gameOver()
-            self.stopTimer()
-        }
-    }
-    
+}
+
+// MARK: - User Input Methods
+extension GameViewModel {
     func moveUnitAction(to direction: Direction) {
         guard let currentUnitScore = gameUnitManager.currentHeadUnitScore() else { return }
         let isAnswerCorrect = gameUnitManager.isMoveActionCorrect(to: direction)
@@ -122,18 +131,22 @@ final class GameViewModel: CommonViewModel {
     }
     
     private func wrongAction() {
-        userAction.accept(timeManager.wrong())
+        let wrongStatus = timeManager.wrong()
+        userAction.accept(wrongStatus)
     }
-    
+}
+
+// MARK: - Transitions
+private extension GameViewModel {
     @discardableResult
-    private func gameOver() -> Completable {
+    private func toGameOverScene() -> Completable {
         let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database, finalScore: currentScore, newGameStatus: newGameStatus)
         let gameOverScene = Scene.gameOver(gameOverViewModel)
         return self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, with: StoryboardType.game, animated: true)
     }
     
     @discardableResult
-    private func pause() -> Completable {
+    private func toPauseScene() -> Completable {
         let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database, currentScore: currentScore, newGameStatus: newGameStatus)
         let pauseScene = Scene.pause(pauseViewModel)
         return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, with: StoryboardType.game, animated: false)
