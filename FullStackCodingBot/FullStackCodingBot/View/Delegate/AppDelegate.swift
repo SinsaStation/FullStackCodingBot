@@ -24,6 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         let database = DatabaseManager(Database.database().reference())
-        database.updateDatabase(storage.itemList())
+        database.updateDatabase(storage.itemList(), storage.myMoney())
     }
 }

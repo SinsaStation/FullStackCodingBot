@@ -24,6 +24,11 @@ final class PersistenceStorage: PersistenceStorageType {
     private lazy var moneyStatus = BehaviorSubject<Int>(value: moneyStore)
     
     @discardableResult
+    func myMoney() -> Int {
+        return moneyStore
+    }
+    
+    @discardableResult
     func itemList() -> [Unit] {
         return unitStore
     }

@@ -9,7 +9,7 @@ final class MainViewModel: AdViewModel {
     func fetchGameData(firstLaunched: Bool, units: [Unit], money: Int) {
         switch firstLaunched {
         case true:
-            storage.fetchStoredData()
+            getUserInformation()
         case false:
             storage.initializeData(units, money)
         }
@@ -40,10 +40,11 @@ final class MainViewModel: AdViewModel {
         }
     }
     
-    func getUserInformation(from uuid: String) {
-        database.getFirebaseData(uuid)
+    private func getUserInformation() {
+        database.getFirebaseData()
             .subscribe(onNext: { [unowned self] data in
-                data.forEach { self.storage.append(unit: $0) }
+                data.0.forEach { self.storage.append(unit: $0) }
+                self.storage.raiseMoney(by: data.1)
             }, onError: { error in
                 print(error)
             }).disposed(by: rx.disposeBag)
