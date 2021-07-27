@@ -5,7 +5,7 @@ struct Units: Decodable {
     let units: String
 }
 
-final class FirebaseDataManager {
+final class DataFormatManager {
     
     static func transformToStruct(_ data: [String: Any]) -> [Unit] {
         
@@ -33,5 +33,16 @@ final class FirebaseDataManager {
         }
         
         return ""
+    }
+    
+    static func transformToUnit(_ info: ItemInformation) -> Unit {
+        let uuid = Int(info.uuid)
+        let image = info.image ?? ""
+        let level = Int(info.level)
+        return Unit(uuid: uuid, image: image, level: level)
+    }
+    
+    static func transformToMoney(_ info: MoneyInformation) -> Int {
+        return Int(info.myMoney)
     }
 }

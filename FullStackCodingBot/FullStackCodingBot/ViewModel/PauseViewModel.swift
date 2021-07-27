@@ -12,7 +12,7 @@ final class PauseViewModel: CommonViewModel {
         return currentScore.map {String($0)}.asDriver(onErrorJustReturn: "")
     }()
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, database: DatabaseManagerType, currentScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: DatabaseManagerType, currentScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
         self.newGameStatus = newGameStatus
         self.currentScore.accept(currentScore)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)

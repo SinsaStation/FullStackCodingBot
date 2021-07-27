@@ -6,6 +6,16 @@ final class MainViewModel: AdViewModel {
         adStorage.setup()
     }
     
+    func fetchGameData(firstLaunched: Bool, units: [Unit], money: Int) {
+        switch firstLaunched {
+        case true:
+            storage.fetchStoredData()
+        case false:
+            storage.initializeData(units, money)
+        }
+    }
+    
+    
     func makeMoveAction(to viewController: ViewControllerType) {
         switch viewController {
         case .giftVC:
@@ -35,7 +45,7 @@ final class MainViewModel: AdViewModel {
         database.initializeDatabase(uuid)
         database.getFirebaseData(uuid)
             .subscribe(onNext: { [unowned self] data in
-                data.forEach { self.storage.create(item: $0) }
+                data.forEach { self.storage.append(unit: $0) }
             }, onError: { error in
                 print(error)
             }).disposed(by: rx.disposeBag)

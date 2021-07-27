@@ -57,12 +57,11 @@ private extension MainViewController {
                 GameCenterAuthProvider.getCredential { credential, error in
                     guard error == nil else { return }
                     
-                    Auth.auth().signIn(with: credential!) { [unowned self] user, error in
+                    Auth.auth().signIn(with: credential!) { user, error in
                         guard error == nil else { return }
                         
-                        if let user = user {
+                        if let _ = user {
                             UserDefaults.standard.set(true, forKey: IdentifierUD.hasLaunchedOnce)
-                            //self.viewModel.getUserInformation(from: user.user.uid)
                         }
                     }
                 }

@@ -21,7 +21,7 @@ final class GameOverViewModel: CommonViewModel {
         return storage.availableMoeny().map {String($0)}.asDriver(onErrorJustReturn: "")
     }()
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, database: DatabaseManagerType, finalScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: DatabaseManagerType, finalScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
         self.scoreInfo.accept(finalScore)
         self.moneyInfo.accept(finalScore/10)
         self.newGameStatus = newGameStatus
