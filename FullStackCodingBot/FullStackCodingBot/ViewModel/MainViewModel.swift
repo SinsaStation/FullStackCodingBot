@@ -6,6 +6,16 @@ final class MainViewModel: AdViewModel {
         adStorage.setup()
     }
     
+    func fetchGameData(firstLaunched: Bool, units: [Unit], money: Int) {
+        switch firstLaunched {
+        case true:
+            storage.fetchStoredData()
+        case false:
+            storage.initializeData(units, money)
+        }
+    }
+    
+    
     func makeMoveAction(to viewController: ViewControllerType) {
         switch viewController {
         case .giftVC:

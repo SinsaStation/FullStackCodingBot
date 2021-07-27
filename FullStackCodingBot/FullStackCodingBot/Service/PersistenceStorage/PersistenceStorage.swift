@@ -37,6 +37,7 @@ final class PersistenceStorage: PersistenceStorageType {
         for info in fetchUnit() {
             unitStore.append(DataFormatManager.transformToUnit(info))
         }
+        unitStore.sort(by: { $0.uuid < $1.uuid })
         unitList.onNext(unitStore)
         moneyStore = fetchMoneyInfo().map { DataFormatManager.transformToMoney($0) }.first ?? 0
         moneyStatus.onNext(moneyStore)
@@ -120,12 +121,10 @@ final class PersistenceStorage: PersistenceStorageType {
     }
     
     private func updateUnit(to unit: Unit) {
-        for info in fetchUnit() {
-            if info.uuid == unit.uuid {
-                info.setValue(unit.uuid, forKey: "uuid")
-                info.setValue(unit.image, forKey: "image")
-                info.setValue(unit.level, forKey: "level")
-            }
+        for info in fetchUnit() where info.uuid == unit.uuid {
+            info.setValue(unit.uuid, forKey: "uuid")
+            info.setValue(unit.image, forKey: "image")
+            info.setValue(unit.level, forKey: "level")
         }
         do {
             try context.save()
