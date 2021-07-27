@@ -29,7 +29,7 @@ final class PersistenceStorage: PersistenceStorageType {
     }
     
     func initializeData(_ units: [Unit], _ money: Int) {
-        units.forEach{append(unit: $0)}
+        units.forEach { append(unit: $0) }
         appendMoenyInfo(money)
     }
     
@@ -38,7 +38,7 @@ final class PersistenceStorage: PersistenceStorageType {
             unitStore.append(DataFormatManager.transformToUnit(info))
         }
         unitList.onNext(unitStore)
-        moneyStore = fetchMoneyInfo().map{DataFormatManager.transformToMoney($0)}.first ?? 0
+        moneyStore = fetchMoneyInfo().map { DataFormatManager.transformToMoney($0) }.first ?? 0
         moneyStatus.onNext(moneyStore)
     }
     
@@ -60,14 +60,13 @@ final class PersistenceStorage: PersistenceStorageType {
         let newUnit = Unit(original: unit, level: unit.level+1)
         if let index = unitStore.firstIndex(where: { $0 == unit}) {
             unitStore.remove(at: index)
-            deleteUnit(unit: unit)
             unitStore.insert(newUnit, at: index)
-            addItemInfo(from: unit)
+            updateUnit(to: newUnit)
             moneyStore -= moeny
-            updateMoney(money: moeny)
+            updateMoney(money: moneyStore)
         }
         unitList.onNext(unitStore)
-        moneyStatus.onNext(moeny)
+        moneyStatus.onNext(moneyStore)
         return newUnit
     }
     
@@ -120,10 +119,29 @@ final class PersistenceStorage: PersistenceStorageType {
         }
     }
     
+    private func updateUnit(to unit: Unit) {
+        for info in fetchUnit() {
+            if info.uuid == unit.uuid {
+                info.setValue(unit.uuid, forKey: "uuid")
+                info.setValue(unit.image, forKey: "image")
+                info.setValue(unit.level, forKey: "level")
+            }
+        }
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
+    
     private func updateMoney(money: Int) {
-        let previousInfo = fetchMoneyInfo().first!
-        context.delete(previousInfo)
-        appendMoenyInfo(money)
+        do {
+            guard let previousInfo = fetchMoneyInfo().first else { return }
+            previousInfo.setValue(money, forKey: "myMoney")
+            try context.save()
+        } catch {
+            print(error)
+        }
     }
     
     private func fetchMoneyInfo() -> [MoneyInformation] {
