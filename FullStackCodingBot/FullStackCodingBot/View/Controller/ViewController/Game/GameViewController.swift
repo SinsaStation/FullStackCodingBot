@@ -76,8 +76,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                 case .correct(let direction):
                     self.checkRemove(to: direction)
                 case .wrong:
-                    self.backgroundView.playWrongMode()
-                    self.normalTimeView.playWrongMode()
+                    self.setToWrongStatus()
                     fallthrough
                 case .feverWrong:
                     self.feedbackGenerator?.notificationOccurred(.error)
@@ -127,6 +126,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
 private extension GameViewController {
     private func setup() {
         setupFeedbackGenerator()
+        buttonController.changeButtonStatus(to: false)
     }
     
     private func setupFeedbackGenerator() {
@@ -153,6 +153,16 @@ private extension GameViewController {
             }
         }
     }
+    
+    private func setToWrongStatus() {
+        backgroundView.playWrongMode()
+        normalTimeView.playWrongMode()
+        buttonController.changeButtonStatus(to: false)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+            self.buttonController.changeButtonStatus(to: true)
+        }
+    }
 }
 
 // MARK: Game Logic Methods
@@ -160,6 +170,7 @@ private extension GameViewController {
     private func gameStart() {
         clearViews()
         viewModel.execute()
+        buttonController.changeButtonStatus(to: true)
     }
     
     private func clearViews() {
