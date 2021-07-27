@@ -16,10 +16,16 @@ final class DatabaseManager: DatabaseManagerType {
             guard error == nil else { return }
             
             if !snapshot.exists() {
-                let jsonString = DataFormatManager.transformToString(uuid)
-                self.ref.child("users").child(uuid).setValue(["units": jsonString])
+                //let jsonString = DataFormatManager.transformToString(uuid)
+                //self.ref.child("users").child(uuid).setValue(["units": jsonString])
             }
         }
+    }
+    
+    func updateDatabase(_ units:[Unit]) {
+        let uuid = Auth.auth().currentUser?.uid ?? ""
+        let jsonString = DataFormatManager.transformToString(units)
+        ref.child("users").child(uuid).setValue(["units": jsonString])
     }
     
     @discardableResult

@@ -21,9 +21,7 @@ final class DataFormatManager {
         return []
     }
     
-    static func transformToString(_ uuid: String) -> String? {
-        let data = Unit.initialValues()
-        
+    static func transformToString(_ data: [Unit]) -> String? {
         do {
             let encodedData = try JSONEncoder().encode(data)
             let storedData = String(data: encodedData, encoding: .utf8)

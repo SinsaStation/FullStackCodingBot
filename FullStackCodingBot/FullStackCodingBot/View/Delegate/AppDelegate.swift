@@ -21,4 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coordinator.transition(to: mainScene, using: .root, with: StoryboardType.main, animated: false)
         return true
     }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+
+    }
 }
