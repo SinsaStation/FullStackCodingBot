@@ -5,17 +5,23 @@ import Action
 
 final class GameViewModel: CommonViewModel {
 
-    private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
-    private(set) var newFeverStatus = BehaviorRelay<Bool>(value: false)
+    // Helper Objects
     private var gameUnitManager: GameUnitManagerType
     private var timeManager: TimeManagerType
     private var timer: DispatchSourceTimer?
     private(set) var timeProgress = Progress(totalUnitCount: GameSetting.startingTime)
-    private(set) var currentScore = 0
-    private(set) var scoreAdded = BehaviorRelay<Int>(value: 0)
+    
+    // Game Status
+    private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
+    private(set) var newFeverStatus = BehaviorRelay<Bool>(value: false)
+    
+    // Game Properties
+    private(set) var currentScore = BehaviorSubject<Int>(value: 0)
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
-    private(set) var userAction = BehaviorRelay<UserActionStatus?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
+    private(set) var userAction = BehaviorRelay<UserActionStatus?>(value: nil)
+    
+    // Actions
     private(set) lazy var pauseAction: Action<Void, Void> = Action {
         self.stopTimer()
         self.newGameStatus.accept(.pause)
@@ -47,7 +53,8 @@ extension GameViewModel {
     private func setTimeManager() {
         timeManager.newStart()
         
-        timeManager.newTimerMode.subscribe(onNext: { [unowned self] timerMode in
+        timeManager.newTimerMode
+            .subscribe(onNext: { [unowned self] timerMode in
             switch timerMode {
             case .normal:
                 self.newFeverStatus.accept(false)
@@ -56,7 +63,8 @@ extension GameViewModel {
             }
         }).disposed(by: rx.disposeBag)
         
-        timeManager.timeLeft.subscribe(onNext: { [unowned self] timeLeft in
+        timeManager.timeLeft
+            .subscribe(onNext: { [unowned self] timeLeft in
             timeProgress.completedUnitCount = Int64(timeLeft)
             self.gameMayOver(timeLeft)
         }).disposed(by: rx.disposeBag)
@@ -73,13 +81,12 @@ extension GameViewModel {
     
     private func setGame() {
         gameUnitManager.resetAll()
-        
-        currentScore = .zero
-        scoreAdded.accept(currentScore)
-        
         sendNewUnitToStack(by: GameSetting.startingCount)
+        
         let newUnits = gameUnitManager.startings()
         newOnGameUnits.accept(newUnits)
+        
+        currentScore.onNext(0)
     }
     
     private func sendNewUnitToStack(by count: Int) {
@@ -109,23 +116,28 @@ extension GameViewModel {
     func moveUnitAction(to direction: Direction) {
         guard let currentUnitScore = gameUnitManager.currentHeadUnitScore() else { return }
         let isAnswerCorrect = gameUnitManager.isMoveActionCorrect(to: direction)
-        
         isAnswerCorrect ? correctAction(for: direction, currentUnitScore) : wrongAction()
     }
     
     private func correctAction(for direction: Direction, _ scoreGained: Int) {
-        userAction.accept(.correct(direction))
-        currentScore += scoreGained
-        scoreAdded.accept(scoreGained)
-        gameUnitManager.raiseAnswerCount()
-        
-        if gameUnitManager.isTimeToLevelUp() { sendNewUnitToStack(by: GameSetting.timeUnit) }
-        
-        onGameUnitNeedsChange()
+        guard updateScore(with: scoreGained) else { return }
         timeManager.correct()
+        onGameUnitNeedsChange()
+        userAction.accept(.correct(direction))
+    }
+    
+    private func updateScore(with scoreGained: Int) -> Bool {
+        guard let currentScore = try? currentScore.value() else { return false }
+        let newScore = currentScore + scoreGained
+        self.currentScore.onNext(newScore)
+        return true
     }
     
     private func onGameUnitNeedsChange() {
+        if gameUnitManager.isTimeToLevelUp(afterRaiseCountBy: 1) {
+            sendNewUnitToStack(by: 1)
+        }
+        
         let currentUnits = gameUnitManager.removeAndRefilled()
         newOnGameUnits.accept(currentUnits)
     }
@@ -140,14 +152,16 @@ extension GameViewModel {
 private extension GameViewModel {
     @discardableResult
     private func toGameOverScene() -> Completable {
-        let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database, finalScore: currentScore, newGameStatus: newGameStatus)
+        let currentScore = try? currentScore.value()
+        let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database, finalScore: currentScore ?? 0, newGameStatus: newGameStatus)
         let gameOverScene = Scene.gameOver(gameOverViewModel)
         return self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, with: StoryboardType.game, animated: true)
     }
     
     @discardableResult
     private func toPauseScene() -> Completable {
-        let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database, currentScore: currentScore, newGameStatus: newGameStatus)
+        let currentScore = try? currentScore.value()
+        let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database, currentScore: currentScore ?? 0, newGameStatus: newGameStatus)
         let pauseScene = Scene.pause(pauseViewModel)
         return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, with: StoryboardType.game, animated: false)
     }

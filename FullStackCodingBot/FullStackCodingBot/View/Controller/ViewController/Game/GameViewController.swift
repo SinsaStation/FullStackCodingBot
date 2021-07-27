@@ -23,11 +23,11 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     
     func bindViewModel() {
         bindButtonController()
-        bindGameStates()
         bindScore()
         bindUnits()
         bindUserAction()
         bindTimeProgress()
+        bindGameStates()
     }
     
     private func bindButtonController() {
@@ -37,30 +37,12 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         }
     }
     
-    private func bindGameStates() {
-        viewModel.newGameStatus
-            .subscribe(onNext: { [unowned self] gameStatus in
-                switch gameStatus {
-                case .new:
-                    self.gameStart()
-                case .pause:
-                    assert(true)
-                case .resume:
-                    self.viewModel.startTimer()
-                }
-        }).disposed(by: rx.disposeBag)
-        
-        viewModel.newFeverStatus
-            .subscribe(onNext: { [unowned self] feverStatus in
-                self.setupTimeView(isFeverOn: feverStatus)
-        }).disposed(by: rx.disposeBag)
-    }
-    
     private func bindScore() {
-        viewModel.scoreAdded
-            .subscribe(onNext: { [unowned self] _ in
-                self.setupScoreLabel(self.viewModel.currentScore)
-        }).disposed(by: rx.disposeBag)
+        viewModel.currentScore
+            .map { "\($0)" }
+            .asDriver(onErrorJustReturn: "")
+            .drive(scoreLabel.rx.text)
+            .disposed(by: rx.disposeBag)
     }
     
     private func bindUnits() {
@@ -103,6 +85,25 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     private func bindTimeProgress() {
         timeView.observedProgress = viewModel.timeProgress
     }
+    
+    private func bindGameStates() {
+        viewModel.newGameStatus
+            .subscribe(onNext: { [unowned self] gameStatus in
+                switch gameStatus {
+                case .new:
+                    self.gameStart()
+                case .pause:
+                    assert(true)
+                case .resume:
+                    self.viewModel.startTimer()
+                }
+        }).disposed(by: rx.disposeBag)
+        
+        viewModel.newFeverStatus
+            .subscribe(onNext: { [unowned self] feverStatus in
+                self.setupTimeView(isFeverOn: feverStatus)
+        }).disposed(by: rx.disposeBag)
+    }
 }
 
 // MARK: - Setup
@@ -114,10 +115,6 @@ private extension GameViewController {
     private func setupFeedbackGenerator() {
         feedbackGenerator = UINotificationFeedbackGenerator()
         feedbackGenerator?.prepare()
-    }
-    
-    private func setupScoreLabel(_ score: Int) {
-        scoreLabel.text = "\(score)"
     }
     
     private func setupPerspectiveView(_ newUnits: [Unit]?) {
