@@ -53,6 +53,8 @@ extension GameViewModel {
     }
     
     private func setTimeManager() {
+        timeManager = TimeManager()
+        
         timeManager.newStart()
         
         timeManager.newTimerMode
@@ -66,12 +68,13 @@ extension GameViewModel {
         }).disposed(by: rx.disposeBag)
         
         timeManager.timeLeft
-            .subscribe(onNext: { [unowned self] timeLeft in
+            .subscribe { [unowned self] timeLeft in
                 let percentage = timePercentage(left: timeLeft, timeMode: .normal)
                 self.timeLeftPercentage.accept(percentage)
-                self.gameMayOver(timeLeft)
-        }).disposed(by: rx.disposeBag)
-        
+        } onCompleted: { [unowned self] in
+                self.gameover()
+        }.disposed(by: rx.disposeBag)
+
         timeManager.feverTimeLeft
             .subscribe(onNext: { [unowned self] feverTimeLeft in
                 guard let feverTimeLeft = feverTimeLeft else { return }
@@ -92,12 +95,10 @@ extension GameViewModel {
         return realTimeAdjustMent / totalTime
     }
     
-    private func gameMayOver(_ timeLeft: Int) {
-        guard timeLeft == 0 else { return }
-        
+    private func gameover() {
         DispatchQueue.main.async {
-            self.toGameOverScene()
             self.stopTimer()
+            self.toGameOverScene()
         }
     }
     

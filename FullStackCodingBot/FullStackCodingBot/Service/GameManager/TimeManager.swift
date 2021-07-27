@@ -43,7 +43,12 @@ struct TimeManager: TimeManagerType {
         case .normal:
             guard let currentTime = try? timeLeft.value() else { return }
             let newTimeLeft = timeReduced(by: second, from: currentTime)
-            timeLeft.onNext(newTimeLeft)
+            
+            if newTimeLeft == 0 {
+                timeLeft.onCompleted()
+            } else {
+                timeLeft.onNext(newTimeLeft)
+            }
             feverTimeManager.reduceGauge(by: second)
         case .fever:
             guard let currentFeverTime = try? feverTimeLeft.value() else { return }
