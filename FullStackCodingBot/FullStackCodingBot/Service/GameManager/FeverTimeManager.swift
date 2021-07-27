@@ -1,6 +1,7 @@
 import Foundation
 
 final class FeverTimeManager {
+    
     private var timeLeft: Int
     private var gauge: Int
     
@@ -13,20 +14,20 @@ final class FeverTimeManager {
         gauge = .zero
     }
     
-    func reduceGauge() {
-        gauge -= 1
-        
+    func reduceGauge(by amount: Int = -1) {
+        updateGuage(by: amount)
+
         if gauge < 0 {
-            gauge = 0
+            reset()
         }
     }
     
-    func reduceTime() {
-        timeLeft -= 1
+    private func updateGuage(by amount: Int) {
+        gauge += amount
     }
-    
-    func feverMayStart() -> Bool {
-        gauge += 1
+
+    func feverMayStart(afterFilledBy amount: Int = 1) -> Bool {
+        updateGuage(by: amount)
         
         if gauge >= GameSetting.feverGaugeMax {
             timeLeft = GameSetting.feverTime
@@ -36,12 +37,18 @@ final class FeverTimeManager {
         }
     }
     
-    func feverMayOver() -> Bool {
+    func feverMayOver(after seconds: Int = 1) -> Bool {
+        reduceTime(by: seconds)
+        
         if timeLeft <= 0 {
             reset()
             return true
         } else {
             return false
         }
+    }
+    
+    private func reduceTime(by seconds: Int) {
+        timeLeft -= seconds
     }
 }

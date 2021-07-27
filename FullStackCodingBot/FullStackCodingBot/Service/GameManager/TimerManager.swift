@@ -44,8 +44,6 @@ final class TimerManager {
             timeLeft.onNext(totalTime)
             feverTimeManager.reduceGauge()
         case .fever:
-            feverTimeManager.reduceTime()
-            
             if feverTimeManager.feverMayOver() {
                 timerMode = .normal
                 newTimerMode.onNext(.normal)
