@@ -6,22 +6,22 @@ enum TimeMode {
     case fever
 }
 
-struct TimeManager {
+struct TimeManager: TimeManagerType {
     
     private let startMode: TimeMode
     private let totalTime: Int
-    var newTimerMode: BehaviorSubject<TimeMode>
-    var timeLeft: BehaviorSubject<Int>
-    private var feverTimeManager: FeverTimeManager
+    private(set) var newTimerMode: BehaviorSubject<TimeMode>
+    private(set) var timeLeft: BehaviorSubject<Int>
+    private var feverTimeManager: FeverManagerType
     
     init(timerMode: TimeMode = .normal,
          totalTime: Int = Int(GameSetting.startingTime),
-         fiverTimeManager: FeverTimeManager = FeverTimeManager()) {
+         feverManager: FeverManagerType = FeverManager()) {
         self.startMode = timerMode
         self.totalTime = totalTime
         self.newTimerMode = BehaviorSubject<TimeMode>(value: timerMode)
         self.timeLeft = BehaviorSubject<Int>(value: totalTime)
-        self.feverTimeManager = fiverTimeManager
+        self.feverTimeManager = feverManager
     }
 
     func newStart() {
@@ -42,9 +42,9 @@ struct TimeManager {
         case .normal:
             let newTimeLeft = timeReduced(by: second, from: currentTime)
             timeLeft.onNext(newTimeLeft)
-            feverTimeManager.reduceGauge()
+            feverTimeManager.reduceGauge(by: second)
         case .fever:
-            if feverTimeManager.feverMayOver() {
+            if feverTimeManager.feverMayOver(after: second) {
                 newTimerMode.onNext(.normal)
             }
         }
@@ -59,7 +59,7 @@ struct TimeManager {
         guard let currentMode = try? newTimerMode.value(),
               currentMode == .normal else { return }
 
-        if feverTimeManager.feverMayStart() {
+        if feverTimeManager.feverMayStart(afterFilledBy: 1) {
             newTimerMode.onNext(.fever)
         }
     }

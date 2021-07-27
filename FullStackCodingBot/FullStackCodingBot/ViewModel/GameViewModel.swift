@@ -8,9 +8,8 @@ final class GameViewModel: CommonViewModel {
     private(set) var newGameStatus = BehaviorRelay<GameStatus>(value: .new)
     private(set) var newFeverStatus = BehaviorRelay<Bool>(value: false)
     private var gameUnitManager: GameUnitManagerType
-    private var timerManager = TimeManager()
+    private var timeManager: TimeManagerType
     private var timer: DispatchSourceTimer?
-    
     private(set) var timeProgress = Progress(totalUnitCount: GameSetting.startingTime)
     private(set) var currentScore = 0
     private(set) var scoreAdded = BehaviorRelay<Int>(value: 0)
@@ -23,16 +22,23 @@ final class GameViewModel: CommonViewModel {
         return self.pause().asObservable().map { _ in }
     }
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, database: DatabaseManagerType, pauseAction: CocoaAction? = nil, gameUnitManager: GameUnitManagerType, totalTime: Int64 = GameSetting.startingTime) {
+    init(sceneCoordinator: SceneCoordinatorType,
+         storage: ItemStorageType,
+         database: DatabaseManagerType,
+         pauseAction: CocoaAction? = nil,
+         gameUnitManager: GameUnitManagerType,
+         timeManager: TimeManagerType = TimeManager(),
+         totalTime: Int64 = GameSetting.startingTime) {
         self.gameUnitManager = gameUnitManager
+        self.timeManager = timeManager
         timeProgress.becomeCurrent(withPendingUnitCount: totalTime)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
     }
     
     func execute() {
-        timerManager.newStart()
+        timeManager.newStart()
         
-        timerManager.newTimerMode.subscribe(onNext: { [unowned self] timerMode in
+        timeManager.newTimerMode.subscribe(onNext: { [unowned self] timerMode in
             switch timerMode {
             case .normal:
                 self.newFeverStatus.accept(false)
@@ -41,7 +47,7 @@ final class GameViewModel: CommonViewModel {
             }
         }).disposed(by: rx.disposeBag)
         
-        timerManager.timeLeft.subscribe(onNext: { [unowned self] timeLeft in
+        timeManager.timeLeft.subscribe(onNext: { [unowned self] timeLeft in
             timeProgress.completedUnitCount = Int64(timeLeft)
             
             self.gameMayOver(timeLeft: timeLeft)
@@ -58,7 +64,7 @@ final class GameViewModel: CommonViewModel {
         timer?.schedule(deadline: .now()+1, repeating: .seconds(GameSetting.timeUnit))
         
         timer?.setEventHandler { [weak self] in
-            self?.timerManager.timeMinus(by: GameSetting.timeUnit)
+            self?.timeManager.timeMinus(by: GameSetting.timeUnit)
         }
         timer?.activate()
     }
@@ -107,7 +113,7 @@ final class GameViewModel: CommonViewModel {
         if gameUnitManager.isTimeToLevelUp() { sendNewUnitToStack(by: GameSetting.timeUnit) }
         
         onGameUnitNeedsChange()
-        timerManager.correct()
+        timeManager.correct()
     }
     
     private func onGameUnitNeedsChange() {
@@ -116,7 +122,7 @@ final class GameViewModel: CommonViewModel {
     }
     
     private func wrongAction() {
-        userAction.accept(timerManager.wrong())
+        userAction.accept(timeManager.wrong())
     }
     
     @discardableResult

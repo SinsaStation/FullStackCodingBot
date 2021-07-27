@@ -1,6 +1,6 @@
 import Foundation
 
-final class FeverTimeManager {
+final class FeverManager: FeverManagerType {
     
     private var timeLeft: Int
     private var gauge: Int
