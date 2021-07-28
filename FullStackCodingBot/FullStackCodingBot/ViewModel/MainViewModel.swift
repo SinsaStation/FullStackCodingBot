@@ -2,17 +2,14 @@ import Foundation
 import RxSwift
 
 final class MainViewModel: AdViewModel {
-    
-    func execute() {
-        adStorage.setup()
-    }
-    
+        
     func fetchGameData(firstLaunched: Bool, units: [Unit], money: Int, score: Int) {
         switch firstLaunched {
         case true:
             getUserInformation()
         case false:
             storage.initializeData(units, money, score)
+            adStorage.setup()
         }
     }
     

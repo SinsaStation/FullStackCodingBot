@@ -42,17 +42,7 @@ final class AdStorage: AdStorageType {
     
     private func setAds() {
         (0..<ShopSetting.adForADay).forEach { index in
-            let request = GADRequest()
-            
-            GADRewardedAd.load(withAdUnitID: IdentiferAD.test, request: request) { [unowned self] ads, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    guard let newAd = ads else { return }
-                    self.ads[index] = newAd
-                    self.itemStorage.onNext(self.items())
-                }
-            }
+            requestAds(index)
         }
     }
     
@@ -85,6 +75,30 @@ final class AdStorage: AdStorageType {
     }
     
     func updateAdsInformation(_ info: AdsInformation) {
-        print(info)
+        lastUpdate = info.lastUpdated
+        gifts = [info.gift]
+        
+        (0..<ShopSetting.adForADay).forEach { index in
+            if info.ads[index] == false {
+                self.ads[index] = nil
+                return
+            }
+            requestAds(index)
+        }
+        itemStorage.onNext(items())
+    }
+    
+    private func requestAds(_ index:Int) {
+        let request = GADRequest()
+        
+        GADRewardedAd.load(withAdUnitID: IdentiferAD.test, request: request) { [unowned self] ads, error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                guard let newAd = ads else { return }
+                self.ads[index] = newAd
+                self.itemStorage.onNext(self.items())
+            }
+        }
     }
 }
