@@ -76,11 +76,8 @@ final class GameUnitManager: GameUnitManagerType {
         return headUnit.score()
     }
     
-    func raiseAnswerCount() {
-        self.answerCount += 1
-    }
-    
-    func isTimeToLevelUp() -> Bool {
+    func isTimeToLevelUp(afterRaiseCountBy amount: Int) -> Bool {
+        raiseAnswerCount(by: amount)
         
         guard memberCount < GameSetting.maxUnitCount else { return false }
         
@@ -96,6 +93,10 @@ final class GameUnitManager: GameUnitManagerType {
         }
     }
     
+    private func raiseAnswerCount(by amount: Int) {
+        self.answerCount += amount
+    }
+    
     func newMember() -> StackMemberUnit {
         let newUnit = unused.removeLast()
         memberCount += 1
@@ -109,5 +110,9 @@ final class GameUnitManager: GameUnitManagerType {
             rightStack.append(newUnit)
             return StackMemberUnit(content: newUnit, order: rightStack.count-1, direction: .right)
         }
+    }
+    
+    func updateUnits(_ units: [Unit]) {
+        self.allKinds = units
     }
 }

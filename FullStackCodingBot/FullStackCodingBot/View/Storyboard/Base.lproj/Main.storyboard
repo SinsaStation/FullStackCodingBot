@@ -60,7 +60,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coding Master" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="qha-bS-eDq" customClass="TypewriterLabel" customModule="GhostTypewriter">
-                                        <rect key="frame" x="131.33333333333331" y="93.666666666666686" width="165.33333333333331" height="29.333333333333329"/>
+                                        <rect key="frame" x="81.333333333333343" y="93.333333333333343" width="265.66666666666663" height="30"/>
                                         <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="25"/>
                                         <color key="textColor" name="digital_green"/>
                                         <nil key="highlightedColor"/>
@@ -610,7 +610,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="b3i-P5-hMw">
-                                        <rect key="frame" x="52.333333333333329" y="11.333333333333329" width="130.33333333333337" height="21"/>
+                                        <rect key="frame" x="52.333333333333329" y="11.000000000000002" width="130.33333333333337" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -679,7 +679,7 @@
         <image name="item_computer_mouse" width="170.66667175292969" height="53.333332061767578"/>
         <image name="item_gift_red_ad" width="133.33332824707031" height="133.33332824707031"/>
         <namedColor name="darkgreen">
-            <color red="0.027450980392156862" green="0.10588235294117647" blue="0.015686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.027000000700354576" green="0.10599999874830246" blue="0.016000000759959221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="digital_green">
             <color red="0.1289999932050705" green="0.96100002527236938" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -691,7 +691,7 @@
             <color red="0.66699999570846558" green="0.51800000667572021" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="mildgreen">
-            <color red="0.19215686274509802" green="0.29803921568627451" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19200000166893005" green="0.29800000786781311" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

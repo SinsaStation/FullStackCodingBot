@@ -26,8 +26,6 @@ final class UnitPerspectiveView: UIView {
             let logoImage = UIImage(named: imageName)?.cgImage
             layer.contents = logoImage
             layer.contentsGravity = .resizeAspect
-            layer.shadowOpacity = 0.35
-            layer.shadowColor = UIColor.black.cgColor
             unitLayers.append(layer)
         }
     }
