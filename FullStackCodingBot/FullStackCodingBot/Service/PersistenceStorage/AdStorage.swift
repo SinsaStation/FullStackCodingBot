@@ -77,4 +77,10 @@ final class AdStorage: AdStorageType {
         gifts[takenGift] = nil
         itemStorage.onNext(items())
     }
+    
+    func adsInformation() -> AdsInformation {
+        let ads = ads.map { $0 != nil }
+        let result = AdsInformation(ads: ads, lastUpdated: lastUpdate, gift: gifts.first ?? nil)
+        return result
+    }
 }

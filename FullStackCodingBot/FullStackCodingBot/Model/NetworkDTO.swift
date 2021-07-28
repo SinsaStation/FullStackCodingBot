@@ -14,7 +14,7 @@ struct UnitInformation: Decodable {
     }
 }
 
-struct AdsInformation: Decodable {
+struct AdsInformation: Codable {
     let ads: [Bool]
     let lastUpdated: Date
     let gift: Int?
@@ -24,7 +24,7 @@ struct AdsInformation: Decodable {
     }
 }
 
-struct NetworkDTO: Decodable {
+struct NetworkDTO: Codable {
     let units: [Unit]
     let money: Int
     let score: Int

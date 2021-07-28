@@ -11,7 +11,8 @@ final class DataFormatManager {
             let units = try JSONDecoder().decode([Unit].self, from: Data(info.info["units"]!.utf8))
             let money = try JSONDecoder().decode(Int.self, from: Data(info.info["money"]!.utf8))
             let score = try JSONDecoder().decode(Int.self, from: Data(info.info["score"]!.utf8))
-            let result = NetworkDTO(units: units, money: money, score: score)
+            let ads = try JSONDecoder().decode(AdsInformation.self, from: Data(info.info["ads"]!.utf8))
+            let result = NetworkDTO(units: units, money: money, score: score, ads: ads)
             return result
         } catch let error {
             print(error)

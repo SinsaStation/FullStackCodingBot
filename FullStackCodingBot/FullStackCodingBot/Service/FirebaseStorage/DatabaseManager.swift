@@ -12,11 +12,12 @@ final class DatabaseManager: DatabaseManagerType {
         self.ref = ref
     }
     
-    func updateDatabase(_ units: [Unit], _ money: Int, _ score: Int) {
-        let unitData = DataFormatManager.transformToString(units)
-        let moneyData = DataFormatManager.transformToString(money)
-        let scoreData = DataFormatManager.transformToString(score)
-        ref.child("users").child(uid).setValue(["info": ["units": unitData, "money": moneyData, "score": scoreData]])
+    func updateDatabase(_ info: NetworkDTO) {
+        let unitData = DataFormatManager.transformToString(info.units)
+        let moneyData = DataFormatManager.transformToString(info.money)
+        let scoreData = DataFormatManager.transformToString(info.score)
+        let adsData = DataFormatManager.transformToString(info.ads)
+        ref.child("users").child(uid).setValue(["info": ["units": unitData, "money": moneyData, "score": scoreData, "ads": adsData]])
     }
     
     @discardableResult

@@ -47,6 +47,7 @@ final class MainViewModel: AdViewModel {
                 data.units.forEach { self.storage.append(unit: $0) }
                 self.storage.raiseMoney(by: data.money)
                 self.storage.updateHighScore(new: data.score)
+                print(data.ads)
             }, onError: { error in
                 print(error)
             }, onCompleted: { [unowned self] in
