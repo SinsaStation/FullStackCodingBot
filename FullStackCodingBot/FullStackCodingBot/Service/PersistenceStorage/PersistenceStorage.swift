@@ -93,9 +93,12 @@ final class PersistenceStorage: PersistenceStorageType {
         return Observable.just(money)
     }
     
-    func updateHighScore(new score: Int) {
+    func updateHighScore(new score: Int) -> Bool {
         if score > highScore {
             highScore = score
+            return true
+        } else {
+            return false
         }
     }
 }
