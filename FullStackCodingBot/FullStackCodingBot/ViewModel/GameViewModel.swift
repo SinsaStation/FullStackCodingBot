@@ -44,8 +44,9 @@ final class GameViewModel: CommonViewModel {
 // MARK: - Setup
 extension GameViewModel {
     func execute() {
-        DispatchQueue.main.asyncAfter(deadline: .now()+GameSetting.readyTime) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+GameSetting.readyTime) { [unowned self] in
             self.newGameStatus.accept(.new)
+            self.gameUnitManager.updateUnits(self.storage.itemList())
             self.setTimeManager()
             self.setGame()
             self.startTimer()
