@@ -14,12 +14,23 @@ struct UnitInformation: Decodable {
     }
 }
 
-struct NetworkDTO: Codable {
+struct AdsInformation: Decodable {
+    let ads: [Bool]
+    let lastUpdated: Date
+    let gift: Int?
+    
+    static func empty() -> AdsInformation {
+        return AdsInformation(ads: [], lastUpdated: Date(), gift: nil)
+    }
+}
+
+struct NetworkDTO: Decodable {
     let units: [Unit]
     let money: Int
     let score: Int
+    let ads: AdsInformation
     
     static func empty() -> NetworkDTO {
-        return NetworkDTO(units: [], money: 0, score: 0)
+        return NetworkDTO(units: [], money: 0, score: 0, ads: AdsInformation.empty())
     }
 }
