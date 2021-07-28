@@ -28,6 +28,7 @@ final class DatabaseManager: DatabaseManagerType {
                 
                 if let data = snapshot.value as? [String: Any] {
                     observer.onNext(DataFormatManager.transformToStruct(data))
+                    observer.onCompleted()
                 }
             }
             return Disposables.create()

@@ -47,6 +47,8 @@ final class MainViewModel: AdViewModel {
                 self.storage.raiseMoney(by: data.1)
             }, onError: { error in
                 print(error)
+            }, onCompleted: { [unowned self] in
+                self.storage.didLoaded()
             }).disposed(by: rx.disposeBag)
     }
 }

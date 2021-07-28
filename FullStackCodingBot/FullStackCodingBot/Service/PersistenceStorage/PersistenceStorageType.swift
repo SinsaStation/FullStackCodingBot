@@ -1,8 +1,13 @@
 import Foundation
 import CoreData
 import RxSwift
+import RxCocoa
 
 protocol PersistenceStorageType {
+    
+    var selectedUnit: BehaviorRelay<Unit> { get }
+    
+    func didLoaded()
     
     func initializeData(_ units: [Unit], _ money: Int)
     

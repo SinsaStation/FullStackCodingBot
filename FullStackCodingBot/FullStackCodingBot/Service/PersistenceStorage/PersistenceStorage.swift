@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import CoreData
+import RxCocoa
 
 final class PersistenceStorage: PersistenceStorageType {
     
@@ -18,10 +19,16 @@ final class PersistenceStorage: PersistenceStorageType {
         return persistentContainer.viewContext
     }
     
+    var selectedUnit = BehaviorRelay<Unit>(value: Unit(info: .swift, level: 1))
+    
     private var unitStore: [Unit] = []
     private lazy var unitList = BehaviorSubject<[Unit]>(value: unitStore)
     private var moneyStore = 0
     private lazy var moneyStatus = BehaviorSubject<Int>(value: moneyStore)
+        
+    func didLoaded() {
+        selectedUnit.accept(unitStore.first!)
+    }
     
     @discardableResult
     func myMoney() -> Int {
