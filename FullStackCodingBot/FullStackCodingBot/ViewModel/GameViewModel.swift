@@ -29,7 +29,6 @@ final class GameViewModel: CommonViewModel {
         return self.toPauseScene().asObservable().map { _ in }
     }
     
-
     init(sceneCoordinator: SceneCoordinatorType,
          storage: PersistenceStorageType,
          database: DatabaseManagerType,

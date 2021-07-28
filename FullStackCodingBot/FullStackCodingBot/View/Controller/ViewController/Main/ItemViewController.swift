@@ -46,7 +46,7 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
             .subscribe(onNext: { [unowned self] message in
                 self.setupInfoLabel(text: message)
             }).disposed(by: rx.disposeBag)
-                
+        
         cancelButton.rx.action = viewModel.cancelAction
     }
 }
