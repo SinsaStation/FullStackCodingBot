@@ -39,8 +39,8 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     
     private func bindScore() {
         viewModel.currentScore
-            .map { "\($0)" }
-            .asDriver(onErrorJustReturn: "")
+            .map { $0 == nil ? "Get Ready" : "\($0!)" }
+            .asDriver(onErrorJustReturn: "Get Ready")
             .drive(scoreLabel.rx.text)
             .disposed(by: rx.disposeBag)
     }
@@ -123,8 +123,6 @@ final class GameViewController: UIViewController, ViewModelBindableType {
 private extension GameViewController {
     private func setup() {
         setupFeedbackGenerator()
-        buttonController.changeButtonStatus(to: false)
-        pauseButton.isEnabled = false
     }
     
     private func setupFeedbackGenerator() {
@@ -175,6 +173,8 @@ private extension GameViewController {
         clear(leftUnitStackView)
         unitPerspectiveView.clearAll()
         backgroundView.stopFever()
+        buttonController.changeButtonStatus(to: false)
+        pauseButton.isEnabled = false
     }
     
     private func gameStart() {
