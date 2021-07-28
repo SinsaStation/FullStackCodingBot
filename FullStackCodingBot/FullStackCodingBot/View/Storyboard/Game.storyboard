@@ -7,7 +7,6 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -150,6 +149,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YCT-bB-HP4" customClass="GameBackgroundView" customModule="Full_Stack" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffT-Vy-DnI" userLabel="Left Button">
                                 <rect key="frame" x="20" y="727" width="139" height="139"/>
                                 <constraints>
@@ -247,25 +250,37 @@
                                             <constraint firstAttribute="width" secondItem="2Uq-RD-u1v" secondAttribute="height" multiplier="1:4" id="WUB-Og-baI"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9s-OQ-iTY" userLabel="Time View">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9s-OQ-iTY" userLabel="Time View">
                                         <rect key="frame" x="0.0" y="404.66666666666663" width="388" height="21.333333333333314"/>
                                         <subviews>
-                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="ilI-4e-lnS" customClass="TimeProgressView" customModule="Full_Stack" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5.3333333333333703" width="388" height="10.666666666666664"/>
-                                                <color key="progressTintColor" name="digital_green"/>
-                                                <color key="trackTintColor" systemColor="systemGray6Color"/>
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6ec-WQ-ttv">
+                                                <rect key="frame" x="0.0" y="1.3333333333333712" width="388" height="19"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WTI-8T-T1Y" userLabel="Normal Time View" customClass="TimeBarView" customModule="Full_Stack" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="388" height="0.0"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FQj-lB-eLc" userLabel="Fever Time View" customClass="FeverTimeBarView" customModule="Full_Stack" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="388" height="19"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="WTI-8T-T1Y" firstAttribute="height" secondItem="6ec-WQ-ttv" secondAttribute="height" priority="750" id="CT7-pt-jWg"/>
+                                                    <constraint firstItem="FQj-lB-eLc" firstAttribute="height" secondItem="6ec-WQ-ttv" secondAttribute="height" id="HBL-BL-Pka"/>
+                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                         <integer key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                            </progressView>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="ilI-4e-lnS" secondAttribute="trailing" id="EkJ-GR-JC7"/>
-                                            <constraint firstItem="ilI-4e-lnS" firstAttribute="centerY" secondItem="I9s-OQ-iTY" secondAttribute="centerY" id="F3C-L1-nT1"/>
-                                            <constraint firstItem="ilI-4e-lnS" firstAttribute="height" secondItem="I9s-OQ-iTY" secondAttribute="height" multiplier="0.5" id="WVa-rH-144"/>
-                                            <constraint firstItem="ilI-4e-lnS" firstAttribute="leading" secondItem="I9s-OQ-iTY" secondAttribute="leading" id="alN-oc-g3M"/>
+                                            <constraint firstItem="6ec-WQ-ttv" firstAttribute="leading" secondItem="I9s-OQ-iTY" secondAttribute="leading" id="SVJ-QR-yhe"/>
+                                            <constraint firstItem="6ec-WQ-ttv" firstAttribute="height" secondItem="I9s-OQ-iTY" secondAttribute="height" multiplier="0.9" id="YbS-hf-EOL"/>
+                                            <constraint firstItem="6ec-WQ-ttv" firstAttribute="centerY" secondItem="I9s-OQ-iTY" secondAttribute="centerY" id="z8E-UX-hb9"/>
+                                            <constraint firstAttribute="trailing" secondItem="6ec-WQ-ttv" secondAttribute="trailing" id="zHM-dM-iOy"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -317,6 +332,7 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ffT-Vy-DnI" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.15" id="0sx-Rc-IAk"/>
+                            <constraint firstItem="YCT-bB-HP4" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="5cg-7X-6ka"/>
                             <constraint firstItem="ffT-Vy-DnI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="6Vj-Cr-o1k"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4s7-Py-xLI" secondAttribute="trailing" constant="20" id="7dA-1c-KYH"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vTf-XR-DdY" secondAttribute="trailing" constant="20" id="O1x-2l-9FK"/>
@@ -325,22 +341,27 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LTf-oP-M9v" secondAttribute="trailing" constant="20" id="Sqx-XQ-eCj"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ffT-Vy-DnI" secondAttribute="bottom" multiplier="1.03" id="UVH-XX-Dd0"/>
                             <constraint firstItem="4s7-Py-xLI" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.46" id="Zpi-Rr-Rc1"/>
+                            <constraint firstItem="YCT-bB-HP4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bUw-LS-1X1"/>
                             <constraint firstItem="vTf-XR-DdY" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="11" id="c1o-YJ-e3s"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ajD-XV-8ww" secondAttribute="trailing" constant="8" id="mb5-kg-JGx"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="LTf-oP-M9v" secondAttribute="bottom" multiplier="1.03" id="mlu-1a-koo"/>
                             <constraint firstItem="LTf-oP-M9v" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.15" id="mqT-yq-bH9"/>
                             <constraint firstItem="ajD-XV-8ww" firstAttribute="top" secondItem="vTf-XR-DdY" secondAttribute="bottom" constant="20" id="odb-fP-7cu"/>
                             <constraint firstItem="ajD-XV-8ww" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="si8-Tv-eeR"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="YCT-bB-HP4" secondAttribute="trailing" id="vTU-ud-HH8"/>
+                            <constraint firstAttribute="bottom" secondItem="YCT-bB-HP4" secondAttribute="bottom" id="xwU-cW-Oyn"/>
                             <constraint firstItem="ffT-Vy-DnI" firstAttribute="top" secondItem="4s7-Py-xLI" secondAttribute="bottom" constant="11" id="yrQ-aO-bmL"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="YCT-bB-HP4" id="FD7-Ay-Zdm"/>
                         <outlet property="buttonController" destination="URX-A4-k8e" id="8gF-qm-WsD"/>
+                        <outlet property="feverTimeView" destination="FQj-lB-eLc" id="71U-QI-32K"/>
                         <outlet property="leftUnitStackView" destination="2Uq-RD-u1v" id="tiF-cC-0H3"/>
+                        <outlet property="normalTimeView" destination="WTI-8T-T1Y" id="D1u-1X-av8"/>
                         <outlet property="pauseButton" destination="vTf-XR-DdY" id="iGt-ma-uS3"/>
                         <outlet property="rightUnitStackView" destination="sga-9e-KSj" id="KGT-eO-GR3"/>
                         <outlet property="scoreLabel" destination="YMc-tt-TX6" id="Y0v-bh-S5l"/>
-                        <outlet property="timeView" destination="ilI-4e-lnS" id="v6F-uT-dFe"/>
                         <outlet property="unitPerspectiveView" destination="Pup-xc-6r8" id="Bgj-LD-YeL"/>
                     </connections>
                 </viewController>
@@ -352,7 +373,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="14.492753623188406" y="87.723214285714278"/>
+            <point key="canvasLocation" x="14.018691588785046" y="87.473002159827217"/>
         </scene>
         <!--Game Over View Controller-->
         <scene sceneID="KLr-MZ-ckC">
@@ -541,17 +562,11 @@
         <namedColor name="darkblue">
             <color red="0.14900000393390656" green="0.1289999932050705" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="digital_green">
-            <color red="0.1289999932050705" green="0.96100002527236938" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="digitalgreen">
             <color red="0.1289999932050705" green="0.96100002527236938" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red">
             <color red="0.87099999189376831" green="0.2669999897480011" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

@@ -10,29 +10,42 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var unitPerspectiveView: UnitPerspectiveView!
     @IBOutlet weak var rightUnitStackView: UIStackView!
     @IBOutlet weak var leftUnitStackView: UIStackView!
-    @IBOutlet weak var timeView: TimeProgressView!
+    @IBOutlet weak var normalTimeView: TimeBarView!
+    @IBOutlet weak var feverTimeView: FeverTimeBarView!
     @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var backgroundView: GameBackgroundView!
+    private var feedbackGenerator: UINotificationFeedbackGenerator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
     }
     
     func bindViewModel() {
+        bindButtonController()
+        bindScore()
+        bindUnits()
+        bindTimeProgress()
+        bindGameStates()
+        bindUserAction()
+    }
+    
+    private func bindButtonController() {
         buttonController.setupButton()
         buttonController.bind { [unowned self] direction in
             self.viewModel.moveUnitAction(to: direction)
         }
-        
-        viewModel.newDirection
-            .subscribe(onNext: { [unowned self] direction in
-                self.checkRemove(to: direction)
-        }).disposed(by: rx.disposeBag)
-        
-        viewModel.scoreAdded
-            .subscribe(onNext: { [unowned self] _ in
-                self.setupScoreLabel(self.viewModel.currentScore)
-        }).disposed(by: rx.disposeBag)
-        
+    }
+    
+    private func bindScore() {
+        viewModel.currentScore
+            .map { "\($0)" }
+            .asDriver(onErrorJustReturn: "")
+            .drive(scoreLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+    }
+    
+    private func bindUnits() {
         viewModel.newMemberUnit
             .subscribe(onNext: { [unowned self] newStackUnit in
                 guard let newStackUnit = newStackUnit else { return }
@@ -48,37 +61,127 @@ final class GameViewController: UIViewController, ViewModelBindableType {
             .subscribe(onNext: { [unowned self] newUnits in
                 self.setupPerspectiveView(newUnits)
         }).disposed(by: rx.disposeBag)
+    }
+    
+    private func bindUserAction() {
+        viewModel.userAction
+            .subscribe(onNext: { [unowned self] status in
+                guard let status = status else { return }
+                switch status {
+                case .correct(let direction):
+                    self.checkRemove(to: direction)
+                case .wrong:
+                    self.setToWrongStatus()
+                    fallthrough
+                case .feverWrong:
+                    self.feedbackGenerator?.notificationOccurred(.error)
+                }
+        }).disposed(by: rx.disposeBag)
         
+        pauseButton.rx.action = viewModel.pauseAction
+    }
+    
+    private func bindTimeProgress() {
+        viewModel.timeLeftPercentage
+            .subscribe(onNext: { [unowned self] percentage in
+                DispatchQueue.main.async {
+                    self.normalTimeView.adjust(to: percentage)
+                }
+            }).disposed(by: rx.disposeBag)
+        
+        viewModel.feverTimeLeftPercentage
+            .subscribe(onNext: { [unowned self] percentage in
+                DispatchQueue.main.async {
+                    self.feverTimeView.adjust(to: percentage, duration: 1)
+                }
+            }).disposed(by: rx.disposeBag)
+    }
+    
+    private func bindGameStates() {
         viewModel.newGameStatus
             .subscribe(onNext: { [unowned self] gameStatus in
                 switch gameStatus {
+                case .ready:
+                    self.getReady()
                 case .new:
                     self.gameStart()
                 case .pause:
                     assert(true)
                 case .resume:
-                    self.viewModel.timerStart()
+                    self.viewModel.startTimer()
                 }
         }).disposed(by: rx.disposeBag)
         
-        pauseButton.rx.action = viewModel.pauseAction
-        
-        timeView.observedProgress = viewModel.timeProgress
+        viewModel.newFeverStatus
+            .subscribe(onNext: { [unowned self] feverStatus in
+                self.setupTimeView(isFeverOn: feverStatus)
+        }).disposed(by: rx.disposeBag)
     }
 }
 
-// MARK: Game Logic
+// MARK: - Setup
 private extension GameViewController {
+    private func setup() {
+        setupFeedbackGenerator()
+        buttonController.changeButtonStatus(to: false)
+        pauseButton.isEnabled = false
+    }
     
-    private func gameStart() {
-        clearViews()
+    private func setupFeedbackGenerator() {
+        feedbackGenerator = UINotificationFeedbackGenerator()
+        feedbackGenerator?.prepare()
+    }
+    
+    private func setupPerspectiveView(_ newUnits: [Unit]?) {
+        guard let newUnits = newUnits else { return }
+        let unitImages = newUnits.map { $0.image }
+        unitPerspectiveView.configure(with: unitImages)
+    }
+    
+    private func setupTimeView(isFeverOn: Bool) {
+        DispatchQueue.main.async {
+            self.normalTimeView.isHidden = isFeverOn
+            self.feverTimeView.isHidden = !isFeverOn
+            
+            if isFeverOn {
+                self.feverTimeView.setup()
+                self.backgroundView.startFever()
+            } else {
+                self.backgroundView.stopFever()
+            }
+        }
+    }
+    
+    private func setToWrongStatus() {
+        backgroundView.playWrongMode()
+        normalTimeView.playWrongMode()
+        buttonController.changeButtonStatus(to: false)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+            self.buttonController.changeButtonStatus(to: true)
+        }
+    }
+}
+
+// MARK: Game Logic Methods
+private extension GameViewController {
+    private func getReady() {
         viewModel.execute()
+        clearViews()
     }
     
     private func clearViews() {
         clear(rightUnitStackView)
         clear(leftUnitStackView)
         unitPerspectiveView.clearAll()
+        backgroundView.stopFever()
+    }
+    
+    private func gameStart() {
+        normalTimeView.setup()
+        pauseButton.isEnabled = true
+        normalTimeView.isHidden = false
+        buttonController.changeButtonStatus(to: true)
     }
 
     private func clear(_ stackView: UIStackView) {
@@ -101,15 +204,5 @@ private extension GameViewController {
     private func checkRemove(to direction: Direction?) {
         guard let direction = direction else { return }
         unitPerspectiveView.removeFirstUnitLayer(to: direction)
-    }
-    
-    private func setupScoreLabel(_ score: Int) {
-        scoreLabel.text = "\(score)"
-    }
-    
-    private func setupPerspectiveView(_ newUnits: [Unit]?) {
-        guard let newUnits = newUnits else { return }
-        let unitImages = newUnits.map { $0.image }
-        unitPerspectiveView.configure(with: unitImages)
     }
 }
