@@ -16,4 +16,6 @@ protocol GameUnitManagerType {
     
     func newMember() -> StackMemberUnit
     
+    func updateUnits(_ units: [Unit])
+    
 }

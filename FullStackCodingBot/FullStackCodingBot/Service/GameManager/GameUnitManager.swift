@@ -111,4 +111,8 @@ final class GameUnitManager: GameUnitManagerType {
             return StackMemberUnit(content: newUnit, order: rightStack.count-1, direction: .right)
         }
     }
+    
+    func updateUnits(_ units: [Unit]) {
+        self.allKinds = units
+    }
 }
