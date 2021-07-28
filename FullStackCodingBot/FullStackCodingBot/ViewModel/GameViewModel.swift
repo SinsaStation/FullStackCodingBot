@@ -27,7 +27,7 @@ final class GameViewModel: CommonViewModel {
         return self.pause().asObservable().map { _ in }
     }
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, database: DatabaseManagerType, pauseAction: CocoaAction? = nil, gameUnitManager: GameUnitManagerType, totalTime: Int64 = GameSetting.startingTime) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: DatabaseManagerType, pauseAction: CocoaAction? = nil, gameUnitManager: GameUnitManagerType, totalTime: Int64 = GameSetting.startingTime) {
         self.gameUnitManager = gameUnitManager
         timeProgress.becomeCurrent(withPendingUnitCount: totalTime)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)

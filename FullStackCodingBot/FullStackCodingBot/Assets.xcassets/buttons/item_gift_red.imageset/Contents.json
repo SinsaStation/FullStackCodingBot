@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "item_gift_red-2.png",
+      "filename" : "item_coffee-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "item_gift_red-1.png",
+      "filename" : "item_coffee-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "item_gift_red.png",
+      "filename" : "item_coffee.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -13,3 +13,7 @@ enum IdentifierVC {
 enum IdentiferAD {
     static let test = "ca-app-pub-3940256099942544/1712485313"
 }
+
+enum IdentifierUD {
+    static let hasLaunchedOnce = "hasLaunchedOnce"
+}
