@@ -14,6 +14,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var feverTimeView: FeverTimeBarView!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var backgroundView: GameBackgroundView!
+    @IBOutlet weak var readyView: UIView!
     private var feedbackGenerator: UINotificationFeedbackGenerator?
     
     override func viewDidLoad() {
@@ -175,9 +176,11 @@ private extension GameViewController {
         backgroundView.stopFever()
         buttonController.changeButtonStatus(to: false)
         pauseButton.isEnabled = false
+        readyView.isHidden = false
     }
     
     private func gameStart() {
+        readyView.isHidden = true
         normalTimeView.setup()
         pauseButton.isEnabled = true
         normalTimeView.isHidden = false
