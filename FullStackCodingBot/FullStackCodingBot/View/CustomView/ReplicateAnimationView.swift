@@ -1,12 +1,13 @@
 import UIKit
 
-final class ReplicateAnimationView: UIView {
+class ReplicateAnimationView: UIView {
     
     private var imageCountPerLine: CGFloat = 3.0
     
     enum Image {
         case paused
         case gameover
+        case fever
         
         var name: String {
             switch self {
@@ -14,6 +15,8 @@ final class ReplicateAnimationView: UIView {
                 return "text_paused"
             case .gameover:
                 return "text_gameover"
+            case .fever:
+                return "text_fever"
             }
         }
     }

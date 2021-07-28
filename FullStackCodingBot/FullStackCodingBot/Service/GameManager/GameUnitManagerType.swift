@@ -12,10 +12,10 @@ protocol GameUnitManagerType {
     
     func currentHeadUnitScore() -> Int?
     
-    func raiseAnswerCount()
-    
-    func isTimeToLevelUp() -> Bool
+    func isTimeToLevelUp(afterRaiseCountBy amount: Int) -> Bool
     
     func newMember() -> StackMemberUnit
+    
+    func updateUnits(_ units: [Unit])
     
 }

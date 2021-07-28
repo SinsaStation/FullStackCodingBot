@@ -42,17 +42,7 @@ final class AdStorage: AdStorageType {
     
     private func setAds() {
         (0..<ShopSetting.adForADay).forEach { index in
-            let request = GADRequest()
-            
-            GADRewardedAd.load(withAdUnitID: IdentiferAD.test, request: request) { [unowned self] ads, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    guard let newAd = ads else { return }
-                    self.ads[index] = newAd
-                    self.itemStorage.onNext(self.items())
-                }
-            }
+            requestAds(index)
         }
     }
     
@@ -76,5 +66,39 @@ final class AdStorage: AdStorageType {
     func giftTaken(_ takenGift: Int) {
         gifts[takenGift] = nil
         itemStorage.onNext(items())
+    }
+    
+    func adsInformation() -> AdsInformation {
+        let ads = ads.map { $0 != nil }
+        let result = AdsInformation(ads: ads, lastUpdated: lastUpdate, gift: gifts.first ?? nil)
+        return result
+    }
+    
+    func updateAdsInformation(_ info: AdsInformation) {
+        lastUpdate = info.lastUpdated
+        gifts = [info.gift]
+        
+        (0..<ShopSetting.adForADay).forEach { index in
+            if info.ads[index] == false {
+                self.ads[index] = nil
+                return
+            }
+            requestAds(index)
+        }
+        itemStorage.onNext(items())
+    }
+    
+    private func requestAds(_ index:Int) {
+        let request = GADRequest()
+        
+        GADRewardedAd.load(withAdUnitID: IdentiferAD.test, request: request) { [unowned self] ads, error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                guard let newAd = ads else { return }
+                self.ads[index] = newAd
+                self.itemStorage.onNext(self.items())
+            }
+        }
     }
 }
