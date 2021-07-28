@@ -14,4 +14,6 @@ protocol AdStorageType {
     func giftTaken(_ takenGift: Int)
     
     func adsInformation() -> AdsInformation
+    
+    func updateAdsInformation(_ info: AdsInformation)
 }

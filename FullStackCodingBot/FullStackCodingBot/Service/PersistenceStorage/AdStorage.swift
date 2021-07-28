@@ -83,4 +83,8 @@ final class AdStorage: AdStorageType {
         let result = AdsInformation(ads: ads, lastUpdated: lastUpdate, gift: gifts.first ?? nil)
         return result
     }
+    
+    func updateAdsInformation(_ info: AdsInformation) {
+        print(info)
+    }
 }
