@@ -4,7 +4,7 @@ import RxSwift
 protocol DatabaseManagerType {
     
     @discardableResult
-    func getFirebaseData() -> Observable<([Unit], Int)>
+    func getFirebaseData() -> Observable<NetworkDTO>
     
-    func updateDatabase(_ units: [Unit], _ money: Int)
+    func updateDatabase(_ units: [Unit], _ money: Int, _ score: Int)
 }

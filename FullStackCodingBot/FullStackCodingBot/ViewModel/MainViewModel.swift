@@ -7,12 +7,12 @@ final class MainViewModel: AdViewModel {
         adStorage.setup()
     }
     
-    func fetchGameData(firstLaunched: Bool, units: [Unit], money: Int) {
+    func fetchGameData(firstLaunched: Bool, units: [Unit], money: Int, score: Int) {
         switch firstLaunched {
         case true:
             getUserInformation()
         case false:
-            storage.initializeData(units, money)
+            storage.initializeData(units, money, score)
         }
     }
     
@@ -44,8 +44,9 @@ final class MainViewModel: AdViewModel {
     private func getUserInformation() {
         database.getFirebaseData()
             .subscribe(onNext: { [unowned self] data in
-                data.0.forEach { self.storage.append(unit: $0) }
-                self.storage.raiseMoney(by: data.1)
+                data.units.forEach { self.storage.append(unit: $0) }
+                self.storage.raiseMoney(by: data.money)
+                self.storage.updateHighScore(new: data.score)
             }, onError: { error in
                 print(error)
             }, onCompleted: { [unowned self] in

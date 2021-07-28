@@ -1,35 +1,23 @@
 import Foundation
 import Firebase
 
-struct UnitInformation: Decodable {
-    let info: [String: String]
-    
-    enum Codingkeys: String, CodingKey {
-        case info
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: Codingkeys.self)
-        let decodedInfo = try container.decode([String: String].self, forKey: .info)
-        info = decodedInfo
-    }
-}
-
 final class DataFormatManager {
     
-    static func transformToStruct(_ data: [String: Any]) -> ([Unit], Int) {
+    static func transformToLocalData(_ data: [String: Any]) -> NetworkDTO {
         
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
             let info = try JSONDecoder().decode(UnitInformation.self, from: jsonData)
-            let money = try JSONDecoder().decode(Int.self, from: Data(info.info["money"]!.utf8))
             let units = try JSONDecoder().decode([Unit].self, from: Data(info.info["units"]!.utf8))
-            return (units, money)
+            let money = try JSONDecoder().decode(Int.self, from: Data(info.info["money"]!.utf8))
+            let score = try JSONDecoder().decode(Int.self, from: Data(info.info["score"]!.utf8))
+            let result = NetworkDTO(units: units, money: money, score: score)
+            return result
         } catch let error {
             print(error)
         }
         
-        return ([], 0)
+        return NetworkDTO.empty()
     }
     
     static func transformToString<T: Encodable>(_ data: T) -> String? {

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let database = DatabaseManager(Database.database().reference())
         let adStorage = AdStorage()
         let mainViewModel = MainViewModel(sceneCoordinator: coordinator, storage: storage, adStorage: adStorage, database: database)
-        mainViewModel.fetchGameData(firstLaunched: UserDefaults.standard.bool(forKey: IdentifierUD.hasLaunchedOnce), units: Unit.initialValues(), money: 0)
+        mainViewModel.fetchGameData(firstLaunched: UserDefaults.standard.bool(forKey: IdentifierUD.hasLaunchedOnce), units: Unit.initialValues(), money: 0, score: 0)
         let mainScene = Scene.main(mainViewModel)
         coordinator.transition(to: mainScene, using: .root, with: StoryboardType.main, animated: false)
         return true
@@ -24,6 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         let database = DatabaseManager(Database.database().reference())
-        database.updateDatabase(storage.itemList(), storage.myMoney())
+        database.updateDatabase(storage.itemList(), storage.myMoney(), storage.myHighScore())
     }
 }

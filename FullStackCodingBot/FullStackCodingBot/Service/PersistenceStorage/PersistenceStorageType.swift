@@ -9,9 +9,10 @@ protocol PersistenceStorageType {
     
     func didLoaded()
     
-    func initializeData(_ units: [Unit], _ money: Int)
+    func initializeData(_ units: [Unit], _ money: Int, _ score: Int)
     
-    func fetchStoredData()
+    @discardableResult
+    func myHighScore() -> Int
     
     @discardableResult
     func myMoney() -> Int
@@ -33,4 +34,6 @@ protocol PersistenceStorageType {
     
     @discardableResult
     func raiseMoney(by money: Int) -> Observable<Int>
+    
+    func updateHighScore(new score: Int)
 }
