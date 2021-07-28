@@ -1,0 +1,11 @@
+import Foundation
+
+class AdViewModel: CommonViewModel {
+    
+    let adStorage: AdStorageType
+    
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType) {
+        self.adStorage = adStorage
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
+    }
+}

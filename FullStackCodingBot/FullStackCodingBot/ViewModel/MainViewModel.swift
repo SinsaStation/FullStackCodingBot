@@ -1,11 +1,24 @@
 import Foundation
 
-final class MainViewModel: CommonViewModel {
+final class MainViewModel: AdViewModel {
+    
+    func execute() {
+        adStorage.setup()
+    }
+    
+    func fetchGameData(firstLaunched: Bool, units: [Unit], money: Int) {
+        switch firstLaunched {
+        case true:
+            getUserInformation()
+        case false:
+            storage.initializeData(units, money)
+        }
+    }
     
     func makeMoveAction(to viewController: ViewControllerType) {
         switch viewController {
         case .giftVC:
-            let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, database: database)
+            let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, adStorage: adStorage, database: database)
             let shopScene = Scene.shop(shopViewModel)
             self.sceneCoordinator.transition(to: shopScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
@@ -27,11 +40,11 @@ final class MainViewModel: CommonViewModel {
         }
     }
     
-    func getUserInformation(from uuid: String) {
-        database.initializeDatabase(uuid)
-        database.getFirebaseData(uuid)
+    private func getUserInformation() {
+        database.getFirebaseData()
             .subscribe(onNext: { [unowned self] data in
-                data.forEach { self.storage.create(item: $0) }
+                data.0.forEach { self.storage.append(unit: $0) }
+                self.storage.raiseMoney(by: data.1)
             }, onError: { error in
                 print(error)
             }).disposed(by: rx.disposeBag)

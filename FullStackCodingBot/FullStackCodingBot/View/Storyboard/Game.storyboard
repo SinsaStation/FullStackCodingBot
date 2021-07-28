@@ -84,8 +84,8 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="hRD-XQ-D7Z">
-                                        <rect key="frame" x="10" y="20.666666666666629" width="322.66666666666669" height="35"/>
-                                        <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="30"/>
+                                        <rect key="frame" x="10" y="17.666666666666629" width="322.66666666666669" height="41"/>
+                                        <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="35"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -294,8 +294,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="412" height="91.666666666666671"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333333333" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="35" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMc-tt-TX6" userLabel="Score Label">
-                                        <rect key="frame" x="10" y="23.333333333333325" width="392" height="44.666666666666657"/>
-                                        <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="37"/>
+                                        <rect key="frame" x="10" y="21.666666666666671" width="392" height="48"/>
+                                        <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="41"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -379,7 +379,7 @@
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3333333333" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="35" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auM-zH-D8j" userLabel="Score Label">
                                                 <rect key="frame" x="0.0" y="31.999999999999993" width="308" height="86.333333333333314"/>
-                                                <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="27"/>
+                                                <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="41"/>
                                                 <color key="textColor" name="digitalgreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -391,7 +391,7 @@
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rfg-gf-7jl">
                                                 <rect key="frame" x="0.0" y="207" width="308" height="39.333333333333343"/>
-                                                <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>

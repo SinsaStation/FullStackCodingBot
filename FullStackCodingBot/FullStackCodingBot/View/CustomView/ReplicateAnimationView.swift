@@ -81,6 +81,7 @@ final class ReplicateAnimationView: UIView {
         let finalPosition = CGPoint(x: originalPosition.x - newImageWidth, y: originalPosition.y)
         animation.fromValue = row == .even ? originalPosition : finalPosition
         animation.toValue = row == .even ? finalPosition : originalPosition
+        animation.isRemovedOnCompletion = false
         
         imageLayer.add(animation, forKey: positionKey)
         return imageLayer

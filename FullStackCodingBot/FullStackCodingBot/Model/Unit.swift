@@ -5,6 +5,12 @@ struct Unit: Equatable, Codable {
     let image: String
     var level: Int
     
+    init(uuid: Int, image: String, level: Int) {
+        self.uuid = uuid
+        self.image = image
+        self.level = level
+    }
+    
     init(info: UnitInfo, level: Int) {
         uuid = info.detail.id
         image = info.detail.image
@@ -26,16 +32,16 @@ struct Unit: Equatable, Codable {
     
     static func initialValues() -> [Unit] {
         let units = [
-            Unit(info: .cPlusPlus, level: 1),
-            Unit(info: .java, level: 1),
             Unit(info: .swift, level: 1),
             Unit(info: .kotlin, level: 1),
+            Unit(info: .java, level: 1),
+            Unit(info: .cPlusPlus, level: 1),
             Unit(info: .python, level: 1),
-            Unit(info: .cSharp, level: 1),
+            Unit(info: .theC, level: 1),
             Unit(info: .php, level: 1),
             Unit(info: .javaScript, level: 1),
-            Unit(info: .ruby, level: 1),
-            Unit(info: .theC, level: 1)
+            Unit(info: .cSharp, level: 1),
+            Unit(info: .ruby, level: 1)
         ]
         return units
     }

@@ -1,13 +1,26 @@
 import Foundation
+import RxSwift
+import RxCocoa
 import Action
+import GoogleMobileAds
 
-final class ShopViewModel: CommonViewModel {
+final class ShopViewModel: AdViewModel {
     
     let confirmAction: Action<String, Void>
     let cancelAction: CocoaAction
+
+    var itemStorage: Driver<[ShopItem]> {
+        return adStorage.availableItems().asDriver(onErrorJustReturn: [])
+    }
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, database: DatabaseManagerType, confirmAction: Action<String, Void>? = nil, cancelAction: CocoaAction? = nil) {
+    lazy var currentMoney: Driver<String> = {
+        return storage.availableMoeny().map {String($0)}.asDriver(onErrorJustReturn: "")
+    }()
+    
+    lazy var selectedItem = BehaviorRelay<ShopItem?>(value: nil)
+    lazy var reward = BehaviorRelay<Int?>(value: nil)
         
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, confirmAction: Action<String, Void>? = nil, cancelAction: CocoaAction? = nil) {
         self.confirmAction = Action<String, Void> { input in
             if let action = confirmAction {
                 action.execute(input)
@@ -21,7 +34,22 @@ final class ShopViewModel: CommonViewModel {
             }
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
-        
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
+    }
+    
+    func giftTaken(_ takenGift: Int) {
+        adStorage.giftTaken(takenGift)
+        addCoin()
+    }
+    
+    private func addCoin() {
+        let moneyToRaise = ShopSetting.reward()
+        storage.raiseMoney(by: moneyToRaise)
+        reward.accept(moneyToRaise)
+    }
+    
+    func adDidFinished(_ finishedAd: GADRewardedAd) {
+        adStorage.adDidFinished(finishedAd)
+        addCoin()
     }
 }

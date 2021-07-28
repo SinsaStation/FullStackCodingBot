@@ -5,33 +5,29 @@ import Firebase
 final class DatabaseManager: DatabaseManagerType {
     
     private var ref: DatabaseReference
+    private let uid = Auth.auth().currentUser?.uid ?? ""
     let data = [Unit]()
     
     init(_ ref: DatabaseReference) {
         self.ref = ref
     }
     
-    func initializeDatabase(_ uuid: String) {
-        ref.child("users").child(uuid).getData { [unowned self] error, snapshot in
-            guard error == nil else { return }
-            
-            if !snapshot.exists() {
-                let jsonString = FirebaseDataManager.transformToString(uuid)
-                self.ref.child("users").child(uuid).setValue(["units": jsonString])
-            }
-        }
+    func updateDatabase(_ units: [Unit], _ money: Int) {
+        let unitData = DataFormatManager.transformToString(units)
+        let moneyData = DataFormatManager.transformToString(money)
+        ref.child("users").child(uid).setValue(["info": ["units": unitData, "money": moneyData]])
     }
     
     @discardableResult
-    func getFirebaseData(_ uuid: String) -> Observable<[Unit]> {
+    func getFirebaseData() -> Observable<([Unit], Int)> {
         Observable.create { [unowned self] observer in
-            self.ref.child("users").child(uuid).getData { error, snapshot in
+            self.ref.child("users").child(uid).getData { error, snapshot in
                 if let error = error {
                     observer.onError(error)
                 }
                 
                 if let data = snapshot.value as? [String: Any] {
-                    observer.onNext(FirebaseDataManager.transformToStruct(data))
+                    observer.onNext(DataFormatManager.transformToStruct(data))
                 }
             }
             return Disposables.create()

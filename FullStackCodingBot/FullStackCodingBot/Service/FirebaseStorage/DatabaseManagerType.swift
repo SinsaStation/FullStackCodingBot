@@ -3,8 +3,8 @@ import RxSwift
 
 protocol DatabaseManagerType {
     
-    func initializeDatabase(_ uuid: String)
-    
     @discardableResult
-    func getFirebaseData(_ uuid: String) -> Observable<[Unit]>
+    func getFirebaseData() -> Observable<([Unit], Int)>
+    
+    func updateDatabase(_ units: [Unit], _ money: Int)
 }

@@ -9,7 +9,7 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     @IBOutlet var buttonController: MainButtonController!
     @IBOutlet weak var titleLabel: TypewriterLabel!
     @IBOutlet weak var skyView: SkyView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -17,6 +17,7 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        viewModel.execute()
         titleLabel.restartTypewritingAnimation()
     }
     
@@ -42,8 +43,10 @@ private extension MainViewController {
     }
         
     private func setupTitleLabel() {
-        titleLabel.font = .systemFont(ofSize: view.bounds.width * 0.04)
-        titleLabel.text = Text.title
+        let font = UIFont(name: Font.joystix, size: view.bounds.width * 0.04) ?? UIFont()
+        let attributedString = NSMutableAttributedString(string: Text.title)
+        attributedString.addAttribute(.font, value: font, range: .init(location: 0, length: Text.title.count))
+        titleLabel.attributedText = attributedString
     }
     
     private func setupAppleGameCenterLogin() {
@@ -54,11 +57,11 @@ private extension MainViewController {
                 GameCenterAuthProvider.getCredential { credential, error in
                     guard error == nil else { return }
                     
-                    Auth.auth().signIn(with: credential!) { [unowned self] user, error in
+                    Auth.auth().signIn(with: credential!) { user, error in
                         guard error == nil else { return }
                         
-                        if let user = user {
-                            self.viewModel.getUserInformation(from: user.user.uid)
+                        if let _ = user {
+                            UserDefaults.standard.set(true, forKey: IdentifierUD.hasLaunchedOnce)
                         }
                     }
                 }

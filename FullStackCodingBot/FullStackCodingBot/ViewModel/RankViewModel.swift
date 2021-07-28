@@ -6,7 +6,7 @@ final class RankViewModel: CommonViewModel {
     let confirmAction: Action<String, Void>
     let cancelAction: CocoaAction
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, database: DatabaseManagerType, confirmAction: Action<String, Void>? = nil, cancelAction: CocoaAction? = nil) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: DatabaseManagerType, confirmAction: Action<String, Void>? = nil, cancelAction: CocoaAction? = nil) {
         
         self.confirmAction = Action<String, Void> { input in
             if let action = confirmAction {
