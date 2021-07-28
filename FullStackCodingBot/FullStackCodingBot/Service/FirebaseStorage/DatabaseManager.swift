@@ -12,14 +12,16 @@ final class DatabaseManager: DatabaseManagerType {
         self.ref = ref
     }
     
-    func updateDatabase(_ units: [Unit], _ money: Int) {
-        let unitData = DataFormatManager.transformToString(units)
-        let moneyData = DataFormatManager.transformToString(money)
-        ref.child("users").child(uid).setValue(["info": ["units": unitData, "money": moneyData]])
+    func updateDatabase(_ info: NetworkDTO) {
+        let unitData = DataFormatManager.transformToString(info.units)
+        let moneyData = DataFormatManager.transformToString(info.money)
+        let scoreData = DataFormatManager.transformToString(info.score)
+        let adsData = DataFormatManager.transformToString(info.ads)
+        ref.child("users").child(uid).setValue(["info": ["units": unitData, "money": moneyData, "score": scoreData, "ads": adsData]])
     }
     
     @discardableResult
-    func getFirebaseData() -> Observable<([Unit], Int)> {
+    func getFirebaseData() -> Observable<NetworkDTO> {
         Observable.create { [unowned self] observer in
             self.ref.child("users").child(uid).getData { error, snapshot in
                 if let error = error {
@@ -27,7 +29,7 @@ final class DatabaseManager: DatabaseManagerType {
                 }
                 
                 if let data = snapshot.value as? [String: Any] {
-                    observer.onNext(DataFormatManager.transformToStruct(data))
+                    observer.onNext(DataFormatManager.transformToLocalData(data))
                     observer.onCompleted()
                 }
             }

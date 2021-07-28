@@ -2,17 +2,14 @@ import Foundation
 import RxSwift
 
 final class MainViewModel: AdViewModel {
-    
-    func execute() {
-        adStorage.setup()
-    }
-    
-    func fetchGameData(firstLaunched: Bool, units: [Unit], money: Int) {
+        
+    func fetchGameData(firstLaunched: Bool, units: [Unit], money: Int, score: Int) {
         switch firstLaunched {
         case true:
             getUserInformation()
         case false:
-            storage.initializeData(units, money)
+            storage.initializeData(units, money, score)
+            adStorage.setup()
         }
     }
     
@@ -44,12 +41,18 @@ final class MainViewModel: AdViewModel {
     private func getUserInformation() {
         database.getFirebaseData()
             .subscribe(onNext: { [unowned self] data in
-                data.0.forEach { self.storage.append(unit: $0) }
-                self.storage.raiseMoney(by: data.1)
+                self.updateDatabaseInformation(data)
             }, onError: { error in
                 print(error)
             }, onCompleted: { [unowned self] in
                 self.storage.didLoaded()
             }).disposed(by: rx.disposeBag)
+    }
+    
+    private func updateDatabaseInformation(_ info: NetworkDTO) {
+        info.units.forEach { storage.append(unit: $0) }
+        storage.raiseMoney(by: info.money)
+        storage.updateHighScore(new: info.score)
+        adStorage.updateAdsInformation(info.ads)
     }
 }

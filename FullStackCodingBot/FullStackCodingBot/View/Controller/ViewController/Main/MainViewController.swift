@@ -17,7 +17,6 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.execute()
         titleLabel.restartTypewritingAnimation()
     }
     
