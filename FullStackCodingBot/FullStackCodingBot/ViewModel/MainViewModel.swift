@@ -1,4 +1,5 @@
 import Foundation
+import RxSwift
 
 final class MainViewModel: AdViewModel {
     
