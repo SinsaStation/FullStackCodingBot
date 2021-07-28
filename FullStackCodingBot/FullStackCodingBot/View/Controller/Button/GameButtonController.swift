@@ -40,4 +40,12 @@ final class GameButtonController: NSObject {
     func bind(action: @escaping (Direction) -> Void) {
         self.buttonTouchedHandler = action
     }
+    
+    func changeButtonStatus(to enable: Bool) {
+        DispatchQueue.main.async {
+            self.moveUnitButtons.forEach { button in
+                button.isEnabled = enable
+            }
+        }
+    }
 }
