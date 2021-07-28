@@ -39,7 +39,7 @@ final class GameOverViewModel: CommonViewModel {
     func makeMoveAction(to viewController: GameOverViewControllerType) {
         switch viewController {
         case .gameVC:
-            newGameStatus.accept(.new)
+            newGameStatus.accept(.ready)
             sceneCoordinator.close(animated: true)
         case .mainVC:
             sceneCoordinator.toMain(animated: true)
