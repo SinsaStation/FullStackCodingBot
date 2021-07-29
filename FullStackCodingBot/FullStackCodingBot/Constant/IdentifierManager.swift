@@ -7,6 +7,7 @@ enum IdentifierVC {
     static let item = "ItemVC"
     static let game = "GameVC"
     static let pause = "PauseVC"
+    static let error = "ErrorVC"
     static let gameOver = "GameOverVC"
 }
 

@@ -384,31 +384,58 @@
                     <view key="view" contentMode="scaleToFill" id="7lq-Vh-bdN">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="U16-Yk-PMt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7C8-E0-ojx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1434" y="-31"/>
+        </scene>
+        <!--Version Error View Controller-->
+        <scene sceneID="SAW-Ez-M6d">
+            <objects>
+                <viewController restorationIdentifier="ErrorVC" storyboardIdentifier="ErrorVC" id="rU9-Na-cv0" customClass="VersionErrorViewController" customModule="Full_Stack" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KKH-CH-U9g">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uQ-sS-SQM">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sle-oK-78K">
                                 <rect key="frame" x="10" y="805.33333333333337" width="85.666666666666671" height="85.666666666666629"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="5uQ-sS-SQM" secondAttribute="height" multiplier="1:1" id="UkK-zD-jCF"/>
+                                    <constraint firstAttribute="width" secondItem="sle-oK-78K" secondAttribute="height" multiplier="1:1" id="3b8-e5-4Kf"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <state key="normal" backgroundImage="button_action_left_off"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="게임센터 이용을 위해 iOS 버전 업데이트가 필요합니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9x-Zc-anr">
+                                <rect key="frame" x="81.666666666666686" y="397.66666666666669" width="265" height="131.00000000000006"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="U16-Yk-PMt"/>
+                        <viewLayoutGuide key="safeArea" id="a6p-GA-eX3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5uQ-sS-SQM" firstAttribute="leading" secondItem="U16-Yk-PMt" secondAttribute="leading" constant="10" id="5z5-bt-spS"/>
-                            <constraint firstItem="U16-Yk-PMt" firstAttribute="bottom" secondItem="5uQ-sS-SQM" secondAttribute="bottom" constant="1" id="IsM-4L-8SJ"/>
-                            <constraint firstItem="5uQ-sS-SQM" firstAttribute="width" secondItem="7lq-Vh-bdN" secondAttribute="width" multiplier="0.2" id="aCK-gl-vf5"/>
+                            <constraint firstItem="S9x-Zc-anr" firstAttribute="centerY" secondItem="KKH-CH-U9g" secondAttribute="centerY" id="84M-vn-aJw"/>
+                            <constraint firstItem="a6p-GA-eX3" firstAttribute="bottom" secondItem="sle-oK-78K" secondAttribute="bottom" constant="1" id="Aku-3l-iql"/>
+                            <constraint firstItem="sle-oK-78K" firstAttribute="height" secondItem="KKH-CH-U9g" secondAttribute="height" multiplier="0.0925126" id="FUp-hK-YbJ"/>
+                            <constraint firstItem="S9x-Zc-anr" firstAttribute="width" secondItem="KKH-CH-U9g" secondAttribute="width" multiplier="0.619159" id="UOo-Tm-BUn"/>
+                            <constraint firstItem="S9x-Zc-anr" firstAttribute="height" secondItem="KKH-CH-U9g" secondAttribute="height" multiplier="0.141469" id="abt-6r-Zzf"/>
+                            <constraint firstItem="sle-oK-78K" firstAttribute="leading" secondItem="a6p-GA-eX3" secondAttribute="leading" multiplier="1.05" constant="10" id="af6-7C-BDY"/>
+                            <constraint firstItem="sle-oK-78K" firstAttribute="width" secondItem="sle-oK-78K" secondAttribute="height" multiplier="1:1" id="hlH-XV-tsv"/>
+                            <constraint firstItem="S9x-Zc-anr" firstAttribute="centerX" secondItem="KKH-CH-U9g" secondAttribute="centerX" id="kf2-Ii-Kw2"/>
+                            <constraint firstItem="sle-oK-78K" firstAttribute="width" secondItem="KKH-CH-U9g" secondAttribute="width" multiplier="0.200156" id="z91-p2-Ird"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="5uQ-sS-SQM" id="FTf-21-DxA"/>
+                        <outlet property="closeButton" destination="sle-oK-78K" id="MU4-jV-vd2"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7C8-E0-ojx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zux-Mg-L8q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1438" y="88"/>
+            <point key="canvasLocation" x="1432.7102803738317" y="626.56587473002162"/>
         </scene>
         <!--Item View Controller-->
         <scene sceneID="FPc-g9-zF6">
