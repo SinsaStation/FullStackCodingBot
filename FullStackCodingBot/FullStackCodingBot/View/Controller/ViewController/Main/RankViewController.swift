@@ -11,7 +11,7 @@ final class RankViewController: UIViewController, ViewModelBindableType {
         super.viewDidLoad()
         gameVC.gameCenterDelegate = self
         gameVC.viewState = .dashboard
-        gameVC.leaderboardIdentifier = "WeeklyScore"
+        gameVC.leaderboardIdentifier = IdentifierGC.leaderboard
         present(gameVC, animated: true, completion: nil)
     }
     

@@ -17,3 +17,7 @@ enum IdentiferAD {
 enum IdentifierUD {
     static let hasLaunchedOnce = "hasLaunchedOnce"
 }
+
+enum IdentifierGC {
+    static let leaderboard = "WeeklyScore"
+}
