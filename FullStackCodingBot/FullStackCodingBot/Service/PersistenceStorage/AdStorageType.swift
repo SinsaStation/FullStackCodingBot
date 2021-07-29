@@ -12,5 +12,8 @@ protocol AdStorageType {
     func adDidFinished(_ finishedAd: GADRewardedAd)
     
     func giftTaken(_ takenGift: Int)
-
+    
+    func adsInformation() -> AdsInformation
+    
+    func updateAdsInformation(_ info: AdsInformation)
 }

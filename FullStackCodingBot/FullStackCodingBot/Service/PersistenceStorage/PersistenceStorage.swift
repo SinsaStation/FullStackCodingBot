@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import CoreData
+import RxCocoa
 
 final class PersistenceStorage: PersistenceStorageType {
     
@@ -18,10 +19,22 @@ final class PersistenceStorage: PersistenceStorageType {
         return persistentContainer.viewContext
     }
     
+    var selectedUnit = BehaviorRelay<Unit>(value: Unit(info: .swift, level: 1))
+    
     private var unitStore: [Unit] = []
     private lazy var unitList = BehaviorSubject<[Unit]>(value: unitStore)
     private var moneyStore = 0
     private lazy var moneyStatus = BehaviorSubject<Int>(value: moneyStore)
+    private var highScore = 0
+    
+    func didLoaded() {
+        selectedUnit.accept(unitStore.first!)
+    }
+    
+    @discardableResult
+    func myHighScore() -> Int {
+        return highScore
+    }
     
     @discardableResult
     func myMoney() -> Int {
@@ -33,25 +46,16 @@ final class PersistenceStorage: PersistenceStorageType {
         return unitStore
     }
     
-    func initializeData(_ units: [Unit], _ money: Int) {
+    func initializeData(_ units: [Unit], _ money: Int, _ score: Int) {
         units.forEach { append(unit: $0) }
         appendMoenyInfo(money)
-    }
-    
-    func fetchStoredData() {
-        for info in fetchUnit() {
-            unitStore.append(DataFormatManager.transformToUnit(info))
-        }
-        unitStore.sort(by: { $0.uuid < $1.uuid })
-        unitList.onNext(unitStore)
-        moneyStore = fetchMoneyInfo().map { DataFormatManager.transformToMoney($0) }.first ?? 0
-        moneyStatus.onNext(moneyStore)
+        appendScoreInfo(score)
     }
     
     @discardableResult
     func append(unit: Unit) -> Observable<Unit> {
         unitStore.append(unit)
-        addItemInfo(from: unit)
+        appendUnitInfo(unit)
         unitList.onNext(unitStore)
         return Observable.just(unit)
     }
@@ -89,17 +93,19 @@ final class PersistenceStorage: PersistenceStorageType {
         return Observable.just(money)
     }
     
-    private func deleteUnit(unit: Unit) {
-        if let shouldBeRemoved = fetchUnit().filter({ $0.uuid == unit.uuid}).first {
-            context.delete(shouldBeRemoved)
-            do {
-                try context.save()
-            } catch {
-                print(error)
-            }
+    func updateHighScore(new score: Int) -> Bool {
+        if score > highScore {
+            highScore = score
+            return true
+        } else {
+            return false
         }
     }
-    
+}
+
+// MARK: CoreData Method
+private extension PersistenceStorage {
+        
     private func fetchUnit() -> [ItemInformation] {
         do {
             guard let fetchResult = try context.fetch(ItemInformation.fetchRequest()) as? [ItemInformation] else { return [] }
@@ -109,22 +115,7 @@ final class PersistenceStorage: PersistenceStorageType {
             return []
         }
     }
-    
-    private func addItemInfo(from unit: Unit) {
-        if let entity = NSEntityDescription.entity(forEntityName: "ItemInformation", in: context) {
-            let info = NSManagedObject(entity: entity, insertInto: context)
-            info.setValue(unit.uuid, forKey: "uuid")
-            info.setValue(unit.image, forKey: "image")
-            info.setValue(unit.level, forKey: "level")
-            
-            do {
-                try context.save()
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
+
     private func updateUnit(to unit: Unit) {
         for info in fetchUnit() where info.uuid == unit.uuid {
             info.setValue(unit.uuid, forKey: "uuid")
@@ -148,16 +139,52 @@ final class PersistenceStorage: PersistenceStorageType {
         }
     }
     
+    private func updateScore(score: Int) {
+        do {
+            guard let previousInfo = fetchScoreInfo().first else { return }
+            previousInfo.setValue(score, forKey: "myScore")
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
+    
     private func fetchMoneyInfo() -> [MoneyInformation] {
         do {
             guard let fetchResult = try context.fetch(MoneyInformation.fetchRequest()) as? [MoneyInformation] else {
                 return []
             }
-            print("MONEY: ", fetchResult)
             return fetchResult
         } catch {
             print(error)
             return []
+        }
+    }
+    
+    private func fetchScoreInfo() -> [ScoreInformation] {
+        do {
+            guard let fetchResult = try context.fetch(ScoreInformation.fetchRequest()) as? [ScoreInformation] else {
+                return []
+            }
+            return fetchResult
+        } catch {
+            print(error)
+            return []
+        }
+    }
+    
+    private func appendUnitInfo(_ unit: Unit) {
+        if let entity = NSEntityDescription.entity(forEntityName: "ItemInformation", in: context) {
+            let info = NSManagedObject(entity: entity, insertInto: context)
+            info.setValue(unit.uuid, forKey: "uuid")
+            info.setValue(unit.image, forKey: "image")
+            info.setValue(unit.level, forKey: "level")
+            
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
     
@@ -174,5 +201,18 @@ final class PersistenceStorage: PersistenceStorageType {
         }
         moneyStore = money
         moneyStatus.onNext(moneyStore)
+    }
+    
+    private func appendScoreInfo(_ score: Int) {
+        if let entity = NSEntityDescription.entity(forEntityName: "ScoreInformation", in: context) {
+            let info = NSManagedObject(entity: entity, insertInto: context)
+            info.setValue(score, forKey: "myScore")
+            
+            do {
+                try context.save()
+            } catch {
+                print(error)
+            }
+        }
     }
 }

@@ -26,6 +26,7 @@
 		7164BFD626967BBE009769E4 /* MainItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7164BFD526967BBE009769E4 /* MainItemView.xib */; };
 		7165CDDB2695789300891214 /* SyetemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165CDDA2695789300891214 /* SyetemSettings.swift */; };
 		7165CDDF26957DE400891214 /* GameButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165CDDE26957DE400891214 /* GameButtonController.swift */; };
+		719A6A9B26B11208006AC991 /* NetworkDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719A6A9A26B11208006AC991 /* NetworkDTO.swift */; };
 		719DA2B126A7FC9900624C61 /* JoystixMonospace-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */; };
 		71A5518026A91C280083A4B0 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5517F26A91C280083A4B0 /* DatabaseManager.swift */; };
 		71A5518226A9277C0083A4B0 /* DatabaseManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */; };
@@ -69,6 +70,7 @@
 		E4BF710526AFD45A00E8645F /* TimeManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF710426AFD45A00E8645F /* TimeManagerType.swift */; };
 		E4BF710726AFD51700E8645F /* FeverManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF710626AFD51700E8645F /* FeverManagerType.swift */; };
 		E4BF710926B00EF600E8645F /* FeverTimeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF710826B00EF600E8645F /* FeverTimeBarView.swift */; };
+		E4BF710B26B1324500E8645F /* ReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF710A26B1324500E8645F /* ReadyView.swift */; };
 		E4C2C34D26A24666007BDF81 /* SkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34C26A24665007BDF81 /* SkyView.swift */; };
 		E4C2C34F26A292BB007BDF81 /* ReplicateAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */; };
 		E4CA08B926A8287B00AA6F03 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA08B826A8287B00AA6F03 /* Font.swift */; };
@@ -118,6 +120,7 @@
 		7164BFD526967BBE009769E4 /* MainItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemView.xib; sourceTree = "<group>"; };
 		7165CDDA2695789300891214 /* SyetemSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyetemSettings.swift; sourceTree = "<group>"; };
 		7165CDDE26957DE400891214 /* GameButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButtonController.swift; sourceTree = "<group>"; };
+		719A6A9A26B11208006AC991 /* NetworkDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDTO.swift; sourceTree = "<group>"; };
 		719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JoystixMonospace-Regular.ttf"; sourceTree = "<group>"; };
 		71A5517F26A91C280083A4B0 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerType.swift; sourceTree = "<group>"; };
@@ -165,6 +168,7 @@
 		E4BF710426AFD45A00E8645F /* TimeManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagerType.swift; sourceTree = "<group>"; };
 		E4BF710626AFD51700E8645F /* FeverManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeverManagerType.swift; sourceTree = "<group>"; };
 		E4BF710826B00EF600E8645F /* FeverTimeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeverTimeBarView.swift; sourceTree = "<group>"; };
+		E4BF710A26B1324500E8645F /* ReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyView.swift; sourceTree = "<group>"; };
 		E4C2C34C26A24665007BDF81 /* SkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyView.swift; sourceTree = "<group>"; };
 		E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicateAnimationView.swift; sourceTree = "<group>"; };
 		E4CA08B826A8287B00AA6F03 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -463,6 +467,7 @@
 				E43B649F26ABB4A2001D9896 /* UIImageExtension.swift */,
 				E43B64A326AC2384001D9896 /* TimeBarView.swift */,
 				E4BF710826B00EF600E8645F /* FeverTimeBarView.swift */,
+				E4BF710A26B1324500E8645F /* ReadyView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				E45B0AC82692F9CF006FDE3D /* Unit.swift */,
 				E4DF614026A92CE00061F6E9 /* ShopItem.swift */,
 				E4BF70FE26AEF3F700E8645F /* GameStatus.swift */,
+				719A6A9A26B11208006AC991 /* NetworkDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -696,6 +702,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				719A6A9B26B11208006AC991 /* NetworkDTO.swift in Sources */,
 				E43B64A226ABD81C001D9896 /* GameBackgroundView.swift in Sources */,
 				E4C2C34D26A24666007BDF81 /* SkyView.swift in Sources */,
 				7164BFD2269679C6009769E4 /* MainItemView.swift in Sources */,
@@ -749,6 +756,7 @@
 				715A83EE269FE96300C9CEFF /* StoryboardType.swift in Sources */,
 				71307AB126A53C7B00C3191F /* AlertMessage.swift in Sources */,
 				E4CA08B926A8287B00AA6F03 /* Font.swift in Sources */,
+				E4BF710B26B1324500E8645F /* ReadyView.swift in Sources */,
 				71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */,
 				71DF65472692F97000557693 /* RankViewModel.swift in Sources */,
 				E4779C652697E92F00B92D24 /* TimeProgressView.swift in Sources */,

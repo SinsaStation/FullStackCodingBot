@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class MainItemView: UIView {
     
@@ -19,9 +21,11 @@ final class MainItemView: UIView {
     }
     
     func configure(_ info: Unit) {
-        itemImageView.image = UIImage(named: info.image)
-        nameLabel.text = info.image
-        levelLabel.text = "Lv. \(info.level)"
+        DispatchQueue.main.async { [unowned self] in
+            self.itemImageView.image = UIImage(named: info.image)
+            self.nameLabel.text = info.image
+            self.levelLabel.text = "Lv. \(info.level)"
+        }
     }
     
     private func loadXib() {
@@ -33,7 +37,7 @@ final class MainItemView: UIView {
     }
     
     func startAnimation() {
-        let circleColor = itemImageView.image?.averageColor ?? UIColor()
+        let circleColor = itemImageView.image?.averageColor ?? UIColor.white
         circleAnimation(color: circleColor)
     }
     

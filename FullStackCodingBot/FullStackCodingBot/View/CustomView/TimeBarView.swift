@@ -14,8 +14,7 @@ final class TimeBarView: UIView {
         }
         timeSolidLayer = solidLayer()
         fullWidth = timeSolidLayer?.bounds.width
-        layer.insertSublayer(timeSolidLayer!, at: 0)
-        setNeedsDisplay()
+        layer.insertSublayer(timeSolidLayer ?? solidLayer(), at: 0)
     }
     
     private func solidLayer() -> CALayer {
@@ -40,7 +39,7 @@ final class TimeBarView: UIView {
     func playWrongMode() {
         timeSolidLayer?.backgroundColor = wrongColor.cgColor
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
             self.timeSolidLayer?.backgroundColor = self.normalColor.cgColor
         }
     }
