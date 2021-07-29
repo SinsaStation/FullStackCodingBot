@@ -38,28 +38,21 @@ final class AdStorage: AdStorageType {
     }
     
     private func showCurrentRewards(from currentInfo: AdsInformation) {
-        let currentGift = currentInfo.gift
-        let currentAds = currentInfo.ads
-        gifts = [currentGift]
+        let currentAdStates = currentInfo.ads
+        setAds(with: currentAdStates)
         
-        currentAds.enumerated().forEach { index, isAvailable in
+        let currentGiftState = currentInfo.gift
+        setGifts(with: currentGiftState)
+    }
+    
+    private func setAds(with adStates: [Bool] = Array(repeating: true, count: ShopSetting.adForADay)) {
+        adStates.enumerated().forEach { index, isAvailable in
             if isAvailable {
                 downloadAd(to: index)
             } else {
                 self.ads[index] = nil
             }
         }
-        itemStorage.onNext(items())
-    }
-    
-    private func setAds() {
-        (0..<ShopSetting.adForADay).forEach { index in
-            downloadAd(to: index)
-        }
-    }
-    
-    private func setGifts() {
-        gifts = (0..<ShopSetting.freeReward).map { $0 }
     }
     
     private func downloadAd(to index: Int) {
@@ -72,8 +65,17 @@ final class AdStorage: AdStorageType {
             }
             guard let newAd = ads else { return }
             self.ads[index] = newAd
-            self.itemStorage.onNext(self.items())
+            self.publishCurrentItems()
         }
+    }
+    
+    private func publishCurrentItems() {
+        itemStorage.onNext(items())
+    }
+    
+    private func setGifts(with giftState: Int? = ShopSetting.freeReward) {
+        gifts = [giftState]
+        publishCurrentItems()
     }
     
     private func items() -> [ShopItem] {
@@ -92,12 +94,12 @@ final class AdStorage: AdStorageType {
                 ads[index] = nil
             }
         }
-        itemStorage.onNext(items())
+        publishCurrentItems()
     }
     
     func giftTaken(_ takenGift: Int) {
         gifts[takenGift] = nil
-        itemStorage.onNext(items())
+        publishCurrentItems()
     }
     
     func adsInformation() -> AdsInformation {

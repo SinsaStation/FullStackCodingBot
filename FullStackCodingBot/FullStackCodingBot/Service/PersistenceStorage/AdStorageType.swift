@@ -7,6 +7,8 @@ protocol AdStorageType {
     @discardableResult
     func updateIfPossible() -> Bool
     
+    func updateAdsInformation(_ info: AdsInformation)
+    
     func availableItems() -> Observable<[ShopItem]>
     
     func adDidFinished(_ finishedAd: GADRewardedAd)
@@ -14,6 +16,5 @@ protocol AdStorageType {
     func giftTaken(_ takenGift: Int)
     
     func adsInformation() -> AdsInformation
-    
-    func updateAdsInformation(_ info: AdsInformation)
+
 }
