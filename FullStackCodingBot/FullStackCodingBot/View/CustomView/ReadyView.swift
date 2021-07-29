@@ -10,7 +10,7 @@ final class ReadyView: UIView {
         static let position = #keyPath(CALayer.position)
     }
     
-    func playAnimation(totalDuration: Double = GameSetting.readyTime) {
+    func playAnimation(totalDuration: Double = GameSetting.readyTime+0.3) {
         reset()
         addLayersToPositions()
         let rotateDuration = totalDuration * 0.9
