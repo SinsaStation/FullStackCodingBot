@@ -2,18 +2,23 @@ import Foundation
 import RxSwift
 import GoogleMobileAds
 
+enum GiftStatus {
+    case available
+    case taken
+}
+
 final class AdStorage: AdStorageType {
-    
+
     private var lastUpdate: Date
-    private var gifts: [Int?]
+    private var giftStatus: GiftStatus
     private var ads: [GADRewardedAd?]
     private lazy var itemStorage = BehaviorSubject(value: items())
     
     init(lastUpdate: Date = Date(timeIntervalSince1970: 0),
-         gifts: [Int?] = Array(repeating: nil, count: ShopSetting.freeReward),
+         giftStatus: GiftStatus = .taken,
          ads: [GADRewardedAd?] = Array(repeating: nil, count: ShopSetting.adForADay)) {
         self.lastUpdate = lastUpdate
-        self.gifts = gifts
+        self.giftStatus = giftStatus
         self.ads = ads
     }
     
@@ -41,7 +46,7 @@ final class AdStorage: AdStorageType {
         let currentAdStates = currentInfo.ads
         setAds(with: currentAdStates)
         
-        let currentGiftState = currentInfo.gift
+        let currentGiftState: GiftStatus = currentInfo.gift != nil ? .available : .taken
         setGifts(with: currentGiftState)
     }
     
@@ -73,15 +78,15 @@ final class AdStorage: AdStorageType {
         itemStorage.onNext(items())
     }
     
-    private func setGifts(with giftState: Int? = ShopSetting.freeReward) {
-        gifts = [giftState]
+    private func setGifts(with giftState: GiftStatus = .available) {
+        self.giftStatus = giftState
         publishCurrentItems()
     }
     
     private func items() -> [ShopItem] {
         let adItems = ads.map { $0 != nil ? ShopItem.adMob($0!) : ShopItem.taken }
-        let giftItems = gifts.map { $0 != nil ? ShopItem.gift($0!) : ShopItem.taken }
-        return adItems + giftItems
+        let giftItem = giftStatus == .available ? ShopItem.gift : ShopItem.taken
+        return adItems + [giftItem]
     }
     
     func availableItems() -> Observable<[ShopItem]> {
@@ -97,14 +102,14 @@ final class AdStorage: AdStorageType {
         publishCurrentItems()
     }
     
-    func giftTaken(_ takenGift: Int) {
-        gifts[takenGift] = nil
+    func giftTaken() {
+        giftStatus = .taken
         publishCurrentItems()
     }
     
     func adsInformation() -> AdsInformation {
         let ads = ads.map { $0 != nil }
-        let result = AdsInformation(ads: ads, lastUpdated: lastUpdate, gift: gifts.first ?? nil)
+        let result = AdsInformation(ads: ads, lastUpdated: lastUpdate, gift: giftStatus == .available ? 0 : nil)
         return result
     }
 }

@@ -37,8 +37,8 @@ final class ShopViewModel: AdViewModel {
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
     }
     
-    func giftTaken(_ takenGift: Int) {
-        adStorage.giftTaken(takenGift)
+    func giftTaken() {
+        adStorage.giftTaken()
         addCoin()
     }
     
