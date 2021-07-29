@@ -17,7 +17,6 @@ final class ReadyView: UIView {
         addLayersToPositions()
         let rotateDuration = totalDuration * 0.9
         let countUnit = rotateDuration/3
-        let throwDuration = totalDuration - rotateDuration
         rotateLayers(for: totalDuration)
         
         DispatchQueue.main.asyncAfter(deadline: .now()+countUnit*1) { [unowned self] in
@@ -27,11 +26,15 @@ final class ReadyView: UIView {
         DispatchQueue.main.asyncAfter(deadline: .now()+countUnit*2) { [unowned self] in
             self.readyCountLabel.text = "1"
         }
+    }
+    
+    func finishAnimation(for duration: Double) {
+        readyCountImageView.isHidden = true
+        readyCountLabel.isHidden = true
+        throwLayers(for: duration)
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+countUnit*3) { [unowned self] in
-            self.readyCountImageView.isHidden = true
-            self.readyCountLabel.isHidden = true
-            self.throwLayers(for: throwDuration)
+        DispatchQueue.main.asyncAfter(deadline: .now()+duration) { [unowned self] in
+            self.isHidden = true
         }
     }
     

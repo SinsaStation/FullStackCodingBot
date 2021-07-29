@@ -185,10 +185,7 @@ private extension GameViewController {
         pauseButton.isEnabled = true
         normalTimeView.isHidden = false
         buttonController.changeButtonStatus(to: true)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
-            self.readyView.isHidden = true
-        }
+        readyView.finishAnimation(for: 0.3)
     }
 
     private func clear(_ stackView: UIStackView) {
