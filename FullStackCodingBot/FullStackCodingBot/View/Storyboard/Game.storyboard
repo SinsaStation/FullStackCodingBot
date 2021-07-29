@@ -7,7 +7,6 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -328,9 +327,8 @@
                                     <constraint firstAttribute="trailing" secondItem="YMc-tt-TX6" secondAttribute="trailing" constant="10" id="voe-Wg-qlb"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiy-Ah-NNM" userLabel="Ready View">
-                                <rect key="frame" x="21.333333333333343" y="277.66666666666663" width="385.33333333333326" height="370.66666666666663"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiy-Ah-NNM" userLabel="Ready View" customClass="ReadyView" customModule="Full_Stack" customModuleProvider="target">
+                                <rect key="frame" x="21.333333333333343" y="218" width="385.33333333333326" height="509"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -340,9 +338,8 @@
                             <constraint firstItem="YCT-bB-HP4" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="5cg-7X-6ka"/>
                             <constraint firstItem="ffT-Vy-DnI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="6Vj-Cr-o1k"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4s7-Py-xLI" secondAttribute="trailing" constant="20" id="7dA-1c-KYH"/>
-                            <constraint firstItem="xiy-Ah-NNM" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="AFf-eK-vJf"/>
+                            <constraint firstItem="xiy-Ah-NNM" firstAttribute="top" secondItem="ajD-XV-8ww" secondAttribute="bottom" id="DBl-cx-tGv"/>
                             <constraint firstItem="xiy-Ah-NNM" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Evc-oV-Kj5"/>
-                            <constraint firstItem="xiy-Ah-NNM" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.4" id="MFB-kz-P6n"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vTf-XR-DdY" secondAttribute="trailing" constant="20" id="O1x-2l-9FK"/>
                             <constraint firstItem="vTf-XR-DdY" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.12" id="QiC-zp-CQ3"/>
                             <constraint firstItem="4s7-Py-xLI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="REt-jO-7w1"/>
@@ -356,6 +353,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="LTf-oP-M9v" secondAttribute="bottom" multiplier="1.03" id="mlu-1a-koo"/>
                             <constraint firstItem="LTf-oP-M9v" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.15" id="mqT-yq-bH9"/>
                             <constraint firstItem="ajD-XV-8ww" firstAttribute="top" secondItem="vTf-XR-DdY" secondAttribute="bottom" constant="20" id="odb-fP-7cu"/>
+                            <constraint firstItem="xiy-Ah-NNM" firstAttribute="bottom" secondItem="ffT-Vy-DnI" secondAttribute="top" id="pNa-ej-uLV"/>
                             <constraint firstItem="ajD-XV-8ww" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="si8-Tv-eeR"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="YCT-bB-HP4" secondAttribute="trailing" id="vTU-ud-HH8"/>
                             <constraint firstAttribute="bottom" secondItem="YCT-bB-HP4" secondAttribute="bottom" id="xwU-cW-Oyn"/>
@@ -579,8 +577,5 @@
         <namedColor name="red">
             <color red="0.87099999189376831" green="0.2669999897480011" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

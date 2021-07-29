@@ -14,7 +14,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var feverTimeView: FeverTimeBarView!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var backgroundView: GameBackgroundView!
-    @IBOutlet weak var readyView: UIView!
+    @IBOutlet weak var readyView: ReadyView!
     private var feedbackGenerator: UINotificationFeedbackGenerator?
     
     override func viewDidLoad() {
@@ -167,6 +167,7 @@ private extension GameViewController {
     private func getReady() {
         viewModel.execute()
         clearViews()
+        readyView.playAnimation()
     }
     
     private func clearViews() {
