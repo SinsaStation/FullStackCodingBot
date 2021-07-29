@@ -25,8 +25,9 @@ final class GameUnitManager: GameUnitManagerType {
         self.memberCount = memberCount
         self.answerCount = answerCount
     }
-    
-    func resetAll() {
+
+    func reset(with units: [Unit]) {
+        allKinds = units
         unused = allKinds.shuffled()
         leftStack.removeAll()
         rightStack.removeAll()
@@ -110,9 +111,5 @@ final class GameUnitManager: GameUnitManagerType {
             rightStack.append(newUnit)
             return StackMemberUnit(content: newUnit, order: rightStack.count-1, direction: .right)
         }
-    }
-    
-    func updateUnits(_ units: [Unit]) {
-        self.allKinds = units
     }
 }
