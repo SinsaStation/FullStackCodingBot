@@ -2,6 +2,8 @@ import UIKit
 
 final class ReadyView: UIView {
     
+    @IBOutlet weak var readyCountImageView: UIImageView!
+    @IBOutlet weak var readyCountLabel: UILabel!
     private let allImageNames = UnitInfo.allCases.map { $0.detail.image }
     private var unitLayers = [CALayer]()
     
@@ -14,15 +16,30 @@ final class ReadyView: UIView {
         reset()
         addLayersToPositions()
         let rotateDuration = totalDuration * 0.9
+        let countUnit = rotateDuration/3
         let throwDuration = totalDuration - rotateDuration
         rotateLayers(for: totalDuration)
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+rotateDuration) { [unowned self] in
+        DispatchQueue.main.asyncAfter(deadline: .now()+countUnit*1) { [unowned self] in
+            self.readyCountLabel.text = "2"
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+countUnit*2) { [unowned self] in
+            self.readyCountLabel.text = "1"
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+countUnit*3) { [unowned self] in
+            self.readyCountImageView.isHidden = true
+            self.readyCountLabel.isHidden = true
             self.throwLayers(for: throwDuration)
         }
     }
     
     private func reset() {
+        self.readyCountImageView.isHidden = false
+        self.readyCountLabel.isHidden = false
+        readyCountLabel.text = "3"
+        
         if unitLayers.isEmpty {
             unitLayers = newLayers()
         } else {
@@ -37,7 +54,7 @@ final class ReadyView: UIView {
     private func newLayers() -> [CALayer] {
         var layers = [CALayer]()
         let allImages = allImageNames.shuffled().map { UIImage(named: $0)?.cgImage }
-        let layerWidth = layer.bounds.width / 4
+        let layerWidth = layer.bounds.width / 6
         let layerSize = CGSize(width: layerWidth, height: layerWidth)
         
         allImages.forEach { image in
@@ -114,21 +131,21 @@ final class ReadyView: UIView {
     }
     
     private func startY(for index: Int) -> CGFloat {
-        let weight = layer.bounds.height / 7
+        let weight = layer.bounds.height / 6
         
         switch index {
         case 0:
-            return weight
+            return weight * 0.5
         case 1, 2:
-            return weight * 2
+            return weight * 1.5
         case 3, 4:
-            return weight * 3
+            return weight * 2.5
         case 5, 6:
-            return weight * 4
+            return weight * 3.5
         case 7, 8:
-            return weight * 5
+            return weight * 4.5
         default:
-            return weight * 6
+            return weight * 5.5
         }
     }
     

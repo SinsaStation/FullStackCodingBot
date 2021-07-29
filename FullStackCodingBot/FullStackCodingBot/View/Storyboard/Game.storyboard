@@ -329,6 +329,33 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiy-Ah-NNM" userLabel="Ready View" customClass="ReadyView" customModule="Full_Stack" customModuleProvider="target">
                                 <rect key="frame" x="21.333333333333343" y="218" width="385.33333333333326" height="509"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="button_plain" translatesAutoresizingMaskIntoConstraints="NO" id="G2O-rD-Nyr">
+                                        <rect key="frame" x="121.33333333333333" y="183.33333333333331" width="142.66666666666669" height="142.33333333333331"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="G2O-rD-Nyr" secondAttribute="height" multiplier="1:1" id="rdX-Z4-fO5"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="26" translatesAutoresizingMaskIntoConstraints="NO" id="7YP-Ho-kAi" userLabel="Ready Count Label">
+                                        <rect key="frame" x="121.33333333333333" y="183.33333333333331" width="142.66666666666669" height="142.33333333333331"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="73"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="7YP-Ho-kAi" firstAttribute="width" secondItem="G2O-rD-Nyr" secondAttribute="width" id="6B5-Oe-jte"/>
+                                    <constraint firstItem="7YP-Ho-kAi" firstAttribute="centerX" secondItem="G2O-rD-Nyr" secondAttribute="centerX" id="G7j-75-53c"/>
+                                    <constraint firstItem="G2O-rD-Nyr" firstAttribute="centerX" secondItem="xiy-Ah-NNM" secondAttribute="centerX" id="HAr-Gt-Svd"/>
+                                    <constraint firstItem="G2O-rD-Nyr" firstAttribute="centerY" secondItem="xiy-Ah-NNM" secondAttribute="centerY" id="Jtm-CJ-kSd"/>
+                                    <constraint firstItem="G2O-rD-Nyr" firstAttribute="width" secondItem="xiy-Ah-NNM" secondAttribute="width" multiplier="0.37" id="Rgi-WN-VSa"/>
+                                    <constraint firstItem="7YP-Ho-kAi" firstAttribute="centerY" secondItem="G2O-rD-Nyr" secondAttribute="centerY" id="awf-KN-8f1"/>
+                                    <constraint firstItem="7YP-Ho-kAi" firstAttribute="height" secondItem="G2O-rD-Nyr" secondAttribute="height" id="vM7-LD-6iv"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="readyCountImageView" destination="G2O-rD-Nyr" id="uyh-pS-slP"/>
+                                    <outlet property="readyCountLabel" destination="7YP-Ho-kAi" id="0Ms-JW-9So"/>
+                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -563,6 +590,7 @@
         <image name="button_highscore" width="61.333332061767578" height="21.333333969116211"/>
         <image name="button_home" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_pause" width="42.666667938232422" height="42.666667938232422"/>
+        <image name="button_plain" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_replay" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_resume" width="106.66666412353516" height="106.66666412353516"/>
         <image name="item_computer_monitor_score" width="170.66667175292969" height="170.66667175292969"/>
