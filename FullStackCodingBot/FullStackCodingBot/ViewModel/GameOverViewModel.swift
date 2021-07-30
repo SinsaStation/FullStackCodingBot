@@ -32,8 +32,8 @@ final class GameOverViewModel: CommonViewModel {
     
     func execute() {
         storeReward()
-        storeHightScoreToGameCenter()
         updateHighScore()
+        storeHightScoreToGameCenter()
     }
     
     private func storeReward() {

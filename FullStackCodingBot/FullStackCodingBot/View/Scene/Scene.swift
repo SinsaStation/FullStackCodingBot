@@ -40,7 +40,7 @@ extension Scene {
                 }
                 rankVC.gameCenterDelegate = viewModel
                 rankVC.leaderboardIdentifier = IdentifierGC.leaderboard
-                rankVC.viewState = .dashboard
+                rankVC.viewState = .leaderboards
                 rankVC.bind(viewModel: viewModel)
                 return rankVC
             } else {
