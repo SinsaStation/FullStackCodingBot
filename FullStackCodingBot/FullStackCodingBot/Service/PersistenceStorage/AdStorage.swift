@@ -22,8 +22,14 @@ final class AdStorage: AdStorageType {
         self.ads = ads
     }
     
-    func setNewRewardsIfPossible() -> Bool {
-        guard isUpdatable() else { return false }
+    func setNewRewardsIfPossible(with newInfo: AdsInformation?) -> Bool {
+        let currentInfo = newInfo ?? currentInformation()
+        lastUpdate = currentInfo.lastUpdated
+        
+        guard isUpdatable() else {
+            setRewards(from: currentInfo)
+            return false
+        }
         setAds()
         setGifts()
         return true
@@ -34,12 +40,6 @@ final class AdStorage: AdStorageType {
         let isUpdated = Calendar.current.isDate(today, inSameDayAs: lastUpdate)
         lastUpdate = today
         return !isUpdated
-    }
-    
-    func update(with currentInfo: AdsInformation) {
-        lastUpdate = currentInfo.lastUpdated
-        guard !setNewRewardsIfPossible() else { return }
-        setRewards(from: currentInfo)
     }
     
     private func setRewards(from currentInfo: AdsInformation) {
