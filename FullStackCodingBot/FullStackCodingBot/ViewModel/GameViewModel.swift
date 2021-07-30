@@ -17,7 +17,7 @@ final class GameViewModel: CommonViewModel {
     // Game Properties
     private(set) var timeLeftPercentage = BehaviorRelay<Float>(value: 1)
     private(set) var feverTimeLeftPercentage = BehaviorRelay<Float>(value: 1)
-    private(set) var currentScore = BehaviorSubject<Int>(value: 0)
+    private(set) var currentScore = BehaviorSubject<Int?>(value: nil)
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
     private(set) var userAction = BehaviorRelay<UserActionStatus?>(value: nil)
@@ -44,13 +44,22 @@ final class GameViewModel: CommonViewModel {
 // MARK: - Setup
 extension GameViewModel {
     func execute() {
+        resetAll()
+        
         DispatchQueue.main.asyncAfter(deadline: .now()+GameSetting.readyTime) { [unowned self] in
             self.newGameStatus.accept(.new)
-            self.gameUnitManager.updateUnits(self.storage.itemList())
             self.setTimeManager()
             self.setGame()
             self.startTimer()
         }
+    }
+    
+    private func resetAll() {
+        newFeverStatus.accept(false)
+        timeLeftPercentage.accept(0)
+        feverTimeLeftPercentage.accept(0)
+        currentScore.onNext(nil)
+        newOnGameUnits.accept(nil)
     }
     
     private func setTimeManager() {
@@ -104,7 +113,8 @@ extension GameViewModel {
     }
     
     private func setGame() {
-        gameUnitManager.resetAll()
+        let units = storage.itemList()
+        gameUnitManager.reset(with: units)
         sendNewUnitToStack(by: GameSetting.startingCount)
         
         let newUnits = gameUnitManager.startings()
