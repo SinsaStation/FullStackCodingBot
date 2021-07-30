@@ -102,8 +102,8 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
-  - "NSObject+Rx (5.2.1)":
-    - RxSwift (~> 6.0)
+  - "NSObject+Rx (5.2.2)":
+    - RxSwift (~> 6.2)
   - PromisesObjC (2.0.0)
   - RxCocoa (6.2.0):
     - RxRelay (= 6.2.0)
@@ -172,7 +172,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  "NSObject+Rx": 49ffbf55ad0bbc29a44547db63a9e33caf0c5d60
+  "NSObject+Rx": 61cf1f7306a73dcef8b36649198af0813ec18dfd
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
@@ -181,4 +181,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 5c3880b9d0a32ef75426203ab12a3cadfb2772f9
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.0

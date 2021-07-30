@@ -14,6 +14,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var feverTimeView: FeverTimeBarView!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var backgroundView: GameBackgroundView!
+    @IBOutlet weak var readyView: ReadyView!
     private var feedbackGenerator: UINotificationFeedbackGenerator?
     
     override func viewDidLoad() {
@@ -39,8 +40,8 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     
     private func bindScore() {
         viewModel.currentScore
-            .map { "\($0)" }
-            .asDriver(onErrorJustReturn: "")
+            .map { $0 == nil ? "Get Ready" : "\($0!)" }
+            .asDriver(onErrorJustReturn: "Get Ready")
             .drive(scoreLabel.rx.text)
             .disposed(by: rx.disposeBag)
     }
@@ -123,8 +124,6 @@ final class GameViewController: UIViewController, ViewModelBindableType {
 private extension GameViewController {
     private func setup() {
         setupFeedbackGenerator()
-        buttonController.changeButtonStatus(to: false)
-        pauseButton.isEnabled = false
     }
     
     private func setupFeedbackGenerator() {
@@ -168,6 +167,7 @@ private extension GameViewController {
     private func getReady() {
         viewModel.execute()
         clearViews()
+        readyView.playAnimation()
     }
     
     private func clearViews() {
@@ -175,6 +175,9 @@ private extension GameViewController {
         clear(leftUnitStackView)
         unitPerspectiveView.clearAll()
         backgroundView.stopFever()
+        buttonController.changeButtonStatus(to: false)
+        pauseButton.isEnabled = false
+        readyView.isHidden = false
     }
     
     private func gameStart() {
@@ -182,6 +185,7 @@ private extension GameViewController {
         pauseButton.isEnabled = true
         normalTimeView.isHidden = false
         buttonController.changeButtonStatus(to: true)
+        readyView.finishAnimation(for: 0.3)
     }
 
     private func clear(_ stackView: UIStackView) {

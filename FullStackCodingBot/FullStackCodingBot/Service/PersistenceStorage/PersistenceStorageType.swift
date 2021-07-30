@@ -35,5 +35,5 @@ protocol PersistenceStorageType {
     @discardableResult
     func raiseMoney(by money: Int) -> Observable<Int>
     
-    func updateHighScore(new score: Int)
+    func updateHighScore(new score: Int) -> Bool
 }

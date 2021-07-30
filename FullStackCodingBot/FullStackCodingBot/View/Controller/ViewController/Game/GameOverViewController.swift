@@ -1,4 +1,5 @@
 import UIKit
+import RxCocoa
 
 final class GameOverViewController: UIViewController, ViewModelBindableType {
     
@@ -8,6 +9,7 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var gainedCoinLabel: UILabel!
     @IBOutlet weak var totalCoinLabel: UILabel!
+    @IBOutlet weak var highScoreImageView: UIImageView!
     @IBOutlet var backgroundView: ReplicateAnimationView!
     
     override func viewDidLoad() {
@@ -36,6 +38,12 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
         
         viewModel.currentMoney
             .drive(totalCoinLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.highScoreStatus
+            .asDriver()
+            .map { $0 ? 1.0 : 0.0 }
+            .drive(highScoreImageView.rx.alpha)
             .disposed(by: rx.disposeBag)
     }
 }

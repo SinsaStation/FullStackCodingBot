@@ -49,8 +49,8 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
         switch item {
         case .adMob(let adMob):
             self.show(adMob)
-        case .gift(let number):
-            self.giftTaken(number)
+        case .gift:
+            self.viewModel.giftTaken()
         case .taken:
             print("이미 없어진 기프트!")
         }
@@ -99,10 +99,6 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: Google Ads
 extension ShopViewController: GADFullScreenContentDelegate {
-    private func giftTaken(_ takenGift: Int) {
-        viewModel.giftTaken(takenGift)
-    }
-    
     private func show(_ adMob: GADRewardedAd) {
         adMob.fullScreenContentDelegate = self
         

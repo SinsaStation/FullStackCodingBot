@@ -2,7 +2,7 @@ import Foundation
 
 protocol GameUnitManagerType {
     
-    func resetAll()
+    func reset(with units: [Unit])
     
     func startings() -> [Unit]
     
@@ -15,7 +15,5 @@ protocol GameUnitManagerType {
     func isTimeToLevelUp(afterRaiseCountBy amount: Int) -> Bool
     
     func newMember() -> StackMemberUnit
-    
-    func updateUnits(_ units: [Unit])
-    
+
 }

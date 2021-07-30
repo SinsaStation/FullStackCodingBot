@@ -8,6 +8,7 @@ final class GameOverViewModel: CommonViewModel {
     
     private let scoreInfo = BehaviorRelay<Int>(value: 0)
     private let moneyInfo = BehaviorRelay<Int>(value: 0)
+    private(set) var highScoreStatus = BehaviorRelay<Bool>(value: false)
     private var newGameStatus: BehaviorRelay<GameStatus>
     
     lazy var finalScore: Driver<String> = {
@@ -32,10 +33,17 @@ final class GameOverViewModel: CommonViewModel {
     func execute() {
         storeReward()
         storeHightScoreToGameCenter()
+        updateHighScore()
     }
     
     private func storeReward() {
         storage.raiseMoney(by: moneyInfo.value)
+    }
+    
+    private func updateHighScore() {
+        let newScore = scoreInfo.value
+        let isHighScore = storage.updateHighScore(new: newScore)
+        highScoreStatus.accept(isHighScore)
     }
     
     func makeMoveAction(to viewController: GameOverViewControllerType) {

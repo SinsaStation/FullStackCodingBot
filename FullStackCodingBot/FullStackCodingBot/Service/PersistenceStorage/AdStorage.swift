@@ -2,35 +2,31 @@ import Foundation
 import RxSwift
 import GoogleMobileAds
 
+enum GiftStatus {
+    case available
+    case taken
+}
+
 final class AdStorage: AdStorageType {
-    
+
     private var lastUpdate: Date
-    private var gifts: [Int?]
+    private var giftStatus: GiftStatus
     private var ads: [GADRewardedAd?]
     private lazy var itemStorage = BehaviorSubject(value: items())
     
     init(lastUpdate: Date = Date(timeIntervalSince1970: 0),
-         gifts: [Int?] = Array(repeating: nil, count: ShopSetting.freeReward),
+         giftStatus: GiftStatus = .taken,
          ads: [GADRewardedAd?] = Array(repeating: nil, count: ShopSetting.adForADay)) {
         self.lastUpdate = lastUpdate
-        self.gifts = gifts
+        self.giftStatus = giftStatus
         self.ads = ads
     }
     
-    private func items() -> [ShopItem] {
-        let adItems = ads.map { $0 != nil ? ShopItem.adMob($0!) : ShopItem.taken }
-        let giftItems = gifts.map { $0 != nil ? ShopItem.gift($0!) : ShopItem.taken }
-        return adItems + giftItems
-    }
-    
-    func setup() -> Bool {
-        if isUpdatable() {
-            setAds()
-            setGifts()
-            return true
-        } else {
-            return false
-        }
+    func updateIfPossible() -> Bool {
+        guard isUpdatable() else { return false }
+        setAds()
+        setGifts()
+        return true
     }
     
     private func isUpdatable() -> Bool {
@@ -40,14 +36,58 @@ final class AdStorage: AdStorageType {
         return !isUpdated
     }
     
-    private func setAds() {
-        (0..<ShopSetting.adForADay).forEach { index in
-            requestAds(index)
+    func updateAdsInformation(_ info: AdsInformation) {
+        lastUpdate = info.lastUpdated
+        guard !updateIfPossible() else { return }
+        showCurrentRewards(from: info)
+    }
+    
+    private func showCurrentRewards(from currentInfo: AdsInformation) {
+        let currentAdStates = currentInfo.ads
+        setAds(with: currentAdStates)
+        
+        let currentGiftState: GiftStatus = currentInfo.gift != nil ? .available : .taken
+        setGifts(with: currentGiftState)
+    }
+    
+    private func setAds(with adStates: [Bool] = Array(repeating: true, count: ShopSetting.adForADay)) {
+        adStates.enumerated().forEach { index, isAvailable in
+            if isAvailable {
+                downloadAd(to: index)
+            } else {
+                self.ads[index] = nil
+                publishCurrentItems()
+            }
         }
     }
     
-    private func setGifts() {
-        gifts = (0..<ShopSetting.freeReward).map { $0 }
+    private func downloadAd(to index: Int) {
+        let request = GADRequest()
+        
+        GADRewardedAd.load(withAdUnitID: IdentiferAD.test, request: request) { [unowned self] ads, error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            guard let newAd = ads else { return }
+            self.ads[index] = newAd
+            self.publishCurrentItems()
+        }
+    }
+    
+    private func publishCurrentItems() {
+        itemStorage.onNext(items())
+    }
+    
+    private func setGifts(with giftState: GiftStatus = .available) {
+        self.giftStatus = giftState
+        publishCurrentItems()
+    }
+    
+    private func items() -> [ShopItem] {
+        let adItems = ads.map { $0 != nil ? ShopItem.adMob($0!) : ShopItem.taken }
+        let giftItem = giftStatus == .available ? ShopItem.gift : ShopItem.taken
+        return adItems + [giftItem]
     }
     
     func availableItems() -> Observable<[ShopItem]> {
@@ -60,45 +100,17 @@ final class AdStorage: AdStorageType {
                 ads[index] = nil
             }
         }
-        itemStorage.onNext(items())
+        publishCurrentItems()
     }
     
-    func giftTaken(_ takenGift: Int) {
-        gifts[takenGift] = nil
-        itemStorage.onNext(items())
+    func giftTaken() {
+        giftStatus = .taken
+        publishCurrentItems()
     }
     
     func adsInformation() -> AdsInformation {
         let ads = ads.map { $0 != nil }
-        let result = AdsInformation(ads: ads, lastUpdated: lastUpdate, gift: gifts.first ?? nil)
+        let result = AdsInformation(ads: ads, lastUpdated: lastUpdate, gift: giftStatus == .available ? 0 : nil)
         return result
-    }
-    
-    func updateAdsInformation(_ info: AdsInformation) {
-        lastUpdate = info.lastUpdated
-        gifts = [info.gift]
-        
-        (0..<ShopSetting.adForADay).forEach { index in
-            if info.ads[index] == false {
-                self.ads[index] = nil
-                return
-            }
-            requestAds(index)
-        }
-        itemStorage.onNext(items())
-    }
-    
-    private func requestAds(_ index:Int) {
-        let request = GADRequest()
-        
-        GADRewardedAd.load(withAdUnitID: IdentiferAD.test, request: request) { [unowned self] ads, error in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                guard let newAd = ads else { return }
-                self.ads[index] = newAd
-                self.itemStorage.onNext(self.items())
-            }
-        }
     }
 }
