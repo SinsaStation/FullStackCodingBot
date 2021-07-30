@@ -1,16 +1,16 @@
 # Full Stack Coding Master
 ### Team Sinsa-Station
 
-### [Wiki](https://github.com/SinsaStation/FullStackCodingBot/wiki)
+### [Team Wiki](https://github.com/SinsaStation/FullStackCodingBot/wiki)
 
 #### 앱구동 gif
 
 ## Team Members
 
-|![KakaoTalk_Photo_2021-07-06-16-04-23](https://user-images.githubusercontent.com/72008879/125918638-9c051170-0ea9-4ae4-837f-57fead02d81c.png) | ![KakaoTalk_Image_2021-07-06-15-44-33](https://user-images.githubusercontent.com/72008879/125918726-d1850670-dd10-42de-90fe-991b8ad9533a.png)|
+|![74946802](https://user-images.githubusercontent.com/74946802/127593187-e129cd8a-9146-4e8d-a283-cf3db288b11b.jpeg)| ![72188416](https://user-images.githubusercontent.com/74946802/127593249-62465ed4-d221-4543-a7b6-e777ce6c9cc5.jpeg)|
 |:------:|:---:|
 |**서우석** | **이송**|
-|[github]()|[github]()|
+|[github](https://github.com/torch-ray)|[github](https://github.com/eeeesong)|
 
 ---
 
@@ -94,9 +94,7 @@
 ### [SwiftLint](https://github.com/SinsaStation/FullStackCodingBot/wiki/SwiftLint)
 ### [MVVM](https://github.com/SinsaStation/FullStackCodingBot/wiki/MVVM)
 
----
-
-## 여기 대충 팀 
+<img width="444" alt="스크린샷 2021-07-30 오후 12 04 43" src="https://user-images.githubusercontent.com/74946802/127593694-63f0c702-e562-4ef7-b1e8-c3c0e4db9a2b.png">
 
 ## Ground Rule
 
