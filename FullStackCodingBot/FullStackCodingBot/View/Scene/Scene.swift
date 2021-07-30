@@ -1,7 +1,9 @@
 import UIKit
+import GameKit
 
 enum Scene {
     case main(MainViewModel)
+    case load(MainViewModel)
     case shop(ShopViewModel)
     case rank(RankViewModel)
     case item(ItemViewModel)
@@ -33,12 +35,23 @@ extension Scene {
             return shopVC
             
         case .rank(let viewModel):
-            guard var rankVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.rank) as? RankViewController else {
-                fatalError()
+            if #available(iOS 13.0, *) {
+                guard var rankVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.rank) as? RankViewController else {
+                    fatalError()
+                }
+                rankVC.gameCenterDelegate = viewModel
+                rankVC.leaderboardIdentifier = IdentifierGC.leaderboard
+                rankVC.viewState = .leaderboards
+                rankVC.bind(viewModel: viewModel)
+                return rankVC
+            } else {
+                guard var errorVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.error) as? VersionErrorViewController else {
+                    fatalError()
+                }
+                errorVC.bind(viewModel: viewModel)
+                return errorVC
             }
-            rankVC.bind(viewModel: viewModel)
-            return rankVC
-            
+
         case .item(let viewModel):
             guard var itemVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.item) as? ItemViewController else {
                 fatalError()
@@ -72,6 +85,13 @@ extension Scene {
             let confirmAction = UIAlertAction(title: message.content.confirm, style: .cancel)
             alertScene.addAction(confirmAction)
             return alertScene
+            
+        case .load(let viewModel):
+            guard var loadVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.loading) as? LoadingViewController else {
+                fatalError()
+            }
+            loadVC.bind(viewModel: viewModel)
+            return loadVC
         }
     }
 }

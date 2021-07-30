@@ -12,6 +12,7 @@
 		710D0D422693EA3200244A16 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D412693EA3200244A16 /* GameViewController.swift */; };
 		710D0D442693EA6900244A16 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D432693EA6900244A16 /* GameViewModel.swift */; };
 		710D0D4F2693F6E500244A16 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D4D2693F6E500244A16 /* ItemCell.swift */; };
+		711A69EC26B3B13E00C7C99A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A69EB26B3B13E00C7C99A /* LoadingViewController.swift */; };
 		712F500A26A831D900186948 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712F500926A831D900186948 /* GoogleService-Info.plist */; };
 		712F500B26A831D900186948 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712F500926A831D900186948 /* GoogleService-Info.plist */; };
 		71307A8926A529F400C3191F /* LevelUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71307A8826A529F400C3191F /* LevelUpButton.swift */; };
@@ -26,6 +27,7 @@
 		7164BFD626967BBE009769E4 /* MainItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7164BFD526967BBE009769E4 /* MainItemView.xib */; };
 		7165CDDB2695789300891214 /* SyetemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165CDDA2695789300891214 /* SyetemSettings.swift */; };
 		7165CDDF26957DE400891214 /* GameButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165CDDE26957DE400891214 /* GameButtonController.swift */; };
+		7170CD4526B266BE00F03248 /* VersionErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */; };
 		719A6A9B26B11208006AC991 /* NetworkDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719A6A9A26B11208006AC991 /* NetworkDTO.swift */; };
 		719DA2B126A7FC9900624C61 /* JoystixMonospace-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */; };
 		71A5518026A91C280083A4B0 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5517F26A91C280083A4B0 /* DatabaseManager.swift */; };
@@ -107,6 +109,7 @@
 		710D0D412693EA3200244A16 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		710D0D432693EA6900244A16 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		710D0D4D2693F6E500244A16 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		711A69EB26B3B13E00C7C99A /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		712F500926A831D900186948 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71307A8826A529F400C3191F /* LevelUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpButton.swift; sourceTree = "<group>"; };
 		71307A8A26A52A1F00C3191F /* LevelUpButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelUpButton.xib; sourceTree = "<group>"; };
@@ -120,6 +123,7 @@
 		7164BFD526967BBE009769E4 /* MainItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemView.xib; sourceTree = "<group>"; };
 		7165CDDA2695789300891214 /* SyetemSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyetemSettings.swift; sourceTree = "<group>"; };
 		7165CDDE26957DE400891214 /* GameButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButtonController.swift; sourceTree = "<group>"; };
+		7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionErrorViewController.swift; sourceTree = "<group>"; };
 		719A6A9A26B11208006AC991 /* NetworkDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDTO.swift; sourceTree = "<group>"; };
 		719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JoystixMonospace-Regular.ttf"; sourceTree = "<group>"; };
 		71A5517F26A91C280083A4B0 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 				71DF64B82692C13A00557693 /* ShopViewController.swift */,
 				71DF64BC2692C18F00557693 /* RankViewController.swift */,
 				71DF64BE2692C1C600557693 /* ItemViewController.swift */,
+				7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */,
+				711A69EB26B3B13E00C7C99A /* LoadingViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -515,7 +521,7 @@
 				E45B0AA82692929D006FDE3D /* Frameworks */,
 				E45B0AA92692929D006FDE3D /* Resources */,
 				7165CDD92695687300891214 /* ShellScript */,
-				A78E100D0FE782636B03E629 /* [CP] Embed Pods Frameworks */,
+				A5B05F0A5BE7D4031A8E6167 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -668,7 +674,7 @@
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
-		A78E100D0FE782636B03E629 /* [CP] Embed Pods Frameworks */ = {
+		A5B05F0A5BE7D4031A8E6167 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -739,6 +745,7 @@
 				E4DF613B26A845670061F6E9 /* AdStorageType.swift in Sources */,
 				E41C85D8269C252D008F2E91 /* GameUnitManagerType.swift in Sources */,
 				71DF64BD2692C18F00557693 /* RankViewController.swift in Sources */,
+				711A69EC26B3B13E00C7C99A /* LoadingViewController.swift in Sources */,
 				71DF65552692FD1400557693 /* CommonViewModel.swift in Sources */,
 				E4DF613F26A847330061F6E9 /* AdViewModel.swift in Sources */,
 				710D0D442693EA6900244A16 /* GameViewModel.swift in Sources */,
@@ -755,6 +762,7 @@
 				71BC752E26A940A10021BA1A /* DataFormatManager.swift in Sources */,
 				715A83EE269FE96300C9CEFF /* StoryboardType.swift in Sources */,
 				71307AB126A53C7B00C3191F /* AlertMessage.swift in Sources */,
+				7170CD4526B266BE00F03248 /* VersionErrorViewController.swift in Sources */,
 				E4CA08B926A8287B00AA6F03 /* Font.swift in Sources */,
 				E4BF710B26B1324500E8645F /* ReadyView.swift in Sources */,
 				71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */,
