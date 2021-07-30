@@ -4,7 +4,11 @@ import RxCocoa
 import Action
 
 final class ItemViewModel: CommonViewModel {
-        
+    
+    var defaultUnit: Unit {
+        return storage.itemList().first!
+    }
+    
     var itemStorage: Driver<[Unit]> {
         return storage.listUnit().asDriver(onErrorJustReturn: [])
     }
@@ -15,7 +19,7 @@ final class ItemViewModel: CommonViewModel {
     
     let isPossibleToLevelUp = BehaviorRelay<Bool>(value: false)
     let cancelAction: CocoaAction
-    lazy var selectedUnit = BehaviorRelay<Unit>(value: Unit(info: .swift, level: 1))
+    lazy var selectedUnit = BehaviorRelay<Unit>(value: defaultUnit)
     lazy var status = BehaviorRelay<String>(value: Text.levelUp)
     lazy var upgradedUnit = BehaviorRelay<Unit?>(value: nil)
     private var feedbackGenerator: UINotificationFeedbackGenerator?
@@ -29,7 +33,6 @@ final class ItemViewModel: CommonViewModel {
         }
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
         setupFeedbackGenerator()
-        obseverSelectedUnit()
     }
     
     func checkLevelUpPrice() {
@@ -63,12 +66,5 @@ final class ItemViewModel: CommonViewModel {
     private func setupFeedbackGenerator() {
         feedbackGenerator = UINotificationFeedbackGenerator()
         feedbackGenerator?.prepare()
-    }
-    
-    private func obseverSelectedUnit() {
-        storage.selectedUnit
-            .subscribe(onNext: { [unowned self] unit in
-                self.selectedUnit.accept(unit)
-            }).disposed(by: rx.disposeBag)
     }
 }

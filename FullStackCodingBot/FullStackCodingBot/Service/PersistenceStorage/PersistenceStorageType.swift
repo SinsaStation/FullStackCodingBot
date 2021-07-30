@@ -5,10 +5,6 @@ import RxCocoa
 
 protocol PersistenceStorageType {
     
-    var selectedUnit: BehaviorRelay<Unit> { get }
-    
-    func didLoaded()
-    
     func initializeData(_ units: [Unit], _ money: Int, _ score: Int)
     
     @discardableResult
