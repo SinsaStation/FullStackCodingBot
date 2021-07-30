@@ -29,6 +29,14 @@ final class SceneCoordinator: SceneCoordinatorType {
                 subject.onCompleted()
             }
             currentVC = target
+            
+        case .overCurrent:
+            target.modalPresentationStyle = .overCurrentContext
+            target.modalTransitionStyle = .crossDissolve
+            currentVC.present(target, animated: animated) {
+                subject.onCompleted()
+            }
+            currentVC = target
         
         case .alert:
             currentVC.present(target, animated: animated) {

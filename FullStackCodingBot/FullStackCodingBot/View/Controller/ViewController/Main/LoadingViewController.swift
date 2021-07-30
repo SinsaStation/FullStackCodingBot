@@ -5,6 +5,8 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: MainViewModel!
     
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -12,8 +14,9 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
     func bindViewModel() {
         viewModel.firebaseDidLoad
             .subscribe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { isLoaded in
+            .subscribe(onNext: {[unowned self] isLoaded in
                 if isLoaded {
+                    self.loadingSpinner.stopAnimating()
                     self.viewModel.makeCloseAction()
                 }
             }).disposed(by: rx.disposeBag)
