@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let coordinator = SceneCoordinator(window: window!)
         let database = DatabaseManager(Database.database().reference())
         let mainViewModel = MainViewModel(sceneCoordinator: coordinator, storage: storage, adStorage: adStorage, database: database)
-        mainViewModel.fetchGameData(firstLaunched: UserDefaults.standard.bool(forKey: IdentifierUD.hasLaunchedOnce), units: Unit.initialValues(), money: 0, score: 0)
         let mainScene = Scene.main(mainViewModel)
         coordinator.transition(to: mainScene, using: .root, with: StoryboardType.main, animated: false)
         return true

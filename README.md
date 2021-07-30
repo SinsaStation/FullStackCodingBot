@@ -1,7 +1,6 @@
 # Full Stack Coding Master
-### Team Sinsa-Station
+### Team Sinsa-Station - [Team Wiki](https://github.com/SinsaStation/FullStackCodingBot/wiki)
 
-### [Team Wiki](https://github.com/SinsaStation/FullStackCodingBot/wiki)
 
 |<img src="https://user-images.githubusercontent.com/74946802/127594347-2f471137-5a26-458f-957e-3f0dcecba018.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594350-3c15a26b-f19a-4734-9b00-e424a68c83db.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594351-73704d42-d60a-4ce4-a2d0-c965bd517975.png" width="300">|
 |:---:|:---:|:---:|
@@ -96,6 +95,61 @@
 챌린지 했던 내용 요약해서 쓰기 2~3줄
 ```
 
+> ### Main
+>
+> - [x] Image Asset을 적용한 UI - AutoLayout
+> - [x]  BackgroundView의 랜덤 구름 Animation
+
+
+
+> ### Item
+>
+> - [x] Image Asset을 적용한 UI - AutoLayout
+> - [x] Item Upgrade 성공 Animation - 이미지 평균 컬러 반영
+> - [x] Item Upgrade 성공 여부에 따른 Haptic 
+
+
+
+> ### Ads
+>
+> - [x] UI 구축 - AutoLayout
+> - [x] Available(Ad or Gift) / Taken 상황에 맞춘 CollectionCell Update
+> - [x] Reward Update Logic 구현 - AdStorage
+
+
+
+> ### Game
+>
+> - [x] UI 구축 - AutoLayout
+> - [x] Game Play Logic 구현 - GameUnitManager
+> - [x] Match 실패 대응 - Haptic 적용, Wrong Animation, 버튼 Cool time
+> - [x] 게임 유닛 릴즈의 PerspectiveView & Animation 
+> - [x] Game Over Logic 구현 - TimeManager
+> - [x] Game Over / Pause Scene 흐름 컨트롤
+> - [x] Fever Time Logic 구현 - FeverManager
+> - [x] 게임 BackgroundView의 FeverAnimation
+> - [x] NormalTimeView / FeverTimeView & Animation
+> - [x] Game Ready Mode 구현 
+
+
+
+> ### Pause
+>
+> - [x] UI 구축 - AutoLayout
+> - [x] Resume / Restart / Home 흐름 컨트롤
+> - [x] BackgroundView Animation
+
+
+
+> ### Game Over
+>
+> - [x] UI 구축 - AutoLayout
+> - [x] High Score 연동
+> - [x] Restart / Home 흐름 컨트롤
+> - [x] BackgroundView Animation
+
+
+
 ---
 
 ## Short Interviews
@@ -104,7 +158,11 @@
 ### [SwiftLint](https://github.com/SinsaStation/FullStackCodingBot/wiki/SwiftLint)
 ### [MVVM](https://github.com/SinsaStation/FullStackCodingBot/wiki/MVVM)
 
-<img width="444" alt="스크린샷 2021-07-30 오후 12 04 43" src="https://user-images.githubusercontent.com/74946802/127593694-63f0c702-e562-4ef7-b1e8-c3c0e4db9a2b.png">
+
+
+# About Team
+
+<img width="500" alt="스크린샷 2021-07-30 오후 12 04 43" src="https://user-images.githubusercontent.com/74946802/127593694-63f0c702-e562-4ef7-b1e8-c3c0e4db9a2b.png">
 
 ## Ground Rule
 

@@ -10,7 +10,7 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     @IBOutlet var buttonController: MainButtonController!
     @IBOutlet weak var titleLabel: TypewriterLabel!
     @IBOutlet weak var skyView: SkyView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -65,11 +65,11 @@ private extension MainViewController {
                 GameCenterAuthProvider.getCredential { credential, error in
                     guard error == nil else { return }
                     
-                    Auth.auth().signIn(with: credential!) { user, error in
+                    Auth.auth().signIn(with: credential!) { [unowned self] user, error in
                         guard error == nil else { return }
                         
-                        if let _ = user {
-                            UserDefaults.standard.set(true, forKey: IdentifierUD.hasLaunchedOnce)
+                        if user != nil {
+                            self.viewModel.getUserInformation()
                         }
                     }
                 }

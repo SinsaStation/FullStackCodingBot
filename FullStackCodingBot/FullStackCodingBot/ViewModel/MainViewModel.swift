@@ -1,20 +1,11 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import FirebaseAuth
 
 final class MainViewModel: AdViewModel {
     
     let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
-    
-    func fetchGameData(firstLaunched: Bool, units: [Unit], money: Int, score: Int) {
-        switch firstLaunched {
-        case true:
-            getUserInformation()
-        case false:
-            storage.initializeData(units, money, score)
-            adStorage.updateIfPossible()
-        }
-    }
     
     func makeMoveAction(to viewController: ViewControllerType) {
         switch viewController {
@@ -49,7 +40,7 @@ final class MainViewModel: AdViewModel {
         sceneCoordinator.close(animated: true)
     }
     
-    private func getUserInformation() {
+    func getUserInformation() {
         database.getFirebaseData()
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] data in
