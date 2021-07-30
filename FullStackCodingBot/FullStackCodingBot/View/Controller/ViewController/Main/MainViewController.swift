@@ -10,7 +10,7 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     @IBOutlet var buttonController: MainButtonController!
     @IBOutlet weak var titleLabel: TypewriterLabel!
     @IBOutlet weak var skyView: SkyView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
