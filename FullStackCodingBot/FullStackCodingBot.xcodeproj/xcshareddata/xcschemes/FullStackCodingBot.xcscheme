@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E45B0AAA2692929D006FDE3D"
-               BuildableName = "FullStackCodingBot.app"
-               BlueprintName = "FullStackCodingBot"
+               BuildableName = "Full Stack.app"
+               BlueprintName = "Full Stack"
                ReferencedContainer = "container:FullStackCodingBot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "71307AB526A5437C00C3191F"
+               BuildableName = "Full StackTests.xctest"
+               BlueprintName = "Full StackTests"
+               ReferencedContainer = "container:FullStackCodingBot.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -45,11 +55,18 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E45B0AAA2692929D006FDE3D"
-            BuildableName = "FullStackCodingBot.app"
-            BlueprintName = "FullStackCodingBot"
+            BuildableName = "Full Stack.app"
+            BlueprintName = "Full Stack"
             ReferencedContainer = "container:FullStackCodingBot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OS_ACTIVITY_MODE"
+            value = "false"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -62,8 +79,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E45B0AAA2692929D006FDE3D"
-            BuildableName = "FullStackCodingBot.app"
-            BlueprintName = "FullStackCodingBot"
+            BuildableName = "Full Stack.app"
+            BlueprintName = "Full Stack"
             ReferencedContainer = "container:FullStackCodingBot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

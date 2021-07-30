@@ -3,17 +3,17 @@ import UIKit
 final class UnitPerspectiveView: UIView {
     
     private var unitLayers = [CALayer]()
-    private var unitCount = Perspective.count
     
     enum Multiplier {
-        static let height: CGFloat = 0.75
-        static let minSize: CGFloat = 0.125
+        static let height: CGFloat = 1.0
+        static let minSize: CGFloat = 0.01
     }
     
-    private lazy var maxWidth = frame.width * 0.8
+    private lazy var maxWidth = frame.width
     private lazy var maxSize = CGSize(width: maxWidth, height: maxWidth * Multiplier.height)
     private lazy var minSize = CGSize(width: maxWidth * Multiplier.minSize,
                                       height: maxWidth * Multiplier.minSize * Multiplier.height)
+    private lazy var maxWeight = CGFloat(GameSetting.count)
     
     func configure(with unitImages: [String]) {
         unitLayers.isEmpty ? fillLayers(with: unitImages) : fillLayers(with: [unitImages.last!])
@@ -26,29 +26,29 @@ final class UnitPerspectiveView: UIView {
             let logoImage = UIImage(named: imageName)?.cgImage
             layer.contents = logoImage
             layer.contentsGravity = .resizeAspect
-            layer.shadowOpacity = 0.3
-            layer.shadowColor = UIColor.gray.cgColor
             unitLayers.append(layer)
         }
     }
     
     private func drawUnitLayers() {
-        let maxWeight = CGFloat(unitCount)
-        
-        unitLayers.enumerated().forEach { (index, layer) in
+        unitLayers.enumerated().forEach { (index, unitLayer) in
             let weight = CGFloat(index)
-            layer.frame = layerFrame(weight: weight, maxWeight: maxWeight)
-            layer.zPosition = -weight
-            
-            self.layer.addSublayer(layer)
+            unitLayer.frame = layerFrame(weight: weight)
+            unitLayer.zPosition = -weight
+            self.layer.addSublayer(unitLayer)
         }
     }
     
-    private func layerFrame(weight: CGFloat, maxWeight: CGFloat) -> CGRect {
-        let layerSize = CGSize(width: maxSize.width - ((maxSize.width - minSize.width) / maxWeight) * weight,
-                               height: maxSize.height - ((maxSize.height - minSize.height) / maxWeight) * weight)
-        let layerOrigin = CGPoint(x: (frame.width - layerSize.width) * 0.5,
-                                  y: (frame.height / maxWeight) * (maxWeight - weight) - layerSize.height)
+    private func layerFrame(weight: CGFloat) -> CGRect {
+        let layerWidth = maxSize.width - ((maxSize.width - minSize.width) / maxWeight) * weight
+        let layerHeight = maxSize.height - ((maxSize.height - minSize.height) / maxWeight) * weight
+        let layerSize = CGSize(width: layerWidth, height: layerHeight)
+        
+        let layerXPoint = (frame.width - layerWidth) * 0.5
+        let unitOrder = maxWeight - weight
+        let layerYPoint = ((frame.height / maxWeight) * unitOrder - layerHeight) * sqrt(unitOrder * 0.1)
+        let layerOrigin = CGPoint(x: layerXPoint, y: layerYPoint)
+        
         return CGRect(origin: layerOrigin, size: layerSize)
     }
     
@@ -63,6 +63,8 @@ final class UnitPerspectiveView: UIView {
     }
     
     private func animate(layer: CALayer, to direction: Direction) {
+        layer.opacity = 0
+        
         CATransaction.setCompletionBlock {
             layer.removeFromSuperlayer()
         }

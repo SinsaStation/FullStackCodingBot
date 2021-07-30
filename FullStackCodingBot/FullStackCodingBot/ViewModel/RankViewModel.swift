@@ -1,19 +1,12 @@
 import Foundation
 import Action
+import GameKit
 
 final class RankViewModel: CommonViewModel {
     
-    let confirmAction: Action<String, Void>
     let cancelAction: CocoaAction
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, confirmAction: Action<String, Void>? = nil, cancelAction: CocoaAction? = nil) {
-        
-        self.confirmAction = Action<String, Void> { input in
-            if let action = confirmAction {
-                action.execute(input)
-            }
-            return sceneCoordinator.close(animated: true).asObservable().map { _ in }
-        }
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: DatabaseManagerType, cancelAction: CocoaAction? = nil) {
         
         self.cancelAction = CocoaAction {
             if let action = cancelAction {
@@ -22,6 +15,13 @@ final class RankViewModel: CommonViewModel {
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
         
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
+    }
+}
+
+extension RankViewModel: GKGameCenterControllerDelegate {
+    
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        sceneCoordinator.close(animated: true)
     }
 }

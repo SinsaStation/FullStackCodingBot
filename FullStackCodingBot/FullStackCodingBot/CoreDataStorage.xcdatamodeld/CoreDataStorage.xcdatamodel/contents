@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ItemInformation" representedClassName="ItemInformation" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="level" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="MoneyInformation" representedClassName="MoneyInformation" syncable="YES" codeGenerationType="class">
+        <attribute name="myMoney" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="ScoreInformation" representedClassName="ScoreInformation" syncable="YES" codeGenerationType="class">
+        <attribute name="myScore" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="ItemInformation" positionX="-46.871826171875" positionY="-17.46929931640625" width="128" height="88"/>
+        <element name="MoneyInformation" positionX="105.4285888671875" positionY="17.93038940429688" width="128" height="44"/>
+        <element name="ScoreInformation" positionX="-125.51220703125" positionY="-222.5129241943359" width="128" height="58"/>
+    </elements>
+</model>

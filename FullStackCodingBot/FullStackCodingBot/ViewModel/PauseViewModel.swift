@@ -5,13 +5,17 @@ import Action
 
 final class PauseViewModel: CommonViewModel {
 
-    private(set) var currentScore: Int
+    private let currentScore = BehaviorRelay<Int>(value: 0)
     private var newGameStatus: BehaviorRelay<GameStatus>
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: ItemStorageType, currentScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
+    lazy var currentScoreInfo: Driver<String> = {
+        return currentScore.map {String($0)}.asDriver(onErrorJustReturn: "")
+    }()
+    
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: DatabaseManagerType, currentScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
         self.newGameStatus = newGameStatus
-        self.currentScore = currentScore
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        self.currentScore.accept(currentScore)
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
     }
     
     func makeMoveAction(to viewController: PauseActionType) {
@@ -20,7 +24,7 @@ final class PauseViewModel: CommonViewModel {
             newGameStatus.accept(.resume)
             sceneCoordinator.close(animated: true)
         case .restart:
-            newGameStatus.accept(.new)
+            newGameStatus.accept(.ready)
             sceneCoordinator.close(animated: true)
         case .toMain:
             sceneCoordinator.toMain(animated: true)

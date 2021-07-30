@@ -1,13 +1,16 @@
 import UIKit
+import GameKit
 
 enum Scene {
     case main(MainViewModel)
+    case load(MainViewModel)
     case shop(ShopViewModel)
     case rank(RankViewModel)
     case item(ItemViewModel)
     case game(GameViewModel)
     case pause(PauseViewModel)
     case gameOver(GameOverViewModel)
+    case alert(AlertMessage)
 }
 
 extension Scene {
@@ -32,18 +35,30 @@ extension Scene {
             return shopVC
             
         case .rank(let viewModel):
-            guard var rankVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.rank) as? RankViewController else {
-                fatalError()
+            if #available(iOS 13.0, *) {
+                guard var rankVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.rank) as? RankViewController else {
+                    fatalError()
+                }
+                rankVC.gameCenterDelegate = viewModel
+                rankVC.leaderboardIdentifier = IdentifierGC.leaderboard
+                rankVC.viewState = .leaderboards
+                rankVC.bind(viewModel: viewModel)
+                return rankVC
+            } else {
+                guard var errorVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.error) as? VersionErrorViewController else {
+                    fatalError()
+                }
+                errorVC.bind(viewModel: viewModel)
+                return errorVC
             }
-            rankVC.bind(viewModel: viewModel)
-            return rankVC
-            
+
         case .item(let viewModel):
             guard var itemVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.item) as? ItemViewController else {
                 fatalError()
             }
             itemVC.bind(viewModel: viewModel)
             return itemVC
+            
         case .game(let viewModel):
             guard var gameVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.game) as? GameViewController else {
                 fatalError()
@@ -64,7 +79,19 @@ extension Scene {
             }
             gameOverVC.bind(viewModel: viewModel)
             return gameOverVC
+        
+        case .alert(let message):
+            let alertScene = UIAlertController(title: message.content.title, message: message.content.content, preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: message.content.confirm, style: .cancel)
+            alertScene.addAction(confirmAction)
+            return alertScene
             
+        case .load(let viewModel):
+            guard var loadVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.loading) as? LoadingViewController else {
+                fatalError()
+            }
+            loadVC.bind(viewModel: viewModel)
+            return loadVC
         }
     }
 }
