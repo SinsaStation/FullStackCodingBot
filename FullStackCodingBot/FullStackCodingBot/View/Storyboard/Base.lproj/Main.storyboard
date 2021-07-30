@@ -17,6 +17,36 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Loading View Controller-->
+        <scene sceneID="T9b-Ib-6qA">
+            <objects>
+                <viewController restorationIdentifier="LoadingVC" storyboardIdentifier="LoadingVC" id="yFN-YV-fnT" customClass="LoadingViewController" customModule="Full_Stack" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zBW-t9-MDY">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="2mI-Tb-FFB">
+                                <rect key="frame" x="109.66666666666669" y="357" width="209" height="212"/>
+                                <color key="color" systemColor="systemGray2Color"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xIC-cB-izA"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2mI-Tb-FFB" firstAttribute="centerX" secondItem="zBW-t9-MDY" secondAttribute="centerX" id="4ov-Rc-cb1"/>
+                            <constraint firstItem="2mI-Tb-FFB" firstAttribute="centerY" secondItem="zBW-t9-MDY" secondAttribute="centerY" id="GDU-jE-WJO"/>
+                            <constraint firstItem="2mI-Tb-FFB" firstAttribute="width" secondItem="zBW-t9-MDY" secondAttribute="width" multiplier="0.488318" id="M4R-zq-TEa"/>
+                            <constraint firstItem="2mI-Tb-FFB" firstAttribute="height" secondItem="zBW-t9-MDY" secondAttribute="height" multiplier="0.228942" id="VYB-co-DC3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loadingSpinner" destination="2mI-Tb-FFB" id="Y3J-ey-4qS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bP5-1N-Os6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.78504672897196" y="-596.11231101511885"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -402,9 +432,6 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sle-oK-78K">
                                 <rect key="frame" x="10" y="805.33333333333337" width="85.666666666666671" height="85.666666666666629"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="sle-oK-78K" secondAttribute="height" multiplier="1:1" id="3b8-e5-4Kf"/>
-                                </constraints>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <state key="normal" backgroundImage="button_action_left_off"/>
                             </button>
@@ -424,7 +451,6 @@
                             <constraint firstItem="S9x-Zc-anr" firstAttribute="width" secondItem="KKH-CH-U9g" secondAttribute="width" multiplier="0.619159" id="UOo-Tm-BUn"/>
                             <constraint firstItem="S9x-Zc-anr" firstAttribute="height" secondItem="KKH-CH-U9g" secondAttribute="height" multiplier="0.141469" id="abt-6r-Zzf"/>
                             <constraint firstItem="sle-oK-78K" firstAttribute="leading" secondItem="a6p-GA-eX3" secondAttribute="leading" multiplier="1.05" constant="10" id="af6-7C-BDY"/>
-                            <constraint firstItem="sle-oK-78K" firstAttribute="width" secondItem="sle-oK-78K" secondAttribute="height" multiplier="1:1" id="hlH-XV-tsv"/>
                             <constraint firstItem="S9x-Zc-anr" firstAttribute="centerX" secondItem="KKH-CH-U9g" secondAttribute="centerX" id="kf2-Ii-Kw2"/>
                             <constraint firstItem="sle-oK-78K" firstAttribute="width" secondItem="KKH-CH-U9g" secondAttribute="width" multiplier="0.200156" id="z91-p2-Ird"/>
                         </constraints>
@@ -725,6 +751,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

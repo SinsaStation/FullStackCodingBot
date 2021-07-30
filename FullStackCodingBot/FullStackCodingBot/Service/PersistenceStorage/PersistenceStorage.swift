@@ -19,17 +19,11 @@ final class PersistenceStorage: PersistenceStorageType {
         return persistentContainer.viewContext
     }
     
-    var selectedUnit = BehaviorRelay<Unit>(value: Unit(info: .swift, level: 1))
-    
     private var unitStore: [Unit] = []
     private lazy var unitList = BehaviorSubject<[Unit]>(value: unitStore)
     private var moneyStore = 0
     private lazy var moneyStatus = BehaviorSubject<Int>(value: moneyStore)
     private var highScore = 0
-    
-    func didLoaded() {
-        selectedUnit.accept(unitStore.first!)
-    }
     
     @discardableResult
     func myHighScore() -> Int {
@@ -93,6 +87,7 @@ final class PersistenceStorage: PersistenceStorageType {
         return Observable.just(money)
     }
     
+    @discardableResult
     func updateHighScore(new score: Int) -> Bool {
         if score > highScore {
             highScore = score

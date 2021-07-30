@@ -58,7 +58,6 @@ final class GameOverViewModel: CommonViewModel {
     
     private func storeHightScoreToGameCenter() {
         let bestScore = GKScore(leaderboardIdentifier: IdentifierGC.leaderboard)
-        print(storage.myHighScore())
         bestScore.value = Int64(storage.myHighScore())
         GKScore.report([bestScore]) { error in
             if let error = error {

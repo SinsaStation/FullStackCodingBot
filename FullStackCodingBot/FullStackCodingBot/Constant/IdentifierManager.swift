@@ -9,6 +9,7 @@ enum IdentifierVC {
     static let pause = "PauseVC"
     static let error = "ErrorVC"
     static let gameOver = "GameOverVC"
+    static let loading = "LoadingVC"
 }
 
 enum IdentiferAD {

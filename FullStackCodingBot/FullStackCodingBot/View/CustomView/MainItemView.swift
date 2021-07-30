@@ -21,11 +21,9 @@ final class MainItemView: UIView {
     }
     
     func configure(_ info: Unit) {
-        DispatchQueue.main.async { [unowned self] in
-            self.itemImageView.image = UIImage(named: info.image)
-            self.nameLabel.text = info.image
-            self.levelLabel.text = "Lv. \(info.level)"
-        }
+        self.itemImageView.image = UIImage(named: info.image)
+        self.nameLabel.text = info.image
+        self.levelLabel.text = "Lv. \(info.level)"
     }
     
     private func loadXib() {
@@ -54,7 +52,7 @@ final class MainItemView: UIView {
         ring.borderWidth = finalWidth*0.1
         ring.borderColor = color.cgColor
         backgroundView.layer.addSublayer(ring)
-
+        
         CATransaction.setCompletionBlock {
             ring.removeFromSuperlayer()
         }

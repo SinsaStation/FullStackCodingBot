@@ -1,8 +1,11 @@
 import Foundation
 import RxSwift
+import RxCocoa
 
 final class MainViewModel: AdViewModel {
-        
+    
+    let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
+    
     func fetchGameData(firstLaunched: Bool, units: [Unit], money: Int, score: Int) {
         switch firstLaunched {
         case true:
@@ -35,17 +38,26 @@ final class MainViewModel: AdViewModel {
             let gameViewModel = GameViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, database: database, gameUnitManager: gameUnitManager)
             let gameScene = Scene.game(gameViewModel)
             self.sceneCoordinator.transition(to: gameScene, using: .fullScreen, with: StoryboardType.game, animated: true)
+            
+        case .loadVC:
+            let loadScene = Scene.load(self)
+            self.sceneCoordinator.transition(to: loadScene, using: .overCurrent, with: StoryboardType.main, animated: true)
         }
+    }
+    
+    func makeCloseAction() {
+        sceneCoordinator.close(animated: true)
     }
     
     private func getUserInformation() {
         database.getFirebaseData()
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] data in
                 self.updateDatabaseInformation(data)
             }, onError: { error in
                 print(error)
             }, onCompleted: { [unowned self] in
-                self.storage.didLoaded()
+                self.firebaseDidLoad.accept(true)
             }).disposed(by: rx.disposeBag)
     }
     
