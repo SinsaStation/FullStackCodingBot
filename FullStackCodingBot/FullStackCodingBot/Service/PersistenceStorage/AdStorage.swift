@@ -56,6 +56,7 @@ final class AdStorage: AdStorageType {
                 downloadAd(to: index)
             } else {
                 self.ads[index] = nil
+                publishCurrentItems()
             }
         }
     }
