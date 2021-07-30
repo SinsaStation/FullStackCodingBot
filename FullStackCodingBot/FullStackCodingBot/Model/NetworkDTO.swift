@@ -20,7 +20,7 @@ struct AdsInformation: Codable {
     let gift: Int?
     
     static func empty() -> AdsInformation {
-        return AdsInformation(ads: [], lastUpdated: Date(), gift: nil)
+        return AdsInformation(ads: [], lastUpdated: Date(timeIntervalSince1970: 0), gift: nil)
     }
 }
 

@@ -28,6 +28,12 @@ final class DatabaseManager: DatabaseManagerType {
                     observer.onError(error)
                 }
                 
+                if !snapshot.exists() {
+                    let initData = NetworkDTO(units: Unit.initialValues(), money: 0, score: 0, ads: AdsInformation.empty())
+                    observer.onNext(initData)
+                    observer.onCompleted()
+                }
+                
                 if let data = snapshot.value as? [String: Any] {
                     observer.onNext(DataFormatManager.transformToLocalData(data))
                     observer.onCompleted()
