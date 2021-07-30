@@ -5,15 +5,16 @@ import GoogleMobileAds
 protocol AdStorageType {
     
     @discardableResult
-    func setup() -> Bool
+    func updateIfPossible() -> Bool
+    
+    func updateAdsInformation(_ info: AdsInformation)
     
     func availableItems() -> Observable<[ShopItem]>
     
     func adDidFinished(_ finishedAd: GADRewardedAd)
     
-    func giftTaken(_ takenGift: Int)
+    func giftTaken()
     
     func adsInformation() -> AdsInformation
-    
-    func updateAdsInformation(_ info: AdsInformation)
+
 }

@@ -50,7 +50,6 @@ extension GameViewModel {
             self.newGameStatus.accept(.new)
             self.setTimeManager()
             self.setGame()
-            self.gameUnitManager.updateUnits(self.storage.itemList())
             self.startTimer()
         }
     }
@@ -61,7 +60,6 @@ extension GameViewModel {
         feverTimeLeftPercentage.accept(0)
         currentScore.onNext(nil)
         newOnGameUnits.accept(nil)
-        gameUnitManager.resetAll()
     }
     
     private func setTimeManager() {
@@ -115,7 +113,8 @@ extension GameViewModel {
     }
     
     private func setGame() {
-        gameUnitManager.resetAll()
+        let units = storage.itemList()
+        gameUnitManager.reset(with: units)
         sendNewUnitToStack(by: GameSetting.startingCount)
         
         let newUnits = gameUnitManager.startings()

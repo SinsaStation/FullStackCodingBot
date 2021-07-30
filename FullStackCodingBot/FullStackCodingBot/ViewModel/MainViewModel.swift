@@ -9,7 +9,7 @@ final class MainViewModel: AdViewModel {
             getUserInformation()
         case false:
             storage.initializeData(units, money, score)
-            adStorage.setup()
+            adStorage.updateIfPossible()
         }
     }
     

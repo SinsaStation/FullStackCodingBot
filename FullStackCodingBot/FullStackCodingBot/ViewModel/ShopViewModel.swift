@@ -35,10 +35,11 @@ final class ShopViewModel: AdViewModel {
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
+        adStorage.updateIfPossible()
     }
     
-    func giftTaken(_ takenGift: Int) {
-        adStorage.giftTaken(takenGift)
+    func giftTaken() {
+        adStorage.giftTaken()
         addCoin()
     }
     
