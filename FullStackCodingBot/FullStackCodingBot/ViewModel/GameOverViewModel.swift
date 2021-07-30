@@ -2,6 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Action
+import GameKit
 
 final class GameOverViewModel: CommonViewModel {
     
@@ -31,6 +32,7 @@ final class GameOverViewModel: CommonViewModel {
     
     func execute() {
         storeReward()
+        storeHightScoreToGameCenter()
         updateHighScore()
     }
     
@@ -51,6 +53,18 @@ final class GameOverViewModel: CommonViewModel {
             sceneCoordinator.close(animated: true)
         case .mainVC:
             sceneCoordinator.toMain(animated: true)
+        }
+    }
+    
+    private func storeHightScoreToGameCenter() {
+        let bestScore = GKScore(leaderboardIdentifier: IdentifierGC.leaderboard)
+        print(storage.myHighScore())
+        bestScore.value = Int64(storage.myHighScore())
+        GKScore.report([bestScore]) { error in
+            if let error = error {
+                print(error)
+            } else {
+            }
         }
     }
 }

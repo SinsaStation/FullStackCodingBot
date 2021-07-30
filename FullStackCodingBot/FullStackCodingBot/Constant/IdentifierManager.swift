@@ -7,6 +7,7 @@ enum IdentifierVC {
     static let item = "ItemVC"
     static let game = "GameVC"
     static let pause = "PauseVC"
+    static let error = "ErrorVC"
     static let gameOver = "GameOverVC"
 }
 
@@ -16,4 +17,8 @@ enum IdentiferAD {
 
 enum IdentifierUD {
     static let hasLaunchedOnce = "hasLaunchedOnce"
+}
+
+enum IdentifierGC {
+    static let leaderboard = "WeeklyScore"
 }
