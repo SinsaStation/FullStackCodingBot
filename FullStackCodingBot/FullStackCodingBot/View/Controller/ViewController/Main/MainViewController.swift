@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 import GhostTypewriter
 import GameKit
 import Firebase
@@ -30,6 +31,14 @@ final class MainViewController: UIViewController, ViewModelBindableType {
         buttonController.bind { [unowned self] viewController in
             self.viewModel.makeMoveAction(to: viewController)
         }
+        
+        viewModel.firebaseDidLoad
+            .subscribe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [unowned self] isLoaded in
+                if !isLoaded {
+                    self.viewModel.makeMoveAction(to: ViewControllerType.loadVC)
+                }
+            }).disposed(by: rx.disposeBag)
     }
 }
 
