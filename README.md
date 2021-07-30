@@ -3,7 +3,17 @@
 
 ### [Team Wiki](https://github.com/SinsaStation/FullStackCodingBot/wiki)
 
-#### 앱구동 gif
+|<img src="https://user-images.githubusercontent.com/74946802/127594347-2f471137-5a26-458f-957e-3f0dcecba018.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594350-3c15a26b-f19a-4734-9b00-e424a68c83db.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594351-73704d42-d60a-4ce4-a2d0-c965bd517975.png" width="300">|
+|:---:|:---:|:---:|
+|MainScene|ItemScene|RankScene|
+
+|<img src="https://user-images.githubusercontent.com/74946802/127594352-7cbee772-52ca-4e0a-a126-625940dd4f1c.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594353-a601bd3a-236a-4c9d-b450-af533df16c4d.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594354-ea70eaa5-5d4a-4607-8443-de5ce5945cbe.png" width="300">|
+|:---:|:---:|:---:|
+|AdsScene|GameScene|FeverScene|
+
+|<img src="https://user-images.githubusercontent.com/74946802/127594356-583622b3-0525-4ee3-9d67-6fb2c59edb74.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594358-97e467cd-bc6d-48ca-93b5-b02b94a1ef98.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594354-ea70eaa5-5d4a-4607-8443-de5ce5945cbe.png" width="300">|
+|:---:|:---:|:---:|
+|PauseScene|GameOverScene|SettingScene|
 
 ## Team Members
 
