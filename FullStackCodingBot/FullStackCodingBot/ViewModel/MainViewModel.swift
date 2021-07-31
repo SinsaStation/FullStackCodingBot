@@ -56,6 +56,6 @@ final class MainViewModel: AdViewModel {
         info.units.forEach { storage.append(unit: $0) }
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
-        adStorage.updateAdsInformation(info.ads)
+        adStorage.setNewRewardsIfPossible(with: info.ads)
     }
 }
