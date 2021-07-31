@@ -26,7 +26,9 @@
 ## History
 ### 서우석
 ```
-프로젝트 초반에 생성해두었던 MemoryStorage를 PersistenceStorage로 수정했던 작업이 기억에 남습니다. MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존성을 주입해서 코드를 설계했던 덕분에 쉽게 객체 바꿔치기가 가능했습니다. 적절한 protocol 사용과 의존성 주입이 유연한 코드 작성에 얼마나 효과적인지 직접 느낄 수 있었습니다.
+프로젝트 초반에 생성해두었던 MemoryStorage를 PersistenceStorage로 수정했던 작업이 기억에 남습니다.  
+MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존성을 주입해서 코드를 설계했던 덕분에 쉽게 객체 바꿔치기가 가능했습니다.  
+적절한 protocol 사용과 의존성 주입이 유연한 코드 작성에 얼마나 효과적인지 직접 느낄 수 있었습니다.
 ```
 
 > ### Main 
