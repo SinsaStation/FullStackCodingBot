@@ -26,7 +26,7 @@
 ## History
 ### 서우석
 ```
-챌린지 했던 내용 요약해서 쓰기 2~3줄
+프로젝트 초반에 생성해두었던 MemoryStorage를 PersistenceStorage로 수정했던 작업이 기억에 남습니다. MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존성을 주입해서 코드를 설계했던 덕분에 쉽게 객체 바꿔치기가 가능했습니다. 적절한 protocol 사용과 의존성 주입이 유연한 코드 작성에 얼마나 효과적인지 직접 느낄 수 있었습니다.
 ```
 
 > ### Main 
@@ -40,6 +40,14 @@
 > - [x] 화면 이동
 > - [x] CommonViewModel (모든 viewModel의 super class)
 > - [x] MemoryStorage 및 CRUD 메서드
+> - [x] Loading ViewController & Activity Indicator
+
+> ### Setting
+>
+> - [ ] 이동 Button
+> - [ ] 기본 UI
+> - [ ] 배경음악 on/off
+> - [ ] How to play
 
 > ### Item
 >
@@ -78,6 +86,7 @@
 > - [x] Firebase와 Data 통신을 위한  DataFormatManager 생성
 > - [x] Coredata와 Data 연동(background 진입 / 앱 종료 시)
 > - [x] Real Time DB json
+> - [x] Data 다운로드 완료시 LoadingVC dismiss
 
 > ### User Defaults
 >
