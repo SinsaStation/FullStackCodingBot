@@ -2,10 +2,18 @@ import Foundation
 import RxSwift
 import RxCocoa
 import FirebaseAuth
+import GameKit
 
 final class MainViewModel: AdViewModel {
     
     let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
+    
+    override init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType) {
+        
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
+        
+        setupAppleGameCenterLogin()
+    }
     
     func makeMoveAction(to viewController: ViewControllerType) {
         switch viewController {
@@ -59,9 +67,39 @@ final class MainViewModel: AdViewModel {
     }
     
     private func updateDatabaseInformation(_ info: NetworkDTO) {
+        startLoading()
         info.units.forEach { storage.append(unit: $0) }
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
         adStorage.setNewRewardsIfPossible(with: info.ads)
+    }
+}
+
+extension MainViewModel: GKGameCenterControllerDelegate {
+    
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        print("GameCenterVC Dismissed")
+    }
+    
+    func setupAppleGameCenterLogin() {
+        GKLocalPlayer.local.authenticateHandler = { gcViewController, error in
+            guard error == nil else { return }
+            
+            if GKLocalPlayer.local.isAuthenticated {
+                GameCenterAuthProvider.getCredential { credential, error in
+                    guard error == nil else { return }
+                    
+                    Auth.auth().signIn(with: credential!) { [unowned self] user, error in
+                        guard error == nil else { return }
+                        
+                        if user != nil {
+                            getUserInformation()
+                        }
+                    }
+                }
+            } else if let gcViewController = gcViewController {
+                print(gcViewController)
+            }
+        }
     }
 }
