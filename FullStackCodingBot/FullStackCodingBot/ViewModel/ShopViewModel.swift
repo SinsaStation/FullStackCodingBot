@@ -19,8 +19,15 @@ final class ShopViewModel: AdViewModel {
     
     lazy var selectedItem = BehaviorRelay<ShopItem?>(value: nil)
     lazy var reward = BehaviorRelay<Int?>(value: nil)
+    private let soundEffectStation: SingleSoundEffectStation
         
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, confirmAction: Action<String, Void>? = nil, cancelAction: CocoaAction? = nil) {
+    init(sceneCoordinator: SceneCoordinatorType,
+         storage: PersistenceStorageType,
+         adStorage: AdStorageType,
+         database: DatabaseManagerType,
+         confirmAction: Action<String, Void>? = nil,
+         cancelAction: CocoaAction? = nil,
+         soundEffectType: MainSoundEffect = .reward) {
         self.confirmAction = Action<String, Void> { input in
             if let action = confirmAction {
                 action.execute(input)
@@ -34,6 +41,7 @@ final class ShopViewModel: AdViewModel {
             }
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
+        self.soundEffectStation = SingleSoundEffectStation(soundEffectType: soundEffectType)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
         adStorage.setNewRewardsIfPossible(with: .none)
     }
@@ -47,6 +55,7 @@ final class ShopViewModel: AdViewModel {
         let moneyToRaise = ShopSetting.reward()
         storage.raiseMoney(by: moneyToRaise)
         reward.accept(moneyToRaise)
+        soundEffectStation.play()
     }
     
     func adDidFinished(_ finishedAd: GADRewardedAd) {
