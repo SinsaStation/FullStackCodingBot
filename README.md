@@ -109,7 +109,7 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 > ### Main
 >
 > - [x] Image Asset을 적용한 UI - AutoLayout
-> - [x]  BackgroundView의 랜덤 구름 Animation
+> - [x] BackgroundView의 랜덤 구름 Animation
 
 
 
@@ -117,8 +117,8 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 >
 > - [x] Image Asset을 적용한 UI - AutoLayout
 > - [x] Item Upgrade 성공 Animation - 이미지 평균 컬러 반영
+> - [ ] Item Scene Notice Label Animation
 > - [x] Item Upgrade 성공 여부에 따른 Haptic 
-
 
 
 > ### Ads
@@ -133,6 +133,7 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 >
 > - [x] UI 구축 - AutoLayout
 > - [x] Game Play Logic 구현 - GameUnitManager
+> - [ ] Match 성공 시 랜덤 코드 Animation
 > - [x] Match 실패 대응 - Haptic 적용, Wrong Animation, 버튼 Cool time
 > - [x] 게임 유닛 릴즈의 PerspectiveView & Animation 
 > - [x] Game Over Logic 구현 - TimeManager
@@ -160,6 +161,13 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 > - [x] BackgroundView Animation
 
 
+> ### Unit Test
+>
+> - [x] AdStorage 테스트
+
+> ### Audio
+>
+> - [x] 배경음, 효과음 재생 컨트롤
 
 ---
 
