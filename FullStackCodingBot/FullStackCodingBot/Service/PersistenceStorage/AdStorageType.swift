@@ -5,9 +5,7 @@ import GoogleMobileAds
 protocol AdStorageType {
     
     @discardableResult
-    func updateIfPossible() -> Bool
-    
-    func updateAdsInformation(_ info: AdsInformation)
+    func setNewRewardsIfPossible(with newInfo: AdsInformation?) -> Bool
     
     func availableItems() -> Observable<[ShopItem]>
     
@@ -15,6 +13,6 @@ protocol AdStorageType {
     
     func giftTaken()
     
-    func adsInformation() -> AdsInformation
+    func currentInformation() -> AdsInformation
 
 }

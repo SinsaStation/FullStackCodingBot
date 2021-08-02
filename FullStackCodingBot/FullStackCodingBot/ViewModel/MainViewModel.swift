@@ -30,10 +30,16 @@ final class MainViewModel: AdViewModel {
             let gameScene = Scene.game(gameViewModel)
             self.sceneCoordinator.transition(to: gameScene, using: .fullScreen, with: StoryboardType.game, animated: true)
             
-        case .loadVC:
-            let loadScene = Scene.load(self)
-            self.sceneCoordinator.transition(to: loadScene, using: .overCurrent, with: StoryboardType.main, animated: true)
+        case .settingVC:
+            let settingScene = Scene.setting(self)
+            self.sceneCoordinator.transition(to: settingScene, using: .overCurrent, with: StoryboardType.main, animated: true)
+            
         }
+    }
+    
+    func startLoading() {
+        let loadScene = Scene.load(self)
+        self.sceneCoordinator.transition(to: loadScene, using: .overCurrent, with: StoryboardType.main, animated: true)
     }
     
     func makeCloseAction() {
@@ -56,6 +62,6 @@ final class MainViewModel: AdViewModel {
         info.units.forEach { storage.append(unit: $0) }
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
-        adStorage.updateAdsInformation(info.ads)
+        adStorage.setNewRewardsIfPossible(with: info.ads)
     }
 }

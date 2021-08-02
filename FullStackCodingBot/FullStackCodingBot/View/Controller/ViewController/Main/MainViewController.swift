@@ -36,7 +36,7 @@ final class MainViewController: UIViewController, ViewModelBindableType {
             .subscribe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] isLoaded in
                 if !isLoaded {
-                    self.viewModel.makeMoveAction(to: ViewControllerType.loadVC)
+                    self.viewModel.startLoading()
                 }
             }).disposed(by: rx.disposeBag)
     }
