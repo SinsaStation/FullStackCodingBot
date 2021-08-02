@@ -6,7 +6,20 @@ final class MusicStation {
     static let shared = MusicStation()
     
     private var musicEnabled = true
-    private var musicPlayer: AVAudioPlayer?
+    
+    private lazy var mainMusicPlayer: AVAudioPlayer? = {
+        guard let bundlePath = Music.main.bundlePath,
+              let musicPlayer = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: bundlePath)) else { return nil }
+        musicPlayer.numberOfLoops = .max
+        return musicPlayer
+    }()
+    
+    private lazy var gameMusicPlayer: AVAudioPlayer? = {
+        guard let bundlePath = Music.game.bundlePath,
+              let musicPlayer = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: bundlePath)) else { return nil }
+        musicPlayer.numberOfLoops = .max
+        return musicPlayer
+    }()
     
     enum Music {
         case main
@@ -28,18 +41,17 @@ final class MusicStation {
     
     func play(type: Music) {
         guard musicEnabled else { return }
-        setNewPlayer(of: type)
-        musicPlayer?.play()
-    }
-    
-    private func setNewPlayer(of musicType: Music) {
-        guard let bundlePath = musicType.bundlePath else { return }
-        guard let newMusicPlayer = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: bundlePath)) else { return }
-        newMusicPlayer.numberOfLoops = .max
-        self.musicPlayer = newMusicPlayer
+        
+        switch type {
+        case .main:
+            mainMusicPlayer?.play()
+        case .game:
+            gameMusicPlayer?.play()
+        }
     }
     
     func stop() {
-        musicPlayer?.stop()
+        mainMusicPlayer?.stop()
+        gameMusicPlayer?.stop()
     }
 }
