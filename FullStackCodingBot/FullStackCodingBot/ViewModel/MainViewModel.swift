@@ -30,13 +30,16 @@ final class MainViewModel: AdViewModel {
             let gameScene = Scene.game(gameViewModel)
             self.sceneCoordinator.transition(to: gameScene, using: .fullScreen, with: StoryboardType.game, animated: true)
             
-        case .loadVC:
-            let loadScene = Scene.load(self)
-            self.sceneCoordinator.transition(to: loadScene, using: .overCurrent, with: StoryboardType.main, animated: true)
-            
         case .settingVC:
+            let settingScene = Scene.setting(self)
+            self.sceneCoordinator.transition(to: settingScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         }
+    }
+    
+    func startLoading() {
+        let loadScene = Scene.load(self)
+        self.sceneCoordinator.transition(to: loadScene, using: .overCurrent, with: StoryboardType.main, animated: true)
     }
     
     func makeCloseAction() {

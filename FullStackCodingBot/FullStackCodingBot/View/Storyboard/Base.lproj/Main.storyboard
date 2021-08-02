@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="138.78504672897196" y="-596.11231101511885"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="KuD-9T-sql">
             <objects>
-                <viewController restorationIdentifier="SettingVC" storyboardIdentifier="SettingVC" id="at5-eW-HdW" sceneMemberID="viewController">
+                <viewController restorationIdentifier="SettingVC" storyboardIdentifier="SettingVC" id="at5-eW-HdW" customClass="SettingViewController" customModule="Full_Stack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZoB-Ha-8eq">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,23 +75,26 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqg-yG-4Ze" userLabel="Sky View" customClass="SkyView" customModule="Full_Stack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="352"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfZ-mh-dfr">
-                                                <rect key="frame" x="363.66666666666669" y="1" width="43" height="43"/>
-                                                <state key="normal" image="button_pause"/>
-                                            </button>
-                                        </subviews>
                                         <color key="backgroundColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="hfZ-mh-dfr" secondAttribute="trailing" multiplier="1.05" constant="1" id="7Xr-rK-OCX"/>
-                                            <constraint firstItem="hfZ-mh-dfr" firstAttribute="height" secondItem="tqg-yG-4Ze" secondAttribute="height" multiplier="0.122159" id="AtH-NC-TFf"/>
-                                            <constraint firstItem="hfZ-mh-dfr" firstAttribute="width" secondItem="tqg-yG-4Ze" secondAttribute="width" multiplier="0.100467" id="XgX-Od-UCl"/>
-                                            <constraint firstItem="hfZ-mh-dfr" firstAttribute="top" secondItem="tqg-yG-4Ze" secondAttribute="top" multiplier="1.2" constant="1" id="bcK-De-qXL"/>
-                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCD-gx-YvC" userLabel="Desk View">
                                         <rect key="frame" x="0.0" y="352" width="428" height="574"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfZ-mh-dfr">
+                                                <rect key="frame" x="363.66666666666669" y="502.66666666666663" width="43" height="43"/>
+                                                <state key="normal" image="button_pause"/>
+                                                <connections>
+                                                    <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="J9E-cr-xaj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.66666666666666663" green="0.51764705882352935" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="hfZ-mh-dfr" firstAttribute="height" secondItem="WCD-gx-YvC" secondAttribute="height" multiplier="0.122159" constant="-27.119265999999996" id="KoN-eX-1oQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="hfZ-mh-dfr" secondAttribute="bottom" multiplier="1.05" constant="1" id="ZuX-ey-Z96"/>
+                                            <constraint firstItem="hfZ-mh-dfr" firstAttribute="width" secondItem="WCD-gx-YvC" secondAttribute="width" multiplier="0.100467" id="Zxd-r0-rlR"/>
+                                            <constraint firstAttribute="trailing" secondItem="hfZ-mh-dfr" secondAttribute="trailing" multiplier="1.05" constant="1" id="a7c-ZG-wUv"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -228,7 +231,6 @@
                     </view>
                     <connections>
                         <outlet property="buttonController" destination="H6e-U9-JW6" id="BOh-G8-9Vs"/>
-                        <outlet property="moveToSettingButton" destination="hfZ-mh-dfr" id="Z88-fo-hK1"/>
                         <outlet property="skyView" destination="tqg-yG-4Ze" id="woK-hn-O9C"/>
                         <outlet property="titleLabel" destination="qha-bS-eDq" id="kBp-2A-Zfs"/>
                     </connections>
@@ -240,6 +242,7 @@
                         <outletCollection property="moveToVCButtons" destination="fAJ-Py-m2J" collectionClass="NSMutableArray" id="ENl-NL-IWl"/>
                         <outletCollection property="moveToVCButtons" destination="wi2-BU-Z6q" collectionClass="NSMutableArray" id="5kA-d8-ncK"/>
                         <outletCollection property="moveToVCButtons" destination="Pa3-jZ-hVU" collectionClass="NSMutableArray" id="Rq6-LS-yB8"/>
+                        <outletCollection property="moveToVCButtons" destination="hfZ-mh-dfr" collectionClass="NSMutableArray" id="Ce9-bN-aVw"/>
                     </connections>
                 </customObject>
             </objects>
