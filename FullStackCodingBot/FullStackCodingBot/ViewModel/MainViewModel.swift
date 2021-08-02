@@ -32,7 +32,7 @@ final class MainViewModel: AdViewModel {
             
         case .settingVC:
             let settingScene = Scene.setting(self)
-            self.sceneCoordinator.transition(to: settingScene, using: .fullScreen, with: StoryboardType.main, animated: true)
+            self.sceneCoordinator.transition(to: settingScene, using: .overCurrent, with: StoryboardType.main, animated: true)
             
         }
     }

@@ -54,13 +54,40 @@
                     <view key="view" contentMode="scaleToFill" id="ZoB-Ha-8eq">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mJ-nZ-ogF">
+                                <rect key="frame" x="70" y="309" width="288" height="308"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIc-Ll-MrS">
+                                        <rect key="frame" x="1" y="1" width="54" height="50"/>
+                                        <state key="normal" image="button_action_left_off"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="EIc-Ll-MrS" firstAttribute="leading" secondItem="3mJ-nZ-ogF" secondAttribute="leading" multiplier="1.05" constant="1" id="AiO-l9-AQ1"/>
+                                    <constraint firstItem="EIc-Ll-MrS" firstAttribute="height" secondItem="3mJ-nZ-ogF" secondAttribute="height" multiplier="0.162338" id="eYY-HR-FVG"/>
+                                    <constraint firstItem="EIc-Ll-MrS" firstAttribute="top" secondItem="3mJ-nZ-ogF" secondAttribute="top" multiplier="1.05" constant="1" id="nE8-S3-g3m"/>
+                                    <constraint firstItem="EIc-Ll-MrS" firstAttribute="width" secondItem="3mJ-nZ-ogF" secondAttribute="width" multiplier="0.1875" id="rNL-jR-hsP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="yvi-v9-yd1"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3mJ-nZ-ogF" firstAttribute="height" secondItem="ZoB-Ha-8eq" secondAttribute="height" multiplier="0.332613" id="81h-u0-kDX"/>
+                            <constraint firstItem="3mJ-nZ-ogF" firstAttribute="width" secondItem="ZoB-Ha-8eq" secondAttribute="width" multiplier="0.672897" id="LFP-CZ-sAe"/>
+                            <constraint firstItem="3mJ-nZ-ogF" firstAttribute="centerY" secondItem="ZoB-Ha-8eq" secondAttribute="centerY" id="NJ9-4J-mlc"/>
+                            <constraint firstItem="3mJ-nZ-ogF" firstAttribute="centerX" secondItem="ZoB-Ha-8eq" secondAttribute="centerX" id="eRR-FA-Q9h"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="EIc-Ll-MrS" id="uKK-ue-U4h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ttF-4A-SOR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="807" y="-585"/>
+            <point key="canvasLocation" x="806.07476635514013" y="-585.09719222462206"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
