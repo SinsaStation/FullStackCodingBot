@@ -44,9 +44,13 @@ final class MusicStation {
         
         switch type {
         case .main:
+            mainMusicPlayer?.currentTime = 0
             mainMusicPlayer?.play()
+            gameMusicPlayer?.stop()
         case .game:
+            gameMusicPlayer?.currentTime = 0
             gameMusicPlayer?.play()
+            mainMusicPlayer?.stop()
         }
     }
     
