@@ -75,7 +75,19 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqg-yG-4Ze" userLabel="Sky View" customClass="SkyView" customModule="Full_Stack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="352"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfZ-mh-dfr">
+                                                <rect key="frame" x="363.66666666666669" y="1" width="43" height="43"/>
+                                                <state key="normal" image="button_pause"/>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="hfZ-mh-dfr" secondAttribute="trailing" multiplier="1.05" constant="1" id="7Xr-rK-OCX"/>
+                                            <constraint firstItem="hfZ-mh-dfr" firstAttribute="height" secondItem="tqg-yG-4Ze" secondAttribute="height" multiplier="0.122159" id="AtH-NC-TFf"/>
+                                            <constraint firstItem="hfZ-mh-dfr" firstAttribute="width" secondItem="tqg-yG-4Ze" secondAttribute="width" multiplier="0.100467" id="XgX-Od-UCl"/>
+                                            <constraint firstItem="hfZ-mh-dfr" firstAttribute="top" secondItem="tqg-yG-4Ze" secondAttribute="top" multiplier="1.2" constant="1" id="bcK-De-qXL"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCD-gx-YvC" userLabel="Desk View">
                                         <rect key="frame" x="0.0" y="352" width="428" height="574"/>
@@ -216,6 +228,7 @@
                     </view>
                     <connections>
                         <outlet property="buttonController" destination="H6e-U9-JW6" id="BOh-G8-9Vs"/>
+                        <outlet property="moveToSettingButton" destination="hfZ-mh-dfr" id="Z88-fo-hK1"/>
                         <outlet property="skyView" destination="tqg-yG-4Ze" id="woK-hn-O9C"/>
                         <outlet property="titleLabel" destination="qha-bS-eDq" id="kBp-2A-Zfs"/>
                     </connections>
@@ -741,6 +754,7 @@
         <image name="button_mainMenu_item" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_mainMenu_present" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_mainMenu_ranking" width="106.66666412353516" height="106.66666412353516"/>
+        <image name="button_pause" width="42.666667938232422" height="42.666667938232422"/>
         <image name="button_start" width="170.66667175292969" height="85.333335876464844"/>
         <image name="item_coffeeMachine" width="341.33334350585938" height="112"/>
         <image name="item_computer_monitor" width="170.66667175292969" height="112"/>

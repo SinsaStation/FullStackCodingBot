@@ -4,6 +4,7 @@ import GameKit
 enum Scene {
     case main(MainViewModel)
     case load(MainViewModel)
+    case setting(MainViewModel)
     case shop(ShopViewModel)
     case rank(RankViewModel)
     case item(ItemViewModel)
@@ -92,6 +93,13 @@ extension Scene {
             }
             loadVC.bind(viewModel: viewModel)
             return loadVC
+            
+        case .setting(let viewModel):
+            guard var settingVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.setting) as? SettingViewController else {
+                fatalError()
+            }
+            settingVC.bind(viewModel: viewModel)
+            return settingVC
         }
     }
 }

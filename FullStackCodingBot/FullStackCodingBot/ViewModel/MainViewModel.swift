@@ -33,6 +33,9 @@ final class MainViewModel: AdViewModel {
         case .loadVC:
             let loadScene = Scene.load(self)
             self.sceneCoordinator.transition(to: loadScene, using: .overCurrent, with: StoryboardType.main, animated: true)
+            
+        case .settingVC:
+            
         }
     }
     
