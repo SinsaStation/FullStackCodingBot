@@ -491,11 +491,19 @@
 		E4BF713726B79F9500E8645F /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				E4BF713826B7D15C00E8645F /* BGM */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		E4BF713826B7D15C00E8645F /* BGM */ = {
+			isa = PBXGroup;
+			children = (
 				E4BF713026B78AD200E8645F /* SoundStation.swift */,
 				E4BF713426B7979700E8645F /* game.wav */,
 				E4BF713326B7979700E8645F /* main.mp3 */,
 			);
-			path = Sounds;
+			path = BGM;
 			sourceTree = "<group>";
 		};
 		E4D7C6462693E82E00D58BA2 /* CustomView */ = {
