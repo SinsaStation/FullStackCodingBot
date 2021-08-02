@@ -1,7 +1,7 @@
 import Foundation
 import AVFoundation
 
-final class SingleSoundEffectStation {
+struct SingleSoundEffectStation {
     
     private var soundEffectPlayer: AVAudioPlayer?
     
