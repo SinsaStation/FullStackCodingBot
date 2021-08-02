@@ -5,8 +5,8 @@ struct SingleSoundEffectStation {
     
     private var soundEffectPlayer: AVAudioPlayer?
     
-    init(soundEffectType: MainSoundEffect) { 
-        self.soundEffectPlayer = AudioPlayerFactory.create(of: soundEffectType, loopEnable: false)
+    init(soundEffectType: MainSoundEffect) {
+        self.soundEffectPlayer = AudioPlayerFactory.create(of: soundEffectType, mode: .effect)
     }
     
     func play() {

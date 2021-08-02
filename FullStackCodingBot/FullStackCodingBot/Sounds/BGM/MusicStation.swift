@@ -4,8 +4,8 @@ import AVFoundation
 struct MusicStation {
 
     static let shared = MusicStation()
-    private var mainMusicPlayer = AudioPlayerFactory.create(of: Music.main, loopEnable: true)
-    private var gameMusicPlayer = AudioPlayerFactory.create(of: Music.game, loopEnable: true)
+    private var mainMusicPlayer = AudioPlayerFactory.create(of: Music.main, mode: .music)
+    private var gameMusicPlayer = AudioPlayerFactory.create(of: Music.game, mode: .music)
 
     func play(type: Music) {
         switch type {

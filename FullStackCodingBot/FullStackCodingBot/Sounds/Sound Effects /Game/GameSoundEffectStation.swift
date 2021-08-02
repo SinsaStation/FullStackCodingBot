@@ -3,12 +3,12 @@ import AVFoundation
 
 struct GameSoundEffectStation {
     
-    private var readySoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.ready, loopEnable: false)
-    private var correctSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.correct, loopEnable: false)
-    private var wrongSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.wrong, loopEnable: false)
-    private var feverSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.fever, loopEnable: false)
-    private var levelUpSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.levelUp, loopEnable: false)
-    private var gameOverSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.gameOver, loopEnable: false)
+    private var readySoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.ready, mode: .effect)
+    private var correctSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.correct, mode: .effect)
+    private var wrongSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.wrong, mode: .effect)
+    private var feverSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.fever, mode: .effect)
+    private var levelUpSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.levelUp, mode: .effect)
+    private var gameOverSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.gameOver, mode: .effect)
 
     func play(type: GameSoundEffect) {
         switch type {
