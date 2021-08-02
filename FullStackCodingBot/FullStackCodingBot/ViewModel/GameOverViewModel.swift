@@ -34,6 +34,7 @@ final class GameOverViewModel: CommonViewModel {
         storeReward()
         updateHighScore()
         storeHightScoreToGameCenter()
+        SoundStation.shared.musicStop()
     }
     
     private func storeReward() {
@@ -53,6 +54,7 @@ final class GameOverViewModel: CommonViewModel {
             sceneCoordinator.close(animated: true)
         case .mainVC:
             sceneCoordinator.toMain(animated: true)
+            SoundStation.shared.musicPlay(type: .main)
         }
     }
     

@@ -123,7 +123,6 @@ final class GameViewController: UIViewController, ViewModelBindableType {
 // MARK: - Setup
 private extension GameViewController {
     private func setup() {
-        SoundStation.shared.musicPlay(type: .game)
         setupFeedbackGenerator()
     }
     

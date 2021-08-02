@@ -28,6 +28,7 @@ final class PauseViewModel: CommonViewModel {
             sceneCoordinator.close(animated: true)
         case .toMain:
             sceneCoordinator.toMain(animated: true)
+            SoundStation.shared.musicPlay(type: .main)
         }
     }
 }
