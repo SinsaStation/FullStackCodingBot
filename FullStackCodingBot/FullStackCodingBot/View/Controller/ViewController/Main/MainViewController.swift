@@ -45,6 +45,7 @@ final class MainViewController: UIViewController, ViewModelBindableType {
 private extension MainViewController {
     
     private func setup() {
+        SoundStation.shared.musicPlay(type: .main)
         setupAppleGameCenterLogin()
         setupTitleLabel()
         titleLabel.startTypewritingAnimation()

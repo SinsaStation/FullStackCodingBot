@@ -81,6 +81,10 @@
 		E4BF712C26B3E6E300E8645F /* UnitInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF712926B3E6A600E8645F /* UnitInformation.swift */; };
 		E4BF712D26B3E6F300E8645F /* AdsInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF712726B3E69100E8645F /* AdsInformation.swift */; };
 		E4BF712F26B3F22900E8645F /* ShopItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF614026A92CE00061F6E9 /* ShopItem.swift */; };
+		E4BF713126B78AD200E8645F /* SoundStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF713026B78AD200E8645F /* SoundStation.swift */; };
+		E4BF713226B78AD200E8645F /* SoundStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF713026B78AD200E8645F /* SoundStation.swift */; };
+		E4BF713526B7979700E8645F /* main.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4BF713326B7979700E8645F /* main.mp3 */; };
+		E4BF713626B7979700E8645F /* game.wav in Resources */ = {isa = PBXBuildFile; fileRef = E4BF713426B7979700E8645F /* game.wav */; };
 		E4C2C34D26A24666007BDF81 /* SkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34C26A24665007BDF81 /* SkyView.swift */; };
 		E4C2C34F26A292BB007BDF81 /* ReplicateAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */; };
 		E4CA08B926A8287B00AA6F03 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA08B826A8287B00AA6F03 /* Font.swift */; };
@@ -185,6 +189,9 @@
 		E4BF712326B3E55400E8645F /* MockAdStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAdStorage.swift; sourceTree = "<group>"; };
 		E4BF712726B3E69100E8645F /* AdsInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsInformation.swift; sourceTree = "<group>"; };
 		E4BF712926B3E6A600E8645F /* UnitInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitInformation.swift; sourceTree = "<group>"; };
+		E4BF713026B78AD200E8645F /* SoundStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundStation.swift; sourceTree = "<group>"; };
+		E4BF713326B7979700E8645F /* main.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = main.mp3; sourceTree = "<group>"; };
+		E4BF713426B7979700E8645F /* game.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = game.wav; sourceTree = "<group>"; };
 		E4C2C34C26A24665007BDF81 /* SkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyView.swift; sourceTree = "<group>"; };
 		E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicateAnimationView.swift; sourceTree = "<group>"; };
 		E4CA08B826A8287B00AA6F03 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -462,6 +469,7 @@
 				71DF653F2692F94000557693 /* ViewModel */,
 				E4D7C6472693E87600D58BA2 /* Model */,
 				71DF654B2692FA5600557693 /* Constant */,
+				E4BF713726B79F9500E8645F /* Sounds */,
 				E45B0AB72692929F006FDE3D /* Assets.xcassets */,
 				E45B0ABC2692929F006FDE3D /* Info.plist */,
 				712F500926A831D900186948 /* GoogleService-Info.plist */,
@@ -478,6 +486,16 @@
 				E4BF712926B3E6A600E8645F /* UnitInformation.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		E4BF713726B79F9500E8645F /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E4BF713026B78AD200E8645F /* SoundStation.swift */,
+				E4BF713426B7979700E8645F /* game.wav */,
+				E4BF713326B7979700E8645F /* main.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		E4D7C6462693E82E00D58BA2 /* CustomView */ = {
@@ -606,8 +624,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4BF713626B7979700E8645F /* game.wav in Resources */,
 				7164BFD626967BBE009769E4 /* MainItemView.xib in Resources */,
 				712F500A26A831D900186948 /* GoogleService-Info.plist in Resources */,
+				E4BF713526B7979700E8645F /* main.mp3 in Resources */,
 				71307A8B26A52A1F00C3191F /* LevelUpButton.xib in Resources */,
 				E4D7C6492693E8E500D58BA2 /* Game.storyboard in Resources */,
 				719DA2B126A7FC9900624C61 /* JoystixMonospace-Regular.ttf in Resources */,
@@ -730,6 +750,7 @@
 				E4BF712F26B3F22900E8645F /* ShopItem.swift in Sources */,
 				E4BF712D26B3E6F300E8645F /* AdsInformation.swift in Sources */,
 				E4BF712A26B3E6A700E8645F /* UnitInformation.swift in Sources */,
+				E4BF713226B78AD200E8645F /* SoundStation.swift in Sources */,
 				71307AB926A5437C00C3191F /* StorageTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -786,6 +807,7 @@
 				E4DF614126A92CE00061F6E9 /* ShopItem.swift in Sources */,
 				71E2B37826AE602200AE496D /* PersistenceStorageType.swift in Sources */,
 				E4D7C6422693E7B200D58BA2 /* MainViewController.swift in Sources */,
+				E4BF713126B78AD200E8645F /* SoundStation.swift in Sources */,
 				E4BF710326AFCC7500E8645F /* FeverManager.swift in Sources */,
 				710D0D422693EA3200244A16 /* GameViewController.swift in Sources */,
 				71DF65432692F95800557693 /* ShopViewModel.swift in Sources */,

@@ -14,6 +14,7 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SoundStation.shared.musicStop()
         viewModel.execute()
     }
     
