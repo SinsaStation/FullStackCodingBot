@@ -5,11 +5,8 @@ struct SingleSoundEffectStation {
     
     private var soundEffectPlayer: AVAudioPlayer?
     
-    init(soundEffectType: MainSoundEffect) {
-        let bundlePath = soundEffectType.bundlePath ?? ""
-        let player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: bundlePath))
-        player?.numberOfLoops = 0
-        self.soundEffectPlayer = player
+    init(soundEffectType: MainSoundEffect) { 
+        self.soundEffectPlayer = AudioPlayerFactory.create(of: soundEffectType, loopEnable: false)
     }
     
     func play() {
@@ -18,7 +15,7 @@ struct SingleSoundEffectStation {
     }
 }
 
-enum MainSoundEffect {
+enum MainSoundEffect: BundlePathIncludable {
     case reward
     case upgrade
     

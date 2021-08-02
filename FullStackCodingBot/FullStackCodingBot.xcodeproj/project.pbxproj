@@ -95,6 +95,7 @@
 		E4BF714D26B7E75500E8645F /* levelup.wav in Resources */ = {isa = PBXBuildFile; fileRef = E4BF714B26B7E75500E8645F /* levelup.wav */; };
 		E4BF714F26B7E90900E8645F /* ready.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4BF714E26B7E90900E8645F /* ready.mp3 */; };
 		E4BF715126B7E94200E8645F /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4BF715026B7E94200E8645F /* correct.mp3 */; };
+		E4BF715326B7EAA100E8645F /* AudioPlayerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF715226B7EAA100E8645F /* AudioPlayerFactory.swift */; };
 		E4C2C34D26A24666007BDF81 /* SkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34C26A24665007BDF81 /* SkyView.swift */; };
 		E4C2C34F26A292BB007BDF81 /* ReplicateAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */; };
 		E4CA08B926A8287B00AA6F03 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA08B826A8287B00AA6F03 /* Font.swift */; };
@@ -212,6 +213,7 @@
 		E4BF714B26B7E75500E8645F /* levelup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = levelup.wav; sourceTree = "<group>"; };
 		E4BF714E26B7E90900E8645F /* ready.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ready.mp3; sourceTree = "<group>"; };
 		E4BF715026B7E94200E8645F /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
+		E4BF715226B7EAA100E8645F /* AudioPlayerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerFactory.swift; sourceTree = "<group>"; };
 		E4C2C34C26A24665007BDF81 /* SkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyView.swift; sourceTree = "<group>"; };
 		E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicateAnimationView.swift; sourceTree = "<group>"; };
 		E4CA08B826A8287B00AA6F03 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 		E4BF713926B7D2B200E8645F /* Sound Effects  */ = {
 			isa = PBXGroup;
 			children = (
+				E4BF715226B7EAA100E8645F /* AudioPlayerFactory.swift */,
 				E4BF713C26B7D74C00E8645F /* Main */,
 				E4BF713D26B7D75100E8645F /* Game */,
 			);
@@ -895,6 +898,7 @@
 				E4BF712C26B3E6E300E8645F /* UnitInformation.swift in Sources */,
 				E4779C652697E92F00B92D24 /* TimeProgressView.swift in Sources */,
 				7165CDDB2695789300891214 /* SyetemSettings.swift in Sources */,
+				E4BF715326B7EAA100E8645F /* AudioPlayerFactory.swift in Sources */,
 				71DF654F2692FB4C00557693 /* ViewModelBindableType.swift in Sources */,
 				E41C85D6269C1C35008F2E91 /* GameOverButtonController.swift in Sources */,
 				71DF65412692F94E00557693 /* MainViewModel.swift in Sources */,
