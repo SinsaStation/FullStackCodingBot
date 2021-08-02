@@ -7,6 +7,7 @@ import GameKit
 final class MainViewModel: AdViewModel {
     
     let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
+    let bgmSwitchState = BehaviorRelay<Bool>(value: true)
     
     override init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType) {
         
@@ -64,6 +65,11 @@ final class MainViewModel: AdViewModel {
             }, onCompleted: { [unowned self] in
                 self.firebaseDidLoad.accept(true)
             }).disposed(by: rx.disposeBag)
+    }
+    
+    func setupBGMState(_ onOff: Bool) {
+        UserDefaults.standard.setValue(onOff, forKey: "BGMState")
+        bgmSwitchState.accept(UserDefaults.standard.bool(forKey: "BGMState"))
     }
     
     private func updateDatabaseInformation(_ info: NetworkDTO) {
