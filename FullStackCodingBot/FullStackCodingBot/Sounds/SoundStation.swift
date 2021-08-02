@@ -43,18 +43,9 @@ class SoundStation {
     
     private func setNewMusicPlayer(of musicType: Music) {
         guard let bundlePath = musicType.bundlePath else { return }
-        
-        do {
-            let newMusicPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: bundlePath))
-            newMusicPlayer.numberOfLoops = .max
-            
-            // 앱 델리게이트 설정 필요
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
-            try AVAudioSession.sharedInstance().setActive(true)
-            self.musicPlayer = newMusicPlayer
-        } catch {
-            print(error)
-        }
+        guard let newMusicPlayer = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: bundlePath)) else { return }
+        newMusicPlayer.numberOfLoops = .max
+        self.musicPlayer = newMusicPlayer
     }
     
     func musicStop() {
