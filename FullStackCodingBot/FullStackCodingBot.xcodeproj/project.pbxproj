@@ -88,6 +88,13 @@
 		E4BF713B26B7D2CC00E8645F /* SingleSoundEffectStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF713A26B7D2CC00E8645F /* SingleSoundEffectStation.swift */; };
 		E4BF714026B7DEDE00E8645F /* upgrade.wav in Resources */ = {isa = PBXBuildFile; fileRef = E4BF713E26B7DEDE00E8645F /* upgrade.wav */; };
 		E4BF714126B7DEDE00E8645F /* reward.wav in Resources */ = {isa = PBXBuildFile; fileRef = E4BF713F26B7DEDE00E8645F /* reward.wav */; };
+		E4BF714326B7E23A00E8645F /* GameSoundEffectStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF714226B7E23A00E8645F /* GameSoundEffectStation.swift */; };
+		E4BF714526B7E3FB00E8645F /* gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = E4BF714426B7E3FB00E8645F /* gameover.wav */; };
+		E4BF714926B7E70300E8645F /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = E4BF714826B7E70200E8645F /* wrong.wav */; };
+		E4BF714C26B7E75500E8645F /* fever.wav in Resources */ = {isa = PBXBuildFile; fileRef = E4BF714A26B7E75500E8645F /* fever.wav */; };
+		E4BF714D26B7E75500E8645F /* levelup.wav in Resources */ = {isa = PBXBuildFile; fileRef = E4BF714B26B7E75500E8645F /* levelup.wav */; };
+		E4BF714F26B7E90900E8645F /* ready.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4BF714E26B7E90900E8645F /* ready.mp3 */; };
+		E4BF715126B7E94200E8645F /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4BF715026B7E94200E8645F /* correct.mp3 */; };
 		E4C2C34D26A24666007BDF81 /* SkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34C26A24665007BDF81 /* SkyView.swift */; };
 		E4C2C34F26A292BB007BDF81 /* ReplicateAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */; };
 		E4CA08B926A8287B00AA6F03 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA08B826A8287B00AA6F03 /* Font.swift */; };
@@ -198,6 +205,13 @@
 		E4BF713A26B7D2CC00E8645F /* SingleSoundEffectStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSoundEffectStation.swift; sourceTree = "<group>"; };
 		E4BF713E26B7DEDE00E8645F /* upgrade.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = upgrade.wav; sourceTree = "<group>"; };
 		E4BF713F26B7DEDE00E8645F /* reward.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reward.wav; sourceTree = "<group>"; };
+		E4BF714226B7E23A00E8645F /* GameSoundEffectStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSoundEffectStation.swift; sourceTree = "<group>"; };
+		E4BF714426B7E3FB00E8645F /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover.wav; sourceTree = "<group>"; };
+		E4BF714826B7E70200E8645F /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
+		E4BF714A26B7E75500E8645F /* fever.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fever.wav; sourceTree = "<group>"; };
+		E4BF714B26B7E75500E8645F /* levelup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = levelup.wav; sourceTree = "<group>"; };
+		E4BF714E26B7E90900E8645F /* ready.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ready.mp3; sourceTree = "<group>"; };
+		E4BF715026B7E94200E8645F /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
 		E4C2C34C26A24665007BDF81 /* SkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyView.swift; sourceTree = "<group>"; };
 		E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicateAnimationView.swift; sourceTree = "<group>"; };
 		E4CA08B826A8287B00AA6F03 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -535,6 +549,13 @@
 		E4BF713D26B7D75100E8645F /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				E4BF714226B7E23A00E8645F /* GameSoundEffectStation.swift */,
+				E4BF714E26B7E90900E8645F /* ready.mp3 */,
+				E4BF715026B7E94200E8645F /* correct.mp3 */,
+				E4BF714826B7E70200E8645F /* wrong.wav */,
+				E4BF714A26B7E75500E8645F /* fever.wav */,
+				E4BF714B26B7E75500E8645F /* levelup.wav */,
+				E4BF714426B7E3FB00E8645F /* gameover.wav */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -665,15 +686,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4BF714F26B7E90900E8645F /* ready.mp3 in Resources */,
 				E4BF713626B7979700E8645F /* game.wav in Resources */,
 				7164BFD626967BBE009769E4 /* MainItemView.xib in Resources */,
 				712F500A26A831D900186948 /* GoogleService-Info.plist in Resources */,
 				E4BF714126B7DEDE00E8645F /* reward.wav in Resources */,
+				E4BF714D26B7E75500E8645F /* levelup.wav in Resources */,
 				E4BF713526B7979700E8645F /* main.mp3 in Resources */,
 				71307A8B26A52A1F00C3191F /* LevelUpButton.xib in Resources */,
 				E4D7C6492693E8E500D58BA2 /* Game.storyboard in Resources */,
 				719DA2B126A7FC9900624C61 /* JoystixMonospace-Regular.ttf in Resources */,
+				E4BF714526B7E3FB00E8645F /* gameover.wav in Resources */,
+				E4BF715126B7E94200E8645F /* correct.mp3 in Resources */,
+				E4BF714C26B7E75500E8645F /* fever.wav in Resources */,
 				E45B0ABB2692929F006FDE3D /* LaunchScreen.storyboard in Resources */,
+				E4BF714926B7E70300E8645F /* wrong.wav in Resources */,
 				E45B0AB82692929F006FDE3D /* Assets.xcassets in Resources */,
 				E4BF714026B7DEDE00E8645F /* upgrade.wav in Resources */,
 				E4D7C6452693E7C200D58BA2 /* Main.storyboard in Resources */,
@@ -827,6 +854,7 @@
 				E4DF613D26A845DA0061F6E9 /* AdStorage.swift in Sources */,
 				E4D7C64B26953C6200D58BA2 /* ScreenSize.swift in Sources */,
 				71DF653E2692F92700557693 /* Scene.swift in Sources */,
+				E4BF714326B7E23A00E8645F /* GameSoundEffectStation.swift in Sources */,
 				71DF64BF2692C1C600557693 /* ItemViewController.swift in Sources */,
 				71A5518226A9277C0083A4B0 /* DatabaseManagerType.swift in Sources */,
 				710A9DAC2692AD5C0090B38A /* MainButtonController.swift in Sources */,
