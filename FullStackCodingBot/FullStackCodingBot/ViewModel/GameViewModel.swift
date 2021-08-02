@@ -60,7 +60,7 @@ extension GameViewModel {
         feverTimeLeftPercentage.accept(0)
         currentScore.onNext(nil)
         newOnGameUnits.accept(nil)
-        SoundStation.shared.musicPlay(type: .game)
+        MusicStation.shared.play(type: .game)
     }
     
     private func setTimeManager() {

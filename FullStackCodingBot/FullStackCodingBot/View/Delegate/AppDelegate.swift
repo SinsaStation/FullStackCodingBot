@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setAudioSession() {
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
         try? AVAudioSession.sharedInstance().setActive(true)
-        SoundStation.shared.musicPlay(type: .main)
+        MusicStation.shared.play(type: .main)
     }
     
     private func presentMainViewController() {
