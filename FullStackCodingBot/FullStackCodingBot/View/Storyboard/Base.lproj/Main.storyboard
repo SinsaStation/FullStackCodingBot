@@ -47,6 +47,21 @@
             </objects>
             <point key="canvasLocation" x="138.78504672897196" y="-596.11231101511885"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="KuD-9T-sql">
+            <objects>
+                <viewController restorationIdentifier="SettingVC" storyboardIdentifier="SettingVC" id="at5-eW-HdW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZoB-Ha-8eq">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="yvi-v9-yd1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ttF-4A-SOR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="807" y="-585"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
