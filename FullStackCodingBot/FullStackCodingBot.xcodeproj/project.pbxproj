@@ -490,8 +490,8 @@
 				71DF6558269301D100557693 /* View */,
 				71DF653F2692F94000557693 /* ViewModel */,
 				E4D7C6472693E87600D58BA2 /* Model */,
-				71DF654B2692FA5600557693 /* Constant */,
 				E4BF713726B79F9500E8645F /* Sounds */,
+				71DF654B2692FA5600557693 /* Constant */,
 				E45B0AB72692929F006FDE3D /* Assets.xcassets */,
 				E45B0ABC2692929F006FDE3D /* Info.plist */,
 				712F500926A831D900186948 /* GoogleService-Info.plist */,
@@ -513,6 +513,7 @@
 		E4BF713726B79F9500E8645F /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				E4BF715226B7EAA100E8645F /* AudioPlayerFactory.swift */,
 				E4BF713926B7D2B200E8645F /* Sound Effects  */,
 				E4BF713826B7D15C00E8645F /* BGM */,
 			);
@@ -532,7 +533,6 @@
 		E4BF713926B7D2B200E8645F /* Sound Effects  */ = {
 			isa = PBXGroup;
 			children = (
-				E4BF715226B7EAA100E8645F /* AudioPlayerFactory.swift */,
 				E4BF713C26B7D74C00E8645F /* Main */,
 				E4BF713D26B7D75100E8645F /* Game */,
 			);
