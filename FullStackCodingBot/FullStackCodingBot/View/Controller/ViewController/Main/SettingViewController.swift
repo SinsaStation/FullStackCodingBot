@@ -11,6 +11,7 @@ final class SettingViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
+        
         cancelButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
                 self.viewModel.makeCloseAction()

@@ -15,8 +15,6 @@ final class MainViewModel: AdViewModel {
         self.bgmSwitchState.accept(bgmState)
         
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
-        
-        setupAppleGameCenterLogin()
     }
     
     func makeMoveAction(to viewController: ViewControllerType) {
@@ -76,7 +74,6 @@ final class MainViewModel: AdViewModel {
     }
     
     private func updateDatabaseInformation(_ info: NetworkDTO) {
-        startLoading()
         info.units.forEach { storage.append(unit: $0) }
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)

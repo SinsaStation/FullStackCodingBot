@@ -31,6 +31,12 @@ final class MainViewController: UIViewController, ViewModelBindableType {
         buttonController.bind { [unowned self] viewController in
             self.viewModel.makeMoveAction(to: viewController)
         }
+        
+        viewModel.firebaseDidLoad
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [unowned self] isLoaded in
+                if !isLoaded { self.viewModel.startLoading() }
+            }).disposed(by: rx.disposeBag)
     }
 }
 
