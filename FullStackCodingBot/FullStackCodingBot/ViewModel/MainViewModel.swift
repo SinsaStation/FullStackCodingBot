@@ -7,13 +7,16 @@ import GameKit
 final class MainViewModel: AdViewModel {
     
     let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
-    let bgmSwitchState = BehaviorRelay<Bool>(value: true)
+    let bgmSwitchState = BehaviorRelay<Bool>(value: UserDefaults.standard.bool(forKey: IdentifierUD.bgmState))
+    
+    private let userDefaults = UserDefaults.standard
     
     override init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType) {
         
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
         
         setupAppleGameCenterLogin()
+        setupFirstLaunchedInfo()
     }
     
     func makeMoveAction(to viewController: ViewControllerType) {
@@ -68,8 +71,8 @@ final class MainViewModel: AdViewModel {
     }
     
     func setupBGMState(_ onOff: Bool) {
-        UserDefaults.standard.setValue(onOff, forKey: "BGMState")
-        bgmSwitchState.accept(UserDefaults.standard.bool(forKey: "BGMState"))
+        UserDefaults.standard.setValue(onOff, forKey: IdentifierUD.bgmState)
+        bgmSwitchState.accept(onOff)
     }
     
     private func updateDatabaseInformation(_ info: NetworkDTO) {
@@ -78,6 +81,13 @@ final class MainViewModel: AdViewModel {
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
         adStorage.setNewRewardsIfPossible(with: info.ads)
+    }
+    
+    private func setupFirstLaunchedInfo() {
+        if !userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce) {
+            userDefaults.setValue(true, forKey: IdentifierUD.bgmState)
+            bgmSwitchState.accept(true)
+        }
     }
 }
 
@@ -100,6 +110,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                         
                         if user != nil {
                             getUserInformation()
+                            userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
                         }
                     }
                 }
