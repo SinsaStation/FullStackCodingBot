@@ -17,6 +17,8 @@ final class TypeWriterView: UIView {
     }()
     
     func startTyping(text fullText: String, duration: Double) {
+        adjustFrameToCenter(for: fullText)
+        
         let totalCount = fullText.count
         let delayPerLetter = duration / Double(totalCount)
         let letters = fullText.map { String($0) }
@@ -27,6 +29,14 @@ final class TypeWriterView: UIView {
                 self?.changeText(for: count, with: letters)
             }
         }
+    }
+    
+    private func adjustFrameToCenter(for fullText: String) {
+        let lineCount = fullText.components(separatedBy: "\n").count
+        let fontHeight = font.capHeight
+        let totalTextHeight = fontHeight * CGFloat(lineCount)
+        let yOffset = (layer.bounds.size.height-totalTextHeight*1.5)/2
+        textLayer.frame = textLayer.frame.offsetBy(dx: 0, dy: yOffset)
     }
     
     private func changeText(for count: Int, with letters: [String]) {
