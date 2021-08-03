@@ -6,6 +6,7 @@ import Action
 final class GameViewModel: CommonViewModel {
 
     // Helper Objects
+    private var gameSoundStation: GameSoundEffectStation
     private var gameUnitManager: GameUnitManagerType
     private var timeManager: TimeManagerType
     private var timer: DispatchSourceTimer?
@@ -34,9 +35,11 @@ final class GameViewModel: CommonViewModel {
          database: DatabaseManagerType,
          pauseAction: CocoaAction? = nil,
          gameUnitManager: GameUnitManagerType,
-         timeManager: TimeManagerType = TimeManager()) {
+         timeManager: TimeManagerType = TimeManager(),
+         gameSoundStation: GameSoundEffectStation = GameSoundEffectStation()) {
         self.gameUnitManager = gameUnitManager
         self.timeManager = timeManager
+        self.gameSoundStation = gameSoundStation
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
     }
 }
@@ -45,12 +48,14 @@ final class GameViewModel: CommonViewModel {
 extension GameViewModel {
     func execute() {
         resetAll()
+        gameSoundStation.play(type: .ready)
         
         DispatchQueue.main.asyncAfter(deadline: .now()+GameSetting.readyTime) { [unowned self] in
             self.newGameStatus.accept(.new)
             self.setTimeManager()
             self.setGame()
             self.startTimer()
+            MusicStation.shared.play(type: .game)
         }
     }
     
@@ -60,6 +65,7 @@ extension GameViewModel {
         feverTimeLeftPercentage.accept(0)
         currentScore.onNext(nil)
         newOnGameUnits.accept(nil)
+        MusicStation.shared.stop()
     }
     
     private func setTimeManager() {
@@ -74,6 +80,7 @@ extension GameViewModel {
                     self.newFeverStatus.accept(false)
                 case .fever:
                     self.newFeverStatus.accept(true)
+                    self.gameSoundStation.play(type: .fever)
                 }
         }).disposed(by: rx.disposeBag)
         
@@ -106,9 +113,10 @@ extension GameViewModel {
     }
     
     private func gameover() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [unowned self] in
             self.stopTimer()
             self.toGameOverScene()
+            self.gameSoundStation.play(type: .gameOver)
         }
     }
     
@@ -158,6 +166,7 @@ extension GameViewModel {
         userAction.accept(.correct(direction))
         timeManager.correct()
         onGameUnitNeedsChange()
+        gameSoundStation.play(type: .correct)
     }
     
     private func updateScore(with scoreGained: Int) -> Bool {
@@ -170,6 +179,7 @@ extension GameViewModel {
     private func onGameUnitNeedsChange() {
         if gameUnitManager.isTimeToLevelUp(afterRaiseCountBy: 1) {
             sendNewUnitToStack(by: 1)
+            gameSoundStation.play(type: .levelUp)
         }
         
         let currentUnits = gameUnitManager.removeAndRefilled()
@@ -179,6 +189,7 @@ extension GameViewModel {
     private func wrongAction() {
         let wrongStatus = timeManager.wrong()
         userAction.accept(wrongStatus)
+        gameSoundStation.play(type: .wrong)
     }
 }
 

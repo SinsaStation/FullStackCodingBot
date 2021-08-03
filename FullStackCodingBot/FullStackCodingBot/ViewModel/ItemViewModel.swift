@@ -22,15 +22,21 @@ final class ItemViewModel: CommonViewModel {
     lazy var selectedUnit = BehaviorRelay<Unit>(value: defaultUnit)
     lazy var status = BehaviorRelay<String>(value: Text.levelUp)
     lazy var upgradedUnit = BehaviorRelay<Unit?>(value: nil)
+    private let soundEffectStation: SingleSoundEffectStation
     private var feedbackGenerator: UINotificationFeedbackGenerator?
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: DatabaseManagerType, cancelAction: CocoaAction? = nil) {
+    init(sceneCoordinator: SceneCoordinatorType,
+         storage: PersistenceStorageType,
+         database: DatabaseManagerType,
+         cancelAction: CocoaAction? = nil,
+         soundEffectType: MainSoundEffect = .upgrade) {
         self.cancelAction = CocoaAction {
             if let action = cancelAction {
                 action.execute(())
             }
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
+        self.soundEffectStation = SingleSoundEffectStation(soundEffectType: soundEffectType)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
         setupFeedbackGenerator()
     }
@@ -56,6 +62,7 @@ final class ItemViewModel: CommonViewModel {
             selectedUnit.accept(new)
             upgradedUnit.accept(new)
             status.accept(Text.levelUpSuccessed(unitType: unitName, to: new.level))
+            soundEffectStation.play()
             feedbackGenerator?.notificationOccurred(.success)
         case false:
             status.accept(Text.levelUpFailed(coinNeeded: requiredMoney))
