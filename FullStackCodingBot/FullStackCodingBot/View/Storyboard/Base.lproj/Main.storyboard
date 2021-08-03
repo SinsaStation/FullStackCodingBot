@@ -72,7 +72,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="289" height="77.333333333333329"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BGM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pc7-55-NOD">
-                                                                <rect key="frame" x="1" y="18.666666666666686" width="46.333333333333336" height="40"/>
+                                                                <rect key="frame" x="1" y="18.666666666666686" width="50" height="40"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -80,6 +80,9 @@
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOk-q8-wvL">
                                                                 <rect key="frame" x="233.66666666666671" y="33.666666666666686" width="56.333333333333343" height="10"/>
                                                                 <color key="onTintColor" name="digitalgreen"/>
+                                                                <connections>
+                                                                    <action selector="settingAppInformation:" destination="4uP-UJ-9xF" eventType="valueChanged" id="0sY-te-fC0"/>
+                                                                </connections>
                                                             </switch>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -98,7 +101,7 @@
                                                         <rect key="frame" x="0.0" y="77.333333333333314" width="289" height="77.333333333333314"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdp-Bo-9rR">
-                                                                <rect key="frame" x="1" y="18.333333333333375" width="58.666666666666664" height="40.333333333333343"/>
+                                                                <rect key="frame" x="1" y="18.333333333333375" width="83" height="40.333333333333343"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -106,6 +109,9 @@
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dab-hg-br2">
                                                                 <rect key="frame" x="233.66666666666671" y="33.333333333333371" width="56.333333333333343" height="10.333333333333336"/>
                                                                 <color key="onTintColor" name="digitalgreen"/>
+                                                                <connections>
+                                                                    <action selector="settingAppInformation:" destination="4uP-UJ-9xF" eventType="valueChanged" id="nbz-IH-Y05"/>
+                                                                </connections>
                                                             </switch>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -124,7 +130,7 @@
                                                         <rect key="frame" x="0.0" y="154.66666666666663" width="289" height="77"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="other" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XC2-eq-Yae">
-                                                                <rect key="frame" x="1" y="18.333333333333375" width="46.333333333333336" height="40.333333333333343"/>
+                                                                <rect key="frame" x="1" y="18.333333333333375" width="83" height="40.333333333333343"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -132,6 +138,9 @@
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHR-eI-h0j">
                                                                 <rect key="frame" x="233.66666666666671" y="33.333333333333371" width="56.333333333333343" height="10.333333333333336"/>
                                                                 <color key="onTintColor" name="digitalgreen"/>
+                                                                <connections>
+                                                                    <action selector="settingAppInformation:" destination="4uP-UJ-9xF" eventType="valueChanged" id="ijT-Gm-NOk"/>
+                                                                </connections>
                                                             </switch>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -196,11 +205,18 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bgmSwitch" destination="tOk-q8-wvL" id="NRu-R7-3qc"/>
                         <outlet property="cancelButton" destination="EIc-Ll-MrS" id="uKK-ue-U4h"/>
+                        <outlet property="settingSwitchController" destination="4uP-UJ-9xF" id="bFJ-pb-idz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ttF-4A-SOR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="4uP-UJ-9xF" customClass="SettingSwitchController" customModule="Full_Stack" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="settingSwitches" destination="tOk-q8-wvL" collectionClass="NSMutableArray" id="dvb-dG-IrD"/>
+                        <outletCollection property="settingSwitches" destination="Dab-hg-br2" collectionClass="NSMutableArray" id="fKg-dK-rI8"/>
+                        <outletCollection property="settingSwitches" destination="AHR-eI-h0j" collectionClass="NSMutableArray" id="PII-oY-1o9"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="806.07476635514013" y="-585.09719222462206"/>
         </scene>
@@ -836,7 +852,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="b3i-P5-hMw">
-                                        <rect key="frame" x="52.333333333333329" y="11.333333333333329" width="130.33333333333337" height="21"/>
+                                        <rect key="frame" x="52.333333333333329" y="11.000000000000002" width="130.33333333333337" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
