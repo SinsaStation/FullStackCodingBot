@@ -7,8 +7,12 @@ import GameKit
 final class MainViewModel: AdViewModel {
     
     let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
+    let bgmSwitchState = BehaviorRelay<Bool>(value: true)
+    private let userDefaults = UserDefaults.standard
     
-    override init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, bgmState: Bool) {
+        
+        self.bgmSwitchState.accept(bgmState)
         
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
         
@@ -66,6 +70,11 @@ final class MainViewModel: AdViewModel {
             }).disposed(by: rx.disposeBag)
     }
     
+    func setupBGMState(_ onOff: Bool) {
+        UserDefaults.standard.setValue(onOff, forKey: IdentifierUD.bgmState)
+        bgmSwitchState.accept(onOff)
+    }
+    
     private func updateDatabaseInformation(_ info: NetworkDTO) {
         startLoading()
         info.units.forEach { storage.append(unit: $0) }
@@ -94,6 +103,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                         
                         if user != nil {
                             getUserInformation()
+                            userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
                         }
                     }
                 }
