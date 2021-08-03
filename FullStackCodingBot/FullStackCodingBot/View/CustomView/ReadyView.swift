@@ -14,6 +14,7 @@ final class ReadyView: UIView {
     
     func playAnimation(totalDuration: Double = GameSetting.readyTime+0.3) {
         reset()
+        setupTitleLabel()
         addLayersToPositions()
         let rotateDuration = totalDuration * 0.9
         let countUnit = rotateDuration/3
@@ -192,5 +193,12 @@ final class ReadyView: UIView {
         default:
             return maxY+weight*3
         }
+    }
+    
+    private func setupTitleLabel() {
+        let font = UIFont(name: Font.joystix, size: bounds.width * 0.07) ?? UIFont()
+        let attributedString = NSMutableAttributedString(string: readyCountLabel.text ?? "")
+        attributedString.addAttribute(.font, value: font, range: .init(location: 0, length: 1))
+        readyCountLabel.attributedText = attributedString
     }
 }
