@@ -15,6 +15,8 @@ final class MainViewModel: AdViewModel {
         self.bgmSwitchState.accept(bgmState)
         
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
+        
+        setupAppleGameCenterLogin()
     }
     
     func makeMoveAction(to viewController: ViewControllerType) {
@@ -79,6 +81,14 @@ final class MainViewModel: AdViewModel {
         storage.updateHighScore(new: info.score)
         adStorage.setNewRewardsIfPossible(with: info.ads)
     }
+    
+    private func observeFirebaseDataLoaded() {
+        firebaseDidLoad
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [unowned self] isLoaded in
+                if !isLoaded { self.startLoading() }
+            }).disposed(by: rx.disposeBag)
+    }
 }
 
 extension MainViewModel: GKGameCenterControllerDelegate {
@@ -90,6 +100,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     func setupAppleGameCenterLogin() {
         GKLocalPlayer.local.authenticateHandler = { gcViewController, error in
             guard error == nil else { return }
+            self.observeFirebaseDataLoaded()
             
             if GKLocalPlayer.local.isAuthenticated {
                 GameCenterAuthProvider.getCredential { credential, error in
