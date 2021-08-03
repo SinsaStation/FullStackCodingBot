@@ -78,7 +78,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOk-q8-wvL">
-                                                                <rect key="frame" x="233.66666666666671" y="33.666666666666686" width="56.333333333333343" height="10"/>
+                                                                <rect key="frame" x="233.66666666666671" y="18.666666666666682" width="56.333333333333343" height="39.666666666666657"/>
                                                                 <color key="onTintColor" name="digitalgreen"/>
                                                                 <connections>
                                                                     <action selector="settingAppInformation:" destination="4uP-UJ-9xF" eventType="valueChanged" id="0sY-te-fC0"/>
@@ -91,7 +91,7 @@
                                                             <constraint firstItem="tOk-q8-wvL" firstAttribute="centerY" secondItem="Uzy-iy-NxM" secondAttribute="centerY" id="9Z2-oD-FGm"/>
                                                             <constraint firstItem="tOk-q8-wvL" firstAttribute="width" secondItem="Uzy-iy-NxM" secondAttribute="width" multiplier="0.188462" id="FVr-rm-zpj"/>
                                                             <constraint firstItem="pc7-55-NOD" firstAttribute="leading" secondItem="Uzy-iy-NxM" secondAttribute="leading" constant="1" id="Go7-UU-bWC"/>
-                                                            <constraint firstItem="tOk-q8-wvL" firstAttribute="height" secondItem="Uzy-iy-NxM" secondAttribute="height" multiplier="0.130802" id="LwP-rV-hM3"/>
+                                                            <constraint firstItem="tOk-q8-wvL" firstAttribute="height" secondItem="Uzy-iy-NxM" secondAttribute="height" multiplier="0.5" constant="1" id="LwP-rV-hM3"/>
                                                             <constraint firstAttribute="trailing" secondItem="tOk-q8-wvL" secondAttribute="trailing" constant="1" id="XOa-fm-bHC"/>
                                                             <constraint firstItem="pc7-55-NOD" firstAttribute="height" secondItem="Uzy-iy-NxM" secondAttribute="height" multiplier="0.518987" id="m6n-pd-ndF"/>
                                                             <constraint firstItem="pc7-55-NOD" firstAttribute="centerY" secondItem="Uzy-iy-NxM" secondAttribute="centerY" id="nDY-ki-DBf"/>
@@ -107,7 +107,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dab-hg-br2">
-                                                                <rect key="frame" x="233.66666666666671" y="33.333333333333371" width="56.333333333333343" height="10.333333333333336"/>
+                                                                <rect key="frame" x="233.66666666666671" y="18.666666666666682" width="56.333333333333343" height="39.666666666666657"/>
                                                                 <color key="onTintColor" name="digitalgreen"/>
                                                                 <connections>
                                                                     <action selector="settingAppInformation:" destination="4uP-UJ-9xF" eventType="valueChanged" id="nbz-IH-Y05"/>
@@ -121,7 +121,7 @@
                                                             <constraint firstItem="gdp-Bo-9rR" firstAttribute="height" secondItem="xPW-GJ-SuY" secondAttribute="height" multiplier="0.518987" id="MPC-Ve-yDQ"/>
                                                             <constraint firstItem="Dab-hg-br2" firstAttribute="centerY" secondItem="xPW-GJ-SuY" secondAttribute="centerY" id="Pub-Tf-Akg"/>
                                                             <constraint firstItem="gdp-Bo-9rR" firstAttribute="centerY" secondItem="xPW-GJ-SuY" secondAttribute="centerY" id="YgI-uh-knt"/>
-                                                            <constraint firstItem="Dab-hg-br2" firstAttribute="height" secondItem="xPW-GJ-SuY" secondAttribute="height" multiplier="0.130802" id="eyy-5Z-kSE"/>
+                                                            <constraint firstItem="Dab-hg-br2" firstAttribute="height" secondItem="xPW-GJ-SuY" secondAttribute="height" multiplier="0.5" constant="1" id="eyy-5Z-kSE"/>
                                                             <constraint firstItem="gdp-Bo-9rR" firstAttribute="leading" secondItem="xPW-GJ-SuY" secondAttribute="leading" constant="1" id="tU0-xH-gHu"/>
                                                             <constraint firstItem="Dab-hg-br2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gdp-Bo-9rR" secondAttribute="trailing" id="yXp-R6-iOn"/>
                                                         </constraints>
@@ -136,7 +136,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHR-eI-h0j">
-                                                                <rect key="frame" x="233.66666666666671" y="33.333333333333371" width="56.333333333333343" height="10.333333333333336"/>
+                                                                <rect key="frame" x="233.66666666666671" y="18.666666666666739" width="56.333333333333343" height="39.666666666666657"/>
                                                                 <color key="onTintColor" name="digitalgreen"/>
                                                                 <connections>
                                                                     <action selector="settingAppInformation:" destination="4uP-UJ-9xF" eventType="valueChanged" id="ijT-Gm-NOk"/>
@@ -151,7 +151,7 @@
                                                             <constraint firstItem="AHR-eI-h0j" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XC2-eq-Yae" secondAttribute="trailing" id="Nyz-R7-BKG"/>
                                                             <constraint firstItem="XC2-eq-Yae" firstAttribute="leading" secondItem="La1-hb-TbD" secondAttribute="leading" constant="1" id="aaO-8k-UQT"/>
                                                             <constraint firstItem="XC2-eq-Yae" firstAttribute="height" secondItem="La1-hb-TbD" secondAttribute="height" multiplier="0.518987" id="e1s-YG-t1O"/>
-                                                            <constraint firstItem="AHR-eI-h0j" firstAttribute="height" secondItem="La1-hb-TbD" secondAttribute="height" multiplier="0.130802" id="gAp-oE-KhJ"/>
+                                                            <constraint firstItem="AHR-eI-h0j" firstAttribute="height" secondItem="La1-hb-TbD" secondAttribute="height" multiplier="0.5" constant="1" id="gAp-oE-KhJ"/>
                                                             <constraint firstItem="XC2-eq-Yae" firstAttribute="centerY" secondItem="La1-hb-TbD" secondAttribute="centerY" id="krG-ru-Dqq"/>
                                                         </constraints>
                                                     </view>
