@@ -51,6 +51,7 @@
 		71E2B37626AE5E7F00AE496D /* PersistenceStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B37526AE5E7F00AE496D /* PersistenceStorage.swift */; };
 		71E2B37826AE602200AE496D /* PersistenceStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B37726AE602200AE496D /* PersistenceStorageType.swift */; };
 		A0DEDFDADFEC4895FB093823 /* Pods_Full_Stack_Full_StackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA3377E4ACD3B197620DEA8 /* Pods_Full_Stack_Full_StackTests.framework */; };
+		E4150E9726B8F3E00041DD32 /* TypeWriterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4150E9626B8F3E00041DD32 /* TypeWriterView.swift */; };
 		E41C85D4269BFB84008F2E91 /* GameUnitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D3269BFB84008F2E91 /* GameUnitManager.swift */; };
 		E41C85D6269C1C35008F2E91 /* GameOverButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D5269C1C35008F2E91 /* GameOverButtonController.swift */; };
 		E41C85D8269C252D008F2E91 /* GameUnitManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */; };
@@ -173,6 +174,7 @@
 		A9E77F924F0C6B24A39E65B2 /* Pods_Full_Stack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Full_Stack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C898C29DCF2CD33D2449FCAB /* Pods-FullStackCodingBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FullStackCodingBot.debug.xcconfig"; path = "Target Support Files/Pods-FullStackCodingBot/Pods-FullStackCodingBot.debug.xcconfig"; sourceTree = "<group>"; };
 		CFA3377E4ACD3B197620DEA8 /* Pods_Full_Stack_Full_StackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Full_Stack_Full_StackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4150E9626B8F3E00041DD32 /* TypeWriterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeWriterView.swift; sourceTree = "<group>"; };
 		E41C85D3269BFB84008F2E91 /* GameUnitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnitManager.swift; sourceTree = "<group>"; };
 		E41C85D5269C1C35008F2E91 /* GameOverButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverButtonController.swift; sourceTree = "<group>"; };
 		E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnitManagerType.swift; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 				71307A8826A529F400C3191F /* LevelUpButton.swift */,
 				71307A8A26A52A1F00C3191F /* LevelUpButton.xib */,
 				E4DF614226A93FFB0061F6E9 /* ShopCell.swift */,
+				E4150E9626B8F3E00041DD32 /* TypeWriterView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 				E43B64A226ABD81C001D9896 /* GameBackgroundView.swift in Sources */,
 				E4C2C34D26A24666007BDF81 /* SkyView.swift in Sources */,
 				7164BFD2269679C6009769E4 /* MainItemView.swift in Sources */,
+				E4150E9726B8F3E00041DD32 /* TypeWriterView.swift in Sources */,
 				71310C2C26AA596B00733361 /* CoreDataStorage.xcdatamodeld in Sources */,
 				E4BF710526AFD45A00E8645F /* TimeManagerType.swift in Sources */,
 				710D0D4F2693F6E500244A16 /* ItemCell.swift in Sources */,
