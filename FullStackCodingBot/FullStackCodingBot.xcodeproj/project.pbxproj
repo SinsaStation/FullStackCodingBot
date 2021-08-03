@@ -29,6 +29,7 @@
 		7165CDDF26957DE400891214 /* GameButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165CDDE26957DE400891214 /* GameButtonController.swift */; };
 		7170CD4526B266BE00F03248 /* VersionErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */; };
 		719A6A9B26B11208006AC991 /* NetworkDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719A6A9A26B11208006AC991 /* NetworkDTO.swift */; };
+		719AB9DE26B7ADF2001B5913 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */; };
 		719DA2B126A7FC9900624C61 /* JoystixMonospace-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */; };
 		71A5518026A91C280083A4B0 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5517F26A91C280083A4B0 /* DatabaseManager.swift */; };
 		71A5518226A9277C0083A4B0 /* DatabaseManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */; };
@@ -148,6 +149,7 @@
 		7165CDDE26957DE400891214 /* GameButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButtonController.swift; sourceTree = "<group>"; };
 		7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionErrorViewController.swift; sourceTree = "<group>"; };
 		719A6A9A26B11208006AC991 /* NetworkDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDTO.swift; sourceTree = "<group>"; };
+		719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JoystixMonospace-Regular.ttf"; sourceTree = "<group>"; };
 		71A5517F26A91C280083A4B0 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerType.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				71DF64BE2692C1C600557693 /* ItemViewController.swift */,
 				7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */,
 				711A69EB26B3B13E00C7C99A /* LoadingViewController.swift */,
+				719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -872,6 +875,7 @@
 				E41C85D8269C252D008F2E91 /* GameUnitManagerType.swift in Sources */,
 				71DF64BD2692C18F00557693 /* RankViewController.swift in Sources */,
 				711A69EC26B3B13E00C7C99A /* LoadingViewController.swift in Sources */,
+				719AB9DE26B7ADF2001B5913 /* SettingViewController.swift in Sources */,
 				71DF65552692FD1400557693 /* CommonViewModel.swift in Sources */,
 				E4DF613F26A847330061F6E9 /* AdViewModel.swift in Sources */,
 				710D0D442693EA6900244A16 /* GameViewModel.swift in Sources */,

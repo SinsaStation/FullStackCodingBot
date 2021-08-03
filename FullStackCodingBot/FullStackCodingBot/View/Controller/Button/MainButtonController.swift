@@ -5,7 +5,7 @@ enum ViewControllerType: CaseIterable {
     case rankVC
     case itemVC
     case gameVC
-    case loadVC
+    case settingVC
 }
 
 final class MainButtonMapper {
