@@ -464,6 +464,42 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E4150E9326B8F3440041DD32 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				E45B0AC62692F42D006FDE3D /* UnitPerspectiveView.swift */,
+				E4779C642697E92F00B92D24 /* TimeProgressView.swift */,
+				E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */,
+				E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */,
+				E43B64A326AC2384001D9896 /* TimeBarView.swift */,
+				E4BF710826B00EF600E8645F /* FeverTimeBarView.swift */,
+				E4BF710A26B1324500E8645F /* ReadyView.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		E4150E9426B8F3490041DD32 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E4C2C34C26A24665007BDF81 /* SkyView.swift */,
+				710D0D4D2693F6E500244A16 /* ItemCell.swift */,
+				7164BFD1269679C6009769E4 /* MainItemView.swift */,
+				7164BFD526967BBE009769E4 /* MainItemView.xib */,
+				71307A8826A529F400C3191F /* LevelUpButton.swift */,
+				71307A8A26A52A1F00C3191F /* LevelUpButton.xib */,
+				E4DF614226A93FFB0061F6E9 /* ShopCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E4150E9526B8F34C0041DD32 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E43B649F26ABB4A2001D9896 /* UIImageExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E45B0AA22692929C006FDE3D = {
 			isa = PBXGroup;
 			children = (
@@ -569,21 +605,9 @@
 		E4D7C6462693E82E00D58BA2 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				E45B0AC62692F42D006FDE3D /* UnitPerspectiveView.swift */,
-				710D0D4D2693F6E500244A16 /* ItemCell.swift */,
-				7164BFD1269679C6009769E4 /* MainItemView.swift */,
-				7164BFD526967BBE009769E4 /* MainItemView.xib */,
-				E4779C642697E92F00B92D24 /* TimeProgressView.swift */,
-				E4C2C34C26A24665007BDF81 /* SkyView.swift */,
-				E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */,
-				E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */,
-				71307A8826A529F400C3191F /* LevelUpButton.swift */,
-				71307A8A26A52A1F00C3191F /* LevelUpButton.xib */,
-				E4DF614226A93FFB0061F6E9 /* ShopCell.swift */,
-				E43B649F26ABB4A2001D9896 /* UIImageExtension.swift */,
-				E43B64A326AC2384001D9896 /* TimeBarView.swift */,
-				E4BF710826B00EF600E8645F /* FeverTimeBarView.swift */,
-				E4BF710A26B1324500E8645F /* ReadyView.swift */,
+				E4150E9426B8F3490041DD32 /* Main */,
+				E4150E9326B8F3440041DD32 /* Game */,
+				E4150E9526B8F34C0041DD32 /* Extensions */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
