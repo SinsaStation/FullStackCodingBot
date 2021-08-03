@@ -14,9 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID]
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        let settings = !userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce) ? true : userDefaults.bool(forKey: IdentifierUD.bgmState)
         let coordinator = SceneCoordinator(window: window!)
         let database = DatabaseManager(Database.database().reference())
-        let mainViewModel = MainViewModel(sceneCoordinator: coordinator, storage: storage, adStorage: adStorage, database: database)
+        let mainViewModel = MainViewModel(sceneCoordinator: coordinator, storage: storage, adStorage: adStorage, database: database, bgmState: settings)
         let mainScene = Scene.main(mainViewModel)
         coordinator.transition(to: mainScene, using: .root, with: StoryboardType.main, animated: false)
         return true

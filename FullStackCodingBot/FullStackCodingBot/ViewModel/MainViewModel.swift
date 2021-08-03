@@ -7,16 +7,16 @@ import GameKit
 final class MainViewModel: AdViewModel {
     
     let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
-    let bgmSwitchState = BehaviorRelay<Bool>(value: UserDefaults.standard.bool(forKey: IdentifierUD.bgmState))
-    
+    let bgmSwitchState = BehaviorRelay<Bool>(value: true)
     private let userDefaults = UserDefaults.standard
     
-    override init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, bgmState: Bool) {
+        
+        self.bgmSwitchState.accept(bgmState)
         
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
         
         setupAppleGameCenterLogin()
-        setupFirstLaunchedInfo()
     }
     
     func makeMoveAction(to viewController: ViewControllerType) {
@@ -81,13 +81,6 @@ final class MainViewModel: AdViewModel {
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
         adStorage.setNewRewardsIfPossible(with: info.ads)
-    }
-    
-    private func setupFirstLaunchedInfo() {
-        if !userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce) {
-            userDefaults.setValue(true, forKey: IdentifierUD.bgmState)
-            bgmSwitchState.accept(true)
-        }
     }
 }
 
