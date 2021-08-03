@@ -33,7 +33,7 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upgrade" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="3Zx-S4-s7z">
                             <rect key="frame" x="0.0" y="0.0" width="332.66666666666669" height="52"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="18"/>
                             <color key="textColor" systemColor="systemGray5Color"/>
                             <nil key="highlightedColor"/>
                         </label>
