@@ -5,8 +5,6 @@ import RxCocoa
 
 protocol PersistenceStorageType {
     
-    func initializeData(_ units: [Unit], _ money: Int, _ score: Int)
-    
     @discardableResult
     func myHighScore() -> Int
     

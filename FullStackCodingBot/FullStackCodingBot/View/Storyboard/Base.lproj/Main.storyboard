@@ -40,7 +40,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="loadingSpinner" destination="2mI-Tb-FFB" id="Y3J-ey-4qS"/>
+                        <outlet property="firebaseLoadingIndicator" destination="2mI-Tb-FFB" id="Onb-MQ-O9b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bP5-1N-Os6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

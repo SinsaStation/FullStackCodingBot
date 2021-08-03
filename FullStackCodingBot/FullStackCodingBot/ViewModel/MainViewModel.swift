@@ -76,11 +76,18 @@ final class MainViewModel: AdViewModel {
     }
     
     private func updateDatabaseInformation(_ info: NetworkDTO) {
-        startLoading()
         info.units.forEach { storage.append(unit: $0) }
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
         adStorage.setNewRewardsIfPossible(with: info.ads)
+    }
+    
+    private func observeFirebaseDataLoaded() {
+        firebaseDidLoad
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [unowned self] isLoaded in
+                if !isLoaded { self.startLoading() }
+            }).disposed(by: rx.disposeBag)
     }
 }
 
@@ -93,6 +100,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     func setupAppleGameCenterLogin() {
         GKLocalPlayer.local.authenticateHandler = { gcViewController, error in
             guard error == nil else { return }
+            self.observeFirebaseDataLoaded()
             
             if GKLocalPlayer.local.isAuthenticated {
                 GameCenterAuthProvider.getCredential { credential, error in

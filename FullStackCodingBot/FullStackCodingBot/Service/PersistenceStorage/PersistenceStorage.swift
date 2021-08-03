@@ -40,12 +40,6 @@ final class PersistenceStorage: PersistenceStorageType {
         return unitStore
     }
     
-    func initializeData(_ units: [Unit], _ money: Int, _ score: Int) {
-        units.forEach { append(unit: $0) }
-        appendMoenyInfo(money)
-        appendScoreInfo(score)
-    }
-    
     @discardableResult
     func append(unit: Unit) -> Observable<Unit> {
         unitStore.append(unit)
