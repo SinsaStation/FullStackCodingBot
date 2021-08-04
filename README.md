@@ -110,6 +110,7 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 >
 > - [x] Image Asset을 적용한 UI - AutoLayout
 > - [x] BackgroundView의 랜덤 구름 Animation
+> - [x] Title View 텍스트의 Type Writer Animation
 
 
 
@@ -117,7 +118,7 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 >
 > - [x] Image Asset을 적용한 UI - AutoLayout
 > - [x] Item Upgrade 성공 Animation - 이미지 평균 컬러 반영
-> - [ ] Item Scene Notice Label Animation
+> - [x] Info View 텍스트의 Fade In Animation
 > - [x] Item Upgrade 성공 여부에 따른 Haptic 
 
 
@@ -167,7 +168,8 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 
 > ### Audio
 >
-> - [x] 배경음, 효과음 재생 컨트롤
+> - [x] 배경음, 효과음 재생 컨트롤 - Sound Station 객체들
+> - [ ] User Default와 연동
 
 ---
 
