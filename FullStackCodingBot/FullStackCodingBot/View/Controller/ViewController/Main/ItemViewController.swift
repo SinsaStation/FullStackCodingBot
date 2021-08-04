@@ -19,8 +19,12 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
         setup()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        infoView.layoutSubviews(with: Text.levelUp)
+    }
+    
     func bindViewModel() {
-        
         viewModel.itemStorage
             .drive(itemCollectionView.rx.items(cellIdentifier: ItemCell.identifier, cellType: ItemCell.self)) { _, unit, cell in
                 cell.configure(unit: unit)
@@ -37,7 +41,7 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
             }).disposed(by: rx.disposeBag)
         
         viewModel.money
-            .map {String($0)}
+            .map { String($0) }
             .drive(availableMoneyLabel.rx.text)
             .disposed(by: rx.disposeBag)
         
@@ -52,7 +56,6 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
 
 // MARK: Setup
 private extension ItemViewController {
-    
     private func setup() {
         setupDelegate()
         setupButtonAction()
@@ -83,7 +86,6 @@ private extension ItemViewController {
 
 // MARK: Setup CellSize
 extension ItemViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = itemCollectionView.frame.height * 0.8
         let width = height

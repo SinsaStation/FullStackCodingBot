@@ -16,6 +16,11 @@ final class MainViewController: UIViewController, ViewModelBindableType {
         titleView.show(text: Text.title)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        titleView.layoutSubviews(with: Text.title)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         skyView.startCloudAnimation()

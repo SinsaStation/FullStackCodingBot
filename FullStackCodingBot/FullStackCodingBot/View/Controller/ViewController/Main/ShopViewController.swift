@@ -19,6 +19,11 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
         setup()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        infoView.layoutSubviews(with: Text.shopReset)
+    }
+    
     func bindViewModel() {
         viewModel.itemStorage
             .drive(shopCollectionView.rx.items(cellIdentifier: ShopCell.identifier, cellType: ShopCell.self)) { _, item, cell in
