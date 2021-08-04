@@ -9,7 +9,7 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
     var viewModel: ShopViewModel!
     
     @IBOutlet weak var totalCoinLabel: UILabel!
-    @IBOutlet weak var rewardInfoLabel: TypewriterLabel!
+    @IBOutlet weak var infoView: TypeWriterView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var shopCollectionView: UICollectionView!
     
@@ -39,7 +39,7 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
         viewModel.reward
             .subscribe(onNext: { [unowned self] reward in
                 guard let reward = reward else { return }
-                self.setupInfoLabel(text: Text.reward(amount: reward))
+                self.infoView.show(text: Text.reward(amount: reward))
             }).disposed(by: rx.disposeBag)
 
         cancelButton.rx.action = viewModel.cancelAction
@@ -61,7 +61,7 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
 private extension ShopViewController {
     private func setup() {
         setupDelegate()
-        setupInfoLabel(text: Text.shopReset)
+        infoView.show(text: Text.shopReset)
     }
     
     private func setupDelegate() {
@@ -71,14 +71,6 @@ private extension ShopViewController {
             .subscribe(onNext: { [unowned self] item in
                 self.viewModel.selectedItem.accept(item)
             }).disposed(by: rx.disposeBag)
-    }
-    
-    private func setupInfoLabel(text: String) {
-        let font = UIFont(name: Font.joystix, size: view.bounds.width * 0.04) ?? UIFont()
-        let attributedString = NSMutableAttributedString(string: text)
-        attributedString.addAttribute(.font, value: font, range: .init(location: 0, length: text.count))
-        rewardInfoLabel.attributedText = attributedString
-        rewardInfoLabel.restartTypewritingAnimation()
     }
 }
 

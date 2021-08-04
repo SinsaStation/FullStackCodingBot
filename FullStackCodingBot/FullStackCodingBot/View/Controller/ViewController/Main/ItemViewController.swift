@@ -7,8 +7,7 @@ import GhostTypewriter
 final class ItemViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: ItemViewModel!
-    
-    @IBOutlet weak var infoLabel: TypewriterLabel!
+    @IBOutlet weak var infoView: FadeInTextView!
     @IBOutlet weak var mainItemView: MainItemView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var itemCollectionView: UICollectionView!
@@ -44,7 +43,7 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
         
         viewModel.status
             .subscribe(onNext: { [unowned self] message in
-                self.setupInfoLabel(text: message)
+                self.infoView.show(text: message)
             }).disposed(by: rx.disposeBag)
         
         cancelButton.rx.action = viewModel.cancelAction
@@ -79,14 +78,6 @@ private extension ItemViewController {
             .subscribe(onNext: { [unowned self] _ in
                 self.viewModel.makeActionLeveUp()
             }).disposed(by: rx.disposeBag)
-    }
-    
-    private func setupInfoLabel(text: String) {
-        let font = UIFont(name: Font.joystix, size: view.bounds.width * 0.04) ?? UIFont()
-        let attributedString = NSMutableAttributedString(string: text)
-        attributedString.addAttribute(.font, value: font, range: .init(location: 0, length: text.count))
-        infoLabel.attributedText = attributedString
-        infoLabel.restartTypewritingAnimation()
     }
 }
 

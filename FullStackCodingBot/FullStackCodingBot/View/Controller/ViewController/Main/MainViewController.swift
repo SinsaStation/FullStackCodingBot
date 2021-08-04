@@ -9,11 +9,11 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     var viewModel: MainViewModel!
     @IBOutlet var buttonController: MainButtonController!
     @IBOutlet weak var skyView: SkyView!
-    @IBOutlet weak var typeWriterView: TypeWriterView!
+    @IBOutlet weak var titleView: TypeWriterView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        typeWriterView.startTyping(text: Text.title, duration: 1.0)
+        titleView.show(text: Text.title)
     }
     
     override func viewDidAppear(_ animated: Bool) {
