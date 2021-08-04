@@ -544,12 +544,12 @@
                                             <constraint firstAttribute="width" secondItem="I5l-8N-1Ym" secondAttribute="height" multiplier="1024:224" id="uyP-Es-6Ke"/>
                                         </constraints>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Iq-vH-giG" userLabel="Info View" customClass="TypeWriterView" customModule="Full_Stack" customModuleProvider="target">
-                                        <rect key="frame" x="27" y="74.666666666666671" width="374" height="58.000000000000014"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Iq-vH-giG" userLabel="Info View" customClass="FadeInTextView" customModule="Full_Stack" customModuleProvider="target">
+                                        <rect key="frame" x="27" y="72.666666666666671" width="374" height="58.000000000000014"/>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="8Iq-vH-giG" firstAttribute="centerY" secondItem="I5l-8N-1Ym" secondAttribute="centerY" multiplier="1.02" id="BGg-Tc-J3E"/>
+                                    <constraint firstItem="8Iq-vH-giG" firstAttribute="centerY" secondItem="I5l-8N-1Ym" secondAttribute="centerY" id="BGg-Tc-J3E"/>
                                     <constraint firstItem="MFe-gB-NvO" firstAttribute="top" secondItem="I5l-8N-1Ym" secondAttribute="bottom" id="GOl-af-XXT"/>
                                     <constraint firstItem="8Iq-vH-giG" firstAttribute="width" secondItem="I5l-8N-1Ym" secondAttribute="width" multiplier="0.92" id="MI6-X0-hf8"/>
                                     <constraint firstItem="MFe-gB-NvO" firstAttribute="width" secondItem="X33-Ut-VPx" secondAttribute="width" multiplier="0.95" id="NBf-Sv-1sd"/>

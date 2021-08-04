@@ -14,6 +14,7 @@ class TextPresentView: UIView {
     
     private let defaultTextColor = UIColor(named: "digitalgreen") ?? UIColor.green
     private let defaultLetterCount = 15
+    private let maxFontSize: CGFloat = 17
     private let lineSeparator = "\n"
     
     func show(text fullText: String) {
@@ -29,9 +30,10 @@ class TextPresentView: UIView {
     private func newFontSize(for text: String) -> CGFloat {
         let letterCountsPerLine = text.components(separatedBy: lineSeparator).map { $0.count }
         let maxLetterCount = letterCountsPerLine.max() ?? defaultLetterCount
-        let adjustedMaxCount = maxLetterCount > 15 ? maxLetterCount : 15
+        let adjustedMaxCount = maxLetterCount > defaultLetterCount ? maxLetterCount : defaultLetterCount
         let newFontSize = textLayer.bounds.width / CGFloat(adjustedMaxCount)
-        return newFontSize
+        let adjustedFontSize = newFontSize < maxFontSize ? newFontSize : maxFontSize
+        return adjustedFontSize
     }
     
     private func adjustTextLayerFrameToCenter(for fullText: String) {

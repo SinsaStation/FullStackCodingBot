@@ -7,9 +7,8 @@ import GoogleMobileAds
 final class ShopViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: ShopViewModel!
-    
     @IBOutlet weak var totalCoinLabel: UILabel!
-    @IBOutlet weak var infoView: TypeWriterView!
+    @IBOutlet weak var infoView: FadeInTextView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var shopCollectionView: UICollectionView!
     
@@ -97,5 +96,10 @@ extension ShopViewController: GADFullScreenContentDelegate {
         adMob.present(fromRootViewController: self) { [unowned self] in
             self.viewModel.adDidFinished(adMob)
         }
+    }
+    
+    // swiftlint:disable:next identifier_name
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        viewModel.addCoin()
     }
 }
