@@ -3,7 +3,7 @@ import UIKit
 enum SwithType: CaseIterable {
     case bgm
     case sound
-    case other
+    case vibration
 }
 
 final class SettingSwitchMapper {
@@ -40,5 +40,11 @@ final class SettingSwitchController: NSObject {
     
     func bind(action: @escaping (SwithType) -> Void) {
         self.switchTouchedHandler = action
+    }
+    
+    func setupState(_ info: SettingInformation) {
+        for (index, state) in info.checkState().enumerated() {
+            settingSwitches[index].isOn = state
+        }
     }
 }

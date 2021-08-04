@@ -6,14 +6,14 @@ import GameKit
 
 final class MainViewModel: AdViewModel {
     
-    let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
-    let bgmSwitchState = BehaviorRelay<Bool>(value: true)
+    private var settingInfo: SettingInformation
     private let userDefaults = UserDefaults.standard
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, bgmState: Bool) {
-        
-        self.bgmSwitchState.accept(bgmState)
-        
+    lazy var settingSwitchState = BehaviorRelay<SettingInformation>(value: settingInfo)
+    let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
+    
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, setting: SettingInformation) {
+        self.settingInfo = setting
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
         
         setupAppleGameCenterLogin()
@@ -70,9 +70,15 @@ final class MainViewModel: AdViewModel {
             }).disposed(by: rx.disposeBag)
     }
     
-    func setupBGMState(_ onOff: Bool) {
-        UserDefaults.standard.setValue(onOff, forKey: IdentifierUD.bgmState)
-        bgmSwitchState.accept(onOff)
+    func setupBGMState(_ info: SwithType) {
+        settingInfo.changeState(info)
+        settingSwitchState.accept(settingInfo)
+        do {
+            try userDefaults.setStruct(settingInfo, forKey: IdentifierUD.setting)
+        } catch {
+            print(error)
+        }
+        
     }
     
     private func updateDatabaseInformation(_ info: NetworkDTO) {
