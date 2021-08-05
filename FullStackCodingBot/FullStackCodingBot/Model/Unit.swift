@@ -3,17 +3,13 @@ import Foundation
 struct Unit: Equatable, Codable {
     let uuid: Int
     let image: String
+    let name: String
     var level: Int
-    
-    init(uuid: Int, image: String, level: Int) {
-        self.uuid = uuid
-        self.image = image
-        self.level = level
-    }
     
     init(info: UnitInfo, level: Int) {
         uuid = info.detail.id
         image = info.detail.image
+        name = info.rawValue
         self.level = level
     }
     
