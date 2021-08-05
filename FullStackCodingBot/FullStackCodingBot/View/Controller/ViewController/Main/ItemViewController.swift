@@ -2,7 +2,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NSObject_Rx
-import GhostTypewriter
 
 final class ItemViewController: UIViewController, ViewModelBindableType {
     
@@ -13,6 +12,7 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var itemCollectionView: UICollectionView!
     @IBOutlet weak var levelUpButton: LevelUpButton!
     @IBOutlet weak var availableMoneyLabel: UILabel!
+    private var feedbackGenerator: UINotificationFeedbackGenerator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,12 +45,36 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
             .drive(availableMoneyLabel.rx.text)
             .disposed(by: rx.disposeBag)
         
-        viewModel.status
-            .subscribe(onNext: { [unowned self] message in
-                self.infoView.show(text: message)
+        viewModel.levelUpStatus
+            .subscribe(onNext: { [unowned self] status in
+                self.infoView.show(text: message(for: status))
             }).disposed(by: rx.disposeBag)
         
         cancelButton.rx.action = viewModel.cancelAction
+    }
+    
+    private func message(for status: LevelUpStatus) -> String {
+        switch status {
+        case .success(let unit):
+            sendFeedback(type: .success)
+            return Text.levelUpSuccessed(unitType: unit.name, to: unit.level)
+        case .fail(let money):
+            sendFeedback(type: .error)
+            return Text.levelUpFailed(coinNeeded: money)
+        case .info:
+            return Text.levelUp
+        }
+    }
+    
+    private func sendFeedback(type feedbackType: UINotificationFeedbackGenerator.FeedbackType) {
+        guard checkStatus() else { return }
+        feedbackGenerator?.notificationOccurred(feedbackType)
+    }
+    
+    private func checkStatus() -> Bool {
+        let settings = try? UserDefaults.standard.getStruct(forKey: IdentifierUD.setting, castTo: SettingInformation.self)
+        let soundEffectState = settings?.checkState()[2] ?? true
+        return soundEffectState
     }
 }
 
@@ -60,6 +84,7 @@ private extension ItemViewController {
         setInfoViewObserver()
         setupDelegate()
         setupButtonAction()
+        setupFeedbackGenerator()
     }
     
     private func setInfoViewObserver() {
@@ -83,6 +108,11 @@ private extension ItemViewController {
             .subscribe(onNext: { [unowned self] _ in
                 self.viewModel.makeActionLeveUp()
             }).disposed(by: rx.disposeBag)
+    }
+    
+    private func setupFeedbackGenerator() {
+        feedbackGenerator = UINotificationFeedbackGenerator()
+        feedbackGenerator?.prepare()
     }
     
     private func setupItemInfomation(from unit: Unit) {

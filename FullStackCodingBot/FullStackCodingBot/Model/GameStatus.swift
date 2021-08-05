@@ -1,5 +1,11 @@
 import Foundation
 
+enum LevelUpStatus {
+    case success(Unit)
+    case fail(Int)
+    case info
+}
+
 enum GameStatus {
     case ready
     case new

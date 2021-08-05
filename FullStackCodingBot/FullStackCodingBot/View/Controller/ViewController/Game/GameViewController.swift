@@ -75,7 +75,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                     self.setToWrongStatus()
                     fallthrough
                 case .feverWrong:
-                    self.feedbackGenerator?.notificationOccurred(.error)
+                    self.sendFeedback(type: .error)
                 }
         }).disposed(by: rx.disposeBag)
         
@@ -117,6 +117,17 @@ final class GameViewController: UIViewController, ViewModelBindableType {
             .subscribe(onNext: { [unowned self] feverStatus in
                 self.setupTimeView(isFeverOn: feverStatus)
         }).disposed(by: rx.disposeBag)
+    }
+    
+    private func sendFeedback(type feedbackType: UINotificationFeedbackGenerator.FeedbackType) {
+        guard checkStatus() else { return }
+        feedbackGenerator?.notificationOccurred(feedbackType)
+    }
+    
+    private func checkStatus() -> Bool {
+        let settings = try? UserDefaults.standard.getStruct(forKey: IdentifierUD.setting, castTo: SettingInformation.self)
+        let soundEffectState = settings?.checkState()[2] ?? true
+        return soundEffectState
     }
 }
 
