@@ -20,6 +20,7 @@ final class MainViewModel: AdViewModel {
     }
     
     func makeMoveAction(to viewController: ViewControllerType) {
+        if !firebaseDidLoad.value { return }
         switch viewController {
         case .giftVC:
             let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, adStorage: adStorage, database: database)
@@ -104,7 +105,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     }
     
     func setupAppleGameCenterLogin() {
-        GKLocalPlayer.local.authenticateHandler = { gcViewController, error in
+        GKLocalPlayer.local.authenticateHandler = { [unowned self] gcViewController, error in
             guard error == nil else { return }
             self.observeFirebaseDataLoaded()
             
