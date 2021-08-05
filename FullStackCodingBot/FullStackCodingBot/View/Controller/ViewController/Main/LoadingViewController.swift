@@ -12,8 +12,6 @@ final class LoadingViewController: UIViewController, ViewModelBindableType {
     
     func bindViewModel() {
         
-        viewModel.setupAppleGameCenterLogin()
-        
         viewModel.firebaseDidLoad
             .subscribe(onNext: { [unowned self] isLoaded in
                 if isLoaded {
