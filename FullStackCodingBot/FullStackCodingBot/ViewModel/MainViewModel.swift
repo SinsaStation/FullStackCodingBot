@@ -117,6 +117,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                         guard error == nil else { return }
                         
                         if user != nil {
+                            if firebaseDidLoad.value { return }
                             getUserInformation()
                             userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
                         }
