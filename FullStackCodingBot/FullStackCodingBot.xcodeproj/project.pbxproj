@@ -54,6 +54,9 @@
 		71E2FD9B26B90C5A0032A54B /* SettingSwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2FD9A26B90C5A0032A54B /* SettingSwitchController.swift */; };
 		71E91E1726BA33190016386E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E91E1626BA33190016386E /* Extension.swift */; };
 		A0DEDFDADFEC4895FB093823 /* Pods_Full_Stack_Full_StackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA3377E4ACD3B197620DEA8 /* Pods_Full_Stack_Full_StackTests.framework */; };
+		E4150E9726B8F3E00041DD32 /* TypeWriterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4150E9626B8F3E00041DD32 /* TypeWriterView.swift */; };
+		E4150E9926BA37C10041DD32 /* FadeInTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4150E9826BA37C10041DD32 /* FadeInTextView.swift */; };
+		E4150E9B26BA49FA0041DD32 /* TextPresentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4150E9A26BA49FA0041DD32 /* TextPresentView.swift */; };
 		E41C85D4269BFB84008F2E91 /* GameUnitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D3269BFB84008F2E91 /* GameUnitManager.swift */; };
 		E41C85D6269C1C35008F2E91 /* GameOverButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D5269C1C35008F2E91 /* GameOverButtonController.swift */; };
 		E41C85D8269C252D008F2E91 /* GameUnitManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */; };
@@ -179,6 +182,9 @@
 		A9E77F924F0C6B24A39E65B2 /* Pods_Full_Stack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Full_Stack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C898C29DCF2CD33D2449FCAB /* Pods-FullStackCodingBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FullStackCodingBot.debug.xcconfig"; path = "Target Support Files/Pods-FullStackCodingBot/Pods-FullStackCodingBot.debug.xcconfig"; sourceTree = "<group>"; };
 		CFA3377E4ACD3B197620DEA8 /* Pods_Full_Stack_Full_StackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Full_Stack_Full_StackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4150E9626B8F3E00041DD32 /* TypeWriterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeWriterView.swift; sourceTree = "<group>"; };
+		E4150E9826BA37C10041DD32 /* FadeInTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInTextView.swift; sourceTree = "<group>"; };
+		E4150E9A26BA49FA0041DD32 /* TextPresentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPresentView.swift; sourceTree = "<group>"; };
 		E41C85D3269BFB84008F2E91 /* GameUnitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnitManager.swift; sourceTree = "<group>"; };
 		E41C85D5269C1C35008F2E91 /* GameOverButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverButtonController.swift; sourceTree = "<group>"; };
 		E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnitManagerType.swift; sourceTree = "<group>"; };
@@ -472,6 +478,53 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E4150E9326B8F3440041DD32 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				E45B0AC62692F42D006FDE3D /* UnitPerspectiveView.swift */,
+				E4779C642697E92F00B92D24 /* TimeProgressView.swift */,
+				E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */,
+				E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */,
+				E43B64A326AC2384001D9896 /* TimeBarView.swift */,
+				E4BF710826B00EF600E8645F /* FeverTimeBarView.swift */,
+				E4BF710A26B1324500E8645F /* ReadyView.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		E4150E9426B8F3490041DD32 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E4C2C34C26A24665007BDF81 /* SkyView.swift */,
+				710D0D4D2693F6E500244A16 /* ItemCell.swift */,
+				7164BFD1269679C6009769E4 /* MainItemView.swift */,
+				7164BFD526967BBE009769E4 /* MainItemView.xib */,
+				71307A8826A529F400C3191F /* LevelUpButton.swift */,
+				71307A8A26A52A1F00C3191F /* LevelUpButton.xib */,
+				E4DF614226A93FFB0061F6E9 /* ShopCell.swift */,
+				E4150E9C26BA4A000041DD32 /* Text Animation Views */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E4150E9526B8F34C0041DD32 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E43B649F26ABB4A2001D9896 /* UIImageExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E4150E9C26BA4A000041DD32 /* Text Animation Views */ = {
+			isa = PBXGroup;
+			children = (
+				E4150E9A26BA49FA0041DD32 /* TextPresentView.swift */,
+				E4150E9626B8F3E00041DD32 /* TypeWriterView.swift */,
+				E4150E9826BA37C10041DD32 /* FadeInTextView.swift */,
+			);
+			path = "Text Animation Views";
+			sourceTree = "<group>";
+		};
 		E45B0AA22692929C006FDE3D = {
 			isa = PBXGroup;
 			children = (
@@ -577,21 +630,9 @@
 		E4D7C6462693E82E00D58BA2 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				E45B0AC62692F42D006FDE3D /* UnitPerspectiveView.swift */,
-				710D0D4D2693F6E500244A16 /* ItemCell.swift */,
-				7164BFD1269679C6009769E4 /* MainItemView.swift */,
-				7164BFD526967BBE009769E4 /* MainItemView.xib */,
-				E4779C642697E92F00B92D24 /* TimeProgressView.swift */,
-				E4C2C34C26A24665007BDF81 /* SkyView.swift */,
-				E4C2C34E26A292BB007BDF81 /* ReplicateAnimationView.swift */,
-				E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */,
-				71307A8826A529F400C3191F /* LevelUpButton.swift */,
-				71307A8A26A52A1F00C3191F /* LevelUpButton.xib */,
-				E4DF614226A93FFB0061F6E9 /* ShopCell.swift */,
-				E43B649F26ABB4A2001D9896 /* UIImageExtension.swift */,
-				E43B64A326AC2384001D9896 /* TimeBarView.swift */,
-				E4BF710826B00EF600E8645F /* FeverTimeBarView.swift */,
-				E4BF710A26B1324500E8645F /* ReadyView.swift */,
+				E4150E9426B8F3490041DD32 /* Main */,
+				E4150E9326B8F3440041DD32 /* Game */,
+				E4150E9526B8F34C0041DD32 /* Extensions */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -849,6 +890,7 @@
 				E4C2C34D26A24666007BDF81 /* SkyView.swift in Sources */,
 				7177AEBC26B953B4005A4465 /* SettingInformation.swift in Sources */,
 				7164BFD2269679C6009769E4 /* MainItemView.swift in Sources */,
+				E4150E9726B8F3E00041DD32 /* TypeWriterView.swift in Sources */,
 				71310C2C26AA596B00733361 /* CoreDataStorage.xcdatamodeld in Sources */,
 				E4BF710526AFD45A00E8645F /* TimeManagerType.swift in Sources */,
 				710D0D4F2693F6E500244A16 /* ItemCell.swift in Sources */,
@@ -911,9 +953,11 @@
 				71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */,
 				71DF65472692F97000557693 /* RankViewModel.swift in Sources */,
 				E4BF712C26B3E6E300E8645F /* UnitInformation.swift in Sources */,
+				E4150E9926BA37C10041DD32 /* FadeInTextView.swift in Sources */,
 				E4779C652697E92F00B92D24 /* TimeProgressView.swift in Sources */,
 				71E2FD9B26B90C5A0032A54B /* SettingSwitchController.swift in Sources */,
 				7165CDDB2695789300891214 /* SyetemSettings.swift in Sources */,
+				E4150E9B26BA49FA0041DD32 /* TextPresentView.swift in Sources */,
 				E4BF715326B7EAA100E8645F /* AudioPlayerFactory.swift in Sources */,
 				71DF654F2692FB4C00557693 /* ViewModelBindableType.swift in Sources */,
 				E41C85D6269C1C35008F2E91 /* GameOverButtonController.swift in Sources */,

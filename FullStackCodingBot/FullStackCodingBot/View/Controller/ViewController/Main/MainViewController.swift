@@ -8,17 +8,17 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: MainViewModel!
     @IBOutlet var buttonController: MainButtonController!
-    @IBOutlet weak var titleLabel: TypewriterLabel!
     @IBOutlet weak var skyView: SkyView!
+    @IBOutlet weak var titleView: TypeWriterView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        setTitleViewObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        titleLabel.restartTypewritingAnimation()
+        titleView.show(text: Text.title)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -32,20 +32,15 @@ final class MainViewController: UIViewController, ViewModelBindableType {
             self.viewModel.makeMoveAction(to: viewController)
         }
     }
-}
-
-// MARK: Setup
-private extension MainViewController {
     
-    private func setup() {
-        setupTitleLabel()
-        titleLabel.startTypewritingAnimation()
+    private func setTitleViewObserver() {
+        titleView.addObserver(self, forKeyPath: #keyPath(UIView.bounds), options: .new, context: nil)
     }
-        
-    private func setupTitleLabel() {
-        let font = UIFont(name: Font.joystix, size: view.bounds.width * 0.04) ?? UIFont()
-        let attributedString = NSMutableAttributedString(string: Text.title)
-        attributedString.addAttribute(.font, value: font, range: .init(location: 0, length: Text.title.count))
-        titleLabel.attributedText = attributedString
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        guard let objectView = object as? TypeWriterView,
+              objectView === titleView,
+              keyPath == #keyPath(UIView.bounds) else { return }
+        titleView.layoutSubviews(with: Text.title)
     }
 }
