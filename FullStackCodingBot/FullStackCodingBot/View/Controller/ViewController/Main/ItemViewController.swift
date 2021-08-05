@@ -19,9 +19,9 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
         setup()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        infoView.layoutSubviews(with: Text.levelUp)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        infoView.show(text: Text.levelUp)
     }
     
     func bindViewModel() {
@@ -52,13 +52,25 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
         
         cancelButton.rx.action = viewModel.cancelAction
     }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        guard let objectView = object as? FadeInTextView,
+              objectView === infoView,
+              keyPath == #keyPath(UIView.bounds) else { return }
+        infoView.layoutSubviews(with: Text.levelUp)
+    }
 }
 
 // MARK: Setup
 private extension ItemViewController {
     private func setup() {
+        setInfoViewObserver()
         setupDelegate()
         setupButtonAction()
+    }
+    
+    private func setInfoViewObserver() {
+        infoView.addObserver(self, forKeyPath: #keyPath(UIView.bounds), options: .new, context: nil)
     }
     
     private func setupDelegate() {
@@ -70,17 +82,17 @@ private extension ItemViewController {
             }).disposed(by: rx.disposeBag)
     }
     
-    private func setupItemInfomation(from unit: Unit) {
-        mainItemView.configure(unit)
-        levelUpButton.configure(unit)
-        viewModel.checkLevelUpPrice()
-    }
-    
     private func setupButtonAction() {
         levelUpButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
                 self.viewModel.makeActionLeveUp()
             }).disposed(by: rx.disposeBag)
+    }
+    
+    private func setupItemInfomation(from unit: Unit) {
+        mainItemView.configure(unit)
+        levelUpButton.configure(unit)
+        viewModel.checkLevelUpPrice()
     }
 }
 

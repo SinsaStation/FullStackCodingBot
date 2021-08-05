@@ -19,9 +19,9 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
         setup()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        infoView.layoutSubviews(with: Text.shopReset)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        infoView.show(text: Text.shopReset)
     }
     
     func bindViewModel() {
@@ -59,13 +59,24 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
             print("이미 없어진 기프트!")
         }
     }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        guard let objectView = object as? FadeInTextView,
+              objectView === infoView,
+              keyPath == #keyPath(UIView.bounds) else { return }
+        infoView.layoutSubviews(with: Text.shopReset)
+    }
 }
 
 // MARK: Setup
 private extension ShopViewController {
     private func setup() {
+        setInfoViewObserver()
         setupDelegate()
-        infoView.show(text: Text.shopReset)
+    }
+    
+    private func setInfoViewObserver() {
+        infoView.addObserver(self, forKeyPath: #keyPath(UIView.bounds), options: .new, context: nil)
     }
     
     private func setupDelegate() {
