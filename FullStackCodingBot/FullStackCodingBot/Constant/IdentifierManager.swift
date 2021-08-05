@@ -19,7 +19,7 @@ enum IdentiferAD {
 
 enum IdentifierUD {
     static let hasLaunchedOnce = "hasLaunchedOnce"
-    static let bgmState = "bgmState"
+    static let setting = "setting"
 }
 
 enum IdentifierGC {

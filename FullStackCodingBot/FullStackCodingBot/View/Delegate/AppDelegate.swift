@@ -31,10 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func presentMainViewController() {
-        let settings = !userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce) ? true : userDefaults.bool(forKey: IdentifierUD.bgmState)
+        let data = try? userDefaults.getStruct(forKey: IdentifierUD.setting, castTo: SettingInformation.self)
+        let settings = !userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce) ? SettingInformation.defaultValues() : data ?? SettingInformation.defaultValues()
         let coordinator = SceneCoordinator(window: window!)
         let database = DatabaseManager(Database.database().reference())
-        let mainViewModel = MainViewModel(sceneCoordinator: coordinator, storage: storage, adStorage: adStorage, database: database, bgmState: settings)
+        let mainViewModel = MainViewModel(sceneCoordinator: coordinator, storage: storage, adStorage: adStorage, database: database, setting: settings)
         let mainScene = Scene.main(mainViewModel)
         coordinator.transition(to: mainScene, using: .root, with: StoryboardType.main, animated: false)
     }
