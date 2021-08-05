@@ -59,7 +59,7 @@ final class ItemViewModel: CommonViewModel {
             let new = storage.raiseLevel(of: targetUnit, using: requiredMoney)
             selectedUnit.accept(new)
             upgradedUnit.accept(new)
-            levelUpStatus.accept(.success(targetUnit))
+            levelUpStatus.accept(.success(new))
             soundEffectStation.play()
         case false:
             levelUpStatus.accept(.fail(requiredMoney))
