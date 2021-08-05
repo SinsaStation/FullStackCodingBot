@@ -22,7 +22,7 @@ final class MainItemView: UIView {
     
     func configure(_ info: Unit) {
         self.itemImageView.image = UIImage(named: info.image)
-        self.nameLabel.text = info.image
+        self.nameLabel.text = info.name
         self.levelLabel.text = "Lv. \(info.level)"
     }
     

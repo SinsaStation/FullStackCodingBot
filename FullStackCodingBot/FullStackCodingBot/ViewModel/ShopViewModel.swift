@@ -46,20 +46,19 @@ final class ShopViewModel: AdViewModel {
         adStorage.setNewRewardsIfPossible(with: .none)
     }
     
+    func adDidFinished(_ finishedAd: GADRewardedAd) {
+        adStorage.adDidFinished(finishedAd)
+    }
+    
     func giftTaken() {
         adStorage.giftTaken()
         addCoin()
     }
     
-    private func addCoin() {
+    func addCoin() {
         let moneyToRaise = ShopSetting.reward()
         storage.raiseMoney(by: moneyToRaise)
         reward.accept(moneyToRaise)
         soundEffectStation.play()
-    }
-    
-    func adDidFinished(_ finishedAd: GADRewardedAd) {
-        adStorage.adDidFinished(finishedAd)
-        addCoin()
     }
 }

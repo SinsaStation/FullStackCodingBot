@@ -7,9 +7,8 @@ import GoogleMobileAds
 final class ShopViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: ShopViewModel!
-    
     @IBOutlet weak var totalCoinLabel: UILabel!
-    @IBOutlet weak var rewardInfoLabel: TypewriterLabel!
+    @IBOutlet weak var infoView: FadeInTextView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var shopCollectionView: UICollectionView!
     
@@ -18,6 +17,11 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        infoView.show(text: Text.shopReset)
     }
     
     func bindViewModel() {
@@ -39,7 +43,7 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
         viewModel.reward
             .subscribe(onNext: { [unowned self] reward in
                 guard let reward = reward else { return }
-                self.setupInfoLabel(text: Text.reward(amount: reward))
+                self.infoView.show(text: Text.reward(amount: reward))
             }).disposed(by: rx.disposeBag)
 
         cancelButton.rx.action = viewModel.cancelAction
@@ -55,13 +59,24 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
             print("이미 없어진 기프트!")
         }
     }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        guard let objectView = object as? FadeInTextView,
+              objectView === infoView,
+              keyPath == #keyPath(UIView.bounds) else { return }
+        infoView.layoutSubviews(with: Text.shopReset)
+    }
 }
 
 // MARK: Setup
 private extension ShopViewController {
     private func setup() {
+        setInfoViewObserver()
         setupDelegate()
-        setupInfoLabel(text: Text.shopReset)
+    }
+    
+    private func setInfoViewObserver() {
+        infoView.addObserver(self, forKeyPath: #keyPath(UIView.bounds), options: .new, context: nil)
     }
     
     private func setupDelegate() {
@@ -71,14 +86,6 @@ private extension ShopViewController {
             .subscribe(onNext: { [unowned self] item in
                 self.viewModel.selectedItem.accept(item)
             }).disposed(by: rx.disposeBag)
-    }
-    
-    private func setupInfoLabel(text: String) {
-        let font = UIFont(name: Font.joystix, size: view.bounds.width * 0.04) ?? UIFont()
-        let attributedString = NSMutableAttributedString(string: text)
-        attributedString.addAttribute(.font, value: font, range: .init(location: 0, length: text.count))
-        rewardInfoLabel.attributedText = attributedString
-        rewardInfoLabel.restartTypewritingAnimation()
     }
 }
 
@@ -105,5 +112,10 @@ extension ShopViewController: GADFullScreenContentDelegate {
         adMob.present(fromRootViewController: self) { [unowned self] in
             self.viewModel.adDidFinished(adMob)
         }
+    }
+    
+    // swiftlint:disable:next identifier_name
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        viewModel.addCoin()
     }
 }
