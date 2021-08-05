@@ -47,16 +47,16 @@ struct Unit: Equatable, Codable {
     }
 }
 
-enum UnitInfo: CaseIterable {
+enum UnitInfo: String, CaseIterable {
     case swift
     case kotlin
     case java
-    case cPlusPlus
+    case cPlusPlus = "C++"
     case python
-    case theC
+    case theC = "C"
     case php
     case javaScript
-    case cSharp
+    case cSharp = "C#"
     case ruby
     
     var detail: (image: String, id: Int) {
