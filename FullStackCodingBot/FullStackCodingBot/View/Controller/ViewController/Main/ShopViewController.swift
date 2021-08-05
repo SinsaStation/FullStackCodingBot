@@ -94,8 +94,7 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let xInset = (shopCollectionView.frame.width - itemWidth * 3) / 2.5
-        let yInset: CGFloat = 0 // (shopCollectionView.frame.height - (itemWidth * 2)) / 2
-        return UIEdgeInsets(top: yInset, left: xInset, bottom: yInset, right: xInset)
+        return UIEdgeInsets(top: 0, left: xInset, bottom: 0, right: xInset)
     }
 }
 
@@ -107,10 +106,5 @@ extension ShopViewController: GADFullScreenContentDelegate {
         adMob.present(fromRootViewController: self) { [unowned self] in
             self.viewModel.adDidFinished(adMob)
         }
-    }
-    
-    // swiftlint:disable:next identifier_name
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        viewModel.addCoin()
     }
 }
