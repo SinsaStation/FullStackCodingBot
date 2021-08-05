@@ -8,7 +8,8 @@ struct MusicStation {
     private var gameMusicPlayer = AudioPlayerFactory.create(of: Music.game, mode: .music)
 
     func play(type: Music) {
-        guard checkStatus() else { return }
+        guard UserDefaults.checkStatus(of: .bgm) else { return }
+        
         switch type {
         case .main:
             mainMusicPlayer?.currentTime = 0
@@ -20,13 +21,7 @@ struct MusicStation {
             mainMusicPlayer?.stop()
         }
     }
-    
-    private func checkStatus() -> Bool {
-        let settings = try? UserDefaults.standard.getStruct(forKey: IdentifierUD.setting, castTo: SettingInformation.self)
-        let soundEffectState = settings?.checkState()[0] ?? true
-        return soundEffectState
-    }
-    
+
     func stop() {
         mainMusicPlayer?.stop()
         gameMusicPlayer?.stop()

@@ -67,14 +67,8 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
     }
     
     private func sendFeedback(type feedbackType: UINotificationFeedbackGenerator.FeedbackType) {
-        guard checkStatus() else { return }
+        guard UserDefaults.checkStatus(of: .vibration) else { return }
         feedbackGenerator?.notificationOccurred(feedbackType)
-    }
-    
-    private func checkStatus() -> Bool {
-        let settings = try? UserDefaults.standard.getStruct(forKey: IdentifierUD.setting, castTo: SettingInformation.self)
-        let soundEffectState = settings?.checkState()[2] ?? true
-        return soundEffectState
     }
 }
 

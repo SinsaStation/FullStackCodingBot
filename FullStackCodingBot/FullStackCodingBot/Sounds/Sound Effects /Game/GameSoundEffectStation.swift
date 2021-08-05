@@ -12,7 +12,8 @@ struct GameSoundEffectStation {
     private var gameOverSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.gameOver, mode: .effect)
 
     func play(type: GameSoundEffect) {
-        guard checkStatus() else { return }
+        guard UserDefaults.checkStatus(of: .sound) else { return }
+        
         switch type {
         case .ready:
             readySoundPlayer?.currentTime = 0
@@ -33,12 +34,6 @@ struct GameSoundEffectStation {
             gameOverSoundPlayer?.currentTime = 0
             gameOverSoundPlayer?.play()
         }
-    }
-    
-    private func checkStatus() -> Bool {
-        let settings = try? userDefaults.getStruct(forKey: IdentifierUD.setting, castTo: SettingInformation.self)
-        let soundEffectState = settings?.checkState()[1] ?? true
-        return soundEffectState
     }
 }
 
