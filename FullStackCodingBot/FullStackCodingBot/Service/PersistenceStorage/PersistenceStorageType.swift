@@ -5,12 +5,6 @@ import RxCocoa
 
 protocol PersistenceStorageType {
     
-    var selectedUnit: BehaviorRelay<Unit> { get }
-    
-    func didLoaded()
-    
-    func initializeData(_ units: [Unit], _ money: Int, _ score: Int)
-    
     @discardableResult
     func myHighScore() -> Int
     
@@ -35,5 +29,6 @@ protocol PersistenceStorageType {
     @discardableResult
     func raiseMoney(by money: Int) -> Observable<Int>
     
+    @discardableResult
     func updateHighScore(new score: Int) -> Bool
 }

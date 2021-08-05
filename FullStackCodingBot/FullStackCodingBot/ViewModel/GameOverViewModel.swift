@@ -34,6 +34,7 @@ final class GameOverViewModel: CommonViewModel {
         storeReward()
         updateHighScore()
         storeHightScoreToGameCenter()
+        MusicStation.shared.stop()
     }
     
     private func storeReward() {
@@ -53,12 +54,12 @@ final class GameOverViewModel: CommonViewModel {
             sceneCoordinator.close(animated: true)
         case .mainVC:
             sceneCoordinator.toMain(animated: true)
+            MusicStation.shared.play(type: .main)
         }
     }
     
     private func storeHightScoreToGameCenter() {
         let bestScore = GKScore(leaderboardIdentifier: IdentifierGC.leaderboard)
-        print(storage.myHighScore())
         bestScore.value = Int64(storage.myHighScore())
         GKScore.report([bestScore]) { error in
             if let error = error {

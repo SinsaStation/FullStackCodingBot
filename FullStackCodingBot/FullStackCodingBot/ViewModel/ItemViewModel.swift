@@ -4,7 +4,11 @@ import RxCocoa
 import Action
 
 final class ItemViewModel: CommonViewModel {
-        
+    
+    var defaultUnit: Unit {
+        return storage.itemList().first!
+    }
+    
     var itemStorage: Driver<[Unit]> {
         return storage.listUnit().asDriver(onErrorJustReturn: [])
     }
@@ -15,21 +19,26 @@ final class ItemViewModel: CommonViewModel {
     
     let isPossibleToLevelUp = BehaviorRelay<Bool>(value: false)
     let cancelAction: CocoaAction
-    lazy var selectedUnit = BehaviorRelay<Unit>(value: Unit(info: .swift, level: 1))
+    lazy var selectedUnit = BehaviorRelay<Unit>(value: defaultUnit)
     lazy var status = BehaviorRelay<String>(value: Text.levelUp)
     lazy var upgradedUnit = BehaviorRelay<Unit?>(value: nil)
+    private let soundEffectStation: SingleSoundEffectStation
     private var feedbackGenerator: UINotificationFeedbackGenerator?
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: DatabaseManagerType, cancelAction: CocoaAction? = nil) {
+    init(sceneCoordinator: SceneCoordinatorType,
+         storage: PersistenceStorageType,
+         database: DatabaseManagerType,
+         cancelAction: CocoaAction? = nil,
+         soundEffectType: MainSoundEffect = .upgrade) {
         self.cancelAction = CocoaAction {
             if let action = cancelAction {
                 action.execute(())
             }
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
+        self.soundEffectStation = SingleSoundEffectStation(soundEffectType: soundEffectType)
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
         setupFeedbackGenerator()
-        obseverSelectedUnit()
     }
     
     func checkLevelUpPrice() {
@@ -53,6 +62,7 @@ final class ItemViewModel: CommonViewModel {
             selectedUnit.accept(new)
             upgradedUnit.accept(new)
             status.accept(Text.levelUpSuccessed(unitType: unitName, to: new.level))
+            soundEffectStation.play()
             feedbackGenerator?.notificationOccurred(.success)
         case false:
             status.accept(Text.levelUpFailed(coinNeeded: requiredMoney))
@@ -63,12 +73,5 @@ final class ItemViewModel: CommonViewModel {
     private func setupFeedbackGenerator() {
         feedbackGenerator = UINotificationFeedbackGenerator()
         feedbackGenerator?.prepare()
-    }
-    
-    private func obseverSelectedUnit() {
-        storage.selectedUnit
-            .subscribe(onNext: { [unowned self] unit in
-                self.selectedUnit.accept(unit)
-            }).disposed(by: rx.disposeBag)
     }
 }

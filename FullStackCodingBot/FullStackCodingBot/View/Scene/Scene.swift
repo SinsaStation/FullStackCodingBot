@@ -3,6 +3,8 @@ import GameKit
 
 enum Scene {
     case main(MainViewModel)
+    case load(MainViewModel)
+    case setting(MainViewModel)
     case shop(ShopViewModel)
     case rank(RankViewModel)
     case item(ItemViewModel)
@@ -84,6 +86,20 @@ extension Scene {
             let confirmAction = UIAlertAction(title: message.content.confirm, style: .cancel)
             alertScene.addAction(confirmAction)
             return alertScene
+            
+        case .load(let viewModel):
+            guard var loadVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.loading) as? LoadingViewController else {
+                fatalError()
+            }
+            loadVC.bind(viewModel: viewModel)
+            return loadVC
+            
+        case .setting(let viewModel):
+            guard var settingVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.setting) as? SettingViewController else {
+                fatalError()
+            }
+            settingVC.bind(viewModel: viewModel)
+            return settingVC
         }
     }
 }

@@ -22,8 +22,14 @@ final class AdStorage: AdStorageType {
         self.ads = ads
     }
     
-    func updateIfPossible() -> Bool {
-        guard isUpdatable() else { return false }
+    func setNewRewardsIfPossible(with newInfo: AdsInformation?) -> Bool {
+        let currentInfo = newInfo ?? currentInformation()
+        lastUpdate = currentInfo.lastUpdated
+        
+        guard isUpdatable() else {
+            setRewards(from: currentInfo)
+            return false
+        }
         setAds()
         setGifts()
         return true
@@ -36,13 +42,7 @@ final class AdStorage: AdStorageType {
         return !isUpdated
     }
     
-    func updateAdsInformation(_ info: AdsInformation) {
-        lastUpdate = info.lastUpdated
-        guard !updateIfPossible() else { return }
-        showCurrentRewards(from: info)
-    }
-    
-    private func showCurrentRewards(from currentInfo: AdsInformation) {
+    private func setRewards(from currentInfo: AdsInformation) {
         let currentAdStates = currentInfo.ads
         setAds(with: currentAdStates)
         
@@ -108,7 +108,7 @@ final class AdStorage: AdStorageType {
         publishCurrentItems()
     }
     
-    func adsInformation() -> AdsInformation {
+    func currentInformation() -> AdsInformation {
         let ads = ads.map { $0 != nil }
         let result = AdsInformation(ads: ads, lastUpdated: lastUpdate, gift: giftStatus == .available ? 0 : nil)
         return result
