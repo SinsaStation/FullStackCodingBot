@@ -46,9 +46,9 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 
 > ### Setting
 >
-> - [ ] 이동 Button
-> - [ ] 기본 UI
-> - [ ] 배경음악 on/off
+> - [x] 이동 Button
+> - [x] 기본 UI
+> - [x] 배경음악 on/off
 > - [ ] How to play
 
 > ### Item
