@@ -1,7 +1,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import GhostTypewriter
 import GoogleMobileAds
 
 final class ShopViewController: UIViewController, ViewModelBindableType {
@@ -56,7 +55,7 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
         case .gift:
             self.viewModel.giftTaken()
         case .taken:
-            print("이미 없어진 기프트!")
+            self.infoView.show(text: Text.giftTaken)
         }
     }
 }
