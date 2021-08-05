@@ -128,7 +128,15 @@ final class GameViewController: UIViewController, ViewModelBindableType {
 // MARK: - Setup
 private extension GameViewController {
     private func setup() {
+        setReadyViewObserver()
         setupFeedbackGenerator()
+    }
+    
+    private func setReadyViewObserver() {
+        readyView.rx.observe(CGRect.self, "bounds")
+            .subscribe(onNext: { [unowned self ] _ in
+                self.readyView.playAnimation()
+            }).disposed(by: rx.disposeBag)
     }
     
     private func setupFeedbackGenerator() {
