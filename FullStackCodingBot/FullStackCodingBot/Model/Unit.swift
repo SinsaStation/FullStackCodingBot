@@ -3,17 +3,13 @@ import Foundation
 struct Unit: Equatable, Codable {
     let uuid: Int
     let image: String
+    let name: String
     var level: Int
-    
-    init(uuid: Int, image: String, level: Int) {
-        self.uuid = uuid
-        self.image = image
-        self.level = level
-    }
     
     init(info: UnitInfo, level: Int) {
         uuid = info.detail.id
         image = info.detail.image
+        name = info.rawValue
         self.level = level
     }
     
@@ -47,16 +43,16 @@ struct Unit: Equatable, Codable {
     }
 }
 
-enum UnitInfo: CaseIterable {
+enum UnitInfo: String, CaseIterable {
     case swift
     case kotlin
     case java
-    case cPlusPlus
+    case cPlusPlus = "C++"
     case python
-    case theC
+    case theC = "C"
     case php
     case javaScript
-    case cSharp
+    case cSharp = "C#"
     case ruby
     
     var detail: (image: String, id: Int) {
