@@ -59,13 +59,6 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
             print("이미 없어진 기프트!")
         }
     }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        guard let objectView = object as? FadeInTextView,
-              objectView === infoView,
-              keyPath == #keyPath(UIView.bounds) else { return }
-        infoView.layoutSubviews(with: Text.shopReset)
-    }
 }
 
 // MARK: Setup
@@ -76,7 +69,10 @@ private extension ShopViewController {
     }
     
     private func setInfoViewObserver() {
-        infoView.addObserver(self, forKeyPath: #keyPath(UIView.bounds), options: .new, context: nil)
+        infoView.rx.observe(CGRect.self, "bounds")
+            .subscribe(onNext: { [unowned self ] _ in
+                self.infoView.layoutSubviews(with: Text.shopReset)
+            }).disposed(by: rx.disposeBag)
     }
     
     private func setupDelegate() {

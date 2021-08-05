@@ -1,6 +1,6 @@
 import UIKit
 import RxSwift
-import GhostTypewriter
+import RxCocoa
 import GameKit
 import Firebase
 
@@ -34,13 +34,9 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     }
     
     private func setTitleViewObserver() {
-        titleView.addObserver(self, forKeyPath: #keyPath(UIView.bounds), options: .new, context: nil)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        guard let objectView = object as? TypeWriterView,
-              objectView === titleView,
-              keyPath == #keyPath(UIView.bounds) else { return }
-        titleView.layoutSubviews(with: Text.title)
+        titleView.rx.observe(CGRect.self, "bounds")
+            .subscribe(onNext: { [unowned self ] _ in
+                self.titleView.layoutSubviews(with: Text.title)
+            }).disposed(by: rx.disposeBag)
     }
 }
