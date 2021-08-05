@@ -53,7 +53,7 @@ final class ItemViewModel: CommonViewModel {
     }
     
     func makeActionLeveUp() {
-        let unitName = selectedUnit.value.image
+        let unitName = selectedUnit.value.name
         let requiredMoney = selectedUnit.value.level * 100
         
         switch isPossibleToLevelUp.value {

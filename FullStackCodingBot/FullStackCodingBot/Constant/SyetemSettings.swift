@@ -33,7 +33,7 @@ enum Text {
     static let levelUp = "Tab button to level up!"
     
     static func levelUpSuccessed(unitType: String, to level: Int) -> String {
-        return "Yay! \(unitType) did level up to \(level)!"
+        return "\(unitType) did level up to \(level)!"
     }
     
     static func levelUpFailed(coinNeeded: Int) -> String {
