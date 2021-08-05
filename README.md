@@ -10,7 +10,7 @@
 |:---:|:---:|:---:|
 |AdsScene|GameScene|FeverScene|
 
-|<img src="https://user-images.githubusercontent.com/74946802/127594356-583622b3-0525-4ee3-9d67-6fb2c59edb74.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594358-97e467cd-bc6d-48ca-93b5-b02b94a1ef98.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594354-ea70eaa5-5d4a-4607-8443-de5ce5945cbe.png" width="300">|
+|<img src="https://user-images.githubusercontent.com/74946802/127594356-583622b3-0525-4ee3-9d67-6fb2c59edb74.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594358-97e467cd-bc6d-48ca-93b5-b02b94a1ef98.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/128288746-9fc783e6-2c8d-4c67-8453-04bda1472a04.png" width="300">|
 |:---:|:---:|:---:|
 |PauseScene|GameOverScene|SettingScene|
 
