@@ -74,12 +74,13 @@ final class MainViewModel: AdViewModel {
     func setupBGMState(_ info: SwithType) {
         settingInfo.changeState(info)
         settingSwitchState.accept(settingInfo)
+        
         do {
             try userDefaults.setStruct(settingInfo, forKey: IdentifierUD.setting)
+            if info == .bgm { MusicStation.shared.toggle() }
         } catch {
             print(error)
         }
-        
     }
     
     private func updateDatabaseInformation(_ info: NetworkDTO) {

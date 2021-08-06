@@ -75,7 +75,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                     self.setToWrongStatus()
                     fallthrough
                 case .feverWrong:
-                    self.feedbackGenerator?.notificationOccurred(.error)
+                    self.sendFeedback(type: .error)
                 }
         }).disposed(by: rx.disposeBag)
         
@@ -118,12 +118,25 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                 self.setupTimeView(isFeverOn: feverStatus)
         }).disposed(by: rx.disposeBag)
     }
+    
+    private func sendFeedback(type feedbackType: UINotificationFeedbackGenerator.FeedbackType) {
+        guard UserDefaults.checkStatus(of: .vibration) else { return }
+        feedbackGenerator?.notificationOccurred(feedbackType)
+    }
 }
 
 // MARK: - Setup
 private extension GameViewController {
     private func setup() {
+        setReadyViewObserver()
         setupFeedbackGenerator()
+    }
+    
+    private func setReadyViewObserver() {
+        readyView.rx.observe(CGRect.self, "bounds")
+            .subscribe(onNext: { [unowned self ] _ in
+                self.readyView.playAnimation()
+            }).disposed(by: rx.disposeBag)
     }
     
     private func setupFeedbackGenerator() {

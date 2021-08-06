@@ -2,21 +2,16 @@ import Foundation
 import RxSwift
 import GoogleMobileAds
 
-enum GiftStatus {
-    case available
-    case taken
-}
-
 final class AdStorage: AdStorageType {
 
     private var lastUpdate: Date
-    private var giftStatus: GiftStatus
-    private var ads: [GADRewardedAd?]
+    private var giftStatus: ShopItem
+    private var ads: [ShopItem]
     private lazy var itemStorage = BehaviorSubject(value: items())
     
     init(lastUpdate: Date = Date(timeIntervalSince1970: 0),
-         giftStatus: GiftStatus = .taken,
-         ads: [GADRewardedAd?] = Array(repeating: nil, count: ShopSetting.adForADay)) {
+         giftStatus: ShopItem = .taken,
+         ads: [ShopItem] = Array(repeating: .taken, count: ShopSetting.adForADay)) {
         self.lastUpdate = lastUpdate
         self.giftStatus = giftStatus
         self.ads = ads
@@ -46,7 +41,7 @@ final class AdStorage: AdStorageType {
         let currentAdStates = currentInfo.ads
         setAds(with: currentAdStates)
         
-        let currentGiftState: GiftStatus = currentInfo.gift != nil ? .available : .taken
+        let currentGiftState: ShopItem = currentInfo.gift != nil ? .gift : .taken
         setGifts(with: currentGiftState)
     }
     
@@ -54,11 +49,12 @@ final class AdStorage: AdStorageType {
         adStates.enumerated().forEach { index, isAvailable in
             if isAvailable {
                 downloadAd(to: index)
+                self.ads[index] = ShopItem.loading
             } else {
-                self.ads[index] = nil
-                publishCurrentItems()
+                self.ads[index] = ShopItem.taken
             }
         }
+        publishCurrentItems()
     }
     
     private func downloadAd(to index: Int) {
@@ -70,7 +66,7 @@ final class AdStorage: AdStorageType {
                 return
             }
             guard let newAd = ads else { return }
-            self.ads[index] = newAd
+            self.ads[index] = ShopItem.adMob(newAd)
             self.publishCurrentItems()
         }
     }
@@ -79,15 +75,13 @@ final class AdStorage: AdStorageType {
         itemStorage.onNext(items())
     }
     
-    private func setGifts(with giftState: GiftStatus = .available) {
+    private func setGifts(with giftState: ShopItem = .gift) {
         self.giftStatus = giftState
         publishCurrentItems()
     }
     
     private func items() -> [ShopItem] {
-        let adItems = ads.map { $0 != nil ? ShopItem.adMob($0!) : ShopItem.taken }
-        let giftItem = giftStatus == .available ? ShopItem.gift : ShopItem.taken
-        return adItems + [giftItem]
+        return ads + [giftStatus]
     }
     
     func availableItems() -> Observable<[ShopItem]> {
@@ -96,8 +90,13 @@ final class AdStorage: AdStorageType {
     
     func adDidFinished(_ finishedAd: GADRewardedAd) {
         ads.enumerated().forEach { index, targetAd in
-            if targetAd == finishedAd {
-                ads[index] = nil
+            switch targetAd {
+            case .adMob(let targetAd):
+                if targetAd == finishedAd {
+                    ads[index] = .taken
+                }
+            default:
+                return
             }
         }
         publishCurrentItems()
@@ -109,8 +108,29 @@ final class AdStorage: AdStorageType {
     }
     
     func currentInformation() -> AdsInformation {
-        let ads = ads.map { $0 != nil }
-        let result = AdsInformation(ads: ads, lastUpdated: lastUpdate, gift: giftStatus == .available ? 0 : nil)
+        let ads = adsToStatus()
+        let gift = giftToStatus()
+        let result = AdsInformation(ads: ads, lastUpdated: lastUpdate, gift: gift)
         return result
+    }
+        
+    private func adsToStatus() -> [Bool] {
+        return ads.map { status in
+            switch status {
+            case .taken:
+                return false
+            default:
+                return true
+            }
+        }
+    }
+    
+    private func giftToStatus() -> Int? {
+        switch giftStatus {
+        case .gift:
+            return 0
+        default:
+            return nil
+        }
     }
 }
