@@ -10,7 +10,7 @@
 |:---:|:---:|:---:|
 |AdsScene|GameScene|FeverScene|
 
-|<img src="https://user-images.githubusercontent.com/74946802/127594356-583622b3-0525-4ee3-9d67-6fb2c59edb74.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594358-97e467cd-bc6d-48ca-93b5-b02b94a1ef98.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594354-ea70eaa5-5d4a-4607-8443-de5ce5945cbe.png" width="300">|
+|<img src="https://user-images.githubusercontent.com/74946802/127594356-583622b3-0525-4ee3-9d67-6fb2c59edb74.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594358-97e467cd-bc6d-48ca-93b5-b02b94a1ef98.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/128288746-9fc783e6-2c8d-4c67-8453-04bda1472a04.png" width="300">|
 |:---:|:---:|:---:|
 |PauseScene|GameOverScene|SettingScene|
 
@@ -26,7 +26,9 @@
 ## History
 ### 서우석
 ```
-챌린지 했던 내용 요약해서 쓰기 2~3줄
+프로젝트 초반에 생성해두었던 MemoryStorage를 PersistenceStorage로 수정했던 작업이 기억에 남습니다.  
+MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존성을 주입해서 코드를 설계했던 덕분에 쉽게 객체 바꿔치기가 가능했습니다.  
+적절한 protocol 사용과 의존성 주입이 유연한 코드 작성에 얼마나 효과적인지 직접 느낄 수 있었습니다.
 ```
 
 > ### Main 
@@ -40,6 +42,14 @@
 > - [x] 화면 이동
 > - [x] CommonViewModel (모든 viewModel의 super class)
 > - [x] MemoryStorage 및 CRUD 메서드
+> - [x] Loading ViewController & Activity Indicator
+
+> ### Setting
+>
+> - [x] 이동 Button
+> - [x] 기본 UI
+> - [x] 배경음악 on/off
+> - [ ] How to play
 
 > ### Item
 >
@@ -78,6 +88,7 @@
 > - [x] Firebase와 Data 통신을 위한  DataFormatManager 생성
 > - [x] Coredata와 Data 연동(background 진입 / 앱 종료 시)
 > - [x] Real Time DB json
+> - [x] Data 다운로드 완료시 LoadingVC dismiss
 
 > ### User Defaults
 >
@@ -98,7 +109,8 @@
 > ### Main
 >
 > - [x] Image Asset을 적용한 UI - AutoLayout
-> - [x]  BackgroundView의 랜덤 구름 Animation
+> - [x] BackgroundView의 랜덤 구름 Animation
+> - [x] Title View 텍스트의 Type Writer Animation
 
 
 
@@ -106,8 +118,8 @@
 >
 > - [x] Image Asset을 적용한 UI - AutoLayout
 > - [x] Item Upgrade 성공 Animation - 이미지 평균 컬러 반영
+> - [x] Info View 텍스트의 Fade In Animation
 > - [x] Item Upgrade 성공 여부에 따른 Haptic 
-
 
 
 > ### Ads
@@ -122,6 +134,7 @@
 >
 > - [x] UI 구축 - AutoLayout
 > - [x] Game Play Logic 구현 - GameUnitManager
+> - [ ] Match 성공 시 랜덤 코드 Animation
 > - [x] Match 실패 대응 - Haptic 적용, Wrong Animation, 버튼 Cool time
 > - [x] 게임 유닛 릴즈의 PerspectiveView & Animation 
 > - [x] Game Over Logic 구현 - TimeManager
@@ -149,6 +162,14 @@
 > - [x] BackgroundView Animation
 
 
+> ### Unit Test
+>
+> - [x] AdStorage 테스트
+
+> ### Audio
+>
+> - [x] 배경음, 효과음 재생 컨트롤 - Sound Station 객체들
+> - [ ] User Default와 연동
 
 ---
 
