@@ -12,8 +12,8 @@ final class MainViewModel: AdViewModel {
     lazy var settingSwitchState = BehaviorRelay<SettingInformation>(value: settingInfo)
     let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, setting: SettingInformation) {
-        self.settingInfo = setting
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, settings: SettingInformation) {
+        self.settingInfo = settings
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
         
         setupAppleGameCenterLogin()
@@ -74,12 +74,13 @@ final class MainViewModel: AdViewModel {
     func setupBGMState(_ info: SwithType) {
         settingInfo.changeState(info)
         settingSwitchState.accept(settingInfo)
+        
         do {
             try userDefaults.setStruct(settingInfo, forKey: IdentifierUD.setting)
+            if info == .bgm { MusicStation.shared.toggle() }
         } catch {
             print(error)
         }
-        
     }
     
     private func updateDatabaseInformation(_ info: NetworkDTO) {

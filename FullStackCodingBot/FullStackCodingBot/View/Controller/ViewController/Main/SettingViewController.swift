@@ -11,7 +11,6 @@ final class SettingViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
-        
         settingSwitchController.setupSwitch()
         settingSwitchController.bind { [unowned self] settingInfo in
             self.viewModel.setupBGMState(settingInfo)

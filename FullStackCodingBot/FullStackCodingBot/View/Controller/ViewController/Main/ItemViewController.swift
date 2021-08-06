@@ -2,7 +2,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NSObject_Rx
-import GhostTypewriter
 
 final class ItemViewController: UIViewController, ViewModelBindableType {
     
@@ -13,6 +12,7 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var itemCollectionView: UICollectionView!
     @IBOutlet weak var levelUpButton: LevelUpButton!
     @IBOutlet weak var availableMoneyLabel: UILabel!
+    private var feedbackGenerator: UINotificationFeedbackGenerator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,19 +45,30 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
             .drive(availableMoneyLabel.rx.text)
             .disposed(by: rx.disposeBag)
         
-        viewModel.status
-            .subscribe(onNext: { [unowned self] message in
-                self.infoView.show(text: message)
+        viewModel.levelUpStatus
+            .subscribe(onNext: { [unowned self] status in
+                self.infoView.show(text: message(for: status))
             }).disposed(by: rx.disposeBag)
         
         cancelButton.rx.action = viewModel.cancelAction
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        guard let objectView = object as? FadeInTextView,
-              objectView === infoView,
-              keyPath == #keyPath(UIView.bounds) else { return }
-        infoView.layoutSubviews(with: Text.levelUp)
+    private func message(for status: LevelUpStatus) -> String {
+        switch status {
+        case .success(let unit):
+            sendFeedback(type: .success)
+            return Text.levelUpSuccessed(unitType: unit.name, to: unit.level)
+        case .fail(let money):
+            sendFeedback(type: .error)
+            return Text.levelUpFailed(coinNeeded: money)
+        case .info:
+            return Text.levelUp
+        }
+    }
+    
+    private func sendFeedback(type feedbackType: UINotificationFeedbackGenerator.FeedbackType) {
+        guard UserDefaults.checkStatus(of: .vibration) else { return }
+        feedbackGenerator?.notificationOccurred(feedbackType)
     }
 }
 
@@ -67,10 +78,14 @@ private extension ItemViewController {
         setInfoViewObserver()
         setupDelegate()
         setupButtonAction()
+        setupFeedbackGenerator()
     }
     
     private func setInfoViewObserver() {
-        infoView.addObserver(self, forKeyPath: #keyPath(UIView.bounds), options: .new, context: nil)
+        infoView.rx.observe(CGRect.self, "bounds")
+            .subscribe(onNext: { [unowned self ] _ in
+                self.infoView.layoutSubviews(with: Text.levelUp)
+            }).disposed(by: rx.disposeBag)
     }
     
     private func setupDelegate() {
@@ -89,6 +104,11 @@ private extension ItemViewController {
             }).disposed(by: rx.disposeBag)
     }
     
+    private func setupFeedbackGenerator() {
+        feedbackGenerator = UINotificationFeedbackGenerator()
+        feedbackGenerator?.prepare()
+    }
+    
     private func setupItemInfomation(from unit: Unit) {
         mainItemView.configure(unit)
         levelUpButton.configure(unit)
@@ -105,7 +125,7 @@ extension ItemViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let yInset = itemCollectionView.frame.height * 0.1
+        let yInset = itemCollectionView.frame.height * 0.05
         let xInset = itemCollectionView.frame.width * 0.05
         return UIEdgeInsets(top: yInset, left: xInset, bottom: yInset, right: xInset)
     }

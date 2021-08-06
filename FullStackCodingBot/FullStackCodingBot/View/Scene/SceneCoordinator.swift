@@ -25,6 +25,7 @@ final class SceneCoordinator: SceneCoordinatorType {
             
         case .fullScreen:
             target.modalPresentationStyle = .fullScreen
+            target.modalTransitionStyle = .crossDissolve
             currentVC.present(target, animated: animated) {
                 subject.onCompleted()
             }

@@ -3,6 +3,7 @@ import AVFoundation
 
 struct GameSoundEffectStation {
     
+    private let userDefaults = UserDefaults.standard
     private var readySoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.ready, mode: .effect)
     private var correctSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.correct, mode: .effect)
     private var wrongSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.wrong, mode: .effect)
@@ -11,6 +12,8 @@ struct GameSoundEffectStation {
     private var gameOverSoundPlayer = AudioPlayerFactory.create(of: GameSoundEffect.gameOver, mode: .effect)
 
     func play(type: GameSoundEffect) {
+        guard UserDefaults.checkStatus(of: .sound) else { return }
+        
         switch type {
         case .ready:
             readySoundPlayer?.currentTime = 0

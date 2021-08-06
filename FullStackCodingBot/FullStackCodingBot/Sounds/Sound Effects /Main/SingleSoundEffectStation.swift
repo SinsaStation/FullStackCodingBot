@@ -3,6 +3,7 @@ import AVFoundation
 
 struct SingleSoundEffectStation {
     
+    private let userDefaults = UserDefaults.standard
     private var soundEffectPlayer: AVAudioPlayer?
     
     init(soundEffectType: MainSoundEffect) {
@@ -10,6 +11,7 @@ struct SingleSoundEffectStation {
     }
     
     func play() {
+        guard UserDefaults.checkStatus(of: .sound) else { return }
         soundEffectPlayer?.currentTime = 0
         soundEffectPlayer?.play()
     }
