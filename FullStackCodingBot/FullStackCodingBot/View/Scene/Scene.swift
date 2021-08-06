@@ -5,6 +5,7 @@ enum Scene {
     case main(MainViewModel)
     case load(MainViewModel)
     case setting(MainViewModel)
+    case story(StoryViewModel)
     case shop(ShopViewModel)
     case rank(RankViewModel)
     case item(ItemViewModel)
@@ -100,6 +101,13 @@ extension Scene {
             }
             settingVC.bind(viewModel: viewModel)
             return settingVC
+            
+        case .story(let viewModel):
+            guard var storyVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.story) as? StoryViewController else {
+                fatalError()
+            }
+            storyVC.bind(viewModel: viewModel)
+            return storyVC
         }
     }
 }

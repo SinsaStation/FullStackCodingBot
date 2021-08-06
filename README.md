@@ -51,6 +51,12 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 > - [x] 배경음악 on/off
 > - [ ] How to play
 
+> ### Story
+>
+> - [x] 스토리 구상
+> -[x] 기본 UI
+> -[x] StoryScene 로직
+
 > ### Item
 >
 > - [x] 기본 UI
