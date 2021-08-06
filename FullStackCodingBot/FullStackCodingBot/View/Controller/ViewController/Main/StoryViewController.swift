@@ -26,7 +26,7 @@ final class StoryViewController: UIViewController, ViewModelBindableType {
     }
     
     private func setTextInfo(_ index: Int) {
-        if index == 7 {
+        if index == 8 {
             viewModel.makeMoveActionToMain()
             return
         }

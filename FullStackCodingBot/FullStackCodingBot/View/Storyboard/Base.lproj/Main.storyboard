@@ -279,7 +279,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYE-Zf-l1E">
-                                <rect key="frame" x="23" y="580.33333333333337" width="66" height="44"/>
+                                <rect key="frame" x="23" y="580.33333333333337" width="78" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -308,7 +308,7 @@
                             <constraint firstItem="Gae-QZ-P0d" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TYE-Zf-l1E" secondAttribute="trailing" id="bh4-Yq-G3k"/>
                             <constraint firstItem="TYE-Zf-l1E" firstAttribute="height" secondItem="FCo-7c-ldw" secondAttribute="height" multiplier="0.0521327" id="dz2-gH-jzG"/>
                             <constraint firstItem="lLG-ul-R00" firstAttribute="centerX" secondItem="FCo-7c-ldw" secondAttribute="centerX" id="tlN-Dh-Oqx"/>
-                            <constraint firstItem="TYE-Zf-l1E" firstAttribute="width" secondItem="FCo-7c-ldw" secondAttribute="width" multiplier="0.169231" id="xOw-Xe-fTH"/>
+                            <constraint firstItem="TYE-Zf-l1E" firstAttribute="width" secondItem="FCo-7c-ldw" secondAttribute="width" multiplier="0.2" id="xOw-Xe-fTH"/>
                         </constraints>
                     </view>
                     <connections>
@@ -532,7 +532,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="MVD-tj-IxR">
-                                        <rect key="frame" x="48.666666666666657" y="8.6666666666666714" width="117" height="22"/>
+                                        <rect key="frame" x="48.666666666666657" y="9.3333333333333286" width="117" height="21"/>
                                         <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -937,7 +937,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="b3i-P5-hMw">
-                                        <rect key="frame" x="48.666666666666657" y="9.0000000000000018" width="117" height="21.666666666666671"/>
+                                        <rect key="frame" x="48.666666666666657" y="9.3333333333333357" width="117" height="21"/>
                                         <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
