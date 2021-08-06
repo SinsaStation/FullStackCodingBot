@@ -25,6 +25,7 @@
 		715A83EE269FE96300C9CEFF /* StoryboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A83ED269FE96300C9CEFF /* StoryboardType.swift */; };
 		715C1C9426BCF9FF0025C681 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C1C9326BCF9FF0025C681 /* StoryViewController.swift */; };
 		715C1C9626BD04B70025C681 /* StoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C1C9526BD04B70025C681 /* StoryManager.swift */; };
+		715C1C9826BD09950025C681 /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C1C9726BD09950025C681 /* StoryViewModel.swift */; };
 		7164BFD2269679C6009769E4 /* MainItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7164BFD1269679C6009769E4 /* MainItemView.swift */; };
 		7164BFD626967BBE009769E4 /* MainItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7164BFD526967BBE009769E4 /* MainItemView.xib */; };
 		7165CDDB2695789300891214 /* SyetemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165CDDA2695789300891214 /* SyetemSettings.swift */; };
@@ -153,6 +154,7 @@
 		715A83ED269FE96300C9CEFF /* StoryboardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardType.swift; sourceTree = "<group>"; };
 		715C1C9326BCF9FF0025C681 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		715C1C9526BD04B70025C681 /* StoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryManager.swift; sourceTree = "<group>"; };
+		715C1C9726BD09950025C681 /* StoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModel.swift; sourceTree = "<group>"; };
 		7164BFD1269679C6009769E4 /* MainItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainItemView.swift; sourceTree = "<group>"; };
 		7164BFD526967BBE009769E4 /* MainItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemView.xib; sourceTree = "<group>"; };
 		7165CDDA2695789300891214 /* SyetemSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyetemSettings.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				E41C85DC269C50F0008F2E91 /* PauseViewModel.swift */,
 				71DF65542692FD1400557693 /* CommonViewModel.swift */,
 				E4DF613E26A847330061F6E9 /* AdViewModel.swift */,
+				715C1C9726BD09950025C681 /* StoryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -936,6 +939,7 @@
 				711A69EC26B3B13E00C7C99A /* LoadingViewController.swift in Sources */,
 				719AB9DE26B7ADF2001B5913 /* SettingViewController.swift in Sources */,
 				71DF65552692FD1400557693 /* CommonViewModel.swift in Sources */,
+				715C1C9826BD09950025C681 /* StoryViewModel.swift in Sources */,
 				E4DF613F26A847330061F6E9 /* AdViewModel.swift in Sources */,
 				710D0D442693EA6900244A16 /* GameViewModel.swift in Sources */,
 				71DF65492692F97900557693 /* ItemViewModel.swift in Sources */,

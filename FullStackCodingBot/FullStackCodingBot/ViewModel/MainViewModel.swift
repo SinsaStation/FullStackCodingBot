@@ -12,8 +12,8 @@ final class MainViewModel: AdViewModel {
     lazy var settingSwitchState = BehaviorRelay<SettingInformation>(value: settingInfo)
     let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, setting: SettingInformation) {
-        self.settingInfo = setting
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, settings: SettingInformation) {
+        self.settingInfo = settings
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
         
         setupAppleGameCenterLogin()

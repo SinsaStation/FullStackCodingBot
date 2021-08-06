@@ -5,7 +5,7 @@ enum Scene {
     case main(MainViewModel)
     case load(MainViewModel)
     case setting(MainViewModel)
-    case story(MainViewModel)
+    case story(StoryViewModel)
     case shop(ShopViewModel)
     case rank(RankViewModel)
     case item(ItemViewModel)

@@ -311,6 +311,11 @@
                             <constraint firstItem="TYE-Zf-l1E" firstAttribute="width" secondItem="FCo-7c-ldw" secondAttribute="width" multiplier="0.169231" id="xOw-Xe-fTH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scriptTextView" destination="V0B-1R-b2I" id="eBv-Ir-rNR"/>
+                        <outlet property="speakerLabel" destination="TYE-Zf-l1E" id="8XL-MV-fEl"/>
+                        <outlet property="storyView" destination="lLG-ul-R00" id="bvf-lp-lcI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VL4-hn-h8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -843,10 +848,10 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ItemCell" reuseIdentifier="ItemCell" id="LIR-ze-whG" customClass="ItemCell" customModule="Full_Stack" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="10.333333333333334" width="128" height="127.99999999999997"/>
+                                                        <rect key="frame" x="0.0" y="10.333333333333334" width="128" height="127.99999999999999"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Qld-28-lVQ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="127.99999999999997"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="127.99999999999999"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3pq-Wk-Jff">
