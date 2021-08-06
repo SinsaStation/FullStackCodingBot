@@ -56,6 +56,8 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
             self.viewModel.giftTaken()
         case .taken:
             self.infoView.show(text: Text.giftTaken)
+        case .loading:
+            self.infoView.show(text: Text.giftLoading)
         }
     }
 }
