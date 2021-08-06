@@ -60,6 +60,7 @@ private extension AppDelegate {
     private func getFirstScene(_ hasLaunchedOnce: Bool, _ viewModel: MainViewModel) -> Scene {
         let mainScene = Scene.main(viewModel)
         let storyScene = Scene.story(viewModel)
-        return hasLaunchedOnce ? mainScene : storyScene
+//        return hasLaunchedOnce ? mainScene : storyScene
+        return storyScene
     }
 }
