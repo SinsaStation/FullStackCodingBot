@@ -262,7 +262,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfO-gp-AEN" userLabel="Story Stack View">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyt-Pb-tMB" userLabel="Person Story View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyt-Pb-tMB" userLabel="Person Story View" customClass="PersonStoryView" customModule="Full_Stack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="story_office1" translatesAutoresizingMaskIntoConstraints="NO" id="a6z-ot-1eV" userLabel="Background Image View">
@@ -351,8 +351,15 @@
                                             <constraint firstItem="gHD-lx-9HU" firstAttribute="width" secondItem="uyt-Pb-tMB" secondAttribute="width" multiplier="0.68" id="yxK-nf-QoL"/>
                                             <constraint firstItem="yT4-FW-kDD" firstAttribute="centerY" secondItem="uyt-Pb-tMB" secondAttribute="centerY" multiplier="1.68" id="zOo-5l-VI7"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="backgroundImageView" destination="a6z-ot-1eV" id="MiO-y4-dLk"/>
+                                            <outlet property="roleLabel" destination="4hf-gA-dvh" id="fxK-Yz-FGc"/>
+                                            <outlet property="scriptTextView" destination="V0B-1R-b2I" id="pcq-gN-8Kg"/>
+                                            <outlet property="speakerImageView" destination="gHD-lx-9HU" id="fYq-hn-tEU"/>
+                                            <outlet property="speakerLabel" destination="TYE-Zf-l1E" id="OPQ-mY-t2v"/>
+                                        </connections>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5v-6e-aMG" userLabel="Full Image Story View">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5v-6e-aMG" userLabel="Full Image Story View" customClass="FullImageStoryView" customModule="Full_Stack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="926"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="story_person_angry" translatesAutoresizingMaskIntoConstraints="NO" id="Qjf-G3-45i">
@@ -392,6 +399,10 @@
                                             <constraint firstItem="Qjf-G3-45i" firstAttribute="centerX" secondItem="n5v-6e-aMG" secondAttribute="centerX" id="Tt2-S5-ZoP"/>
                                             <constraint firstItem="2Ae-Yn-Ibn" firstAttribute="width" secondItem="n5v-6e-aMG" secondAttribute="width" multiplier="0.9" id="btP-fx-GPR"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="Qjf-G3-45i" id="60I-xH-McG"/>
+                                            <outlet property="scriptLabel" destination="Eey-tL-qUk" id="Ea8-fu-OEl"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -410,10 +421,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="roleLabel" destination="4hf-gA-dvh" id="lEz-b6-Dwx"/>
-                        <outlet property="scriptTextView" destination="V0B-1R-b2I" id="eBv-Ir-rNR"/>
-                        <outlet property="speakerImageView" destination="gHD-lx-9HU" id="LIn-Ra-qUM"/>
-                        <outlet property="speakerLabel" destination="TYE-Zf-l1E" id="8XL-MV-fEl"/>
+                        <outlet property="fullImageStoryView" destination="n5v-6e-aMG" id="g6v-D7-awo"/>
+                        <outlet property="personStoryView" destination="uyt-Pb-tMB" id="0O1-7E-PYO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VL4-hn-h8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -6,9 +6,8 @@ final class StoryViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: StoryViewModel!
     
-    @IBOutlet weak var storyView: UIView!
-    @IBOutlet weak var speakerLabel: UILabel!
-    @IBOutlet weak var scriptTextView: UITextView!
+    @IBOutlet weak var personStoryView: PersonStoryView!
+    @IBOutlet weak var fullImageStoryView: FullImageStoryView!
     
     private let story = StoryManager.allCases
     
@@ -31,7 +30,5 @@ final class StoryViewController: UIViewController, ViewModelBindableType {
             return
         }
         let storyInfo = story[index]
-        speakerLabel.text = storyInfo.content.name
-        scriptTextView.text = storyInfo.content.script
     }
 }
