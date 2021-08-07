@@ -275,7 +275,10 @@
                                                 <rect key="frame" x="0.0" y="648.33333333333337" width="428" height="259"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="매우 언짢은 개발자" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0B-1R-b2I">
-                                                        <rect key="frame" x="42.666666666666657" y="64" width="342.66666666666674" height="195"/>
+                                                        <rect key="frame" x="21.333333333333343" y="64" width="385.33333333333326" height="195"/>
+                                                        <accessibility key="accessibilityConfiguration">
+                                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                        </accessibility>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -330,7 +333,7 @@
                                                     <constraint firstItem="4hf-gA-dvh" firstAttribute="centerY" secondItem="gLZ-1e-hcQ" secondAttribute="centerY" id="OAP-bk-TQT"/>
                                                     <constraint firstItem="gLZ-1e-hcQ" firstAttribute="top" secondItem="yT4-FW-kDD" secondAttribute="top" constant="15" id="bzX-XO-CCa"/>
                                                     <constraint firstAttribute="bottom" secondItem="V0B-1R-b2I" secondAttribute="bottom" id="dDg-sY-OVt"/>
-                                                    <constraint firstItem="V0B-1R-b2I" firstAttribute="width" secondItem="yT4-FW-kDD" secondAttribute="width" multiplier="0.8" id="hre-D0-Pzz"/>
+                                                    <constraint firstItem="V0B-1R-b2I" firstAttribute="width" secondItem="yT4-FW-kDD" secondAttribute="width" multiplier="0.9" id="hre-D0-Pzz"/>
                                                     <constraint firstItem="gLZ-1e-hcQ" firstAttribute="leading" secondItem="yT4-FW-kDD" secondAttribute="leading" constant="15" id="j1U-LZ-pqg"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4hf-gA-dvh" secondAttribute="trailing" id="oO0-K2-3eK"/>
                                                     <constraint firstItem="4hf-gA-dvh" firstAttribute="leading" secondItem="gLZ-1e-hcQ" secondAttribute="trailing" constant="8" id="zG5-k1-DRz"/>
@@ -362,7 +365,7 @@
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5v-6e-aMG" userLabel="Full Image Story View" customClass="FullImageStoryView" customModule="Full_Stack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="926"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="story_person_angry" translatesAutoresizingMaskIntoConstraints="NO" id="Qjf-G3-45i">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="story_person_angry" translatesAutoresizingMaskIntoConstraints="NO" id="Qjf-G3-45i">
                                                 <rect key="frame" x="0.0" y="0.0" width="0.0" height="926"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ae-Yn-Ibn" userLabel="Label Background View">
