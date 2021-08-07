@@ -19,7 +19,6 @@ final class StoryViewModel: AdViewModel {
         self.sceneCoordinator.transition(to: mainScene, using: .root, with: StoryboardType.main, animated: true)
     }
     
-    
     func setupStoryTimer() {
         Observable<Int>
             .interval(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
