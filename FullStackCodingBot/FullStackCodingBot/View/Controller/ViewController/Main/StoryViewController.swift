@@ -9,7 +9,7 @@ final class StoryViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var personStoryView: PersonStoryView!
     @IBOutlet weak var fullImageStoryView: FullImageStoryView!
     
-    private let story = StoryManager.allCases
+    private let story = Script.all
     
     override func viewDidLoad() {
         super.viewDidLoad()
