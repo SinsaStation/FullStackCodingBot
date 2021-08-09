@@ -8,6 +8,7 @@ final class AdStorage: AdStorageType {
     private var giftStatus: ShopItem
     private var ads: [ShopItem]
     private lazy var itemStorage = BehaviorSubject(value: items())
+    private let disposeBag = DisposeBag()
     
     init(lastUpdate: Date = Date(timeIntervalSince1970: 0),
          giftStatus: ShopItem = .taken,
@@ -17,17 +18,30 @@ final class AdStorage: AdStorageType {
         self.ads = ads
     }
     
-    func setNewRewardsIfPossible(with newInfo: AdsInformation?) -> Bool {
-        let currentInfo = newInfo ?? currentInformation()
-        lastUpdate = currentInfo.lastUpdated
-        
-        guard isUpdatable() else {
-            setRewards(from: currentInfo)
-            return false
+    func setNewRewardsIfPossible(with newInfo: AdsInformation?) -> Observable<Bool> {
+        Observable.create { [unowned self] observer in
+            let currentInfo = newInfo ?? self.currentInformation()
+            self.lastUpdate = currentInfo.lastUpdated
+            
+            if !isUpdatable() {
+                setRewards(from: currentInfo)
+                    .subscribe(onError: { error in
+                        observer.onError(error)
+                    }).disposed(by: disposeBag)
+                observer.onNext(false)
+                observer.onCompleted()
+                return Disposables.create()
+            }
+            
+            setAds().subscribe(onError: { error in
+                    observer.onError(error)
+                }).disposed(by: disposeBag)
+            setGifts()
+            
+            observer.onNext(true)
+            observer.onCompleted()
+            return Disposables.create()
         }
-        setAds()
-        setGifts()
-        return true
     }
     
     private func isUpdatable() -> Bool {
@@ -37,37 +51,52 @@ final class AdStorage: AdStorageType {
         return !isUpdated
     }
     
-    private func setRewards(from currentInfo: AdsInformation) {
-        let currentAdStates = currentInfo.ads
-        setAds(with: currentAdStates)
-        
-        let currentGiftState: ShopItem = currentInfo.gift != nil ? .gift : .taken
-        setGifts(with: currentGiftState)
-    }
-    
-    private func setAds(with adStates: [Bool] = Array(repeating: true, count: ShopSetting.adForADay)) {
-        adStates.enumerated().forEach { index, isAvailable in
-            if isAvailable {
-                downloadAd(to: index)
-                self.ads[index] = ShopItem.loading
-            } else {
-                self.ads[index] = ShopItem.taken
-            }
+    private func setRewards(from currentInfo: AdsInformation) -> Observable<Void> {
+        Observable.create { [unowned self] observer in
+            let currentAdStates = currentInfo.ads
+            self.setAds(with: currentAdStates)
+                .subscribe(onError: { error in
+                    observer.onError(error)
+                }).disposed(by: disposeBag)
+            let currentGiftState: ShopItem = currentInfo.gift != nil ? .gift : .taken
+            self.setGifts(with: currentGiftState)
+            return Disposables.create()
         }
-        publishCurrentItems()
     }
     
-    private func downloadAd(to index: Int) {
-        let request = GADRequest()
-        
-        GADRewardedAd.load(withAdUnitID: IdentiferAD.test, request: request) { [unowned self] ads, error in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return
+    private func setAds(with adStates: [Bool] = Array(repeating: true, count: ShopSetting.adForADay)) -> Observable<Void> {
+        Observable.create { [unowned self] observer in
+            adStates.enumerated().forEach { index, isAvailable in
+                if isAvailable {
+                    self.downloadAd(to: index)
+                        .subscribe(onError: { error in
+                            observer.onError(error)
+                        }).disposed(by: disposeBag)
+                    self.ads[index] = ShopItem.loading
+                } else {
+                    self.ads[index] = ShopItem.taken
+                }
             }
-            guard let newAd = ads else { return }
-            self.ads[index] = ShopItem.adMob(newAd)
-            self.publishCurrentItems()
+            publishCurrentItems()
+            return Disposables.create()
+        }
+    }
+    
+    private func downloadAd(to index: Int) -> Observable<Void> {
+        Observable.create { observer in
+            let request = GADRequest()
+            GADRewardedAd.load(withAdUnitID: IdentiferAD.test, request: request) { [unowned self] ads, error in
+                
+                if let error = error {
+                    observer.onError(error)
+                }
+                
+                if let newAd = ads {
+                    self.ads[index] = ShopItem.adMob(newAd)
+                    self.publishCurrentItems()
+                }
+            }
+            return Disposables.create()
         }
     }
     

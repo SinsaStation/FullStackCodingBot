@@ -89,6 +89,9 @@ final class MainViewModel: AdViewModel {
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
         adStorage.setNewRewardsIfPossible(with: info.ads)
+            .subscribe(onError: { error in
+                print(error)
+            }).disposed(by: rx.disposeBag)
     }
     
     private func observeFirebaseDataLoaded() {
