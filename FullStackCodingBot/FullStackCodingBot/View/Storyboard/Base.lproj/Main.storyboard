@@ -275,7 +275,7 @@
                                                 <rect key="frame" x="0.0" y="648.33333333333337" width="428" height="259"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="매우 언짢은 개발자" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0B-1R-b2I">
-                                                        <rect key="frame" x="21.333333333333343" y="64" width="385.33333333333326" height="195"/>
+                                                        <rect key="frame" x="21.333333333333343" y="62" width="385.33333333333326" height="197"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                                         </accessibility>
@@ -284,10 +284,10 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLZ-1e-hcQ" userLabel="Name Tag View">
-                                                        <rect key="frame" x="15" y="15" width="85.666666666666671" height="34"/>
+                                                        <rect key="frame" x="15" y="15" width="107" height="32"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="디버그" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TYE-Zf-l1E">
-                                                                <rect key="frame" x="6.3333333333333286" y="2.3333333333332558" width="73" height="29.333333333333329"/>
+                                                                <rect key="frame" x="8" y="2.3333333333332575" width="91" height="27.333333333333332"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -307,7 +307,7 @@
                                                             <constraint firstItem="TYE-Zf-l1E" firstAttribute="centerX" secondItem="gLZ-1e-hcQ" secondAttribute="centerX" id="cVd-HP-KWT"/>
                                                             <constraint firstItem="TYE-Zf-l1E" firstAttribute="width" secondItem="gLZ-1e-hcQ" secondAttribute="width" multiplier="0.85" id="fka-4t-QkR"/>
                                                             <constraint firstItem="TYE-Zf-l1E" firstAttribute="centerY" secondItem="gLZ-1e-hcQ" secondAttribute="centerY" id="lIe-5b-qnI"/>
-                                                            <constraint firstAttribute="width" secondItem="gLZ-1e-hcQ" secondAttribute="height" multiplier="5:2" id="lPY-85-pGX"/>
+                                                            <constraint firstAttribute="width" secondItem="gLZ-1e-hcQ" secondAttribute="height" multiplier="5:1.5" id="lPY-85-pGX"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -319,7 +319,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 백엔드 개발자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4hf-gA-dvh">
-                                                        <rect key="frame" x="108.66666666666666" y="21" width="107.66666666666666" height="21.666666666666671"/>
+                                                        <rect key="frame" x="130" y="20" width="107.66666666666669" height="21.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <color key="textColor" name="mildgreen"/>
                                                         <color key="highlightedColor" name="AccentColor"/>
@@ -329,7 +329,7 @@
                                                 <constraints>
                                                     <constraint firstItem="V0B-1R-b2I" firstAttribute="centerX" secondItem="yT4-FW-kDD" secondAttribute="centerX" id="1Sq-G6-Eag"/>
                                                     <constraint firstItem="V0B-1R-b2I" firstAttribute="top" secondItem="gLZ-1e-hcQ" secondAttribute="bottom" constant="15" id="IY6-Ur-FxE"/>
-                                                    <constraint firstItem="gLZ-1e-hcQ" firstAttribute="width" secondItem="yT4-FW-kDD" secondAttribute="width" multiplier="0.2" id="Jhm-PM-1g2"/>
+                                                    <constraint firstItem="gLZ-1e-hcQ" firstAttribute="width" secondItem="yT4-FW-kDD" secondAttribute="width" multiplier="0.25" id="Jhm-PM-1g2"/>
                                                     <constraint firstItem="4hf-gA-dvh" firstAttribute="centerY" secondItem="gLZ-1e-hcQ" secondAttribute="centerY" id="OAP-bk-TQT"/>
                                                     <constraint firstItem="gLZ-1e-hcQ" firstAttribute="top" secondItem="yT4-FW-kDD" secondAttribute="top" constant="15" id="bzX-XO-CCa"/>
                                                     <constraint firstAttribute="bottom" secondItem="V0B-1R-b2I" secondAttribute="bottom" id="dDg-sY-OVt"/>
@@ -381,7 +381,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="Eey-tL-qUk" firstAttribute="centerX" secondItem="2Ae-Yn-Ibn" secondAttribute="centerX" id="5iO-YX-eNt"/>
-                                                    <constraint firstAttribute="width" secondItem="2Ae-Yn-Ibn" secondAttribute="height" multiplier="9:2" id="Wpj-5H-GxG"/>
+                                                    <constraint firstAttribute="width" secondItem="2Ae-Yn-Ibn" secondAttribute="height" multiplier="9:1.3" id="Wpj-5H-GxG"/>
                                                     <constraint firstItem="Eey-tL-qUk" firstAttribute="width" secondItem="2Ae-Yn-Ibn" secondAttribute="width" multiplier="0.9" id="lV5-qh-g9E"/>
                                                     <constraint firstItem="Eey-tL-qUk" firstAttribute="centerY" secondItem="2Ae-Yn-Ibn" secondAttribute="centerY" id="vQo-AT-GYS"/>
                                                 </constraints>
@@ -395,12 +395,12 @@
                                         <color key="backgroundColor" name="red"/>
                                         <constraints>
                                             <constraint firstItem="2Ae-Yn-Ibn" firstAttribute="centerY" secondItem="n5v-6e-aMG" secondAttribute="centerY" multiplier="1.65" id="45K-mh-pOu"/>
-                                            <constraint firstItem="Qjf-G3-45i" firstAttribute="width" secondItem="n5v-6e-aMG" secondAttribute="width" id="KqM-rW-CsE"/>
+                                            <constraint firstItem="Qjf-G3-45i" firstAttribute="width" secondItem="n5v-6e-aMG" secondAttribute="width" multiplier="1.3" id="KqM-rW-CsE"/>
                                             <constraint firstItem="Qjf-G3-45i" firstAttribute="centerY" secondItem="n5v-6e-aMG" secondAttribute="centerY" id="OwK-BJ-zy9"/>
                                             <constraint firstItem="2Ae-Yn-Ibn" firstAttribute="centerX" secondItem="n5v-6e-aMG" secondAttribute="centerX" id="QNr-Gy-lMT"/>
                                             <constraint firstItem="Qjf-G3-45i" firstAttribute="height" secondItem="n5v-6e-aMG" secondAttribute="height" id="Rmd-hq-UFy"/>
                                             <constraint firstItem="Qjf-G3-45i" firstAttribute="centerX" secondItem="n5v-6e-aMG" secondAttribute="centerX" id="Tt2-S5-ZoP"/>
-                                            <constraint firstItem="2Ae-Yn-Ibn" firstAttribute="width" secondItem="n5v-6e-aMG" secondAttribute="width" multiplier="0.9" id="btP-fx-GPR"/>
+                                            <constraint firstItem="2Ae-Yn-Ibn" firstAttribute="width" secondItem="n5v-6e-aMG" secondAttribute="width" multiplier="0.85" id="btP-fx-GPR"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="Qjf-G3-45i" id="60I-xH-McG"/>
