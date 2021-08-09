@@ -8,30 +8,21 @@ final class StoryViewController: UIViewController, ViewModelBindableType {
     
     @IBOutlet weak var personStoryView: PersonStoryView!
     @IBOutlet weak var fullImageStoryView: FullImageStoryView!
-    private let story = Script.all
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+
     func bindViewModel() {
         viewModel.setupStoryTimer()
         
-        viewModel.storyTimer
-            .subscribe(onNext: { [unowned self] index in
-                self.setTextInfo(index)
+        viewModel.script
+            .subscribe(onNext: { [unowned self] script in
+                guard let script = script else { return }
+                self.play(script)
             }).disposed(by: rx.disposeBag)
     }
     
-    private func setTextInfo(_ index: Int) {
-        if index == story.count {
-            viewModel.makeMoveActionToMain()
-            return
-        }
-        let script = story[index]
+    private func play(_ script: Script) {
         script.speaker == nil ? enableFullImageView(with: script) : enablePersonView(with: script)
     }
-    
+
     private func enableFullImageView(with script: Script) {
         changePersonView(to: false)
         fullImageStoryView.show(with: script)

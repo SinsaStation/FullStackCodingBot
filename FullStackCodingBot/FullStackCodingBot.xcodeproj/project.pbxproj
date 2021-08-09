@@ -79,6 +79,7 @@
 		E4779C652697E92F00B92D24 /* TimeProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4779C642697E92F00B92D24 /* TimeProgressView.swift */; };
 		E4779C6726983F5700B92D24 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4779C6626983F5700B92D24 /* GameOverViewController.swift */; };
 		E4779C6926983F8000B92D24 /* GameOverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4779C6826983F8000B92D24 /* GameOverViewModel.swift */; };
+		E4A40F9926C1038F003E40B2 /* StoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A40F9826C1038F003E40B2 /* StoryManager.swift */; };
 		E4BF70FF26AEF3F700E8645F /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF70FE26AEF3F700E8645F /* GameStatus.swift */; };
 		E4BF710126AFB0AD00E8645F /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF710026AFB0AD00E8645F /* TimeManager.swift */; };
 		E4BF710326AFCC7500E8645F /* FeverManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF710226AFCC7500E8645F /* FeverManager.swift */; };
@@ -215,6 +216,7 @@
 		E4779C642697E92F00B92D24 /* TimeProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeProgressView.swift; sourceTree = "<group>"; };
 		E4779C6626983F5700B92D24 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		E4779C6826983F8000B92D24 /* GameOverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewModel.swift; sourceTree = "<group>"; };
+		E4A40F9826C1038F003E40B2 /* StoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryManager.swift; sourceTree = "<group>"; };
 		E4BF70FE26AEF3F700E8645F /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		E4BF710026AFB0AD00E8645F /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		E4BF710226AFCC7500E8645F /* FeverManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeverManager.swift; sourceTree = "<group>"; };
@@ -552,6 +554,7 @@
 		E4150EA226BE9A3E0041DD32 /* Story */ = {
 			isa = PBXGroup;
 			children = (
+				E4A40F9826C1038F003E40B2 /* StoryManager.swift */,
 				715C1C9526BD04B70025C681 /* Script.swift */,
 				E4150EA326BE9A540041DD32 /* Line.swift */,
 			);
@@ -982,6 +985,7 @@
 				71DF65432692F95800557693 /* ShopViewModel.swift in Sources */,
 				71DF65512692FBCC00557693 /* SceneCoordinatorType.swift in Sources */,
 				71BC752E26A940A10021BA1A /* DataFormatManager.swift in Sources */,
+				E4A40F9926C1038F003E40B2 /* StoryManager.swift in Sources */,
 				715A83EE269FE96300C9CEFF /* StoryboardType.swift in Sources */,
 				71307AB126A53C7B00C3191F /* AlertMessage.swift in Sources */,
 				71E91E1726BA33190016386E /* Extension.swift in Sources */,

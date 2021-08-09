@@ -62,4 +62,11 @@ struct Script {
             self.imageName = line.special?.imageTag
         }
     }
+    
+    func runTime() -> Double {
+        let wordCount = line.count
+        var runTime = Double(wordCount) * 0.2
+        runTime += runTime < 1 ? 1 : 0
+        return runTime
+    }
 }
