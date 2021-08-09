@@ -31,6 +31,7 @@ final class ItemViewController: UIViewController, ViewModelBindableType {
             }.disposed(by: rx.disposeBag)
         
         viewModel.selectedUnit
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] unit in
                 self.setupItemInfomation(from: unit)
             }).disposed(by: rx.disposeBag)

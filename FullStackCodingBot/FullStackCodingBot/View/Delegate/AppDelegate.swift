@@ -61,22 +61,18 @@ private extension AppDelegate {
                                _ database: DatabaseManager,
                                _ settings: SettingInformation) -> Scene {
         
-//        switch hasLaunchedOnce {
-//        
-//        case true:
-//            let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settings)
-//            let mainScene = Scene.main(mainViewModel)
-//            return mainScene
-//            
-//        case false:
-//            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settings)
-//            let storyScene = Scene.story(storyViewModel)
-//            return storyScene
-//            
-//        }
+        switch hasLaunchedOnce {
         
-        let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settings)
-        let storyScene = Scene.story(storyViewModel)
-        return storyScene
+        case true:
+            let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settings)
+            let mainScene = Scene.main(mainViewModel)
+            return mainScene
+            
+        case false:
+            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settings)
+            let storyScene = Scene.story(storyViewModel)
+            return storyScene
+            
+        }
     }
 }
