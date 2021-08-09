@@ -65,8 +65,7 @@ struct Script {
     
     func runTime() -> Double {
         let wordCount = line.count
-        var runTime = Double(wordCount) * 0.2
-        runTime += runTime < 1 ? 1 : 0
+        let runTime = 1.7 + Double(wordCount) * 0.075
         return runTime
     }
 }

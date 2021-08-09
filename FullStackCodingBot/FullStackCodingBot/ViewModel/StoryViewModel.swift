@@ -16,10 +16,11 @@ final class StoryViewModel: AdViewModel {
     
     func setupStoryTimer() {
         Observable<Int>
-            .interval(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+            .interval(RxTimeInterval.milliseconds(100), scheduler: MainScheduler.instance)
             .map { $0 + 1 }
             .subscribe(onNext: { [unowned self] time in
-                let status = storyManager.status(for: time)
+                let realTime = Double(time) / 10
+                let status = storyManager.status(for: realTime)
                 
                 switch status {
                 case .new(let script):

@@ -22,9 +22,9 @@ final class StoryManager {
         return currentPage >= story.count ? nil : story[currentPage]
     }
     
-    func status(for currentTime: Int) -> StoryStatus {
+    func status(for currentTime: Double) -> StoryStatus {
         let currentTimeStamp = timeLine[currentPage]
-        guard Double(currentTime) >= currentTimeStamp else { return .stay }
+        guard currentTime >= currentTimeStamp else { return .stay }
         currentPage += 1
         return current() != nil ? .new(current()!) : .end
     }
