@@ -8,7 +8,6 @@ struct ErrorMessage {
 enum AlertMessage {
     case networkLoad
     
-    // swiftlint:disable:next large_tuple
     var content: (message: ErrorMessage, confirm: String) {
         switch self {
         case .networkLoad:

@@ -20,7 +20,8 @@ final class MainViewModel: AdViewModel {
     }
     
     func makeMoveAction(to viewController: ViewControllerType) {
-        if !firebaseDidLoad.value { return }
+        guard firebaseDidLoad.value else { return }
+        
         switch viewController {
         case .giftVC:
             let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, adStorage: adStorage, database: database)
@@ -64,7 +65,7 @@ final class MainViewModel: AdViewModel {
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] data in
                 self.updateDatabaseInformation(data)
-            }, onError: { error in
+            }, onError: { _ in
                 self.networkLoadError()
             }, onCompleted: { [unowned self] in
                 self.firebaseDidLoad.accept(true)
