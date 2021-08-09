@@ -38,16 +38,16 @@ final class FullImageStoryView: UIView {
     
     private func zoom(duration: Double) {
         UIView.animate(withDuration: duration) {
-            self.imageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            self.imageView.transform = CGAffineTransform(scaleX: 1.08, y: 1.08)
         }
     }
     
     private func shake() {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        animation.duration = 0.6
+        animation.duration = 0.25
         animation.repeatCount = .infinity
-        animation.values = [-20, 20, -10, 10, -20, 20, -10, 10, -10]
+        animation.values = [-10, 10, -13, 13]
         imageView.layer.add(animation, forKey: "shake")
     }
 }
