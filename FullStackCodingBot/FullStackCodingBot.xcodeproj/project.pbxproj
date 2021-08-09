@@ -440,7 +440,6 @@
 		71DF654B2692FA5600557693 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
-				E4150EA226BE9A3E0041DD32 /* Story */,
 				71DF654C2692FA6200557693 /* IdentifierManager.swift */,
 				E4D7C64A26953C6200D58BA2 /* ScreenSize.swift */,
 				7165CDDA2695789300891214 /* SyetemSettings.swift */,
@@ -681,6 +680,7 @@
 				E4DF614026A92CE00061F6E9 /* ShopItem.swift */,
 				E4BF70FE26AEF3F700E8645F /* GameStatus.swift */,
 				7177AEBB26B953B4005A4465 /* SettingInformation.swift */,
+				E4150EA226BE9A3E0041DD32 /* Story */,
 				E4BF712626B3E67E00E8645F /* DTO */,
 			);
 			path = Model;
