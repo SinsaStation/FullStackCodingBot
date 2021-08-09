@@ -91,10 +91,9 @@ final class GameViewController: UIViewController, ViewModelBindableType {
             }).disposed(by: rx.disposeBag)
         
         viewModel.feverTimeLeftPercentage
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] percentage in
-                DispatchQueue.main.async {
-                    self.feverTimeView.adjust(to: percentage, duration: 1)
-                }
+                self.feverTimeView.adjust(to: percentage, duration: 1)
             }).disposed(by: rx.disposeBag)
     }
     
