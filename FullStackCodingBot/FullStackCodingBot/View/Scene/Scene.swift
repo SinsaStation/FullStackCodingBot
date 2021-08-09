@@ -83,7 +83,8 @@ extension Scene {
             return gameOverVC
         
         case .alert(let message):
-            let alertScene = UIAlertController(title: message.content.title, message: message.content.content, preferredStyle: .alert)
+            let alerMessage = message.content.message
+            let alertScene = UIAlertController(title: alerMessage.title, message: alerMessage.content, preferredStyle: .alert)
             let confirmAction = UIAlertAction(title: message.content.confirm, style: .cancel)
             alertScene.addAction(confirmAction)
             return alertScene

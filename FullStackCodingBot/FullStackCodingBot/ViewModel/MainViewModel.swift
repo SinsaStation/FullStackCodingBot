@@ -65,7 +65,7 @@ final class MainViewModel: AdViewModel {
             .subscribe(onNext: { [unowned self] data in
                 self.updateDatabaseInformation(data)
             }, onError: { error in
-                print(error)
+                self.networkLoadError()
             }, onCompleted: { [unowned self] in
                 self.firebaseDidLoad.accept(true)
             }).disposed(by: rx.disposeBag)
@@ -99,6 +99,7 @@ final class MainViewModel: AdViewModel {
     }
 }
 
+// MARK: Apple Game Center Login
 extension MainViewModel: GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
@@ -128,5 +129,14 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                 print(gcViewController)
             }
         }
+    }
+}
+
+// MARK: Error Handling
+private extension MainViewModel {
+    
+    private func networkLoadError() {
+        let alertScene = Scene.alert(AlertMessage.networkLoad)
+        self.sceneCoordinator.transition(to: alertScene, using: .alert, with: StoryboardType.main, animated: true)
     }
 }
