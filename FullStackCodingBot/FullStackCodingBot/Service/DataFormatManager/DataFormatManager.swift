@@ -1,24 +1,26 @@
 import Foundation
+import RxSwift
 import Firebase
 
 final class DataFormatManager {
     
-    static func transformToLocalData(_ data: [String: Any]) -> NetworkDTO {
-        
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
-            let info = try JSONDecoder().decode(UnitInformation.self, from: jsonData)
-            let units = try JSONDecoder().decode([Unit].self, from: Data(info.info["units"]!.utf8))
-            let money = try JSONDecoder().decode(Int.self, from: Data(info.info["money"]!.utf8))
-            let score = try JSONDecoder().decode(Int.self, from: Data(info.info["score"]!.utf8))
-            let ads = try JSONDecoder().decode(AdsInformation.self, from: Data(info.info["ads"]!.utf8))
-            let result = NetworkDTO(units: units, money: money, score: score, ads: ads)
-            return result
-        } catch let error {
-            print(error)
+    static func transformToLocalData(_ data: [String: Any]) -> Observable<NetworkDTO> {
+        Observable.create { observer in
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
+                let info = try JSONDecoder().decode(UnitInformation.self, from: jsonData)
+                let units = try JSONDecoder().decode([Unit].self, from: Data(info.info["units"]!.utf8))
+                let money = try JSONDecoder().decode(Int.self, from: Data(info.info["money"]!.utf8))
+                let score = try JSONDecoder().decode(Int.self, from: Data(info.info["score"]!.utf8))
+                let ads = try JSONDecoder().decode(AdsInformation.self, from: Data(info.info["ads"]!.utf8))
+                let result = NetworkDTO(units: units, money: money, score: score, ads: ads)
+                observer.onNext(result)
+                observer.onCompleted()
+            } catch let error {
+                observer.onError(error)
+            }
+            return Disposables.create()
         }
-        
-        return NetworkDTO.empty()
     }
     
     static func transformToString<T: Encodable>(_ data: T) -> String? {
