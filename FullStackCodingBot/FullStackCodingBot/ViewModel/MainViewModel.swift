@@ -48,6 +48,10 @@ final class MainViewModel: AdViewModel {
             let settingScene = Scene.setting(self)
             self.sceneCoordinator.transition(to: settingScene, using: .overCurrent, with: StoryboardType.main, animated: true)
             
+        case .storyVC:
+            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settingInfo, isFirstTimePlay: false)
+            let storyScene = Scene.story(storyViewModel)
+            self.sceneCoordinator.transition(to: storyScene, using: .fullScreen, with: StoryboardType.main, animated: true)
         }
     }
     

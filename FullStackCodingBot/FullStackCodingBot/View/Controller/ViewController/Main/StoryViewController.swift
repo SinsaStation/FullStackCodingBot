@@ -6,32 +6,48 @@ final class StoryViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: StoryViewModel!
     
-    @IBOutlet weak var storyView: UIView!
-    @IBOutlet weak var speakerLabel: UILabel!
-    @IBOutlet weak var scriptTextView: UITextView!
-    
-    private let story = StoryManager.allCases
+    @IBOutlet weak var personStoryView: PersonStoryView!
+    @IBOutlet weak var fullImageStoryView: FullImageStoryView!
+    @IBOutlet weak var skipButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
     }
     
     func bindViewModel() {
         viewModel.setupStoryTimer()
         
-        viewModel.storyTimer
-            .subscribe(onNext: { [unowned self] index in
-                self.setTextInfo(index)
+        viewModel.script
+            .subscribe(onNext: { [unowned self] script in
+                guard let script = script else { return }
+                self.play(script)
             }).disposed(by: rx.disposeBag)
     }
     
-    private func setTextInfo(_ index: Int) {
-        if index == 8 {
-            viewModel.makeMoveActionToMain()
-            return
-        }
-        let storyInfo = story[index]
-        speakerLabel.text = storyInfo.content.name
-        scriptTextView.text = storyInfo.content.script
+    private func setup() {
+        skipButton.rx.tap
+            .subscribe(onNext: { [unowned self] _ in
+                self.viewModel.endOfStory()
+            }).disposed(by: rx.disposeBag)
+    }
+    
+    private func play(_ script: Script) {
+        script.speaker == nil ? enableFullImageView(with: script) : enablePersonView(with: script)
+    }
+
+    private func enableFullImageView(with script: Script) {
+        changePersonView(to: false)
+        fullImageStoryView.show(with: script)
+    }
+    
+    private func enablePersonView(with script: Script) {
+        changePersonView(to: true)
+        personStoryView.show(with: script)
+    }
+    
+    private func changePersonView(to status: Bool) {
+        personStoryView.isHidden = !status
+        fullImageStoryView.isHidden = status
     }
 }
