@@ -1,7 +1,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import GhostTypewriter
 import GoogleMobileAds
 
 final class ShopViewController: UIViewController, ViewModelBindableType {
@@ -56,15 +55,10 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
         case .gift:
             self.viewModel.giftTaken()
         case .taken:
-            print("이미 없어진 기프트!")
+            self.infoView.show(text: Text.giftTaken)
+        case .loading:
+            self.infoView.show(text: Text.giftLoading)
         }
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        guard let objectView = object as? FadeInTextView,
-              objectView === infoView,
-              keyPath == #keyPath(UIView.bounds) else { return }
-        infoView.layoutSubviews(with: Text.shopReset)
     }
 }
 
@@ -76,7 +70,10 @@ private extension ShopViewController {
     }
     
     private func setInfoViewObserver() {
-        infoView.addObserver(self, forKeyPath: #keyPath(UIView.bounds), options: .new, context: nil)
+        infoView.rx.observe(CGRect.self, "bounds")
+            .subscribe(onNext: { [unowned self ] _ in
+                self.infoView.layoutSubviews(with: Text.shopReset)
+            }).disposed(by: rx.disposeBag)
     }
     
     private func setupDelegate() {
@@ -99,8 +96,7 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let xInset = (shopCollectionView.frame.width - itemWidth * 3) / 2.5
-        let yInset: CGFloat = 0 // (shopCollectionView.frame.height - (itemWidth * 2)) / 2
-        return UIEdgeInsets(top: yInset, left: xInset, bottom: yInset, right: xInset)
+        return UIEdgeInsets(top: 0, left: xInset, bottom: 0, right: xInset)
     }
 }
 
@@ -112,10 +108,5 @@ extension ShopViewController: GADFullScreenContentDelegate {
         adMob.present(fromRootViewController: self) { [unowned self] in
             self.viewModel.adDidFinished(adMob)
         }
-    }
-    
-    // swiftlint:disable:next identifier_name
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        viewModel.addCoin()
     }
 }

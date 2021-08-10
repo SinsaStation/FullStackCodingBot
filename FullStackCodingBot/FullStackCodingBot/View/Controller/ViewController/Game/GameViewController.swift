@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 import RxCocoa
 
 final class GameViewController: UIViewController, ViewModelBindableType {
@@ -56,12 +57,12 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                 case .right:
                     self.updateImage(of: newStackUnit, to: self.rightUnitStackView)
                 }
-        }).disposed(by: rx.disposeBag)
+            }).disposed(by: rx.disposeBag)
         
         viewModel.newOnGameUnits
             .subscribe(onNext: { [unowned self] newUnits in
                 self.setupPerspectiveView(newUnits)
-        }).disposed(by: rx.disposeBag)
+            }).disposed(by: rx.disposeBag)
     }
     
     private func bindUserAction() {
@@ -75,26 +76,24 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                     self.setToWrongStatus()
                     fallthrough
                 case .feverWrong:
-                    self.feedbackGenerator?.notificationOccurred(.error)
+                    self.sendFeedback(type: .error)
                 }
-        }).disposed(by: rx.disposeBag)
+            }).disposed(by: rx.disposeBag)
         
         pauseButton.rx.action = viewModel.pauseAction
     }
     
     private func bindTimeProgress() {
         viewModel.timeLeftPercentage
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] percentage in
-                DispatchQueue.main.async {
-                    self.normalTimeView.adjust(to: percentage)
-                }
+                self.normalTimeView.adjust(to: percentage)
             }).disposed(by: rx.disposeBag)
         
         viewModel.feverTimeLeftPercentage
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] percentage in
-                DispatchQueue.main.async {
-                    self.feverTimeView.adjust(to: percentage, duration: 1)
-                }
+                self.feverTimeView.adjust(to: percentage, duration: 1)
             }).disposed(by: rx.disposeBag)
     }
     
@@ -111,19 +110,32 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                 case .resume:
                     self.viewModel.startTimer()
                 }
-        }).disposed(by: rx.disposeBag)
+            }).disposed(by: rx.disposeBag)
         
         viewModel.newFeverStatus
             .subscribe(onNext: { [unowned self] feverStatus in
                 self.setupTimeView(isFeverOn: feverStatus)
-        }).disposed(by: rx.disposeBag)
+            }).disposed(by: rx.disposeBag)
+    }
+    
+    private func sendFeedback(type feedbackType: UINotificationFeedbackGenerator.FeedbackType) {
+        guard UserDefaults.checkStatus(of: .vibration) else { return }
+        feedbackGenerator?.notificationOccurred(feedbackType)
     }
 }
 
 // MARK: - Setup
 private extension GameViewController {
     private func setup() {
+        setReadyViewObserver()
         setupFeedbackGenerator()
+    }
+    
+    private func setReadyViewObserver() {
+        readyView.rx.observe(CGRect.self, "bounds")
+            .subscribe(onNext: { [unowned self ] _ in
+                self.readyView.playAnimation()
+            }).disposed(by: rx.disposeBag)
     }
     
     private func setupFeedbackGenerator() {
@@ -187,7 +199,7 @@ private extension GameViewController {
         buttonController.changeButtonStatus(to: true)
         readyView.finishAnimation(for: 0.3)
     }
-
+    
     private func clear(_ stackView: UIStackView) {
         stackView.arrangedSubviews.forEach { view in
             guard let imageView = view as? UIImageView else { return }

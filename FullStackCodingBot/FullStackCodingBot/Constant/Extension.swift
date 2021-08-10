@@ -1,6 +1,5 @@
 import Foundation
 
-
 protocol StructSavable {
     func setStruct<Object: Encodable>(_ object: Object, forKey: String) throws
     func getStruct<Object: Decodable>(forKey: String, castTo type: Object.Type) throws -> Object
@@ -32,5 +31,12 @@ extension UserDefaults: StructSavable {
         } catch {
             throw StructSavableError.unableToDecode
         }
+    }
+    
+    static func checkStatus(of optionType: SwithType) -> Bool {
+        guard let targetIndex = SwithType.allCases.firstIndex(of: optionType) else { return false }
+        let settings = try? UserDefaults.standard.getStruct(forKey: IdentifierUD.setting, castTo: SettingInformation.self)
+        let targetStatus = settings?.checkState()[targetIndex] ?? true
+        return targetStatus
     }
 }

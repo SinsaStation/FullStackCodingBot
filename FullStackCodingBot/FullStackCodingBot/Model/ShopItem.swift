@@ -5,6 +5,7 @@ enum ShopItem {
     case adMob(GADRewardedAd)
     case gift
     case taken
+    case loading
     
     var image: String? {
         switch self {
@@ -14,6 +15,8 @@ enum ShopItem {
             return "item_gift_red"
         case .taken:
             return nil
+        case .loading:
+            return "item_gift_loading"
         }
     }
 }

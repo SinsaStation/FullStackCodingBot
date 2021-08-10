@@ -12,15 +12,16 @@ final class MainViewModel: AdViewModel {
     lazy var settingSwitchState = BehaviorRelay<SettingInformation>(value: settingInfo)
     let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, setting: SettingInformation) {
-        self.settingInfo = setting
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, settings: SettingInformation) {
+        self.settingInfo = settings
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
         
         setupAppleGameCenterLogin()
     }
     
     func makeMoveAction(to viewController: ViewControllerType) {
-        if !firebaseDidLoad.value { return }
+        guard firebaseDidLoad.value else { return }
+        
         switch viewController {
         case .giftVC:
             let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, adStorage: adStorage, database: database)
@@ -47,6 +48,10 @@ final class MainViewModel: AdViewModel {
             let settingScene = Scene.setting(self)
             self.sceneCoordinator.transition(to: settingScene, using: .overCurrent, with: StoryboardType.main, animated: true)
             
+        case .storyVC:
+            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settingInfo, isFirstTimePlay: false)
+            let storyScene = Scene.story(storyViewModel)
+            self.sceneCoordinator.transition(to: storyScene, using: .fullScreen, with: StoryboardType.main, animated: true)
         }
     }
     
@@ -64,8 +69,8 @@ final class MainViewModel: AdViewModel {
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] data in
                 self.updateDatabaseInformation(data)
-            }, onError: { error in
-                print(error)
+            }, onError: { _ in
+                self.networkLoadError()
             }, onCompleted: { [unowned self] in
                 self.firebaseDidLoad.accept(true)
             }).disposed(by: rx.disposeBag)
@@ -74,12 +79,13 @@ final class MainViewModel: AdViewModel {
     func setupBGMState(_ info: SwithType) {
         settingInfo.changeState(info)
         settingSwitchState.accept(settingInfo)
+        
         do {
             try userDefaults.setStruct(settingInfo, forKey: IdentifierUD.setting)
+            if info == .bgm { MusicStation.shared.toggle() }
         } catch {
             print(error)
         }
-        
     }
     
     private func updateDatabaseInformation(_ info: NetworkDTO) {
@@ -87,6 +93,9 @@ final class MainViewModel: AdViewModel {
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
         adStorage.setNewRewardsIfPossible(with: info.ads)
+            .subscribe(onError: { error in
+                print(error)
+            }).disposed(by: rx.disposeBag)
     }
     
     private func observeFirebaseDataLoaded() {
@@ -98,6 +107,7 @@ final class MainViewModel: AdViewModel {
     }
 }
 
+// MARK: Apple Game Center Login
 extension MainViewModel: GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
@@ -127,5 +137,14 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                 print(gcViewController)
             }
         }
+    }
+}
+
+// MARK: Error Handling
+private extension MainViewModel {
+    
+    private func networkLoadError() {
+        let alertScene = Scene.alert(AlertMessage.networkLoad)
+        self.sceneCoordinator.transition(to: alertScene, using: .alert, with: StoryboardType.main, animated: true)
     }
 }

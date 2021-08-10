@@ -10,7 +10,7 @@
 |:---:|:---:|:---:|
 |AdsScene|GameScene|FeverScene|
 
-|<img src="https://user-images.githubusercontent.com/74946802/127594356-583622b3-0525-4ee3-9d67-6fb2c59edb74.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594358-97e467cd-bc6d-48ca-93b5-b02b94a1ef98.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594354-ea70eaa5-5d4a-4607-8443-de5ce5945cbe.png" width="300">|
+|<img src="https://user-images.githubusercontent.com/74946802/127594356-583622b3-0525-4ee3-9d67-6fb2c59edb74.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/127594358-97e467cd-bc6d-48ca-93b5-b02b94a1ef98.png" width="300">|<img src="https://user-images.githubusercontent.com/74946802/128288746-9fc783e6-2c8d-4c67-8453-04bda1472a04.png" width="300">|
 |:---:|:---:|:---:|
 |PauseScene|GameOverScene|SettingScene|
 
@@ -50,6 +50,12 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 > - [x] 기본 UI
 > - [x] 배경음악 on/off
 > - [ ] How to play
+
+> ### Story
+>
+> - [x] 스토리 구상
+> -[x] 기본 UI
+> -[x] StoryScene 로직
 
 > ### Item
 >

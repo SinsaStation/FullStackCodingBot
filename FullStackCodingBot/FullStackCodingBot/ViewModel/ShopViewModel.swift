@@ -48,6 +48,7 @@ final class ShopViewModel: AdViewModel {
     
     func adDidFinished(_ finishedAd: GADRewardedAd) {
         adStorage.adDidFinished(finishedAd)
+        addCoin()
     }
     
     func giftTaken() {
@@ -55,7 +56,7 @@ final class ShopViewModel: AdViewModel {
         addCoin()
     }
     
-    func addCoin() {
+    private func addCoin() {
         let moneyToRaise = ShopSetting.reward()
         storage.raiseMoney(by: moneyToRaise)
         reward.accept(moneyToRaise)

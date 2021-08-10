@@ -24,6 +24,8 @@ enum ShopSetting {
 enum Text {
     static let title = "Full Stack \nCoding Master"
     static let shopReset = "Coffee refills at 12AM!"
+    static let giftTaken = "Coffee is already taken"
+    static let giftLoading = "Making coffee..."
     
     static func reward(amount: Int) -> String {
         return "Got \(amount) Coins!"
@@ -32,7 +34,7 @@ enum Text {
     static let levelUp = "Tab button to level up!"
     
     static func levelUpSuccessed(unitType: String, to level: Int) -> String {
-        return "Yay! \(unitType) did level up to \(level)!"
+        return "\(unitType) did level up to \(level)!"
     }
     
     static func levelUpFailed(coinNeeded: Int) -> String {

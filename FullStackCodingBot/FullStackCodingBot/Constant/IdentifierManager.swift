@@ -11,6 +11,7 @@ enum IdentifierVC {
     static let gameOver = "GameOverVC"
     static let loading = "LoadingVC"
     static let setting = "SettingVC"
+    static let story = "StoryVC"
 }
 
 enum IdentiferAD {
