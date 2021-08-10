@@ -69,16 +69,16 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="273.66666666666669" height="309"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uzy-iy-NxM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="273.66666666666669" height="77.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="273.66666666666669" height="61.666666666666664"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BGM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pc7-55-NOD">
-                                                                <rect key="frame" x="10" y="18.666666666666686" width="178" height="40"/>
+                                                                <rect key="frame" x="10" y="15" width="178" height="32"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOk-q8-wvL">
-                                                                <rect key="frame" x="213" y="18.666666666666682" width="53.666666666666686" height="39.666666666666657"/>
+                                                                <rect key="frame" x="213" y="15" width="53.666666666666686" height="32"/>
                                                                 <color key="onTintColor" name="digitalgreen"/>
                                                                 <connections>
                                                                     <action selector="settingAppInformation:" destination="4uP-UJ-9xF" eventType="valueChanged" id="0sY-te-fC0"/>
@@ -99,16 +99,16 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPW-GJ-SuY">
-                                                        <rect key="frame" x="0.0" y="77.333333333333314" width="273.66666666666669" height="77.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="61.666666666666686" width="273.66666666666669" height="62"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gdp-Bo-9rR">
-                                                                <rect key="frame" x="10" y="18.333333333333375" width="178" height="40.333333333333343"/>
+                                                                <rect key="frame" x="10" y="15" width="178" height="32"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dab-hg-br2">
-                                                                <rect key="frame" x="213" y="18.666666666666682" width="53.666666666666686" height="39.666666666666657"/>
+                                                                <rect key="frame" x="213" y="15" width="53.666666666666686" height="32"/>
                                                                 <color key="onTintColor" name="digitalgreen"/>
                                                                 <connections>
                                                                     <action selector="settingAppInformation:" destination="4uP-UJ-9xF" eventType="valueChanged" id="nbz-IH-Y05"/>
@@ -129,16 +129,16 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="La1-hb-TbD">
-                                                        <rect key="frame" x="0.0" y="154.66666666666663" width="273.66666666666669" height="77"/>
+                                                        <rect key="frame" x="0.0" y="123.6666666666667" width="273.66666666666669" height="61.666666666666671"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vibration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XC2-eq-Yae">
-                                                                <rect key="frame" x="10" y="18.333333333333375" width="178" height="40.333333333333343"/>
+                                                                <rect key="frame" x="10" y="14.666666666666629" width="178" height="32.333333333333336"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHR-eI-h0j">
-                                                                <rect key="frame" x="213" y="18.666666666666739" width="53.666666666666686" height="39.666666666666657"/>
+                                                                <rect key="frame" x="213" y="15.000000000000002" width="53.666666666666686" height="31.666666666666671"/>
                                                                 <color key="onTintColor" name="digitalgreen"/>
                                                                 <connections>
                                                                     <action selector="settingAppInformation:" destination="4uP-UJ-9xF" eventType="valueChanged" id="ijT-Gm-NOk"/>
@@ -158,8 +158,25 @@
                                                             <constraint firstItem="XC2-eq-Yae" firstAttribute="leading" secondItem="La1-hb-TbD" secondAttribute="leading" constant="10" id="xJQ-LR-jZd"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulo-IP-mG4" userLabel="Story Replay">
+                                                        <rect key="frame" x="0.0" y="185.33333333333337" width="273.66666666666669" height="62"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWF-Sm-ygn">
+                                                                <rect key="frame" x="83.666666666666657" y="6.3333333333332575" width="106" height="49.333333333333336"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="EWF-Sm-ygn" secondAttribute="height" multiplier="549:256" id="5mm-0s-zqs"/>
+                                                                </constraints>
+                                                                <state key="normal" backgroundImage="button_story"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="EWF-Sm-ygn" firstAttribute="centerX" secondItem="ulo-IP-mG4" secondAttribute="centerX" id="KO8-fL-bqf"/>
+                                                            <constraint firstItem="EWF-Sm-ygn" firstAttribute="height" secondItem="ulo-IP-mG4" secondAttribute="height" multiplier="0.8" id="ZAu-dx-dsK"/>
+                                                            <constraint firstItem="EWF-Sm-ygn" firstAttribute="centerY" secondItem="ulo-IP-mG4" secondAttribute="centerY" id="cgu-OX-fZc"/>
+                                                        </constraints>
+                                                    </view>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Sound effects obtained from https://www.zapsplat.com" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tEm-Mw-hHu">
-                                                        <rect key="frame" x="0.0" y="231.66666666666666" width="273.66666666666669" height="77.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="247.33333333333334" width="273.66666666666669" height="61.666666666666657"/>
                                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" name="EuphemiaUCAS-Bold" family="Euphemia UCAS" pointSize="14"/>
@@ -223,6 +240,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="EIc-Ll-MrS" id="uKK-ue-U4h"/>
                         <outlet property="settingSwitchController" destination="4uP-UJ-9xF" id="bFJ-pb-idz"/>
+                        <outlet property="storyButton" destination="EWF-Sm-ygn" id="eb3-CU-8xL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ttF-4A-SOR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1115,6 +1133,7 @@
         <image name="button_setting" width="42.666667938232422" height="42.666667938232422"/>
         <image name="button_skip" width="148" height="85.333335876464844"/>
         <image name="button_start" width="170.66667175292969" height="85.333335876464844"/>
+        <image name="button_story" width="183" height="85.333335876464844"/>
         <image name="item_coffeeMachine" width="341.33334350585938" height="112"/>
         <image name="item_computer_monitor" width="170.66667175292969" height="112"/>
         <image name="item_computer_mouse" width="170.66667175292969" height="53.333332061767578"/>

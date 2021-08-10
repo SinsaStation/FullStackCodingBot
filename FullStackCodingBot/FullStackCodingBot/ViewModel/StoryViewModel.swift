@@ -7,10 +7,18 @@ final class StoryViewModel: AdViewModel {
     lazy var script = BehaviorRelay<Script?>(value: storyManager.current())
     private var storyManager: StoryManager
     private var settings: SettingInformation
+    private let isFirstTimePlay: Bool
 
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, settings: SettingInformation, storyManger: StoryManager = StoryManager()) {
+    init(sceneCoordinator: SceneCoordinatorType,
+         storage: PersistenceStorageType,
+         adStorage: AdStorageType,
+         database: DatabaseManagerType,
+         settings: SettingInformation,
+         storyManger: StoryManager = StoryManager(),
+         isFirstTimePlay: Bool = true) {
         self.settings = settings
         self.storyManager = storyManger
+        self.isFirstTimePlay = isFirstTimePlay
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
     }
     
@@ -28,14 +36,22 @@ final class StoryViewModel: AdViewModel {
                 case .stay:
                     assert(true)
                 case .end:
-                    self.makeMoveActionToMain()
+                    self.endOfStory()
                 }
             }).disposed(by: rx.disposeBag)
     }
     
-    func makeMoveActionToMain() {
+    func endOfStory() {
+        isFirstTimePlay ? makeMoveActionToMain() : dismiss()
+    }
+    
+    private func makeMoveActionToMain() {
         let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settings)
         let mainScene = Scene.main(mainViewModel)
         self.sceneCoordinator.transition(to: mainScene, using: .root, with: StoryboardType.main, animated: true)
+    }
+    
+    private func dismiss() {
+        self.sceneCoordinator.close(animated: true)
     }
 }

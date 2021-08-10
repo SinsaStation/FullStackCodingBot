@@ -28,7 +28,7 @@ final class StoryViewController: UIViewController, ViewModelBindableType {
     private func setup() {
         skipButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
-                self.viewModel.makeMoveActionToMain()
+                self.viewModel.endOfStory()
             }).disposed(by: rx.disposeBag)
     }
     
