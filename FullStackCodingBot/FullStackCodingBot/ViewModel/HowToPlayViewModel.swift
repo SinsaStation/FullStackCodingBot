@@ -5,7 +5,7 @@ final class HowToPlayViewModel: CommonViewModel {
     
     let cancelAction: CocoaAction
     private let manual = Manual.all
-    
+        
     init(sceneCoordinator: SceneCoordinatorType,
          storage: PersistenceStorageType,
          adStorage: AdStorageType,
@@ -22,9 +22,7 @@ final class HowToPlayViewModel: CommonViewModel {
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
     }
     
-    
-    func manualCount() -> Int {
-        return manual.count
+    func getCurrentManul(from index: Int) -> Manual {
+        return manual[index]
     }
-    
 }
