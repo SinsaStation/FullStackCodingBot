@@ -264,13 +264,48 @@
                     <view key="view" contentMode="scaleToFill" id="XHk-NP-kjH">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5fT-Mh-uzD">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="597"/>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="aaR-q3-XaU">
+                                <rect key="frame" x="0.0" y="570" width="428" height="27"/>
+                            </pageControl>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="How To Play" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lae-dn-II9">
+                                <rect key="frame" x="0.0" y="597" width="428" height="295"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="21"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="kCy-Ae-Tlo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aaR-q3-XaU" firstAttribute="bottom" secondItem="5fT-Mh-uzD" secondAttribute="bottom" id="1dX-13-gdJ"/>
+                            <constraint firstItem="5fT-Mh-uzD" firstAttribute="width" secondItem="XHk-NP-kjH" secondAttribute="width" id="5Ta-x5-6IL"/>
+                            <constraint firstItem="5fT-Mh-uzD" firstAttribute="height" secondItem="XHk-NP-kjH" secondAttribute="height" multiplier="0.644708" id="D2N-Ra-tSD"/>
+                            <constraint firstItem="kCy-Ae-Tlo" firstAttribute="bottom" secondItem="Lae-dn-II9" secondAttribute="bottom" id="HLL-SW-JkO"/>
+                            <constraint firstItem="kCy-Ae-Tlo" firstAttribute="trailing" secondItem="aaR-q3-XaU" secondAttribute="trailing" id="IUY-aA-Wu8"/>
+                            <constraint firstItem="5fT-Mh-uzD" firstAttribute="top" secondItem="XHk-NP-kjH" secondAttribute="top" id="P8g-Yg-SXb"/>
+                            <constraint firstItem="aaR-q3-XaU" firstAttribute="height" secondItem="5fT-Mh-uzD" secondAttribute="height" multiplier="0.0452261" id="SdI-12-JT8"/>
+                            <constraint firstItem="Lae-dn-II9" firstAttribute="leading" secondItem="kCy-Ae-Tlo" secondAttribute="leading" id="UCP-4u-Ew9"/>
+                            <constraint firstItem="5fT-Mh-uzD" firstAttribute="leading" secondItem="kCy-Ae-Tlo" secondAttribute="leading" id="cCM-CG-JUT"/>
+                            <constraint firstItem="kCy-Ae-Tlo" firstAttribute="trailing" secondItem="Lae-dn-II9" secondAttribute="trailing" id="cv6-XG-ucu"/>
+                            <constraint firstItem="5fT-Mh-uzD" firstAttribute="trailing" secondItem="kCy-Ae-Tlo" secondAttribute="trailing" id="eP6-Vs-m25"/>
+                            <constraint firstItem="aaR-q3-XaU" firstAttribute="leading" secondItem="kCy-Ae-Tlo" secondAttribute="leading" id="kr7-Sg-jyq"/>
+                            <constraint firstItem="Lae-dn-II9" firstAttribute="top" secondItem="5fT-Mh-uzD" secondAttribute="bottom" id="nSg-ya-x8K"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="howToImageView" destination="5fT-Mh-uzD" id="Jx5-WA-1Fw"/>
+                        <outlet property="howToTextView" destination="Lae-dn-II9" id="qVP-bI-TtH"/>
+                        <outlet property="imagePageControl" destination="aaR-q3-XaU" id="J7S-cY-rEf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyB-MB-w5n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1550" y="-692"/>
+            <point key="canvasLocation" x="1549.0654205607475" y="-692.00863930885532"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="eZQ-nq-aTX">
