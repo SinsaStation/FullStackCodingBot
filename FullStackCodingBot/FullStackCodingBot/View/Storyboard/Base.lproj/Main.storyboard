@@ -329,7 +329,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 백엔드 개발자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4hf-gA-dvh">
-                                                        <rect key="frame" x="130" y="20.333333333333258" width="109.66666666666669" height="21"/>
+                                                        <rect key="frame" x="130" y="22" width="135" height="18"/>
                                                         <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="18"/>
                                                         <color key="textColor" name="darkgreen"/>
                                                         <color key="highlightedColor" name="AccentColor"/>
@@ -382,7 +382,7 @@
                                                 <rect key="frame" x="0.0" y="764" width="0.0" height="0.0"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Know Yeah Technology&quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eey-tL-qUk">
-                                                        <rect key="frame" x="0.0" y="-16" width="0.0" height="31.666666666666668"/>
+                                                        <rect key="frame" x="0.0" y="-13.666666666666629" width="0.0" height="27"/>
                                                         <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="27"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -482,11 +482,22 @@
                                                     <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="J9E-cr-xaj"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEq-BO-0Fl">
+                                                <rect key="frame" x="258.66666666666669" y="480.00000000000006" width="66" height="65.666666666666686"/>
+                                                <state key="normal" image="button_pause"/>
+                                                <connections>
+                                                    <action selector="buttonTouchedWithSender:" destination="H6e-U9-JW6" eventType="touchUpInside" id="eT2-wX-qA3"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.66666666666666663" green="0.51764705882352935" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="gEq-BO-0Fl" secondAttribute="bottom" multiplier="1.05" constant="1" id="2a9-xE-tzN"/>
+                                            <constraint firstItem="gEq-BO-0Fl" firstAttribute="height" secondItem="hfZ-mh-dfr" secondAttribute="height" constant="1" id="XoB-xF-IBt"/>
                                             <constraint firstAttribute="bottom" secondItem="hfZ-mh-dfr" secondAttribute="bottom" multiplier="1.05" constant="1" id="Zhs-F3-xQD"/>
                                             <constraint firstAttribute="trailing" secondItem="hfZ-mh-dfr" secondAttribute="trailing" multiplier="1.05" constant="1" id="a7c-ZG-wUv"/>
+                                            <constraint firstItem="gEq-BO-0Fl" firstAttribute="width" secondItem="hfZ-mh-dfr" secondAttribute="width" constant="1" id="b4u-pc-EuV"/>
+                                            <constraint firstItem="hfZ-mh-dfr" firstAttribute="leading" secondItem="gEq-BO-0Fl" secondAttribute="trailing" multiplier="1.05" constant="1" id="ohM-Ks-vJh"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -636,6 +647,7 @@
                         <outletCollection property="moveToVCButtons" destination="wi2-BU-Z6q" collectionClass="NSMutableArray" id="5kA-d8-ncK"/>
                         <outletCollection property="moveToVCButtons" destination="Pa3-jZ-hVU" collectionClass="NSMutableArray" id="Rq6-LS-yB8"/>
                         <outletCollection property="moveToVCButtons" destination="hfZ-mh-dfr" collectionClass="NSMutableArray" id="Ce9-bN-aVw"/>
+                        <outletCollection property="moveToVCButtons" destination="gEq-BO-0Fl" collectionClass="NSMutableArray" id="7zO-NW-XyW"/>
                     </connections>
                 </customObject>
             </objects>
@@ -1070,7 +1082,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="b3i-P5-hMw">
-                                        <rect key="frame" x="52.333333333333329" y="11.333333333333329" width="130.33333333333337" height="21"/>
+                                        <rect key="frame" x="52.333333333333329" y="11.000000000000002" width="130.33333333333337" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1133,6 +1145,7 @@
         <image name="button_mainMenu_item" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_mainMenu_present" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_mainMenu_ranking" width="106.66666412353516" height="106.66666412353516"/>
+        <image name="button_pause" width="42.666667938232422" height="42.666667938232422"/>
         <image name="button_setting" width="42.666667938232422" height="42.666667938232422"/>
         <image name="button_skip" width="148" height="85.333335876464844"/>
         <image name="button_start" width="170.66667175292969" height="85.333335876464844"/>
