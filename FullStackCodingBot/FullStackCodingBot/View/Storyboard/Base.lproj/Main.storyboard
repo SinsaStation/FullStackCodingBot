@@ -402,6 +402,13 @@
                                     <constraint firstItem="n5v-6e-aMG" firstAttribute="width" secondItem="tfO-gp-AEN" secondAttribute="width" priority="750" id="zR7-Yb-lco"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="892-6m-m8y" userLabel="Skip Button">
+                                <rect key="frame" x="305.33333333333331" y="64" width="102.66666666666669" height="59.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="892-6m-m8y" secondAttribute="height" multiplier="444:256" id="VYr-me-Ypo"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="button_skip"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gae-QZ-P0d"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -409,12 +416,17 @@
                             <constraint firstItem="tfO-gp-AEN" firstAttribute="trailing" secondItem="Gae-QZ-P0d" secondAttribute="trailing" id="479-QB-wz6"/>
                             <constraint firstItem="tfO-gp-AEN" firstAttribute="leading" secondItem="Gae-QZ-P0d" secondAttribute="leading" id="8jV-so-EcE"/>
                             <constraint firstAttribute="bottom" secondItem="tfO-gp-AEN" secondAttribute="bottom" id="Kx4-ee-Rw9"/>
+                            <constraint firstItem="892-6m-m8y" firstAttribute="width" secondItem="Gae-QZ-P0d" secondAttribute="width" multiplier="0.24" id="QUy-Yq-6PM"/>
+                            <constraint firstItem="Gae-QZ-P0d" firstAttribute="trailing" secondItem="892-6m-m8y" secondAttribute="trailing" constant="20" id="Rr8-am-ulN"/>
+                            <constraint firstItem="892-6m-m8y" firstAttribute="top" secondItem="Gae-QZ-P0d" secondAttribute="top" constant="20" id="bTF-5O-rNR"/>
                             <constraint firstItem="tfO-gp-AEN" firstAttribute="top" secondItem="FCo-7c-ldw" secondAttribute="top" id="eJc-3T-9ln"/>
+                            <constraint firstItem="892-6m-m8y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Gae-QZ-P0d" secondAttribute="leading" constant="50" id="ipL-vk-103"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="fullImageStoryView" destination="n5v-6e-aMG" id="g6v-D7-awo"/>
                         <outlet property="personStoryView" destination="uyt-Pb-tMB" id="0O1-7E-PYO"/>
+                        <outlet property="skipButton" destination="892-6m-m8y" id="ddE-aP-QbK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VL4-hn-h8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1101,6 +1113,7 @@
         <image name="button_mainMenu_present" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_mainMenu_ranking" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_setting" width="42.666667938232422" height="42.666667938232422"/>
+        <image name="button_skip" width="148" height="85.333335876464844"/>
         <image name="button_start" width="170.66667175292969" height="85.333335876464844"/>
         <image name="item_coffeeMachine" width="341.33334350585938" height="112"/>
         <image name="item_computer_monitor" width="170.66667175292969" height="112"/>

@@ -7,7 +7,7 @@ final class StoryViewModel: AdViewModel {
     lazy var script = BehaviorRelay<Script?>(value: storyManager.current())
     private var storyManager: StoryManager
     private var settings: SettingInformation
-    
+
     init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, settings: SettingInformation, storyManger: StoryManager = StoryManager()) {
         self.settings = settings
         self.storyManager = storyManger
