@@ -1,13 +1,19 @@
 import Foundation
 
+struct ErrorMessage {
+    let title: String
+    let content: String
+}
+
 enum AlertMessage {
-    case levelUp
+    case networkLoad
     
-    // swiftlint:disable:next large_tuple
-    var content: (title: String, content: String, confirm: String) {
+    var content: (message: ErrorMessage, confirm: String) {
         switch self {
-        case .levelUp:
-            return ("돈 부족", "레벨업에 필요한 돈이 부족합니다.", "확인")
+        case .networkLoad:
+            let errorMessage = ErrorMessage(title: "NetworkError",
+                                            content: "데이터를 가져오는데 실패했습니다.")
+            return (errorMessage, "확인")
         }
     }
 }

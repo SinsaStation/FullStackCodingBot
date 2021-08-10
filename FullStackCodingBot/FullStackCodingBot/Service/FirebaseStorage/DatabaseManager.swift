@@ -6,6 +6,7 @@ final class DatabaseManager: DatabaseManagerType {
     
     private var ref: DatabaseReference
     private let uid = Auth.auth().currentUser?.uid ?? ""
+    private let disposedBag = DisposeBag()
     let data = [Unit]()
     
     init(_ ref: DatabaseReference) {
@@ -35,8 +36,13 @@ final class DatabaseManager: DatabaseManagerType {
                 }
                 
                 if let data = snapshot.value as? [String: Any] {
-                    observer.onNext(DataFormatManager.transformToLocalData(data))
-                    observer.onCompleted()
+                    DataFormatManager.transformToLocalData(data)
+                        .subscribe(onNext: { networkDTO in
+                            observer.onNext(networkDTO)
+                            observer.onCompleted()
+                        }, onError: { error in
+                            observer.onError(error)
+                        }).disposed(by: disposedBag)
                 }
             }
             return Disposables.create()

@@ -16,10 +16,7 @@ final class LevelUpButton: UIButton {
     }
         
     func configure(_ unit: Unit) {
-        DispatchQueue.main.async { [unowned self] in
-            self.requiredMoneyLabel.text = "\(unit.level*100)"
-        }
-        
+        self.requiredMoneyLabel.text = "\(unit.level*100)"
     }
     
     private func loadXib() {

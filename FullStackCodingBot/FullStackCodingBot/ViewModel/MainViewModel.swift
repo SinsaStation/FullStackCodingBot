@@ -20,7 +20,8 @@ final class MainViewModel: AdViewModel {
     }
     
     func makeMoveAction(to viewController: ViewControllerType) {
-        if !firebaseDidLoad.value { return }
+        guard firebaseDidLoad.value else { return }
+        
         switch viewController {
         case .giftVC:
             let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, adStorage: adStorage, database: database)
@@ -68,8 +69,8 @@ final class MainViewModel: AdViewModel {
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] data in
                 self.updateDatabaseInformation(data)
-            }, onError: { error in
-                print(error)
+            }, onError: { _ in
+                self.networkLoadError()
             }, onCompleted: { [unowned self] in
                 self.firebaseDidLoad.accept(true)
             }).disposed(by: rx.disposeBag)
@@ -92,6 +93,9 @@ final class MainViewModel: AdViewModel {
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
         adStorage.setNewRewardsIfPossible(with: info.ads)
+            .subscribe(onError: { error in
+                print(error)
+            }).disposed(by: rx.disposeBag)
     }
     
     private func observeFirebaseDataLoaded() {
@@ -103,6 +107,7 @@ final class MainViewModel: AdViewModel {
     }
 }
 
+// MARK: Apple Game Center Login
 extension MainViewModel: GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
@@ -132,5 +137,14 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                 print(gcViewController)
             }
         }
+    }
+}
+
+// MARK: Error Handling
+private extension MainViewModel {
+    
+    private func networkLoadError() {
+        let alertScene = Scene.alert(AlertMessage.networkLoad)
+        self.sceneCoordinator.transition(to: alertScene, using: .alert, with: StoryboardType.main, animated: true)
     }
 }
