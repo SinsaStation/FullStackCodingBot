@@ -278,14 +278,24 @@
                                 <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3H-Fr-CC6">
+                                <rect key="frame" x="142.66666666666666" y="836" width="142.99999999999997" height="56"/>
+                                <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kCy-Ae-Tlo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="aaR-q3-XaU" firstAttribute="bottom" secondItem="5fT-Mh-uzD" secondAttribute="bottom" id="1dX-13-gdJ"/>
+                            <constraint firstItem="z3H-Fr-CC6" firstAttribute="bottom" secondItem="kCy-Ae-Tlo" secondAttribute="bottom" id="3XJ-1K-u40"/>
                             <constraint firstItem="5fT-Mh-uzD" firstAttribute="width" secondItem="XHk-NP-kjH" secondAttribute="width" id="5Ta-x5-6IL"/>
+                            <constraint firstItem="z3H-Fr-CC6" firstAttribute="width" secondItem="Lae-dn-II9" secondAttribute="width" multiplier="0.334112" id="6C1-hN-bgB"/>
                             <constraint firstItem="5fT-Mh-uzD" firstAttribute="height" secondItem="XHk-NP-kjH" secondAttribute="height" multiplier="0.644708" id="D2N-Ra-tSD"/>
                             <constraint firstItem="kCy-Ae-Tlo" firstAttribute="bottom" secondItem="Lae-dn-II9" secondAttribute="bottom" id="HLL-SW-JkO"/>
+                            <constraint firstItem="z3H-Fr-CC6" firstAttribute="height" secondItem="Lae-dn-II9" secondAttribute="height" multiplier="0.189831" id="IHK-Nu-4u1"/>
                             <constraint firstItem="kCy-Ae-Tlo" firstAttribute="trailing" secondItem="aaR-q3-XaU" secondAttribute="trailing" id="IUY-aA-Wu8"/>
                             <constraint firstItem="5fT-Mh-uzD" firstAttribute="top" secondItem="XHk-NP-kjH" secondAttribute="top" id="P8g-Yg-SXb"/>
                             <constraint firstItem="aaR-q3-XaU" firstAttribute="height" secondItem="5fT-Mh-uzD" secondAttribute="height" multiplier="0.0452261" id="SdI-12-JT8"/>
@@ -293,11 +303,13 @@
                             <constraint firstItem="5fT-Mh-uzD" firstAttribute="leading" secondItem="kCy-Ae-Tlo" secondAttribute="leading" id="cCM-CG-JUT"/>
                             <constraint firstItem="kCy-Ae-Tlo" firstAttribute="trailing" secondItem="Lae-dn-II9" secondAttribute="trailing" id="cv6-XG-ucu"/>
                             <constraint firstItem="5fT-Mh-uzD" firstAttribute="trailing" secondItem="kCy-Ae-Tlo" secondAttribute="trailing" id="eP6-Vs-m25"/>
+                            <constraint firstItem="z3H-Fr-CC6" firstAttribute="centerX" secondItem="XHk-NP-kjH" secondAttribute="centerX" id="ipl-f7-o7U"/>
                             <constraint firstItem="aaR-q3-XaU" firstAttribute="leading" secondItem="kCy-Ae-Tlo" secondAttribute="leading" id="kr7-Sg-jyq"/>
                             <constraint firstItem="Lae-dn-II9" firstAttribute="top" secondItem="5fT-Mh-uzD" secondAttribute="bottom" id="nSg-ya-x8K"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="z3H-Fr-CC6" id="ryf-wH-nTv"/>
                         <outlet property="howToImageView" destination="5fT-Mh-uzD" id="Jx5-WA-1Fw"/>
                         <outlet property="howToTextView" destination="Lae-dn-II9" id="qVP-bI-TtH"/>
                         <outlet property="imagePageControl" destination="aaR-q3-XaU" id="J7S-cY-rEf"/>

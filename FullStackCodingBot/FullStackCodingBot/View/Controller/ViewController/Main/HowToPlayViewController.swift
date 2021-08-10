@@ -7,11 +7,13 @@ final class HowToPlayViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var howToImageView: UIImageView!
     @IBOutlet weak var imagePageControl: UIPageControl!
     @IBOutlet weak var howToTextView: UITextView!
+    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     func bindViewModel() {
+        cancelButton.rx.action = viewModel.cancelAction
     }
 }
