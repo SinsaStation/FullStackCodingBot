@@ -483,7 +483,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.66666666666666663" green="0.51764705882352935" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" name="lightbrown"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="hfZ-mh-dfr" secondAttribute="bottom" multiplier="1.05" constant="1" id="Zhs-F3-xQD"/>
                                             <constraint firstAttribute="trailing" secondItem="hfZ-mh-dfr" secondAttribute="trailing" multiplier="1.05" constant="1" id="a7c-ZG-wUv"/>
@@ -689,20 +689,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-bP-LR2" userLabel="Desk View">
                                 <rect key="frame" x="0.0" y="352" width="428" height="574"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2EJ-dH-PHC" userLabel="Carpet View">
-                                        <rect key="frame" x="19" y="59" width="390" height="515"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_carpet" translatesAutoresizingMaskIntoConstraints="NO" id="K2c-Bl-4uv">
-                                                <rect key="frame" x="0.0" y="0.0" width="390" height="515"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="K2c-Bl-4uv" firstAttribute="leading" secondItem="2EJ-dH-PHC" secondAttribute="leading" id="ITx-MD-nyW"/>
-                                            <constraint firstAttribute="bottom" secondItem="K2c-Bl-4uv" secondAttribute="bottom" id="q2z-lI-CGM"/>
-                                            <constraint firstAttribute="trailing" secondItem="K2c-Bl-4uv" secondAttribute="trailing" id="ri9-GJ-1yo"/>
-                                            <constraint firstItem="K2c-Bl-4uv" firstAttribute="top" secondItem="2EJ-dH-PHC" secondAttribute="top" id="ynI-9W-gDM"/>
-                                        </constraints>
-                                    </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jrB-JR-LHy" userLabel="Item Collection View">
                                         <rect key="frame" x="32" y="45" width="364" height="484"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -750,11 +736,7 @@
                                     <constraint firstItem="jrB-JR-LHy" firstAttribute="centerY" secondItem="ZFw-bP-LR2" secondAttribute="centerY" id="0jr-bB-ndh"/>
                                     <constraint firstItem="jrB-JR-LHy" firstAttribute="centerX" secondItem="ZFw-bP-LR2" secondAttribute="centerX" id="3a6-1s-q69"/>
                                     <constraint firstItem="jrB-JR-LHy" firstAttribute="width" secondItem="ZFw-bP-LR2" secondAttribute="width" multiplier="0.85" id="7Dn-La-QM2"/>
-                                    <constraint firstItem="2EJ-dH-PHC" firstAttribute="width" secondItem="ZFw-bP-LR2" secondAttribute="width" multiplier="0.911215" id="DhT-aO-aTo"/>
                                     <constraint firstItem="jrB-JR-LHy" firstAttribute="top" secondItem="ZFw-bP-LR2" secondAttribute="top" constant="45" id="EbY-XX-4ct"/>
-                                    <constraint firstItem="2EJ-dH-PHC" firstAttribute="height" secondItem="ZFw-bP-LR2" secondAttribute="height" multiplier="0.897213" id="UkL-Mr-81N"/>
-                                    <constraint firstAttribute="bottom" secondItem="2EJ-dH-PHC" secondAttribute="bottom" id="fkE-YF-I20"/>
-                                    <constraint firstItem="2EJ-dH-PHC" firstAttribute="centerX" secondItem="ZFw-bP-LR2" secondAttribute="centerX" id="kMm-qh-c16"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3G-k2-a1u">
@@ -799,7 +781,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BVS-bL-EVd"/>
-                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6pF-Hx-32v" firstAttribute="top" secondItem="BVS-bL-EVd" secondAttribute="top" constant="15" id="16N-dR-vKz"/>
                             <constraint firstItem="ZFw-bP-LR2" firstAttribute="height" secondItem="xs7-IX-xOw" secondAttribute="height" multiplier="0.62" id="3NF-kC-b8X"/>
@@ -939,7 +921,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <integer key="value" value="4"/>
+                                                <integer key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="15"/>
@@ -1006,9 +988,6 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                         <integer key="value" value="4"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </collectionView>
@@ -1123,8 +1102,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background_box" width="133.33332824707031" height="133.33332824707031"/>
-        <image name="background_carpet" width="341.33334350585938" height="106.66666412353516"/>
+        <image name="background_box" width="266.66665649414062" height="266.66665649414062"/>
         <image name="background_coffeeMachine" width="341.33334350585938" height="74.666664123535156"/>
         <image name="background_icon_moneybag" width="42.666667938232422" height="48"/>
         <image name="background_propertybox" width="170.66667175292969" height="48"/>
@@ -1140,7 +1118,7 @@
         <image name="item_coffeeMachine" width="341.33334350585938" height="112"/>
         <image name="item_computer_monitor" width="170.66667175292969" height="112"/>
         <image name="item_computer_mouse" width="170.66667175292969" height="53.333332061767578"/>
-        <image name="item_gift_red_ad" width="133.33332824707031" height="133.33332824707031"/>
+        <image name="item_gift_red_ad" width="266.66665649414062" height="266.66665649414062"/>
         <image name="story_office1" width="414" height="896"/>
         <image name="story_person_angry" width="213.33332824707031" height="442.66665649414062"/>
         <namedColor name="AccentColor">
@@ -1175,9 +1153,6 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
