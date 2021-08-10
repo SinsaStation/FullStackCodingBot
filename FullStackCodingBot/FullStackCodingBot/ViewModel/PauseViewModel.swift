@@ -1,7 +1,6 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import Action
 
 final class PauseViewModel: CommonViewModel {
 

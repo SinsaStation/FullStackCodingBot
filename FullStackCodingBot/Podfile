@@ -9,15 +9,12 @@ target 'Full Stack' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'NSObject+Rx'
-  pod 'Alamofire'
-  pod 'Action'
   pod 'SwiftLint'
-  pod 'GhostTypewriter'
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
-    
+  pod 'Action'
 
    target 'Full StackTests' do
 
