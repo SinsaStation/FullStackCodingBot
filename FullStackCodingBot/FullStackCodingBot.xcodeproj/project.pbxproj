@@ -32,6 +32,7 @@
 		7165CDDF26957DE400891214 /* GameButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165CDDE26957DE400891214 /* GameButtonController.swift */; };
 		7166B23926C23C7E00E098BE /* neodgm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7166B23826C23C7E00E098BE /* neodgm.ttf */; };
 		7166B23B26C2532400E098BE /* HowToPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7166B23A26C2532400E098BE /* HowToPlayViewController.swift */; };
+		7166B23D26C253A800E098BE /* HowToPlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7166B23C26C253A800E098BE /* HowToPlayViewModel.swift */; };
 		7170CD4526B266BE00F03248 /* VersionErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */; };
 		7177AEBC26B953B4005A4465 /* SettingInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7177AEBB26B953B4005A4465 /* SettingInformation.swift */; };
 		719A6A9B26B11208006AC991 /* NetworkDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719A6A9A26B11208006AC991 /* NetworkDTO.swift */; };
@@ -167,6 +168,7 @@
 		7165CDDE26957DE400891214 /* GameButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButtonController.swift; sourceTree = "<group>"; };
 		7166B23826C23C7E00E098BE /* neodgm.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = neodgm.ttf; sourceTree = "<group>"; };
 		7166B23A26C2532400E098BE /* HowToPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayViewController.swift; sourceTree = "<group>"; };
+		7166B23C26C253A800E098BE /* HowToPlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayViewModel.swift; sourceTree = "<group>"; };
 		7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionErrorViewController.swift; sourceTree = "<group>"; };
 		7177AEBB26B953B4005A4465 /* SettingInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInformation.swift; sourceTree = "<group>"; };
 		719A6A9A26B11208006AC991 /* NetworkDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDTO.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				71DF65542692FD1400557693 /* CommonViewModel.swift */,
 				E4DF613E26A847330061F6E9 /* AdViewModel.swift */,
 				715C1C9726BD09950025C681 /* StoryViewModel.swift */,
+				7166B23C26C253A800E098BE /* HowToPlayViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -970,6 +973,7 @@
 				E4779C6726983F5700B92D24 /* GameOverViewController.swift in Sources */,
 				71DF65532692FBE500557693 /* SceneCoordinator.swift in Sources */,
 				E4DF613B26A845670061F6E9 /* AdStorageType.swift in Sources */,
+				7166B23D26C253A800E098BE /* HowToPlayViewModel.swift in Sources */,
 				E41C85D8269C252D008F2E91 /* GameUnitManagerType.swift in Sources */,
 				7166B23B26C2532400E098BE /* HowToPlayViewController.swift in Sources */,
 				71DF64BD2692C18F00557693 /* RankViewController.swift in Sources */,

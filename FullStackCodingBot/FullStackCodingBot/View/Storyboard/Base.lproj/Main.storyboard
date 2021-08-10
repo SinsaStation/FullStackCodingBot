@@ -257,6 +257,21 @@
             </objects>
             <point key="canvasLocation" x="806.07476635514013" y="-585.09719222462206"/>
         </scene>
+        <!--How To Play View Controller-->
+        <scene sceneID="kao-Ym-ilf">
+            <objects>
+                <viewController restorationIdentifier="HowToVC" storyboardIdentifier="HowToVC" id="1aP-r2-pXc" customClass="HowToPlayViewController" customModule="Full_Stack" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XHk-NP-kjH">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="kCy-Ae-Tlo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jyB-MB-w5n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1550" y="-692"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="eZQ-nq-aTX">
             <objects>

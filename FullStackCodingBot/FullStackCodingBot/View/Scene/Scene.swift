@@ -5,6 +5,7 @@ enum Scene {
     case main(MainViewModel)
     case load(MainViewModel)
     case setting(MainViewModel)
+    case howToPlay(HowToPlayViewModel)
     case story(StoryViewModel)
     case shop(ShopViewModel)
     case rank(RankViewModel)
@@ -109,6 +110,11 @@ extension Scene {
             }
             storyVC.bind(viewModel: viewModel)
             return storyVC
+            
+        case .howToPlay(let viewModel):
+            guard <#condition#> else {
+                <#statements#>
+            }
         }
     }
 }

@@ -2,7 +2,7 @@ import UIKit
 
 final class HowToPlayViewController: UIViewController, ViewModelBindableType {
     
-    var viewModel: MainViewModel!
+    var viewModel: HowToPlayViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
