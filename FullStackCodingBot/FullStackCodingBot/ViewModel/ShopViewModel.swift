@@ -6,7 +6,6 @@ import GoogleMobileAds
 
 final class ShopViewModel: AdViewModel {
     
-    let confirmAction: Action<String, Void>
     let cancelAction: CocoaAction
 
     var itemStorage: Driver<[ShopItem]> {
@@ -25,15 +24,8 @@ final class ShopViewModel: AdViewModel {
          storage: PersistenceStorageType,
          adStorage: AdStorageType,
          database: DatabaseManagerType,
-         confirmAction: Action<String, Void>? = nil,
          cancelAction: CocoaAction? = nil,
          soundEffectType: MainSoundEffect = .reward) {
-        self.confirmAction = Action<String, Void> { input in
-            if let action = confirmAction {
-                action.execute(input)
-            }
-            return sceneCoordinator.close(animated: true).asObservable().map { _ in }
-        }
         
         self.cancelAction = CocoaAction {
             if let action = cancelAction {
