@@ -196,7 +196,8 @@ final class ReadyView: UIView {
     }
     
     private func setupTitleLabel() {
-        let font = UIFont(name: Font.joystix, size: bounds.width * 0.07) ?? UIFont()
+        let fontSize = bounds.width * 0.07
+        let font = UIFont(name: Font.joystix, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
         let attributedString = NSMutableAttributedString(string: readyCountLabel.text ?? "")
         attributedString.addAttribute(.font, value: font, range: .init(location: 0, length: 1))
         readyCountLabel.attributedText = attributedString

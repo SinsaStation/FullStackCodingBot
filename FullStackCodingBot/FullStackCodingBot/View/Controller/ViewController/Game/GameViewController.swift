@@ -14,6 +14,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var normalTimeView: TimeBarView!
     @IBOutlet weak var feverTimeView: FeverTimeBarView!
     @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var codeView: FadeInTextView!
     @IBOutlet weak var backgroundView: GameBackgroundView!
     @IBOutlet weak var readyView: ReadyView!
     private var feedbackGenerator: UINotificationFeedbackGenerator?
@@ -71,6 +72,8 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                 guard let status = status else { return }
                 switch status {
                 case .correct(let direction):
+                    let tempCode = "func correct() {\n   score += 1\n}"
+                    self.codeView.show(text: tempCode)
                     self.checkRemove(to: direction)
                 case .wrong:
                     self.setToWrongStatus()
@@ -127,8 +130,18 @@ final class GameViewController: UIViewController, ViewModelBindableType {
 // MARK: - Setup
 private extension GameViewController {
     private func setup() {
+        setCodeView()
         setReadyViewObserver()
         setupFeedbackGenerator()
+    }
+    
+    private func setCodeView() {
+        codeView.setup(fontName: Font.neo, alignMode: .left)
+        
+        codeView.rx.observe(CGRect.self, "bounds")
+            .subscribe(onNext: { [unowned self ] _ in
+                self.codeView.layoutSubviews(with: "")
+            }).disposed(by: rx.disposeBag)
     }
     
     private func setReadyViewObserver() {
