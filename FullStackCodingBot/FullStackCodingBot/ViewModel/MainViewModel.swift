@@ -54,7 +54,9 @@ final class MainViewModel: AdViewModel {
             self.sceneCoordinator.transition(to: storyScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .howToVC:
-            print(viewController)
+            let howToViewModel = HowToPlayViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
+            let howToScene = Scene.howToPlay(howToViewModel)
+            self.sceneCoordinator.transition(to: howToScene, using: .fullScreen, with: StoryboardType.main, animated: true)
         }
     }
     
