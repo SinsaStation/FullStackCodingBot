@@ -1,7 +1,6 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import Action
 import GameKit
 
 final class GameOverViewModel: CommonViewModel {
