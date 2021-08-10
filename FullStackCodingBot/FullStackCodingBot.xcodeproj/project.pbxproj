@@ -31,6 +31,9 @@
 		7165CDDB2695789300891214 /* SyetemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165CDDA2695789300891214 /* SyetemSettings.swift */; };
 		7165CDDF26957DE400891214 /* GameButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165CDDE26957DE400891214 /* GameButtonController.swift */; };
 		7166B23926C23C7E00E098BE /* neodgm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7166B23826C23C7E00E098BE /* neodgm.ttf */; };
+		7166B23B26C2532400E098BE /* HowToPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7166B23A26C2532400E098BE /* HowToPlayViewController.swift */; };
+		7166B23D26C253A800E098BE /* HowToPlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7166B23C26C253A800E098BE /* HowToPlayViewModel.swift */; };
+		7166B24026C25B0400E098BE /* Manual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7166B23F26C25B0400E098BE /* Manual.swift */; };
 		7170CD4526B266BE00F03248 /* VersionErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */; };
 		7177AEBC26B953B4005A4465 /* SettingInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7177AEBB26B953B4005A4465 /* SettingInformation.swift */; };
 		719A6A9B26B11208006AC991 /* NetworkDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719A6A9A26B11208006AC991 /* NetworkDTO.swift */; };
@@ -165,6 +168,9 @@
 		7165CDDA2695789300891214 /* SyetemSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyetemSettings.swift; sourceTree = "<group>"; };
 		7165CDDE26957DE400891214 /* GameButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButtonController.swift; sourceTree = "<group>"; };
 		7166B23826C23C7E00E098BE /* neodgm.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = neodgm.ttf; sourceTree = "<group>"; };
+		7166B23A26C2532400E098BE /* HowToPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayViewController.swift; sourceTree = "<group>"; };
+		7166B23C26C253A800E098BE /* HowToPlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayViewModel.swift; sourceTree = "<group>"; };
+		7166B23F26C25B0400E098BE /* Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manual.swift; sourceTree = "<group>"; };
 		7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionErrorViewController.swift; sourceTree = "<group>"; };
 		7177AEBB26B953B4005A4465 /* SettingInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInformation.swift; sourceTree = "<group>"; };
 		719A6A9A26B11208006AC991 /* NetworkDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDTO.swift; sourceTree = "<group>"; };
@@ -326,6 +332,7 @@
 				711A69EB26B3B13E00C7C99A /* LoadingViewController.swift */,
 				719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */,
 				715C1C9326BCF9FF0025C681 /* StoryViewController.swift */,
+				7166B23A26C2532400E098BE /* HowToPlayViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -338,6 +345,14 @@
 				E41C85D9269C4E8F008F2E91 /* PauseViewController.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		7166B23E26C25AB500E098BE /* HowToPlay */ = {
+			isa = PBXGroup;
+			children = (
+				7166B23F26C25B0400E098BE /* Manual.swift */,
+			);
+			path = HowToPlay;
 			sourceTree = "<group>";
 		};
 		717EAD3A26A656D600E0CDB7 /* PersistenceStorage */ = {
@@ -435,6 +450,7 @@
 				71DF65542692FD1400557693 /* CommonViewModel.swift */,
 				E4DF613E26A847330061F6E9 /* AdViewModel.swift */,
 				715C1C9726BD09950025C681 /* StoryViewModel.swift */,
+				7166B23C26C253A800E098BE /* HowToPlayViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -679,6 +695,7 @@
 		E4D7C6472693E87600D58BA2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7166B23E26C25AB500E098BE /* HowToPlay */,
 				E45B0AC82692F9CF006FDE3D /* Unit.swift */,
 				E4DF614026A92CE00061F6E9 /* ShopItem.swift */,
 				E4BF70FE26AEF3F700E8645F /* GameStatus.swift */,
@@ -967,7 +984,9 @@
 				E4779C6726983F5700B92D24 /* GameOverViewController.swift in Sources */,
 				71DF65532692FBE500557693 /* SceneCoordinator.swift in Sources */,
 				E4DF613B26A845670061F6E9 /* AdStorageType.swift in Sources */,
+				7166B23D26C253A800E098BE /* HowToPlayViewModel.swift in Sources */,
 				E41C85D8269C252D008F2E91 /* GameUnitManagerType.swift in Sources */,
+				7166B23B26C2532400E098BE /* HowToPlayViewController.swift in Sources */,
 				71DF64BD2692C18F00557693 /* RankViewController.swift in Sources */,
 				711A69EC26B3B13E00C7C99A /* LoadingViewController.swift in Sources */,
 				719AB9DE26B7ADF2001B5913 /* SettingViewController.swift in Sources */,
@@ -1001,6 +1020,7 @@
 				E4150E9F26BE44AC0041DD32 /* PersonStoryView.swift in Sources */,
 				E4BF712C26B3E6E300E8645F /* UnitInformation.swift in Sources */,
 				E4150E9926BA37C10041DD32 /* FadeInTextView.swift in Sources */,
+				7166B24026C25B0400E098BE /* Manual.swift in Sources */,
 				E4779C652697E92F00B92D24 /* TimeProgressView.swift in Sources */,
 				71E2FD9B26B90C5A0032A54B /* SettingSwitchController.swift in Sources */,
 				7165CDDB2695789300891214 /* SyetemSettings.swift in Sources */,

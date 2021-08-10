@@ -6,6 +6,7 @@ enum ViewControllerType: CaseIterable {
     case itemVC
     case gameVC
     case settingVC
+    case howToVC
     case storyVC
 }
 
