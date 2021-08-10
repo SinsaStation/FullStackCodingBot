@@ -112,9 +112,11 @@ extension Scene {
             return storyVC
             
         case .howToPlay(let viewModel):
-            guard <#condition#> else {
-                <#statements#>
+            guard var howToVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.howTo) as? HowToPlayViewController else {
+                fatalError()
             }
+            howToVC.bind(viewModel: viewModel)
+            return howToVC
         }
     }
 }
