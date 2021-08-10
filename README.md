@@ -19,7 +19,7 @@
 
 ### Main & Menu
 
-|<img src="https://user-images.githubusercontent.com/72188416/128887560-439e2887-4088-4a15-9124-0dcaf6d12b46.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/128887871-655093c3-f2d7-4ec0-8320-9f461584691b.png" width="250">|<img src="https://user-images.githubusercontent.com/74946802/127594352-7cbee772-52ca-4e0a-a126-625940dd4f1c.png" width="250">|
+|<img src="https://user-images.githubusercontent.com/72188416/128887560-439e2887-4088-4a15-9124-0dcaf6d12b46.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/128887871-655093c3-f2d7-4ec0-8320-9f461584691b.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/128892470-01bb0fe3-5d16-47c9-bbd1-3f062e1343a6.png" width="250">|
 |:---:|:---:|:---:|
 |Title|Item|Reward|
 
