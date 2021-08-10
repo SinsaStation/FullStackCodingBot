@@ -28,7 +28,7 @@ enum Text {
     static let giftLoading = "Making coffee..."
     
     static func reward(amount: Int) -> String {
-        return "Got \(amount) Coins!"
+        return "Got \(amount) energy!"
     }
     
     static let levelUp = "Tab button to level up!"

@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "text_coin.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "text_coin-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "text_coin-2.png",
+      "filename" : "text_energy.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
