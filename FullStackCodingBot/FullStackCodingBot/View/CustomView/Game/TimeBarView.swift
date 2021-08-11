@@ -25,6 +25,27 @@ final class TimeBarView: UIView {
         solidLayer.backgroundColor = normalColor.cgColor
         return solidLayer
     }
+
+    func fillAnimation(duration: Double = GameSetting.readyTime) {
+        setup()
+        
+        let toValue: CGFloat = fullWidth ?? ScreenSize.width
+        let fromValue: CGFloat = 0
+        timeSolidLayer?.bounds.size.width = toValue
+
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(duration)
+
+        let widthKey = "bounds.size.width"
+        let widthAnimation = CABasicAnimation(keyPath: widthKey)
+        widthAnimation.fromValue = fromValue
+        widthAnimation.toValue = toValue
+        widthAnimation.isRemovedOnCompletion = false
+
+        timeSolidLayer?.add(widthAnimation, forKey: widthKey)
+
+        CATransaction.commit()
+    }
     
     func adjust(to percentage: Float) {
         let toValue = width(for: percentage)
@@ -32,7 +53,7 @@ final class TimeBarView: UIView {
     }
     
     private func width(for percentage: Float) -> CGFloat {
-        let fullWidth = fullWidth ?? 1
+        let fullWidth = fullWidth ?? ScreenSize.width
         return fullWidth * CGFloat(percentage)
     }
     

@@ -131,6 +131,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
 private extension GameViewController {
     private func setup() {
         setCodeView()
+        setTimeViewObserver()
         setReadyViewObserver()
         setupFeedbackGenerator()
     }
@@ -141,6 +142,13 @@ private extension GameViewController {
         codeView.rx.observe(CGRect.self, "bounds")
             .subscribe(onNext: { [unowned self ] _ in
                 self.codeView.layoutSubviews(with: "")
+            }).disposed(by: rx.disposeBag)
+    }
+    
+    private func setTimeViewObserver() {
+        normalTimeView.rx.observe(CGRect.self, "bounds")
+            .subscribe(onNext: { [unowned self ] _ in
+                self.normalTimeView.fillAnimation()
             }).disposed(by: rx.disposeBag)
     }
     
@@ -175,7 +183,7 @@ private extension GameViewController {
             }
         }
     }
-    
+
     private func setToWrongStatus() {
         backgroundView.playWrongMode()
         normalTimeView.playWrongMode()
@@ -193,6 +201,7 @@ private extension GameViewController {
         viewModel.execute()
         clearViews()
         readyView.playAnimation()
+        normalTimeView.fillAnimation()
     }
     
     private func clearViews() {
@@ -203,12 +212,12 @@ private extension GameViewController {
         buttonController.changeButtonStatus(to: false)
         pauseButton.isEnabled = false
         readyView.isHidden = false
+        setupTimeView(isFeverOn: false)
     }
     
     private func gameStart() {
         normalTimeView.setup()
         pauseButton.isEnabled = true
-        normalTimeView.isHidden = false
         buttonController.changeButtonStatus(to: true)
         readyView.finishAnimation(for: 0.3)
     }
