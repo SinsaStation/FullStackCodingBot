@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "php-2.png",
+      "filename" : "php.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "php-1.png",
+      "filename" : "php@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "php.png",
+      "filename" : "php@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "button_upgrade-2.png",
+      "filename" : "button_upgrade.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "button_upgrade-1.png",
+      "filename" : "button_upgrade@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "button_upgrade.png",
+      "filename" : "button_upgrade@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

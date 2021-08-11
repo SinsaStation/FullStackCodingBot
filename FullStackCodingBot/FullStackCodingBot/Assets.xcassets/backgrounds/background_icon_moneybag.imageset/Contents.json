@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "energy box.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "energy box@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "energy box.png",
+      "filename" : "energy box@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

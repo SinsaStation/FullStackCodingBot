@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "kotlin-4.png",
+      "filename" : "kotlin-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "kotlin-3.png",
+      "filename" : "kotlin-2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "kotlin-2.png",
+      "filename" : "kotlin-2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
