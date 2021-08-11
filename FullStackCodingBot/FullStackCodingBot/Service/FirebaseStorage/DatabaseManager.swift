@@ -14,10 +14,10 @@ final class DatabaseManager: DatabaseManagerType {
     }
     
     func updateDatabase(_ info: NetworkDTO) {
-        let unitData = DataFormatManager.transformToString(info.units)
-        let moneyData = DataFormatManager.transformToString(info.money)
-        let scoreData = DataFormatManager.transformToString(info.score)
-        let adsData = DataFormatManager.transformToString(info.ads)
+        let unitData = try? DataFormatManager.transformToString(info.units)
+        let moneyData = try? DataFormatManager.transformToString(info.money)
+        let scoreData = try? DataFormatManager.transformToString(info.score)
+        let adsData = try? DataFormatManager.transformToString(info.ads)
         ref.child("users").child(uid).setValue(["info": ["units": unitData, "money": moneyData, "score": scoreData, "ads": adsData]])
     }
     
@@ -36,13 +36,11 @@ final class DatabaseManager: DatabaseManagerType {
                 }
                 
                 if let data = snapshot.value as? [String: Any] {
-                    DataFormatManager.transformToLocalData(data)
-                        .subscribe(onNext: { networkDTO in
-                            observer.onNext(networkDTO)
-                            observer.onCompleted()
-                        }, onError: { error in
-                            observer.onError(error)
-                        }).disposed(by: disposedBag)
+                    guard let networkDTO = try? DataFormatManager.transformToLocalData(data) else {
+                        return
+                    }
+                    observer.onNext(networkDTO)
+                    observer.onCompleted()
                 }
             }
             return Disposables.create()
