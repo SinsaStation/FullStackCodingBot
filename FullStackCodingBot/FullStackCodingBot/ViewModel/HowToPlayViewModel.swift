@@ -8,7 +8,6 @@ final class HowToPlayViewModel: CommonViewModel {
     let cancelAction: CocoaAction
     let currentPage = BehaviorRelay<Int>(value: 0)
     let currentManual = BehaviorRelay<Manual>(value: Manual.all[0])
-    private let manual = Manual.all
         
     init(sceneCoordinator: SceneCoordinatorType,
          storage: PersistenceStorageType,
@@ -24,12 +23,6 @@ final class HowToPlayViewModel: CommonViewModel {
         }
         
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
-        
-        setCurrentManual()
-    }
-    
-    func getCurrentManul(from index: Int) -> Manual {
-        return manual[index]
     }
     
     func moveToPage(from direction: DirectionType) {

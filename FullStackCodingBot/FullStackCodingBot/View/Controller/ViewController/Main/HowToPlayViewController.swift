@@ -46,6 +46,7 @@ private extension HowToPlayViewController {
     
     private func setup() {
         setupSwipeGesture()
+        viewModel.setCurrentManual()
     }
     
     private func setupSwipeGesture() {
