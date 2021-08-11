@@ -8,6 +8,6 @@ protocol FeverManagerType {
     
     func feverMayStart(afterFilledBy amount: Int) -> Bool
     
-    func feverMayOver(after seconds: Int) -> Bool
+    func feverMayOver(after seconds: Double) -> Bool
     
 }

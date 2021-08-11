@@ -16,8 +16,8 @@ final class GameViewModel: CommonViewModel {
     private(set) var newFeverStatus = BehaviorRelay<Bool>(value: false)
     
     // Game Properties
-    private(set) var timeLeftPercentage = BehaviorRelay<Float>(value: 1)
-    private(set) var feverTimeLeftPercentage = BehaviorRelay<Float>(value: 1)
+    private(set) var timeLeftPercentage = BehaviorRelay<Double>(value: 1)
+    private(set) var feverTimeLeftPercentage = BehaviorRelay<Double>(value: 1)
     private(set) var currentScore = BehaviorSubject<Int?>(value: nil)
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
@@ -100,14 +100,14 @@ extension GameViewModel {
         }).disposed(by: rx.disposeBag)
     }
     
-    private func timePercentage(left: Int, timeMode: TimeMode) -> Float {
-        let realTimeAdjustMent = Float(left-1)
-        var totalTime: Float
+    private func timePercentage(left: Double, timeMode: TimeMode) -> Double {
+        let realTimeAdjustMent = Double(left)
+        var totalTime: Double
         switch timeMode {
         case .normal:
-            totalTime = Float(GameSetting.startingTime)
+            totalTime = GameSetting.startingTime
         case .fever:
-            totalTime = Float(GameSetting.feverTime)
+            totalTime = GameSetting.feverTime
         }
         return realTimeAdjustMent / totalTime
     }
@@ -140,7 +140,7 @@ extension GameViewModel {
     
     func startTimer() {
         timer = DispatchSource.makeTimerSource()
-        timer?.schedule(deadline: .now()+1, repeating: .seconds(GameSetting.timeUnit))
+        timer?.schedule(deadline: .now()+0.1, repeating: .milliseconds(100))
         
         timer?.setEventHandler { [weak self] in
             self?.timeManager.timeMinus(by: GameSetting.timeUnit)

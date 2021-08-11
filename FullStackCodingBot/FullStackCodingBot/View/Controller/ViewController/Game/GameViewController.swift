@@ -96,7 +96,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         viewModel.feverTimeLeftPercentage
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] percentage in
-                self.feverTimeView.adjust(to: percentage, duration: 1)
+                self.feverTimeView.adjust(to: percentage)
             }).disposed(by: rx.disposeBag)
     }
     
@@ -201,6 +201,7 @@ private extension GameViewController {
         viewModel.execute()
         clearViews()
         readyView.playAnimation()
+        normalTimeView.changeAnimationStatus(true)
         normalTimeView.fillAnimation()
     }
     
@@ -217,6 +218,7 @@ private extension GameViewController {
     
     private func gameStart() {
         normalTimeView.setup()
+        normalTimeView.changeAnimationStatus(false)
         pauseButton.isEnabled = true
         buttonController.changeButtonStatus(to: true)
         readyView.finishAnimation(for: 0.3)

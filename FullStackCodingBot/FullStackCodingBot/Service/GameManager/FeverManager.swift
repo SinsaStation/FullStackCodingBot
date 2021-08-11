@@ -2,10 +2,10 @@ import Foundation
 
 final class FeverManager: FeverManagerType {
     
-    private var timeLeft: Int
+    private var timeLeft: Double
     private var gauge: Int
     
-    init(timeLeft: Int = 0, gauge: Int = 0) {
+    init(timeLeft: Double = 0, gauge: Int = 0) {
         self.timeLeft = timeLeft
         self.gauge = gauge
     }
@@ -37,7 +37,7 @@ final class FeverManager: FeverManagerType {
         }
     }
     
-    func feverMayOver(after seconds: Int) -> Bool {
+    func feverMayOver(after seconds: Double) -> Bool {
         reduceTime(by: seconds)
         
         if timeLeft <= 0 {
@@ -48,7 +48,7 @@ final class FeverManager: FeverManagerType {
         }
     }
     
-    private func reduceTime(by seconds: Int) {
+    private func reduceTime(by seconds: Double) {
         timeLeft -= seconds
     }
 }
