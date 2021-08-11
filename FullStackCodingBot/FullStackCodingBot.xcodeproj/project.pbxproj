@@ -36,6 +36,7 @@
 		7166B24026C25B0400E098BE /* Manual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7166B23F26C25B0400E098BE /* Manual.swift */; };
 		7170CD4526B266BE00F03248 /* VersionErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */; };
 		7177AEBC26B953B4005A4465 /* SettingInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7177AEBB26B953B4005A4465 /* SettingInformation.swift */; };
+		718F224626C36AE200B2648C /* HowToPlayButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F224526C36AE200B2648C /* HowToPlayButtonController.swift */; };
 		719A6A9B26B11208006AC991 /* NetworkDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719A6A9A26B11208006AC991 /* NetworkDTO.swift */; };
 		719AB9DE26B7ADF2001B5913 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */; };
 		719DA2B126A7FC9900624C61 /* JoystixMonospace-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */; };
@@ -173,6 +174,7 @@
 		7166B23F26C25B0400E098BE /* Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manual.swift; sourceTree = "<group>"; };
 		7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionErrorViewController.swift; sourceTree = "<group>"; };
 		7177AEBB26B953B4005A4465 /* SettingInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInformation.swift; sourceTree = "<group>"; };
+		718F224526C36AE200B2648C /* HowToPlayButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayButtonController.swift; sourceTree = "<group>"; };
 		719A6A9A26B11208006AC991 /* NetworkDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDTO.swift; sourceTree = "<group>"; };
 		719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JoystixMonospace-Regular.ttf"; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				710A9DAB2692AD5C0090B38A /* MainButtonController.swift */,
 				E41C85DE269C5149008F2E91 /* PauseButtonController.swift */,
 				71E2FD9A26B90C5A0032A54B /* SettingSwitchController.swift */,
+				718F224526C36AE200B2648C /* HowToPlayButtonController.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -966,6 +969,7 @@
 				E4BF710726AFD51700E8645F /* FeverManagerType.swift in Sources */,
 				E4BF70FF26AEF3F700E8645F /* GameStatus.swift in Sources */,
 				E4BF712B26B3E6E000E8645F /* AdsInformation.swift in Sources */,
+				718F224626C36AE200B2648C /* HowToPlayButtonController.swift in Sources */,
 				E4BF710126AFB0AD00E8645F /* TimeManager.swift in Sources */,
 				E41C85DA269C4E8F008F2E91 /* PauseViewController.swift in Sources */,
 				E4DF613D26A845DA0061F6E9 /* AdStorage.swift in Sources */,

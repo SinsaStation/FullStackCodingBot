@@ -5,6 +5,7 @@ final class HowToPlayViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: HowToPlayViewModel!
     
+    @IBOutlet var directionButtonController: DirectionButtonController!
     @IBOutlet weak var howToImageView: UIImageView!
     @IBOutlet weak var imagePageControl: UIPageControl!
     @IBOutlet weak var howToTextView: UITextView!
@@ -16,6 +17,10 @@ final class HowToPlayViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
+        directionButtonController.setupButton()
+        directionButtonController.bind { direction in
+            print(direction)
+        }
         cancelButton.rx.action = viewModel.cancelAction
     }
 }
