@@ -3,13 +3,16 @@ import Foundation
 enum GameSetting {
     static let count = 7
     static let maxUnitCount = 8
-    static let readyTime: Double = 1.3
-    static let startingTime = 60
-    static let feverGaugeMax = 20
-    static let feverTime = 10
-    static let wrongTime = 10
     static let startingCount = 2
-    static let timeUnit = 1
+    static let feverGaugeMax = 20
+}
+
+enum TimeSetting {
+    static let readyTime: Double = 1.3
+    static let startingTime: Double = 60
+    static let feverTime: Double = 10
+    static let wrongTime: Double = 10
+    static let timeUnit: Double = 0.1
 }
 
 enum ShopSetting {
@@ -28,7 +31,7 @@ enum Text {
     static let giftLoading = "Making coffee..."
     
     static func reward(amount: Int) -> String {
-        return "Got \(amount) Coins!"
+        return "Got \(amount) energy!"
     }
     
     static let levelUp = "Tab button to level up!"

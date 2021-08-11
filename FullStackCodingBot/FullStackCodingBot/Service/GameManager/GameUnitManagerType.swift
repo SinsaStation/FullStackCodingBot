@@ -6,7 +6,9 @@ protocol GameUnitManagerType {
     
     func startings() -> [Unit]
     
-    func removeAndRefilled() -> [Unit]
+    func completed() -> Unit?
+    
+    func refilled() -> [Unit]
     
     func isMoveActionCorrect(to direction: Direction) -> Bool
     

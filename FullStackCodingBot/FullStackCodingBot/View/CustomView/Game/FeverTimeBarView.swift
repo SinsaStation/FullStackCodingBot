@@ -28,27 +28,12 @@ final class FeverTimeBarView: UIView {
         return gradientLayer
     }
     
-    func adjust(to percentage: Float, duration: Double) {
-        guard let timeLayer = timeLayer else { return }
-        let fromValue = timeLayer.bounds.width
+    func adjust(to percentage: Double) {
         let toValue = width(for: percentage)
-        timeLayer.bounds.size.width = toValue
-        
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(duration)
-
-        let widthKey = "bounds.size.width"
-        let widthAnimation = CABasicAnimation(keyPath: widthKey)
-        widthAnimation.fromValue = fromValue
-        widthAnimation.toValue = toValue
-        widthAnimation.isRemovedOnCompletion = false
-
-        timeLayer.add(widthAnimation, forKey: widthKey)
-
-        CATransaction.commit()
+        timeLayer?.bounds.size.width = toValue
     }
     
-    private func width(for percentage: Float) -> CGFloat {
+    private func width(for percentage: Double) -> CGFloat {
         let fullWidth = fullWidth ?? 1
         return fullWidth * CGFloat(percentage)
     }

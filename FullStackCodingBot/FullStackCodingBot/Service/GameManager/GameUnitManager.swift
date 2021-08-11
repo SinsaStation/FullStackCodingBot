@@ -16,7 +16,13 @@ final class GameUnitManager: GameUnitManagerType {
     private var memberCount: Int
     private var answerCount: Int
     
-    init(allKinds: [Unit], unused: [Unit] = [], leftStack: [Unit] = [], rightStack: [Unit] = [], onGames: [Unit] = [], memberCount: Int = 0, answerCount: Int = 0) {
+    init(allKinds: [Unit],
+         unused: [Unit] = [],
+         leftStack: [Unit] = [],
+         rightStack: [Unit] = [],
+         onGames: [Unit] = [],
+         memberCount: Int = 0,
+         answerCount: Int = 0) {
         self.allKinds = allKinds
         self.unused = unused
         self.leftStack = leftStack
@@ -42,10 +48,12 @@ final class GameUnitManager: GameUnitManagerType {
         return onGames
     }
     
-    func removeAndRefilled() -> [Unit] {
-        guard !onGames.isEmpty else { return [] }
-        onGames.removeFirst()
-        
+    func completed() -> Unit? {
+        guard !onGames.isEmpty else { return nil }
+        return onGames.removeFirst()
+    }
+    
+    func refilled() -> [Unit] {
         let unitsToUse = leftStack + rightStack
         generateNewUnit(from: unitsToUse, count: 1)
         
