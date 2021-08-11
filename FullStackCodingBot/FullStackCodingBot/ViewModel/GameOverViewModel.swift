@@ -5,21 +5,22 @@ import GameKit
 
 final class GameOverViewModel: CommonViewModel {
     
+    private(set) var newScript = BehaviorRelay<Script?>(value: nil)
     private let scoreInfo = BehaviorRelay<Int>(value: 0)
     private let moneyInfo = BehaviorRelay<Int>(value: 0)
     private(set) var highScoreStatus = BehaviorRelay<Bool>(value: false)
     private var newGameStatus: BehaviorRelay<GameStatus>
     
     lazy var finalScore: Driver<String> = {
-        return scoreInfo.map {String($0)}.asDriver(onErrorJustReturn: "")
+        return scoreInfo.map { String($0) }.asDriver(onErrorJustReturn: "")
     }()
     
     lazy var gainedMoney: Driver<String> = {
-        return moneyInfo.map {String($0)}.asDriver(onErrorJustReturn: "")
+        return moneyInfo.map { String($0) }.asDriver(onErrorJustReturn: "")
     }()
     
     lazy var currentMoney: Driver<String> = {
-        return storage.availableMoeny().map {String($0)}.asDriver(onErrorJustReturn: "")
+        return storage.availableMoeny().map { String($0) }.asDriver(onErrorJustReturn: "")
     }()
     
     init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: DatabaseManagerType, finalScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
@@ -33,6 +34,7 @@ final class GameOverViewModel: CommonViewModel {
         storeReward()
         updateHighScore()
         storeHightScoreToGameCenter()
+        sendScript()
         MusicStation.shared.stop()
     }
     
@@ -46,6 +48,23 @@ final class GameOverViewModel: CommonViewModel {
         highScoreStatus.accept(isHighScore)
     }
     
+    private func storeHightScoreToGameCenter() {
+        let bestScore = GKScore(leaderboardIdentifier: IdentifierGC.leaderboard)
+        bestScore.value = Int64(storage.myHighScore())
+        
+        GKScore.report([bestScore]) { error in
+            if let error = error {
+                print(error)
+            } else {
+            }
+        }
+    }
+    
+    private func sendScript() {
+        let script = Script(speaker: .ceo, line: Line(text: "쯧쯔 겨우 이건가?\n실망이군.", emotion: .notGood))
+        newScript.accept(script)
+    }
+    
     func makeMoveAction(to viewController: GameOverViewControllerType) {
         switch viewController {
         case .gameVC:
@@ -54,17 +73,6 @@ final class GameOverViewModel: CommonViewModel {
         case .mainVC:
             sceneCoordinator.toMain(animated: true)
             MusicStation.shared.play(type: .main)
-        }
-    }
-    
-    private func storeHightScoreToGameCenter() {
-        let bestScore = GKScore(leaderboardIdentifier: IdentifierGC.leaderboard)
-        bestScore.value = Int64(storage.myHighScore())
-        GKScore.report([bestScore]) { error in
-            if let error = error {
-                print(error)
-            } else {
-            }
         }
     }
 }
