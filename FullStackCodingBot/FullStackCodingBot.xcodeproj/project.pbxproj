@@ -129,6 +129,7 @@
 		E4DF613F26A847330061F6E9 /* AdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF613E26A847330061F6E9 /* AdViewModel.swift */; };
 		E4DF614126A92CE00061F6E9 /* ShopItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF614026A92CE00061F6E9 /* ShopItem.swift */; };
 		E4DF614326A93FFB0061F6E9 /* ShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF614226A93FFB0061F6E9 /* ShopCell.swift */; };
+		E4F4304226C37A9B00F046E9 /* DialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4304126C37A9B00F046E9 /* DialogView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -267,6 +268,7 @@
 		E4DF613E26A847330061F6E9 /* AdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdViewModel.swift; sourceTree = "<group>"; };
 		E4DF614026A92CE00061F6E9 /* ShopItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItem.swift; sourceTree = "<group>"; };
 		E4DF614226A93FFB0061F6E9 /* ShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCell.swift; sourceTree = "<group>"; };
+		E4F4304126C37A9B00F046E9 /* DialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -525,6 +527,7 @@
 				E43B64A326AC2384001D9896 /* TimeBarView.swift */,
 				E4BF710826B00EF600E8645F /* FeverTimeBarView.swift */,
 				E4BF710A26B1324500E8645F /* ReadyView.swift */,
+				E4F4304126C37A9B00F046E9 /* DialogView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -991,6 +994,7 @@
 				7166B23D26C253A800E098BE /* HowToPlayViewModel.swift in Sources */,
 				E41C85D8269C252D008F2E91 /* GameUnitManagerType.swift in Sources */,
 				7166B23B26C2532400E098BE /* HowToPlayViewController.swift in Sources */,
+				E4F4304226C37A9B00F046E9 /* DialogView.swift in Sources */,
 				71DF64BD2692C18F00557693 /* RankViewController.swift in Sources */,
 				711A69EC26B3B13E00C7C99A /* LoadingViewController.swift in Sources */,
 				719AB9DE26B7ADF2001B5913 /* SettingViewController.swift in Sources */,

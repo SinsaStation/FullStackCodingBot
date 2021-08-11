@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "item_gift_loading-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "item_gift_loading-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "item_gift_loading.png",
+      "filename" : "coffee_empty.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "background_score_light.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "background_score_light-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "background_score_light-2.png",
+      "filename" : "launch.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

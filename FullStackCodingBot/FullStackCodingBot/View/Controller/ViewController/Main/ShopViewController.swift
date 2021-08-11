@@ -16,10 +16,6 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         infoView.show(text: Text.shopReset)
     }
     
