@@ -16,23 +16,22 @@ final class DataFormatManager {
                 let result = NetworkDTO(units: units, money: money, score: score, ads: ads)
                 observer.onNext(result)
                 observer.onCompleted()
-            } catch let error {
-                observer.onError(error)
+            } catch {
+                observer.onError(DataParsingError.cannotTransformToStruct)
             }
             return Disposables.create()
         }
+
     }
     
-    static func transformToString<T: Encodable>(_ data: T) -> String? {
+    static func transformToString<T: Encodable>(_ data: T) throws -> String? {
         do {
             let encodedData = try JSONEncoder().encode(data)
             let storedData = String(data: encodedData, encoding: .utf8)
             return storedData
-        } catch let error {
-            print(error)
+        } catch {
+            throw DataParsingError.cannotTransformToString
         }
-        
-        return ""
     }
     
     static func transformToUnit(_ info: ItemInformation) -> Unit {
