@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 import RxCocoa
 
 final class GameOverViewController: UIViewController, ViewModelBindableType {
@@ -10,6 +11,7 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var gainedCoinLabel: UILabel!
     @IBOutlet weak var totalCoinLabel: UILabel!
     @IBOutlet weak var highScoreImageView: UIImageView!
+    @IBOutlet weak var dialogView: DialogView!
     @IBOutlet var backgroundView: ReplicateAnimationView!
     
     override func viewDidLoad() {
@@ -45,5 +47,12 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
             .map { $0 ? 1.0 : 0.0 }
             .drive(highScoreImageView.rx.alpha)
             .disposed(by: rx.disposeBag)
+        
+        viewModel.newScript
+            .delay(.milliseconds(300), scheduler: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [unowned self] script in
+                guard let script = script else { return }
+                self.dialogView.show(with: script)
+            }).disposed(by: rx.disposeBag)
     }
 }

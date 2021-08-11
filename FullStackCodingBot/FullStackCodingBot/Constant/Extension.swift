@@ -5,12 +5,6 @@ protocol StructSavable {
     func getStruct<Object: Decodable>(forKey: String, castTo type: Object.Type) throws -> Object
 }
 
-enum StructSavableError: Error {
-    case unableToDecode
-    case unableToEncode
-    case noValue
-}
-
 extension UserDefaults: StructSavable {
     func setStruct<Object: Encodable>(_ object: Object, forKey: String) throws {
         let encoder = JSONEncoder()

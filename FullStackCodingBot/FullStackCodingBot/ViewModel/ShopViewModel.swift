@@ -33,7 +33,9 @@ final class ShopViewModel: AdViewModel {
             }
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
+        
         self.soundEffectStation = SingleSoundEffectStation(soundEffectType: soundEffectType)
+        
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
         adStorage.setNewRewardsIfPossible(with: .none)
     }

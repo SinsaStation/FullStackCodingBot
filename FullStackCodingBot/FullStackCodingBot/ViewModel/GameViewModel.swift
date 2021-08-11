@@ -16,12 +16,13 @@ final class GameViewModel: CommonViewModel {
     private(set) var newFeverStatus = BehaviorRelay<Bool>(value: false)
     
     // Game Properties
-    private(set) var timeLeftPercentage = BehaviorRelay<Float>(value: 1)
-    private(set) var feverTimeLeftPercentage = BehaviorRelay<Float>(value: 1)
+    private(set) var timeLeftPercentage = BehaviorRelay<Double>(value: 1)
+    private(set) var feverTimeLeftPercentage = BehaviorRelay<Double>(value: 1)
     private(set) var currentScore = BehaviorSubject<Int?>(value: nil)
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
     private(set) var userAction = BehaviorRelay<UserActionStatus?>(value: nil)
+    private(set) var codeToShow = BehaviorRelay<String>(value: "")
     
     // Actions
     private(set) lazy var pauseAction: Action<Void, Void> = Action {
@@ -50,7 +51,7 @@ extension GameViewModel {
         resetAll()
         gameSoundStation.play(type: .ready)
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+GameSetting.readyTime) { [unowned self] in
+        DispatchQueue.main.asyncAfter(deadline: .now()+TimeSetting.readyTime) { [unowned self] in
             self.newGameStatus.accept(.new)
             self.setTimeManager()
             self.setGame()
@@ -100,15 +101,9 @@ extension GameViewModel {
         }).disposed(by: rx.disposeBag)
     }
     
-    private func timePercentage(left: Int, timeMode: TimeMode) -> Float {
-        let realTimeAdjustMent = Float(left-1)
-        var totalTime: Float
-        switch timeMode {
-        case .normal:
-            totalTime = Float(GameSetting.startingTime)
-        case .fever:
-            totalTime = Float(GameSetting.feverTime)
-        }
+    private func timePercentage(left: Double, timeMode: TimeMode) -> Double {
+        let realTimeAdjustMent = Double(left)
+        let totalTime = timeMode.totalTime
         return realTimeAdjustMent / totalTime
     }
     
@@ -129,6 +124,7 @@ extension GameViewModel {
         newOnGameUnits.accept(newUnits)
         
         currentScore.onNext(0)
+        codeToShow.accept("")
     }
     
     private func sendNewUnitToStack(by count: Int) {
@@ -140,10 +136,10 @@ extension GameViewModel {
     
     func startTimer() {
         timer = DispatchSource.makeTimerSource()
-        timer?.schedule(deadline: .now()+1, repeating: .seconds(GameSetting.timeUnit))
+        timer?.schedule(deadline: .now()+0.1, repeating: .milliseconds(100))
         
         timer?.setEventHandler { [weak self] in
-            self?.timeManager.timeMinus(by: GameSetting.timeUnit)
+            self?.timeManager.timeMinus(by: TimeSetting.timeUnit)
         }
         timer?.activate()
     }
@@ -162,9 +158,11 @@ extension GameViewModel {
     }
     
     private func correctAction(for direction: Direction, _ scoreGained: Int) {
-        guard updateScore(with: scoreGained) else { return }
+        guard updateScore(with: scoreGained),
+              let currentUnit = gameUnitManager.completed() else { return }
         userAction.accept(.correct(direction))
         timeManager.correct()
+        codeToShow.accept(currentUnit.randomCode())
         onGameUnitNeedsChange()
         gameSoundStation.play(type: .correct)
     }
@@ -182,7 +180,7 @@ extension GameViewModel {
             gameSoundStation.play(type: .levelUp)
         }
         
-        let currentUnits = gameUnitManager.removeAndRefilled()
+        let currentUnits = gameUnitManager.refilled()
         newOnGameUnits.accept(currentUnits)
     }
     
@@ -190,6 +188,7 @@ extension GameViewModel {
         let wrongStatus = timeManager.wrong()
         userAction.accept(wrongStatus)
         gameSoundStation.play(type: .wrong)
+        codeToShow.accept("")
     }
 }
 

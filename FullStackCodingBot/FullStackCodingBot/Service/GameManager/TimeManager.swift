@@ -4,25 +4,33 @@ import RxSwift
 enum TimeMode {
     case normal
     case fever
+    
+    var totalTime: Double {
+        switch self {
+        case .normal:
+            return TimeSetting.startingTime
+        case .fever:
+            return TimeSetting.feverTime
+        }
+    }
 }
 
 struct TimeManager: TimeManagerType {
     
     private let startMode: TimeMode
-    private let totalTime: Int
+    private let totalTime: Double
     private var feverTimeManager: FeverManagerType
     private(set) var newTimerMode: BehaviorSubject<TimeMode>
-    private(set) var timeLeft: BehaviorSubject<Int>
-    private(set) var feverTimeLeft: BehaviorSubject<Int?>
+    private(set) var timeLeft: BehaviorSubject<Double>
+    private(set) var feverTimeLeft: BehaviorSubject<Double?>
     
     init(timerMode: TimeMode = .normal,
-         totalTime: Int = Int(GameSetting.startingTime),
          feverManager: FeverManagerType = FeverManager()) {
         self.startMode = timerMode
-        self.totalTime = totalTime
+        self.totalTime = timerMode.totalTime
         self.newTimerMode = BehaviorSubject<TimeMode>(value: timerMode)
-        self.timeLeft = BehaviorSubject<Int>(value: totalTime)
-        self.feverTimeLeft = BehaviorSubject<Int?>(value: nil)
+        self.timeLeft = BehaviorSubject<Double>(value: totalTime)
+        self.feverTimeLeft = BehaviorSubject<Double?>(value: nil)
         self.feverTimeManager = feverManager
     }
 
@@ -36,20 +44,16 @@ struct TimeManager: TimeManagerType {
         feverTimeManager.reset()
     }
     
-    func timeMinus(by second: Int) {
+    func timeMinus(by second: Double) {
         guard let currentMode = try? newTimerMode.value() else { return }
         
         switch currentMode {
         case .normal:
             guard let currentTime = try? timeLeft.value() else { return }
             let newTimeLeft = timeReduced(by: second, from: currentTime)
-            
-            if newTimeLeft == 0 {
-                timeLeft.onCompleted()
-            } else {
-                timeLeft.onNext(newTimeLeft)
-            }
-            feverTimeManager.reduceGauge(by: second)
+            newTimeLeft == 0 ? timeLeft.onCompleted() : timeLeft.onNext(newTimeLeft)
+            let isSolidNumber = newTimeLeft == Double(Int(newTimeLeft))
+            if isSolidNumber { feverTimeManager.reduceGauge(by: 1) }
         case .fever:
             guard let currentFeverTime = try? feverTimeLeft.value() else { return }
             let newFeverTimeLeft = timeReduced(by: second, from: currentFeverTime)
@@ -60,7 +64,7 @@ struct TimeManager: TimeManagerType {
         }
     }
     
-    private func timeReduced(by second: Int, from currentTime: Int) -> Int {
+    private func timeReduced(by second: Double, from currentTime: Double) -> Double {
         let newTime = currentTime - second
         return newTime >= 0 ? newTime : 0
     }
@@ -71,7 +75,7 @@ struct TimeManager: TimeManagerType {
 
         if feverTimeManager.feverMayStart(afterFilledBy: 1) {
             newTimerMode.onNext(.fever)
-            feverTimeLeft.onNext(GameSetting.feverTime)
+            feverTimeLeft.onNext(TimeSetting.feverTime)
         }
     }
     
@@ -79,7 +83,7 @@ struct TimeManager: TimeManagerType {
         guard let currentMode = try? newTimerMode.value(),
               currentMode == .normal else { return .feverWrong }
         
-        timeMinus(by: GameSetting.wrongTime)
+        timeMinus(by: TimeSetting.wrongTime)
         feverTimeManager.reset()
         
         return .wrong

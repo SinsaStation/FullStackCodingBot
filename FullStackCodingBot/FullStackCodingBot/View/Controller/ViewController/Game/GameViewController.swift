@@ -14,6 +14,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var normalTimeView: TimeBarView!
     @IBOutlet weak var feverTimeView: FeverTimeBarView!
     @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var codeView: FadeInTextView!
     @IBOutlet weak var backgroundView: GameBackgroundView!
     @IBOutlet weak var readyView: ReadyView!
     private var feedbackGenerator: UINotificationFeedbackGenerator?
@@ -30,6 +31,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         bindTimeProgress()
         bindGameStates()
         bindUserAction()
+        bindCodeView()
     }
     
     private func bindButtonController() {
@@ -93,7 +95,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         viewModel.feverTimeLeftPercentage
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] percentage in
-                self.feverTimeView.adjust(to: percentage, duration: 1)
+                self.feverTimeView.adjust(to: percentage)
             }).disposed(by: rx.disposeBag)
     }
     
@@ -118,6 +120,13 @@ final class GameViewController: UIViewController, ViewModelBindableType {
             }).disposed(by: rx.disposeBag)
     }
     
+    private func bindCodeView() {
+        viewModel.codeToShow
+            .subscribe(onNext: { [unowned self] code in
+                self.codeView.show(text: code)
+            }).disposed(by: rx.disposeBag)
+    }
+    
     private func sendFeedback(type feedbackType: UINotificationFeedbackGenerator.FeedbackType) {
         guard UserDefaults.checkStatus(of: .vibration) else { return }
         feedbackGenerator?.notificationOccurred(feedbackType)
@@ -127,17 +136,34 @@ final class GameViewController: UIViewController, ViewModelBindableType {
 // MARK: - Setup
 private extension GameViewController {
     private func setup() {
-        setReadyViewObserver()
+        setCodeView()
+        setViewObservers()
         setupFeedbackGenerator()
     }
     
-    private func setReadyViewObserver() {
-        readyView.rx.observe(CGRect.self, "bounds")
+    private func setCodeView() {
+        codeView.setup(fontName: Font.neo, alignMode: .left)
+    }
+    
+    private func setViewObservers() {
+        let boundsKey = "bounds"
+        
+        codeView.rx.observe(CGRect.self, boundsKey)
+            .subscribe(onNext: { [unowned self ] _ in
+                self.codeView.layoutSubviews(with: "")
+            }).disposed(by: rx.disposeBag)
+        
+        normalTimeView.rx.observe(CGRect.self, boundsKey)
+            .subscribe(onNext: { [unowned self ] _ in
+                self.normalTimeView.fillAnimation()
+            }).disposed(by: rx.disposeBag)
+        
+        readyView.rx.observe(CGRect.self, boundsKey)
             .subscribe(onNext: { [unowned self ] _ in
                 self.readyView.playAnimation()
             }).disposed(by: rx.disposeBag)
     }
-    
+
     private func setupFeedbackGenerator() {
         feedbackGenerator = UINotificationFeedbackGenerator()
         feedbackGenerator?.prepare()
@@ -162,7 +188,7 @@ private extension GameViewController {
             }
         }
     }
-    
+
     private func setToWrongStatus() {
         backgroundView.playWrongMode()
         normalTimeView.playWrongMode()
@@ -180,6 +206,8 @@ private extension GameViewController {
         viewModel.execute()
         clearViews()
         readyView.playAnimation()
+        normalTimeView.changeAnimationStatus(true)
+        normalTimeView.fillAnimation()
     }
     
     private func clearViews() {
@@ -190,12 +218,13 @@ private extension GameViewController {
         buttonController.changeButtonStatus(to: false)
         pauseButton.isEnabled = false
         readyView.isHidden = false
+        setupTimeView(isFeverOn: false)
     }
     
     private func gameStart() {
         normalTimeView.setup()
+        normalTimeView.changeAnimationStatus(false)
         pauseButton.isEnabled = true
-        normalTimeView.isHidden = false
         buttonController.changeButtonStatus(to: true)
         readyView.finishAnimation(for: 0.3)
     }
