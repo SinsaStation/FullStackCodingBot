@@ -31,6 +31,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
         bindTimeProgress()
         bindGameStates()
         bindUserAction()
+        bindCodeView()
     }
     
     private func bindButtonController() {
@@ -72,8 +73,6 @@ final class GameViewController: UIViewController, ViewModelBindableType {
                 guard let status = status else { return }
                 switch status {
                 case .correct(let direction):
-                    let tempCode = "func correct() {\n   score += 1\n}"
-                    self.codeView.show(text: tempCode)
                     self.checkRemove(to: direction)
                 case .wrong:
                     self.setToWrongStatus()
@@ -121,6 +120,13 @@ final class GameViewController: UIViewController, ViewModelBindableType {
             }).disposed(by: rx.disposeBag)
     }
     
+    private func bindCodeView() {
+        viewModel.codeToShow
+            .subscribe(onNext: { [unowned self] code in
+                self.codeView.show(text: code)
+            }).disposed(by: rx.disposeBag)
+    }
+    
     private func sendFeedback(type feedbackType: UINotificationFeedbackGenerator.FeedbackType) {
         guard UserDefaults.checkStatus(of: .vibration) else { return }
         feedbackGenerator?.notificationOccurred(feedbackType)
@@ -131,34 +137,33 @@ final class GameViewController: UIViewController, ViewModelBindableType {
 private extension GameViewController {
     private func setup() {
         setCodeView()
-        setTimeViewObserver()
-        setReadyViewObserver()
+        setViewObservers()
         setupFeedbackGenerator()
     }
     
     private func setCodeView() {
         codeView.setup(fontName: Font.neo, alignMode: .left)
+    }
+    
+    private func setViewObservers() {
+        let boundsKey = "bounds"
         
-        codeView.rx.observe(CGRect.self, "bounds")
+        codeView.rx.observe(CGRect.self, boundsKey)
             .subscribe(onNext: { [unowned self ] _ in
                 self.codeView.layoutSubviews(with: "")
             }).disposed(by: rx.disposeBag)
-    }
-    
-    private func setTimeViewObserver() {
-        normalTimeView.rx.observe(CGRect.self, "bounds")
+        
+        normalTimeView.rx.observe(CGRect.self, boundsKey)
             .subscribe(onNext: { [unowned self ] _ in
                 self.normalTimeView.fillAnimation()
             }).disposed(by: rx.disposeBag)
-    }
-    
-    private func setReadyViewObserver() {
-        readyView.rx.observe(CGRect.self, "bounds")
+        
+        readyView.rx.observe(CGRect.self, boundsKey)
             .subscribe(onNext: { [unowned self ] _ in
                 self.readyView.playAnimation()
             }).disposed(by: rx.disposeBag)
     }
-    
+
     private func setupFeedbackGenerator() {
         feedbackGenerator = UINotificationFeedbackGenerator()
         feedbackGenerator?.prepare()

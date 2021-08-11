@@ -1,6 +1,6 @@
 import Foundation
 
-struct Unit: Equatable, Codable {
+struct Unit: Codable {
     let uuid: Int
     let image: String
     let name: String
@@ -22,24 +22,19 @@ struct Unit: Equatable, Codable {
         return level + 10
     }
     
+    func randomCode() -> String {
+        return name
+    }
+
+    static func initialValues() -> [Unit] {
+        let allUnits = UnitInfo.allCases.map { Unit(info: $0, level: 1) }
+        return allUnits
+    }
+}
+
+extension Unit: Equatable {
     static func == (lhs: Unit, rhs: Unit) -> Bool {
         return lhs.uuid == rhs.uuid
-    }
-    
-    static func initialValues() -> [Unit] {
-        let units = [
-            Unit(info: .swift, level: 1),
-            Unit(info: .kotlin, level: 1),
-            Unit(info: .java, level: 1),
-            Unit(info: .cPlusPlus, level: 1),
-            Unit(info: .python, level: 1),
-            Unit(info: .theC, level: 1),
-            Unit(info: .php, level: 1),
-            Unit(info: .javaScript, level: 1),
-            Unit(info: .cSharp, level: 1),
-            Unit(info: .ruby, level: 1)
-        ]
-        return units
     }
 }
 

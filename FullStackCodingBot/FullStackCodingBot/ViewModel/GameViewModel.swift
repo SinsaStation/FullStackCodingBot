@@ -22,6 +22,7 @@ final class GameViewModel: CommonViewModel {
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
     private(set) var userAction = BehaviorRelay<UserActionStatus?>(value: nil)
+    private(set) var codeToShow = BehaviorRelay<String>(value: "")
     
     // Actions
     private(set) lazy var pauseAction: Action<Void, Void> = Action {
@@ -123,6 +124,7 @@ extension GameViewModel {
         newOnGameUnits.accept(newUnits)
         
         currentScore.onNext(0)
+        codeToShow.accept("")
     }
     
     private func sendNewUnitToStack(by count: Int) {
@@ -156,9 +158,11 @@ extension GameViewModel {
     }
     
     private func correctAction(for direction: Direction, _ scoreGained: Int) {
-        guard updateScore(with: scoreGained) else { return }
+        guard updateScore(with: scoreGained),
+              let currentUnit = gameUnitManager.completed() else { return }
         userAction.accept(.correct(direction))
         timeManager.correct()
+        codeToShow.accept(currentUnit.randomCode())
         onGameUnitNeedsChange()
         gameSoundStation.play(type: .correct)
     }
@@ -176,7 +180,7 @@ extension GameViewModel {
             gameSoundStation.play(type: .levelUp)
         }
         
-        let currentUnits = gameUnitManager.removeAndRefilled()
+        let currentUnits = gameUnitManager.refilled()
         newOnGameUnits.accept(currentUnits)
     }
     
@@ -184,6 +188,7 @@ extension GameViewModel {
         let wrongStatus = timeManager.wrong()
         userAction.accept(wrongStatus)
         gameSoundStation.play(type: .wrong)
+        codeToShow.accept("")
     }
 }
 
