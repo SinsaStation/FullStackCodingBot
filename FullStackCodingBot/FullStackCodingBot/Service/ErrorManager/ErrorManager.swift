@@ -19,3 +19,7 @@ enum StructSavableError: Error {
 enum TransitionError: Error {
     case unknown
 }
+
+enum AppleGameCenterError: Error {
+    case cannotReport
+}
