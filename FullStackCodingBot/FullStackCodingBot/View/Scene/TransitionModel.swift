@@ -6,7 +6,3 @@ enum TransitionStyle {
     case alert
     case overCurrent
 }
-
-enum TransitionError: Error {
-    case unknown
-}

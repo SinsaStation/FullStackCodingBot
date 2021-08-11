@@ -4,19 +4,24 @@ import Firebase
 
 final class DataFormatManager {
     
-    static func transformToLocalData(_ data: [String: Any]) throws -> NetworkDTO {
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
-            let info = try JSONDecoder().decode(UnitInformation.self, from: jsonData)
-            let units = try JSONDecoder().decode([Unit].self, from: Data(info.info["units"]!.utf8))
-            let money = try JSONDecoder().decode(Int.self, from: Data(info.info["money"]!.utf8))
-            let score = try JSONDecoder().decode(Int.self, from: Data(info.info["score"]!.utf8))
-            let ads = try JSONDecoder().decode(AdsInformation.self, from: Data(info.info["ads"]!.utf8))
-            let result = NetworkDTO(units: units, money: money, score: score, ads: ads)
-            return result
-        } catch  {
-            throw DataParsingError.cannotTransformToStruct
+    static func transformToLocalData(_ data: [String: Any]) -> Observable<NetworkDTO> {
+        Observable.create { observer in
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
+                let info = try JSONDecoder().decode(UnitInformation.self, from: jsonData)
+                let units = try JSONDecoder().decode([Unit].self, from: Data(info.info["units"]!.utf8))
+                let money = try JSONDecoder().decode(Int.self, from: Data(info.info["money"]!.utf8))
+                let score = try JSONDecoder().decode(Int.self, from: Data(info.info["score"]!.utf8))
+                let ads = try JSONDecoder().decode(AdsInformation.self, from: Data(info.info["ads"]!.utf8))
+                let result = NetworkDTO(units: units, money: money, score: score, ads: ads)
+                observer.onNext(result)
+                observer.onCompleted()
+            } catch {
+                observer.onError(DataParsingError.cannotTransformToStruct)
+            }
+            return Disposables.create()
         }
+
     }
     
     static func transformToString<T: Encodable>(_ data: T) throws -> String? {

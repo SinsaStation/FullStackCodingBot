@@ -36,11 +36,11 @@ final class DatabaseManager: DatabaseManagerType {
                 }
                 
                 if let data = snapshot.value as? [String: Any] {
-                    guard let networkDTO = try? DataFormatManager.transformToLocalData(data) else {
-                        return
-                    }
-                    observer.onNext(networkDTO)
-                    observer.onCompleted()
+                    DataFormatManager.transformToLocalData(data)
+                        .subscribe(onNext: { networkDTO in
+                            observer.onNext(networkDTO)
+                            observer.onCompleted()
+                        }).disposed(by: disposedBag)
                 }
             }
             return Disposables.create()
