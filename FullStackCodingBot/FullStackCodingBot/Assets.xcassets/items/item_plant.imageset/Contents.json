@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "item_cloud3_2.png",
+      "filename" : "item_plant.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "item_cloud3_2@2x.png",
+      "filename" : "item_plant@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "item_cloud3_2@3x.png",
+      "filename" : "item_plant@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

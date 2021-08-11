@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "item_computer_monitor.png",
+      "filename" : "item_computer_monitor-export.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "item_computer_monitor@2x.png",
+      "filename" : "item_computer_monitor-export@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "item_computer_monitor@3x.png",
+      "filename" : "item_computer_monitor-export@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
