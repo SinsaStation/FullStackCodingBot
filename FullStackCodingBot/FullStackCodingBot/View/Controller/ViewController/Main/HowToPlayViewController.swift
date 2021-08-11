@@ -18,9 +18,25 @@ final class HowToPlayViewController: UIViewController, ViewModelBindableType {
     
     func bindViewModel() {
         directionButtonController.setupButton()
-        directionButtonController.bind { direction in
-            print(direction)
+        directionButtonController.bind { [unowned self] direction in
+            self.viewModel.moveToPage(from: direction)
         }
+        
+        viewModel.currentPage
+            .asDriver()
+            .drive(imagePageControl.rx.currentPage)
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.currentManual
+            .subscribe(onNext: { [unowned self] manual in
+                self.setManual(from: manual)
+            }).disposed(by: rx.disposeBag)
+        
+        imagePageControl.rx.controlEvent(.valueChanged)
+            .subscribe(onNext: { [unowned self] in
+                self.viewModel.currentPage.accept(imagePageControl.currentPage)
+            }).disposed(by: rx.disposeBag)
+        
         cancelButton.rx.action = viewModel.cancelAction
     }
 }
@@ -29,23 +45,7 @@ final class HowToPlayViewController: UIViewController, ViewModelBindableType {
 private extension HowToPlayViewController {
     
     private func setup() {
-        setupImagePageControl()
-        setupManual(from: 0)
         setupSwipeGesture()
-    }
-    
-    private func setupImagePageControl() {
-        imagePageControl.rx.controlEvent(.valueChanged)
-            .subscribe(onNext: {[unowned self] in
-                let current = self.imagePageControl.currentPage
-                self.setupManual(from: current)
-            }).disposed(by: rx.disposeBag)
-    }
-    
-    private func setupManual(from index: Int) {
-        let manual = viewModel.getCurrentManul(from: index)
-        howToImageView.image = UIImage(named: manual.image)
-        howToTextView.text = manual.text
     }
     
     private func setupSwipeGesture() {
@@ -68,17 +68,14 @@ private extension HowToPlayViewController {
         }
         
         switch swipeGesture.direction {
-        case .left:
-            guard imagePageControl.currentPage < 4 else { return }
-            imagePageControl.currentPage += 1
-        
-        case .right:
-            guard imagePageControl.currentPage > 0 else { return }
-            imagePageControl.currentPage -= 1
-        
-        default:
-            break
+        case .left: viewModel.moveToPage(from: DirectionType.right)
+        case .right: viewModel.moveToPage(from: DirectionType.left)
+        default: break
         }
-        setupManual(from: imagePageControl.currentPage)
+    }
+    
+    private func setManual(from info: Manual) {
+        howToImageView.image = UIImage(named: info.image)
+        howToTextView.text = info.text
     }
 }

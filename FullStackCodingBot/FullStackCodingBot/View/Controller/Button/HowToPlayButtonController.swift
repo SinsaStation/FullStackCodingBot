@@ -19,7 +19,6 @@ final class DirectionButtonMapper {
 
 final class DirectionButtonController: NSObject {
     
-    
     @IBOutlet var directionButtons: [UIButton]!
     
     private var buttonMapper: DirectionButtonMapper?
