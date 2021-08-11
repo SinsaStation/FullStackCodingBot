@@ -43,7 +43,7 @@ final class PersistenceStorage: PersistenceStorageType {
     @discardableResult
     func append(unit: Unit) -> Observable<Unit> {
         unitStore.append(unit)
-        appendUnitInfo(unit)
+        try? appendUnitInfo(unit)
         unitList.onNext(unitStore)
         return Observable.just(unit)
     }
@@ -59,9 +59,9 @@ final class PersistenceStorage: PersistenceStorageType {
         if let index = unitStore.firstIndex(where: { $0 == unit}) {
             unitStore.remove(at: index)
             unitStore.insert(newUnit, at: index)
-            updateUnit(to: newUnit)
+            try? updateUnit(to: newUnit)
             moneyStore -= moeny
-            updateMoney(money: moneyStore)
+            try? updateMoney(money: moneyStore)
         }
         unitList.onNext(unitStore)
         moneyStatus.onNext(moneyStore)
@@ -77,7 +77,7 @@ final class PersistenceStorage: PersistenceStorageType {
     func raiseMoney(by money: Int) -> Observable<Int> {
         moneyStore += money
         moneyStatus.onNext(moneyStore)
-        updateMoney(money: money)
+        try? updateMoney(money: money)
         return Observable.just(money)
     }
     
@@ -95,18 +95,18 @@ final class PersistenceStorage: PersistenceStorageType {
 // MARK: CoreData Method
 private extension PersistenceStorage {
         
-    private func fetchUnit() -> [ItemInformation] {
+    private func fetchUnit() throws -> [ItemInformation] {
         do {
             guard let fetchResult = try context.fetch(ItemInformation.fetchRequest()) as? [ItemInformation] else { return [] }
             return fetchResult
         } catch {
-            print(error)
-            return []
+            throw CoreDataError.cannotFetchData
         }
     }
 
-    private func updateUnit(to unit: Unit) {
-        for info in fetchUnit() where info.uuid == unit.uuid {
+    private func updateUnit(to unit: Unit) throws {
+        guard let fetchedUnit = try? fetchUnit() else { return }
+        for info in fetchedUnit where info.uuid == unit.uuid {
             info.setValue(unit.uuid, forKey: "uuid")
             info.setValue(unit.image, forKey: "image")
             info.setValue(unit.level, forKey: "level")
@@ -114,55 +114,53 @@ private extension PersistenceStorage {
         do {
             try context.save()
         } catch {
-            print(error)
+            throw CoreDataError.cannotSaveData
         }
     }
     
-    private func updateMoney(money: Int) {
+    private func updateMoney(money: Int) throws {
         do {
-            guard let previousInfo = fetchMoneyInfo().first else { return }
+            guard let previousInfo = try? fetchMoneyInfo().first else { return }
             previousInfo.setValue(money, forKey: "myMoney")
             try context.save()
         } catch {
-            print(error)
+            throw CoreDataError.cannotSaveData
         }
     }
     
-    private func updateScore(score: Int) {
+    private func updateScore(score: Int) throws {
         do {
-            guard let previousInfo = fetchScoreInfo().first else { return }
+            guard let previousInfo = try? fetchScoreInfo().first else { return }
             previousInfo.setValue(score, forKey: "myScore")
             try context.save()
         } catch {
-            print(error)
+            throw CoreDataError.cannotSaveData
         }
     }
     
-    private func fetchMoneyInfo() -> [MoneyInformation] {
+    private func fetchMoneyInfo() throws -> [MoneyInformation] {
         do {
             guard let fetchResult = try context.fetch(MoneyInformation.fetchRequest()) as? [MoneyInformation] else {
                 return []
             }
             return fetchResult
         } catch {
-            print(error)
-            return []
+            throw CoreDataError.cannotFetchData
         }
     }
     
-    private func fetchScoreInfo() -> [ScoreInformation] {
+    private func fetchScoreInfo() throws -> [ScoreInformation] {
         do {
             guard let fetchResult = try context.fetch(ScoreInformation.fetchRequest()) as? [ScoreInformation] else {
                 return []
             }
             return fetchResult
         } catch {
-            print(error)
-            return []
+            throw CoreDataError.cannotFetchData
         }
     }
     
-    private func appendUnitInfo(_ unit: Unit) {
+    private func appendUnitInfo(_ unit: Unit) throws {
         if let entity = NSEntityDescription.entity(forEntityName: "ItemInformation", in: context) {
             let info = NSManagedObject(entity: entity, insertInto: context)
             info.setValue(unit.uuid, forKey: "uuid")
@@ -172,12 +170,12 @@ private extension PersistenceStorage {
             do {
                 try context.save()
             } catch {
-                print(error.localizedDescription)
+                throw CoreDataError.cannotSaveData
             }
         }
     }
     
-    private func appendMoenyInfo(_ money: Int) {
+    private func appendMoenyInfo(_ money: Int) throws {
         if let entity = NSEntityDescription.entity(forEntityName: "MoneyInformation", in: context) {
             let info = NSManagedObject(entity: entity, insertInto: context)
             info.setValue(money, forKey: "myMoney")
@@ -185,14 +183,14 @@ private extension PersistenceStorage {
             do {
                 try context.save()
             } catch {
-                print(error)
+                throw CoreDataError.cannotSaveData
             }
         }
         moneyStore = money
         moneyStatus.onNext(moneyStore)
     }
     
-    private func appendScoreInfo(_ score: Int) {
+    private func appendScoreInfo(_ score: Int) throws {
         if let entity = NSEntityDescription.entity(forEntityName: "ScoreInformation", in: context) {
             let info = NSManagedObject(entity: entity, insertInto: context)
             info.setValue(score, forKey: "myScore")
@@ -200,7 +198,7 @@ private extension PersistenceStorage {
             do {
                 try context.save()
             } catch {
-                print(error)
+                throw CoreDataError.cannotSaveData
             }
         }
     }

@@ -37,6 +37,7 @@
 		7170CD4526B266BE00F03248 /* VersionErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */; };
 		7177AEBC26B953B4005A4465 /* SettingInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7177AEBB26B953B4005A4465 /* SettingInformation.swift */; };
 		718F224626C36AE200B2648C /* HowToPlayButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F224526C36AE200B2648C /* HowToPlayButtonController.swift */; };
+		718F224926C377B700B2648C /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F224826C377B700B2648C /* ErrorManager.swift */; };
 		719A6A9B26B11208006AC991 /* NetworkDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719A6A9A26B11208006AC991 /* NetworkDTO.swift */; };
 		719AB9DE26B7ADF2001B5913 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */; };
 		719DA2B126A7FC9900624C61 /* JoystixMonospace-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */; };
@@ -176,6 +177,7 @@
 		7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionErrorViewController.swift; sourceTree = "<group>"; };
 		7177AEBB26B953B4005A4465 /* SettingInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInformation.swift; sourceTree = "<group>"; };
 		718F224526C36AE200B2648C /* HowToPlayButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayButtonController.swift; sourceTree = "<group>"; };
+		718F224826C377B700B2648C /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		719A6A9A26B11208006AC991 /* NetworkDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDTO.swift; sourceTree = "<group>"; };
 		719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JoystixMonospace-Regular.ttf"; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 		715BB20426943CD100286B31 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				718F224726C377AA00B2648C /* ErrorManager */,
 				71BC752C26A940870021BA1A /* DataFormatManager */,
 				71A5517E26A91C160083A4B0 /* FirebaseStorage */,
 				717EAD3B26A656E200E0CDB7 /* GameManager */,
@@ -403,6 +406,14 @@
 				7165CDDD26957DD600891214 /* Game */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		718F224726C377AA00B2648C /* ErrorManager */ = {
+			isa = PBXGroup;
+			children = (
+				718F224826C377B700B2648C /* ErrorManager.swift */,
+			);
+			path = ErrorManager;
 			sourceTree = "<group>";
 		};
 		71A5517E26A91C160083A4B0 /* FirebaseStorage */ = {
@@ -1004,6 +1015,7 @@
 				710D0D442693EA6900244A16 /* GameViewModel.swift in Sources */,
 				71DF65492692F97900557693 /* ItemViewModel.swift in Sources */,
 				E4C2C34F26A292BB007BDF81 /* ReplicateAnimationView.swift in Sources */,
+				718F224926C377B700B2648C /* ErrorManager.swift in Sources */,
 				71307A8926A529F400C3191F /* LevelUpButton.swift in Sources */,
 				E4DF614126A92CE00061F6E9 /* ShopItem.swift in Sources */,
 				71E2B37826AE602200AE496D /* PersistenceStorageType.swift in Sources */,
