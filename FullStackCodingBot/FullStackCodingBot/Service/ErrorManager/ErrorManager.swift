@@ -23,3 +23,11 @@ enum TransitionError: Error {
 enum AppleGameCenterError: Error {
     case cannotReport
 }
+
+enum GoogleAdsError: Error {
+    case cannotDownLoadAds
+}
+
+enum UserDefaultsError: Error {
+    case cannotSaveSettingData
+}

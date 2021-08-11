@@ -25,8 +25,8 @@ final class AdStorage: AdStorageType {
             
             if !isUpdatable() {
                 setRewards(from: currentInfo)
-                    .subscribe(onError: { error in
-                        observer.onError(error)
+                    .subscribe(onError: { _ in
+                        observer.onError(GoogleAdsError.cannotDownLoadAds)
                     }).disposed(by: disposeBag)
                 observer.onNext(false)
                 observer.onCompleted()
