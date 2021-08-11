@@ -3,12 +3,15 @@ import Foundation
 enum GameSetting {
     static let count = 7
     static let maxUnitCount = 8
+    static let startingCount = 2
+    static let feverGaugeMax = 20
+}
+
+enum TimeSetting {
     static let readyTime: Double = 1.3
     static let startingTime: Double = 60
-    static let feverGaugeMax = 20
     static let feverTime: Double = 10
     static let wrongTime: Double = 10
-    static let startingCount = 2
     static let timeUnit: Double = 0.1
 }
 

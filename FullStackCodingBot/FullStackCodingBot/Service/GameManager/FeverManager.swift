@@ -30,7 +30,7 @@ final class FeverManager: FeverManagerType {
         updateGuage(by: amount)
         
         if gauge >= GameSetting.feverGaugeMax {
-            timeLeft = GameSetting.feverTime
+            timeLeft = TimeSetting.feverTime
             return true
         } else {
             return false

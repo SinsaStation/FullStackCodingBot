@@ -12,7 +12,7 @@ final class ReadyView: UIView {
         static let position = #keyPath(CALayer.position)
     }
     
-    func playAnimation(totalDuration: Double = GameSetting.readyTime+0.3) {
+    func playAnimation(totalDuration: Double = TimeSetting.readyTime+0.3) {
         reset()
         setupTitleLabel()
         addLayersToPositions()

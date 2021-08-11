@@ -31,7 +31,7 @@ final class TimeBarView: UIView {
         return solidLayer
     }
 
-    func fillAnimation(duration: Double = GameSetting.readyTime) {
+    func fillAnimation(duration: Double = TimeSetting.readyTime) {
         guard animationAllowed else { return }
         setup()
         

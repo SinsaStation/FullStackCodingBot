@@ -4,6 +4,15 @@ import RxSwift
 enum TimeMode {
     case normal
     case fever
+    
+    var totalTime: Double {
+        switch self {
+        case .normal:
+            return TimeSetting.startingTime
+        case .fever:
+            return TimeSetting.feverTime
+        }
+    }
 }
 
 struct TimeManager: TimeManagerType {
@@ -16,10 +25,9 @@ struct TimeManager: TimeManagerType {
     private(set) var feverTimeLeft: BehaviorSubject<Double?>
     
     init(timerMode: TimeMode = .normal,
-         totalTime: Double = Double(GameSetting.startingTime),
          feverManager: FeverManagerType = FeverManager()) {
         self.startMode = timerMode
-        self.totalTime = totalTime
+        self.totalTime = timerMode.totalTime
         self.newTimerMode = BehaviorSubject<TimeMode>(value: timerMode)
         self.timeLeft = BehaviorSubject<Double>(value: totalTime)
         self.feverTimeLeft = BehaviorSubject<Double?>(value: nil)
@@ -67,7 +75,7 @@ struct TimeManager: TimeManagerType {
 
         if feverTimeManager.feverMayStart(afterFilledBy: 1) {
             newTimerMode.onNext(.fever)
-            feverTimeLeft.onNext(GameSetting.feverTime)
+            feverTimeLeft.onNext(TimeSetting.feverTime)
         }
     }
     
@@ -75,7 +83,7 @@ struct TimeManager: TimeManagerType {
         guard let currentMode = try? newTimerMode.value(),
               currentMode == .normal else { return .feverWrong }
         
-        timeMinus(by: GameSetting.wrongTime)
+        timeMinus(by: TimeSetting.wrongTime)
         feverTimeManager.reset()
         
         return .wrong

@@ -50,7 +50,7 @@ extension GameViewModel {
         resetAll()
         gameSoundStation.play(type: .ready)
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+GameSetting.readyTime) { [unowned self] in
+        DispatchQueue.main.asyncAfter(deadline: .now()+TimeSetting.readyTime) { [unowned self] in
             self.newGameStatus.accept(.new)
             self.setTimeManager()
             self.setGame()
@@ -102,13 +102,7 @@ extension GameViewModel {
     
     private func timePercentage(left: Double, timeMode: TimeMode) -> Double {
         let realTimeAdjustMent = Double(left)
-        var totalTime: Double
-        switch timeMode {
-        case .normal:
-            totalTime = GameSetting.startingTime
-        case .fever:
-            totalTime = GameSetting.feverTime
-        }
+        let totalTime = timeMode.totalTime
         return realTimeAdjustMent / totalTime
     }
     
@@ -143,7 +137,7 @@ extension GameViewModel {
         timer?.schedule(deadline: .now()+0.1, repeating: .milliseconds(100))
         
         timer?.setEventHandler { [weak self] in
-            self?.timeManager.timeMinus(by: GameSetting.timeUnit)
+            self?.timeManager.timeMinus(by: TimeSetting.timeUnit)
         }
         timer?.activate()
     }
