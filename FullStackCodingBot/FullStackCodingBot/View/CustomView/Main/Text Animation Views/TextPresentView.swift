@@ -73,10 +73,8 @@ class TextPresentView: UIView {
             let yPosition =  (bounds.height - totalTextHeight * 1.5) / 2
             return CGPoint(x: 0, y: yPosition)
         default:
-            let maxLetterCount = maxLetterCount(in: text)
-            let currentFontSize = newFontSize(for: text)
-            let maxWidth = CGFloat(maxLetterCount) * currentFontSize
-            let xPosition = (bounds.width - maxWidth * 0.5) / 2
+            let maxWidth = textLayer.contentsRect.width
+            let xPosition = (bounds.width - maxWidth) / 2
             return CGPoint(x: xPosition, y: 0)
         }
     }
