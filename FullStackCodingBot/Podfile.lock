@@ -55,7 +55,7 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 7.4)
     - PromisesObjC (< 3.0, >= 1.2)
   - GhostTypewriter (2.1.0)
-  - Google-Mobile-Ads-SDK (8.8.0):
+  - Google-Mobile-Ads-SDK (8.9.0):
     - GoogleAppMeasurement (< 9.0, >= 7.0)
     - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleAppMeasurement (8.5.0):
@@ -164,7 +164,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 65c3742ed355f9b9db222036fd154e699ab7d672
   FirebaseInstallations: f2bc590b291d25fb40a9a05b8281c02a881b5117
   GhostTypewriter: 62540772d227fbfe633bfa728d08fe8af5b4d805
-  Google-Mobile-Ads-SDK: 1fccd8fd76aca1cef9bfe0711124c9731dad9307
+  Google-Mobile-Ads-SDK: 8494046b4d339275a381f6bcfafbff7adb2f515f
   GoogleAppMeasurement: 8d10c1c470fcb0e5143ed74fddd164f0a0384800
   GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
   GoogleUserMessagingPlatform: ab890ce5f6620f293a21b6bdd82e416a2c73aeca
@@ -181,4 +181,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 53f52a813cf20cabe3f6bcb0c64867ca42b773ea
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1
