@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "story_akduk_bad.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "story_akduk_bad@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "story_akduk_bad.png",
+      "filename" : "story_akduk_bad@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

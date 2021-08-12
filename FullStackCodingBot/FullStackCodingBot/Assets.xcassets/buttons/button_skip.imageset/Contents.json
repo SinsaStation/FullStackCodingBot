@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "button_skip.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "button_skip@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "button_skip.png",
+      "filename" : "button_skip@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

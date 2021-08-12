@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "propertybox.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "propertybox@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "propertybox.png",
+      "filename" : "propertybox@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
