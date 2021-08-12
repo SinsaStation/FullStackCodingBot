@@ -92,13 +92,13 @@ final class GameUnitManager: GameUnitManagerType {
         
         switch memberCount {
         case 2:
-            return answerCount >= memberCount * 20
-        case 3:
             return answerCount >= memberCount * 30
+        case 3:
+            return answerCount >= memberCount * 45
         case 4:
-            return answerCount >= memberCount * 50
-        default:
             return answerCount >= memberCount * 60
+        default:
+            return answerCount >= memberCount * 75
         }
     }
     
