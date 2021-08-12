@@ -81,7 +81,8 @@ final class MainViewModel: AdViewModel {
             }).disposed(by: rx.disposeBag)
     }
     
-    func setupBGMState(_ info: SwithType) {
+    func setupBGMState(_ info: SwithType) -> Completable {
+        let subject = PublishSubject<Void>()
         settingInfo.changeState(info)
         settingSwitchState.accept(settingInfo)
         
@@ -89,8 +90,9 @@ final class MainViewModel: AdViewModel {
             try userDefaults.setStruct(settingInfo, forKey: IdentifierUD.setting)
             if info == .bgm { MusicStation.shared.toggle() }
         } catch {
-            print(error)
+            subject.onError(UserDefaultsError.cannotSaveSettingData)
         }
+        return subject.ignoreElements().asCompletable()
     }
     
     private func updateDatabaseInformation(_ info: NetworkDTO) {
@@ -98,9 +100,6 @@ final class MainViewModel: AdViewModel {
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
         adStorage.setNewRewardsIfPossible(with: info.ads)
-            .subscribe(onError: { error in
-                print(error)
-            }).disposed(by: rx.disposeBag)
     }
     
     private func observeFirebaseDataLoaded() {
@@ -116,20 +115,28 @@ final class MainViewModel: AdViewModel {
 extension MainViewModel: GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
-        print("GameCenterVC Dismissed")
     }
     
     func setupAppleGameCenterLogin() {
-        GKLocalPlayer.local.authenticateHandler = { [unowned self] gcViewController, error in
-            guard error == nil else { return }
+        GKLocalPlayer.local.authenticateHandler = { [unowned self] _, error in
+            guard error == nil else {
+                self.networkLoadError()
+                return
+            }
             self.observeFirebaseDataLoaded()
             
             if GKLocalPlayer.local.isAuthenticated {
                 GameCenterAuthProvider.getCredential { credential, error in
-                    guard error == nil else { return }
+                    guard error == nil else {
+                        self.networkLoadError()
+                        return
+                    }
                     
                     Auth.auth().signIn(with: credential!) { [unowned self] user, error in
-                        guard error == nil else { return }
+                        guard error == nil else {
+                            self.networkLoadError()
+                            return
+                        }
                         
                         if user != nil {
                             if firebaseDidLoad.value { return }
@@ -138,8 +145,6 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                         }
                     }
                 }
-            } else if let gcViewController = gcViewController {
-                print(gcViewController)
             }
         }
     }

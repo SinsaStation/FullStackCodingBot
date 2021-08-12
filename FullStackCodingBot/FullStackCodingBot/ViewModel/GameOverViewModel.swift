@@ -48,16 +48,20 @@ final class GameOverViewModel: CommonViewModel {
         highScoreStatus.accept(isHighScore)
     }
     
-    private func storeHightScoreToGameCenter() {
+    @discardableResult
+    private func storeHightScoreToGameCenter() -> Completable {
+        let subject = PublishSubject<Void>()
         let bestScore = GKScore(leaderboardIdentifier: IdentifierGC.leaderboard)
         bestScore.value = Int64(storage.myHighScore())
         
         GKScore.report([bestScore]) { error in
-            if let error = error {
-                print(error)
+            if error != nil {
+                subject.onError(AppleGameCenterError.cannotReport)
             } else {
+                subject.onCompleted()
             }
         }
+        return subject.ignoreElements().asCompletable()
     }
     
     private func sendScript() {
