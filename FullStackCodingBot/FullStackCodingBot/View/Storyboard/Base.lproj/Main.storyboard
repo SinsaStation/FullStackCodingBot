@@ -1279,7 +1279,7 @@
         <image name="item_computer_mouse" width="170.5" height="53"/>
         <image name="item_gift_red_ad" width="266.5" height="266.5"/>
         <image name="item_plant" width="42.5" height="58"/>
-        <image name="keyboard" width="110.66666412353516" height="50"/>
+        <image name="keyboard" width="110.5" height="50"/>
         <image name="story_office1" width="414" height="896"/>
         <image name="story_person_angry" width="213" height="442.5"/>
         <namedColor name="AccentColor">
