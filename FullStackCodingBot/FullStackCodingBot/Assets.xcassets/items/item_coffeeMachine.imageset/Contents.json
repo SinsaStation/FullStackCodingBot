@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "coffeMachine_line_body.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "coffeMachine_line_body@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "coffeMachine_line_body.png",
+      "filename" : "coffeMachine_line_body@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

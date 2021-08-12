@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ruby-2.png",
+      "filename" : "ruby.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ruby-1.png",
+      "filename" : "ruby@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ruby.png",
+      "filename" : "ruby@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
