@@ -2,7 +2,7 @@ import Foundation
 
 struct Script {
     
-    static let all: [Script] = [
+    static let story: [Script] = [
         .init(line: .init(text: "IT 중소기업 \'No Yeah Tech\'", special: .intro), animation: .zoom),
         .init(speaker: .worker, line: .init(text: "프로젝트 마무리됐습니다", emotion: .normal)),
         .init(speaker: .ceo, line: .init(text: "(검토...)", emotion: .normal)),
