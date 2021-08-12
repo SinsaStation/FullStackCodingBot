@@ -724,7 +724,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfZ-mh-dfr" userLabel="Setting Button">
-                                                <rect key="frame" x="364" y="16.999999999999996" width="42.666666666666686" height="42.666666666666657"/>
+                                                <rect key="frame" x="361.33333333333331" y="15.666666666666632" width="45.333333333333314" height="45.333333333333343"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="hfZ-mh-dfr" secondAttribute="height" multiplier="1:1" id="4om-8h-iiv"/>
                                                 </constraints>
@@ -1261,7 +1261,7 @@
         <image name="button_mainMenu_item" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_mainMenu_present" width="106.66666412353516" height="106.66666412353516"/>
         <image name="button_mainMenu_ranking" width="106.66666412353516" height="106.66666412353516"/>
-        <image name="button_setting" width="42.666667938232422" height="42.666667938232422"/>
+        <image name="button_setting" width="45.333332061767578" height="45.333332061767578"/>
         <image name="button_skip" width="148" height="85.333335876464844"/>
         <image name="button_start" width="170.66667175292969" height="85.333335876464844"/>
         <image name="button_story" width="183" height="85.333335876464844"/>
