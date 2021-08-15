@@ -12,6 +12,19 @@ struct GameStoryManager {
         case soso
         case good
         case great
+        
+        var character: String {
+            switch self {
+            case .bad:
+                return "C"
+            case .soso:
+                return "B"
+            case .good:
+                return "A"
+            case .great:
+                return "S"
+            }
+        }
     }
     
     private func rank(for score: Int) -> Rank {
@@ -25,6 +38,10 @@ struct GameStoryManager {
         default:
             return .great
         }
+    }
+    
+    func rankCharacter(for score: Int) -> String {
+        return rank(for: score).character
     }
     
     func randomScript(for score: Int) -> Script {

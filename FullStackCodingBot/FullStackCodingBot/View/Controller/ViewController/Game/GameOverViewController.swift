@@ -7,6 +7,7 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
     var viewModel: GameOverViewModel!
     
     @IBOutlet var buttonController: GameOverButtonController!
+    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var gainedCoinLabel: UILabel!
     @IBOutlet weak var totalCoinLabel: UILabel!
@@ -17,6 +18,10 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.execute()
+        
+        // test
+        rankLabel.font = UIFont(name: Font.joystix,
+                                size: ScreenSize.height * 0.1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,5 +59,10 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
                 guard let script = script else { return }
                 self.dialogView.show(with: script)
             }).disposed(by: rx.disposeBag)
+        
+        viewModel.rankInfo
+            .asDriver()
+            .drive(rankLabel.rx.text)
+            .disposed(by: rx.disposeBag)
     }
 }

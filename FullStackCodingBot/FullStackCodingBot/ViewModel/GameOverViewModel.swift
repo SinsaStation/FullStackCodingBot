@@ -7,6 +7,7 @@ final class GameOverViewModel: CommonViewModel {
     
     private var gameStoryManager: GameStoryManager
     private(set) var newScript = BehaviorRelay<Script?>(value: nil)
+    private(set) var rankInfo = BehaviorRelay<String>(value: "")
     private let scoreInfo = BehaviorRelay<Int>(value: 0)
     private let moneyInfo = BehaviorRelay<Int>(value: 0)
     private(set) var highScoreStatus = BehaviorRelay<Bool>(value: false)
@@ -41,6 +42,7 @@ final class GameOverViewModel: CommonViewModel {
         storeReward()
         updateHighScore()
         storeHightScoreToGameCenter()
+        sendRank()
         sendScript()
         MusicStation.shared.stop()
     }
@@ -69,6 +71,12 @@ final class GameOverViewModel: CommonViewModel {
             }
         }
         return subject.ignoreElements().asCompletable()
+    }
+    
+    private func sendRank() {
+        let score = scoreInfo.value
+        let currentRank = gameStoryManager.rankCharacter(for: score)
+        rankInfo.accept(currentRank)
     }
     
     private func sendScript() {

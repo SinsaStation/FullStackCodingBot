@@ -722,6 +722,7 @@
                         <outlet property="dialogView" destination="k34-Zr-7vW" id="xzR-HC-qW9"/>
                         <outlet property="gainedCoinLabel" destination="Rfg-gf-7jl" id="bqg-qc-WiM"/>
                         <outlet property="highScoreImageView" destination="pTl-4a-pgv" id="dRg-8O-Lk9"/>
+                        <outlet property="rankLabel" destination="bIA-RJ-nHL" id="s1H-rO-aJt"/>
                         <outlet property="scoreLabel" destination="auM-zH-D8j" id="hqy-aK-ehr"/>
                         <outlet property="totalCoinLabel" destination="aiU-qD-tg7" id="igP-rb-0KB"/>
                     </connections>
