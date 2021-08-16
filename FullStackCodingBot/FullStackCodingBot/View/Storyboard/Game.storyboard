@@ -678,7 +678,7 @@
                                                         </constraints>
                                                         <state key="normal" backgroundImage="button_home"/>
                                                         <connections>
-                                                            <action selector="buttonTouchedWithSender:" destination="vuL-dj-Gdd" eventType="touchUpInside" id="BMJ-QZ-IRf"/>
+                                                            <action selector="buttonTouchedWithSender:" destination="vuL-dj-Gdd" eventType="touchUpInside" id="9em-VS-pPF"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -730,8 +730,8 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dED-eF-uii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <customObject id="vuL-dj-Gdd" customClass="GameOverButtonController" customModule="Full_Stack" customModuleProvider="target">
                     <connections>
-                        <outletCollection property="moveUnitButtons" destination="Clk-sX-RFS" collectionClass="NSMutableArray" id="WRL-gh-zEP"/>
                         <outletCollection property="moveUnitButtons" destination="WsA-9F-azQ" collectionClass="NSMutableArray" id="nCN-V9-ZYI"/>
+                        <outletCollection property="moveUnitButtons" destination="Clk-sX-RFS" collectionClass="NSMutableArray" id="WK7-Wi-mQ8"/>
                     </connections>
                 </customObject>
             </objects>
