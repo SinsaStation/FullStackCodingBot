@@ -5,6 +5,8 @@ struct Line {
     let emotion: Emotion?
     
     enum Emotion {
+        case love
+        case happy
         case normal
         case notGood
         case bad
@@ -12,6 +14,10 @@ struct Line {
         
         var imageTag: String {
             switch self {
+            case .love:
+                return "_love"
+            case .happy:
+                return "_happy"
             case .normal:
                 return "_normal"
             case .notGood:

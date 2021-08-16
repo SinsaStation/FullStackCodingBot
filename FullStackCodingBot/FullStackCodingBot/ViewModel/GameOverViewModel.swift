@@ -5,7 +5,9 @@ import GameKit
 
 final class GameOverViewModel: CommonViewModel {
     
+    private var gameStoryManager: GameStoryManager
     private(set) var newScript = BehaviorRelay<Script?>(value: nil)
+    private(set) var rankInfo = BehaviorRelay<String>(value: "")
     private let scoreInfo = BehaviorRelay<Int>(value: 0)
     private let moneyInfo = BehaviorRelay<Int>(value: 0)
     private(set) var highScoreStatus = BehaviorRelay<Bool>(value: false)
@@ -23,10 +25,16 @@ final class GameOverViewModel: CommonViewModel {
         return storage.availableMoeny().map { String($0) }.asDriver(onErrorJustReturn: "")
     }()
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: DatabaseManagerType, finalScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
+    init(sceneCoordinator: SceneCoordinatorType,
+         storage: PersistenceStorageType,
+         database: DatabaseManagerType,
+         finalScore: Int,
+         newGameStatus: BehaviorRelay<GameStatus>,
+         gameStoryManager: GameStoryManager = GameStoryManager()) {
         self.scoreInfo.accept(finalScore)
         self.moneyInfo.accept(finalScore/10)
         self.newGameStatus = newGameStatus
+        self.gameStoryManager = gameStoryManager
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
     }
     
@@ -34,6 +42,7 @@ final class GameOverViewModel: CommonViewModel {
         storeReward()
         updateHighScore()
         storeHightScoreToGameCenter()
+        sendRank()
         sendScript()
         MusicStation.shared.stop()
     }
@@ -64,8 +73,15 @@ final class GameOverViewModel: CommonViewModel {
         return subject.ignoreElements().asCompletable()
     }
     
+    private func sendRank() {
+        let score = scoreInfo.value
+        let currentRank = gameStoryManager.rankCharacter(for: score)
+        rankInfo.accept(currentRank)
+    }
+    
     private func sendScript() {
-        let script = Script(speaker: .ceo, line: Line(text: "쯧쯔 겨우 이건가?\n실망이군.", emotion: .notGood))
+        let currentScore = scoreInfo.value
+        let script = gameStoryManager.randomScript(for: currentScore)
         newScript.accept(script)
     }
     

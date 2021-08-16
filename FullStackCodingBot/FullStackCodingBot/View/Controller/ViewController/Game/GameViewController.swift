@@ -16,6 +16,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var codeView: FadeInTextView!
     @IBOutlet weak var backgroundView: GameBackgroundView!
+    @IBOutlet weak var monitorColorView: UIView!
     @IBOutlet weak var readyView: ReadyView!
     private var feedbackGenerator: UINotificationFeedbackGenerator?
     
@@ -193,9 +194,11 @@ private extension GameViewController {
         backgroundView.playWrongMode()
         normalTimeView.playWrongMode()
         buttonController.changeButtonStatus(to: false)
+        monitorColorView.backgroundColor = UIColor(named: "red") ?? .red
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [unowned self] in
             self.buttonController.changeButtonStatus(to: true)
+            self.monitorColorView.backgroundColor = .clear
         }
     }
 }
@@ -208,6 +211,7 @@ private extension GameViewController {
         readyView.playAnimation()
         normalTimeView.changeAnimationStatus(true)
         normalTimeView.fillAnimation()
+        monitorColorView.backgroundColor = .black
     }
     
     private func clearViews() {
@@ -227,6 +231,7 @@ private extension GameViewController {
         pauseButton.isEnabled = true
         buttonController.changeButtonStatus(to: true)
         readyView.finishAnimation(for: 0.3)
+        monitorColorView.backgroundColor = .clear
     }
     
     private func clear(_ stackView: UIStackView) {

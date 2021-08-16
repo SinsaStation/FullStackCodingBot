@@ -38,7 +38,7 @@ final class SkyView: UIView {
     }
     
     private func cloudFrame(weight: Int) -> CGRect {
-        let cloudHeight = bounds.height/5 * CGFloat.random(in: 0.8...1.3)
+        let cloudHeight = bounds.height/6 * CGFloat.random(in: 0.8...1.3)
         let cloudWidth = cloudHeight * 2.5
         let cloudSize = CGSize(width: cloudWidth, height: cloudHeight)
         
