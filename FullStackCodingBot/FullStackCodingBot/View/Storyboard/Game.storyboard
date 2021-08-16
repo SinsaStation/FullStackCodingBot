@@ -160,6 +160,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item_computer_monitor" translatesAutoresizingMaskIntoConstraints="NO" id="V3Y-OD-PSV">
                                 <rect key="frame" x="-52" y="123.66666666666666" width="523.33333333333337" height="347.33333333333337"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vaS-Xg-auO" userLabel="Monitor Color View">
+                                <rect key="frame" x="-25.666666666666657" y="175.66666666666663" width="470.66666666666663" height="246.33333333333337"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyboard" translatesAutoresizingMaskIntoConstraints="NO" id="RtS-e2-YDK">
                                 <rect key="frame" x="97" y="685.33333333333337" width="234" height="111"/>
                                 <constraints>
@@ -382,15 +386,19 @@
                             <constraint firstItem="RtS-e2-YDK" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="6JC-ZI-QMR"/>
                             <constraint firstItem="ffT-Vy-DnI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="6Vj-Cr-o1k"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4s7-Py-xLI" secondAttribute="trailing" constant="20" id="7dA-1c-KYH"/>
+                            <constraint firstItem="vaS-Xg-auO" firstAttribute="centerY" secondItem="V3Y-OD-PSV" secondAttribute="centerY" multiplier="1.005" id="9cX-4L-RwJ"/>
                             <constraint firstItem="xiy-Ah-NNM" firstAttribute="top" secondItem="ajD-XV-8ww" secondAttribute="bottom" id="DBl-cx-tGv"/>
                             <constraint firstItem="xiy-Ah-NNM" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Evc-oV-Kj5"/>
                             <constraint firstItem="V3Y-OD-PSV" firstAttribute="centerY" secondItem="4x6-GD-zw6" secondAttribute="centerY" id="HEv-WL-6Yq"/>
                             <constraint firstItem="4x6-GD-zw6" firstAttribute="top" secondItem="ajD-XV-8ww" secondAttribute="bottom" constant="10" id="I52-uZ-igt"/>
                             <constraint firstItem="V3Y-OD-PSV" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" multiplier="0.98" id="J0V-x2-MPc"/>
                             <constraint firstItem="4x6-GD-zw6" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.15" id="KYu-6B-wOS"/>
+                            <constraint firstItem="vaS-Xg-auO" firstAttribute="width" secondItem="V3Y-OD-PSV" secondAttribute="width" multiplier="0.9" id="MFl-dP-CtF"/>
+                            <constraint firstItem="vaS-Xg-auO" firstAttribute="centerX" secondItem="V3Y-OD-PSV" secondAttribute="centerX" id="Nr5-pz-ZGc"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vTf-XR-DdY" secondAttribute="trailing" constant="20" id="O1x-2l-9FK"/>
                             <constraint firstItem="vTf-XR-DdY" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.12" id="QiC-zp-CQ3"/>
                             <constraint firstItem="4s7-Py-xLI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="REt-jO-7w1"/>
+                            <constraint firstItem="vaS-Xg-auO" firstAttribute="height" secondItem="V3Y-OD-PSV" secondAttribute="height" multiplier="0.71" id="Reh-OO-IGi"/>
                             <constraint firstItem="4x6-GD-zw6" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="1.1" id="Rvp-4u-Pws"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LTf-oP-M9v" secondAttribute="trailing" constant="20" id="Sqx-XQ-eCj"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ffT-Vy-DnI" secondAttribute="bottom" multiplier="1.03" id="UVH-XX-Dd0"/>
@@ -420,6 +428,7 @@
                         <outlet property="codeView" destination="4x6-GD-zw6" id="OTO-Bm-8V4"/>
                         <outlet property="feverTimeView" destination="FQj-lB-eLc" id="71U-QI-32K"/>
                         <outlet property="leftUnitStackView" destination="2Uq-RD-u1v" id="tiF-cC-0H3"/>
+                        <outlet property="monitorColorView" destination="vaS-Xg-auO" id="p2o-YF-bmF"/>
                         <outlet property="normalTimeView" destination="WTI-8T-T1Y" id="D1u-1X-av8"/>
                         <outlet property="pauseButton" destination="vTf-XR-DdY" id="iGt-ma-uS3"/>
                         <outlet property="readyView" destination="xiy-Ah-NNM" id="hLT-Dd-Nv4"/>

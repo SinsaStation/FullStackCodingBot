@@ -16,6 +16,7 @@ class TextPresentView: UIView {
     
     enum Defaults {
         static let textColor = UIColor(named: "digitalgreen") ?? UIColor.green
+        static let wrongColor = UIColor(named: "red") ?? UIColor.red
         static let letterCount = 15
         static let maxFont: CGFloat = 17
         static let minFont: CGFloat = 12
@@ -37,14 +38,15 @@ class TextPresentView: UIView {
         resizeTextLayer(with: text)
     }
     
-    func show(text fullText: String) {
-        setTextLayer(with: fullText)
+    func show(text fullText: String, color: UIColor = Defaults.textColor) {
+        setTextLayer(with: fullText, color: color)
     }
     
-    private func setTextLayer(with text: String) {
+    private func setTextLayer(with text: String, color: UIColor) {
         textLayer.alignmentMode = self.alignMode
         textLayer.font = UIFont(name: fontName, size: Defaults.maxFont)
         textLayer.string = text
+        textLayer.foregroundColor = color.cgColor
         resizeTextLayer(with: text)
     }
     
