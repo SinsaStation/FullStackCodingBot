@@ -158,7 +158,7 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4x6-GD-zw6" userLabel="Coding View" customClass="FadeInTextView" customModule="Full_Stack" customModuleProvider="target">
-                                <rect key="frame" x="57.666666666666657" y="228" width="312.66666666666674" height="138.66666666666663"/>
+                                <rect key="frame" x="-21.333333333333343" y="228" width="470.66666666666674" height="138.66666666666663"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffT-Vy-DnI" userLabel="Left Button">
                                 <rect key="frame" x="20" y="727" width="139" height="139"/>
@@ -379,7 +379,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vTf-XR-DdY" secondAttribute="trailing" constant="20" id="O1x-2l-9FK"/>
                             <constraint firstItem="vTf-XR-DdY" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.12" id="QiC-zp-CQ3"/>
                             <constraint firstItem="4s7-Py-xLI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="REt-jO-7w1"/>
-                            <constraint firstItem="4x6-GD-zw6" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.73" id="Rvp-4u-Pws"/>
+                            <constraint firstItem="4x6-GD-zw6" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="1.1" id="Rvp-4u-Pws"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LTf-oP-M9v" secondAttribute="trailing" constant="20" id="Sqx-XQ-eCj"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ffT-Vy-DnI" secondAttribute="bottom" multiplier="1.03" id="UVH-XX-Dd0"/>
                             <constraint firstItem="4s7-Py-xLI" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.46" id="Zpi-Rr-Rc1"/>
