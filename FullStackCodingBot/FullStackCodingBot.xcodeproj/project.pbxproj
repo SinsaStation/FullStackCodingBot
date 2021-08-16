@@ -132,6 +132,7 @@
 		E4DF614326A93FFB0061F6E9 /* ShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF614226A93FFB0061F6E9 /* ShopCell.swift */; };
 		E4F4304226C37A9B00F046E9 /* DialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4304126C37A9B00F046E9 /* DialogView.swift */; };
 		E4F4304426C4F8F500F046E9 /* GameStoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4304326C4F8F500F046E9 /* GameStoryManager.swift */; };
+		E4F4304626CA2E4500F046E9 /* UnitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4304526CA2E4400F046E9 /* UnitInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -273,6 +274,7 @@
 		E4DF614226A93FFB0061F6E9 /* ShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCell.swift; sourceTree = "<group>"; };
 		E4F4304126C37A9B00F046E9 /* DialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogView.swift; sourceTree = "<group>"; };
 		E4F4304326C4F8F500F046E9 /* GameStoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStoryManager.swift; sourceTree = "<group>"; };
+		E4F4304526CA2E4400F046E9 /* UnitInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -717,6 +719,7 @@
 			children = (
 				7166B23E26C25AB500E098BE /* HowToPlay */,
 				E45B0AC82692F9CF006FDE3D /* Unit.swift */,
+				E4F4304526CA2E4400F046E9 /* UnitInfo.swift */,
 				E4DF614026A92CE00061F6E9 /* ShopItem.swift */,
 				E4BF70FE26AEF3F700E8645F /* GameStatus.swift */,
 				7177AEBB26B953B4005A4465 /* SettingInformation.swift */,
@@ -1023,6 +1026,7 @@
 				E4DF614126A92CE00061F6E9 /* ShopItem.swift in Sources */,
 				71E2B37826AE602200AE496D /* PersistenceStorageType.swift in Sources */,
 				E4F4304426C4F8F500F046E9 /* GameStoryManager.swift in Sources */,
+				E4F4304626CA2E4500F046E9 /* UnitInfo.swift in Sources */,
 				E4BF713B26B7D2CC00E8645F /* SingleSoundEffectStation.swift in Sources */,
 				E4D7C6422693E7B200D58BA2 /* MainViewController.swift in Sources */,
 				E4150EA126BE44BD0041DD32 /* FullImageStoryView.swift in Sources */,
