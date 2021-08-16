@@ -66,6 +66,7 @@ extension GameViewModel {
         feverTimeLeftPercentage.accept(0)
         currentScore.onNext(nil)
         newOnGameUnits.accept(nil)
+        codeToShow.accept("")
         MusicStation.shared.stop()
     }
     
@@ -124,7 +125,6 @@ extension GameViewModel {
         newOnGameUnits.accept(newUnits)
         
         currentScore.onNext(0)
-        codeToShow.accept("")
     }
     
     private func sendNewUnitToStack(by count: Int) {
