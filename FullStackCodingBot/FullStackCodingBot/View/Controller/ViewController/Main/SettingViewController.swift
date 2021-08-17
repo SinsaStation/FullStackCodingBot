@@ -6,9 +6,11 @@ final class SettingViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var storyButton: UIButton!
     @IBOutlet var settingSwitchController: SettingSwitchController!
+    @IBOutlet var settingLabels: [UILabel]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
     }
     
     func bindViewModel() {
@@ -31,5 +33,11 @@ final class SettingViewController: UIViewController, ViewModelBindableType {
             .subscribe(onNext: { [unowned self] _ in
                 self.viewModel.makeMoveAction(to: .storyVC)
             }).disposed(by: rx.disposeBag)
+    }
+    
+    private func setup() {
+        settingLabels.forEach { label in
+            label.font = UIFont.joystix(style: .body)
+        }
     }
 }

@@ -7,6 +7,15 @@ final class ReadyView: UIView {
     private let allImageNames = UnitInfo.allCases.map { $0.detail.image }
     private var unitLayers = [CALayer]()
     
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        setupFont()
+    }
+
+    private func setupFont() {
+        readyCountLabel.font = UIFont.joystix(style: .title1)
+    }
+    
     enum AnimationKeys {
         static let rotate = "transform.rotation"
         static let position = #keyPath(CALayer.position)
