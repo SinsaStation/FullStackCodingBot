@@ -89,9 +89,9 @@ final class GameOverViewModel: CommonViewModel {
         switch viewController {
         case .gameVC:
             newGameStatus.accept(.ready)
-            sceneCoordinator.close(animated: true)
+            sceneCoordinator.close(animated: false)
         case .mainVC:
-            sceneCoordinator.toMain(animated: true)
+            sceneCoordinator.toMain(animated: false)
             MusicStation.shared.play(type: .main)
         }
     }

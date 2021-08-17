@@ -17,13 +17,9 @@ final class PauseViewController: UIViewController, ViewModelBindableType {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         bannerView.load(GADRequest())
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         backgroundView.draw(withImage: .paused, countPerLine: 3.2)
     }
-    
+
     func bindViewModel() {
         buttonController.setupButton()
         buttonController.bind { [unowned self] viewController in

@@ -26,10 +26,6 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         bannerView.load(GADRequest())
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         backgroundView.draw(withImage: .gameover, countPerLine: 2.5)
     }
     
