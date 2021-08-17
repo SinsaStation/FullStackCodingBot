@@ -76,6 +76,7 @@ private extension ItemViewController {
         setupDelegate()
         setupButtonAction()
         setupFeedbackGenerator()
+        setupFont()
     }
     
     private func setInfoViewObserver() {
@@ -110,6 +111,10 @@ private extension ItemViewController {
         mainItemView.configure(unit)
         levelUpButton.configure(unit)
         viewModel.checkLevelUpPrice()
+    }
+    
+    private func setupFont() {
+        availableMoneyLabel.font = UIFont.joystix(style: .caption)
     }
 }
 

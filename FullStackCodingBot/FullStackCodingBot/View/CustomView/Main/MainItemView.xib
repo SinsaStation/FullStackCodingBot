@@ -48,22 +48,22 @@
                             <rect key="frame" x="0.0" y="0.0" width="227" height="34.333333333333336"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_nametag_left" translatesAutoresizingMaskIntoConstraints="NO" id="GEy-BC-nkZ">
-                                    <rect key="frame" x="52" y="0.0" width="12.666666666666671" height="34.333333333333336"/>
+                                    <rect key="frame" x="57.666666666666686" y="0.0" width="13" height="34.333333333333336"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="GEy-BC-nkZ" secondAttribute="height" multiplier="48:128" id="7bg-vj-E7c"/>
                                     </constraints>
                                 </imageView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_nametag_mid" translatesAutoresizingMaskIntoConstraints="NO" id="Vji-kK-zOO">
-                                    <rect key="frame" x="64.666666666666686" y="0.0" width="97.333333333333314" height="34.333333333333336"/>
+                                    <rect key="frame" x="70.666666666666686" y="0.0" width="85.333333333333314" height="34.333333333333336"/>
                                 </imageView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_nametag_right" translatesAutoresizingMaskIntoConstraints="NO" id="5WZ-KD-8RA">
-                                    <rect key="frame" x="162.00000000000003" y="0.0" width="12.666666666666657" height="34.333333333333336"/>
+                                    <rect key="frame" x="156.00000000000003" y="0.0" width="13" height="34.333333333333336"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="5WZ-KD-8RA" secondAttribute="height" multiplier="48:128" id="6WO-z7-L8M"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j2v-tb-pTN" userLabel="Name Label">
-                                    <rect key="frame" x="76" y="6.333333333333373" width="74.666666666666686" height="21.666666666666671"/>
+                                    <rect key="frame" x="80.666666666666686" y="6.6666666666666856" width="65.333333333333314" height="21"/>
                                     <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="18"/>
                                     <color key="textColor" name="digitalgreen"/>
                                     <nil key="highlightedColor"/>
@@ -99,7 +99,7 @@
                                     <rect key="frame" x="70.666666666666686" y="0.0" width="85.333333333333314" height="34.333333333333336"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv. 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ebL-tE-1Wf" userLabel="Level Label">
-                                    <rect key="frame" x="80.666666666666686" y="7.3333333333333126" width="65.333333333333314" height="19.333333333333329"/>
+                                    <rect key="frame" x="80.666666666666686" y="7.6666666666666305" width="65.333333333333314" height="18.666666666666671"/>
                                     <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>

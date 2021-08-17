@@ -19,17 +19,17 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
         viewModel.execute()
-        setBanner()
-        
-        // test
-        rankLabel.font = UIFont(name: Font.joystix,
-                                size: ScreenSize.height * 0.1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         bannerView.load(GADRequest())
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         backgroundView.draw(withImage: .gameover, countPerLine: 2.5)
     }
     
@@ -69,9 +69,24 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
             .drive(rankLabel.rx.text)
             .disposed(by: rx.disposeBag)
     }
+}
+
+// setup
+extension GameOverViewController {
+    private func setup() {
+        setBanner()
+        setupFont()
+    }
     
     private func setBanner() {
         bannerView.adUnitID = IdentiferAD.banner
         bannerView.rootViewController = self
+    }
+    
+    private func setupFont() {
+        rankLabel.font = UIFont.joystix(style: .largeTitle)
+        scoreLabel.font = UIFont.joystix(style: .title2)
+        gainedCoinLabel.font = UIFont.joystix(style: .body)
+        totalCoinLabel.font = UIFont.joystix(style: .caption)
     }
 }

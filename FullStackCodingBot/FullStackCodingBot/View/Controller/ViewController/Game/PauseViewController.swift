@@ -11,12 +11,16 @@ final class PauseViewController: UIViewController, ViewModelBindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBanner()
+        setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         bannerView.load(GADRequest())
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         backgroundView.draw(withImage: .paused, countPerLine: 3.2)
     }
     
@@ -30,9 +34,21 @@ final class PauseViewController: UIViewController, ViewModelBindableType {
             .drive(scoreLabel.rx.text)
             .disposed(by: rx.disposeBag)
     }
+}
+
+// setup
+extension PauseViewController {
+    private func setup() {
+        setBanner()
+        setupFont()
+    }
     
     private func setBanner() {
         bannerView.adUnitID = IdentiferAD.banner
         bannerView.rootViewController = self
+    }
+    
+    private func setupFont() {
+        scoreLabel.font = UIFont.joystix(style: .title2)
     }
 }

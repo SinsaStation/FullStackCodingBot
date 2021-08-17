@@ -137,9 +137,14 @@ final class GameViewController: UIViewController, ViewModelBindableType {
 // MARK: - Setup
 private extension GameViewController {
     private func setup() {
+        setupFont()
         setCodeView()
         setViewObservers()
         setupFeedbackGenerator()
+    }
+    
+    private func setupFont() {
+        scoreLabel.font = UIFont.joystix(style: .title2)
     }
     
     private func setCodeView() {

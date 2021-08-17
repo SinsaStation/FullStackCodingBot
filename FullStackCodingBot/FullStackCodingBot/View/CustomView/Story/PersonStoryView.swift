@@ -8,6 +8,17 @@ final class PersonStoryView: UIView {
     @IBOutlet weak var speakerLabel: UILabel!
     @IBOutlet weak var roleLabel: UILabel!
     
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        setFont()
+    }
+    
+    private func setFont() {
+        scriptTextView.font = UIFont.joystix(style: .body)
+        speakerLabel.font = UIFont.joystix(style: .body)
+        roleLabel.font = UIFont.joystix(style: .caption)
+    }
+    
     func show(with script: Script) {
         setImage(with: script.imageName)
         setTexts(with: script)

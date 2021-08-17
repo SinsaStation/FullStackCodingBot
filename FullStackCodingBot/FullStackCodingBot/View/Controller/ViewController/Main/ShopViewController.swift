@@ -70,6 +70,7 @@ private extension ShopViewController {
         setInfoViewObserver()
         setupDelegate()
         setBanner()
+        setupFont()
     }
     
     private func setInfoViewObserver() {
@@ -91,6 +92,10 @@ private extension ShopViewController {
     private func setBanner() {
         bannerView.adUnitID = IdentiferAD.banner
         bannerView.rootViewController = self
+    }
+    
+    private func setupFont() {
+        totalCoinLabel.font = UIFont.joystix(style: .caption)
     }
 }
 
