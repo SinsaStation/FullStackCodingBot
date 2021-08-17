@@ -1,7 +1,7 @@
 # ⚡️ Full Stack Coding Master
 <img src="https://user-images.githubusercontent.com/72188416/128889413-e113b03b-9073-4340-8808-37aa19887354.png" width="100">
 
-> `About` 풀스택 개발 마스터를 향한 고군분투 퍼즐 게임
+> `About` 풀스택 개발 마스터를 향한 고군분투를 담은 퍼즐 게임
 > 
 > `Made by` Team Sinsa-Station - [Team Wiki](https://github.com/SinsaStation/FullStackCodingBot/wiki)
 >
@@ -18,24 +18,22 @@
 
 
 ### Main & Menu
-
-|<img src="https://user-images.githubusercontent.com/72188416/128887560-439e2887-4088-4a15-9124-0dcaf6d12b46.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/128887871-655093c3-f2d7-4ec0-8320-9f461584691b.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/128892470-01bb0fe3-5d16-47c9-bbd1-3f062e1343a6.png" width="250">|
+|<img src="https://user-images.githubusercontent.com/72188416/129713409-905042f7-35e5-418c-b030-7344d8d97517.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713406-530c45fb-ed29-4daf-9dca-191f5b764703.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/128892470-01bb0fe3-5d16-47c9-bbd1-3f062e1343a6.png" width="250">|
 |:---:|:---:|:---:|
 |Title|Item|Reward|
 
 
-|<img src="https://user-images.githubusercontent.com/74946802/127594351-73704d42-d60a-4ce4-a2d0-c965bd517975.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/128887693-b5b07ccf-7e23-423c-aba5-ea3a3541b55a.png" width="250">||
+|<img src="https://user-images.githubusercontent.com/74946802/127594351-73704d42-d60a-4ce4-a2d0-c965bd517975.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713402-2a5d35a2-cab7-40b3-b786-743d7136a562.png" width="250">||
 |:---:|:---:|:---:|
 |Ranking|Setting|How To|
 
 
 ### Game
-
-|<img src="https://user-images.githubusercontent.com/74946802/127594353-a601bd3a-236a-4c9d-b450-af533df16c4d.png" width="250">||<img src="https://user-images.githubusercontent.com/74946802/127594354-ea70eaa5-5d4a-4607-8443-de5ce5945cbe.png" width="250">|
+|<img src="https://user-images.githubusercontent.com/72188416/129713395-2e62200e-ecc1-4fcf-83ee-1f7191805f9d.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713399-5c7b7eca-535c-4939-b01f-663c93e1c44d.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713390-ae12a1b5-dd69-41f9-9d0f-f40e4b66b711.png" width="250">|
 |:---:|:---:|:---:|
 |Game1|Game2|Fever|
 
-|<img src="https://user-images.githubusercontent.com/74946802/127594356-583622b3-0525-4ee3-9d67-6fb2c59edb74.png" width="250">|<img src="https://user-images.githubusercontent.com/74946802/127594358-97e467cd-bc6d-48ca-93b5-b02b94a1ef98.png" width="250">|
+|<img src="https://user-images.githubusercontent.com/74946802/127594356-583622b3-0525-4ee3-9d67-6fb2c59edb74.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713382-92b9bde5-d808-44eb-bbe8-1b5580b3dde2.png" width="250">|
 |:---:|:---:|
 |Pause|GameOver|
 
@@ -151,6 +149,7 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 > ### Item
 >
 > - [x] Image Asset을 적용한 UI - AutoLayout
+> - [x] 기기 사이즈에 따른 Font Size 적용
 > - [x] Item Upgrade 성공 Animation - 이미지 평균 컬러 반영
 > - [x] Info View 텍스트의 Fade In Animation
 > - [x] Item Upgrade 성공 여부에 따른 Haptic 
