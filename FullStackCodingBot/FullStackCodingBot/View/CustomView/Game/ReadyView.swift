@@ -13,7 +13,7 @@ final class ReadyView: UIView {
     }
 
     private func setupFont() {
-        readyCountLabel.font = UIFont.joystix(style: .title1)
+        readyCountLabel.font = UIFont.joystix(style: .title2)
     }
     
     enum AnimationKeys {
@@ -29,12 +29,12 @@ final class ReadyView: UIView {
         let countUnit = rotateDuration/3
         rotateLayers(for: totalDuration)
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+countUnit*1) { [unowned self] in
-            self.readyCountLabel.text = "2"
+        DispatchQueue.main.asyncAfter(deadline: .now()+countUnit*1) { [weak self] in
+            self?.readyCountLabel.text = "2"
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+countUnit*2) { [unowned self] in
-            self.readyCountLabel.text = "1"
+        DispatchQueue.main.asyncAfter(deadline: .now()+countUnit*2) { [weak self] in
+            self?.readyCountLabel.text = "1"
         }
     }
     
@@ -43,8 +43,8 @@ final class ReadyView: UIView {
         readyCountLabel.isHidden = true
         throwLayers(for: duration)
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+duration) { [unowned self] in
-            self.isHidden = true
+        DispatchQueue.main.asyncAfter(deadline: .now()+duration) { [weak self] in
+            self?.isHidden = true
         }
     }
     
@@ -81,10 +81,10 @@ final class ReadyView: UIView {
     }
     
     private func addLayersToPositions() {
-        unitLayers.enumerated().forEach { [unowned self] index, layer in
+        unitLayers.enumerated().forEach { [weak self] index, layer in
             let position = startPosition(for: index)
             layer.position = position
-            self.layer.addSublayer(layer)
+            self?.layer.addSublayer(layer)
         }
     }
     

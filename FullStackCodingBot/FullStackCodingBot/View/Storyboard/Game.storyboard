@@ -204,7 +204,7 @@
                                     <action selector="buttonTouchedWithSender:" destination="URX-A4-k8e" eventType="touchUpInside" id="nv3-SV-tpF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTf-XR-DdY">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTf-XR-DdY">
                                 <rect key="frame" x="356.66666666666669" y="55" width="51.333333333333314" height="51.333333333333343"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vTf-XR-DdY" secondAttribute="height" multiplier="1:1" id="JDS-8v-JhC"/>

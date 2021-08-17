@@ -54,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bP5-1N-Os6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138.78504672897196" y="-596.11231101511885"/>
+            <point key="canvasLocation" x="-1388" y="87"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="KuD-9T-sql">
@@ -193,7 +193,7 @@
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEm-Mw-hHu">
                                                                 <rect key="frame" x="7.3333333333333428" y="2.6666666666666288" width="284.66666666666663" height="106.66666666666667"/>
-                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
                                                                 <string key="text">
 ** Credit **
 
@@ -211,7 +211,7 @@ https://www.zapsplat.com
 ** Thank you for playing! **
 
 </string>
-                                                                <color key="textColor" systemColor="systemGray6Color"/>
+                                                                <color key="textColor" name="darkgreen"/>
                                                                 <fontDescription key="fontDescription" name="EuphemiaUCAS-Bold" family="Euphemia UCAS" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -314,7 +314,7 @@ https://www.zapsplat.com
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="806.07476635514013" y="-585.09719222462206"/>
+            <point key="canvasLocation" x="11" y="-568"/>
         </scene>
         <!--How To Play View Controller-->
         <scene sceneID="kao-Ym-ilf">
@@ -410,7 +410,7 @@ https://www.zapsplat.com
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1549.0654205607475" y="-692.00863930885532"/>
+            <point key="canvasLocation" x="690" y="-568"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="eZQ-nq-aTX">
@@ -425,7 +425,7 @@ https://www.zapsplat.com
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FMZ-Xx-0so" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1498" y="87"/>
+            <point key="canvasLocation" x="-2045" y="86"/>
         </scene>
         <!--Story View Controller-->
         <scene sceneID="tlC-TW-l5X">
@@ -1049,7 +1049,7 @@ https://www.zapsplat.com
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzg-5D-7gu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="744.3925233644859" y="86.825053995680349"/>
+            <point key="canvasLocation" x="11" y="750"/>
         </scene>
         <!--Rank View Controller-->
         <scene sceneID="ROW-M9-iZ2">
@@ -1064,7 +1064,7 @@ https://www.zapsplat.com
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7C8-E0-ojx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1434" y="-31"/>
+            <point key="canvasLocation" x="1381" y="750"/>
         </scene>
         <!--Version Error View Controller-->
         <scene sceneID="SAW-Ez-M6d">
@@ -1076,6 +1076,9 @@ https://www.zapsplat.com
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sle-oK-78K">
                                 <rect key="frame" x="10" y="805.33333333333337" width="85.666666666666671" height="85.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sle-oK-78K" secondAttribute="height" multiplier="1:1" id="ita-XW-gPf"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <state key="normal" backgroundImage="button_action_left_off"/>
                             </button>
@@ -1091,12 +1094,11 @@ https://www.zapsplat.com
                         <constraints>
                             <constraint firstItem="S9x-Zc-anr" firstAttribute="centerY" secondItem="KKH-CH-U9g" secondAttribute="centerY" id="84M-vn-aJw"/>
                             <constraint firstItem="a6p-GA-eX3" firstAttribute="bottom" secondItem="sle-oK-78K" secondAttribute="bottom" constant="1" id="Aku-3l-iql"/>
-                            <constraint firstItem="sle-oK-78K" firstAttribute="height" secondItem="KKH-CH-U9g" secondAttribute="height" multiplier="0.0925126" id="FUp-hK-YbJ"/>
                             <constraint firstItem="S9x-Zc-anr" firstAttribute="width" secondItem="KKH-CH-U9g" secondAttribute="width" multiplier="0.619159" id="UOo-Tm-BUn"/>
                             <constraint firstItem="S9x-Zc-anr" firstAttribute="height" secondItem="KKH-CH-U9g" secondAttribute="height" multiplier="0.141469" id="abt-6r-Zzf"/>
                             <constraint firstItem="sle-oK-78K" firstAttribute="leading" secondItem="a6p-GA-eX3" secondAttribute="leading" multiplier="1.05" constant="10" id="af6-7C-BDY"/>
                             <constraint firstItem="S9x-Zc-anr" firstAttribute="centerX" secondItem="KKH-CH-U9g" secondAttribute="centerX" id="kf2-Ii-Kw2"/>
-                            <constraint firstItem="sle-oK-78K" firstAttribute="width" secondItem="KKH-CH-U9g" secondAttribute="width" multiplier="0.200156" id="z91-p2-Ird"/>
+                            <constraint firstItem="sle-oK-78K" firstAttribute="width" secondItem="KKH-CH-U9g" secondAttribute="width" multiplier="0.2" id="z91-p2-Ird"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1105,7 +1107,7 @@ https://www.zapsplat.com
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zux-Mg-L8q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1432.7102803738317" y="626.56587473002162"/>
+            <point key="canvasLocation" x="2068" y="750"/>
         </scene>
         <!--Item View Controller-->
         <scene sceneID="FPc-g9-zF6">
@@ -1329,7 +1331,7 @@ https://www.zapsplat.com
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGa-4d-chh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2126.6355140186915" y="87.473002159827217"/>
+            <point key="canvasLocation" x="691" y="750"/>
         </scene>
     </scenes>
     <resources>
@@ -1383,6 +1385,9 @@ https://www.zapsplat.com
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
