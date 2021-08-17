@@ -1,19 +1,22 @@
 import UIKit
+import GoogleMobileAds
 
 final class PauseViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: PauseViewModel!
-    
     @IBOutlet var buttonController: PauseButtonController!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var backgroundView: ReplicateAnimationView!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBanner()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        bannerView.load(GADRequest())
         backgroundView.draw(withImage: .paused, countPerLine: 3.2)
     }
     
@@ -26,5 +29,10 @@ final class PauseViewController: UIViewController, ViewModelBindableType {
         viewModel.currentScoreInfo
             .drive(scoreLabel.rx.text)
             .disposed(by: rx.disposeBag)
+    }
+    
+    private func setBanner() {
+        bannerView.adUnitID = IdentiferAD.banner
+        bannerView.rootViewController = self
     }
 }

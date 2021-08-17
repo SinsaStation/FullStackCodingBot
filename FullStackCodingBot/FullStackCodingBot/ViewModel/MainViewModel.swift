@@ -99,7 +99,11 @@ final class MainViewModel: AdViewModel {
         info.units.forEach { storage.append(unit: $0) }
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
+        
         adStorage.setNewRewardsIfPossible(with: info.ads)
+            .subscribe(onError: { error in
+                        assert(false, "\(error.localizedDescription)") })
+            .disposed(by: rx.disposeBag)
     }
     
     private func observeFirebaseDataLoaded() {

@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import GoogleMobileAds
 
 final class GameOverViewController: UIViewController, ViewModelBindableType {
     
@@ -14,10 +15,12 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var highScoreImageView: UIImageView!
     @IBOutlet weak var dialogView: DialogView!
     @IBOutlet var backgroundView: ReplicateAnimationView!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.execute()
+        setBanner()
         
         // test
         rankLabel.font = UIFont(name: Font.joystix,
@@ -26,6 +29,7 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        bannerView.load(GADRequest())
         backgroundView.draw(withImage: .gameover, countPerLine: 2.5)
     }
     
@@ -64,5 +68,10 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
             .asDriver()
             .drive(rankLabel.rx.text)
             .disposed(by: rx.disposeBag)
+    }
+    
+    private func setBanner() {
+        bannerView.adUnitID = IdentiferAD.banner
+        bannerView.rootViewController = self
     }
 }
