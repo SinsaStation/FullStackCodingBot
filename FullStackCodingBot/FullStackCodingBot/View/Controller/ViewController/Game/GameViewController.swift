@@ -148,7 +148,7 @@ private extension GameViewController {
     }
     
     private func setCodeView() {
-        codeView.setup(fontName: Font.neo, alignMode: .left)
+        codeView.setup(fontName: Font.neo, alignMode: .left, isFontSizeFixed: true)
     }
     
     private func setViewObservers() {

@@ -4,7 +4,7 @@ class TextPresentView: UIView {
     
     private(set) lazy var textLayer: CATextLayer = {
         let textLayer = CATextLayer()
-        textLayer.font = UIFont(name: fontName, size: Defaults.maxFont)
+        textLayer.font = UIFont(name: fontName, size: Defaults.fixedFont)
         textLayer.alignmentMode = alignMode
         textLayer.foregroundColor = Defaults.textColor.cgColor
         layer.addSublayer(textLayer)
@@ -12,12 +12,14 @@ class TextPresentView: UIView {
     }()
     
     private var alignMode: CATextLayerAlignmentMode = .center
+    private var isFontSizeFixed = false
     private var fontName = Font.joystix
     
     enum Defaults {
         static let textColor = UIColor(named: "digitalgreen") ?? UIColor.green
         static let wrongColor = UIColor(named: "red") ?? UIColor.red
         static let letterCount = 15
+        static let fixedFont = FontStyle.caption.size
         static let maxFont: CGFloat = 17
         static let minFont: CGFloat = 12
     }
@@ -28,9 +30,10 @@ class TextPresentView: UIView {
         static let space = " "
     }
     
-    func setup(fontName: String, alignMode: CATextLayerAlignmentMode) {
+    func setup(fontName: String, alignMode: CATextLayerAlignmentMode, isFontSizeFixed: Bool) {
         self.fontName = fontName
         self.alignMode = alignMode
+        self.isFontSizeFixed = isFontSizeFixed
     }
     
     func layoutSubviews(with text: String) {
@@ -44,7 +47,7 @@ class TextPresentView: UIView {
     
     private func setTextLayer(with text: String, color: UIColor) {
         textLayer.alignmentMode = self.alignMode
-        textLayer.font = UIFont(name: fontName, size: Defaults.maxFont)
+        textLayer.font = UIFont(name: fontName, size: Defaults.fixedFont)
         textLayer.string = text
         textLayer.foregroundColor = color.cgColor
         resizeTextLayer(with: text)
@@ -56,6 +59,7 @@ class TextPresentView: UIView {
     }
     
     private func newFontSize(for text: String) -> CGFloat {
+        guard !isFontSizeFixed else { return Defaults.fixedFont }
         let maxLetterCount = maxLetterCount(in: text)
         let newFontSize = bounds.width * 0.95 / CGFloat(maxLetterCount)
         var adjustedFontSize = newFontSize < Defaults.maxFont ? newFontSize : Defaults.maxFont
