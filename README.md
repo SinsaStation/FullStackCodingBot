@@ -29,7 +29,7 @@
 
 
 ### Game
-|<img src="https://user-images.githubusercontent.com/72188416/129713395-2e62200e-ecc1-4fcf-83ee-1f7191805f9d.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713399-5c7b7eca-535c-4939-b01f-663c93e1c44d.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713390-ae12a1b5-dd69-41f9-9d0f-f40e4b66b711.png" width="250">|
+|<img src="https://user-images.githubusercontent.com/72188416/129713395-2e62200e-ecc1-4fcf-83ee-1f7191805f9d.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713399-5c7b7eca-535c-4939-b01f-663c93e1c44d.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129714739-8e79e4d4-2d77-4b0b-a167-c78cf26d9f13.png" width="250">|
 |:---:|:---:|:---:|
 |Game1|Game2|Fever|
 
