@@ -5,4 +5,5 @@ enum TransitionStyle {
     case fullScreen
     case alert
     case overCurrent
+    case pop
 }

@@ -182,15 +182,15 @@ private extension GameViewController {
     }
     
     private func setupTimeView(isFeverOn: Bool) {
-        DispatchQueue.main.async {
-            self.normalTimeView.isHidden = isFeverOn
-            self.feverTimeView.isHidden = !isFeverOn
+        DispatchQueue.main.async { [weak self] in
+            self?.normalTimeView.isHidden = isFeverOn
+            self?.feverTimeView.isHidden = !isFeverOn
             
             if isFeverOn {
-                self.feverTimeView.setup()
-                self.backgroundView.startFever()
+                self?.feverTimeView.setup()
+                self?.backgroundView.startFever()
             } else {
-                self.backgroundView.stopFever()
+                self?.backgroundView.stopFever()
             }
         }
     }
@@ -201,9 +201,9 @@ private extension GameViewController {
         buttonController.changeButtonStatus(to: false)
         monitorColorView.backgroundColor = UIColor(named: "red") ?? .red
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [unowned self] in
-            self.buttonController.changeButtonStatus(to: true)
-            self.monitorColorView.backgroundColor = .clear
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [weak self] in
+            self?.buttonController.changeButtonStatus(to: true)
+            self?.monitorColorView.backgroundColor = .clear
         }
     }
 }

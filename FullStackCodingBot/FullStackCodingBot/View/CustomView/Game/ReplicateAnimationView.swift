@@ -2,6 +2,7 @@ import UIKit
 
 class ReplicateAnimationView: UIView {
     
+    private let screenSize = ScreenSize.full
     private var imageCountPerLine: CGFloat = 3.0
     
     enum Image {
@@ -46,17 +47,18 @@ class ReplicateAnimationView: UIView {
         let imageSize = imageLayer.bounds.size
         
         let horizontalReplicatorLayer = CAReplicatorLayer()
-        horizontalReplicatorLayer.frame = CGRect(origin: row.origin(imageSize: imageSize), size: bounds.size)
+        horizontalReplicatorLayer.frame = CGRect(origin: row.origin(imageSize: imageSize), size: screenSize)
         horizontalReplicatorLayer.addSublayer(imageLayer)
+        let sizedFrame = horizontalReplicatorLayer.frame
         
-        let horizontalCountInFloat = (frame.width/imageSize.width) + 3
+        let horizontalCountInFloat = (sizedFrame.width/imageSize.width) + 3
         horizontalReplicatorLayer.instanceCount = Int(horizontalCountInFloat)
         horizontalReplicatorLayer.instanceTransform = CATransform3DMakeTranslation(imageSize.width, 0, 0)
 
         let verticalReplicatorLayer = CAReplicatorLayer()
-        verticalReplicatorLayer.frame.size = bounds.size
+        verticalReplicatorLayer.frame.size = screenSize
     
-        let verticalCountInFloat = (frame.height/imageSize.height)/2 + 1
+        let verticalCountInFloat = (sizedFrame.height)/2 + 1
         verticalReplicatorLayer.instanceCount = Int(verticalCountInFloat)
         verticalReplicatorLayer.instanceTransform = CATransform3DMakeTranslation(0, imageSize.height * 2, 0)
         verticalReplicatorLayer.addSublayer(horizontalReplicatorLayer)

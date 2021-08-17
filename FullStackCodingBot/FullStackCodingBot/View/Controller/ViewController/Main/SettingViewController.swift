@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 
 final class SettingViewController: UIViewController, ViewModelBindableType {
 
@@ -6,6 +7,7 @@ final class SettingViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var storyButton: UIButton!
     @IBOutlet var settingSwitchController: SettingSwitchController!
+    @IBOutlet weak var dismissView: UIView!
     @IBOutlet var settingLabels: [UILabel]!
     
     override func viewDidLoad() {
@@ -34,10 +36,27 @@ final class SettingViewController: UIViewController, ViewModelBindableType {
                 self.viewModel.makeMoveAction(to: .storyVC)
             }).disposed(by: rx.disposeBag)
     }
-    
+}
+
+// setup
+extension SettingViewController {
     private func setup() {
+        setupFont()
+        setupDismissGesture()
+    }
+    
+    private func setupFont() {
         settingLabels.forEach { label in
             label.font = UIFont.joystix(style: .body)
         }
+    }
+    
+    private func setupDismissGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(respondToTapGesture(_:)))
+        dismissView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func respondToTapGesture(_ sender: UIView) {
+        viewModel.makeCloseAction()
     }
 }
