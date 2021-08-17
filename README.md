@@ -83,8 +83,8 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 > ### Story
 >
 > - [x] 스토리 구상
-> -[x] 기본 UI
-> -[x] StoryScene 로직
+> - [x] 기본 UI
+> - [x] StoryScene 로직
 
 > ### Item
 >
@@ -161,6 +161,7 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 > - [x] UI 구축 - AutoLayout
 > - [x] Available(Ad or Gift) / Taken 상황에 맞춘 CollectionCell Update
 > - [x] Reward Update Logic 구현 - AdStorage
+> - [x] Banner Ads 연동
 
 > ### Story
 >
@@ -177,7 +178,7 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 >
 > - [x] UI 구축 - AutoLayout
 > - [x] Game Play Logic 구현 - GameUnitManager
-> - [ ] Match 성공 시 랜덤 코드 Animation
+> - [x] Match 성공 시 랜덤 코드 Animation
 > - [x] Match 실패 대응 - Haptic 적용, Wrong Animation, 버튼 Cool time
 > - [x] 게임 유닛 릴즈의 PerspectiveView & Animation 
 > - [x] Game Over Logic 구현 - TimeManager
@@ -203,6 +204,7 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 > - [x] High Score 연동
 > - [x] Restart / Home 흐름 컨트롤
 > - [x] BackgroundView Animation
+> - [x] 랭크에 따른 랜덤 스토리 연동
 
 
 > ### Unit Test
