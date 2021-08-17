@@ -788,6 +788,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="w6U-0K-1YK" id="L3d-Qc-W5F"/>
                         <outlet property="buttonController" destination="H6e-U9-JW6" id="BOh-G8-9Vs"/>
                         <outlet property="skyView" destination="tqg-yG-4Ze" id="woK-hn-O9C"/>
                         <outlet property="titleView" destination="laq-T1-n6f" id="EHp-u8-sMh"/>
@@ -976,6 +977,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="bfm-66-sMS" id="URd-Zm-4YE"/>
                         <outlet property="cancelButton" destination="L3G-k2-a1u" id="ecH-hw-FU0"/>
                         <outlet property="infoView" destination="8Iq-vH-giG" id="lqT-qP-cHs"/>
                         <outlet property="shopCollectionView" destination="jrB-JR-LHy" id="7qh-U5-dNQ"/>

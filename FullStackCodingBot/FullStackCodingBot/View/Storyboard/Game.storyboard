@@ -133,6 +133,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="HyU-WD-yc9" id="L1b-Yr-dWR"/>
+                        <outlet property="bannerView" destination="yG7-w8-Isj" id="JCY-tF-BMS"/>
                         <outlet property="buttonController" destination="XVX-so-Kam" id="OTN-q9-AwW"/>
                         <outlet property="scoreLabel" destination="hRD-XQ-D7Z" id="I3K-wu-6pJ"/>
                     </connections>
@@ -755,6 +756,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="tSh-tg-sUp" id="C2D-YD-ySa"/>
+                        <outlet property="bannerView" destination="8nY-vc-GT9" id="7pa-OI-BUM"/>
                         <outlet property="buttonController" destination="vuL-dj-Gdd" id="SDX-6R-G0r"/>
                         <outlet property="dialogView" destination="k34-Zr-7vW" id="xzR-HC-qW9"/>
                         <outlet property="gainedCoinLabel" destination="Rfg-gf-7jl" id="bqg-qc-WiM"/>
