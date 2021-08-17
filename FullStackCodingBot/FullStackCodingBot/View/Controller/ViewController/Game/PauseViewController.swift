@@ -42,9 +42,20 @@ extension PauseViewController {
     private func setBanner() {
         bannerView.adUnitID = IdentiferAD.banner
         bannerView.rootViewController = self
+        bannerView.delegate = self
     }
     
     private func setupFont() {
         scoreLabel.font = UIFont.joystix(style: .title2)
+    }
+}
+
+// Google Ads
+extension PauseViewController: GADBannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        bannerView.alpha = 0
+        UIView.animate(withDuration: 0.8, animations: {
+            bannerView.alpha = 1
+        })
     }
 }

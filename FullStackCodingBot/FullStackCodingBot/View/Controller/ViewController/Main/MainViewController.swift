@@ -47,5 +47,16 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     private func setBanner() {
         bannerView.adUnitID = IdentiferAD.banner
         bannerView.rootViewController = self
+        bannerView.delegate = self
+    }
+}
+
+// Google Ads
+extension MainViewController: GADBannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        bannerView.alpha = 0
+        UIView.animate(withDuration: 0.8, animations: {
+            bannerView.alpha = 1
+        })
     }
 }

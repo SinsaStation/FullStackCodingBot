@@ -92,6 +92,7 @@ private extension ShopViewController {
     private func setBanner() {
         bannerView.adUnitID = IdentiferAD.banner
         bannerView.rootViewController = self
+        bannerView.delegate = self
     }
     
     private func setupFont() {
@@ -114,12 +115,19 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: Google Ads
-extension ShopViewController: GADFullScreenContentDelegate {
+extension ShopViewController: GADFullScreenContentDelegate, GADBannerViewDelegate {
     private func show(_ adMob: GADRewardedAd) {
         adMob.fullScreenContentDelegate = self
         
         adMob.present(fromRootViewController: self) { [unowned self] in
             self.viewModel.adDidFinished(adMob)
         }
+    }
+    
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        bannerView.alpha = 0
+        UIView.animate(withDuration: 0.8, animations: {
+            bannerView.alpha = 1
+        })
     }
 }
