@@ -30,7 +30,13 @@
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="2mI-Tb-FFB">
                                 <rect key="frame" x="109.66666666666669" y="357" width="209" height="212"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="color" systemColor="systemGray2Color"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xIC-cB-izA"/>
@@ -58,6 +64,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="giu-OR-VkF" userLabel="Dismiss View">
+                                <rect key="frame" x="0.0" y="5" width="428" height="926"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mJ-nZ-ogF">
                                 <rect key="frame" x="64.333333333333343" y="298.33333333333337" width="299.33333333333326" height="329.33333333333337"/>
                                 <subviews>
@@ -178,10 +188,13 @@
                                                             <constraint firstItem="EWF-Sm-ygn" firstAttribute="centerY" secondItem="ulo-IP-mG4" secondAttribute="centerY" id="cgu-OX-fZc"/>
                                                         </constraints>
                                                     </view>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEm-Mw-hHu">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOn-rE-BNj" userLabel="Credit View">
                                                         <rect key="frame" x="0.0" y="218.33333333333334" width="299.33333333333331" height="112.33333333333334"/>
-                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                                        <string key="text">
+                                                        <subviews>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEm-Mw-hHu">
+                                                                <rect key="frame" x="7.3333333333333428" y="2.6666666666666288" width="284.66666666666663" height="106.66666666666667"/>
+                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <string key="text">
 ** Credit **
 
 
@@ -195,12 +208,28 @@ Sound effects obtained from
 https://www.zapsplat.com
 
 
-** Thank you for playing! **</string>
-                                                        <color key="textColor" name="darkgreen"/>
-                                                        <fontDescription key="fontDescription" name="EuphemiaUCAS-Bold" family="Euphemia UCAS" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                                                    </textView>
+** Thank you for playing! **
+
+</string>
+                                                                <color key="textColor" systemColor="systemGray6Color"/>
+                                                                <fontDescription key="fontDescription" name="EuphemiaUCAS-Bold" family="Euphemia UCAS" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="8"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </textView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                        <constraints>
+                                                            <constraint firstItem="tEm-Mw-hHu" firstAttribute="centerY" secondItem="bOn-rE-BNj" secondAttribute="centerY" id="0Gt-sT-do0"/>
+                                                            <constraint firstItem="tEm-Mw-hHu" firstAttribute="width" secondItem="bOn-rE-BNj" secondAttribute="width" multiplier="0.95" id="Jg0-5x-r5I"/>
+                                                            <constraint firstItem="tEm-Mw-hHu" firstAttribute="centerX" secondItem="bOn-rE-BNj" secondAttribute="centerX" id="acH-jA-WYo"/>
+                                                            <constraint firstItem="tEm-Mw-hHu" firstAttribute="height" secondItem="bOn-rE-BNj" secondAttribute="height" multiplier="0.95" id="gXb-vk-kVr"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
@@ -256,13 +285,18 @@ https://www.zapsplat.com
                         <viewLayoutGuide key="safeArea" id="yvi-v9-yd1"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="giu-OR-VkF" firstAttribute="centerX" secondItem="yvi-v9-yd1" secondAttribute="centerX" id="9fs-NL-WRC"/>
+                            <constraint firstItem="giu-OR-VkF" firstAttribute="height" secondItem="ZoB-Ha-8eq" secondAttribute="height" id="FdV-Tf-fgg"/>
                             <constraint firstItem="3mJ-nZ-ogF" firstAttribute="width" secondItem="ZoB-Ha-8eq" secondAttribute="width" multiplier="0.7" id="LFP-CZ-sAe"/>
                             <constraint firstItem="3mJ-nZ-ogF" firstAttribute="centerY" secondItem="ZoB-Ha-8eq" secondAttribute="centerY" id="NJ9-4J-mlc"/>
+                            <constraint firstItem="giu-OR-VkF" firstAttribute="centerY" secondItem="yvi-v9-yd1" secondAttribute="centerY" id="Wti-XQ-Kuo"/>
                             <constraint firstItem="3mJ-nZ-ogF" firstAttribute="centerX" secondItem="ZoB-Ha-8eq" secondAttribute="centerX" id="eRR-FA-Q9h"/>
+                            <constraint firstItem="giu-OR-VkF" firstAttribute="width" secondItem="ZoB-Ha-8eq" secondAttribute="width" id="u1T-Rn-YpX"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="EIc-Ll-MrS" id="uKK-ue-U4h"/>
+                        <outlet property="dismissView" destination="giu-OR-VkF" id="sEL-Es-3V2"/>
                         <outlet property="settingSwitchController" destination="4uP-UJ-9xF" id="bFJ-pb-idz"/>
                         <outlet property="storyButton" destination="EWF-Sm-ygn" id="eb3-CU-8xL"/>
                         <outletCollection property="settingLabels" destination="XC2-eq-Yae" collectionClass="NSMutableArray" id="0cu-Xa-GsP"/>
