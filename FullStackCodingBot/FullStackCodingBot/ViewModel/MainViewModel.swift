@@ -103,7 +103,7 @@ final class MainViewModel: AdViewModel {
         
         adStorage.setNewRewardsIfPossible(with: info.ads)
             .subscribe(onError: { error in
-                        assert(false, "\(error.localizedDescription)") })
+                        Firebase.Analytics.logEvent("RewardsError", parameters: ["ErrorMessage":"\(error)"])})
             .disposed(by: rx.disposeBag)
     }
     
