@@ -103,7 +103,7 @@ final class MainViewModel: AdViewModel {
         
         adStorage.setNewRewardsIfPossible(with: info.ads)
             .subscribe(onError: { error in
-                        Firebase.Analytics.logEvent("RewardsError", parameters: ["ErrorMessage":"\(error)"])})
+                        Firebase.Analytics.logEvent("RewardsError", parameters: ["ErrorMessage": "\(error)"])})
             .disposed(by: rx.disposeBag)
     }
     
@@ -162,6 +162,6 @@ private extension MainViewModel {
         let alertScene = Scene.alert(AlertMessage.networkLoad)
         self.sceneCoordinator.transition(to: alertScene, using: .alert, with: StoryboardType.main, animated: true)
         guard let error = error else { return }
-        Firebase.Analytics.logEvent("NetworkError", parameters: ["ErrorMessage":"\(error)"])
+        Firebase.Analytics.logEvent("NetworkError", parameters: ["ErrorMessage": "\(error)"])
     }
 }
