@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "text_fever-2.png",
+      "filename" : "text_fever.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "text_fever-1.png",
+      "filename" : "text_fever@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "text_fever.png",
+      "filename" : "text_fever@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

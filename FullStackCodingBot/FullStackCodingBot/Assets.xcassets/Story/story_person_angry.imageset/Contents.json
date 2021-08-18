@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "story_person_angry.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "story_person_angry@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "story_person_angry.png",
+      "filename" : "story_person_angry@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

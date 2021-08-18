@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "button_resume-4.png",
+      "filename" : "button_resume-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "button_resume-3.png",
+      "filename" : "button_resume-2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "button_resume-2.png",
+      "filename" : "button_resume-2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -13,7 +13,7 @@ final class StoryManager {
         return timeLine
     }()
     
-    init(story: [Script] = Script.all, currentPage: Int = 0) {
+    init(story: [Script] = Script.story, currentPage: Int = 0) {
         self.story = story
         self.currentPage = currentPage
     }

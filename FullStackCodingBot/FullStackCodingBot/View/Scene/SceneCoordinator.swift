@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Firebase
 
 final class SceneCoordinator: SceneCoordinatorType {
     
@@ -43,6 +44,13 @@ final class SceneCoordinator: SceneCoordinatorType {
             currentVC.present(target, animated: animated) {
                 subject.onCompleted()
             }
+            
+        case .pop:
+            target.modalPresentationStyle = .fullScreen
+            currentVC.present(target, animated: animated) {
+                subject.onCompleted()
+            }
+            currentVC = target
         }
         return subject.ignoreElements().asCompletable()
     }
@@ -57,6 +65,7 @@ final class SceneCoordinator: SceneCoordinatorType {
                 subject.onCompleted()
             }
         } else {
+            Firebase.Analytics.logEvent("TransitionError", parameters: nil)
             subject.onError(TransitionError.unknown)
         }
         
@@ -73,6 +82,7 @@ final class SceneCoordinator: SceneCoordinatorType {
                 subject.onCompleted()
             }
         } else {
+            Firebase.Analytics.logEvent("TransitionError", parameters: nil)
             subject.onError(TransitionError.unknown)
         }
         

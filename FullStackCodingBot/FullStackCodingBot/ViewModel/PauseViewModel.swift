@@ -21,12 +21,12 @@ final class PauseViewModel: CommonViewModel {
         switch viewController {
         case .resume:
             newGameStatus.accept(.resume)
-            sceneCoordinator.close(animated: true)
+            sceneCoordinator.close(animated: false)
         case .restart:
             newGameStatus.accept(.ready)
-            sceneCoordinator.close(animated: true)
+            sceneCoordinator.close(animated: false)
         case .toMain:
-            sceneCoordinator.toMain(animated: true)
+            sceneCoordinator.toMain(animated: false)
             MusicStation.shared.play(type: .main)
         }
     }

@@ -85,7 +85,7 @@ final class AdStorage: AdStorageType {
     private func downloadAd(to index: Int) -> Observable<Void> {
         Observable.create { observer in
             let request = GADRequest()
-            GADRewardedAd.load(withAdUnitID: IdentiferAD.test, request: request) { [unowned self] ads, error in
+            GADRewardedAd.load(withAdUnitID: IdentiferAD.reward, request: request) { [unowned self] ads, error in
                 
                 if let error = error {
                     observer.onError(error)

@@ -16,6 +16,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var codeView: FadeInTextView!
     @IBOutlet weak var backgroundView: GameBackgroundView!
+    @IBOutlet weak var monitorColorView: UIView!
     @IBOutlet weak var readyView: ReadyView!
     private var feedbackGenerator: UINotificationFeedbackGenerator?
     
@@ -136,13 +137,18 @@ final class GameViewController: UIViewController, ViewModelBindableType {
 // MARK: - Setup
 private extension GameViewController {
     private func setup() {
+        setupFont()
         setCodeView()
         setViewObservers()
         setupFeedbackGenerator()
     }
     
+    private func setupFont() {
+        scoreLabel.font = UIFont.joystix(style: .title2)
+    }
+    
     private func setCodeView() {
-        codeView.setup(fontName: Font.neo, alignMode: .left)
+        codeView.setup(fontName: Font.neo, alignMode: .left, isFontSizeFixed: true)
     }
     
     private func setViewObservers() {
@@ -176,15 +182,15 @@ private extension GameViewController {
     }
     
     private func setupTimeView(isFeverOn: Bool) {
-        DispatchQueue.main.async {
-            self.normalTimeView.isHidden = isFeverOn
-            self.feverTimeView.isHidden = !isFeverOn
+        DispatchQueue.main.async { [weak self] in
+            self?.normalTimeView.isHidden = isFeverOn
+            self?.feverTimeView.isHidden = !isFeverOn
             
             if isFeverOn {
-                self.feverTimeView.setup()
-                self.backgroundView.startFever()
+                self?.feverTimeView.setup()
+                self?.backgroundView.startFever()
             } else {
-                self.backgroundView.stopFever()
+                self?.backgroundView.stopFever()
             }
         }
     }
@@ -193,9 +199,11 @@ private extension GameViewController {
         backgroundView.playWrongMode()
         normalTimeView.playWrongMode()
         buttonController.changeButtonStatus(to: false)
+        monitorColorView.backgroundColor = UIColor(named: "red") ?? .red
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-            self.buttonController.changeButtonStatus(to: true)
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [weak self] in
+            self?.buttonController.changeButtonStatus(to: true)
+            self?.monitorColorView.backgroundColor = .clear
         }
     }
 }
@@ -208,6 +216,7 @@ private extension GameViewController {
         readyView.playAnimation()
         normalTimeView.changeAnimationStatus(true)
         normalTimeView.fillAnimation()
+        monitorColorView.backgroundColor = .black
     }
     
     private func clearViews() {
@@ -227,6 +236,7 @@ private extension GameViewController {
         pauseButton.isEnabled = true
         buttonController.changeButtonStatus(to: true)
         readyView.finishAnimation(for: 0.3)
+        monitorColorView.backgroundColor = .clear
     }
     
     private func clear(_ stackView: UIStackView) {

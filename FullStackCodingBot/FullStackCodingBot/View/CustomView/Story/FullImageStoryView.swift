@@ -5,6 +5,15 @@ final class FullImageStoryView: UIView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scriptLabel: UILabel!
 
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        setupFont()
+    }
+    
+    private func setupFont() {
+        scriptLabel.font = UIFont.joystix(style: .title3)
+    }
+    
     func show(with script: Script) {
         reset()
         

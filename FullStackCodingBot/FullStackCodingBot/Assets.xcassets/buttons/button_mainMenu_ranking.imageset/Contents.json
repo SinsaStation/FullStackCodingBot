@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "button_ranking2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "button_ranking2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "button_ranking2.png",
+      "filename" : "button_ranking2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
