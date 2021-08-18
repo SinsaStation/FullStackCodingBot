@@ -1,4 +1,5 @@
 import XCTest
+import RxSwift
 
 class AdStorageTest: XCTestCase {
     
@@ -13,13 +14,18 @@ class AdStorageTest: XCTestCase {
     func test_ShouldUpdateRewards() throws {
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: now)!
         let yesterdayInformation = AdsInformation(ads: [], lastUpdated: yesterday, gift: nil)
-        let isUpdated = adStorage.setNewRewardsIfPossible(with: yesterdayInformation)
-        XCTAssertEqual(isUpdated, true)
+        
+        adStorage.setNewRewardsIfPossible(with: yesterdayInformation)
+            .subscribe(onNext: { result in
+                XCTAssertEqual(result, true)
+            }).disposed(by: rx.disposeBag)
     }
     
     func test_ShouldNotUpdateRewards() throws {
         let currentInformation = AdsInformation(ads: [], lastUpdated: now, gift: nil)
-        let isUpdated = adStorage.setNewRewardsIfPossible(with: currentInformation)
-        XCTAssertEqual(isUpdated, false)
+        adStorage.setNewRewardsIfPossible(with: currentInformation)
+            .subscribe(onNext: { result in
+                XCTAssertEqual(result, false)
+            }).disposed(by: rx.disposeBag)
     }
 }
