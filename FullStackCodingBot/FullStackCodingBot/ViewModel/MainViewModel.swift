@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Firebase
 import FirebaseAuth
 import GameKit
 
@@ -160,5 +161,6 @@ private extension MainViewModel {
     private func networkLoadError() {
         let alertScene = Scene.alert(AlertMessage.networkLoad)
         self.sceneCoordinator.transition(to: alertScene, using: .alert, with: StoryboardType.main, animated: true)
+        Firebase.Analytics.logEvent("NetworkError", parameters: nil)
     }
 }
