@@ -181,7 +181,7 @@
                                     <constraint firstAttribute="width" secondItem="RtS-e2-YDK" secondAttribute="height" multiplier="253:120" id="iFv-uu-Gr6"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4x6-GD-zw6" userLabel="Coding View" customClass="FadeInTextView" customModule="Full_Stack" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4x6-GD-zw6" userLabel="Coding View" customClass="TextPresentView" customModule="Full_Stack" customModuleProvider="target">
                                 <rect key="frame" x="-21.333333333333343" y="228" width="470.66666666666674" height="138.66666666666663"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffT-Vy-DnI" userLabel="Left Button">

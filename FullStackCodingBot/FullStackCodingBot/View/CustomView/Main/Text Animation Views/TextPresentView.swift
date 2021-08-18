@@ -42,7 +42,12 @@ class TextPresentView: UIView {
     }
     
     func show(text fullText: String, color: UIColor = Defaults.textColor) {
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+
         setTextLayer(with: fullText, color: color)
+
+        CATransaction.commit()
     }
     
     private func setTextLayer(with text: String, color: UIColor) {
