@@ -12,11 +12,11 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var skyView: SkyView!
     @IBOutlet weak var titleView: TypeWriterView!
     @IBOutlet weak var bannerView: GADBannerView!
-    
+    @IBOutlet weak var loadingView: LoadingView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTitleViewObserver()
-        setBanner()
+        setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +40,25 @@ final class MainViewController: UIViewController, ViewModelBindableType {
         buttonController.bind { [unowned self] viewController in
             self.viewModel.makeMoveAction(to: viewController)
         }
+        
+        viewModel.firebaseDidLoad
+            .subscribe(onNext: { [unowned self] isLoaded in
+                guard isLoaded else { return }
+                self.unsetLoadingView()
+            }).disposed(by: rx.disposeBag)
+    }
+}
+
+// setup
+extension MainViewController {
+    private func setup() {
+        setTitleViewObserver()
+        setBanner()
+        setLoadingView()
+    }
+    
+    private func setLoadingView() {
+        loadingView.setup()
     }
     
     private func setTitleViewObserver() {
@@ -53,6 +72,10 @@ final class MainViewController: UIViewController, ViewModelBindableType {
         bannerView.adUnitID = IdentiferAD.banner
         bannerView.rootViewController = self
         bannerView.delegate = self
+    }
+    
+    private func unsetLoadingView() {
+        loadingView.hide()
     }
 }
 

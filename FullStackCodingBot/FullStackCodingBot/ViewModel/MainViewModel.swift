@@ -61,8 +61,8 @@ final class MainViewModel: AdViewModel {
     }
     
     func startLoading() {
-        let loadScene = Scene.load(self)
-        self.sceneCoordinator.transition(to: loadScene, using: .overCurrent, with: StoryboardType.main, animated: true)
+//        let loadScene = Scene.load(self)
+//        self.sceneCoordinator.transition(to: loadScene, using: .overCurrent, with: StoryboardType.main, animated: true)
     }
     
     func makeCloseAction() {
