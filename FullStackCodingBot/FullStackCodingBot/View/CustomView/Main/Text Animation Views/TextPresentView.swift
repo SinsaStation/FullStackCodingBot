@@ -102,4 +102,8 @@ class TextPresentView: UIView {
             return CGPoint(x: xPosition, y: 0)
         }
     }
+    
+    func clear() {
+        textLayer.string = .none
+    }
 }

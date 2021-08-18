@@ -29,6 +29,11 @@ final class MainViewController: UIViewController, ViewModelBindableType {
         super.viewDidAppear(animated)
         skyView.startCloudAnimation()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        titleView.clear()
+    }
 
     func bindViewModel() {
         buttonController.setupButton()
