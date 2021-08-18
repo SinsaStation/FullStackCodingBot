@@ -47,7 +47,6 @@ class MockStorage: NSObject, PersistenceStorageType {
     private var items = [Unit(info: .cPlusPlus, level: 1)]
     private lazy var store = BehaviorSubject<[Unit]>(value: items)
     
-    
     private var highScore = 1_000
     // Default Implemantation
     

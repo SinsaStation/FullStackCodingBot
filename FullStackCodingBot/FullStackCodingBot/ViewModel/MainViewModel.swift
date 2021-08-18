@@ -82,6 +82,7 @@ final class MainViewModel: AdViewModel {
             }).disposed(by: rx.disposeBag)
     }
     
+    @discardableResult
     func setupBGMState(_ info: SwithType) -> Completable {
         let subject = PublishSubject<Void>()
         settingInfo.changeState(info)
