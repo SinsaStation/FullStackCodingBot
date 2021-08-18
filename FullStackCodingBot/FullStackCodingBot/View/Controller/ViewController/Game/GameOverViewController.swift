@@ -92,6 +92,7 @@ extension GameOverViewController {
         scoreLabel.font = UIFont.joystix(style: .title2)
         gainedCoinLabel.font = UIFont.joystix(style: .body)
         totalCoinLabel.font = UIFont.joystix(style: .caption)
+        highScoreLabel.font = UIFont.joystix(style: .body)
     }
 }
 

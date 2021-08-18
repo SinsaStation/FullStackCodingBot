@@ -7,6 +7,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     var viewModel: GameViewModel!
     
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet var buttonController: GameButtonController!
     @IBOutlet weak var unitPerspectiveView: UnitPerspectiveView!
     @IBOutlet weak var rightUnitStackView: UIStackView!
@@ -47,6 +48,12 @@ final class GameViewController: UIViewController, ViewModelBindableType {
             .map { $0 == nil ? "Get Ready" : "\($0!)" }
             .asDriver(onErrorJustReturn: "Get Ready")
             .drive(scoreLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.highScore
+            .asDriver()
+            .map { String($0) }
+            .drive(highScoreLabel.rx.text)
             .disposed(by: rx.disposeBag)
     }
     
@@ -150,6 +157,7 @@ private extension GameViewController {
     
     private func setupFont() {
         scoreLabel.font = UIFont.joystix(style: .title2)
+        highScoreLabel.font = UIFont.neoDunggeunmo(style: .caption)
     }
     
     private func setCodeView() {

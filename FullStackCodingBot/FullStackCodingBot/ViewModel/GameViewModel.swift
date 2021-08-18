@@ -19,6 +19,7 @@ final class GameViewModel: CommonViewModel {
     private(set) var timeLeftPercentage = BehaviorRelay<Double>(value: 1)
     private(set) var feverTimeLeftPercentage = BehaviorRelay<Double>(value: 1)
     private(set) var currentScore = BehaviorSubject<Int?>(value: nil)
+    private(set) lazy var highScore = BehaviorRelay<Int>(value: storage.myHighScore())
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
     private(set) var userAction = BehaviorRelay<UserActionStatus?>(value: nil)
@@ -171,7 +172,14 @@ extension GameViewModel {
         guard let currentScore = try? currentScore.value() else { return false }
         let newScore = currentScore + scoreGained
         self.currentScore.onNext(newScore)
+        updateHighScore(with: newScore)
         return true
+    }
+    
+    private func updateHighScore(with newScore: Int) {
+        if newScore >= highScore.value {
+            highScore.accept(newScore)
+        }
     }
     
     private func onGameUnitNeedsChange() {
