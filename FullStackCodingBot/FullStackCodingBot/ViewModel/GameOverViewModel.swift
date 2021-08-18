@@ -10,6 +10,7 @@ final class GameOverViewModel: CommonViewModel {
     private(set) var rankInfo = BehaviorRelay<String>(value: "")
     private let scoreInfo = BehaviorRelay<Int>(value: 0)
     private let moneyInfo = BehaviorRelay<Int>(value: 0)
+    private(set) var highScore = BehaviorRelay<Int>(value: 0)
     private(set) var highScoreStatus = BehaviorRelay<Bool>(value: false)
     private var newGameStatus: BehaviorRelay<GameStatus>
     
@@ -54,6 +55,7 @@ final class GameOverViewModel: CommonViewModel {
     private func updateHighScore() {
         let newScore = scoreInfo.value
         let isHighScore = storage.updateHighScore(new: newScore)
+        highScore.accept(storage.myHighScore())
         highScoreStatus.accept(isHighScore)
     }
     

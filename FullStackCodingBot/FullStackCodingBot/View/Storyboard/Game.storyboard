@@ -533,16 +533,16 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WwI-uH-asT">
-                                                <rect key="frame" x="21.333333333333343" y="28.666666666666671" width="385.33333333333326" height="225.33333333333331"/>
+                                                <rect key="frame" x="23.666666666666657" y="26.999999999999986" width="385" height="240.66666666666663"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3GY-3g-mi8" userLabel="Top View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="385.33333333333331" height="108"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="385" height="106.66666666666667"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="button_highscore" translatesAutoresizingMaskIntoConstraints="NO" id="pTl-4a-pgv">
-                                                                <rect key="frame" x="57" y="78.333333333333314" width="61.333333333333343" height="32.333333333333343"/>
+                                                                <rect key="frame" x="57.333333333333329" y="77.333333333333343" width="61.333333333333329" height="32"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bIA-RJ-nHL">
-                                                                <rect key="frame" x="133.33333333333331" y="-5.6666666666666856" width="118.66666666666669" height="119"/>
+                                                                <rect key="frame" x="133.66666666666669" y="-5.3333333333333144" width="117.66666666666669" height="117.33333333333333"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="bIA-RJ-nHL" secondAttribute="height" multiplier="1:1" id="fik-Cw-aHh"/>
                                                                 </constraints>
@@ -561,7 +561,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33333" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auM-zH-D8j" userLabel="Score Label">
-                                                        <rect key="frame" x="0.0" y="115.99999999999996" width="385.33333333333331" height="56.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="114.66666666666664" width="385" height="60.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="53"/>
                                                         <color key="textColor" name="digitalgreen"/>
                                                         <nil key="highlightedColor"/>
@@ -574,55 +574,88 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yb1-I1-Gr2" userLabel="Bottom View">
-                                                        <rect key="frame" x="0.0" y="180.33333333333334" width="385.33333333333331" height="45"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GG4-l0-LSQ" userLabel="Bottom Stack View">
+                                                        <rect key="frame" x="0.0" y="183.00000000000003" width="385" height="57.666666666666657"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Vnz-Qt-bwu">
-                                                                <rect key="frame" x="38.666666666666671" y="9" width="211.66666666666663" height="27"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xX-RO-bne" userLabel="High Score View">
+                                                                <rect key="frame" x="0.0" y="0.0" width="385" height="28.666666666666668"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text_coin" translatesAutoresizingMaskIntoConstraints="NO" id="eSb-fw-wgp">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="84.666666666666671" height="27"/>
-                                                                    </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rfg-gf-7jl">
-                                                                        <rect key="frame" x="92.666666666666657" y="0.0" width="119" height="27"/>
-                                                                        <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="22"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XwZ-GP-RIc">
+                                                                        <rect key="frame" x="38.333333333333314" y="2.6666666666666288" width="212" height="23.333333333333332"/>
+                                                                        <subviews>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text_highscore" translatesAutoresizingMaskIntoConstraints="NO" id="5fD-er-aMU">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="84.666666666666671" height="23.333333333333332"/>
+                                                                            </imageView>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="GxI-e5-nk7">
+                                                                                <rect key="frame" x="92.666666666666657" y="0.0" width="119.33333333333334" height="23.333333333333332"/>
+                                                                                <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="22"/>
+                                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstItem="5fD-er-aMU" firstAttribute="width" secondItem="XwZ-GP-RIc" secondAttribute="width" multiplier="0.4" id="uNG-wF-gci"/>
+                                                                        </constraints>
+                                                                    </stackView>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstItem="eSb-fw-wgp" firstAttribute="width" secondItem="Vnz-Qt-bwu" secondAttribute="width" multiplier="0.4" id="hd8-Hz-qOd"/>
+                                                                    <constraint firstItem="XwZ-GP-RIc" firstAttribute="height" secondItem="2xX-RO-bne" secondAttribute="height" multiplier="0.8" id="EhA-xN-Xea"/>
+                                                                    <constraint firstItem="XwZ-GP-RIc" firstAttribute="width" secondItem="2xX-RO-bne" secondAttribute="width" multiplier="0.55" id="IAn-wT-cwQ"/>
+                                                                    <constraint firstItem="XwZ-GP-RIc" firstAttribute="centerY" secondItem="2xX-RO-bne" secondAttribute="centerY" id="O2z-Gn-QCP"/>
+                                                                    <constraint firstItem="XwZ-GP-RIc" firstAttribute="centerX" secondItem="2xX-RO-bne" secondAttribute="centerX" multiplier="0.75" id="Wr5-Sb-t6Y"/>
                                                                 </constraints>
-                                                            </stackView>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yb1-I1-Gr2" userLabel="Energy View">
+                                                                <rect key="frame" x="0.0" y="28.666666666666629" width="385" height="29"/>
+                                                                <subviews>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Vnz-Qt-bwu">
+                                                                        <rect key="frame" x="38.333333333333314" y="3" width="212" height="23"/>
+                                                                        <subviews>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text_coin" translatesAutoresizingMaskIntoConstraints="NO" id="eSb-fw-wgp">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="84.666666666666671" height="23"/>
+                                                                            </imageView>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rfg-gf-7jl">
+                                                                                <rect key="frame" x="92.666666666666657" y="0.0" width="119.33333333333334" height="23"/>
+                                                                                <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="22"/>
+                                                                                <color key="textColor" name="yellow"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstItem="eSb-fw-wgp" firstAttribute="width" secondItem="Vnz-Qt-bwu" secondAttribute="width" multiplier="0.4" id="hd8-Hz-qOd"/>
+                                                                        </constraints>
+                                                                    </stackView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="Vnz-Qt-bwu" firstAttribute="height" secondItem="Yb1-I1-Gr2" secondAttribute="height" multiplier="0.8" id="0YU-UD-pwj"/>
+                                                                    <constraint firstItem="Vnz-Qt-bwu" firstAttribute="centerY" secondItem="Yb1-I1-Gr2" secondAttribute="centerY" id="bmB-uR-uK7"/>
+                                                                    <constraint firstItem="Vnz-Qt-bwu" firstAttribute="centerX" secondItem="Yb1-I1-Gr2" secondAttribute="centerX" multiplier="0.75" id="nnl-NT-ecH"/>
+                                                                    <constraint firstItem="Vnz-Qt-bwu" firstAttribute="width" secondItem="Yb1-I1-Gr2" secondAttribute="width" multiplier="0.55" id="rKD-8O-gaR"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                                        <integer key="value" value="0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="Vnz-Qt-bwu" firstAttribute="height" secondItem="Yb1-I1-Gr2" secondAttribute="height" multiplier="0.6" id="0YU-UD-pwj"/>
-                                                            <constraint firstItem="Vnz-Qt-bwu" firstAttribute="centerY" secondItem="Yb1-I1-Gr2" secondAttribute="centerY" id="bmB-uR-uK7"/>
-                                                            <constraint firstItem="Vnz-Qt-bwu" firstAttribute="centerX" secondItem="Yb1-I1-Gr2" secondAttribute="centerX" multiplier="0.75" id="nnl-NT-ecH"/>
-                                                            <constraint firstItem="Vnz-Qt-bwu" firstAttribute="width" secondItem="Yb1-I1-Gr2" secondAttribute="width" multiplier="0.55" id="rKD-8O-gaR"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                                <integer key="value" value="0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
+                                                    </stackView>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="GG4-l0-LSQ" firstAttribute="height" secondItem="WwI-uH-asT" secondAttribute="height" multiplier="0.24" id="9x5-DX-JFT"/>
                                                     <constraint firstItem="auM-zH-D8j" firstAttribute="height" secondItem="WwI-uH-asT" secondAttribute="height" multiplier="0.25" id="Xcc-5j-XV0"/>
-                                                    <constraint firstItem="Yb1-I1-Gr2" firstAttribute="height" secondItem="WwI-uH-asT" secondAttribute="height" multiplier="0.2" id="jik-4V-8gA"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="WwI-uH-asT" firstAttribute="centerY" secondItem="3jL-yk-k2D" secondAttribute="centerY" multiplier="0.94" id="Hee-nZ-PRk"/>
+                                            <constraint firstItem="WwI-uH-asT" firstAttribute="centerY" secondItem="3jL-yk-k2D" secondAttribute="centerY" multiplier="0.98" id="Hee-nZ-PRk"/>
                                             <constraint firstItem="WwI-uH-asT" firstAttribute="width" secondItem="3jL-yk-k2D" secondAttribute="width" multiplier="0.9" id="Hse-QW-oy2"/>
                                             <constraint firstItem="JHX-P9-OKJ" firstAttribute="centerX" secondItem="3jL-yk-k2D" secondAttribute="centerX" id="KlO-FV-ZDo"/>
-                                            <constraint firstItem="WwI-uH-asT" firstAttribute="centerX" secondItem="3jL-yk-k2D" secondAttribute="centerX" id="SYh-6j-281"/>
-                                            <constraint firstItem="WwI-uH-asT" firstAttribute="height" secondItem="3jL-yk-k2D" secondAttribute="height" multiplier="0.75" id="TLq-fe-bpf"/>
+                                            <constraint firstItem="WwI-uH-asT" firstAttribute="centerX" secondItem="3jL-yk-k2D" secondAttribute="centerX" multiplier="1.01" id="SYh-6j-281"/>
+                                            <constraint firstItem="WwI-uH-asT" firstAttribute="height" secondItem="3jL-yk-k2D" secondAttribute="height" multiplier="0.8" id="TLq-fe-bpf"/>
                                             <constraint firstItem="JHX-P9-OKJ" firstAttribute="centerY" secondItem="3jL-yk-k2D" secondAttribute="centerY" id="dzv-2D-eDx"/>
                                             <constraint firstItem="JHX-P9-OKJ" firstAttribute="height" secondItem="3jL-yk-k2D" secondAttribute="height" id="mS6-5r-0rX"/>
                                             <constraint firstItem="JHX-P9-OKJ" firstAttribute="width" secondItem="3jL-yk-k2D" secondAttribute="width" multiplier="0.98" id="rfC-FZ-BWW"/>
@@ -761,6 +794,7 @@
                         <outlet property="dialogView" destination="k34-Zr-7vW" id="xzR-HC-qW9"/>
                         <outlet property="gainedCoinLabel" destination="Rfg-gf-7jl" id="bqg-qc-WiM"/>
                         <outlet property="highScoreImageView" destination="pTl-4a-pgv" id="dRg-8O-Lk9"/>
+                        <outlet property="highScoreLabel" destination="GxI-e5-nk7" id="u1f-1H-XOK"/>
                         <outlet property="rankLabel" destination="bIA-RJ-nHL" id="s1H-rO-aJt"/>
                         <outlet property="scoreLabel" destination="auM-zH-D8j" id="hqy-aK-ehr"/>
                         <outlet property="totalCoinLabel" destination="aiU-qD-tg7" id="igP-rb-0KB"/>
@@ -793,6 +827,7 @@
         <image name="item_computer_monitor_score" width="170.66667175292969" height="170.66667175292969"/>
         <image name="keyboard" width="110.66666412353516" height="50"/>
         <image name="text_coin" width="96" height="32"/>
+        <image name="text_highscore" width="62" height="12"/>
         <namedColor name="darkblue">
             <color red="0.14900000393390656" green="0.1289999932050705" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -804,6 +839,9 @@
         </namedColor>
         <namedColor name="red">
             <color red="0.87099999189376831" green="0.2669999897480011" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="yellow">
+            <color red="1" green="0.80800002813339233" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

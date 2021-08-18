@@ -12,6 +12,7 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var gainedCoinLabel: UILabel!
     @IBOutlet weak var totalCoinLabel: UILabel!
+    @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var highScoreImageView: UIImageView!
     @IBOutlet weak var dialogView: DialogView!
     @IBOutlet var backgroundView: ReplicateAnimationView!
@@ -45,6 +46,12 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
         
         viewModel.currentMoney
             .drive(totalCoinLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.highScore
+            .asDriver()
+            .map { String($0) }
+            .drive(highScoreLabel.rx.text)
             .disposed(by: rx.disposeBag)
         
         viewModel.highScoreStatus
