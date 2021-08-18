@@ -22,7 +22,7 @@ final class GameViewModel: CommonViewModel {
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
     private(set) var userAction = BehaviorRelay<UserActionStatus?>(value: nil)
-    private(set) var codeToShow = BehaviorRelay<String>(value: "")
+    private(set) var codeToShow = BehaviorRelay<LiveCode>(value: .matched(""))
     
     // Actions
     private(set) lazy var pauseAction: Action<Void, Void> = Action {
@@ -66,7 +66,7 @@ extension GameViewModel {
         feverTimeLeftPercentage.accept(0)
         currentScore.onNext(nil)
         newOnGameUnits.accept(nil)
-        codeToShow.accept("")
+        codeToShow.accept(.matched(""))
         MusicStation.shared.stop()
     }
     
@@ -162,7 +162,7 @@ extension GameViewModel {
               let currentUnit = gameUnitManager.completed() else { return }
         userAction.accept(.correct(direction))
         timeManager.correct()
-        codeToShow.accept(currentUnit.randomCode())
+        codeToShow.accept(.matched(currentUnit.randomCode()))
         onGameUnitNeedsChange()
         gameSoundStation.play(type: .correct)
     }
@@ -188,7 +188,7 @@ extension GameViewModel {
         let wrongStatus = timeManager.wrong()
         userAction.accept(wrongStatus)
         gameSoundStation.play(type: .wrong)
-        codeToShow.accept("")
+        codeToShow.accept(.failed)
     }
 }
 

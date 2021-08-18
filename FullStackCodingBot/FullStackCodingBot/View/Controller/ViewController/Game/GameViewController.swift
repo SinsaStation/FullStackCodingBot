@@ -123,8 +123,13 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     
     private func bindCodeView() {
         viewModel.codeToShow
-            .subscribe(onNext: { [unowned self] code in
-                self.codeView.show(text: code)
+            .subscribe(onNext: { [unowned self] liveCode in
+                switch liveCode {
+                case .matched(let code):
+                    self.codeView.show(text: code)
+                case .failed:
+                    self.codeView.show(text: Text.matchFailed, color: .red)
+                }
             }).disposed(by: rx.disposeBag)
     }
     
@@ -199,7 +204,7 @@ private extension GameViewController {
         backgroundView.playWrongMode()
         normalTimeView.playWrongMode()
         buttonController.changeButtonStatus(to: false)
-        monitorColorView.backgroundColor = UIColor(named: "red") ?? .red
+        monitorColorView.backgroundColor = .black
         
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [weak self] in
             self?.buttonController.changeButtonStatus(to: true)
