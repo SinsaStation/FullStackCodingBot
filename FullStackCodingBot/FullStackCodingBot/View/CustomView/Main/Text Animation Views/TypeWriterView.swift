@@ -4,8 +4,8 @@ final class TypeWriterView: TextPresentView {
 
     private let delayPerLetter: Double = 0.08
     
-    override func show(text fullText: String) {
-        super.show(text: fullText)
+    override func show(text fullText: String, color: UIColor = Defaults.textColor) {
+        super.show(text: fullText, color: color)
         startTyping(text: fullText)
     }
     

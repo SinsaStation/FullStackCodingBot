@@ -43,6 +43,13 @@ final class SceneCoordinator: SceneCoordinatorType {
             currentVC.present(target, animated: animated) {
                 subject.onCompleted()
             }
+            
+        case .pop:
+            target.modalPresentationStyle = .fullScreen
+            currentVC.present(target, animated: animated) {
+                subject.onCompleted()
+            }
+            currentVC = target
         }
         return subject.ignoreElements().asCompletable()
     }

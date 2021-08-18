@@ -66,6 +66,7 @@ extension GameViewModel {
         feverTimeLeftPercentage.accept(0)
         currentScore.onNext(nil)
         newOnGameUnits.accept(nil)
+        codeToShow.accept("")
         MusicStation.shared.stop()
     }
     
@@ -124,7 +125,6 @@ extension GameViewModel {
         newOnGameUnits.accept(newUnits)
         
         currentScore.onNext(0)
-        codeToShow.accept("")
     }
     
     private func sendNewUnitToStack(by count: Int) {
@@ -199,7 +199,7 @@ private extension GameViewModel {
         let currentScore = try? currentScore.value()
         let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database, finalScore: currentScore ?? 0, newGameStatus: newGameStatus)
         let gameOverScene = Scene.gameOver(gameOverViewModel)
-        return self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, with: StoryboardType.game, animated: true)
+        return self.sceneCoordinator.transition(to: gameOverScene, using: .pop, with: StoryboardType.game, animated: true)
     }
     
     @discardableResult

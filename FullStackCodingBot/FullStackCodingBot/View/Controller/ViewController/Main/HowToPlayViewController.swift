@@ -43,10 +43,14 @@ final class HowToPlayViewController: UIViewController, ViewModelBindableType {
 
 // MARK: SetUp
 private extension HowToPlayViewController {
-    
     private func setup() {
+        setupFont()
         setupSwipeGesture()
         viewModel.setCurrentManual()
+    }
+    
+    private func setupFont() {
+        howToTextView.font = UIFont.neoDunggeunmo(style: .body)
     }
     
     private func setupSwipeGesture() {
@@ -62,7 +66,6 @@ private extension HowToPlayViewController {
 
 // MARK: Action
 private extension HowToPlayViewController {
-    
     @objc private func respondToSwipeGesture(_ gesture: UIGestureRecognizer) {
         guard let swipeGesture = gesture as? UISwipeGestureRecognizer else {
             return

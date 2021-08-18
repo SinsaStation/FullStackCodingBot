@@ -8,11 +8,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="neodgm.ttf">
-            <string>NeoDunggeunmo-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -23,28 +18,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="lD2-Kp-O9g">
-                                <rect key="frame" x="114" y="264.5" width="186" height="232.5"/>
+                                <rect key="frame" x="114" y="287" width="186" height="232.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lD2-Kp-O9g" secondAttribute="height" multiplier="4:5" id="PF0-9k-oXE"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sinsa Soft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Pa6-EX-S7i">
-                                <rect key="frame" x="166" y="507" width="82.5" height="21"/>
-                                <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="darkgreen"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Pa6-EX-S7i" secondAttribute="trailing" constant="30" id="1qR-5b-nov"/>
-                            <constraint firstItem="lD2-Kp-O9g" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.85" id="DGf-It-iqy"/>
-                            <constraint firstItem="Pa6-EX-S7i" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="KV1-Bq-oNh"/>
+                            <constraint firstItem="lD2-Kp-O9g" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.9" id="DGf-It-iqy"/>
                             <constraint firstItem="lD2-Kp-O9g" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.45" id="TIR-qL-Nym"/>
                             <constraint firstItem="lD2-Kp-O9g" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="i66-fH-36g"/>
-                            <constraint firstItem="Pa6-EX-S7i" firstAttribute="top" secondItem="lD2-Kp-O9g" secondAttribute="bottom" constant="10" id="juW-F8-fUf"/>
-                            <constraint firstItem="Pa6-EX-S7i" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="rR4-OW-KsP"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -54,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launch" width="266.66665649414062" height="365.66665649414062"/>
+        <image name="launch" width="266.5" height="420"/>
         <namedColor name="darkgreen">
             <color red="0.027000000700354576" green="0.10599999874830246" blue="0.016000000759959221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

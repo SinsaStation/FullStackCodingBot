@@ -13,11 +13,13 @@ final class MainItemView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadXib()
+        setFont()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadXib()
+        setFont()
     }
     
     func configure(_ info: Unit) {
@@ -32,6 +34,11 @@ final class MainItemView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    }
+    
+    private func setFont() {
+        levelLabel.font = UIFont.joystix(style: .caption)
+        nameLabel.font = UIFont.joystix(style: .caption)
     }
     
     func startAnimation() {
