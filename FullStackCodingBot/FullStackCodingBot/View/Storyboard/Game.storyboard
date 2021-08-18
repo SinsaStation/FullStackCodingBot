@@ -641,10 +641,10 @@
                                                         </constraints>
                                                     </imageView>
                                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZ7-1o-mzv" userLabel="Text View">
-                                                        <rect key="frame" x="8.3333333333333428" y="95.333333333333371" width="344" height="95.333333333333314"/>
+                                                        <rect key="frame" x="4" y="88.666666666666643" width="344" height="139.33333333333337"/>
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="hahaha" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WnI-NL-NgV">
-                                                                <rect key="frame" x="17.333333333333343" y="14.333333333333258" width="309.33333333333326" height="66.666666666666671"/>
+                                                                <rect key="frame" x="17.333333333333343" y="12.000000000000007" width="309.66666666666663" height="115.66666666666669"/>
                                                                 <color key="textColor" name="darkgreen"/>
                                                                 <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -652,7 +652,7 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="WnI-NL-NgV" firstAttribute="height" secondItem="eZ7-1o-mzv" secondAttribute="height" multiplier="0.7" id="FEW-PI-0h2"/>
+                                                            <constraint firstItem="WnI-NL-NgV" firstAttribute="height" secondItem="eZ7-1o-mzv" secondAttribute="height" multiplier="0.83" id="FEW-PI-0h2"/>
                                                             <constraint firstItem="WnI-NL-NgV" firstAttribute="centerY" secondItem="eZ7-1o-mzv" secondAttribute="centerY" id="Fc4-CH-5pv"/>
                                                             <constraint firstItem="WnI-NL-NgV" firstAttribute="width" secondItem="eZ7-1o-mzv" secondAttribute="width" multiplier="0.9" id="Wbb-7G-sMf"/>
                                                             <constraint firstItem="WnI-NL-NgV" firstAttribute="centerX" secondItem="eZ7-1o-mzv" secondAttribute="centerX" id="pnV-im-umx"/>
@@ -669,12 +669,12 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="XfC-gj-gWc" firstAttribute="centerY" secondItem="k34-Zr-7vW" secondAttribute="centerY" multiplier="1.1" id="1DX-al-sxE"/>
-                                                    <constraint firstAttribute="bottom" secondItem="eZ7-1o-mzv" secondAttribute="bottom" id="JIr-gi-TeL"/>
+                                                    <constraint firstItem="eZ7-1o-mzv" firstAttribute="centerY" secondItem="k34-Zr-7vW" secondAttribute="centerY" multiplier="1.66" id="5x4-51-zgw"/>
                                                     <constraint firstItem="XfC-gj-gWc" firstAttribute="centerX" secondItem="k34-Zr-7vW" secondAttribute="centerX" multiplier="1.65" id="hCy-pU-frr"/>
                                                     <constraint firstItem="XfC-gj-gWc" firstAttribute="width" secondItem="k34-Zr-7vW" secondAttribute="width" multiplier="0.4" id="nMn-sh-rPK"/>
-                                                    <constraint firstItem="eZ7-1o-mzv" firstAttribute="centerX" secondItem="k34-Zr-7vW" secondAttribute="centerX" multiplier="0.86" id="ngn-tC-Gkz"/>
+                                                    <constraint firstItem="eZ7-1o-mzv" firstAttribute="centerX" secondItem="k34-Zr-7vW" secondAttribute="centerX" multiplier="0.84" id="ngn-tC-Gkz"/>
                                                     <constraint firstItem="eZ7-1o-mzv" firstAttribute="width" secondItem="k34-Zr-7vW" secondAttribute="width" multiplier="0.82" id="tnk-wV-5Eb"/>
-                                                    <constraint firstItem="eZ7-1o-mzv" firstAttribute="height" secondItem="k34-Zr-7vW" secondAttribute="height" multiplier="0.5" id="vbU-uG-x5r"/>
+                                                    <constraint firstItem="eZ7-1o-mzv" firstAttribute="height" secondItem="k34-Zr-7vW" secondAttribute="height" multiplier="0.73" id="vbU-uG-x5r"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="scriptTextView" destination="WnI-NL-NgV" id="mac-c2-3A8"/>
