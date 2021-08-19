@@ -27,4 +27,5 @@ enum IdentifierUD {
 
 enum IdentifierGC {
     static let leaderboard = "WeeklyScore"
+    static let leaderboard2 = "AllTimeScore"
 }

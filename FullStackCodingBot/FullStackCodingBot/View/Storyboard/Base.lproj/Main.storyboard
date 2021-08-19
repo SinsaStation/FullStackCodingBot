@@ -52,7 +52,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="299.33333333333331" height="54.666666666666664"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BGM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="pc7-55-NOD">
-                                                                <rect key="frame" x="10" y="13.333333333333314" width="50" height="28"/>
+                                                                <rect key="frame" x="10.000000000000004" y="13.333333333333314" width="46.333333333333343" height="28"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -81,7 +81,7 @@
                                                         <rect key="frame" x="0.0" y="54.666666666666629" width="299.33333333333331" height="54.333333333333343"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="gdp-Bo-9rR">
-                                                                <rect key="frame" x="10" y="12.999999999999998" width="83" height="28.333333333333329"/>
+                                                                <rect key="frame" x="9.9999999999999964" y="12.999999999999998" width="58.666666666666657" height="28.333333333333329"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -110,7 +110,7 @@
                                                         <rect key="frame" x="0.0" y="109.00000000000001" width="299.33333333333331" height="54.666666666666671"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="XC2-eq-Yae">
-                                                                <rect key="frame" x="10" y="13.333333333333313" width="148.33333333333334" height="28.333333333333329"/>
+                                                                <rect key="frame" x="10" y="13.333333333333313" width="79" height="28.333333333333329"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -477,7 +477,7 @@ https://www.zapsplat.com
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 백엔드 개발자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="4hf-gA-dvh">
-                                                        <rect key="frame" x="130" y="22" width="135" height="18"/>
+                                                        <rect key="frame" x="130" y="20.333333333333258" width="109.66666666666669" height="21"/>
                                                         <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="18"/>
                                                         <color key="textColor" name="darkgreen"/>
                                                         <color key="highlightedColor" name="AccentColor"/>
@@ -530,7 +530,7 @@ https://www.zapsplat.com
                                                 <rect key="frame" x="0.0" y="764" width="0.0" height="0.0"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Know Yeah Technology&quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Eey-tL-qUk">
-                                                        <rect key="frame" x="0.0" y="-13.666666666666629" width="0.0" height="27"/>
+                                                        <rect key="frame" x="0.0" y="-16" width="0.0" height="31.666666666666668"/>
                                                         <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="27"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -1303,7 +1303,7 @@ https://www.zapsplat.com
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="b3i-P5-hMw">
-                                        <rect key="frame" x="52.333333333333329" y="11.000000000000002" width="130.33333333333337" height="21.666666666666671"/>
+                                        <rect key="frame" x="52.333333333333329" y="11.333333333333329" width="130.33333333333337" height="21"/>
                                         <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>

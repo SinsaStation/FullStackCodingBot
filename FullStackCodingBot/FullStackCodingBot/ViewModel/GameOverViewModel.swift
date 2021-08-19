@@ -63,9 +63,11 @@ final class GameOverViewModel: CommonViewModel {
     private func storeHightScoreToGameCenter() -> Completable {
         let subject = PublishSubject<Void>()
         let bestScore = GKScore(leaderboardIdentifier: IdentifierGC.leaderboard)
+        let highScore = GKScore(leaderboardIdentifier: IdentifierGC.leaderboard2)
         bestScore.value = Int64(scoreInfo.value)
+        highScore.value = Int64(scoreInfo.value)
         
-        GKScore.report([bestScore]) { error in
+        GKScore.report([bestScore, highScore]) { error in
             if error != nil {
                 subject.onError(AppleGameCenterError.cannotReport)
             } else {
