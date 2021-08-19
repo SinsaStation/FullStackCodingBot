@@ -12,7 +12,6 @@
 		710D0D422693EA3200244A16 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D412693EA3200244A16 /* GameViewController.swift */; };
 		710D0D442693EA6900244A16 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D432693EA6900244A16 /* GameViewModel.swift */; };
 		710D0D4F2693F6E500244A16 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D4D2693F6E500244A16 /* ItemCell.swift */; };
-		711A69EC26B3B13E00C7C99A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A69EB26B3B13E00C7C99A /* LoadingViewController.swift */; };
 		712F500A26A831D900186948 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712F500926A831D900186948 /* GoogleService-Info.plist */; };
 		712F500B26A831D900186948 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712F500926A831D900186948 /* GoogleService-Info.plist */; };
 		71307A8926A529F400C3191F /* LevelUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71307A8826A529F400C3191F /* LevelUpButton.swift */; };
@@ -160,7 +159,6 @@
 		710D0D412693EA3200244A16 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		710D0D432693EA6900244A16 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		710D0D4D2693F6E500244A16 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
-		711A69EB26B3B13E00C7C99A /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		712F500926A831D900186948 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71307A8826A529F400C3191F /* LevelUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpButton.swift; sourceTree = "<group>"; };
 		71307A8A26A52A1F00C3191F /* LevelUpButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelUpButton.xib; sourceTree = "<group>"; };
@@ -347,7 +345,6 @@
 				71DF64BC2692C18F00557693 /* RankViewController.swift */,
 				71DF64BE2692C1C600557693 /* ItemViewController.swift */,
 				7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */,
-				711A69EB26B3B13E00C7C99A /* LoadingViewController.swift */,
 				719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */,
 				715C1C9326BCF9FF0025C681 /* StoryViewController.swift */,
 				7166B23A26C2532400E098BE /* HowToPlayViewController.swift */,
@@ -1026,7 +1023,6 @@
 				7166B23B26C2532400E098BE /* HowToPlayViewController.swift in Sources */,
 				E4F4304226C37A9B00F046E9 /* DialogView.swift in Sources */,
 				71DF64BD2692C18F00557693 /* RankViewController.swift in Sources */,
-				711A69EC26B3B13E00C7C99A /* LoadingViewController.swift in Sources */,
 				719AB9DE26B7ADF2001B5913 /* SettingViewController.swift in Sources */,
 				71DF65552692FD1400557693 /* CommonViewModel.swift in Sources */,
 				715C1C9826BD09950025C681 /* StoryViewModel.swift in Sources */,

@@ -61,11 +61,6 @@ final class MainViewModel: AdViewModel {
         }
     }
     
-    func startLoading() {
-//        let loadScene = Scene.load(self)
-//        self.sceneCoordinator.transition(to: loadScene, using: .overCurrent, with: StoryboardType.main, animated: true)
-    }
-    
     func makeCloseAction() {
         sceneCoordinator.close(animated: true)
     }
@@ -108,12 +103,23 @@ final class MainViewModel: AdViewModel {
             .disposed(by: rx.disposeBag)
     }
     
-    private func observeFirebaseDataLoaded() {
-        firebaseDidLoad
-            .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [unowned self] isLoaded in
-                if !isLoaded { self.startLoading() }
-            }).disposed(by: rx.disposeBag)
+    private func isUpdateAvailable() throws {
+        guard let info = Bundle.main.infoDictionary,
+              let currentVersion = info["CFBundleShortVersionString"] as? String,
+              let identifier = info["CFBundleIdentifier"] as? String,
+              let url = URL(string: "http://itunes.apple.com/lookup?bundleId=\(identifier)") else {
+            throw VersionError.invalidBundleInfo
+        }
+        let data = try Data(contentsOf: url)
+        guard let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any] else {
+            throw VersionError.invalidResponse
+        }
+        if let result = (json["results"] as? [Any])?.first as? [String: Any], let version = result["version"] as? String {
+            if version != currentVersion {
+                versionUpdate()
+            }
+        }
+        throw VersionError.invalidResponse
     }
 }
 
@@ -129,7 +135,6 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                 self.networkLoadError(error)
                 return
             }
-            self.observeFirebaseDataLoaded()
             
             if GKLocalPlayer.local.isAuthenticated {
                 GameCenterAuthProvider.getCredential { credential, error in
@@ -164,5 +169,12 @@ private extension MainViewModel {
         self.sceneCoordinator.transition(to: alertScene, using: .alert, with: StoryboardType.main, animated: true)
         guard let error = error else { return }
         Firebase.Analytics.logEvent("NetworkError", parameters: ["ErrorMessage": "\(error)"])
+    }
+    
+    private func versionUpdate() {
+        DispatchQueue.main.async {
+            let alertScene = Scene.alert(AlertMessage.versionUpdate)
+            self.sceneCoordinator.transition(to: alertScene, using: .alert, with: StoryboardType.main, animated: true)
+        }
     }
 }

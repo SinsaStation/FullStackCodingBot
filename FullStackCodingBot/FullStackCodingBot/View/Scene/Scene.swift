@@ -4,7 +4,6 @@ import Firebase
 
 enum Scene {
     case main(MainViewModel)
-    case load(MainViewModel)
     case setting(MainViewModel)
     case howToPlay(HowToPlayViewModel)
     case story(StoryViewModel)
@@ -89,14 +88,6 @@ extension Scene {
             let confirmAction = UIAlertAction(title: message.content.confirm, style: .cancel)
             alertScene.addAction(confirmAction)
             return alertScene
-            
-        case .load(let viewModel):
-            guard var loadVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.loading) as? LoadingViewController else {
-                Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
-                fatalError()
-            }
-            loadVC.bind(viewModel: viewModel)
-            return loadVC
             
         case .setting(let viewModel):
             guard var settingVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.setting) as? SettingViewController else {
