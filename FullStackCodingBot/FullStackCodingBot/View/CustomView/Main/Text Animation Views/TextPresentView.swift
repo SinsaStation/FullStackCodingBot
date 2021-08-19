@@ -42,7 +42,12 @@ class TextPresentView: UIView {
     }
     
     func show(text fullText: String, color: UIColor = Defaults.textColor) {
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+
         setTextLayer(with: fullText, color: color)
+
+        CATransaction.commit()
     }
     
     private func setTextLayer(with text: String, color: UIColor) {
@@ -96,5 +101,9 @@ class TextPresentView: UIView {
             let xPosition = (bounds.width - maxWidth * 0.5) / 2
             return CGPoint(x: xPosition, y: 0)
         }
+    }
+    
+    func clear() {
+        textLayer.string = .none
     }
 }

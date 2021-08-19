@@ -23,6 +23,7 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         bannerView.load(GADRequest())
+        viewModel.execute()
     }
     
     func bindViewModel() {

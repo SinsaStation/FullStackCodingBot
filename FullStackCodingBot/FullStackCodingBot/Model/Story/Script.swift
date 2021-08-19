@@ -83,9 +83,9 @@ extension Script {
         static let soso: [Script] = [
             .init(speaker: .ceo, line: .init(text: "더 노력하게.\n아직 많이 부족해.", emotion: .normal)),
             .init(speaker: .ceo, line: .init(text: "나쁘지 않네만...\n연봉 인상은 어렵겠군", emotion: .normal)),
-            .init(speaker: .ceo, line: .init(text: "오늘은 10시엔 집에갈 수 있겠구만", emotion: .normal)),
-            .init(speaker: .worker, line: .init(text: "그래도 희망이 보이는 것 같아", emotion: .normal)),
-            .init(speaker: .worker, line: .init(text: "이대로만 하면 괜찮을 지도?", emotion: .normal)),
+            .init(speaker: .ceo, line: .init(text: "음 좋아.\n오늘은 10시엔 집에갈 수 있겠구만", emotion: .normal)),
+            .init(speaker: .worker, line: .init(text: "그럭저럭 괜찮아.\n나름 희망이 보이는 것 같아", emotion: .normal)),
+            .init(speaker: .worker, line: .init(text: "나쁘지 않아.\n이대로만 하면 괜찮을 지도?", emotion: .normal)),
             .init(speaker: .worker, line: .init(text: "이제 퇴근해도 될 것 같다!\n...어랏 막차가 끊겼네?", emotion: .normal))
         ]
         
@@ -103,7 +103,7 @@ extension Script {
             .init(speaker: .ceo, line: .init(text: "아주 훌륭해!\n자네는 영원히 이 회사에서 일하게나!", emotion: .love)),
             .init(speaker: .worker, line: .init(text: "좋아!\n이 실력이라면 네카라쿠배도 무리 없어!", emotion: .happy)),
             .init(speaker: .worker, line: .init(text: "5시 퇴근이라니,\n기적 같은 일이야!", emotion: .happy)),
-            .init(speaker: .worker, line: .init(text: "정말로 풀스택 마스터가 되어 버렸어..!", emotion: .happy))
+            .init(speaker: .worker, line: .init(text: "이럴수가!\n정말로 풀스택 마스터가 되어 버렸어..!", emotion: .happy))
         ]
     }
 }
