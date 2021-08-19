@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Firebase
 import FirebaseAuth
 import GameKit
 
@@ -74,13 +75,14 @@ final class MainViewModel: AdViewModel {
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] data in
                 self.updateDatabaseInformation(data)
-            }, onError: { _ in
-                self.networkLoadError()
+            }, onError: { error in
+                self.networkLoadError(error)
             }, onCompleted: { [unowned self] in
                 self.firebaseDidLoad.accept(true)
             }).disposed(by: rx.disposeBag)
     }
     
+    @discardableResult
     func setupBGMState(_ info: SwithType) -> Completable {
         let subject = PublishSubject<Void>()
         settingInfo.changeState(info)
@@ -102,7 +104,7 @@ final class MainViewModel: AdViewModel {
         
         adStorage.setNewRewardsIfPossible(with: info.ads)
             .subscribe(onError: { error in
-                        assert(false, "\(error.localizedDescription)") })
+                        Firebase.Analytics.logEvent("RewardsError", parameters: ["ErrorMessage": "\(error)"])})
             .disposed(by: rx.disposeBag)
     }
     
@@ -124,7 +126,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     func setupAppleGameCenterLogin() {
         GKLocalPlayer.local.authenticateHandler = { [unowned self] _, error in
             guard error == nil else {
-                self.networkLoadError()
+                self.networkLoadError(error)
                 return
             }
             self.observeFirebaseDataLoaded()
@@ -132,13 +134,13 @@ extension MainViewModel: GKGameCenterControllerDelegate {
             if GKLocalPlayer.local.isAuthenticated {
                 GameCenterAuthProvider.getCredential { credential, error in
                     guard error == nil else {
-                        self.networkLoadError()
+                        self.networkLoadError(error)
                         return
                     }
                     
                     Auth.auth().signIn(with: credential!) { [unowned self] user, error in
                         guard error == nil else {
-                            self.networkLoadError()
+                            self.networkLoadError(error)
                             return
                         }
                         
@@ -157,8 +159,10 @@ extension MainViewModel: GKGameCenterControllerDelegate {
 // MARK: Error Handling
 private extension MainViewModel {
     
-    private func networkLoadError() {
+    private func networkLoadError(_ error: Error?) {
         let alertScene = Scene.alert(AlertMessage.networkLoad)
         self.sceneCoordinator.transition(to: alertScene, using: .alert, with: StoryboardType.main, animated: true)
+        guard let error = error else { return }
+        Firebase.Analytics.logEvent("NetworkError", parameters: ["ErrorMessage": "\(error)"])
     }
 }

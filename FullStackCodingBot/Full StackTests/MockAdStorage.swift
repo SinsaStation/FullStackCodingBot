@@ -3,12 +3,13 @@ import RxSwift
 import GoogleMobileAds
 
 class MockAdStorage: AdStorageType {
-
+    
     private var lastUpdated: Date
     private var ads: [GADRewardedAd?]
     private var giftStatus: Bool
     private let calendar = Calendar.current
     private let today = Date()
+    private let disposeBag = DisposeBag()
 
     init(with adInformation: AdsInformation) {
         self.lastUpdated = adInformation.lastUpdated
@@ -54,5 +55,9 @@ class MockAdStorage: AdStorageType {
         let adsStatus = self.ads.map { $0 != nil }
         let gift = giftStatus ? 0 : nil
         return AdsInformation(ads: adsStatus, lastUpdated: self.lastUpdated, gift: gift)
+    }
+    
+    func setNewRewardsIfPossible(with newInfo: AdsInformation?) -> Observable<Bool> {
+        return Observable.just(true)
     }
 }
