@@ -11,7 +11,7 @@ final class FullImageStoryView: UIView {
     }
     
     private func setupFont() {
-        scriptLabel.font = UIFont.joystix(style: .title3)
+        scriptLabel.font = UIFont.neoDunggeunmo(style: .title3)
     }
     
     func show(with script: Script) {
