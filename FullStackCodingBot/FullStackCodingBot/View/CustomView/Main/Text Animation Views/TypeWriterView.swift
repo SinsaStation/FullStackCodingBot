@@ -6,7 +6,13 @@ final class TypeWriterView: TextPresentView {
     
     override func show(text fullText: String, color: UIColor = Defaults.textColor) {
         super.show(text: fullText, color: color)
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+
         startTyping(text: fullText)
+
+        CATransaction.commit()
     }
     
     private func startTyping(text fullText: String) {

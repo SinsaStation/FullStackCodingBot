@@ -12,7 +12,6 @@
 		710D0D422693EA3200244A16 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D412693EA3200244A16 /* GameViewController.swift */; };
 		710D0D442693EA6900244A16 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D432693EA6900244A16 /* GameViewModel.swift */; };
 		710D0D4F2693F6E500244A16 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D4D2693F6E500244A16 /* ItemCell.swift */; };
-		711A69EC26B3B13E00C7C99A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A69EB26B3B13E00C7C99A /* LoadingViewController.swift */; };
 		712F500A26A831D900186948 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712F500926A831D900186948 /* GoogleService-Info.plist */; };
 		712F500B26A831D900186948 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712F500926A831D900186948 /* GoogleService-Info.plist */; };
 		71307A8926A529F400C3191F /* LevelUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71307A8826A529F400C3191F /* LevelUpButton.swift */; };
@@ -62,6 +61,9 @@
 		71E2B37826AE602200AE496D /* PersistenceStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B37726AE602200AE496D /* PersistenceStorageType.swift */; };
 		71E2FD9B26B90C5A0032A54B /* SettingSwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2FD9A26B90C5A0032A54B /* SettingSwitchController.swift */; };
 		71E91E1726BA33190016386E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E91E1626BA33190016386E /* Extension.swift */; };
+		71F0D3D926CD161700E45283 /* PersistenceStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B37726AE602200AE496D /* PersistenceStorageType.swift */; };
+		71F0D3DA26CD161A00E45283 /* PersistenceStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B37526AE5E7F00AE496D /* PersistenceStorage.swift */; };
+		71F0D3DB26CD16D500E45283 /* UnitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4304526CA2E4400F046E9 /* UnitInfo.swift */; };
 		A0DEDFDADFEC4895FB093823 /* Pods_Full_Stack_Full_StackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA3377E4ACD3B197620DEA8 /* Pods_Full_Stack_Full_StackTests.framework */; };
 		E4150E9726B8F3E00041DD32 /* TypeWriterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4150E9626B8F3E00041DD32 /* TypeWriterView.swift */; };
 		E4150E9926BA37C10041DD32 /* FadeInTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4150E9826BA37C10041DD32 /* FadeInTextView.swift */; };
@@ -124,6 +126,8 @@
 		E4D7C6452693E7C200D58BA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D7C6432693E7C200D58BA2 /* Main.storyboard */; };
 		E4D7C6492693E8E500D58BA2 /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D7C6482693E8E500D58BA2 /* Game.storyboard */; };
 		E4D7C64B26953C6200D58BA2 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7C64A26953C6200D58BA2 /* ScreenSize.swift */; };
+		E4DB63E826CCD21100E51540 /* LiveCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB63E726CCD21000E51540 /* LiveCode.swift */; };
+		E4DB63EA26CD3EF700E51540 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB63E926CD3EF700E51540 /* LoadingView.swift */; };
 		E4DD682126A138D900B9F9CE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DD682026A138D900B9F9CE /* GameKit.framework */; };
 		E4DF613B26A845670061F6E9 /* AdStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF613A26A845670061F6E9 /* AdStorageType.swift */; };
 		E4DF613D26A845DA0061F6E9 /* AdStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF613C26A845DA0061F6E9 /* AdStorage.swift */; };
@@ -155,7 +159,6 @@
 		710D0D412693EA3200244A16 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		710D0D432693EA6900244A16 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		710D0D4D2693F6E500244A16 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
-		711A69EB26B3B13E00C7C99A /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		712F500926A831D900186948 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71307A8826A529F400C3191F /* LevelUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpButton.swift; sourceTree = "<group>"; };
 		71307A8A26A52A1F00C3191F /* LevelUpButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelUpButton.xib; sourceTree = "<group>"; };
@@ -265,6 +268,8 @@
 		E4D7C6442693E7C200D58BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E4D7C6482693E8E500D58BA2 /* Game.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
 		E4D7C64A26953C6200D58BA2 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		E4DB63E726CCD21000E51540 /* LiveCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCode.swift; sourceTree = "<group>"; };
+		E4DB63E926CD3EF700E51540 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E4DD681F26A138A800B9F9CE /* Full Stack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Full Stack.entitlements"; sourceTree = "<group>"; };
 		E4DD682026A138D900B9F9CE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		E4DF613A26A845670061F6E9 /* AdStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdStorageType.swift; sourceTree = "<group>"; };
@@ -340,7 +345,6 @@
 				71DF64BC2692C18F00557693 /* RankViewController.swift */,
 				71DF64BE2692C1C600557693 /* ItemViewController.swift */,
 				7170CD4426B266BE00F03248 /* VersionErrorViewController.swift */,
-				711A69EB26B3B13E00C7C99A /* LoadingViewController.swift */,
 				719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */,
 				715C1C9326BCF9FF0025C681 /* StoryViewController.swift */,
 				7166B23A26C2532400E098BE /* HowToPlayViewController.swift */,
@@ -550,6 +554,7 @@
 		E4150E9426B8F3490041DD32 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				E4DB63E926CD3EF700E51540 /* LoadingView.swift */,
 				E4C2C34C26A24665007BDF81 /* SkyView.swift */,
 				710D0D4D2693F6E500244A16 /* ItemCell.swift */,
 				7164BFD1269679C6009769E4 /* MainItemView.swift */,
@@ -720,6 +725,7 @@
 				7166B23E26C25AB500E098BE /* HowToPlay */,
 				E45B0AC82692F9CF006FDE3D /* Unit.swift */,
 				E4F4304526CA2E4400F046E9 /* UnitInfo.swift */,
+				E4DB63E726CCD21000E51540 /* LiveCode.swift */,
 				E4DF614026A92CE00061F6E9 /* ShopItem.swift */,
 				E4BF70FE26AEF3F700E8645F /* GameStatus.swift */,
 				7177AEBB26B953B4005A4465 /* SettingInformation.swift */,
@@ -954,7 +960,10 @@
 				E4BF712526B3E65600E8645F /* AdStorageType.swift in Sources */,
 				71310C2D26AA596B00733361 /* CoreDataStorage.xcdatamodeld in Sources */,
 				71307AC126A5461700C3191F /* Unit.swift in Sources */,
+				71F0D3DA26CD161A00E45283 /* PersistenceStorage.swift in Sources */,
+				71F0D3D926CD161700E45283 /* PersistenceStorageType.swift in Sources */,
 				E4BF712F26B3F22900E8645F /* ShopItem.swift in Sources */,
+				71F0D3DB26CD16D500E45283 /* UnitInfo.swift in Sources */,
 				E4BF712D26B3E6F300E8645F /* AdsInformation.swift in Sources */,
 				E4BF712A26B3E6A700E8645F /* UnitInformation.swift in Sources */,
 				E4BF713226B78AD200E8645F /* MusicStation.swift in Sources */,
@@ -1010,10 +1019,10 @@
 				E4DF613B26A845670061F6E9 /* AdStorageType.swift in Sources */,
 				7166B23D26C253A800E098BE /* HowToPlayViewModel.swift in Sources */,
 				E41C85D8269C252D008F2E91 /* GameUnitManagerType.swift in Sources */,
+				E4DB63E826CCD21100E51540 /* LiveCode.swift in Sources */,
 				7166B23B26C2532400E098BE /* HowToPlayViewController.swift in Sources */,
 				E4F4304226C37A9B00F046E9 /* DialogView.swift in Sources */,
 				71DF64BD2692C18F00557693 /* RankViewController.swift in Sources */,
-				711A69EC26B3B13E00C7C99A /* LoadingViewController.swift in Sources */,
 				719AB9DE26B7ADF2001B5913 /* SettingViewController.swift in Sources */,
 				71DF65552692FD1400557693 /* CommonViewModel.swift in Sources */,
 				715C1C9826BD09950025C681 /* StoryViewModel.swift in Sources */,
@@ -1058,6 +1067,7 @@
 				71DF654F2692FB4C00557693 /* ViewModelBindableType.swift in Sources */,
 				E41C85D6269C1C35008F2E91 /* GameOverButtonController.swift in Sources */,
 				71DF65412692F94E00557693 /* MainViewModel.swift in Sources */,
+				E4DB63EA26CD3EF700E51540 /* LoadingView.swift in Sources */,
 				71E2B37626AE5E7F00AE496D /* PersistenceStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1188,7 +1198,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1244,7 +1254,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

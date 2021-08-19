@@ -7,6 +7,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     var viewModel: GameViewModel!
     
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet var buttonController: GameButtonController!
     @IBOutlet weak var unitPerspectiveView: UnitPerspectiveView!
     @IBOutlet weak var rightUnitStackView: UIStackView!
@@ -14,7 +15,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var normalTimeView: TimeBarView!
     @IBOutlet weak var feverTimeView: FeverTimeBarView!
     @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var codeView: FadeInTextView!
+    @IBOutlet weak var codeView: TextPresentView!
     @IBOutlet weak var backgroundView: GameBackgroundView!
     @IBOutlet weak var monitorColorView: UIView!
     @IBOutlet weak var readyView: ReadyView!
@@ -47,6 +48,12 @@ final class GameViewController: UIViewController, ViewModelBindableType {
             .map { $0 == nil ? "Get Ready" : "\($0!)" }
             .asDriver(onErrorJustReturn: "Get Ready")
             .drive(scoreLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.highScore
+            .asDriver()
+            .map { String($0) }
+            .drive(highScoreLabel.rx.text)
             .disposed(by: rx.disposeBag)
     }
     
@@ -123,8 +130,13 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     
     private func bindCodeView() {
         viewModel.codeToShow
-            .subscribe(onNext: { [unowned self] code in
-                self.codeView.show(text: code)
+            .subscribe(onNext: { [unowned self] liveCode in
+                switch liveCode {
+                case .matched(let code):
+                    self.codeView.show(text: code)
+                case .failed:
+                    self.codeView.show(text: Text.matchFailed, color: .red)
+                }
             }).disposed(by: rx.disposeBag)
     }
     
@@ -145,6 +157,7 @@ private extension GameViewController {
     
     private func setupFont() {
         scoreLabel.font = UIFont.joystix(style: .title2)
+        highScoreLabel.font = UIFont.neoDunggeunmo(style: .caption)
     }
     
     private func setCodeView() {
@@ -199,7 +212,7 @@ private extension GameViewController {
         backgroundView.playWrongMode()
         normalTimeView.playWrongMode()
         buttonController.changeButtonStatus(to: false)
-        monitorColorView.backgroundColor = UIColor(named: "red") ?? .red
+        monitorColorView.backgroundColor = .black
         
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [weak self] in
             self?.buttonController.changeButtonStatus(to: true)

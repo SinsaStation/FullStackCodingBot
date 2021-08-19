@@ -10,6 +10,7 @@ final class GameOverViewModel: CommonViewModel {
     private(set) var rankInfo = BehaviorRelay<String>(value: "")
     private let scoreInfo = BehaviorRelay<Int>(value: 0)
     private let moneyInfo = BehaviorRelay<Int>(value: 0)
+    private(set) var highScore = BehaviorRelay<Int>(value: 0)
     private(set) var highScoreStatus = BehaviorRelay<Bool>(value: false)
     private var newGameStatus: BehaviorRelay<GameStatus>
     
@@ -54,6 +55,7 @@ final class GameOverViewModel: CommonViewModel {
     private func updateHighScore() {
         let newScore = scoreInfo.value
         let isHighScore = storage.updateHighScore(new: newScore)
+        highScore.accept(storage.myHighScore())
         highScoreStatus.accept(isHighScore)
     }
     
@@ -61,9 +63,11 @@ final class GameOverViewModel: CommonViewModel {
     private func storeHightScoreToGameCenter() -> Completable {
         let subject = PublishSubject<Void>()
         let bestScore = GKScore(leaderboardIdentifier: IdentifierGC.leaderboard)
+        let highScore = GKScore(leaderboardIdentifier: IdentifierGC.leaderboard2)
         bestScore.value = Int64(scoreInfo.value)
+        highScore.value = Int64(scoreInfo.value)
         
-        GKScore.report([bestScore]) { error in
+        GKScore.report([bestScore, highScore]) { error in
             if error != nil {
                 subject.onError(AppleGameCenterError.cannotReport)
             } else {

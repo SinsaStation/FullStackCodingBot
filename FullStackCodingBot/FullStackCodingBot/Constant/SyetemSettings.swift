@@ -29,6 +29,7 @@ enum Text {
     static let shopReset = "Coffee refills at 12AM!"
     static let giftTaken = "Coffee is already taken"
     static let giftLoading = "Making coffee..."
+    static let matchFailed = "Bug Detected!!! Bug Detected!!!\nBug Detected!!! Bug Detected!!!\nBug Detected!!! Bug Detected!!!"
     
     static func reward(amount: Int) -> String {
         return "Got \(amount) energy!"
