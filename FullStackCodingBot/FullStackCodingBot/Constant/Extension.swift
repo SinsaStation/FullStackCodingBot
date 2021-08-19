@@ -1,4 +1,5 @@
 import Foundation
+import Firebase
 
 protocol StructSavable {
     func setStruct<Object: Encodable>(_ object: Object, forKey: String) throws
@@ -12,6 +13,7 @@ extension UserDefaults: StructSavable {
             let data = try encoder.encode(object)
             set(data, forKey: forKey)
         } catch {
+            Firebase.Analytics.logEvent("SetErrorUD", parameters: nil)
             throw StructSavableError.unableToEncode
         }
     }
@@ -23,6 +25,7 @@ extension UserDefaults: StructSavable {
             let object = try decoder.decode(type, from: data)
             return object
         } catch {
+            Firebase.Analytics.logEvent("GetErrorUD", parameters: nil)
             throw StructSavableError.unableToDecode
         }
     }

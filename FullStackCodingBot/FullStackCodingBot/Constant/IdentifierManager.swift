@@ -16,7 +16,8 @@ enum IdentifierVC {
 }
 
 enum IdentiferAD {
-    static let test = "ca-app-pub-3940256099942544/1712485313"
+    static let reward = "ca-app-pub-3940256099942544/1712485313"
+    static let banner = "ca-app-pub-3940256099942544/2934735716"
 }
 
 enum IdentifierUD {

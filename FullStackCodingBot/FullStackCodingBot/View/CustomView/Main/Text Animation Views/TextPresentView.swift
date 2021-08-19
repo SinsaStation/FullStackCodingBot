@@ -4,23 +4,36 @@ class TextPresentView: UIView {
     
     private(set) lazy var textLayer: CATextLayer = {
         let textLayer = CATextLayer()
-        textLayer.font = UIFont(name: fontName, size: 16)
+        textLayer.font = UIFont(name: fontName, size: Defaults.fixedFont)
         textLayer.alignmentMode = alignMode
-        textLayer.foregroundColor = defaultTextColor.cgColor
+        textLayer.foregroundColor = Defaults.textColor.cgColor
         layer.addSublayer(textLayer)
         return textLayer
     }()
     
     private var alignMode: CATextLayerAlignmentMode = .center
+    private var isFontSizeFixed = false
     private var fontName = Font.joystix
-    private let defaultTextColor = UIColor(named: "digitalgreen") ?? UIColor.green
-    private let defaultLetterCount = 15
-    private let maxFontSize: CGFloat = 17
-    private let lineSeparator = "\n"
     
-    func setup(fontName: String, alignMode: CATextLayerAlignmentMode) {
+    enum Defaults {
+        static let textColor = UIColor(named: "digitalgreen") ?? UIColor.green
+        static let wrongColor = UIColor(named: "red") ?? UIColor.red
+        static let letterCount = 15
+        static let fixedFont = FontStyle.caption.size
+        static let maxFont: CGFloat = 17
+        static let minFont: CGFloat = 12
+    }
+
+    enum Seperator {
+        static let line = "\n"
+        static let tab = "\t"
+        static let space = " "
+    }
+    
+    func setup(fontName: String, alignMode: CATextLayerAlignmentMode, isFontSizeFixed: Bool) {
         self.fontName = fontName
         self.alignMode = alignMode
+        self.isFontSizeFixed = isFontSizeFixed
     }
     
     func layoutSubviews(with text: String) {
@@ -28,14 +41,20 @@ class TextPresentView: UIView {
         resizeTextLayer(with: text)
     }
     
-    func show(text fullText: String) {
-        setTextLayer(with: fullText)
+    func show(text fullText: String, color: UIColor = Defaults.textColor) {
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+
+        setTextLayer(with: fullText, color: color)
+
+        CATransaction.commit()
     }
     
-    private func setTextLayer(with text: String) {
+    private func setTextLayer(with text: String, color: UIColor) {
         textLayer.alignmentMode = self.alignMode
-        textLayer.font = UIFont(name: fontName, size: maxFontSize)
+        textLayer.font = UIFont(name: fontName, size: Defaults.fixedFont)
         textLayer.string = text
+        textLayer.foregroundColor = color.cgColor
         resizeTextLayer(with: text)
     }
     
@@ -45,16 +64,21 @@ class TextPresentView: UIView {
     }
     
     private func newFontSize(for text: String) -> CGFloat {
+        guard !isFontSizeFixed else { return Defaults.fixedFont }
         let maxLetterCount = maxLetterCount(in: text)
         let newFontSize = bounds.width * 0.95 / CGFloat(maxLetterCount)
-        let adjustedFontSize = newFontSize < maxFontSize ? newFontSize : maxFontSize
+        var adjustedFontSize = newFontSize < Defaults.maxFont ? newFontSize : Defaults.maxFont
+        adjustedFontSize = newFontSize > Defaults.minFont ? newFontSize : Defaults.minFont
         return adjustedFontSize
     }
     
     private func maxLetterCount(in text: String) -> Int {
-        let letterCountsPerLine = text.components(separatedBy: lineSeparator).map { $0.count }
-        let maxLetterCount = letterCountsPerLine.max() ?? defaultLetterCount
-        let adjustedMaxCount = maxLetterCount > defaultLetterCount ? maxLetterCount : defaultLetterCount
+        let letterCountsPerLine = text
+            .components(separatedBy: Seperator.line)
+            .filter { ![Seperator.space, Seperator.tab].contains($0) }
+            .map { $0.count }
+        let maxLetterCount = letterCountsPerLine.max() ?? Defaults.letterCount
+        let adjustedMaxCount = maxLetterCount > Defaults.letterCount ? maxLetterCount : Defaults.letterCount
         return adjustedMaxCount
     }
     
@@ -66,16 +90,20 @@ class TextPresentView: UIView {
     private func origin(for alignMode: CATextLayerAlignmentMode, _ text: String) -> CGPoint {
         switch alignMode {
         case .center:
-            let lineCount = text.components(separatedBy: lineSeparator).count
-            let currentFont = textLayer.font as? UIFont ?? UIFont.systemFont(ofSize: maxFontSize)
+            let lineCount = text.components(separatedBy: Seperator.line).count
+            let currentFont = textLayer.font as? UIFont ?? UIFont.systemFont(ofSize: Defaults.maxFont)
             let fontHeight = currentFont.capHeight
             let totalTextHeight = fontHeight * CGFloat(lineCount)
             let yPosition =  (bounds.height - totalTextHeight * 1.5) / 2
             return CGPoint(x: 0, y: yPosition)
         default:
-            let maxWidth = textLayer.contentsRect.width
-            let xPosition = (bounds.width - maxWidth) / 2
+            let maxWidth = CGFloat(maxLetterCount(in: text)) * newFontSize(for: text)
+            let xPosition = (bounds.width - maxWidth * 0.5) / 2
             return CGPoint(x: xPosition, y: 0)
         }
+    }
+    
+    func clear() {
+        textLayer.string = .none
     }
 }

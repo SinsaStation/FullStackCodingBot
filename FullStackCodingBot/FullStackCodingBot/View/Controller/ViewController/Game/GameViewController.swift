@@ -7,6 +7,7 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     var viewModel: GameViewModel!
     
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet var buttonController: GameButtonController!
     @IBOutlet weak var unitPerspectiveView: UnitPerspectiveView!
     @IBOutlet weak var rightUnitStackView: UIStackView!
@@ -14,8 +15,9 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var normalTimeView: TimeBarView!
     @IBOutlet weak var feverTimeView: FeverTimeBarView!
     @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var codeView: FadeInTextView!
+    @IBOutlet weak var codeView: TextPresentView!
     @IBOutlet weak var backgroundView: GameBackgroundView!
+    @IBOutlet weak var monitorColorView: UIView!
     @IBOutlet weak var readyView: ReadyView!
     private var feedbackGenerator: UINotificationFeedbackGenerator?
     
@@ -46,6 +48,12 @@ final class GameViewController: UIViewController, ViewModelBindableType {
             .map { $0 == nil ? "Get Ready" : "\($0!)" }
             .asDriver(onErrorJustReturn: "Get Ready")
             .drive(scoreLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.highScore
+            .asDriver()
+            .map { String($0) }
+            .drive(highScoreLabel.rx.text)
             .disposed(by: rx.disposeBag)
     }
     
@@ -122,8 +130,13 @@ final class GameViewController: UIViewController, ViewModelBindableType {
     
     private func bindCodeView() {
         viewModel.codeToShow
-            .subscribe(onNext: { [unowned self] code in
-                self.codeView.show(text: code)
+            .subscribe(onNext: { [unowned self] liveCode in
+                switch liveCode {
+                case .matched(let code):
+                    self.codeView.show(text: code)
+                case .failed:
+                    self.codeView.show(text: Text.matchFailed, color: .red)
+                }
             }).disposed(by: rx.disposeBag)
     }
     
@@ -136,13 +149,19 @@ final class GameViewController: UIViewController, ViewModelBindableType {
 // MARK: - Setup
 private extension GameViewController {
     private func setup() {
+        setupFont()
         setCodeView()
         setViewObservers()
         setupFeedbackGenerator()
     }
     
+    private func setupFont() {
+        scoreLabel.font = UIFont.joystix(style: .title2)
+        highScoreLabel.font = UIFont.neoDunggeunmo(style: .caption)
+    }
+    
     private func setCodeView() {
-        codeView.setup(fontName: Font.neo, alignMode: .left)
+        codeView.setup(fontName: Font.neo, alignMode: .left, isFontSizeFixed: true)
     }
     
     private func setViewObservers() {
@@ -176,15 +195,15 @@ private extension GameViewController {
     }
     
     private func setupTimeView(isFeverOn: Bool) {
-        DispatchQueue.main.async {
-            self.normalTimeView.isHidden = isFeverOn
-            self.feverTimeView.isHidden = !isFeverOn
+        DispatchQueue.main.async { [weak self] in
+            self?.normalTimeView.isHidden = isFeverOn
+            self?.feverTimeView.isHidden = !isFeverOn
             
             if isFeverOn {
-                self.feverTimeView.setup()
-                self.backgroundView.startFever()
+                self?.feverTimeView.setup()
+                self?.backgroundView.startFever()
             } else {
-                self.backgroundView.stopFever()
+                self?.backgroundView.stopFever()
             }
         }
     }
@@ -193,9 +212,11 @@ private extension GameViewController {
         backgroundView.playWrongMode()
         normalTimeView.playWrongMode()
         buttonController.changeButtonStatus(to: false)
+        monitorColorView.backgroundColor = .black
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-            self.buttonController.changeButtonStatus(to: true)
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [weak self] in
+            self?.buttonController.changeButtonStatus(to: true)
+            self?.monitorColorView.backgroundColor = .clear
         }
     }
 }
@@ -208,6 +229,7 @@ private extension GameViewController {
         readyView.playAnimation()
         normalTimeView.changeAnimationStatus(true)
         normalTimeView.fillAnimation()
+        monitorColorView.backgroundColor = .black
     }
     
     private func clearViews() {
@@ -227,6 +249,7 @@ private extension GameViewController {
         pauseButton.isEnabled = true
         buttonController.changeButtonStatus(to: true)
         readyView.finishAnimation(for: 0.3)
+        monitorColorView.backgroundColor = .clear
     }
     
     private func clear(_ stackView: UIStackView) {

@@ -17,6 +17,7 @@ final class DataFormatManager {
                 observer.onNext(result)
                 observer.onCompleted()
             } catch {
+                Firebase.Analytics.logEvent("ParsingError", parameters: ["Struct": "\(error)"])
                 observer.onError(DataParsingError.cannotTransformToStruct)
             }
             return Disposables.create()
@@ -30,6 +31,7 @@ final class DataFormatManager {
             let storedData = String(data: encodedData, encoding: .utf8)
             return storedData
         } catch {
+            Firebase.Analytics.logEvent("ParsingError", parameters: ["String": "\(error)"])
             throw DataParsingError.cannotTransformToString
         }
     }

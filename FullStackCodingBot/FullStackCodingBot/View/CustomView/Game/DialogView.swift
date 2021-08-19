@@ -6,6 +6,15 @@ final class DialogView: UIView {
     @IBOutlet weak var speakerImageView: UIImageView!
     @IBOutlet weak var scriptTextView: UITextView!
     
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        setFont()
+    }
+
+    private func setFont() {
+        scriptTextView.font = UIFont.neoDunggeunmo(style: .body)
+    }
+    
     func show(with script: Script) {
         fadeIn(view: textBox, duration: 0.5)
         setImage(with: script.imageName)

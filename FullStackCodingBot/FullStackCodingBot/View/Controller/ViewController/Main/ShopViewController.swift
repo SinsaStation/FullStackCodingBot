@@ -10,6 +10,7 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var infoView: FadeInTextView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var shopCollectionView: UICollectionView!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     private lazy var itemWidth = shopCollectionView.frame.width * 0.3
     
@@ -17,6 +18,12 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
         super.viewDidLoad()
         setup()
         infoView.show(text: Text.shopReset)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        bannerView.load(GADRequest())
+        viewModel.execute()
     }
     
     func bindViewModel() {
@@ -63,6 +70,8 @@ private extension ShopViewController {
     private func setup() {
         setInfoViewObserver()
         setupDelegate()
+        setBanner()
+        setupFont()
     }
     
     private func setInfoViewObserver() {
@@ -79,6 +88,16 @@ private extension ShopViewController {
             .subscribe(onNext: { [unowned self] item in
                 self.viewModel.selectedItem.accept(item)
             }).disposed(by: rx.disposeBag)
+    }
+    
+    private func setBanner() {
+        bannerView.adUnitID = IdentiferAD.banner
+        bannerView.rootViewController = self
+        bannerView.delegate = self
+    }
+    
+    private func setupFont() {
+        totalCoinLabel.font = UIFont.joystix(style: .caption)
     }
 }
 
@@ -97,12 +116,19 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: Google Ads
-extension ShopViewController: GADFullScreenContentDelegate {
+extension ShopViewController: GADFullScreenContentDelegate, GADBannerViewDelegate {
     private func show(_ adMob: GADRewardedAd) {
         adMob.fullScreenContentDelegate = self
         
         adMob.present(fromRootViewController: self) { [unowned self] in
             self.viewModel.adDidFinished(adMob)
         }
+    }
+    
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        bannerView.alpha = 0
+        UIView.animate(withDuration: 0.8, animations: {
+            bannerView.alpha = 1
+        })
     }
 }

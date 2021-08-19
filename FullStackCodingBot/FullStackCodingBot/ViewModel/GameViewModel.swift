@@ -19,10 +19,11 @@ final class GameViewModel: CommonViewModel {
     private(set) var timeLeftPercentage = BehaviorRelay<Double>(value: 1)
     private(set) var feverTimeLeftPercentage = BehaviorRelay<Double>(value: 1)
     private(set) var currentScore = BehaviorSubject<Int?>(value: nil)
+    private(set) lazy var highScore = BehaviorRelay<Int>(value: storage.myHighScore())
     private(set) var newMemberUnit = BehaviorRelay<StackMemberUnit?>(value: nil)
     private(set) var newOnGameUnits = BehaviorRelay<[Unit]?>(value: nil)
     private(set) var userAction = BehaviorRelay<UserActionStatus?>(value: nil)
-    private(set) var codeToShow = BehaviorRelay<String>(value: "")
+    private(set) var codeToShow = BehaviorRelay<LiveCode>(value: .matched(""))
     
     // Actions
     private(set) lazy var pauseAction: Action<Void, Void> = Action {
@@ -66,6 +67,7 @@ extension GameViewModel {
         feverTimeLeftPercentage.accept(0)
         currentScore.onNext(nil)
         newOnGameUnits.accept(nil)
+        codeToShow.accept(.matched(""))
         MusicStation.shared.stop()
     }
     
@@ -124,7 +126,6 @@ extension GameViewModel {
         newOnGameUnits.accept(newUnits)
         
         currentScore.onNext(0)
-        codeToShow.accept("")
     }
     
     private func sendNewUnitToStack(by count: Int) {
@@ -162,7 +163,7 @@ extension GameViewModel {
               let currentUnit = gameUnitManager.completed() else { return }
         userAction.accept(.correct(direction))
         timeManager.correct()
-        codeToShow.accept(currentUnit.randomCode())
+        codeToShow.accept(.matched(currentUnit.randomCode()))
         onGameUnitNeedsChange()
         gameSoundStation.play(type: .correct)
     }
@@ -171,7 +172,14 @@ extension GameViewModel {
         guard let currentScore = try? currentScore.value() else { return false }
         let newScore = currentScore + scoreGained
         self.currentScore.onNext(newScore)
+        updateHighScore(with: newScore)
         return true
+    }
+    
+    private func updateHighScore(with newScore: Int) {
+        if newScore >= highScore.value {
+            highScore.accept(newScore)
+        }
     }
     
     private func onGameUnitNeedsChange() {
@@ -188,7 +196,7 @@ extension GameViewModel {
         let wrongStatus = timeManager.wrong()
         userAction.accept(wrongStatus)
         gameSoundStation.play(type: .wrong)
-        codeToShow.accept("")
+        codeToShow.accept(.failed)
     }
 }
 
@@ -199,7 +207,7 @@ private extension GameViewModel {
         let currentScore = try? currentScore.value()
         let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database, finalScore: currentScore ?? 0, newGameStatus: newGameStatus)
         let gameOverScene = Scene.gameOver(gameOverViewModel)
-        return self.sceneCoordinator.transition(to: gameOverScene, using: .fullScreen, with: StoryboardType.game, animated: true)
+        return self.sceneCoordinator.transition(to: gameOverScene, using: .pop, with: StoryboardType.game, animated: true)
     }
     
     @discardableResult
