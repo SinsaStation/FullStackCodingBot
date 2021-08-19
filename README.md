@@ -1,6 +1,7 @@
 # ⚡️ Full Stack Coding Master
 <img src="https://user-images.githubusercontent.com/72188416/128889413-e113b03b-9073-4340-8808-37aa19887354.png" width="100">
 
+
 > `About` 풀스택 개발 마스터를 향한 고군분투를 담은 퍼즐 게임
 > 
 > `Made by` Team Sinsa-Station - [Team Wiki](https://github.com/SinsaStation/FullStackCodingBot/wiki)
@@ -12,9 +13,9 @@
 ### Intro
 
 
-|<img src="https://user-images.githubusercontent.com/72188416/128887015-3a116716-880f-43c1-a7de-c57da9e6196e.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/128888285-f32c7ab0-7a3a-48bf-8327-743d837589c7.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/128888308-4f69f5dd-bb53-4bb4-9c73-ebabe09b9578.png" width="250">|
+|<img src="https://user-images.githubusercontent.com/72188416/128887015-3a116716-880f-43c1-a7de-c57da9e6196e.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/128888308-4f69f5dd-bb53-4bb4-9c73-ebabe09b9578.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/130058366-00825062-a9dc-4280-80b3-5b0be8859fca.png" width="250">|
 |:---:|:---:|:---:|
-|Launch|Story1|Story2|
+|Launch|Story|Loading|
 
 
 ### Main & Menu
@@ -23,9 +24,11 @@
 |Title|Item|Reward|
 
 
-|<img src="https://user-images.githubusercontent.com/74946802/127594351-73704d42-d60a-4ce4-a2d0-c965bd517975.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713402-2a5d35a2-cab7-40b3-b786-743d7136a562.png" width="250">||
+|<img src="https://user-images.githubusercontent.com/74946802/127594351-73704d42-d60a-4ce4-a2d0-c965bd517975.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713402-2a5d35a2-cab7-40b3-b786-743d7136a562.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/130058393-5b8059d4-db5c-414e-b0c8-2c1bad302c4e.png" width="250">|
 |:---:|:---:|:---:|
 |Ranking|Setting|How To|
+
+
 
 
 ### Game
@@ -76,7 +79,7 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 > - [x] 이동 Button
 > - [x] 기본 UI
 > - [x] 배경음악 on/off
-> - [ ] How to play
+> - [x] How to play
 
 > ### Story
 >
@@ -144,6 +147,7 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 > - [x] Image Asset을 적용한 UI - AutoLayout
 > - [x] BackgroundView의 랜덤 구름 Animation
 > - [x] Title View 텍스트의 Type Writer Animation
+> - [x] Loading View 
 
 
 > ### Item
