@@ -20,42 +20,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Loading View Controller-->
-        <scene sceneID="T9b-Ib-6qA">
-            <objects>
-                <viewController restorationIdentifier="LoadingVC" storyboardIdentifier="LoadingVC" id="yFN-YV-fnT" customClass="LoadingViewController" customModule="Full_Stack" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zBW-t9-MDY">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="2mI-Tb-FFB">
-                                <rect key="frame" x="109.66666666666669" y="357" width="209" height="212"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="color" systemColor="systemGray2Color"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </activityIndicatorView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="xIC-cB-izA"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="2mI-Tb-FFB" firstAttribute="centerX" secondItem="zBW-t9-MDY" secondAttribute="centerX" id="4ov-Rc-cb1"/>
-                            <constraint firstItem="2mI-Tb-FFB" firstAttribute="centerY" secondItem="zBW-t9-MDY" secondAttribute="centerY" id="GDU-jE-WJO"/>
-                            <constraint firstItem="2mI-Tb-FFB" firstAttribute="width" secondItem="zBW-t9-MDY" secondAttribute="width" multiplier="0.488318" id="M4R-zq-TEa"/>
-                            <constraint firstItem="2mI-Tb-FFB" firstAttribute="height" secondItem="zBW-t9-MDY" secondAttribute="height" multiplier="0.228942" id="VYB-co-DC3"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="firebaseLoadingIndicator" destination="2mI-Tb-FFB" id="Onb-MQ-O9b"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bP5-1N-Os6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1388" y="87"/>
-        </scene>
         <!--Setting View Controller-->
         <scene sceneID="KuD-9T-sql">
             <objects>
@@ -88,7 +52,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="299.33333333333331" height="54.666666666666664"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BGM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="pc7-55-NOD">
-                                                                <rect key="frame" x="10.000000000000004" y="13.333333333333314" width="46.333333333333343" height="28"/>
+                                                                <rect key="frame" x="10" y="13.333333333333314" width="50" height="28"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -117,7 +81,7 @@
                                                         <rect key="frame" x="0.0" y="54.666666666666629" width="299.33333333333331" height="54.333333333333343"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="gdp-Bo-9rR">
-                                                                <rect key="frame" x="9.9999999999999964" y="12.999999999999998" width="58.666666666666657" height="28.333333333333329"/>
+                                                                <rect key="frame" x="10" y="12.999999999999998" width="83" height="28.333333333333329"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -146,7 +110,7 @@
                                                         <rect key="frame" x="0.0" y="109.00000000000001" width="299.33333333333331" height="54.666666666666671"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="XC2-eq-Yae">
-                                                                <rect key="frame" x="10" y="13.333333333333313" width="79" height="28.333333333333329"/>
+                                                                <rect key="frame" x="10" y="13.333333333333313" width="148.33333333333334" height="28.333333333333329"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -513,7 +477,7 @@ https://www.zapsplat.com
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 백엔드 개발자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="4hf-gA-dvh">
-                                                        <rect key="frame" x="130" y="20.333333333333258" width="109.66666666666669" height="21"/>
+                                                        <rect key="frame" x="130" y="22" width="135" height="18"/>
                                                         <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="18"/>
                                                         <color key="textColor" name="darkgreen"/>
                                                         <color key="highlightedColor" name="AccentColor"/>
@@ -566,7 +530,7 @@ https://www.zapsplat.com
                                                 <rect key="frame" x="0.0" y="764" width="0.0" height="0.0"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Know Yeah Technology&quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Eey-tL-qUk">
-                                                        <rect key="frame" x="0.0" y="-16" width="0.0" height="31.666666666666668"/>
+                                                        <rect key="frame" x="0.0" y="-13.666666666666629" width="0.0" height="27"/>
                                                         <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="27"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -1166,49 +1130,6 @@ https://www.zapsplat.com
             </objects>
             <point key="canvasLocation" x="1381" y="750"/>
         </scene>
-        <!--Version Error View Controller-->
-        <scene sceneID="SAW-Ez-M6d">
-            <objects>
-                <viewController restorationIdentifier="ErrorVC" storyboardIdentifier="ErrorVC" id="rU9-Na-cv0" customClass="VersionErrorViewController" customModule="Full_Stack" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="KKH-CH-U9g">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sle-oK-78K">
-                                <rect key="frame" x="10" y="805.33333333333337" width="85.666666666666671" height="85.666666666666629"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="sle-oK-78K" secondAttribute="height" multiplier="1:1" id="ita-XW-gPf"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="systemYellowColor"/>
-                                <state key="normal" backgroundImage="button_action_left_off"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="게임센터 이용을 위해 iOS 버전 업데이트가 필요합니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9x-Zc-anr">
-                                <rect key="frame" x="81.666666666666686" y="397.66666666666669" width="265" height="131.00000000000006"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="a6p-GA-eX3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="S9x-Zc-anr" firstAttribute="centerY" secondItem="KKH-CH-U9g" secondAttribute="centerY" id="84M-vn-aJw"/>
-                            <constraint firstItem="a6p-GA-eX3" firstAttribute="bottom" secondItem="sle-oK-78K" secondAttribute="bottom" constant="1" id="Aku-3l-iql"/>
-                            <constraint firstItem="S9x-Zc-anr" firstAttribute="width" secondItem="KKH-CH-U9g" secondAttribute="width" multiplier="0.619159" id="UOo-Tm-BUn"/>
-                            <constraint firstItem="S9x-Zc-anr" firstAttribute="height" secondItem="KKH-CH-U9g" secondAttribute="height" multiplier="0.141469" id="abt-6r-Zzf"/>
-                            <constraint firstItem="sle-oK-78K" firstAttribute="leading" secondItem="a6p-GA-eX3" secondAttribute="leading" multiplier="1.05" constant="10" id="af6-7C-BDY"/>
-                            <constraint firstItem="S9x-Zc-anr" firstAttribute="centerX" secondItem="KKH-CH-U9g" secondAttribute="centerX" id="kf2-Ii-Kw2"/>
-                            <constraint firstItem="sle-oK-78K" firstAttribute="width" secondItem="KKH-CH-U9g" secondAttribute="width" multiplier="0.2" id="z91-p2-Ird"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="closeButton" destination="sle-oK-78K" id="MU4-jV-vd2"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zux-Mg-L8q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2068" y="750"/>
-        </scene>
         <!--Item View Controller-->
         <scene sceneID="FPc-g9-zF6">
             <objects>
@@ -1382,7 +1303,7 @@ https://www.zapsplat.com
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="b3i-P5-hMw">
-                                        <rect key="frame" x="52.333333333333329" y="11.333333333333329" width="130.33333333333337" height="21"/>
+                                        <rect key="frame" x="52.333333333333329" y="11.000000000000002" width="130.33333333333337" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
