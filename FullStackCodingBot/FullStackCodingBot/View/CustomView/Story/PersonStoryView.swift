@@ -14,9 +14,9 @@ final class PersonStoryView: UIView {
     }
     
     private func setFont() {
-        scriptTextView.font = UIFont.joystix(style: .body)
-        speakerLabel.font = UIFont.joystix(style: .body)
-        roleLabel.font = UIFont.joystix(style: .caption)
+        scriptTextView.font = UIFont.neoDunggeunmo(style: .body)
+        speakerLabel.font = UIFont.neoDunggeunmo(style: .body)
+        roleLabel.font = UIFont.neoDunggeunmo(style: .caption)
     }
     
     func show(with script: Script) {

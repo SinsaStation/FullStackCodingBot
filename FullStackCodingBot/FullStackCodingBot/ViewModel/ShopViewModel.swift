@@ -37,6 +37,11 @@ final class ShopViewModel: AdViewModel {
         self.soundEffectStation = SingleSoundEffectStation(soundEffectType: soundEffectType)
         
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
+        execute()
+        
+    }
+    
+    func execute() {
         adStorage.setNewRewardsIfPossible(with: .none)
     }
     

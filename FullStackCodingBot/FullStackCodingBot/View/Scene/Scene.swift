@@ -4,7 +4,6 @@ import Firebase
 
 enum Scene {
     case main(MainViewModel)
-    case load(MainViewModel)
     case setting(MainViewModel)
     case howToPlay(HowToPlayViewModel)
     case story(StoryViewModel)
@@ -31,7 +30,7 @@ extension Scene {
             }
             mainVC.bind(viewModel: viewModel)
             return mainVC
-
+            
         case .shop(let viewModel):
             guard var shopVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.shop) as? ShopViewController else {
                 Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
@@ -39,27 +38,18 @@ extension Scene {
             }
             shopVC.bind(viewModel: viewModel)
             return shopVC
-
+            
         case .rank(let viewModel):
-            if #available(iOS 13.0, *) {
-                guard var rankVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.rank) as? RankViewController else {
-                    Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
-                    fatalError()
-                }
-                rankVC.gameCenterDelegate = viewModel
-                rankVC.leaderboardIdentifier = IdentifierGC.leaderboard
-                rankVC.viewState = .leaderboards
-                rankVC.bind(viewModel: viewModel)
-                return rankVC
-            } else {
-                guard var errorVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.error) as? VersionErrorViewController else {
-                    Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
-                    fatalError()
-                }
-                errorVC.bind(viewModel: viewModel)
-                return errorVC
+            guard var rankVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.rank) as? RankViewController else {
+                Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
+                fatalError()
             }
-
+            rankVC.gameCenterDelegate = viewModel
+            rankVC.leaderboardIdentifier = IdentifierGC.leaderboard
+            rankVC.viewState = .leaderboards
+            rankVC.bind(viewModel: viewModel)
+            return rankVC
+            
         case .item(let viewModel):
             guard var itemVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.item) as? ItemViewController else {
                 Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
@@ -67,7 +57,7 @@ extension Scene {
             }
             itemVC.bind(viewModel: viewModel)
             return itemVC
-
+            
         case .game(let viewModel):
             guard var gameVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.game) as? GameViewController else {
                 Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
@@ -75,7 +65,7 @@ extension Scene {
             }
             gameVC.bind(viewModel: viewModel)
             return gameVC
-
+            
         case .pause(let viewModel):
             guard var pauseVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.pause) as? PauseViewController else {
                 Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
@@ -83,7 +73,7 @@ extension Scene {
             }
             pauseVC.bind(viewModel: viewModel)
             return pauseVC
-
+            
         case .gameOver(let viewModel):
             guard var gameOverVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.gameOver) as? GameOverViewController else {
                 Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
@@ -91,22 +81,14 @@ extension Scene {
             }
             gameOverVC.bind(viewModel: viewModel)
             return gameOverVC
-
+            
         case .alert(let message):
             let alerMessage = message.content.message
             let alertScene = UIAlertController(title: alerMessage.title, message: alerMessage.content, preferredStyle: .alert)
             let confirmAction = UIAlertAction(title: message.content.confirm, style: .cancel)
             alertScene.addAction(confirmAction)
             return alertScene
-
-        case .load(let viewModel):
-            guard var loadVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.loading) as? LoadingViewController else {
-                Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
-                fatalError()
-            }
-            loadVC.bind(viewModel: viewModel)
-            return loadVC
-
+            
         case .setting(let viewModel):
             guard var settingVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.setting) as? SettingViewController else {
                 Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
@@ -114,7 +96,7 @@ extension Scene {
             }
             settingVC.bind(viewModel: viewModel)
             return settingVC
-
+            
         case .story(let viewModel):
             guard var storyVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.story) as? StoryViewController else {
                 Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)

@@ -31,3 +31,8 @@ enum GoogleAdsError: Error {
 enum UserDefaultsError: Error {
     case cannotSaveSettingData
 }
+
+enum VersionError: Error {
+    case invalidBundleInfo
+    case invalidResponse
+}

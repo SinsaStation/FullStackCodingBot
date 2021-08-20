@@ -90,6 +90,22 @@ final class PersistenceStorage: PersistenceStorageType {
             return false
         }
     }
+    
+    @discardableResult
+    func getCoreDataInfo() -> Completable {
+        let subject = PublishSubject<Void>()
+        
+        guard let fetchedUnitInfo = try? fetchUnit() else {
+            return subject.ignoreElements().asCompletable()
+        }
+        
+        for unitInfo in fetchedUnitInfo {
+            self.append(unit: DataFormatManager.transformToUnit(unitInfo))
+        }
+        
+        subject.onCompleted()
+        return subject.ignoreElements().asCompletable()
+    }
 }
 
 // MARK: CoreData Method
