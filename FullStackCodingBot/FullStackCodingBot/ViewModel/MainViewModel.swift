@@ -70,8 +70,8 @@ final class MainViewModel: AdViewModel {
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] data in
                 self.updateDatabaseInformation(data)
-            }, onError: { error in
-                self.networkLoadError(error)
+            }, onError: { _ in
+                self.storage.getCoreDataInfo()
             }, onCompleted: { [unowned self] in
                 self.firebaseDidLoad.accept(true)
             }).disposed(by: rx.disposeBag)
