@@ -368,7 +368,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333333333" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="35" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMc-tt-TX6" userLabel="Score Label">
                                         <rect key="frame" x="10" y="21.666666666666671" width="392" height="48"/>
                                         <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="41"/>
-                                        <color key="textColor" name="digitalgreen"/>
+                                        <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
