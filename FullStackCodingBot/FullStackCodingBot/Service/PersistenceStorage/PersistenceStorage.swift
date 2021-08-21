@@ -91,10 +91,7 @@ final class PersistenceStorage: PersistenceStorageType {
             return false
         }
     }
-}
-
-// MARK: CoreData Method
-private extension PersistenceStorage {
+    
     @discardableResult
     func getCoreDataInfo() -> Completable {
         let subject = PublishSubject<Void>()
@@ -132,7 +129,10 @@ private extension PersistenceStorage {
         subject.onCompleted()
         return subject.ignoreElements().asCompletable()
     }
-        
+}
+
+// MARK: CoreData Method
+private extension PersistenceStorage {
     private func fetchUnit() throws -> [ItemInformation] {
         do {
             guard let fetchResult = try context.fetch(ItemInformation.fetchRequest()) as? [ItemInformation] else { return [] }
@@ -182,6 +182,8 @@ private extension PersistenceStorage {
         do {
             let previousInfo = try fetchMoneyInfo().first ?? MoneyInformation(context: context)
             previousInfo.setValue(money, forKey: "myMoney")
+            previousInfo.setValue(Date(), forKey: "lastUpdated")
+            print(previousInfo)
             try context.save()
         } catch {
             throw CoreDataError.cannotSaveData
@@ -217,6 +219,7 @@ private extension PersistenceStorage {
         if let entity = NSEntityDescription.entity(forEntityName: "MoneyInformation", in: context) {
             let info = NSManagedObject(entity: entity, insertInto: context)
             info.setValue(money, forKey: "myMoney")
+            info.setValue(Date(), forKey: "lastUpdated")
             
             do {
                 try context.save()
