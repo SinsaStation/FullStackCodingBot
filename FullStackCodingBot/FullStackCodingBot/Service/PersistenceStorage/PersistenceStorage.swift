@@ -24,7 +24,7 @@ final class PersistenceStorage: PersistenceStorageType {
     private var moneyStore = 0
     private lazy var moneyStatus = BehaviorSubject<Int>(value: moneyStore)
     private var highScore = 0
-    
+
     @discardableResult
     func myHighScore() -> Int {
         return highScore
@@ -128,6 +128,16 @@ final class PersistenceStorage: PersistenceStorageType {
         
         subject.onCompleted()
         return subject.ignoreElements().asCompletable()
+    }
+    
+    func lastUpdated() -> Date {
+        let farPastDate = Date.init(timeIntervalSince1970: 0)
+        guard let fetchedInfo = try? fetchMoneyInfo(),
+              let currentMoneyInfo = fetchedInfo.first else {
+            return farPastDate
+        }
+        let lastUpdated = currentMoneyInfo.lastUpdated ?? farPastDate
+        return lastUpdated
     }
 }
 

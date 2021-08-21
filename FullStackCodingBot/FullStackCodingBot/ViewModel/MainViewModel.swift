@@ -79,17 +79,6 @@ final class MainViewModel: AdViewModel {
         }
         return subject.ignoreElements().asCompletable()
     }
-    
-    private func updateDatabaseInformation(_ info: NetworkDTO) {
-        info.units.forEach { storage.append(unit: $0) }
-        storage.raiseMoney(by: info.money)
-        storage.updateHighScore(new: info.score)
-        
-        adStorage.setNewRewardsIfPossible(with: info.ads)
-            .subscribe(onError: { error in
-                        Firebase.Analytics.logEvent("RewardsError", parameters: ["ErrorMessage": "\(error)"])})
-            .disposed(by: rx.disposeBag)
-    }
 }
 
 // MARK: Login & Load Data
@@ -143,10 +132,32 @@ extension MainViewModel: GKGameCenterControllerDelegate {
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] data in
                 self.updateDatabaseInformation(data)
+                self.updateAdInformation(data)
             }, onError: { _ in
                 self.loadFromCoredata()
             }, onCompleted: { [unowned self] in
                 self.firebaseDidLoad.accept(true)
             }).disposed(by: rx.disposeBag)
+    }
+    
+    private func updateDatabaseInformation(_ info: NetworkDTO) {
+        let firebaseUpdate = Date.init(timeIntervalSince1970: 0) // firebase 업데이트 후 , info.lastUpdated
+        let coredataUpdate = storage.lastUpdated()
+        
+        guard firebaseUpdate > coredataUpdate else {
+            loadFromCoredata()
+            return
+        }
+        
+        info.units.forEach { storage.append(unit: $0) }
+        storage.raiseMoney(by: info.money)
+        storage.updateHighScore(new: info.score)
+    }
+    
+    private func updateAdInformation(_ info: NetworkDTO) {
+        adStorage.setNewRewardsIfPossible(with: info.ads)
+            .subscribe(onError: { error in
+                        Firebase.Analytics.logEvent("RewardsError", parameters: ["ErrorMessage": "\(error)"])})
+            .disposed(by: rx.disposeBag)
     }
 }
