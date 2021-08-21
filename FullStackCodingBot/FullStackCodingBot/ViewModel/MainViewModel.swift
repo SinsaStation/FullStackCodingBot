@@ -90,25 +90,37 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     private func setupAppleGameCenterLogin() {
         GKLocalPlayer.local.authenticateHandler = { [unowned self] _, error in
             guard error == nil, GKLocalPlayer.local.isAuthenticated else {
-                self.loadFromCoredata()
+                self.loadOffline()
                 return
             }
             
             GameCenterAuthProvider.getCredential { credential, error in
                 guard error == nil, let credential = credential else {
-                    self.loadFromCoredata()
+                    self.loadOffline()
                     return
                 }
                 
                 Auth.auth().signIn(with: credential) { [unowned self] user, error in
                     guard error == nil, user != nil else {
-                        self.loadFromCoredata()
+                        self.loadOffline()
                         return
                     }
-                    loadFromFirebase()
+                    loadOnline()
                 }
             }
         }
+    }
+    
+    private func loadOffline() {
+        loadFromCoredata()
+        sceneCoordinator.transition(to: .alert(AlertMessage.networkLoad),
+                                    using: .alert,
+                                    with: .main,
+                                    animated: true)
+    }
+    
+    private func loadOnline() {
+        loadFromFirebase()
     }
     
     private func loadFromCoredata() {
