@@ -43,8 +43,8 @@ final class PersistenceStorage: PersistenceStorageType {
     @discardableResult
     func append(unit: Unit) -> Observable<Unit> {
         unitStore.append(unit)
-        try? appendUnitInfo(unit)
         unitList.onNext(unitStore)
+        try? updateUnit(to: unit)
         return Observable.just(unit)
     }
     
@@ -120,6 +120,7 @@ final class PersistenceStorage: PersistenceStorageType {
         let subject = PublishSubject<Void>()
         
         for unit in Unit.initialValues() {
+            try? appendUnitInfo(unit)
             append(unit: unit)
         }
         
