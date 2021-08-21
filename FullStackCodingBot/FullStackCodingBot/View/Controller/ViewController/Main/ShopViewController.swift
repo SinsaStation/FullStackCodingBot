@@ -11,6 +11,7 @@ final class ShopViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var shopCollectionView: UICollectionView!
     @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet weak var internetInfoLabel: UILabel!
     
     private lazy var itemWidth = shopCollectionView.frame.width * 0.3
     
@@ -98,6 +99,7 @@ private extension ShopViewController {
     
     private func setupFont() {
         totalCoinLabel.font = UIFont.joystix(style: .caption)
+        internetInfoLabel.font = UIFont.neoDunggeunmo(style: .caption)
     }
 }
 

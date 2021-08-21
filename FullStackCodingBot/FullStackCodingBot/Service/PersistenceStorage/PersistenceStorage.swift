@@ -183,7 +183,6 @@ private extension PersistenceStorage {
             let previousInfo = try fetchMoneyInfo().first ?? MoneyInformation(context: context)
             previousInfo.setValue(money, forKey: "myMoney")
             previousInfo.setValue(Date(), forKey: "lastUpdated")
-            print(previousInfo)
             try context.save()
         } catch {
             throw CoreDataError.cannotSaveData
