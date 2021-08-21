@@ -118,6 +118,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
         case false:
             storage.setupInitialData()
         }
+        userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
         firebaseDidLoad.accept(true)
     }
     
