@@ -65,18 +65,6 @@ final class MainViewModel: AdViewModel {
         sceneCoordinator.close(animated: true)
     }
     
-    func getUserInformation() {
-        database.getFirebaseData()
-            .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [unowned self] data in
-                self.updateDatabaseInformation(data)
-            }, onError: { _ in
-                self.getCoreDataInfo()
-            }, onCompleted: { [unowned self] in
-                self.firebaseDidLoad.accept(true)
-            }).disposed(by: rx.disposeBag)
-    }
-    
     @discardableResult
     func setupBGMState(_ info: SwithType) -> Completable {
         let subject = PublishSubject<Void>()
@@ -104,57 +92,61 @@ final class MainViewModel: AdViewModel {
     }
 }
 
-// MARK: Apple Game Center Login
+// MARK: Login & Load Data
 extension MainViewModel: GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
     }
     
-    func setupAppleGameCenterLogin() {
+    private func setupAppleGameCenterLogin() {
         GKLocalPlayer.local.authenticateHandler = { [unowned self] _, error in
-            guard error == nil else {
-                self.getCoreDataInfo()
+            guard error == nil, GKLocalPlayer.local.isAuthenticated else {
+                self.loadFromCoredata()
                 return
             }
             
-            if GKLocalPlayer.local.isAuthenticated {
-                GameCenterAuthProvider.getCredential { credential, error in
-                    guard error == nil else {
-                        self.getCoreDataInfo()
+            GameCenterAuthProvider.getCredential { credential, error in
+                guard error == nil, let credential = credential else {
+                    self.loadFromCoredata()
+                    return
+                }
+                
+                Auth.auth().signIn(with: credential) { [unowned self] user, error in
+                    guard error == nil, user != nil else {
+                        self.loadFromCoredata()
                         return
                     }
-                    
-                    Auth.auth().signIn(with: credential!) { [unowned self] user, error in
-                        guard error == nil else {
-                            self.getCoreDataInfo()
-                            return
-                        }
-                        
-                        if user != nil {
-                            if firebaseDidLoad.value { return }
-                            getUserInformation()
-                            userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
-                        }
-                    }
+                    loadFromFirebase()
                 }
             }
         }
     }
-}
-
-// MARK: Error Handling
-private extension MainViewModel {
     
-    private func getCoreDataInfo() {
-        
+    private func loadFromCoredata() {
         switch userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce) {
         case true:
             storage.getCoreDataInfo()
         case false:
-            for unit in Unit.initialValues() {
-                storage.append(unit: unit)
-            }
+            storage.setupInitialData()
         }
         firebaseDidLoad.accept(true)
+    }
+    
+    private func loadFromFirebase() {
+        if firebaseDidLoad.value { return }
+        getUserInformation()
+        userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
+    }
+    
+    private func getUserInformation() {
+        database.getFirebaseData()
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [unowned self] data in
+                self.updateDatabaseInformation(data)
+            }, onError: { _ in
+                self.loadFromCoredata()
+            }, onCompleted: { [unowned self] in
+                self.firebaseDidLoad.accept(true)
+            }).disposed(by: rx.disposeBag)
     }
 }
