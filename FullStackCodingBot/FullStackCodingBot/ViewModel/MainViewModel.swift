@@ -65,18 +65,6 @@ final class MainViewModel: AdViewModel {
         sceneCoordinator.close(animated: true)
     }
     
-    func getUserInformation() {
-        database.getFirebaseData()
-            .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [unowned self] data in
-                self.updateDatabaseInformation(data)
-            }, onError: { _ in
-                self.getCoreDataInfo()
-            }, onCompleted: { [unowned self] in
-                self.firebaseDidLoad.accept(true)
-            }).disposed(by: rx.disposeBag)
-    }
-    
     @discardableResult
     func setupBGMState(_ info: SwithType) -> Completable {
         let subject = PublishSubject<Void>()
@@ -91,70 +79,98 @@ final class MainViewModel: AdViewModel {
         }
         return subject.ignoreElements().asCompletable()
     }
-    
-    private func updateDatabaseInformation(_ info: NetworkDTO) {
-        info.units.forEach { storage.append(unit: $0) }
-        storage.raiseMoney(by: info.money)
-        storage.updateHighScore(new: info.score)
-        
-        adStorage.setNewRewardsIfPossible(with: info.ads)
-            .subscribe(onError: { error in
-                        Firebase.Analytics.logEvent("RewardsError", parameters: ["ErrorMessage": "\(error)"])})
-            .disposed(by: rx.disposeBag)
-    }
 }
 
-// MARK: Apple Game Center Login
+// MARK: Login & Load Data
 extension MainViewModel: GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
     }
     
-    func setupAppleGameCenterLogin() {
+    private func setupAppleGameCenterLogin() {
         GKLocalPlayer.local.authenticateHandler = { [unowned self] _, error in
-            guard error == nil else {
-                self.getCoreDataInfo()
+            guard error == nil, GKLocalPlayer.local.isAuthenticated else {
+                self.loadOffline()
                 return
             }
             
-            if GKLocalPlayer.local.isAuthenticated {
-                GameCenterAuthProvider.getCredential { credential, error in
-                    guard error == nil else {
-                        self.getCoreDataInfo()
+            GameCenterAuthProvider.getCredential { credential, error in
+                guard error == nil, let credential = credential else {
+                    self.loadOffline()
+                    return
+                }
+                
+                Auth.auth().signIn(with: credential) { [unowned self] user, error in
+                    guard error == nil, user != nil else {
+                        self.loadOffline()
                         return
                     }
-                    
-                    Auth.auth().signIn(with: credential!) { [unowned self] user, error in
-                        guard error == nil else {
-                            self.getCoreDataInfo()
-                            return
-                        }
-                        
-                        if user != nil {
-                            if firebaseDidLoad.value { return }
-                            getUserInformation()
-                            userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
-                        }
-                    }
+                    loadOnline()
                 }
             }
         }
     }
-}
-
-// MARK: Error Handling
-private extension MainViewModel {
     
-    private func getCoreDataInfo() {
-        
+    private func loadOffline() {
+        loadFromCoredata()
+        sceneCoordinator.transition(to: .alert(AlertMessage.networkLoad),
+                                    using: .alert,
+                                    with: .main,
+                                    animated: true)
+    }
+    
+    private func loadOnline() {
+        loadFromFirebase()
+    }
+    
+    private func loadFromCoredata() {
         switch userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce) {
         case true:
             storage.getCoreDataInfo()
         case false:
-            for unit in Unit.initialValues() {
-                storage.append(unit: unit)
-            }
+            storage.setupInitialData()
         }
+        userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
         firebaseDidLoad.accept(true)
+    }
+    
+    private func loadFromFirebase() {
+        if firebaseDidLoad.value { return }
+        getUserInformation()
+        userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
+    }
+    
+    private func getUserInformation() {
+        database.getFirebaseData()
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [unowned self] data in
+                self.updateDatabaseInformation(data)
+                self.updateAdInformation(data)
+            }, onError: { _ in
+                self.loadFromCoredata()
+            }, onCompleted: { [unowned self] in
+                self.firebaseDidLoad.accept(true)
+            }).disposed(by: rx.disposeBag)
+    }
+    
+    private func updateDatabaseInformation(_ info: NetworkDTO) {
+        let firebaseUpdate = Date.init(timeIntervalSince1970: 0) // firebase 업데이트 후 , info.lastUpdated
+        let coredataUpdate = storage.lastUpdated()
+        
+        guard firebaseUpdate > coredataUpdate else {
+            loadFromCoredata()
+            return
+        }
+        
+        info.units.forEach { storage.append(unit: $0) }
+        storage.raiseMoney(by: info.money)
+        storage.updateHighScore(new: info.score)
+    }
+    
+    private func updateAdInformation(_ info: NetworkDTO) {
+        adStorage.setNewRewardsIfPossible(with: info.ads)
+            .subscribe(onError: { error in
+                        Firebase.Analytics.logEvent("RewardsError", parameters: ["ErrorMessage": "\(error)"])})
+            .disposed(by: rx.disposeBag)
     }
 }

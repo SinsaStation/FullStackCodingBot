@@ -24,7 +24,7 @@ final class PersistenceStorage: PersistenceStorageType {
     private var moneyStore = 0
     private lazy var moneyStatus = BehaviorSubject<Int>(value: moneyStore)
     private var highScore = 0
-    
+
     @discardableResult
     func myHighScore() -> Int {
         return highScore
@@ -43,8 +43,8 @@ final class PersistenceStorage: PersistenceStorageType {
     @discardableResult
     func append(unit: Unit) -> Observable<Unit> {
         unitStore.append(unit)
-        try? appendUnitInfo(unit)
         unitList.onNext(unitStore)
+        try? updateUnit(to: unit)
         return Observable.just(unit)
     }
     
@@ -77,7 +77,7 @@ final class PersistenceStorage: PersistenceStorageType {
     func raiseMoney(by money: Int) -> Observable<Int> {
         moneyStore += money
         moneyStatus.onNext(moneyStore)
-        try? updateMoney(money: money)
+        try? updateMoney(money: moneyStore)
         return Observable.just(money)
     }
     
@@ -85,6 +85,7 @@ final class PersistenceStorage: PersistenceStorageType {
     func updateHighScore(new score: Int) -> Bool {
         if score > highScore {
             highScore = score
+            try? updateScore(score: highScore)
             return true
         } else {
             return false
@@ -103,14 +104,46 @@ final class PersistenceStorage: PersistenceStorageType {
             self.append(unit: DataFormatManager.transformToUnit(unitInfo))
         }
         
+        guard let fetchedMoneyInfo = try? fetchMoneyInfo().first,
+              let fetchedScoreInfo = try? fetchScoreInfo().first else {
+            return subject.ignoreElements().asCompletable()
+        }
+        raiseMoney(by: Int(fetchedMoneyInfo.myMoney))
+        updateHighScore(new: Int(fetchedScoreInfo.myScore))
+        
         subject.onCompleted()
         return subject.ignoreElements().asCompletable()
+    }
+    
+    @discardableResult
+    func setupInitialData() -> Completable {
+        let subject = PublishSubject<Void>()
+        
+        for unit in Unit.initialValues() {
+            try? appendUnitInfo(unit)
+            append(unit: unit)
+        }
+        
+        try? appendMoenyInfo(0)
+        try? appendScoreInfo(0)
+        
+        subject.onCompleted()
+        return subject.ignoreElements().asCompletable()
+    }
+    
+    func lastUpdated() -> Date {
+        let farPastDate = Date.init(timeIntervalSince1970: 0)
+        guard let fetchedInfo = try? fetchMoneyInfo(),
+              let currentMoneyInfo = fetchedInfo.first else {
+            return farPastDate
+        }
+        let lastUpdated = currentMoneyInfo.lastUpdated ?? farPastDate
+        return lastUpdated
     }
 }
 
 // MARK: CoreData Method
 private extension PersistenceStorage {
-        
     private func fetchUnit() throws -> [ItemInformation] {
         do {
             guard let fetchResult = try context.fetch(ItemInformation.fetchRequest()) as? [ItemInformation] else { return [] }
@@ -119,7 +152,29 @@ private extension PersistenceStorage {
             throw CoreDataError.cannotFetchData
         }
     }
-
+    
+    private func fetchMoneyInfo() throws -> [MoneyInformation] {
+        do {
+            guard let fetchResult = try context.fetch(MoneyInformation.fetchRequest()) as? [MoneyInformation] else {
+                return [MoneyInformation(context: context)]
+            }
+            return fetchResult
+        } catch {
+            throw CoreDataError.cannotFetchData
+        }
+    }
+    
+    private func fetchScoreInfo() throws -> [ScoreInformation] {
+        do {
+            guard let fetchResult = try context.fetch(ScoreInformation.fetchRequest()) as? [ScoreInformation] else {
+                return [ScoreInformation(context: context)]
+            }
+            return fetchResult
+        } catch {
+            throw CoreDataError.cannotFetchData
+        }
+    }
+    
     private func updateUnit(to unit: Unit) throws {
         guard let fetchedUnit = try? fetchUnit() else { return }
         for info in fetchedUnit where info.uuid == unit.uuid {
@@ -136,8 +191,9 @@ private extension PersistenceStorage {
     
     private func updateMoney(money: Int) throws {
         do {
-            guard let previousInfo = try? fetchMoneyInfo().first else { return }
+            let previousInfo = try fetchMoneyInfo().first ?? MoneyInformation(context: context)
             previousInfo.setValue(money, forKey: "myMoney")
+            previousInfo.setValue(Date(), forKey: "lastUpdated")
             try context.save()
         } catch {
             throw CoreDataError.cannotSaveData
@@ -146,33 +202,11 @@ private extension PersistenceStorage {
     
     private func updateScore(score: Int) throws {
         do {
-            guard let previousInfo = try? fetchScoreInfo().first else { return }
+            let previousInfo = try fetchScoreInfo().first ?? ScoreInformation(context: context)
             previousInfo.setValue(score, forKey: "myScore")
             try context.save()
         } catch {
             throw CoreDataError.cannotSaveData
-        }
-    }
-    
-    private func fetchMoneyInfo() throws -> [MoneyInformation] {
-        do {
-            guard let fetchResult = try context.fetch(MoneyInformation.fetchRequest()) as? [MoneyInformation] else {
-                return []
-            }
-            return fetchResult
-        } catch {
-            throw CoreDataError.cannotFetchData
-        }
-    }
-    
-    private func fetchScoreInfo() throws -> [ScoreInformation] {
-        do {
-            guard let fetchResult = try context.fetch(ScoreInformation.fetchRequest()) as? [ScoreInformation] else {
-                return []
-            }
-            return fetchResult
-        } catch {
-            throw CoreDataError.cannotFetchData
         }
     }
     
@@ -195,6 +229,7 @@ private extension PersistenceStorage {
         if let entity = NSEntityDescription.entity(forEntityName: "MoneyInformation", in: context) {
             let info = NSManagedObject(entity: entity, insertInto: context)
             info.setValue(money, forKey: "myMoney")
+            info.setValue(Date(), forKey: "lastUpdated")
             
             do {
                 try context.save()

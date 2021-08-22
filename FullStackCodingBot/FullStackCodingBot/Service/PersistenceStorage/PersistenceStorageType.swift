@@ -34,4 +34,9 @@ protocol PersistenceStorageType {
     
     @discardableResult
     func getCoreDataInfo() -> Completable
+    
+    @discardableResult
+    func setupInitialData() -> Completable
+    
+    func lastUpdated() -> Date
 }
