@@ -5,8 +5,9 @@ struct NetworkDTO: Codable {
     let money: Int
     let score: Int
     let ads: AdsInformation
+    let date: Date
     
     static func empty() -> NetworkDTO {
-        return NetworkDTO(units: [], money: 0, score: 0, ads: AdsInformation.empty())
+        return NetworkDTO(units: [], money: 0, score: 0, ads: AdsInformation.empty(), date: Date.init(timeIntervalSince1970: 0))
     }
 }

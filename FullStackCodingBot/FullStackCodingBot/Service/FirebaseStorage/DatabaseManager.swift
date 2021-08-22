@@ -18,7 +18,8 @@ final class DatabaseManager: DatabaseManagerType {
         let moneyData = try? DataFormatManager.transformToString(info.money)
         let scoreData = try? DataFormatManager.transformToString(info.score)
         let adsData = try? DataFormatManager.transformToString(info.ads)
-        ref.child("users").child(uid).setValue(["info": ["units": unitData, "money": moneyData, "score": scoreData, "ads": adsData]])
+        let recentDate = try? DataFormatManager.transformToString(info.date)
+        ref.child("users").child(uid).setValue(["info": ["units": unitData, "money": moneyData, "score": scoreData, "ads": adsData, "date": recentDate]])
     }
     
     @discardableResult
@@ -30,7 +31,7 @@ final class DatabaseManager: DatabaseManagerType {
                 }
                 
                 if !snapshot.exists() {
-                    let initData = NetworkDTO(units: Unit.initialValues(), money: 0, score: 0, ads: AdsInformation.empty())
+                    let initData = NetworkDTO(units: Unit.initialValues(), money: 0, score: 0, ads: AdsInformation.empty(), date: Date())
                     observer.onNext(initData)
                     observer.onCompleted()
                 }

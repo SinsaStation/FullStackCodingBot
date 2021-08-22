@@ -154,7 +154,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     }
     
     private func updateDatabaseInformation(_ info: NetworkDTO) {
-        let firebaseUpdate = Date.init(timeIntervalSince1970: 0) // firebase 업데이트 후 , info.lastUpdated
+        let firebaseUpdate = info.date
         let coredataUpdate = storage.lastUpdated()
         
         guard firebaseUpdate > coredataUpdate else {

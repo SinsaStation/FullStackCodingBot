@@ -13,7 +13,8 @@ final class DataFormatManager {
                 let money = try JSONDecoder().decode(Int.self, from: Data(info.info["money"]!.utf8))
                 let score = try JSONDecoder().decode(Int.self, from: Data(info.info["score"]!.utf8))
                 let ads = try JSONDecoder().decode(AdsInformation.self, from: Data(info.info["ads"]!.utf8))
-                let result = NetworkDTO(units: units, money: money, score: score, ads: ads)
+                let date = try JSONDecoder().decode(Date.self, from: Data(info.info["date"]!.utf8))
+                let result = NetworkDTO(units: units, money: money, score: score, ads: ads, date: date)
                 observer.onNext(result)
                 observer.onCompleted()
             } catch {
