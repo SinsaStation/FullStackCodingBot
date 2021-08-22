@@ -31,7 +31,7 @@ final class DatabaseManager: DatabaseManagerType {
                 }
                 
                 if !snapshot.exists() {
-                    let initData = NetworkDTO(units: Unit.initialValues(), money: 0, score: 0, ads: AdsInformation.empty(), date: Date())
+                    let initData = NetworkDTO(units: Unit.initialValues(), money: 0, score: 0, ads: AdsInformation.empty(), date: Date.init(timeIntervalSince1970: 0))
                     observer.onNext(initData)
                     observer.onCompleted()
                 }

@@ -120,6 +120,9 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     }
     
     private func loadOnline() {
+        if !userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce) {
+            storage.setupInitialData()
+        }
         loadFromFirebase()
     }
     
