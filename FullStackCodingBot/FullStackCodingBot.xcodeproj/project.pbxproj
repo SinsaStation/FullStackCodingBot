@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		319C8ADC8031F91022FCD537 /* Pods_Full_Stack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9E77F924F0C6B24A39E65B2 /* Pods_Full_Stack.framework */; };
+		71003AD626CFAB22001D5210 /* IdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71003AD526CFAB22001D5210 /* IdentifierManager.swift */; };
 		710A9DAC2692AD5C0090B38A /* MainButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710A9DAB2692AD5C0090B38A /* MainButtonController.swift */; };
 		710D0D422693EA3200244A16 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D412693EA3200244A16 /* GameViewController.swift */; };
 		710D0D442693EA6900244A16 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D432693EA6900244A16 /* GameViewModel.swift */; };
@@ -127,7 +128,6 @@
 		E4D7C64B26953C6200D58BA2 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7C64A26953C6200D58BA2 /* ScreenSize.swift */; };
 		E4DB63E826CCD21100E51540 /* LiveCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB63E726CCD21000E51540 /* LiveCode.swift */; };
 		E4DB63EA26CD3EF700E51540 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB63E926CD3EF700E51540 /* LoadingView.swift */; };
-		E4DB63EC26CE06EE00E51540 /* IdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB63EB26CE06EE00E51540 /* IdentifierManager.swift */; };
 		E4DD682126A138D900B9F9CE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DD682026A138D900B9F9CE /* GameKit.framework */; };
 		E4DF613B26A845670061F6E9 /* AdStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF613A26A845670061F6E9 /* AdStorageType.swift */; };
 		E4DF613D26A845DA0061F6E9 /* AdStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF613C26A845DA0061F6E9 /* AdStorage.swift */; };
@@ -155,6 +155,7 @@
 		5A7E8DA0D6B983048B3C188B /* Pods-Full Stack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Full Stack.release.xcconfig"; path = "Target Support Files/Pods-Full Stack/Pods-Full Stack.release.xcconfig"; sourceTree = "<group>"; };
 		6008A8CD833E66FA64680DE0 /* Pods-FullStackCodingBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FullStackCodingBot.release.xcconfig"; path = "Target Support Files/Pods-FullStackCodingBot/Pods-FullStackCodingBot.release.xcconfig"; sourceTree = "<group>"; };
 		674E2D7481804031730D28F0 /* Pods-Full Stack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Full Stack.debug.xcconfig"; path = "Target Support Files/Pods-Full Stack/Pods-Full Stack.debug.xcconfig"; sourceTree = "<group>"; };
+		71003AD526CFAB22001D5210 /* IdentifierManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierManager.swift; sourceTree = "<group>"; };
 		710A9DAB2692AD5C0090B38A /* MainButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonController.swift; sourceTree = "<group>"; };
 		710D0D412693EA3200244A16 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		710D0D432693EA6900244A16 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
@@ -269,7 +270,6 @@
 		E4D7C64A26953C6200D58BA2 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		E4DB63E726CCD21000E51540 /* LiveCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCode.swift; sourceTree = "<group>"; };
 		E4DB63E926CD3EF700E51540 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		E4DB63EB26CE06EE00E51540 /* IdentifierManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierManager.swift; sourceTree = "<group>"; };
 		E4DD681F26A138A800B9F9CE /* Full Stack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Full Stack.entitlements"; sourceTree = "<group>"; };
 		E4DD682026A138D900B9F9CE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		E4DF613A26A845670061F6E9 /* AdStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdStorageType.swift; sourceTree = "<group>"; };
@@ -482,13 +482,13 @@
 		71DF654B2692FA5600557693 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
-				E4DB63EB26CE06EE00E51540 /* IdentifierManager.swift */,
 				E4D7C64A26953C6200D58BA2 /* ScreenSize.swift */,
 				7165CDDA2695789300891214 /* SyetemSettings.swift */,
 				715A83ED269FE96300C9CEFF /* StoryboardType.swift */,
 				71307AB026A53C7B00C3191F /* AlertMessage.swift */,
 				E4CA08B826A8287B00AA6F03 /* Font.swift */,
 				71E91E1626BA33190016386E /* Extension.swift */,
+				71003AD526CFAB22001D5210 /* IdentifierManager.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -767,7 +767,7 @@
 				E45B0AA82692929D006FDE3D /* Frameworks */,
 				E45B0AA92692929D006FDE3D /* Resources */,
 				7165CDD92695687300891214 /* ShellScript */,
-				29E06A99833804648B5BF3C1 /* [CP] Embed Pods Frameworks */,
+				05A658AE111781E8B2C95BF0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -853,6 +853,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		05A658AE111781E8B2C95BF0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Full Stack/Pods-Full Stack-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Full Stack/Pods-Full Stack-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Full Stack/Pods-Full Stack-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2250153208831EAB7523DC28 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -868,23 +885,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Full Stack-Full StackTests/Pods-Full Stack-Full StackTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		29E06A99833804648B5BF3C1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Full Stack/Pods-Full Stack-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Full Stack/Pods-Full Stack-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Full Stack/Pods-Full Stack-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		42A2D7741E7A77BCCDEAFE3F /* [CP] Check Pods Manifest.lock */ = {
@@ -1053,7 +1053,7 @@
 				E4BF710B26B1324500E8645F /* ReadyView.swift in Sources */,
 				71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */,
 				71DF65472692F97000557693 /* RankViewModel.swift in Sources */,
-				E4DB63EC26CE06EE00E51540 /* IdentifierManager.swift in Sources */,
+				71003AD626CFAB22001D5210 /* IdentifierManager.swift in Sources */,
 				E4150E9F26BE44AC0041DD32 /* PersonStoryView.swift in Sources */,
 				E4BF712C26B3E6E300E8645F /* UnitInformation.swift in Sources */,
 				E4150E9926BA37C10041DD32 /* FadeInTextView.swift in Sources */,

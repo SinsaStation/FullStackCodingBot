@@ -418,7 +418,7 @@ https://www.zapsplat.com
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FMZ-Xx-0so" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2045" y="86"/>
+            <point key="canvasLocation" x="-1438" y="86"/>
         </scene>
         <!--Story View Controller-->
         <scene sceneID="tlC-TW-l5X">
@@ -983,6 +983,12 @@ https://www.zapsplat.com
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-bP-LR2" userLabel="Desk View">
                                 <rect key="frame" x="0.0" y="352" width="428" height="574"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Internet connection needed to make coffee!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIW-RB-OQ0">
+                                        <rect key="frame" x="0.0" y="371" width="428" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="darkblue"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bfm-66-sMS" customClass="GADBannerView">
                                         <rect key="frame" x="0.0" y="357" width="428" height="70"/>
                                         <constraints>
@@ -1036,10 +1042,14 @@ https://www.zapsplat.com
                                     <constraint firstItem="jrB-JR-LHy" firstAttribute="centerX" secondItem="ZFw-bP-LR2" secondAttribute="centerX" id="3a6-1s-q69"/>
                                     <constraint firstItem="bfm-66-sMS" firstAttribute="top" secondItem="jrB-JR-LHy" secondAttribute="bottom" id="3ze-I6-3i8"/>
                                     <constraint firstItem="jrB-JR-LHy" firstAttribute="width" secondItem="ZFw-bP-LR2" secondAttribute="width" multiplier="0.85" id="7Dn-La-QM2"/>
+                                    <constraint firstItem="iIW-RB-OQ0" firstAttribute="centerX" secondItem="bfm-66-sMS" secondAttribute="centerX" id="9Uj-bs-hKE"/>
                                     <constraint firstItem="bfm-66-sMS" firstAttribute="height" secondItem="ZFw-bP-LR2" secondAttribute="height" multiplier="0.13" priority="900" id="9zx-80-3Jz"/>
                                     <constraint firstItem="jrB-JR-LHy" firstAttribute="height" secondItem="ZFw-bP-LR2" secondAttribute="height" multiplier="0.57" id="E6S-Nj-yRN"/>
                                     <constraint firstItem="jrB-JR-LHy" firstAttribute="top" secondItem="ZFw-bP-LR2" secondAttribute="top" constant="30" id="EbY-XX-4ct"/>
                                     <constraint firstItem="bfm-66-sMS" firstAttribute="width" secondItem="ZFw-bP-LR2" secondAttribute="width" id="OBj-7Z-Trc"/>
+                                    <constraint firstItem="iIW-RB-OQ0" firstAttribute="centerY" secondItem="bfm-66-sMS" secondAttribute="centerY" id="Qnn-eN-JR1"/>
+                                    <constraint firstItem="iIW-RB-OQ0" firstAttribute="height" secondItem="bfm-66-sMS" secondAttribute="height" multiplier="0.6" id="gjF-Ko-zhB"/>
+                                    <constraint firstItem="iIW-RB-OQ0" firstAttribute="width" secondItem="bfm-66-sMS" secondAttribute="width" id="jJH-UF-gLm"/>
                                     <constraint firstItem="bfm-66-sMS" firstAttribute="centerX" secondItem="ZFw-bP-LR2" secondAttribute="centerX" id="yZA-lv-wfR"/>
                                 </constraints>
                             </view>
@@ -1107,6 +1117,7 @@ https://www.zapsplat.com
                         <outlet property="bannerView" destination="bfm-66-sMS" id="URd-Zm-4YE"/>
                         <outlet property="cancelButton" destination="L3G-k2-a1u" id="ecH-hw-FU0"/>
                         <outlet property="infoView" destination="8Iq-vH-giG" id="lqT-qP-cHs"/>
+                        <outlet property="internetInfoLabel" destination="iIW-RB-OQ0" id="xir-lk-MkT"/>
                         <outlet property="shopCollectionView" destination="jrB-JR-LHy" id="7qh-U5-dNQ"/>
                         <outlet property="totalCoinLabel" destination="MVD-tj-IxR" id="Sd6-xi-0fA"/>
                     </connections>

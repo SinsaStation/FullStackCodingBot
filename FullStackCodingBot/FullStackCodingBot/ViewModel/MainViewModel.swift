@@ -65,18 +65,6 @@ final class MainViewModel: AdViewModel {
         sceneCoordinator.close(animated: true)
     }
     
-    func getUserInformation() {
-        database.getFirebaseData()
-            .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [unowned self] data in
-                self.updateDatabaseInformation(data)
-            }, onError: { error in
-                self.networkLoadError(error)
-            }, onCompleted: { [unowned self] in
-                self.firebaseDidLoad.accept(true)
-            }).disposed(by: rx.disposeBag)
-    }
-    
     @discardableResult
     func setupBGMState(_ info: SwithType) -> Completable {
         let subject = PublishSubject<Void>()
@@ -91,64 +79,101 @@ final class MainViewModel: AdViewModel {
         }
         return subject.ignoreElements().asCompletable()
     }
-    
-    private func updateDatabaseInformation(_ info: NetworkDTO) {
-        info.units.forEach { storage.append(unit: $0) }
-        storage.raiseMoney(by: info.money)
-        storage.updateHighScore(new: info.score)
-        
-        adStorage.setNewRewardsIfPossible(with: info.ads)
-            .subscribe(onError: { error in
-                        Firebase.Analytics.logEvent("RewardsError", parameters: ["ErrorMessage": "\(error)"])})
-            .disposed(by: rx.disposeBag)
-    }
 }
 
-// MARK: Apple Game Center Login
+// MARK: Login & Load Data
 extension MainViewModel: GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
     }
     
-    func setupAppleGameCenterLogin() {
+    private func setupAppleGameCenterLogin() {
         GKLocalPlayer.local.authenticateHandler = { [unowned self] _, error in
-            guard error == nil else {
-                self.networkLoadError(error)
+            guard error == nil, GKLocalPlayer.local.isAuthenticated else {
+                self.loadOffline()
                 return
             }
             
-            if GKLocalPlayer.local.isAuthenticated {
-                GameCenterAuthProvider.getCredential { credential, error in
-                    guard error == nil else {
-                        self.networkLoadError(error)
+            GameCenterAuthProvider.getCredential { credential, error in
+                guard error == nil, let credential = credential else {
+                    self.loadOffline()
+                    return
+                }
+                
+                Auth.auth().signIn(with: credential) { [unowned self] user, error in
+                    guard error == nil, user != nil else {
+                        self.loadOffline()
                         return
                     }
-                    
-                    Auth.auth().signIn(with: credential!) { [unowned self] user, error in
-                        guard error == nil else {
-                            self.networkLoadError(error)
-                            return
-                        }
-                        
-                        if user != nil {
-                            if firebaseDidLoad.value { return }
-                            getUserInformation()
-                            userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
-                        }
-                    }
+                    loadOnline()
                 }
             }
         }
     }
-}
-
-// MARK: Error Handling
-private extension MainViewModel {
     
-    private func networkLoadError(_ error: Error?) {
-        let alertScene = Scene.alert(AlertMessage.networkLoad)
-        self.sceneCoordinator.transition(to: alertScene, using: .alert, with: StoryboardType.main, animated: true)
-        guard let error = error else { return }
-        Firebase.Analytics.logEvent("NetworkError", parameters: ["ErrorMessage": "\(error)"])
+    private func loadOffline() {
+        loadFromCoredata()
+        sceneCoordinator.transition(to: .alert(AlertMessage.networkLoad),
+                                    using: .alert,
+                                    with: .main,
+                                    animated: true)
+    }
+    
+    private func loadOnline() {
+        if !userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce) {
+            storage.setupInitialData()
+        }
+        loadFromFirebase()
+    }
+    
+    private func loadFromCoredata() {
+        switch userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce) {
+        case true:
+            storage.getCoreDataInfo()
+        case false:
+            storage.setupInitialData()
+        }
+        userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
+        firebaseDidLoad.accept(true)
+    }
+    
+    private func loadFromFirebase() {
+        if firebaseDidLoad.value { return }
+        getUserInformation()
+        userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
+    }
+    
+    private func getUserInformation() {
+        database.getFirebaseData()
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [unowned self] data in
+                self.updateDatabaseInformation(data)
+                self.updateAdInformation(data)
+            }, onError: { _ in
+                self.loadFromCoredata()
+            }, onCompleted: { [unowned self] in
+                self.firebaseDidLoad.accept(true)
+            }).disposed(by: rx.disposeBag)
+    }
+    
+    private func updateDatabaseInformation(_ info: NetworkDTO) {
+        let firebaseUpdate = info.date
+        let coredataUpdate = storage.lastUpdated()
+        
+        guard firebaseUpdate > coredataUpdate else {
+            loadFromCoredata()
+            return
+        }
+        
+        info.units.forEach { storage.append(unit: $0) }
+        storage.raiseMoney(by: info.money)
+        storage.updateHighScore(new: info.score)
+    }
+    
+    private func updateAdInformation(_ info: NetworkDTO) {
+        adStorage.setNewRewardsIfPossible(with: info.ads)
+            .subscribe(onError: { error in
+                        Firebase.Analytics.logEvent("RewardsError", parameters: ["ErrorMessage": "\(error)"])})
+            .disposed(by: rx.disposeBag)
     }
 }

@@ -31,4 +31,12 @@ protocol PersistenceStorageType {
     
     @discardableResult
     func updateHighScore(new score: Int) -> Bool
+    
+    @discardableResult
+    func getCoreDataInfo() -> Completable
+    
+    @discardableResult
+    func setupInitialData() -> Completable
+    
+    func lastUpdated() -> Date
 }
