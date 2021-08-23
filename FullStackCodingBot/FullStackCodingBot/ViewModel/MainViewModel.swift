@@ -89,20 +89,26 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     
     private func setupAppleGameCenterLogin() {
         GKLocalPlayer.local.authenticateHandler = { [unowned self] _, error in
-            guard error == nil, GKLocalPlayer.local.isAuthenticated else {
+            
+            guard error == nil else {
                 self.loadOffline()
+                return
+            }
+            
+            guard GKLocalPlayer.local.isAuthenticated else {
+                self.loadOnline()
                 return
             }
             
             GameCenterAuthProvider.getCredential { credential, error in
                 guard error == nil, let credential = credential else {
-                    self.loadOffline()
+                    self.loadOnline()
                     return
                 }
                 
                 Auth.auth().signIn(with: credential) { [unowned self] user, error in
                     guard error == nil, user != nil else {
-                        self.loadOffline()
+                        self.loadOnline()
                         return
                     }
                     loadOnline()
@@ -165,7 +171,8 @@ extension MainViewModel: GKGameCenterControllerDelegate {
             return
         }
         
-        info.units.forEach { storage.append(unit: $0) }
+        storage.update(units: info.units)
+        // info.units.forEach { storage.append(unit: $0) }
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
     }

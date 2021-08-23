@@ -15,7 +15,7 @@ protocol PersistenceStorageType {
     func itemList() -> [Unit]
     
     @discardableResult
-    func append(unit: Unit) -> Observable<Unit>
+    func update(units: [Unit]) -> Observable<[Unit]>
     
     @discardableResult
     func listUnit() -> Observable<[Unit]>
