@@ -85,9 +85,10 @@
 |[github](https://github.com/torch-ray)|[github](https://github.com/eeeesong)|
 
 
+<details markdown="WooSeok">
+<summary>WooSeok's Develop History</summary>
 
-### Develop History
-#### WooSeok
+#### Summary
 ```
 프로젝트 초반에 생성해두었던 MemoryStorage를 PersistenceStorage로 수정했던 작업이 기억에 남습니다.  
 MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존성을 주입해서 코드를 설계했던 덕분에 쉽게 객체 바꿔치기가 가능했습니다.  
@@ -172,11 +173,21 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 > - [x] 기존 MemoryStorage -> PersistenceStorage로 객체 변경
 > - [x] Core Data Entity
 > - [x] CRUD 메서드
+ 
+
+</details>
 
 
-#### Song
+
+<details markdown="Song">
+<summary>Song's Develop History</summary>
+
+#### Summary
 ```
-챌린지 했던 내용 요약해서 쓰기 2~3줄
+서드파티 라이브러리 사용 없이 Core Graphics와 UIKit만을 활용하여 모든 애니메이션을 구현한 경험이 가장 기억에 남습니다.
+또한, 아이폰4s까지 지원할 수 있도록 Auto Layout을 짜야했던 것도 챌린징했습니다. 
+게임이라는 특성 상 화면 구성요소가 다양했기 때문에, View를 짜는 것에 있어서도 구조가 중요하다는 것을 느낄 수 있었습니다.
+ 
 ```
 
 > ### Main
@@ -259,6 +270,8 @@ MemoryStorageType이라는 protocol을 활용하여 viewModel객체들에 의존
 >
 > - [x] 배경음, 효과음 재생 컨트롤 - Sound Station 객체들
 > - [x] User Default와 연동
+
+</details>
 
 ---
 
