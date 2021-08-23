@@ -15,22 +15,28 @@
 
 [<img width=150px src=https://user-images.githubusercontent.com/42789819/115149387-d42e1980-a09e-11eb-88e3-94ca9b5b604b.png>](https://apps.apple.com/us/app/id1576807697)
 
-## Development Environment and Using Library
+<br>
 
-* Development Environment  
+## Development Environment & Libraries
+
+### Development Environment  
 ![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg) ![iOS](https://img.shields.io/badge/Platform-iOS-black.svg)
 
 
-* Using Library  
+### Libraries
 
-  | 라이브러리(Library) | 목적(Purpose) | 버전(Version) |
+  | 이름 | 목적 | 사용 버전 |
   |:---:|:----------:|:----:|
   | RxSwift   | 비동기 처리 | 6.2.0|
   | RxCocoa  | View 처리 | 6.2.0 |
   | Firebase  | Database 및 이벤트 로깅 | 8.6.0 |
   | Firebase/Auth | 게임센터 로그인 연동  | 8.6.0 |
 
-## Game Scenes
+
+<br>
+
+
+## Scenes & Features
 
 ### Intro
 
@@ -38,17 +44,20 @@
 |<img src="https://user-images.githubusercontent.com/72188416/128887015-3a116716-880f-43c1-a7de-c57da9e6196e.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/128888308-4f69f5dd-bb53-4bb4-9c73-ebabe09b9578.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/130058366-00825062-a9dc-4280-80b3-5b0be8859fca.png" width="250">|
 |:---:|:---:|:---:|
 |Launch|Story|Loading|
+|- Launch Screen 제공|- 앱 첫 실행 시 게임 스토리 제공<br>- 스킵 가능|- Firebase/Coredata 데이터 로드 제공 <br> - 애플 게임 센터 로그인 제공 <br> - 오프라인 플레이 가능|
 
 
 ### Main & Menu
 |<img src="https://user-images.githubusercontent.com/72188416/129713409-905042f7-35e5-418c-b030-7344d8d97517.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713406-530c45fb-ed29-4daf-9dca-191f5b764703.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/128892470-01bb0fe3-5d16-47c9-bbd1-3f062e1343a6.png" width="250">|
 |:---:|:---:|:---:|
 |Title|Item|Reward|
+|- 각종 메뉴 및 게임 화면 이동 제어|- 에너지를 사용한 아이템 업그레이드 제공|- 구글 애드몹 연동 보상 광고 제공 <br> - 매일 자정 새로운 리워드 제공|
 
 
 |<img src="https://user-images.githubusercontent.com/74946802/127594351-73704d42-d60a-4ce4-a2d0-c965bd517975.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713402-2a5d35a2-cab7-40b3-b786-743d7136a562.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/130058393-5b8059d4-db5c-414e-b0c8-2c1bad302c4e.png" width="250">|
 |:---:|:---:|:---:|
 |Ranking|Setting|How To|
+|- 온라인 플레이 시 게임센터 랭킹 제공 <br> - All time & Monthly Ranking|- BGM, 효과음, 진동 설정 가능 <br> - 게임 스토리 재시청 제공|- 게임 진행 방법 제공|
 
 
 
@@ -57,10 +66,12 @@
 |<img src="https://user-images.githubusercontent.com/72188416/129713395-2e62200e-ecc1-4fcf-83ee-1f7191805f9d.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713399-5c7b7eca-535c-4939-b01f-663c93e1c44d.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129714739-8e79e4d4-2d77-4b0b-a167-c78cf26d9f13.png" width="250">|
 |:---:|:---:|:---:|
 |Game1|Game2|Fever|
+|- 게임 시작 전 준비 시간 제공|- 유저 하이스코어 연동|- 콤보 달성 시 피버 모드 제공|
 
 |<img src="https://user-images.githubusercontent.com/74946802/127594356-583622b3-0525-4ee3-9d67-6fb2c59edb74.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713382-92b9bde5-d808-44eb-bbe8-1b5580b3dde2.png" width="250">|
 |:---:|:---:|
 |Pause|GameOver|
+|- 게임 정지 기능 제공|- 랭킹 및 에너지 자동 저장 제공 <br> - 점수에 따른 게임오버 스토리|
 
 ---
 
@@ -70,7 +81,7 @@
 |<img src="https://user-images.githubusercontent.com/74946802/127593187-e129cd8a-9146-4e8d-a283-cf3db288b11b.jpeg" width="400">| <img src="https://user-images.githubusercontent.com/74946802/127593249-62465ed4-d221-4543-a7b6-e777ce6c9cc5.jpeg" width="400">|
 |:------:|:---:|
 |**WooSeok** | **Song**|
-|앱 개발 / 앱 기획 / 내러티브 기획|앱 개발 / 앱 기획 / 픽셀아트 및 일러스트|
+|- 앱 개발 <br> - 앱 기획 <br> - 내러티브 기획|- 앱 개발 <br> - 앱 기획 <br> - 픽셀아트 및 일러스트|
 |[github](https://github.com/torch-ray)|[github](https://github.com/eeeesong)|
 
 
