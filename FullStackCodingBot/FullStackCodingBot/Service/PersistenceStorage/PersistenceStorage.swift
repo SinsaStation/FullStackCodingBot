@@ -42,13 +42,32 @@ final class PersistenceStorage: PersistenceStorageType {
     
     @discardableResult
     func update(units: [Unit]) -> Observable<[Unit]> {
-        unitStore = units
+        unitStore = filtered(units)
         unitList.onNext(unitStore)
         
         units.forEach { unit in
             try? updateUnit(to: unit)
         }
         return Observable.just(units)
+    }
+    
+    private func filtered(_ units: [Unit]) -> [Unit] {
+        if units.count == UnitInfo.allCases.count {
+            return units
+        }
+        
+        // 1.0.2 #180 중복 유닛 생성 버그 -> 업그레이드된 유닛이 있을 경우 레벨이 높은 유닛으로 storage 생성
+        var finalUnits = Unit.initialValues()
+        
+        units.forEach { unit in
+            let currentId = unit.uuid
+            let currentLevel = unit.level
+            let currentHighestLevel = finalUnits[currentId].level
+            if currentLevel >= currentHighestLevel {
+                finalUnits[currentId] = unit
+            }
+        }
+        return finalUnits
     }
 
     @discardableResult
