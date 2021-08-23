@@ -54,7 +54,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BGM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="pc7-55-NOD">
                                                                 <rect key="frame" x="10.000000000000004" y="13.333333333333314" width="46.333333333333343" height="28"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOk-q8-wvL">
@@ -65,7 +65,6 @@
                                                                 </connections>
                                                             </switch>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                         <constraints>
                                                             <constraint firstItem="tOk-q8-wvL" firstAttribute="centerY" secondItem="Uzy-iy-NxM" secondAttribute="centerY" id="9Z2-oD-FGm"/>
                                                             <constraint firstItem="tOk-q8-wvL" firstAttribute="width" secondItem="Uzy-iy-NxM" secondAttribute="width" multiplier="0.188462" id="FVr-rm-zpj"/>
@@ -83,7 +82,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="gdp-Bo-9rR">
                                                                 <rect key="frame" x="9.9999999999999964" y="12.999999999999998" width="58.666666666666657" height="28.333333333333329"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dab-hg-br2">
@@ -94,7 +93,6 @@
                                                                 </connections>
                                                             </switch>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                         <constraints>
                                                             <constraint firstItem="gdp-Bo-9rR" firstAttribute="leading" secondItem="xPW-GJ-SuY" secondAttribute="leading" constant="10" id="4pe-SB-wqq"/>
                                                             <constraint firstItem="Dab-hg-br2" firstAttribute="width" secondItem="xPW-GJ-SuY" secondAttribute="width" multiplier="0.188462" id="5vA-ul-g5c"/>
@@ -112,7 +110,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="XC2-eq-Yae">
                                                                 <rect key="frame" x="10" y="13.333333333333313" width="79" height="28.333333333333329"/>
                                                                 <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHR-eI-h0j">
@@ -123,7 +121,6 @@
                                                                 </connections>
                                                             </switch>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                         <constraints>
                                                             <constraint firstItem="AHR-eI-h0j" firstAttribute="width" secondItem="La1-hb-TbD" secondAttribute="width" multiplier="0.188462" id="2fl-9J-vjB"/>
                                                             <constraint firstItem="AHR-eI-h0j" firstAttribute="centerY" secondItem="La1-hb-TbD" secondAttribute="centerY" id="Kwm-gj-m7S"/>
@@ -157,7 +154,7 @@
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEm-Mw-hHu">
                                                                 <rect key="frame" x="7.3333333333333428" y="2.6666666666666288" width="284.66666666666663" height="106.66666666666667"/>
-                                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                                <color key="backgroundColor" name="grey3"/>
                                                                 <string key="text">
 ** Credit **
 
@@ -186,7 +183,6 @@ https://www.zapsplat.com
                                                                 </userDefinedRuntimeAttributes>
                                                             </textView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                         <constraints>
                                                             <constraint firstItem="tEm-Mw-hHu" firstAttribute="centerY" secondItem="bOn-rE-BNj" secondAttribute="centerY" id="0Gt-sT-do0"/>
                                                             <constraint firstItem="tEm-Mw-hHu" firstAttribute="width" secondItem="bOn-rE-BNj" secondAttribute="width" multiplier="0.95" id="Jg0-5x-r5I"/>
@@ -195,7 +191,7 @@ https://www.zapsplat.com
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="xPW-GJ-SuY" firstAttribute="height" secondItem="Ehr-ln-dAO" secondAttribute="height" multiplier="0.165" id="Gdh-hE-m6R"/>
                                                     <constraint firstItem="La1-hb-TbD" firstAttribute="height" secondItem="Ehr-ln-dAO" secondAttribute="height" multiplier="0.165" id="dKI-QH-XU8"/>
@@ -204,7 +200,7 @@ https://www.zapsplat.com
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <color key="backgroundColor" name="grey2"/>
                                         <constraints>
                                             <constraint firstItem="Ehr-ln-dAO" firstAttribute="trailing" secondItem="uEH-gL-mu9" secondAttribute="trailing" id="TQ6-6d-YWq"/>
                                             <constraint firstItem="Ehr-ln-dAO" firstAttribute="bottom" secondItem="uEH-gL-mu9" secondAttribute="bottom" id="afu-kT-kB2"/>
@@ -218,11 +214,11 @@ https://www.zapsplat.com
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="iw3-Oc-Ki9">
                                         <rect key="frame" x="61.666666666666686" y="6.6666666666666856" width="176" height="42.666666666666664"/>
                                         <fontDescription key="fontDescription" name="JoystixMonospace-Regular" family="Joystix" pointSize="20"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <color key="backgroundColor" name="grey1"/>
                                 <constraints>
                                     <constraint firstItem="EIc-Ll-MrS" firstAttribute="leading" secondItem="3mJ-nZ-ogF" secondAttribute="leading" multiplier="1.05" constant="1" id="AiO-l9-AQ1"/>
                                     <constraint firstItem="eXS-Ux-giF" firstAttribute="leading" secondItem="3mJ-nZ-ogF" secondAttribute="leading" id="JEd-X9-My3"/>
@@ -296,12 +292,12 @@ https://www.zapsplat.com
                                 <subviews>
                                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="How To Play" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lae-dn-II9">
                                         <rect key="frame" x="9.6666666666666572" y="12.666666666666643" width="366" height="232.33333333333337"/>
-                                        <color key="textColor" systemColor="labelColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="21"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Lae-dn-II9" firstAttribute="height" secondItem="FMQ-D9-nCe" secondAttribute="height" multiplier="0.9" id="BJA-Vi-EeP"/>
                                     <constraint firstItem="Lae-dn-II9" firstAttribute="centerX" secondItem="FMQ-D9-nCe" secondAttribute="centerX" id="krD-Mk-kdh"/>
@@ -483,7 +479,7 @@ https://www.zapsplat.com
                                                         <color key="highlightedColor" name="AccentColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                <color key="backgroundColor" name="grey3"/>
                                                 <constraints>
                                                     <constraint firstItem="V0B-1R-b2I" firstAttribute="centerX" secondItem="yT4-FW-kDD" secondAttribute="centerX" id="1Sq-G6-Eag"/>
                                                     <constraint firstItem="V0B-1R-b2I" firstAttribute="top" secondItem="gLZ-1e-hcQ" secondAttribute="bottom" constant="15" id="IY6-Ur-FxE"/>
@@ -1407,6 +1403,15 @@ https://www.zapsplat.com
         <namedColor name="digitalgreen">
             <color red="0.1289999932050705" green="0.96100002527236938" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="grey1">
+            <color red="0.73315194977916343" green="0.73567869706712319" blue="0.74325893893100248" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="grey2">
+            <color red="0.89313560812223425" green="0.88890273794156027" blue="0.89736847830290845" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="grey3">
+            <color red="0.9533644059250872" green="0.94884609120506314" blue="0.95788272064511137" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="lightbrown">
             <color red="0.66699999570846558" green="0.51800000667572021" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1421,18 +1426,6 @@ https://www.zapsplat.com
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
