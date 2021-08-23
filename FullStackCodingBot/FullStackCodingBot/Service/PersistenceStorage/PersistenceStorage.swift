@@ -41,13 +41,35 @@ final class PersistenceStorage: PersistenceStorageType {
     }
     
     @discardableResult
-    func append(unit: Unit) -> Observable<Unit> {
-        unitStore.append(unit)
+    func update(units: [Unit]) -> Observable<[Unit]> {
+        unitStore = filtered(units)
         unitList.onNext(unitStore)
-        try? updateUnit(to: unit)
-        return Observable.just(unit)
+        
+        units.forEach { unit in
+            try? updateUnit(to: unit)
+        }
+        return Observable.just(units)
     }
     
+    private func filtered(_ units: [Unit]) -> [Unit] {
+        if units.count == UnitInfo.allCases.count {
+            return units
+        }
+        
+        // 1.0.2 #180 중복 유닛 생성 버그 -> 업그레이드된 유닛이 있을 경우 레벨이 높은 유닛으로 storage 생성
+        var finalUnits = Unit.initialValues()
+        
+        units.forEach { unit in
+            let currentId = unit.uuid
+            let currentLevel = unit.level
+            let currentHighestLevel = finalUnits[currentId].level
+            if currentLevel >= currentHighestLevel {
+                finalUnits[currentId] = unit
+            }
+        }
+        return finalUnits
+    }
+
     @discardableResult
     func listUnit() -> Observable<[Unit]> {
         return unitList
@@ -100,9 +122,8 @@ final class PersistenceStorage: PersistenceStorageType {
             return subject.ignoreElements().asCompletable()
         }
         
-        for unitInfo in fetchedUnitInfo {
-            self.append(unit: DataFormatManager.transformToUnit(unitInfo))
-        }
+        let units = fetchedUnitInfo.map { DataFormatManager.transformToUnit($0) }
+        update(units: units)
         
         guard let fetchedMoneyInfo = try? fetchMoneyInfo().first,
               let fetchedScoreInfo = try? fetchScoreInfo().first else {
@@ -119,11 +140,10 @@ final class PersistenceStorage: PersistenceStorageType {
     func setupInitialData() -> Completable {
         let subject = PublishSubject<Void>()
         
-        for unit in Unit.initialValues() {
-            try? appendUnitInfo(unit)
-            append(unit: unit)
-        }
+        let initialUnits = Unit.initialValues()
+        update(units: initialUnits)
         
+        try? appendUnitInfos(initialUnits)
         try? appendMoenyInfo(0)
         try? appendScoreInfo(0)
         
@@ -177,11 +197,13 @@ private extension PersistenceStorage {
     
     private func updateUnit(to unit: Unit) throws {
         guard let fetchedUnit = try? fetchUnit() else { return }
+        
         for info in fetchedUnit where info.uuid == unit.uuid {
             info.setValue(unit.uuid, forKey: "uuid")
             info.setValue(unit.image, forKey: "image")
             info.setValue(unit.level, forKey: "level")
         }
+        
         do {
             try context.save()
         } catch {
@@ -210,22 +232,30 @@ private extension PersistenceStorage {
         }
     }
     
-    private func appendUnitInfo(_ unit: Unit) throws {
-        if let entity = NSEntityDescription.entity(forEntityName: "ItemInformation", in: context) {
-            let info = NSManagedObject(entity: entity, insertInto: context)
-            info.setValue(unit.uuid, forKey: "uuid")
-            info.setValue(unit.image, forKey: "image")
-            info.setValue(unit.level, forKey: "level")
-            
-            do {
-                try context.save()
-            } catch {
-                throw CoreDataError.cannotSaveData
+    private func appendUnitInfos(_ units: [Unit]) throws {
+        let fetchedUnit = try? fetchUnit().first
+        guard fetchedUnit == nil else { return }
+        
+        try units.forEach { unit in
+            if let entity = NSEntityDescription.entity(forEntityName: "ItemInformation", in: context) {
+                let info = NSManagedObject(entity: entity, insertInto: context)
+                info.setValue(unit.uuid, forKey: "uuid")
+                info.setValue(unit.image, forKey: "image")
+                info.setValue(unit.level, forKey: "level")
+                
+                do {
+                    try context.save()
+                } catch {
+                    throw CoreDataError.cannotSaveData
+                }
             }
         }
     }
     
     private func appendMoenyInfo(_ money: Int) throws {
+        let fetchedMoney = try? fetchMoneyInfo().first
+        guard fetchedMoney == nil else { return }
+        
         if let entity = NSEntityDescription.entity(forEntityName: "MoneyInformation", in: context) {
             let info = NSManagedObject(entity: entity, insertInto: context)
             info.setValue(money, forKey: "myMoney")
@@ -242,6 +272,9 @@ private extension PersistenceStorage {
     }
     
     private func appendScoreInfo(_ score: Int) throws {
+        let fetchedScore = try? fetchScoreInfo().first
+        guard fetchedScore == nil else { return }
+        
         if let entity = NSEntityDescription.entity(forEntityName: "ScoreInformation", in: context) {
             let info = NSManagedObject(entity: entity, insertInto: context)
             info.setValue(score, forKey: "myScore")
