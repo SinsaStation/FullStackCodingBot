@@ -172,7 +172,6 @@ extension MainViewModel: GKGameCenterControllerDelegate {
         }
         
         storage.update(units: info.units)
-        // info.units.forEach { storage.append(unit: $0) }
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
     }
