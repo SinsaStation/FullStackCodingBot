@@ -5,11 +5,11 @@
 > 
 > `Made by` Team Sinsa-Station - [Team Wiki](https://github.com/SinsaStation/FullStackCodingBot/wiki)
 >  
->  `기획기간` **2021.06.16 ~ 2021.07.05**
+>  `Design` **2021.06.16 ~ 2021.07.05**
 >    
->  `개발기간` **2021.07.06 ~ 2021.08.20**   
+>  `Develop` **2021.07.06 ~ 2021.08.20**   
 >  
->  `배포날짜` **2021.08.xx**  
+>  `Release` **2021.08.23**  
 
 <img width="1674" alt="스크린샷 2021-08-20 오후 12 12 56" src="https://user-images.githubusercontent.com/74946802/130173474-f589dad6-26cf-4f27-a71d-323f8e459382.png">
 
