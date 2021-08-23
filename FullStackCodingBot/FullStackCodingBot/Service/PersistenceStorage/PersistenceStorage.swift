@@ -259,7 +259,7 @@ private extension PersistenceStorage {
         if let entity = NSEntityDescription.entity(forEntityName: "MoneyInformation", in: context) {
             let info = NSManagedObject(entity: entity, insertInto: context)
             info.setValue(money, forKey: "myMoney")
-            info.setValue(Date(), forKey: "lastUpdated")
+            info.setValue(Date.init(timeIntervalSince1970: 0), forKey: "lastUpdated")
             
             do {
                 try context.save()
