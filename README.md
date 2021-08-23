@@ -60,15 +60,13 @@
 |- 온라인 플레이 시 게임센터 랭킹 제공 <br> - All time & Monthly Ranking|- BGM, 효과음, 진동 설정 가능 <br> - 게임 스토리 재시청 제공|- 게임 진행 방법 제공|
 
 
-
-
 ### Game
-|<img src="https://user-images.githubusercontent.com/72188416/129713395-2e62200e-ecc1-4fcf-83ee-1f7191805f9d.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713399-5c7b7eca-535c-4939-b01f-663c93e1c44d.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129714739-8e79e4d4-2d77-4b0b-a167-c78cf26d9f13.png" width="250">|
+|<img src="https://user-images.githubusercontent.com/72188416/129713395-2e62200e-ecc1-4fcf-83ee-1f7191805f9d.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/130390356-b29dd720-005f-4dbb-ad82-cad4642109d0.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/130390353-ab1bd185-a095-4dc3-93d1-a69bddd96bc9.png" width="250">|
 |:---:|:---:|:---:|
 |Game1|Game2|Fever|
-|- 게임 시작 전 준비 시간 제공|- 유저 하이스코어 연동|- 콤보 달성 시 피버 모드 제공|
+|- 게임 시작 전 준비 시간 제공|- 게임 플레이 제공 <br> - 유저 하이스코어 연동|- 콤보 달성 시 피버 모드 제공|
 
-|<img src="https://user-images.githubusercontent.com/74946802/127594356-583622b3-0525-4ee3-9d67-6fb2c59edb74.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/129713382-92b9bde5-d808-44eb-bbe8-1b5580b3dde2.png" width="250">|
+|<img src="https://user-images.githubusercontent.com/74946802/127594356-583622b3-0525-4ee3-9d67-6fb2c59edb74.png" width="250">|<img src="https://user-images.githubusercontent.com/72188416/130390396-f4eee1d0-aa17-49e6-a6c4-449f015846a9.png" width="250">|
 |:---:|:---:|
 |Pause|GameOver|
 |- 게임 정지 기능 제공|- 랭킹 및 에너지 자동 저장 제공 <br> - 점수에 따른 게임오버 스토리|
