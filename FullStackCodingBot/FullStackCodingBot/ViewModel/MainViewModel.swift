@@ -89,11 +89,12 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     
     private func setupAppleGameCenterLogin() {
         GKLocalPlayer.local.authenticateHandler = { [unowned self] _, error in
+            
             guard error == nil, GKLocalPlayer.local.isAuthenticated else {
                 self.loadOffline()
                 return
             }
-            
+ 
             GameCenterAuthProvider.getCredential { credential, error in
                 guard error == nil, let credential = credential else {
                     self.loadOffline()
@@ -105,7 +106,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                         self.loadOffline()
                         return
                     }
-                    loadOnline()
+                    loadOnline(user?.user.uid)
                 }
             }
         }
@@ -119,11 +120,11 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                                     animated: true)
     }
     
-    private func loadOnline() {
+    private func loadOnline(_ uuid: String?) {
         if !userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce) {
             storage.setupInitialData()
         }
-        loadFromFirebase()
+        loadFromFirebase(uuid)
     }
     
     private func loadFromCoredata() {
@@ -137,14 +138,14 @@ extension MainViewModel: GKGameCenterControllerDelegate {
         firebaseDidLoad.accept(true)
     }
     
-    private func loadFromFirebase() {
+    private func loadFromFirebase(_ uuid: String?) {
         if firebaseDidLoad.value { return }
-        getUserInformation()
+        getUserInformation(uuid)
         userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
     }
     
-    private func getUserInformation() {
-        database.getFirebaseData()
+    private func getUserInformation(_ uuid: String?) {
+        database.getFirebaseData(uuid!)
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] data in
                 self.updateDatabaseInformation(data)
@@ -165,7 +166,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
             return
         }
         
-        info.units.forEach { storage.append(unit: $0) }
+        storage.update(units: info.units)
         storage.raiseMoney(by: info.money)
         storage.updateHighScore(new: info.score)
     }

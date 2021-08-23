@@ -23,9 +23,9 @@ final class DatabaseManager: DatabaseManagerType {
     }
     
     @discardableResult
-    func getFirebaseData() -> Observable<NetworkDTO> {
+    func getFirebaseData(_ uuid: String) -> Observable<NetworkDTO> {
         Observable.create { [unowned self] observer in
-            self.ref.child("users").child(uid).getData { error, snapshot in
+            self.ref.child("users").child(uuid).getData { error, snapshot in
                 if let error = error {
                     observer.onError(error)
                 }
