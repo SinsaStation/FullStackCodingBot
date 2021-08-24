@@ -14,6 +14,8 @@ final class DatabaseManager: DatabaseManagerType {
     }
     
     func updateDatabase(_ info: NetworkDTO) {
+        guard uid != "" else { return }
+        
         let unitData = try? DataFormatManager.transformToString(info.units)
         let moneyData = try? DataFormatManager.transformToString(info.money)
         let scoreData = try? DataFormatManager.transformToString(info.score)
