@@ -91,25 +91,20 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     private func setupAppleGameCenterLogin() {
         GKLocalPlayer.local.authenticateHandler = { [unowned self] gcViewController, error in
             
-            if GKLocalPlayer.local.isAuthenticated {
-                print("1111 Authenticated to Game Center")
-            } else if let gcViewController = gcViewController {
+            if let gcViewController = gcViewController {
                 let scene = Scene.gameCenter(gcViewController)
                 self.sceneCoordinator.transition(to: scene, using: .fullScreen, with: StoryboardType.main, animated: false)
             } else if let error = error {
-                print("\(error)")
-            } else {
-                print("Unknow Error")
+                Firebase.Analytics.logEvent("CancelGameCenter", parameters: ["ErrorMessage": "\(error.localizedDescription)"])
             }
  
             GameCenterAuthProvider.getCredential { credential, error in
                 
                 if let error = error {
-                    print(error)
+                    Firebase.Analytics.logEvent("AuthError", parameters: ["ErrorMessage": "\(error.localizedDescription)"])
                 }
                 
                 guard let credential = credential else {
-                    print("No credential")
                     self.loadOffline()
                     return
                 }
@@ -117,13 +112,11 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                 Auth.auth().signIn(with: credential) { [unowned self] user, error in
                     
                     if let error = error {
-                        print("\(error)")
+                        Firebase.Analytics.logEvent("SignInError", parameters: ["ErrorMessage": "\(error.localizedDescription)"])
                     }
                     
                     if let user = user {
                         loadOnline(user.user.uid)
-                    } else {
-                        self.loadOffline()
                     }
                 }
             }
