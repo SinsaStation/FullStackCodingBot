@@ -85,6 +85,7 @@ final class MainViewModel: AdViewModel {
 extension MainViewModel: GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        self.sceneCoordinator.close(animated: false)
     }
     
     private func setupAppleGameCenterLogin() {
@@ -109,6 +110,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                 
                 guard let credential = credential else {
                     print("No credential")
+                    self.loadOffline()
                     return
                 }
                 
