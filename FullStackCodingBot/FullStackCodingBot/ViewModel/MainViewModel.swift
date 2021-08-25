@@ -88,25 +88,41 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     }
     
     private func setupAppleGameCenterLogin() {
-        GKLocalPlayer.local.authenticateHandler = { [unowned self] _, error in
+        GKLocalPlayer.local.authenticateHandler = { [unowned self] gcViewController, error in
             
-            guard error == nil, GKLocalPlayer.local.isAuthenticated else {
-                self.loadOffline()
-                return
+            if GKLocalPlayer.local.isAuthenticated {
+                print("1111 Authenticated to Game Center")
+            } else if let gcViewController = gcViewController {
+                let scene = Scene.gameCenter(gcViewController)
+                self.sceneCoordinator.transition(to: scene, using: .fullScreen, with: StoryboardType.main, animated: false)
+            } else if let error = error {
+                print("\(error)")
+            } else {
+                print("Unknow Error")
             }
  
             GameCenterAuthProvider.getCredential { credential, error in
-                guard error == nil, let credential = credential else {
-                    self.loadOffline()
+                
+                if let error = error {
+                    print(error)
+                }
+                
+                guard let credential = credential else {
+                    print("No credential")
                     return
                 }
                 
                 Auth.auth().signIn(with: credential) { [unowned self] user, error in
-                    guard error == nil, user != nil else {
-                        self.loadOffline()
-                        return
+                    
+                    if let error = error {
+                        print("\(error)")
                     }
-                    loadOnline(user?.user.uid)
+                    
+                    if let user = user {
+                        loadOnline(user.user.uid)
+                    } else {
+                        self.loadOffline()
+                    }
                 }
             }
         }

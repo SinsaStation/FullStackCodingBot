@@ -14,6 +14,7 @@ enum Scene {
     case pause(PauseViewModel)
     case gameOver(GameOverViewModel)
     case alert(AlertMessage)
+    case gameCenter(UIViewController)
 }
 
 extension Scene {
@@ -112,6 +113,9 @@ extension Scene {
             }
             howToVC.bind(viewModel: viewModel)
             return howToVC
+            
+        case .gameCenter(let viewController):
+            return viewController
         }
     }
 }
