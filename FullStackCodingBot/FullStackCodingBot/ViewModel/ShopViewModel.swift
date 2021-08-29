@@ -2,6 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Action
+import Firebase
 import GoogleMobileAds
 
 final class ShopViewModel: AdViewModel {
@@ -26,23 +27,25 @@ final class ShopViewModel: AdViewModel {
          database: DatabaseManagerType,
          cancelAction: CocoaAction? = nil,
          soundEffectType: MainSoundEffect = .reward) {
-        
         self.cancelAction = CocoaAction {
             if let action = cancelAction {
                 action.execute(())
             }
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
-        
         self.soundEffectStation = SingleSoundEffectStation(soundEffectType: soundEffectType)
-        
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
-        execute()
-        
     }
     
     func execute() {
+        bindAdStorage()
+    }
+    
+    private func bindAdStorage() {
         adStorage.setNewRewardsIfPossible(with: .none)
+            .subscribe(onError: { error in
+                        Firebase.Analytics.logEvent("RewardsError", parameters: ["ErrorMessage": "\(error)"])})
+            .disposed(by: rx.disposeBag)
     }
     
     func adDidFinished(_ finishedAd: GADRewardedAd) {
