@@ -47,6 +47,12 @@ final class MainViewController: UIViewController, ViewModelBindableType {
                 guard isLoaded else { return }
                 self.unsetLoadingView()
             }).disposed(by: rx.disposeBag)
+        
+        viewModel.rewardAvailable
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [unowned self] isAvailable in
+                self.setRewardPopup(withState: isAvailable)
+            }).disposed(by: rx.disposeBag)
     }
 }
 
@@ -77,6 +83,10 @@ extension MainViewController {
     
     private func unsetLoadingView() {
         loadingView.hide()
+    }
+    
+    private func setRewardPopup(withState isAvailable: Bool) {
+        isAvailable ? rewardPopupView.show() : rewardPopupView.hide()
     }
 }
 

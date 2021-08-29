@@ -12,12 +12,22 @@ final class MainViewModel: AdViewModel {
     
     lazy var settingSwitchState = BehaviorRelay<SettingInformation>(value: settingInfo)
     let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
+    private(set) var rewardAvailable = BehaviorRelay<Bool>(value: false)
     
     init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, settings: SettingInformation) {
         self.settingInfo = settings
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
         
+        bindRewardState()
         setupAppleGameCenterLogin()
+    }
+    
+    private func bindRewardState() {
+        adStorage.availableItems()
+            .subscribe(onNext: { [weak self] items in
+                let rewardState = !ShopItem.isAllTaken(items)
+                self?.rewardAvailable.accept(rewardState)
+            }).disposed(by: rx.disposeBag)
     }
     
     func makeMoveAction(to viewController: ViewControllerType) {

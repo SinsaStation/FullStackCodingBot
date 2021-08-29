@@ -19,4 +19,15 @@ enum ShopItem {
             return "item_gift_loading"
         }
     }
+    
+    static func isAllTaken(_ items: [ShopItem]) -> Bool {
+        return items.filter { shopItem in
+                switch shopItem {
+                case .taken:
+                    return false
+                default:
+                    return true
+                }
+            }.isEmpty
+    }
 }
