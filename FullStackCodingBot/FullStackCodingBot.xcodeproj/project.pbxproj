@@ -71,6 +71,7 @@
 		E4150E9F26BE44AC0041DD32 /* PersonStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4150E9E26BE44AC0041DD32 /* PersonStoryView.swift */; };
 		E4150EA126BE44BD0041DD32 /* FullImageStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4150EA026BE44BD0041DD32 /* FullImageStoryView.swift */; };
 		E4150EA426BE9A540041DD32 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4150EA326BE9A540041DD32 /* Line.swift */; };
+		E418F36A26DB5D8000F35AFB /* RewardPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418F36926DB5D8000F35AFB /* RewardPopupView.swift */; };
 		E41C85D4269BFB84008F2E91 /* GameUnitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D3269BFB84008F2E91 /* GameUnitManager.swift */; };
 		E41C85D6269C1C35008F2E91 /* GameOverButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D5269C1C35008F2E91 /* GameOverButtonController.swift */; };
 		E41C85D8269C252D008F2E91 /* GameUnitManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */; };
@@ -216,6 +217,7 @@
 		E4150E9E26BE44AC0041DD32 /* PersonStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonStoryView.swift; sourceTree = "<group>"; };
 		E4150EA026BE44BD0041DD32 /* FullImageStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageStoryView.swift; sourceTree = "<group>"; };
 		E4150EA326BE9A540041DD32 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		E418F36926DB5D8000F35AFB /* RewardPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPopupView.swift; sourceTree = "<group>"; };
 		E41C85D3269BFB84008F2E91 /* GameUnitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnitManager.swift; sourceTree = "<group>"; };
 		E41C85D5269C1C35008F2E91 /* GameOverButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverButtonController.swift; sourceTree = "<group>"; };
 		E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnitManagerType.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 				71307A8826A529F400C3191F /* LevelUpButton.swift */,
 				71307A8A26A52A1F00C3191F /* LevelUpButton.xib */,
 				E4DF614226A93FFB0061F6E9 /* ShopCell.swift */,
+				E418F36926DB5D8000F35AFB /* RewardPopupView.swift */,
 				E4150E9C26BA4A000041DD32 /* Text Animation Views */,
 			);
 			path = Main;
@@ -990,6 +993,7 @@
 				E45B0AC92692F9CF006FDE3D /* Unit.swift in Sources */,
 				E45B0AC72692F42D006FDE3D /* UnitPerspectiveView.swift in Sources */,
 				E41C85D4269BFB84008F2E91 /* GameUnitManager.swift in Sources */,
+				E418F36A26DB5D8000F35AFB /* RewardPopupView.swift in Sources */,
 				71A5518026A91C280083A4B0 /* DatabaseManager.swift in Sources */,
 				E4779C6926983F8000B92D24 /* GameOverViewModel.swift in Sources */,
 				7165CDDF26957DE400891214 /* GameButtonController.swift in Sources */,

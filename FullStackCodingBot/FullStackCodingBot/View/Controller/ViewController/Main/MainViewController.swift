@@ -13,7 +13,8 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var titleView: TypeWriterView!
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var loadingView: LoadingView!
-
+    @IBOutlet weak var rewardPopupView: RewardPopupView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
