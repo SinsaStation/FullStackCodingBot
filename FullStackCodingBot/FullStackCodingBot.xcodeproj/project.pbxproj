@@ -75,6 +75,7 @@
 		E418F36D26DC8BAC00F35AFB /* BackgroundAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418F36C26DC8BAC00F35AFB /* BackgroundAnimation.swift */; };
 		E418F36F26DC8D4800F35AFB /* UnitInfo - keyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418F36E26DC8D4800F35AFB /* UnitInfo - keyColor.swift */; };
 		E418F37326DC95B800F35AFB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418F37226DC95B800F35AFB /* Color.swift */; };
+		E418F37526DC985B00F35AFB /* AverageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418F37426DC985B00F35AFB /* AverageColor.swift */; };
 		E41C85D4269BFB84008F2E91 /* GameUnitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D3269BFB84008F2E91 /* GameUnitManager.swift */; };
 		E41C85D6269C1C35008F2E91 /* GameOverButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D5269C1C35008F2E91 /* GameOverButtonController.swift */; };
 		E41C85D8269C252D008F2E91 /* GameUnitManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */; };
@@ -224,6 +225,7 @@
 		E418F36C26DC8BAC00F35AFB /* BackgroundAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAnimation.swift; sourceTree = "<group>"; };
 		E418F36E26DC8D4800F35AFB /* UnitInfo - keyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnitInfo - keyColor.swift"; sourceTree = "<group>"; };
 		E418F37226DC95B800F35AFB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E418F37426DC985B00F35AFB /* AverageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColor.swift; sourceTree = "<group>"; };
 		E41C85D3269BFB84008F2E91 /* GameUnitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnitManager.swift; sourceTree = "<group>"; };
 		E41C85D5269C1C35008F2E91 /* GameOverButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverButtonController.swift; sourceTree = "<group>"; };
 		E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnitManagerType.swift; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 				E43B649F26ABB4A2001D9896 /* Image.swift */,
 				E4CA08B826A8287B00AA6F03 /* Font.swift */,
 				E418F37226DC95B800F35AFB /* Color.swift */,
+				E418F37426DC985B00F35AFB /* AverageColor.swift */,
 				E4D7C64A26953C6200D58BA2 /* ScreenSize.swift */,
 			);
 			path = "Extensions & Contants";
@@ -1012,6 +1015,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				719A6A9B26B11208006AC991 /* NetworkDTO.swift in Sources */,
+				E418F37526DC985B00F35AFB /* AverageColor.swift in Sources */,
 				E43B64A226ABD81C001D9896 /* GameBackgroundView.swift in Sources */,
 				E4C2C34D26A24666007BDF81 /* SkyView.swift in Sources */,
 				7177AEBC26B953B4005A4465 /* SettingInformation.swift in Sources */,

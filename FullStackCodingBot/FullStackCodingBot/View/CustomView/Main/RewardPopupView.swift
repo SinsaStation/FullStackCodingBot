@@ -12,7 +12,7 @@ final class RewardPopupView: UIView {
         isHidden = false
         backgroundView.layer.removeAllAnimations()
         let backgroundAnimation = BackgroundAnimation.dissolve(duration: 10,
-                                                               colors: BackgroundAnimation.Colors.fever,
+                                                               colors: BackgroundAnimation.Colors.energy,
                                                                repeatCount: .infinity)
         backgroundView.layer.add(backgroundAnimation, forKey: BackgroundAnimation.key)
     }

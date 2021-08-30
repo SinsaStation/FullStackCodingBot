@@ -1,7 +1,8 @@
 import UIKit
 
 extension UnitInfo {
-    var keyColor: UIColor {
-        return UIImage(named: self.detail.image)?.averageColor ?? UIColor.black
+    func keyColor(blend: UIColor.Blend = .normal) -> UIColor {
+        let unitImage = UIImage(named: self.detail.image)
+        return UIColor.average(from: unitImage, blend: blend)
     }
 }

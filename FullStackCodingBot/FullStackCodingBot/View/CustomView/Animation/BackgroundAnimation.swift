@@ -5,7 +5,8 @@ struct BackgroundAnimation {
     static let key = #keyPath(CALayer.backgroundColor)
     
     enum Colors {
-        static let fever = UnitInfo.allCases.map { $0.keyColor }
+        static let fever = UnitInfo.allCases.map { $0.keyColor(blend: .normal) }
+        static let energy = UnitInfo.allCases.map { $0.keyColor(blend: .brighten) }
     }
     
     static func dissolve(duration: Double, colors: [UIColor], repeatCount: Float) -> CAKeyframeAnimation {

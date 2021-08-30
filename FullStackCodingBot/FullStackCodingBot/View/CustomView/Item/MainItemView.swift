@@ -42,7 +42,7 @@ final class MainItemView: UIView {
     }
     
     func startAnimation() {
-        let circleColor = itemImageView.image?.averageColor ?? UIColor.white
+        let circleColor = UIColor.average(from: itemImageView.image)
         circleAnimation(color: circleColor)
     }
     
