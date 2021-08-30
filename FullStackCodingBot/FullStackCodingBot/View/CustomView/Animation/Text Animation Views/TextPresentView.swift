@@ -6,7 +6,7 @@ class TextPresentView: UIView {
         let textLayer = CATextLayer()
         textLayer.font = UIFont(name: fontName, size: Defaults.fixedFont)
         textLayer.alignmentMode = alignMode
-        textLayer.foregroundColor = Defaults.textColor.cgColor
+        textLayer.foregroundColor = UIColor.match.cgColor
         layer.addSublayer(textLayer)
         return textLayer
     }()
@@ -16,8 +16,6 @@ class TextPresentView: UIView {
     private var fontName = Font.joystix
     
     enum Defaults {
-        static let textColor = UIColor(named: "digitalgreen") ?? UIColor.green
-        static let wrongColor = UIColor(named: "red") ?? UIColor.red
         static let letterCount = 15
         static let fixedFont = FontStyle.caption.size
         static let maxFont: CGFloat = 17
@@ -41,7 +39,7 @@ class TextPresentView: UIView {
         resizeTextLayer(with: text)
     }
     
-    func show(text fullText: String, color: UIColor = Defaults.textColor) {
+    func show(text fullText: String, color: UIColor = .match) {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
 

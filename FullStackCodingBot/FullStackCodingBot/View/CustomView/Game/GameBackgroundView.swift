@@ -2,8 +2,6 @@ import UIKit
 
 final class GameBackgroundView: ReplicateAnimationView {
 
-    private let wrongColor = UIColor(named: "red") ?? UIColor.red
-    
     private lazy var colorLayer: CALayer = {
         let layer = CALayer()
         layer.frame = self.frame
@@ -12,7 +10,7 @@ final class GameBackgroundView: ReplicateAnimationView {
     
     func playWrongMode() {
         let backgroundAnimation = BackgroundAnimation.dissolve(duration: 0.3,
-                                                               colors: [wrongColor, UIColor.darkGray],
+                                                               colors: [UIColor.wrong, UIColor.darkGray],
                                                                repeatCount: 0)
         setNew(animation: backgroundAnimation, key: BackgroundAnimation.key)
     }

@@ -5,7 +5,7 @@ final class FadeInTextView: TextPresentView {
     private let duration: Double = 0.8
     private let opacityKey = #keyPath(CALayer.opacity)
     
-    override func show(text fullText: String, color: UIColor = Defaults.textColor) {
+    override func show(text fullText: String, color: UIColor = .match) {
         super.show(text: fullText, color: color)
         textLayer.add(newFadeInAnimation(for: duration), forKey: opacityKey)
     }
