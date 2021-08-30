@@ -710,6 +710,9 @@ https://www.zapsplat.com
                                                     <constraint firstItem="i4D-e0-t2a" firstAttribute="centerX" secondItem="3kv-Nf-6aW" secondAttribute="centerX" id="d55-Oz-tdf"/>
                                                     <constraint firstItem="PsB-1D-by7" firstAttribute="height" secondItem="i4D-e0-t2a" secondAttribute="height" multiplier="0.7" id="sa1-61-e95"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="backgroundView" destination="PsB-1D-by7" id="SkF-B0-wYO"/>
+                                                </connections>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xmD-fg-w6S" userLabel="Main Menu Button Stack View">
                                                 <rect key="frame" x="4" y="86.666666666666629" width="398.66666666666669" height="127.33333333333331"/>
