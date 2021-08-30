@@ -14,7 +14,7 @@ final class GameOverViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var totalCoinLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var highScoreImageView: UIImageView!
-    @IBOutlet weak var dialogView: DialogView!
+    @IBOutlet weak var dialogView: GameOverDialogView!
     @IBOutlet var backgroundView: ReplicateAnimationView!
     @IBOutlet weak var bannerView: GADBannerView!
     

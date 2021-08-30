@@ -1,6 +1,6 @@
 import UIKit
 
-final class DialogView: UIView {
+final class GameOverDialogView: UIView {
     
     @IBOutlet weak var textBox: UIView!
     @IBOutlet weak var speakerImageView: UIImageView!
