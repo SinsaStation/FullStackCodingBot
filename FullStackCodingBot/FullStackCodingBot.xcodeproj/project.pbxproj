@@ -72,6 +72,8 @@
 		E4150EA126BE44BD0041DD32 /* FullImageStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4150EA026BE44BD0041DD32 /* FullImageStoryView.swift */; };
 		E4150EA426BE9A540041DD32 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4150EA326BE9A540041DD32 /* Line.swift */; };
 		E418F36A26DB5D8000F35AFB /* RewardPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418F36926DB5D8000F35AFB /* RewardPopupView.swift */; };
+		E418F36D26DC8BAC00F35AFB /* BackgroundAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418F36C26DC8BAC00F35AFB /* BackgroundAnimation.swift */; };
+		E418F36F26DC8D4800F35AFB /* UnitInfo - keyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418F36E26DC8D4800F35AFB /* UnitInfo - keyColor.swift */; };
 		E41C85D4269BFB84008F2E91 /* GameUnitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D3269BFB84008F2E91 /* GameUnitManager.swift */; };
 		E41C85D6269C1C35008F2E91 /* GameOverButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D5269C1C35008F2E91 /* GameOverButtonController.swift */; };
 		E41C85D8269C252D008F2E91 /* GameUnitManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */; };
@@ -218,6 +220,8 @@
 		E4150EA026BE44BD0041DD32 /* FullImageStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageStoryView.swift; sourceTree = "<group>"; };
 		E4150EA326BE9A540041DD32 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		E418F36926DB5D8000F35AFB /* RewardPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPopupView.swift; sourceTree = "<group>"; };
+		E418F36C26DC8BAC00F35AFB /* BackgroundAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAnimation.swift; sourceTree = "<group>"; };
+		E418F36E26DC8D4800F35AFB /* UnitInfo - keyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnitInfo - keyColor.swift"; sourceTree = "<group>"; };
 		E41C85D3269BFB84008F2E91 /* GameUnitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnitManager.swift; sourceTree = "<group>"; };
 		E41C85D5269C1C35008F2E91 /* GameOverButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverButtonController.swift; sourceTree = "<group>"; };
 		E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnitManagerType.swift; sourceTree = "<group>"; };
@@ -608,6 +612,15 @@
 			path = Story;
 			sourceTree = "<group>";
 		};
+		E418F36B26DC8B8400F35AFB /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				E418F36C26DC8BAC00F35AFB /* BackgroundAnimation.swift */,
+				E418F36E26DC8D4800F35AFB /* UnitInfo - keyColor.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		E45B0AA22692929C006FDE3D = {
 			isa = PBXGroup;
 			children = (
@@ -714,6 +727,7 @@
 		E4D7C6462693E82E00D58BA2 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				E418F36B26DC8B8400F35AFB /* Animation */,
 				E4150E9D26BE44980041DD32 /* Story */,
 				E4150E9426B8F3490041DD32 /* Main */,
 				E4150E9326B8F3440041DD32 /* Game */,
@@ -1017,6 +1031,7 @@
 				E4DF614326A93FFB0061F6E9 /* ShopCell.swift in Sources */,
 				E41C85DD269C50F0008F2E91 /* PauseViewModel.swift in Sources */,
 				E41C85DF269C5149008F2E91 /* PauseButtonController.swift in Sources */,
+				E418F36F26DC8D4800F35AFB /* UnitInfo - keyColor.swift in Sources */,
 				E4779C6726983F5700B92D24 /* GameOverViewController.swift in Sources */,
 				71DF65532692FBE500557693 /* SceneCoordinator.swift in Sources */,
 				E4DF613B26A845670061F6E9 /* AdStorageType.swift in Sources */,
@@ -1048,6 +1063,7 @@
 				71DF65432692F95800557693 /* ShopViewModel.swift in Sources */,
 				71DF65512692FBCC00557693 /* SceneCoordinatorType.swift in Sources */,
 				71BC752E26A940A10021BA1A /* DataFormatManager.swift in Sources */,
+				E418F36D26DC8BAC00F35AFB /* BackgroundAnimation.swift in Sources */,
 				E4A40F9926C1038F003E40B2 /* StoryManager.swift in Sources */,
 				715A83EE269FE96300C9CEFF /* StoryboardType.swift in Sources */,
 				71307AB126A53C7B00C3191F /* AlertMessage.swift in Sources */,
