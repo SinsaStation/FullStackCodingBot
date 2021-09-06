@@ -4,7 +4,7 @@ final class TypeWriterView: TextPresentView {
 
     private let delayPerLetter: Double = 0.08
     
-    override func show(text fullText: String, color: UIColor = Defaults.textColor) {
+    override func show(text fullText: String, color: UIColor = .match) {
         super.show(text: fullText, color: color)
         
         CATransaction.begin()

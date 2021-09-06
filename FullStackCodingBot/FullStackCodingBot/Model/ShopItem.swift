@@ -19,4 +19,24 @@ enum ShopItem {
             return "item_gift_loading"
         }
     }
+    
+    func isDownloaded() -> Bool {
+        switch self {
+        case .adMob(_):
+            return true
+        default:
+            return false
+        }
+    }
+    
+    static func isAllTaken(_ items: [ShopItem]) -> Bool {
+        return items.filter { shopItem in
+                switch shopItem {
+                case .taken:
+                    return false
+                default:
+                    return true
+                }
+            }.isEmpty
+    }
 }
