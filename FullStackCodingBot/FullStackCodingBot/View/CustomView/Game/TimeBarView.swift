@@ -2,8 +2,6 @@ import UIKit
 
 final class TimeBarView: UIView {
     
-    private let normalColor = UIColor(named: "digitalgreen") ?? UIColor.green
-    private let wrongColor = UIColor(named: "red") ?? UIColor.red
     private var fullWidth: CGFloat?
     private var timeSolidLayer: CALayer?
     private var animationAllowed: Bool = true
@@ -27,7 +25,7 @@ final class TimeBarView: UIView {
         solidLayer.bounds.size = layer.bounds.size
         solidLayer.anchorPoint = CGPoint(x: 0, y: 0)
         solidLayer.position = .zero
-        solidLayer.backgroundColor = normalColor.cgColor
+        solidLayer.backgroundColor = UIColor.match.cgColor
         return solidLayer
     }
 
@@ -64,10 +62,10 @@ final class TimeBarView: UIView {
     }
     
     func playWrongMode() {
-        timeSolidLayer?.backgroundColor = wrongColor.cgColor
+        timeSolidLayer?.backgroundColor = UIColor.wrong.cgColor
         
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
-            self.timeSolidLayer?.backgroundColor = self.normalColor.cgColor
+            self.timeSolidLayer?.backgroundColor = UIColor.match.cgColor
         }
     }
 }

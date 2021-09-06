@@ -68,6 +68,8 @@ final class AdStorage: AdStorageType {
         Observable.create { [unowned self] observer in
             adStates.enumerated().forEach { index, isAvailable in
                 if isAvailable {
+                    guard !self.ads[index].isDownloaded() else { return }
+                    
                     self.downloadAd(to: index)
                         .subscribe(onError: { error in
                             observer.onError(error)

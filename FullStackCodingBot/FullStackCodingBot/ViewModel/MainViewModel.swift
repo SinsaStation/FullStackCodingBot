@@ -12,12 +12,22 @@ final class MainViewModel: AdViewModel {
     
     lazy var settingSwitchState = BehaviorRelay<SettingInformation>(value: settingInfo)
     let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
+    private(set) var rewardAvailable = BehaviorRelay<Bool>(value: false)
     
     init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, settings: SettingInformation) {
         self.settingInfo = settings
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
         
+        bindRewardState()
         setupAppleGameCenterLogin()
+    }
+    
+    private func bindRewardState() {
+        adStorage.availableItems()
+            .subscribe(onNext: { [weak self] items in
+                let rewardState = !ShopItem.isAllTaken(items)
+                self?.rewardAvailable.accept(rewardState)
+            }).disposed(by: rx.disposeBag)
     }
     
     func makeMoveAction(to viewController: ViewControllerType) {
@@ -83,30 +93,44 @@ final class MainViewModel: AdViewModel {
 
 // MARK: Login & Load Data
 extension MainViewModel: GKGameCenterControllerDelegate {
-    
+
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
     }
     
     private func setupAppleGameCenterLogin() {
-        GKLocalPlayer.local.authenticateHandler = { [unowned self] _, error in
+        GKLocalPlayer.local.authenticateHandler = { [unowned self] gcViewController, error in
             
-            guard error == nil, GKLocalPlayer.local.isAuthenticated else {
+            if let gcViewController = gcViewController {
+                let scene = Scene.gameCenter(gcViewController)
+                self.sceneCoordinator.transition(to: scene, using: .fullScreen, with: StoryboardType.main, animated: false)
+            } else if let error = error {
+                Firebase.Analytics.logEvent("CancelGameCenter", parameters: ["ErrorMessage": "\(error.localizedDescription)"])
                 self.loadOffline()
-                return
-            }
- 
-            GameCenterAuthProvider.getCredential { credential, error in
-                guard error == nil, let credential = credential else {
-                    self.loadOffline()
-                    return
-                }
+            } else {
+                self.sceneCoordinator.toMain(animated: true)
                 
-                Auth.auth().signIn(with: credential) { [unowned self] user, error in
-                    guard error == nil, user != nil else {
+                GameCenterAuthProvider.getCredential { credential, error in
+                    
+                    if let error = error {
+                        Firebase.Analytics.logEvent("AuthError", parameters: ["ErrorMessage": "\(error.localizedDescription)"])
+                    }
+                    
+                    guard let credential = credential else {
                         self.loadOffline()
                         return
                     }
-                    loadOnline(user?.user.uid)
+                    
+                    Auth.auth().signIn(with: credential) { [unowned self] user, error in
+                        
+                        if let error = error {
+                            Firebase.Analytics.logEvent("SignInError", parameters: ["ErrorMessage": "\(error.localizedDescription)"])
+                            self.loadOffline()
+                        }
+                        
+                        if let user = user {
+                            loadOnline(user.user.uid)
+                        }
+                    }
                 }
             }
         }
