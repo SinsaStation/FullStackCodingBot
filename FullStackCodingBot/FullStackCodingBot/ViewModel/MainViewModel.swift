@@ -95,36 +95,11 @@ final class MainViewModel: AdViewModel {
 extension MainViewModel: GKGameCenterControllerDelegate {
 
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
-        self.sceneCoordinator.toMain(animated: true)
-        
-        GameCenterAuthProvider.getCredential { credential, error in
-            
-            if let error = error {
-                Firebase.Analytics.logEvent("AuthError", parameters: ["ErrorMessage": "\(error.localizedDescription)"])
-                self.loadOffline()
-            }
-            
-            guard let credential = credential else {
-                self.loadOffline()
-                return
-            }
-            
-            Auth.auth().signIn(with: credential) { [unowned self] user, error in
-                
-                if let error = error {
-                    Firebase.Analytics.logEvent("SignInError", parameters: ["ErrorMessage": "\(error.localizedDescription)"])
-                    self.loadOffline()
-                }
-                
-                if let user = user {
-                    loadOnline(user.user.uid)
-                }
-            }
-        }
     }
     
     private func setupAppleGameCenterLogin() {
         GKLocalPlayer.local.authenticateHandler = { [unowned self] gcViewController, error in
+            
             if let gcViewController = gcViewController {
                 let scene = Scene.gameCenter(gcViewController)
                 self.sceneCoordinator.transition(to: scene, using: .fullScreen, with: StoryboardType.main, animated: false)
@@ -138,7 +113,6 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                     
                     if let error = error {
                         Firebase.Analytics.logEvent("AuthError", parameters: ["ErrorMessage": "\(error.localizedDescription)"])
-                        self.loadOffline()
                     }
                     
                     guard let credential = credential else {
