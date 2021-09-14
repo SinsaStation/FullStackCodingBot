@@ -509,18 +509,17 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		71DF6557269301B000557693 /* Delegate */ = {
+		71DF6557269301B000557693 /* AppCycle */ = {
 			isa = PBXGroup;
 			children = (
 				E4D7C63D2693E79800D58BA2 /* AppDelegate.swift */,
 			);
-			path = Delegate;
+			path = AppCycle;
 			sourceTree = "<group>";
 		};
 		71DF6558269301D100557693 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				71DF6557269301B000557693 /* Delegate */,
 				71DF6556269301A000557693 /* Storyboard */,
 				71DF653A2692F8D400557693 /* Scene */,
 				71DF64B72692C06100557693 /* Controller */,
@@ -664,6 +663,7 @@
 		E45B0AAD2692929D006FDE3D /* FullStackCodingBot */ = {
 			isa = PBXGroup;
 			children = (
+				71DF6557269301B000557693 /* AppCycle */,
 				715BB20426943CD100286B31 /* Service */,
 				71DF6558269301D100557693 /* View */,
 				71DF653F2692F94000557693 /* ViewModel */,
