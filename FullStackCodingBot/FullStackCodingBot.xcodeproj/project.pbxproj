@@ -82,6 +82,11 @@
 		E41C85DA269C4E8F008F2E91 /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85D9269C4E8F008F2E91 /* PauseViewController.swift */; };
 		E41C85DD269C50F0008F2E91 /* PauseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85DC269C50F0008F2E91 /* PauseViewModel.swift */; };
 		E41C85DF269C5149008F2E91 /* PauseButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C85DE269C5149008F2E91 /* PauseButtonController.swift */; };
+		E4336F5B26F0638A0049A5D8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F5A26F0638A0049A5D8 /* Storage.swift */; };
+		E4336F5D26F083650049A5D8 /* GameStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F5C26F083650049A5D8 /* GameStorageType.swift */; };
+		E4336F5F26F083840049A5D8 /* BackUpCenterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F5E26F083840049A5D8 /* BackUpCenterType.swift */; };
+		E4336F6126F083A20049A5D8 /* BackUpCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F6026F083A20049A5D8 /* BackUpCenter.swift */; };
+		E4336F6326F083C30049A5D8 /* CoreDataManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F6226F083C30049A5D8 /* CoreDataManagerType.swift */; };
 		E43B64A226ABD81C001D9896 /* GameBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */; };
 		E43B64A426AC2384001D9896 /* TimeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B64A326AC2384001D9896 /* TimeBarView.swift */; };
 		E45B0AB82692929F006FDE3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E45B0AB72692929F006FDE3D /* Assets.xcassets */; };
@@ -231,6 +236,11 @@
 		E41C85D9269C4E8F008F2E91 /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
 		E41C85DC269C50F0008F2E91 /* PauseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewModel.swift; sourceTree = "<group>"; };
 		E41C85DE269C5149008F2E91 /* PauseButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButtonController.swift; sourceTree = "<group>"; };
+		E4336F5A26F0638A0049A5D8 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		E4336F5C26F083650049A5D8 /* GameStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStorageType.swift; sourceTree = "<group>"; };
+		E4336F5E26F083840049A5D8 /* BackUpCenterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpCenterType.swift; sourceTree = "<group>"; };
+		E4336F6026F083A20049A5D8 /* BackUpCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpCenter.swift; sourceTree = "<group>"; };
+		E4336F6226F083C30049A5D8 /* CoreDataManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerType.swift; sourceTree = "<group>"; };
 		E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBackgroundView.swift; sourceTree = "<group>"; };
 		E43B64A326AC2384001D9896 /* TimeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBarView.swift; sourceTree = "<group>"; };
 		E45B0AAB2692929D006FDE3D /* Full Stack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Full Stack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,6 +345,11 @@
 		715BB20426943CD100286B31 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E4336F5A26F0638A0049A5D8 /* Storage.swift */,
+				E4336F5C26F083650049A5D8 /* GameStorageType.swift */,
+				E4336F6026F083A20049A5D8 /* BackUpCenter.swift */,
+				E4336F5E26F083840049A5D8 /* BackUpCenterType.swift */,
+				E4336F6226F083C30049A5D8 /* CoreDataManagerType.swift */,
 				718F224726C377AA00B2648C /* ErrorManager */,
 				71BC752C26A940870021BA1A /* DataFormatManager */,
 				71A5517E26A91C160083A4B0 /* FirebaseStorage */,
@@ -381,8 +396,8 @@
 		717EAD3A26A656D600E0CDB7 /* PersistenceStorage */ = {
 			isa = PBXGroup;
 			children = (
-				E4DF613A26A845670061F6E9 /* AdStorageType.swift */,
 				E4DF613C26A845DA0061F6E9 /* AdStorage.swift */,
+				E4DF613A26A845670061F6E9 /* AdStorageType.swift */,
 				71E2B37526AE5E7F00AE496D /* PersistenceStorage.swift */,
 				71E2B37726AE602200AE496D /* PersistenceStorageType.swift */,
 			);
@@ -1020,6 +1035,7 @@
 				E4150E9726B8F3E00041DD32 /* TypeWriterView.swift in Sources */,
 				71310C2C26AA596B00733361 /* CoreDataStorage.xcdatamodeld in Sources */,
 				E4BF710526AFD45A00E8645F /* TimeManagerType.swift in Sources */,
+				E4336F5F26F083840049A5D8 /* BackUpCenterType.swift in Sources */,
 				710D0D4F2693F6E500244A16 /* ItemCell.swift in Sources */,
 				E4D7C63E2693E79800D58BA2 /* AppDelegate.swift in Sources */,
 				715C1C9426BCF9FF0025C681 /* StoryViewController.swift in Sources */,
@@ -1032,8 +1048,11 @@
 				7165CDDF26957DE400891214 /* GameButtonController.swift in Sources */,
 				71DF653C2692F90100557693 /* TransitionModel.swift in Sources */,
 				E4BF710726AFD51700E8645F /* FeverManagerType.swift in Sources */,
+				E4336F6126F083A20049A5D8 /* BackUpCenter.swift in Sources */,
+				E4336F6326F083C30049A5D8 /* CoreDataManagerType.swift in Sources */,
 				E4BF70FF26AEF3F700E8645F /* GameStatus.swift in Sources */,
 				E4BF712B26B3E6E000E8645F /* AdsInformation.swift in Sources */,
+				E4336F5B26F0638A0049A5D8 /* Storage.swift in Sources */,
 				E418F37326DC95B800F35AFB /* Color.swift in Sources */,
 				718F224626C36AE200B2648C /* HowToPlayButtonController.swift in Sources */,
 				E4BF710126AFB0AD00E8645F /* TimeManager.swift in Sources */,
@@ -1043,6 +1062,7 @@
 				71DF653E2692F92700557693 /* Scene.swift in Sources */,
 				E4BF714326B7E23A00E8645F /* GameSoundEffectStation.swift in Sources */,
 				71DF64BF2692C1C600557693 /* ItemViewController.swift in Sources */,
+				E4336F5D26F083650049A5D8 /* GameStorageType.swift in Sources */,
 				71A5518226A9277C0083A4B0 /* DatabaseManagerType.swift in Sources */,
 				710A9DAC2692AD5C0090B38A /* MainButtonController.swift in Sources */,
 				E43B64A426AC2384001D9896 /* TimeBarView.swift in Sources */,

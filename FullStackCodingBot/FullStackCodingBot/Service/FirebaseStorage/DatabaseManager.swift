@@ -9,7 +9,7 @@ final class DatabaseManager: DatabaseManagerType {
     private let disposedBag = DisposeBag()
     let data = [Unit]()
     
-    init(_ ref: DatabaseReference) {
+    init(_ ref: DatabaseReference = Database.database().reference()) {
         self.ref = ref
     }
     

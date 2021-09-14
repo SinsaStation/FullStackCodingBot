@@ -14,6 +14,12 @@ final class MainViewModel: AdViewModel {
     let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
     private(set) var rewardAvailable = BehaviorRelay<Bool>(value: false)
     
+    // MARK: 임시 선언
+    private var newStorage = Storage(gameStorage: FakeGameStorage(),
+                                     adStorage: AdStorage(),
+                                     backUpCenter: BackUpCenter(firebaseManager: DatabaseManager(),
+                                                                coreDataManager: FakeCoreDataManager()))
+    
     init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, settings: SettingInformation) {
         self.settingInfo = settings
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
@@ -91,7 +97,7 @@ final class MainViewModel: AdViewModel {
     }
 }
 
-// MARK: Login & Load Data
+// MARK: Login
 extension MainViewModel: GKGameCenterControllerDelegate {
 
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
@@ -100,12 +106,14 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     private func setupAppleGameCenterLogin() {
         GKLocalPlayer.local.authenticateHandler = { [unowned self] gcViewController, error in
             
+            guard !self.firebaseDidLoad.value else { return }
+            
             if let gcViewController = gcViewController {
                 let scene = Scene.gameCenter(gcViewController)
                 self.sceneCoordinator.transition(to: scene, using: .fullScreen, with: StoryboardType.main, animated: false)
             } else if let error = error {
                 Firebase.Analytics.logEvent("CancelGameCenter", parameters: ["ErrorMessage": "\(error.localizedDescription)"])
-                self.loadOffline()
+                self.load(with: nil)
             } else {
                 self.sceneCoordinator.toMain(animated: true)
                 
@@ -116,7 +124,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                     }
                     
                     guard let credential = credential else {
-                        self.loadOffline()
+                        self.load(with: nil)
                         return
                     }
                     
@@ -124,81 +132,45 @@ extension MainViewModel: GKGameCenterControllerDelegate {
                         
                         if let error = error {
                             Firebase.Analytics.logEvent("SignInError", parameters: ["ErrorMessage": "\(error.localizedDescription)"])
-                            self.loadOffline()
+                            self.load(with: nil)
                         }
                         
                         if let user = user {
-                            loadOnline(user.user.uid)
+                            self.load(with: user.user.uid)
                         }
                     }
                 }
             }
         }
     }
+}
+
+// MARK: Storage Read
+extension MainViewModel {
+    private func load(with uuid: String?) {
+        let isFirstLaunched = !userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce)
+        
+        newStorage.fill(using: uuid, isFirstLaunched: isFirstLaunched)
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [unowned self] isLoaded in
+                self.firebaseDidLoad.accept(isLoaded)
+            }).disposed(by: rx.disposeBag)
+        
+        markAsLauncedOnce()
+        
+        if uuid == nil {
+            showNetworkAlert()
+        }
+    }
     
-    private func loadOffline() {
-        loadFromCoredata()
+    private func markAsLauncedOnce() {
+        userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
+    }
+    
+    private func showNetworkAlert() {
         sceneCoordinator.transition(to: .alert(AlertMessage.networkLoad),
                                     using: .alert,
                                     with: .main,
                                     animated: true)
-    }
-    
-    private func loadOnline(_ uuid: String?) {
-        if !userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce) {
-            storage.setupInitialData()
-        }
-        loadFromFirebase(uuid)
-    }
-    
-    private func loadFromCoredata() {
-        switch userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce) {
-        case true:
-            storage.getCoreDataInfo()
-        case false:
-            storage.setupInitialData()
-        }
-        userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
-        firebaseDidLoad.accept(true)
-    }
-    
-    private func loadFromFirebase(_ uuid: String?) {
-        if firebaseDidLoad.value { return }
-        getUserInformation(uuid)
-        userDefaults.setValue(true, forKey: IdentifierUD.hasLaunchedOnce)
-    }
-    
-    private func getUserInformation(_ uuid: String?) {
-        database.getFirebaseData(uuid!)
-            .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [unowned self] data in
-                self.updateDatabaseInformation(data)
-                self.updateAdInformation(data)
-            }, onError: { _ in
-                self.loadFromCoredata()
-            }, onCompleted: { [unowned self] in
-                self.firebaseDidLoad.accept(true)
-            }).disposed(by: rx.disposeBag)
-    }
-    
-    private func updateDatabaseInformation(_ info: NetworkDTO) {
-        let firebaseUpdate = info.date
-        let coredataUpdate = storage.lastUpdated()
-        
-        guard firebaseUpdate > coredataUpdate else {
-            loadFromCoredata()
-            return
-        }
-        
-        storage.update(units: info.units)
-        storage.raiseMoney(by: info.money)
-        storage.updateHighScore(new: info.score)
-    }
-    
-    private func updateAdInformation(_ info: NetworkDTO) {
-        adStorage.setNewRewardsIfPossible(with: info.ads)
-            .subscribe(onError: { error in
-                        Firebase.Analytics.logEvent("RewardsError", parameters: ["ErrorMessage": "\(error)"])})
-            .disposed(by: rx.disposeBag)
     }
 }
