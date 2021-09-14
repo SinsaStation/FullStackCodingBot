@@ -17,10 +17,10 @@ final class MainViewModel: AdViewModel {
     // MARK: 임시 선언
     private var newStorage = Storage(gameStorage: FakeGameStorage(),
                                      adStorage: AdStorage(),
-                                     backUpCenter: BackUpCenter(firebaseManager: DatabaseManager(),
+                                     backUpCenter: BackUpCenter(firebaseManager: FirebaseManager(),
                                                                 coreDataManager: FakeCoreDataManager()))
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: DatabaseManagerType, settings: SettingInformation) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: FirebaseManagerType, settings: SettingInformation) {
         self.settingInfo = settings
         super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
         

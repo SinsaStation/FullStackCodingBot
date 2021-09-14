@@ -24,7 +24,7 @@ final class ShopViewModel: AdViewModel {
     init(sceneCoordinator: SceneCoordinatorType,
          storage: PersistenceStorageType,
          adStorage: AdStorageType,
-         database: DatabaseManagerType,
+         database: FirebaseManagerType,
          cancelAction: CocoaAction? = nil,
          soundEffectType: MainSoundEffect = .reward) {
         self.cancelAction = CocoaAction {

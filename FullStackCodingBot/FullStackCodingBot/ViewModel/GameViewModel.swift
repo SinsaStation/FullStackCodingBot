@@ -34,7 +34,7 @@ final class GameViewModel: CommonViewModel {
     
     init(sceneCoordinator: SceneCoordinatorType,
          storage: PersistenceStorageType,
-         database: DatabaseManagerType,
+         database: FirebaseManagerType,
          pauseAction: CocoaAction? = nil,
          gameUnitManager: GameUnitManagerType,
          timeManager: TimeManagerType = TimeManager(),

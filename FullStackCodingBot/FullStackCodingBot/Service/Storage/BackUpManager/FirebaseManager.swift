@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import Firebase
 
-final class DatabaseManager: DatabaseManagerType {
+final class FirebaseManager: FirebaseManagerType {
     
     private var ref: DatabaseReference
     private let uid = Auth.auth().currentUser?.uid ?? ""

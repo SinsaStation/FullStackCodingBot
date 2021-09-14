@@ -41,8 +41,8 @@
 		719A6A9B26B11208006AC991 /* NetworkDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719A6A9A26B11208006AC991 /* NetworkDTO.swift */; };
 		719AB9DE26B7ADF2001B5913 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */; };
 		719DA2B126A7FC9900624C61 /* JoystixMonospace-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */; };
-		71A5518026A91C280083A4B0 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5517F26A91C280083A4B0 /* DatabaseManager.swift */; };
-		71A5518226A9277C0083A4B0 /* DatabaseManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */; };
+		71A5518026A91C280083A4B0 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5517F26A91C280083A4B0 /* FirebaseManager.swift */; };
+		71A5518226A9277C0083A4B0 /* FirebaseManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5518126A9277C0083A4B0 /* FirebaseManagerType.swift */; };
 		71BC752E26A940A10021BA1A /* DataFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC752D26A940A10021BA1A /* DataFormatManager.swift */; };
 		71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64B82692C13A00557693 /* ShopViewController.swift */; };
 		71DF64BD2692C18F00557693 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64BC2692C18F00557693 /* RankViewController.swift */; };
@@ -196,8 +196,8 @@
 		719A6A9A26B11208006AC991 /* NetworkDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDTO.swift; sourceTree = "<group>"; };
 		719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JoystixMonospace-Regular.ttf"; sourceTree = "<group>"; };
-		71A5517F26A91C280083A4B0 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerType.swift; sourceTree = "<group>"; };
+		71A5517F26A91C280083A4B0 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		71A5518126A9277C0083A4B0 /* FirebaseManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManagerType.swift; sourceTree = "<group>"; };
 		71BC752D26A940A10021BA1A /* DataFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatManager.swift; sourceTree = "<group>"; };
 		71DF64B82692C13A00557693 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		71DF64BC2692C18F00557693 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
@@ -345,16 +345,10 @@
 		715BB20426943CD100286B31 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				E4336F5A26F0638A0049A5D8 /* Storage.swift */,
-				E4336F5C26F083650049A5D8 /* GameStorageType.swift */,
-				E4336F6026F083A20049A5D8 /* BackUpCenter.swift */,
-				E4336F5E26F083840049A5D8 /* BackUpCenterType.swift */,
-				E4336F6226F083C30049A5D8 /* CoreDataManagerType.swift */,
-				718F224726C377AA00B2648C /* ErrorManager */,
+				E4336F6426F08A8D0049A5D8 /* Storage */,
+				717EAD3B26A656E200E0CDB7 /* GameLogic */,
 				71BC752C26A940870021BA1A /* DataFormatManager */,
-				71A5517E26A91C160083A4B0 /* FirebaseStorage */,
-				717EAD3B26A656E200E0CDB7 /* GameManager */,
-				717EAD3A26A656D600E0CDB7 /* PersistenceStorage */,
+				718F224726C377AA00B2648C /* ErrorManager */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -393,18 +387,7 @@
 			path = HowToPlay;
 			sourceTree = "<group>";
 		};
-		717EAD3A26A656D600E0CDB7 /* PersistenceStorage */ = {
-			isa = PBXGroup;
-			children = (
-				E4DF613C26A845DA0061F6E9 /* AdStorage.swift */,
-				E4DF613A26A845670061F6E9 /* AdStorageType.swift */,
-				71E2B37526AE5E7F00AE496D /* PersistenceStorage.swift */,
-				71E2B37726AE602200AE496D /* PersistenceStorageType.swift */,
-			);
-			path = PersistenceStorage;
-			sourceTree = "<group>";
-		};
-		717EAD3B26A656E200E0CDB7 /* GameManager */ = {
+		717EAD3B26A656E200E0CDB7 /* GameLogic */ = {
 			isa = PBXGroup;
 			children = (
 				E41C85D7269C252D008F2E91 /* GameUnitManagerType.swift */,
@@ -414,7 +397,7 @@
 				E4BF710626AFD51700E8645F /* FeverManagerType.swift */,
 				E4BF710226AFCC7500E8645F /* FeverManager.swift */,
 			);
-			path = GameManager;
+			path = GameLogic;
 			sourceTree = "<group>";
 		};
 		717EAD3C26A6576600E0CDB7 /* Button */ = {
@@ -445,15 +428,6 @@
 				718F224826C377B700B2648C /* ErrorManager.swift */,
 			);
 			path = ErrorManager;
-			sourceTree = "<group>";
-		};
-		71A5517E26A91C160083A4B0 /* FirebaseStorage */ = {
-			isa = PBXGroup;
-			children = (
-				71A5517F26A91C280083A4B0 /* DatabaseManager.swift */,
-				71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */,
-			);
-			path = FirebaseStorage;
 			sourceTree = "<group>";
 		};
 		71BC752C26A940870021BA1A /* DataFormatManager */ = {
@@ -650,6 +624,40 @@
 				E4DF614226A93FFB0061F6E9 /* ShopCell.swift */,
 			);
 			path = Reward;
+			sourceTree = "<group>";
+		};
+		E4336F6426F08A8D0049A5D8 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				E4336F5A26F0638A0049A5D8 /* Storage.swift */,
+				E4336F6526F08AD80049A5D8 /* RealDataStorage */,
+				E4336F6626F08AF10049A5D8 /* BackUpManager */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		E4336F6526F08AD80049A5D8 /* RealDataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				E4DF613C26A845DA0061F6E9 /* AdStorage.swift */,
+				E4DF613A26A845670061F6E9 /* AdStorageType.swift */,
+				E4336F5C26F083650049A5D8 /* GameStorageType.swift */,
+				71E2B37526AE5E7F00AE496D /* PersistenceStorage.swift */,
+				71E2B37726AE602200AE496D /* PersistenceStorageType.swift */,
+			);
+			path = RealDataStorage;
+			sourceTree = "<group>";
+		};
+		E4336F6626F08AF10049A5D8 /* BackUpManager */ = {
+			isa = PBXGroup;
+			children = (
+				E4336F6026F083A20049A5D8 /* BackUpCenter.swift */,
+				E4336F5E26F083840049A5D8 /* BackUpCenterType.swift */,
+				E4336F6226F083C30049A5D8 /* CoreDataManagerType.swift */,
+				71A5517F26A91C280083A4B0 /* FirebaseManager.swift */,
+				71A5518126A9277C0083A4B0 /* FirebaseManagerType.swift */,
+			);
+			path = BackUpManager;
 			sourceTree = "<group>";
 		};
 		E45B0AA22692929C006FDE3D = {
@@ -1043,7 +1051,7 @@
 				E45B0AC72692F42D006FDE3D /* UnitPerspectiveView.swift in Sources */,
 				E41C85D4269BFB84008F2E91 /* GameUnitManager.swift in Sources */,
 				E418F36A26DB5D8000F35AFB /* RewardPopupView.swift in Sources */,
-				71A5518026A91C280083A4B0 /* DatabaseManager.swift in Sources */,
+				71A5518026A91C280083A4B0 /* FirebaseManager.swift in Sources */,
 				E4779C6926983F8000B92D24 /* GameOverViewModel.swift in Sources */,
 				7165CDDF26957DE400891214 /* GameButtonController.swift in Sources */,
 				71DF653C2692F90100557693 /* TransitionModel.swift in Sources */,
@@ -1063,7 +1071,7 @@
 				E4BF714326B7E23A00E8645F /* GameSoundEffectStation.swift in Sources */,
 				71DF64BF2692C1C600557693 /* ItemViewController.swift in Sources */,
 				E4336F5D26F083650049A5D8 /* GameStorageType.swift in Sources */,
-				71A5518226A9277C0083A4B0 /* DatabaseManagerType.swift in Sources */,
+				71A5518226A9277C0083A4B0 /* FirebaseManagerType.swift in Sources */,
 				710A9DAC2692AD5C0090B38A /* MainButtonController.swift in Sources */,
 				E43B64A426AC2384001D9896 /* TimeBarView.swift in Sources */,
 				E4150EA426BE9A540041DD32 /* Line.swift in Sources */,

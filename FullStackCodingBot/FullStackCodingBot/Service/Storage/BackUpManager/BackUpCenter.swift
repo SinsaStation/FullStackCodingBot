@@ -3,10 +3,10 @@ import RxSwift
 
 final class BackUpCenter: BackUpCenterType {
     
-    private var firebaseManager: DatabaseManagerType
+    private var firebaseManager: FirebaseManagerType
     private var coreDataManager: CoreDataManagerType
     
-    init(firebaseManager: DatabaseManagerType, coreDataManager: CoreDataManagerType) {
+    init(firebaseManager: FirebaseManagerType, coreDataManager: CoreDataManagerType) {
         self.firebaseManager = firebaseManager
         self.coreDataManager = coreDataManager
     }

@@ -26,7 +26,7 @@ final class ItemViewModel: CommonViewModel {
     
     init(sceneCoordinator: SceneCoordinatorType,
          storage: PersistenceStorageType,
-         database: DatabaseManagerType,
+         database: FirebaseManagerType,
          cancelAction: CocoaAction? = nil,
          soundEffectType: MainSoundEffect = .upgrade) {
         self.cancelAction = CocoaAction {

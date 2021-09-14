@@ -1,7 +1,7 @@
 import Foundation
 import RxSwift
 
-protocol DatabaseManagerType {
+protocol FirebaseManagerType {
     
     @discardableResult
     func getFirebaseData(_ uuid: String) -> Observable<NetworkDTO>

@@ -12,7 +12,7 @@ final class StoryViewModel: AdViewModel {
     init(sceneCoordinator: SceneCoordinatorType,
          storage: PersistenceStorageType,
          adStorage: AdStorageType,
-         database: DatabaseManagerType,
+         database: FirebaseManagerType,
          settings: SettingInformation,
          storyManger: StoryManager = StoryManager(),
          isFirstTimePlay: Bool = true) {

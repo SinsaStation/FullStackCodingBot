@@ -28,7 +28,7 @@ final class GameOverViewModel: CommonViewModel {
     
     init(sceneCoordinator: SceneCoordinatorType,
          storage: PersistenceStorageType,
-         database: DatabaseManagerType,
+         database: FirebaseManagerType,
          finalScore: Int,
          newGameStatus: BehaviorRelay<GameStatus>,
          gameStoryManager: GameStoryManager = GameStoryManager()) {

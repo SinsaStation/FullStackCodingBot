@@ -6,7 +6,7 @@ final class RankViewModel: CommonViewModel {
     
     let cancelAction: CocoaAction
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: DatabaseManagerType, cancelAction: CocoaAction? = nil) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: FirebaseManagerType, cancelAction: CocoaAction? = nil) {
         
         self.cancelAction = CocoaAction {
             if let action = cancelAction {

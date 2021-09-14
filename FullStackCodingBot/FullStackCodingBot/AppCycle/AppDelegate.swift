@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        let database = DatabaseManager(Database.database().reference())
+        let database = FirebaseManager(Database.database().reference())
         let networkDTO = NetworkDTO(units: storage.itemList(), money: storage.myMoney(), score: storage.myHighScore(), ads: adStorage.currentInformation(), date: Date())
         if storage.itemList().isEmpty { return }
         database.updateDatabase(networkDTO)
@@ -45,7 +45,7 @@ private extension AppDelegate {
         let hasLaunchedOnce = userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce)
         let settings = getSettingInformation(hasLaunchedOnce)
         let coordinator = SceneCoordinator(window: window!)
-        let database = DatabaseManager(Database.database().reference())
+        let database = FirebaseManager(Database.database().reference())
         let scene = getFirstScene(hasLaunchedOnce, coordinator, database, settings)
         coordinator.transition(to: scene, using: .root, with: StoryboardType.main, animated: false)
     }
@@ -58,7 +58,7 @@ private extension AppDelegate {
     
     private func getFirstScene(_ hasLaunchedOnce: Bool,
                                _ sceneCoordinator: SceneCoordinator,
-                               _ database: DatabaseManager,
+                               _ database: FirebaseManager,
                                _ settings: SettingInformation) -> Scene {
         
         switch hasLaunchedOnce {

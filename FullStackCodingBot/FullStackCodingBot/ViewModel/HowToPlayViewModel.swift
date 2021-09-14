@@ -12,7 +12,7 @@ final class HowToPlayViewModel: CommonViewModel {
     init(sceneCoordinator: SceneCoordinatorType,
          storage: PersistenceStorageType,
          adStorage: AdStorageType,
-         database: DatabaseManagerType,
+         database: FirebaseManagerType,
          cancelAction: CocoaAction? = nil) {
         
         self.cancelAction = CocoaAction {
