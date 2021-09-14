@@ -22,9 +22,7 @@ target 'Full Stack' do
      pod 'RxSwift'
      pod 'RxCocoa'
      pod 'NSObject+Rx'
-     pod 'Alamofire'
      pod 'Action'
      pod 'SwiftLint'
-     pod 'GhostTypewriter'
   end
 end
