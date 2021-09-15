@@ -6,9 +6,8 @@ protocol StorageType {
     
     func initializeData(using uuid: String?, isFirstLaunched: Bool) -> Observable<Bool>
     
-    // 우선 나열해보자
     // Shop
-    func avilableRewards() -> Observable<[ShopItem]>
+    func availableRewards() -> Observable<[ShopItem]>
     func availableMoney() -> Observable<Int> // + Item
     func setNewRewardsIfPossible() -> Observable<Bool>
     func rewardNeedsToBeGiven(with finishedAd: GADRewardedAd?) -> Int
@@ -24,5 +23,6 @@ protocol StorageType {
     func raiseMoney(by amount: Int)
     func updateHighScore(new score: Int) -> Bool
     
+    // Background
     func save()
 }

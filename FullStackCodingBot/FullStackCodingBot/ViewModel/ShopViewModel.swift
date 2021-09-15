@@ -10,7 +10,7 @@ final class ShopViewModel: AdViewModel {
     let cancelAction: CocoaAction
 
     var itemStorage: Driver<[ShopItem]> {
-        return storage.avilableRewards().asDriver(onErrorJustReturn: [])
+        return storage.availableRewards().asDriver(onErrorJustReturn: [])
     }
     
     lazy var currentMoney: Driver<String> = {

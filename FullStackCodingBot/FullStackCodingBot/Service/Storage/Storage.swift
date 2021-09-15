@@ -37,7 +37,7 @@ final class Storage {
 }
 
 extension Storage: StorageType {
-    func avilableRewards() -> Observable<[ShopItem]> {
+    func availableRewards() -> Observable<[ShopItem]> {
         return adStorage.availableItems()
     }
     

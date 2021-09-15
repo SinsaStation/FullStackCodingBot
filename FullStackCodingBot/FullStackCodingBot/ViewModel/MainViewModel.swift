@@ -18,12 +18,12 @@ final class MainViewModel: AdViewModel {
         self.settingInfo = settings
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
 
-        bindRewarsStates()
+        bindRewardStates()
         setupAppleGameCenterLogin()
     }
 
-    private func bindRewarsStates() {
-        storage.avilableRewards()
+    private func bindRewardStates() {
+        storage.availableRewards()
             .subscribe(onNext: { [weak self] items in
                 let rewardState = !ShopItem.isAllTaken(items)
                 self?.rewardAvailable.accept(rewardState)
