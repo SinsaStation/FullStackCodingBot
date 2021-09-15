@@ -7,7 +7,7 @@ enum ControlScene {
     case gameCenter(UIViewController)
 }
 
-extension ControlScene {
+extension ControlScene: SceneType {
     
     func instantiate(from identifier: String) -> UIViewController {
         switch self {

@@ -8,7 +8,7 @@ enum GameScene {
     case gameOver(GameOverViewModel)
 }
 
-extension GameScene {
+extension GameScene: SceneType {
     
     func instantiate(from identifier: String) -> UIViewController {
         let storyboard = UIStoryboard(name: identifier, bundle: nil)

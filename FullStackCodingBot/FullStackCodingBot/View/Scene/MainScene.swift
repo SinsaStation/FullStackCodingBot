@@ -12,7 +12,7 @@ enum MainScene {
     case item(ItemViewModel)
 }
 
-extension MainScene {
+extension MainScene: SceneType {
     
     func instantiate(from identifier: String) -> UIViewController {
         let storyboard = UIStoryboard(name: identifier, bundle: nil)
