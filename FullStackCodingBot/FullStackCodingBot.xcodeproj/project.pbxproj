@@ -438,6 +438,17 @@
 			path = ErrorManager;
 			sourceTree = "<group>";
 		};
+		719D0D9726F18C0700913BBE /* SceneType */ = {
+			isa = PBXGroup;
+			children = (
+				719D0D8F26F1863200913BBE /* MainScene.swift */,
+				719D0D9126F186F100913BBE /* GameScene.swift */,
+				719D0D9326F1875100913BBE /* ControlScene.swift */,
+				719D0D9526F1889700913BBE /* SceneType.swift */,
+			);
+			path = SceneType;
+			sourceTree = "<group>";
+		};
 		71A5517E26A91C160083A4B0 /* FirebaseStorage */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,13 +478,10 @@
 		71DF653A2692F8D400557693 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				719D0D9726F18C0700913BBE /* SceneType */,
 				71DF653B2692F90100557693 /* TransitionModel.swift */,
 				71DF65502692FBCC00557693 /* SceneCoordinatorType.swift */,
 				71DF65522692FBE500557693 /* SceneCoordinator.swift */,
-				719D0D8F26F1863200913BBE /* MainScene.swift */,
-				719D0D9126F186F100913BBE /* GameScene.swift */,
-				719D0D9326F1875100913BBE /* ControlScene.swift */,
-				719D0D9526F1889700913BBE /* SceneType.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
