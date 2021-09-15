@@ -7,14 +7,12 @@ import AVFoundation
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    private let storage: StorageType = Storage(gameStorage: GameStorage(),
-                                               adStorage: AdStorage(),
-                                               backUpCenter: BackUpCenter(firebaseManager: FirebaseManager(),
-                                                             coreDataManager: CoreDataManager()))
+    private var storage: StorageType?
     private let userDefaults = UserDefaults.standard
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        storage = Storage()
         setAdMobs()
         setAudioSession()
         presentMainViewController()
@@ -22,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        storage.save()
+        storage?.save()
     }
 }
 
@@ -61,12 +59,12 @@ private extension AppDelegate {
         switch hasLaunchedOnce {
         
         case true:
-            let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator, storage: storage, settings: settings)
+            let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator, storage: storage!, settings: settings)
             let mainScene = Scene.main(mainViewModel)
             return mainScene
             
         case false:
-            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage, settings: settings)
+            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage!, settings: settings)
             let storyScene = Scene.story(storyViewModel)
             return storyScene
             

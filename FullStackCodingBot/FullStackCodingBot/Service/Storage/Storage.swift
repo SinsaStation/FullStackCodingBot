@@ -7,6 +7,7 @@ final class Storage {
     private var gameStorage: GameStorageType
     private var adStorage: AdStorageType
     private var backUpCenter: BackUpCenterType
+    private var disposeBag = DisposeBag()
 
     init(gameStorage: GameStorageType = GameStorage(),
          adStorage: AdStorageType = AdStorage(),
@@ -17,17 +18,18 @@ final class Storage {
     }
     
     func initializeData(using uuid: String?, isFirstLaunched: Bool) -> Observable<Bool> {
-        Observable.create { [weak self] observer in
-            self?.backUpCenter.load(with: uuid, isFirstLaunched)
+        Observable.create { [unowned self] observer in
+            self.backUpCenter.load(with: uuid, isFirstLaunched)
                 .observe(on: MainScheduler.asyncInstance)
                 .subscribe(onNext: { data in
-                    self?.gameStorage.update(with: data)
-                    self?.adStorage.setNewRewardsIfPossible(with: data.ads)
+                    self.gameStorage.update(with: data)
+                    self.adStorage.setNewRewardsIfPossible(with: data.ads)
+                    observer.onNext(true)
                 }, onError: { _ in
                     observer.onNext(false)
                 }, onCompleted: {
                     observer.onNext(true)
-                }).dispose()
+                }).disposed(by: self.disposeBag)
             return Disposables.create()
         }
     }
@@ -62,7 +64,9 @@ extension Storage: StorageType {
     }
     
     func raiseLevel(of unit: Unit, using money: Int) -> Unit {
-        return gameStorage.raiseLevel(of: unit, using: money)
+        let newUnit = gameStorage.raiseLevel(of: unit, using: money)
+        backUpCenter.save(newUnit, .none, .none)
+        return newUnit
     }
     
     func myHighScore() -> Int {
@@ -71,13 +75,20 @@ extension Storage: StorageType {
     
     func raiseMoney(by amount: Int) {
         gameStorage.raiseMoney(by: amount)
+        backUpCenter.save(.none, gameStorage.myMoney(), .none)
     }
     
     func updateHighScore(new score: Int) -> Bool {
-        gameStorage.updateHighScore(new: score)
+        backUpCenter.save(.none, .none, score)
+        return gameStorage.updateHighScore(new: score)
     }
     
     func save() {
-        // backUpCenter.save
+        let currentData = NetworkDTO(units: gameStorage.itemList(),
+                                     money: gameStorage.myMoney(),
+                                     score: gameStorage.myHighScore(),
+                                     ads: adStorage.currentInformation(),
+                                     date: Date())
+        backUpCenter.save(currentData)
     }
 }

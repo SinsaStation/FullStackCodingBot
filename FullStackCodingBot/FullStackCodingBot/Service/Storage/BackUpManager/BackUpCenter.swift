@@ -5,6 +5,7 @@ final class BackUpCenter: BackUpCenterType {
     
     private var firebaseManager: FirebaseManagerType
     private var coreDataManager: CoreDataManagerType
+    private var disposeBag = DisposeBag()
     
     init(firebaseManager: FirebaseManagerType = FirebaseManager(),
          coreDataManager: CoreDataManagerType = CoreDataManager()) {
@@ -27,6 +28,7 @@ final class BackUpCenter: BackUpCenterType {
             }
             
             firebaseManager.load(uuid)
+                .observe(on: MainScheduler.asyncInstance)
                 .subscribe { onlineData in
                     let onlineUpdate = onlineData.date
                     let localUpdate = localData.date
@@ -34,9 +36,17 @@ final class BackUpCenter: BackUpCenterType {
                     observer.onCompleted()
                 } onError: { error in
                     observer.onError(error)
-                }.dispose()
+                }.disposed(by: disposeBag)
             
             return Disposables.create()
         }
+    }
+    
+    func save(_ newUnit: Unit?, _ newMoney: Int?, _ newScore: Int?) {
+        coreDataManager.save(newUnit, newMoney, newScore)
+    }
+    
+    func save(_ info: NetworkDTO) {
+        firebaseManager.save(info)
     }
 }

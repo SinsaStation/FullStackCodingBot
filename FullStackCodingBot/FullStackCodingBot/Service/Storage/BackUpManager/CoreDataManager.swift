@@ -53,6 +53,20 @@ final class CoreDataManager: CoreDataManagerType {
         return localData
     }
     
+    func save(_ newUnit: Unit?, _ newMoney: Int?, _ newScore: Int?) {
+        if let newUnit = newUnit {
+            try? updateUnit(to: newUnit)
+        }
+        
+        if let newMoney = newMoney {
+            try? updateMoney(money: newMoney)
+        }
+        
+        if let newScore = newScore {
+            try? updateScore(score: newScore)
+        }
+    }
+    
     func lastUpdated() -> Date {
         let farPastDate = Date.init(timeIntervalSince1970: 0)
         guard let fetchedInfo = try? fetchMoneyInfo(),
