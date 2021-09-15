@@ -47,7 +47,7 @@ final class StoryViewModel: AdViewModel {
     
     private func makeMoveActionToMain() {
         let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settings)
-        let mainScene = Scene.main(mainViewModel)
+        let mainScene = MainScene.main(mainViewModel)
         self.sceneCoordinator.transition(to: mainScene, using: .root, with: StoryboardType.main, animated: true)
     }
     

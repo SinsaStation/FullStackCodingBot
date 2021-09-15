@@ -206,7 +206,7 @@ private extension GameViewModel {
     private func toGameOverScene() -> Completable {
         let currentScore = try? currentScore.value()
         let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database, finalScore: currentScore ?? 0, newGameStatus: newGameStatus)
-        let gameOverScene = Scene.gameOver(gameOverViewModel)
+        let gameOverScene = GameScene.gameOver(gameOverViewModel)
         return self.sceneCoordinator.transition(to: gameOverScene, using: .pop, with: StoryboardType.game, animated: true)
     }
     
@@ -214,7 +214,7 @@ private extension GameViewModel {
     private func toPauseScene() -> Completable {
         let currentScore = try? currentScore.value()
         let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database, currentScore: currentScore ?? 0, newGameStatus: newGameStatus)
-        let pauseScene = Scene.pause(pauseViewModel)
+        let pauseScene = GameScene.pause(pauseViewModel)
         return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, with: StoryboardType.game, animated: false)
     }
 }

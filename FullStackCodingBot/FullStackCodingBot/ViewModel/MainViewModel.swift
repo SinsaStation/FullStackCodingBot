@@ -36,37 +36,37 @@ final class MainViewModel: AdViewModel {
         switch viewController {
         case .giftVC:
             let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, adStorage: adStorage, database: database)
-            let shopScene = Scene.shop(shopViewModel)
+            let shopScene = MainScene.shop(shopViewModel)
             self.sceneCoordinator.transition(to: shopScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .rankVC:
             let rankViewModel = RankViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, database: database)
-            let rankScene = Scene.rank(rankViewModel)
+            let rankScene = MainScene.rank(rankViewModel)
             self.sceneCoordinator.transition(to: rankScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .itemVC:
             let itemViewModel = ItemViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, database: database)
-            let itemScene = Scene.item(itemViewModel)
+            let itemScene = MainScene.item(itemViewModel)
             self.sceneCoordinator.transition(to: itemScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .gameVC:
             let gameUnitManager = GameUnitManager(allKinds: self.storage.itemList())
             let gameViewModel = GameViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, database: database, gameUnitManager: gameUnitManager)
-            let gameScene = Scene.game(gameViewModel)
+            let gameScene = GameScene.game(gameViewModel)
             self.sceneCoordinator.transition(to: gameScene, using: .fullScreen, with: StoryboardType.game, animated: true)
             
         case .settingVC:
-            let settingScene = Scene.setting(self)
+            let settingScene = ControlScene.setting(self)
             self.sceneCoordinator.transition(to: settingScene, using: .overCurrent, with: StoryboardType.main, animated: true)
             
         case .storyVC:
             let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settingInfo, isFirstTimePlay: false)
-            let storyScene = Scene.story(storyViewModel)
+            let storyScene = ControlScene.story(storyViewModel)
             self.sceneCoordinator.transition(to: storyScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .howToVC:
             let howToViewModel = HowToPlayViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
-            let howToScene = Scene.howToPlay(howToViewModel)
+            let howToScene = ControlScene.howToPlay(howToViewModel)
             self.sceneCoordinator.transition(to: howToScene, using: .fullScreen, with: StoryboardType.main, animated: true)
         }
     }
@@ -101,7 +101,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
         GKLocalPlayer.local.authenticateHandler = { [unowned self] gcViewController, error in
             
             if let gcViewController = gcViewController {
-                let scene = Scene.gameCenter(gcViewController)
+                let scene = ControlScene.gameCenter(gcViewController)
                 self.sceneCoordinator.transition(to: scene, using: .fullScreen, with: StoryboardType.main, animated: false)
             } else if let error = error {
                 Firebase.Analytics.logEvent("CancelGameCenter", parameters: ["ErrorMessage": "\(error.localizedDescription)"])
@@ -138,7 +138,8 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     
     private func loadOffline() {
         loadFromCoredata()
-        sceneCoordinator.transition(to: .alert(AlertMessage.networkLoad),
+        let scene = ControlScene.alert(AlertMessage.networkLoad)
+        sceneCoordinator.transition(to: scene,
                                     using: .alert,
                                     with: .main,
                                     animated: true)
