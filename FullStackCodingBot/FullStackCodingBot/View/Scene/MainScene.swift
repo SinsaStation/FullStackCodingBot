@@ -4,9 +4,6 @@ import Firebase
 
 enum MainScene {
     case main(MainViewModel)
-    case setting(MainViewModel)
-    case howToPlay(HowToPlayViewModel)
-    case story(StoryViewModel)
     case shop(ShopViewModel)
     case rank(RankViewModel)
     case item(ItemViewModel)
@@ -52,30 +49,6 @@ extension MainScene: SceneType {
             }
             itemVC.bind(viewModel: viewModel)
             return itemVC
-            
-        case .setting(let viewModel):
-            guard var settingVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.setting) as? SettingViewController else {
-                Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
-                fatalError()
-            }
-            settingVC.bind(viewModel: viewModel)
-            return settingVC
-            
-        case .story(let viewModel):
-            guard var storyVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.story) as? StoryViewController else {
-                Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
-                fatalError()
-            }
-            storyVC.bind(viewModel: viewModel)
-            return storyVC
-            
-        case .howToPlay(let viewModel):
-            guard var howToVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.howTo) as? HowToPlayViewController else {
-                Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)
-                fatalError()
-            }
-            howToVC.bind(viewModel: viewModel)
-            return howToVC
             
         }
     }
