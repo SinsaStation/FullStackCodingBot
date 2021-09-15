@@ -87,6 +87,7 @@
 		E4336F5F26F083840049A5D8 /* BackUpCenterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F5E26F083840049A5D8 /* BackUpCenterType.swift */; };
 		E4336F6126F083A20049A5D8 /* BackUpCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F6026F083A20049A5D8 /* BackUpCenter.swift */; };
 		E4336F6326F083C30049A5D8 /* CoreDataManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F6226F083C30049A5D8 /* CoreDataManagerType.swift */; };
+		E4336F6826F1AB8B0049A5D8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F6726F1AB8B0049A5D8 /* CoreDataManager.swift */; };
 		E43B64A226ABD81C001D9896 /* GameBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */; };
 		E43B64A426AC2384001D9896 /* TimeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B64A326AC2384001D9896 /* TimeBarView.swift */; };
 		E45B0AB82692929F006FDE3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E45B0AB72692929F006FDE3D /* Assets.xcassets */; };
@@ -241,6 +242,7 @@
 		E4336F5E26F083840049A5D8 /* BackUpCenterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpCenterType.swift; sourceTree = "<group>"; };
 		E4336F6026F083A20049A5D8 /* BackUpCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpCenter.swift; sourceTree = "<group>"; };
 		E4336F6226F083C30049A5D8 /* CoreDataManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerType.swift; sourceTree = "<group>"; };
+		E4336F6726F1AB8B0049A5D8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBackgroundView.swift; sourceTree = "<group>"; };
 		E43B64A326AC2384001D9896 /* TimeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBarView.swift; sourceTree = "<group>"; };
 		E45B0AAB2692929D006FDE3D /* Full Stack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Full Stack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -652,6 +654,7 @@
 			children = (
 				E4336F6026F083A20049A5D8 /* BackUpCenter.swift */,
 				E4336F5E26F083840049A5D8 /* BackUpCenterType.swift */,
+				E4336F6726F1AB8B0049A5D8 /* CoreDataManager.swift */,
 				E4336F6226F083C30049A5D8 /* CoreDataManagerType.swift */,
 				71A5517F26A91C280083A4B0 /* FirebaseManager.swift */,
 				71A5518126A9277C0083A4B0 /* FirebaseManagerType.swift */,
@@ -1080,6 +1083,7 @@
 				E41C85DD269C50F0008F2E91 /* PauseViewModel.swift in Sources */,
 				E41C85DF269C5149008F2E91 /* PauseButtonController.swift in Sources */,
 				E418F36F26DC8D4800F35AFB /* UnitInfo - keyColor.swift in Sources */,
+				E4336F6826F1AB8B0049A5D8 /* CoreDataManager.swift in Sources */,
 				E4779C6726983F5700B92D24 /* GameOverViewController.swift in Sources */,
 				71DF65532692FBE500557693 /* SceneCoordinator.swift in Sources */,
 				E4DF613B26A845670061F6E9 /* AdStorageType.swift in Sources */,
