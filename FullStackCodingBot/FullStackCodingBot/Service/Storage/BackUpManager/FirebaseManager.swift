@@ -13,7 +13,7 @@ final class FirebaseManager: FirebaseManagerType {
         self.ref = ref
     }
     
-    func updateDatabase(_ info: NetworkDTO) {
+    func save(_ info: NetworkDTO) {
         guard uid != "" else { return }
         
         let unitData = try? DataFormatManager.transformToString(info.units)
@@ -25,7 +25,7 @@ final class FirebaseManager: FirebaseManagerType {
     }
     
     @discardableResult
-    func getFirebaseData(_ uuid: String) -> Observable<NetworkDTO> {
+    func load(_ uuid: String) -> Observable<NetworkDTO> {
         Observable.create { [unowned self] observer in
             self.ref.child("users").child(uuid).getData { error, snapshot in
                 if let error = error {

@@ -13,7 +13,7 @@ final class Storage {
         self.backUpCenter = backUpCenter
     }
     
-    func fill(using uuid: String?, isFirstLaunched: Bool) -> Observable<Bool> {
+    func initializeData(using uuid: String?, isFirstLaunched: Bool) -> Observable<Bool> {
         Observable.create { [weak self] observer in
             self?.backUpCenter.load(with: uuid, isFirstLaunched)
                 .observe(on: MainScheduler.asyncInstance)

@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let database = FirebaseManager(Database.database().reference())
         let networkDTO = NetworkDTO(units: storage.itemList(), money: storage.myMoney(), score: storage.myHighScore(), ads: adStorage.currentInformation(), date: Date())
         if storage.itemList().isEmpty { return }
-        database.updateDatabase(networkDTO)
+        database.save(networkDTO)
     }
 }
 

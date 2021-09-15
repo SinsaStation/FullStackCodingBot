@@ -25,7 +25,7 @@ final class BackUpCenter: BackUpCenterType {
                 return Disposables.create()
             }
             
-            firebaseManager.getFirebaseData(uuid)
+            firebaseManager.load(uuid)
                 .subscribe { onlineData in
                     let onlineUpdate = onlineData.date
                     let localUpdate = localData.date

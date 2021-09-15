@@ -150,7 +150,7 @@ extension MainViewModel {
     private func load(with uuid: String?) {
         let isFirstLaunched = !userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce)
         
-        newStorage.fill(using: uuid, isFirstLaunched: isFirstLaunched)
+        newStorage.initializeData(using: uuid, isFirstLaunched: isFirstLaunched)
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] isLoaded in
                 self.firebaseDidLoad.accept(isLoaded)
