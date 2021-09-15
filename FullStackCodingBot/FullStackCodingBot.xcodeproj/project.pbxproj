@@ -40,6 +40,9 @@
 		718F224926C377B700B2648C /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F224826C377B700B2648C /* ErrorManager.swift */; };
 		719A6A9B26B11208006AC991 /* NetworkDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719A6A9A26B11208006AC991 /* NetworkDTO.swift */; };
 		719AB9DE26B7ADF2001B5913 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */; };
+		719D0D9026F1863200913BBE /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D0D8F26F1863200913BBE /* MainScene.swift */; };
+		719D0D9226F186F100913BBE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D0D9126F186F100913BBE /* GameScene.swift */; };
+		719D0D9426F1875100913BBE /* ControlScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D0D9326F1875100913BBE /* ControlScene.swift */; };
 		719DA2B126A7FC9900624C61 /* JoystixMonospace-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */; };
 		71A5518026A91C280083A4B0 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5517F26A91C280083A4B0 /* DatabaseManager.swift */; };
 		71A5518226A9277C0083A4B0 /* DatabaseManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */; };
@@ -190,6 +193,9 @@
 		718F224826C377B700B2648C /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		719A6A9A26B11208006AC991 /* NetworkDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDTO.swift; sourceTree = "<group>"; };
 		719AB9DD26B7ADF2001B5913 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		719D0D8F26F1863200913BBE /* MainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
+		719D0D9126F186F100913BBE /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		719D0D9326F1875100913BBE /* ControlScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlScene.swift; sourceTree = "<group>"; };
 		719DA2B026A7FC9800624C61 /* JoystixMonospace-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JoystixMonospace-Regular.ttf"; sourceTree = "<group>"; };
 		71A5517F26A91C280083A4B0 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerType.swift; sourceTree = "<group>"; };
@@ -465,6 +471,9 @@
 				71DF653D2692F92700557693 /* Scene.swift */,
 				71DF65502692FBCC00557693 /* SceneCoordinatorType.swift */,
 				71DF65522692FBE500557693 /* SceneCoordinator.swift */,
+				719D0D8F26F1863200913BBE /* MainScene.swift */,
+				719D0D9126F186F100913BBE /* GameScene.swift */,
+				719D0D9326F1875100913BBE /* ControlScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -1021,6 +1030,7 @@
 				71310C2C26AA596B00733361 /* CoreDataStorage.xcdatamodeld in Sources */,
 				E4BF710526AFD45A00E8645F /* TimeManagerType.swift in Sources */,
 				710D0D4F2693F6E500244A16 /* ItemCell.swift in Sources */,
+				719D0D9226F186F100913BBE /* GameScene.swift in Sources */,
 				E4D7C63E2693E79800D58BA2 /* AppDelegate.swift in Sources */,
 				715C1C9426BCF9FF0025C681 /* StoryViewController.swift in Sources */,
 				E45B0AC92692F9CF006FDE3D /* Unit.swift in Sources */,
@@ -1086,9 +1096,11 @@
 				E418F36D26DC8BAC00F35AFB /* BackgroundAnimation.swift in Sources */,
 				E4A40F9926C1038F003E40B2 /* StoryManager.swift in Sources */,
 				715A83EE269FE96300C9CEFF /* StoryboardType.swift in Sources */,
+				719D0D9426F1875100913BBE /* ControlScene.swift in Sources */,
 				71307AB126A53C7B00C3191F /* AlertMessage.swift in Sources */,
 				71E91E1726BA33190016386E /* Extension.swift in Sources */,
 				7170CD4526B266BE00F03248 /* VersionErrorViewController.swift in Sources */,
+				719D0D9026F1863200913BBE /* MainScene.swift in Sources */,
 				E4CA08B926A8287B00AA6F03 /* Font.swift in Sources */,
 				E4BF710B26B1324500E8645F /* ReadyView.swift in Sources */,
 				71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */,
