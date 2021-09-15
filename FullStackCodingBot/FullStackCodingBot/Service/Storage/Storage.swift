@@ -1,5 +1,6 @@
 import Foundation
 import RxSwift
+import GoogleMobileAds
 
 final class Storage {
     
@@ -27,5 +28,54 @@ final class Storage {
                 }).dispose()
             return Disposables.create()
         }
+    }
+}
+
+extension Storage: StorageType {
+    func avilableRewards() -> Observable<[ShopItem]> {
+        return adStorage.availableItems()
+    }
+    
+    func availableMoney() -> Observable<Int> {
+        return gameStorage.availableMoney()
+    }
+    
+    func setNewRewardsIfPossible() -> Observable<Bool> {
+        return adStorage.setNewRewardsIfPossible(with: .none)
+    }
+    
+    func rewardNeedsToBeGiven(with finishedAd: GADRewardedAd?) -> Int {
+        if let finishedAd = finishedAd {
+            adStorage.adDidFinished(finishedAd)
+        } else {
+            adStorage.giftTaken()
+        }
+        let reward = ShopSetting.reward()
+        gameStorage.raiseMoney(by: reward)
+        return reward
+    }
+    
+    func itemList() -> [Unit] {
+        return gameStorage.itemList()
+    }
+    
+    func raiseLevel(of unit: Unit, using money: Int) -> Unit {
+        return gameStorage.raiseLevel(of: unit, using: money)
+    }
+    
+    func myHighScore() -> Int {
+        return gameStorage.myHighScore()
+    }
+    
+    func raiseMoney(by amount: Int) {
+        gameStorage.raiseMoney(by: amount)
+    }
+    
+    func updateHighScore(new score: Int) -> Bool {
+        gameStorage.updateHighScore(new: score)
+    }
+    
+    func save() {
+        // backUpCenter.save
     }
 }

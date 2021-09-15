@@ -9,20 +9,14 @@ final class HowToPlayViewModel: CommonViewModel {
     let currentPage = BehaviorRelay<Int>(value: 0)
     let currentManual = BehaviorRelay<Manual>(value: Manual.all[0])
         
-    init(sceneCoordinator: SceneCoordinatorType,
-         storage: PersistenceStorageType,
-         adStorage: AdStorageType,
-         database: FirebaseManagerType,
-         cancelAction: CocoaAction? = nil) {
-        
+    init(sceneCoordinator: SceneCoordinatorType, storage: StorageType, cancelAction: CocoaAction? = nil) {
         self.cancelAction = CocoaAction {
             if let action = cancelAction {
                 action.execute(())
             }
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
-        
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
     
     func moveToPage(from direction: DirectionType) {

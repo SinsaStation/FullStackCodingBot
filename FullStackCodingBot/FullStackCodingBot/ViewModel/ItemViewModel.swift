@@ -10,11 +10,11 @@ final class ItemViewModel: CommonViewModel {
     }
     
     var itemStorage: Driver<[Unit]> {
-        return storage.listUnit().asDriver(onErrorJustReturn: [])
+        return BehaviorRelay<[Unit]>(value: storage.itemList()).asDriver(onErrorJustReturn:[])
     }
     
     var money: Driver<Int> {
-        return storage.availableMoeny().asDriver(onErrorJustReturn: 0)
+        return storage.availableMoney().asDriver(onErrorJustReturn: 0)
     }
     
     let isPossibleToLevelUp = BehaviorRelay<Bool>(value: false)
@@ -25,8 +25,7 @@ final class ItemViewModel: CommonViewModel {
     private let soundEffectStation: SingleSoundEffectStation
     
     init(sceneCoordinator: SceneCoordinatorType,
-         storage: PersistenceStorageType,
-         database: FirebaseManagerType,
+         storage: StorageType,
          cancelAction: CocoaAction? = nil,
          soundEffectType: MainSoundEffect = .upgrade) {
         self.cancelAction = CocoaAction {
@@ -36,11 +35,11 @@ final class ItemViewModel: CommonViewModel {
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
         self.soundEffectStation = SingleSoundEffectStation(soundEffectType: soundEffectType)
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
     
     func checkLevelUpPrice() {
-        storage.availableMoeny()
+        storage.availableMoney()
             .subscribe(onNext: { [unowned self] availableMoney in
                 if availableMoney >= (selectedUnit.value.level * 100) {
                     self.isPossibleToLevelUp.accept(true)

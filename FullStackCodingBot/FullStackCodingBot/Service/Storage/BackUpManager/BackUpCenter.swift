@@ -14,10 +14,10 @@ final class BackUpCenter: BackUpCenterType {
     func load(with uuid: String?, _ isFirstLaunched: Bool) -> Observable<NetworkDTO> {
         Observable<NetworkDTO>.create { [unowned self] observer in
             if isFirstLaunched {
-                self.coreDataManager.create(with: NetworkDTO.empty())
+                self.coreDataManager.setupInitialData()
             }
             
-            let localData = self.coreDataManager.read()
+            let localData = self.coreDataManager.load() ?? NetworkDTO.empty()
             
             guard let uuid = uuid else {
                 observer.onNext(localData)

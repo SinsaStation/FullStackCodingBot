@@ -3,12 +3,10 @@ import Foundation
 class CommonViewModel: NSObject {
     
     let sceneCoordinator: SceneCoordinatorType
-    let storage: PersistenceStorageType
-    let database: FirebaseManagerType
+    let storage: StorageType
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, database: FirebaseManagerType) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: StorageType) {
         self.sceneCoordinator = sceneCoordinator
         self.storage = storage
-        self.database = database
     }
 }

@@ -10,11 +10,11 @@ final class ShopViewModel: AdViewModel {
     let cancelAction: CocoaAction
 
     var itemStorage: Driver<[ShopItem]> {
-        return adStorage.availableItems().asDriver(onErrorJustReturn: [])
+        return storage.avilableRewards().asDriver(onErrorJustReturn: [])
     }
     
     lazy var currentMoney: Driver<String> = {
-        return storage.availableMoeny().map {String($0)}.asDriver(onErrorJustReturn: "")
+        return storage.availableMoney().map { String($0) }.asDriver(onErrorJustReturn: "")
     }()
     
     lazy var selectedItem = BehaviorRelay<ShopItem?>(value: nil)
@@ -22,9 +22,7 @@ final class ShopViewModel: AdViewModel {
     private let soundEffectStation: SingleSoundEffectStation
         
     init(sceneCoordinator: SceneCoordinatorType,
-         storage: PersistenceStorageType,
-         adStorage: AdStorageType,
-         database: FirebaseManagerType,
+         storage: StorageType,
          cancelAction: CocoaAction? = nil,
          soundEffectType: MainSoundEffect = .reward) {
         self.cancelAction = CocoaAction {
@@ -34,7 +32,7 @@ final class ShopViewModel: AdViewModel {
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
         self.soundEffectStation = SingleSoundEffectStation(soundEffectType: soundEffectType)
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
     
     func execute() {
@@ -42,26 +40,24 @@ final class ShopViewModel: AdViewModel {
     }
     
     private func bindAdStorage() {
-        adStorage.setNewRewardsIfPossible(with: .none)
+        storage.setNewRewardsIfPossible()
             .subscribe(onError: { error in
                         Firebase.Analytics.logEvent("RewardsError", parameters: ["ErrorMessage": "\(error)"])})
             .disposed(by: rx.disposeBag)
     }
     
     func adDidFinished(_ finishedAd: GADRewardedAd) {
-        adStorage.adDidFinished(finishedAd)
-        addCoin()
+        let reward = storage.rewardNeedsToBeGiven(with: finishedAd)
+        addCoin(by: reward)
     }
     
     func giftTaken() {
-        adStorage.giftTaken()
-        addCoin()
+        let reward = storage.rewardNeedsToBeGiven(with: nil)
+        addCoin(by: reward)
     }
     
-    private func addCoin() {
-        let moneyToRaise = ShopSetting.reward()
-        storage.raiseMoney(by: moneyToRaise)
-        reward.accept(moneyToRaise)
+    private func addCoin(by amount: Int) {
+        reward.accept(amount)
         soundEffectStation.play()
     }
 }

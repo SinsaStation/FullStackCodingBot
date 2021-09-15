@@ -57,12 +57,8 @@
 		71DF65512692FBCC00557693 /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF65502692FBCC00557693 /* SceneCoordinatorType.swift */; };
 		71DF65532692FBE500557693 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF65522692FBE500557693 /* SceneCoordinator.swift */; };
 		71DF65552692FD1400557693 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF65542692FD1400557693 /* CommonViewModel.swift */; };
-		71E2B37626AE5E7F00AE496D /* PersistenceStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B37526AE5E7F00AE496D /* PersistenceStorage.swift */; };
-		71E2B37826AE602200AE496D /* PersistenceStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B37726AE602200AE496D /* PersistenceStorageType.swift */; };
 		71E2FD9B26B90C5A0032A54B /* SettingSwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2FD9A26B90C5A0032A54B /* SettingSwitchController.swift */; };
 		71E91E1726BA33190016386E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E91E1626BA33190016386E /* Extension.swift */; };
-		71F0D3D926CD161700E45283 /* PersistenceStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B37726AE602200AE496D /* PersistenceStorageType.swift */; };
-		71F0D3DA26CD161A00E45283 /* PersistenceStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B37526AE5E7F00AE496D /* PersistenceStorage.swift */; };
 		71F0D3DB26CD16D500E45283 /* UnitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4304526CA2E4400F046E9 /* UnitInfo.swift */; };
 		A0DEDFDADFEC4895FB093823 /* Pods_Full_Stack_Full_StackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA3377E4ACD3B197620DEA8 /* Pods_Full_Stack_Full_StackTests.framework */; };
 		E4150E9726B8F3E00041DD32 /* TypeWriterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4150E9626B8F3E00041DD32 /* TypeWriterView.swift */; };
@@ -89,6 +85,7 @@
 		E4336F6326F083C30049A5D8 /* CoreDataManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F6226F083C30049A5D8 /* CoreDataManagerType.swift */; };
 		E4336F6826F1AB8B0049A5D8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F6726F1AB8B0049A5D8 /* CoreDataManager.swift */; };
 		E4336F6A26F1B7500049A5D8 /* GameStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F6926F1B7500049A5D8 /* GameStorage.swift */; };
+		E4336F6C26F1BC1A0049A5D8 /* StorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F6B26F1BC1A0049A5D8 /* StorageType.swift */; };
 		E43B64A226ABD81C001D9896 /* GameBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */; };
 		E43B64A426AC2384001D9896 /* TimeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B64A326AC2384001D9896 /* TimeBarView.swift */; };
 		E45B0AB82692929F006FDE3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E45B0AB72692929F006FDE3D /* Assets.xcassets */; };
@@ -214,8 +211,6 @@
 		71DF65502692FBCC00557693 /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
 		71DF65522692FBE500557693 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		71DF65542692FD1400557693 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
-		71E2B37526AE5E7F00AE496D /* PersistenceStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStorage.swift; sourceTree = "<group>"; };
-		71E2B37726AE602200AE496D /* PersistenceStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStorageType.swift; sourceTree = "<group>"; };
 		71E2FD9A26B90C5A0032A54B /* SettingSwitchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchController.swift; sourceTree = "<group>"; };
 		71E91E1626BA33190016386E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		A9E77F924F0C6B24A39E65B2 /* Pods_Full_Stack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Full_Stack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +240,7 @@
 		E4336F6226F083C30049A5D8 /* CoreDataManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerType.swift; sourceTree = "<group>"; };
 		E4336F6726F1AB8B0049A5D8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E4336F6926F1B7500049A5D8 /* GameStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStorage.swift; sourceTree = "<group>"; };
+		E4336F6B26F1BC1A0049A5D8 /* StorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageType.swift; sourceTree = "<group>"; };
 		E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBackgroundView.swift; sourceTree = "<group>"; };
 		E43B64A326AC2384001D9896 /* TimeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBarView.swift; sourceTree = "<group>"; };
 		E45B0AAB2692929D006FDE3D /* Full Stack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Full Stack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -633,6 +629,7 @@
 			isa = PBXGroup;
 			children = (
 				E4336F5A26F0638A0049A5D8 /* Storage.swift */,
+				E4336F6B26F1BC1A0049A5D8 /* StorageType.swift */,
 				E4336F6526F08AD80049A5D8 /* RealDataStorage */,
 				E4336F6626F08AF10049A5D8 /* BackUpManager */,
 			);
@@ -646,8 +643,6 @@
 				E4DF613A26A845670061F6E9 /* AdStorageType.swift */,
 				E4336F6926F1B7500049A5D8 /* GameStorage.swift */,
 				E4336F5C26F083650049A5D8 /* GameStorageType.swift */,
-				71E2B37526AE5E7F00AE496D /* PersistenceStorage.swift */,
-				71E2B37726AE602200AE496D /* PersistenceStorageType.swift */,
 			);
 			path = RealDataStorage;
 			sourceTree = "<group>";
@@ -1025,8 +1020,6 @@
 				E4BF712526B3E65600E8645F /* AdStorageType.swift in Sources */,
 				71310C2D26AA596B00733361 /* CoreDataStorage.xcdatamodeld in Sources */,
 				71307AC126A5461700C3191F /* Unit.swift in Sources */,
-				71F0D3DA26CD161A00E45283 /* PersistenceStorage.swift in Sources */,
-				71F0D3D926CD161700E45283 /* PersistenceStorageType.swift in Sources */,
 				E4BF712F26B3F22900E8645F /* ShopItem.swift in Sources */,
 				71F0D3DB26CD16D500E45283 /* UnitInfo.swift in Sources */,
 				E4BF712D26B3E6F300E8645F /* AdsInformation.swift in Sources */,
@@ -1083,6 +1076,7 @@
 				E4150EA426BE9A540041DD32 /* Line.swift in Sources */,
 				E4BF710926B00EF600E8645F /* FeverTimeBarView.swift in Sources */,
 				E4DF614326A93FFB0061F6E9 /* ShopCell.swift in Sources */,
+				E4336F6C26F1BC1A0049A5D8 /* StorageType.swift in Sources */,
 				E41C85DD269C50F0008F2E91 /* PauseViewModel.swift in Sources */,
 				E41C85DF269C5149008F2E91 /* PauseButtonController.swift in Sources */,
 				E418F36F26DC8D4800F35AFB /* UnitInfo - keyColor.swift in Sources */,
@@ -1106,7 +1100,6 @@
 				718F224926C377B700B2648C /* ErrorManager.swift in Sources */,
 				71307A8926A529F400C3191F /* LevelUpButton.swift in Sources */,
 				E4DF614126A92CE00061F6E9 /* ShopItem.swift in Sources */,
-				71E2B37826AE602200AE496D /* PersistenceStorageType.swift in Sources */,
 				E4F4304426C4F8F500F046E9 /* GameStoryManager.swift in Sources */,
 				E4F4304626CA2E4500F046E9 /* UnitInfo.swift in Sources */,
 				E4BF713B26B7D2CC00E8645F /* SingleSoundEffectStation.swift in Sources */,
@@ -1144,7 +1137,6 @@
 				E41C85D6269C1C35008F2E91 /* GameOverButtonController.swift in Sources */,
 				71DF65412692F94E00557693 /* MainViewModel.swift in Sources */,
 				E4DB63EA26CD3EF700E51540 /* LoadingView.swift in Sources */,
-				71E2B37626AE5E7F00AE496D /* PersistenceStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

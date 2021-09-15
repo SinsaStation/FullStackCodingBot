@@ -14,50 +14,35 @@ final class MainViewModel: AdViewModel {
     let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
     private(set) var rewardAvailable = BehaviorRelay<Bool>(value: false)
     
-    // MARK: 임시 선언
-    private var newStorage = Storage(gameStorage: FakeGameStorage(),
-                                     adStorage: AdStorage(),
-                                     backUpCenter: BackUpCenter(firebaseManager: FirebaseManager(),
-                                                                coreDataManager: FakeCoreDataManager()))
-    
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: FirebaseManagerType, settings: SettingInformation) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: StorageType, settings: SettingInformation) {
         self.settingInfo = settings
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
-        
-        bindRewardState()
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+
         setupAppleGameCenterLogin()
     }
-    
-    private func bindRewardState() {
-        adStorage.availableItems()
-            .subscribe(onNext: { [weak self] items in
-                let rewardState = !ShopItem.isAllTaken(items)
-                self?.rewardAvailable.accept(rewardState)
-            }).disposed(by: rx.disposeBag)
-    }
-    
+
     func makeMoveAction(to viewController: ViewControllerType) {
         guard firebaseDidLoad.value else { return }
         
         switch viewController {
         case .giftVC:
-            let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, adStorage: adStorage, database: database)
+            let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
             let shopScene = Scene.shop(shopViewModel)
             self.sceneCoordinator.transition(to: shopScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .rankVC:
-            let rankViewModel = RankViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, database: database)
+            let rankViewModel = RankViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
             let rankScene = Scene.rank(rankViewModel)
             self.sceneCoordinator.transition(to: rankScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .itemVC:
-            let itemViewModel = ItemViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, database: database)
+            let itemViewModel = ItemViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
             let itemScene = Scene.item(itemViewModel)
             self.sceneCoordinator.transition(to: itemScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .gameVC:
-            let gameUnitManager = GameUnitManager(allKinds: self.storage.itemList())
-            let gameViewModel = GameViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, database: database, gameUnitManager: gameUnitManager)
+            let gameUnitManager = GameUnitManager(allKinds: Unit.initialValues())
+            let gameViewModel = GameViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, gameUnitManager: gameUnitManager)
             let gameScene = Scene.game(gameViewModel)
             self.sceneCoordinator.transition(to: gameScene, using: .fullScreen, with: StoryboardType.game, animated: true)
             
@@ -66,12 +51,12 @@ final class MainViewModel: AdViewModel {
             self.sceneCoordinator.transition(to: settingScene, using: .overCurrent, with: StoryboardType.main, animated: true)
             
         case .storyVC:
-            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settingInfo, isFirstTimePlay: false)
+            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage, settings: settingInfo, isFirstTimePlay: false)
             let storyScene = Scene.story(storyViewModel)
             self.sceneCoordinator.transition(to: storyScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .howToVC:
-            let howToViewModel = HowToPlayViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
+            let howToViewModel = HowToPlayViewModel(sceneCoordinator: sceneCoordinator, storage: storage)
             let howToScene = Scene.howToPlay(howToViewModel)
             self.sceneCoordinator.transition(to: howToScene, using: .fullScreen, with: StoryboardType.main, animated: true)
         }
@@ -150,7 +135,7 @@ extension MainViewModel {
     private func load(with uuid: String?) {
         let isFirstLaunched = !userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce)
         
-        newStorage.initializeData(using: uuid, isFirstLaunched: isFirstLaunched)
+        storage.initializeData(using: uuid, isFirstLaunched: isFirstLaunched)
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] isLoaded in
                 self.firebaseDidLoad.accept(isLoaded)

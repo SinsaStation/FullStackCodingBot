@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 import RxSwift
 
-final class CoreDataManager {
+final class CoreDataManager: CoreDataManagerType {
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CoreDataStorage")
@@ -18,6 +18,7 @@ final class CoreDataManager {
         return persistentContainer.viewContext
     }
     
+    @discardableResult
     func setupInitialData() -> Completable {
         let subject = PublishSubject<Void>()
         let initialUnits = Unit.initialValues()
@@ -33,28 +34,23 @@ final class CoreDataManager {
         return subject.ignoreElements().asCompletable()
     }
     
-    func load() -> Observable<NetworkDTO> {
-        Observable<NetworkDTO>.create { [weak self] observer in
-            guard let fetchedUnitInfo = try? self?.fetchUnit(),
-                  let fetchedMoneyInfo = try? self?.fetchMoneyInfo().first,
-                  let fetchedScoreInfo = try? self?.fetchScoreInfo().first else {
-                observer.onError(CoreDataError.cannotFetchData)
-                return Disposables.create()
-            }
-            
-            let units = fetchedUnitInfo.map { DataFormatManager.transformToUnit($0) }
-            let money = Int(fetchedMoneyInfo.myMoney)
-            let score = Int(fetchedScoreInfo.myScore)
-            let date = fetchedMoneyInfo.lastUpdated ?? .init(timeIntervalSince1970: 0)
-            let localData = NetworkDTO.init(units: units,
-                                            money: money,
-                                            score: score,
-                                            ads: .empty(),
-                                            date: date)
-            observer.onNext(localData)
-            observer.onCompleted()
-            return Disposables.create()
+    func load() -> NetworkDTO? {
+        guard let fetchedUnitInfo = try? self.fetchUnit(),
+              let fetchedMoneyInfo = try? self.fetchMoneyInfo().first,
+              let fetchedScoreInfo = try? self.fetchScoreInfo().first else {
+            return nil
         }
+        
+        let units = fetchedUnitInfo.map { DataFormatManager.transformToUnit($0) }
+        let money = Int(fetchedMoneyInfo.myMoney)
+        let score = Int(fetchedScoreInfo.myScore)
+        let date = fetchedMoneyInfo.lastUpdated ?? .init(timeIntervalSince1970: 0)
+        let localData = NetworkDTO.init(units: units,
+                                        money: money,
+                                        score: score,
+                                        ads: .empty(),
+                                        date: date)
+        return localData
     }
     
     func lastUpdated() -> Date {

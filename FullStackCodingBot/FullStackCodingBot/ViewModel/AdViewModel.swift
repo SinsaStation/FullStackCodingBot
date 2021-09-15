@@ -1,11 +1,8 @@
 import Foundation
 
+// Ad 부분 인터페이스를 나누는 게 나을까?
 class AdViewModel: CommonViewModel {
-    
-    let adStorage: AdStorageType
-    
-    init(sceneCoordinator: SceneCoordinatorType, storage: PersistenceStorageType, adStorage: AdStorageType, database: FirebaseManagerType) {
-        self.adStorage = adStorage
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
+    override init(sceneCoordinator: SceneCoordinatorType, storage: StorageType) {
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
 }
