@@ -24,6 +24,7 @@ final class Storage {
                 .subscribe(onNext: { data in
                     self.gameStorage.update(with: data)
                     self.adStorage.setNewRewardsIfPossible(with: data.ads)
+                        .subscribe(onError: { _ in }).disposed(by: disposeBag)
                     observer.onNext(true)
                 }, onError: { _ in
                     observer.onNext(false)
