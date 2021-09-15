@@ -88,6 +88,7 @@
 		E4336F6126F083A20049A5D8 /* BackUpCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F6026F083A20049A5D8 /* BackUpCenter.swift */; };
 		E4336F6326F083C30049A5D8 /* CoreDataManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F6226F083C30049A5D8 /* CoreDataManagerType.swift */; };
 		E4336F6826F1AB8B0049A5D8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F6726F1AB8B0049A5D8 /* CoreDataManager.swift */; };
+		E4336F6A26F1B7500049A5D8 /* GameStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4336F6926F1B7500049A5D8 /* GameStorage.swift */; };
 		E43B64A226ABD81C001D9896 /* GameBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */; };
 		E43B64A426AC2384001D9896 /* TimeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B64A326AC2384001D9896 /* TimeBarView.swift */; };
 		E45B0AB82692929F006FDE3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E45B0AB72692929F006FDE3D /* Assets.xcassets */; };
@@ -243,6 +244,7 @@
 		E4336F6026F083A20049A5D8 /* BackUpCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpCenter.swift; sourceTree = "<group>"; };
 		E4336F6226F083C30049A5D8 /* CoreDataManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerType.swift; sourceTree = "<group>"; };
 		E4336F6726F1AB8B0049A5D8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		E4336F6926F1B7500049A5D8 /* GameStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStorage.swift; sourceTree = "<group>"; };
 		E43B64A126ABD81C001D9896 /* GameBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBackgroundView.swift; sourceTree = "<group>"; };
 		E43B64A326AC2384001D9896 /* TimeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBarView.swift; sourceTree = "<group>"; };
 		E45B0AAB2692929D006FDE3D /* Full Stack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Full Stack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -642,6 +644,7 @@
 			children = (
 				E4DF613C26A845DA0061F6E9 /* AdStorage.swift */,
 				E4DF613A26A845670061F6E9 /* AdStorageType.swift */,
+				E4336F6926F1B7500049A5D8 /* GameStorage.swift */,
 				E4336F5C26F083650049A5D8 /* GameStorageType.swift */,
 				71E2B37526AE5E7F00AE496D /* PersistenceStorage.swift */,
 				71E2B37726AE602200AE496D /* PersistenceStorageType.swift */,
@@ -1128,6 +1131,7 @@
 				71003AD626CFAB22001D5210 /* IdentifierManager.swift in Sources */,
 				E4150E9F26BE44AC0041DD32 /* PersonStoryView.swift in Sources */,
 				E4BF712C26B3E6E300E8645F /* UnitInformation.swift in Sources */,
+				E4336F6A26F1B7500049A5D8 /* GameStorage.swift in Sources */,
 				E4150E9926BA37C10041DD32 /* FadeInTextView.swift in Sources */,
 				7166B24026C25B0400E098BE /* Manual.swift in Sources */,
 				E4779C652697E92F00B92D24 /* TimeProgressView.swift in Sources */,

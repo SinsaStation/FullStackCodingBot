@@ -1,16 +1,31 @@
 import Foundation
+import RxSwift
 
 protocol GameStorageType {
+    
+    @discardableResult
+    func myHighScore() -> Int
+    
+    @discardableResult
+    func myMoney() -> Int
+    
+    @discardableResult
+    func itemList() -> [Unit]
+    
     func update(with data: NetworkDTO)
-}
-
-class FakeGameStorage: GameStorageType {
-    func update(with data: NetworkDTO) {
-        /*
-         ViewModel에서 다음과 같은 코드로 업데이트를 했었다
-         storage.update(units: info.units)
-         storage.raiseMoney(by: info.money)
-         storage.updateHighScore(new: info.score)
-         */
-    }
+    
+    @discardableResult
+    func listUnit() -> Observable<[Unit]>
+    
+    @discardableResult
+    func raiseLevel(of unit: Unit, using money: Int) -> Unit
+    
+    @discardableResult
+    func availableMoney() -> Observable<Int>
+    
+    @discardableResult
+    func raiseMoney(by money: Int) -> Observable<Int>
+    
+    @discardableResult
+    func updateHighScore(new score: Int) -> Bool
 }
