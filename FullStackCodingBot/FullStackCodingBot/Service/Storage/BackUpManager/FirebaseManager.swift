@@ -7,7 +7,6 @@ final class FirebaseManager: FirebaseManagerType {
     private var ref: DatabaseReference
     private let uid = Auth.auth().currentUser?.uid ?? ""
     private let disposedBag = DisposeBag()
-    let data = [Unit]()
     
     init(_ ref: DatabaseReference = Database.database().reference()) {
         self.ref = ref
