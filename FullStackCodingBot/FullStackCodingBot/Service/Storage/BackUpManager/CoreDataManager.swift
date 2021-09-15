@@ -66,16 +66,6 @@ final class CoreDataManager: CoreDataManagerType {
             try? updateScore(score: newScore)
         }
     }
-    
-    func lastUpdated() -> Date {
-        let farPastDate = Date.init(timeIntervalSince1970: 0)
-        guard let fetchedInfo = try? fetchMoneyInfo(),
-              let currentMoneyInfo = fetchedInfo.first else {
-            return farPastDate
-        }
-        let lastUpdated = currentMoneyInfo.lastUpdated ?? farPastDate
-        return lastUpdated
-    }
 }
 
 // MARK: new

@@ -18,9 +18,18 @@ final class MainViewModel: AdViewModel {
         self.settingInfo = settings
         super.init(sceneCoordinator: sceneCoordinator, storage: storage)
 
+        bindRewarsStates()
         setupAppleGameCenterLogin()
     }
 
+    private func bindRewarsStates() {
+        storage.avilableRewards()
+            .subscribe(onNext: { [weak self] items in
+                let rewardState = !ShopItem.isAllTaken(items)
+                self?.rewardAvailable.accept(rewardState)
+            }).disposed(by: rx.disposeBag)
+    }
+    
     func makeMoveAction(to viewController: ViewControllerType) {
         guard firebaseDidLoad.value else { return }
         
