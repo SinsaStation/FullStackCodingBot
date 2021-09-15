@@ -9,7 +9,7 @@ enum ControlScene {
 
 extension ControlScene {
     
-    func ControlScene(from identifier: String) -> UIViewController {
+    func instantiate(from identifier: String) -> UIViewController {
         switch self {
         
         case .alert(let message):
