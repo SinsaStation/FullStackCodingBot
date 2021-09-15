@@ -11,7 +11,7 @@ final class MainViewModel: AdViewModel {
     private let userDefaults = UserDefaults.standard
     
     lazy var settingSwitchState = BehaviorRelay<SettingInformation>(value: settingInfo)
-    let firebaseDidLoad = BehaviorRelay<Bool>(value: false)
+    let storageDidSetup = BehaviorRelay<Bool>(value: false)
     private(set) var rewardAvailable = BehaviorRelay<Bool>(value: false)
     
     init(sceneCoordinator: SceneCoordinatorType, storage: StorageType, settings: SettingInformation) {
@@ -31,7 +31,7 @@ final class MainViewModel: AdViewModel {
     }
     
     func makeMoveAction(to viewController: ViewControllerType) {
-        guard firebaseDidLoad.value else { return }
+        guard storageDidSetup.value else { return }
         
         switch viewController {
         case .giftVC:
@@ -99,9 +99,6 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     
     private func setupAppleGameCenterLogin() {
         GKLocalPlayer.local.authenticateHandler = { [unowned self] gcViewController, error in
-            
-            guard !self.firebaseDidLoad.value else { return }
-            
             if let gcViewController = gcViewController {
                 let scene = Scene.gameCenter(gcViewController)
                 self.sceneCoordinator.transition(to: scene, using: .fullScreen, with: StoryboardType.main, animated: false)
@@ -139,15 +136,17 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     }
 }
 
-// MARK: Storage Read
+// MARK: Storage Load
 extension MainViewModel {
     private func load(with uuid: String?) {
+        guard !self.storageDidSetup.value else { return }
+        
         let isFirstLaunched = !userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce)
         
         storage.initializeData(using: uuid, isFirstLaunched: isFirstLaunched)
             .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [unowned self] isLoaded in
-                self.firebaseDidLoad.accept(isLoaded)
+            .subscribe(onNext: { [unowned self] isInitialized in
+                self.storageDidSetup.accept(isInitialized)
             }).disposed(by: rx.disposeBag)
         
         markAsLauncedOnce()
