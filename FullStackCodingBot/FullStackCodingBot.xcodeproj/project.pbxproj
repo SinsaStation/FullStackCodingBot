@@ -52,7 +52,6 @@
 		71DF64BD2692C18F00557693 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64BC2692C18F00557693 /* RankViewController.swift */; };
 		71DF64BF2692C1C600557693 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF64BE2692C1C600557693 /* ItemViewController.swift */; };
 		71DF653C2692F90100557693 /* TransitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF653B2692F90100557693 /* TransitionModel.swift */; };
-		71DF653E2692F92700557693 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF653D2692F92700557693 /* Scene.swift */; };
 		71DF65412692F94E00557693 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF65402692F94E00557693 /* MainViewModel.swift */; };
 		71DF65432692F95800557693 /* ShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF65422692F95800557693 /* ShopViewModel.swift */; };
 		71DF65472692F97000557693 /* RankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF65462692F97000557693 /* RankViewModel.swift */; };
@@ -206,7 +205,6 @@
 		71DF64BC2692C18F00557693 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		71DF64BE2692C1C600557693 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		71DF653B2692F90100557693 /* TransitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionModel.swift; sourceTree = "<group>"; };
-		71DF653D2692F92700557693 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		71DF65402692F94E00557693 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		71DF65422692F95800557693 /* ShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewModel.swift; sourceTree = "<group>"; };
 		71DF65462692F97000557693 /* RankViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewModel.swift; sourceTree = "<group>"; };
@@ -470,7 +468,6 @@
 			isa = PBXGroup;
 			children = (
 				71DF653B2692F90100557693 /* TransitionModel.swift */,
-				71DF653D2692F92700557693 /* Scene.swift */,
 				71DF65502692FBCC00557693 /* SceneCoordinatorType.swift */,
 				71DF65522692FBE500557693 /* SceneCoordinator.swift */,
 				719D0D8F26F1863200913BBE /* MainScene.swift */,
@@ -1054,7 +1051,6 @@
 				E41C85DA269C4E8F008F2E91 /* PauseViewController.swift in Sources */,
 				E4DF613D26A845DA0061F6E9 /* AdStorage.swift in Sources */,
 				E4D7C64B26953C6200D58BA2 /* ScreenSize.swift in Sources */,
-				71DF653E2692F92700557693 /* Scene.swift in Sources */,
 				E4BF714326B7E23A00E8645F /* GameSoundEffectStation.swift in Sources */,
 				71DF64BF2692C1C600557693 /* ItemViewController.swift in Sources */,
 				71A5518226A9277C0083A4B0 /* DatabaseManagerType.swift in Sources */,
