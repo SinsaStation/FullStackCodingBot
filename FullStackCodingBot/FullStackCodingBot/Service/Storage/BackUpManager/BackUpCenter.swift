@@ -6,7 +6,8 @@ final class BackUpCenter: BackUpCenterType {
     private var firebaseManager: FirebaseManagerType
     private var coreDataManager: CoreDataManagerType
     
-    init(firebaseManager: FirebaseManagerType, coreDataManager: CoreDataManagerType) {
+    init(firebaseManager: FirebaseManagerType = FirebaseManager(),
+         coreDataManager: CoreDataManagerType = CoreDataManager()) {
         self.firebaseManager = firebaseManager
         self.coreDataManager = coreDataManager
     }

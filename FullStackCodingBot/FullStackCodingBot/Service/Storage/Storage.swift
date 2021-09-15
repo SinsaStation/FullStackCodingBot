@@ -8,7 +8,9 @@ final class Storage {
     private var adStorage: AdStorageType
     private var backUpCenter: BackUpCenterType
 
-    init(gameStorage: GameStorageType, adStorage: AdStorageType, backUpCenter: BackUpCenterType) {
+    init(gameStorage: GameStorageType = GameStorage(),
+         adStorage: AdStorageType = AdStorage(),
+         backUpCenter: BackUpCenterType = BackUpCenter()) {
         self.gameStorage = gameStorage
         self.adStorage = adStorage
         self.backUpCenter = backUpCenter
