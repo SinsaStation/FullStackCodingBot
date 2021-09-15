@@ -347,7 +347,6 @@
 			children = (
 				E4336F6426F08A8D0049A5D8 /* Storage */,
 				717EAD3B26A656E200E0CDB7 /* GameLogic */,
-				71BC752C26A940870021BA1A /* DataFormatManager */,
 				718F224726C377AA00B2648C /* ErrorManager */,
 			);
 			path = Service;
@@ -656,6 +655,7 @@
 				E4336F6226F083C30049A5D8 /* CoreDataManagerType.swift */,
 				71A5517F26A91C280083A4B0 /* FirebaseManager.swift */,
 				71A5518126A9277C0083A4B0 /* FirebaseManagerType.swift */,
+				71BC752C26A940870021BA1A /* DataFormatManager */,
 			);
 			path = BackUpManager;
 			sourceTree = "<group>";
