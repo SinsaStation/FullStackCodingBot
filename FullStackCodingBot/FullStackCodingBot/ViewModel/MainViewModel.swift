@@ -56,17 +56,17 @@ final class MainViewModel: AdViewModel {
             self.sceneCoordinator.transition(to: gameScene, using: .fullScreen, with: StoryboardType.game, animated: true)
             
         case .settingVC:
-            let settingScene = ControlScene.setting(self)
+            let settingScene = GameHelperScene.setting(self)
             self.sceneCoordinator.transition(to: settingScene, using: .overCurrent, with: StoryboardType.main, animated: true)
             
         case .storyVC:
             let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settingInfo, isFirstTimePlay: false)
-            let storyScene = ControlScene.story(storyViewModel)
+            let storyScene = GameHelperScene.story(storyViewModel)
             self.sceneCoordinator.transition(to: storyScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .howToVC:
             let howToViewModel = HowToPlayViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
-            let howToScene = ControlScene.howToPlay(howToViewModel)
+            let howToScene = GameHelperScene.howToPlay(howToViewModel)
             self.sceneCoordinator.transition(to: howToScene, using: .fullScreen, with: StoryboardType.main, animated: true)
         }
     }
@@ -101,7 +101,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
         GKLocalPlayer.local.authenticateHandler = { [unowned self] gcViewController, error in
             
             if let gcViewController = gcViewController {
-                let scene = ControlScene.gameCenter(gcViewController)
+                let scene = MainScene.gameCenter(gcViewController)
                 self.sceneCoordinator.transition(to: scene, using: .fullScreen, with: StoryboardType.main, animated: false)
             } else if let error = error {
                 Firebase.Analytics.logEvent("CancelGameCenter", parameters: ["ErrorMessage": "\(error.localizedDescription)"])
@@ -138,7 +138,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     
     private func loadOffline() {
         loadFromCoredata()
-        let scene = ControlScene.alert(AlertMessage.networkLoad)
+        let scene = GameHelperScene.alert(AlertMessage.networkLoad)
         sceneCoordinator.transition(to: scene,
                                     using: .alert,
                                     with: .main,

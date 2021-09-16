@@ -7,6 +7,7 @@ enum MainScene {
     case shop(ShopViewModel)
     case rank(RankViewModel)
     case item(ItemViewModel)
+    case gameCenter(UIViewController)
 }
 
 extension MainScene: SceneType {
@@ -49,6 +50,9 @@ extension MainScene: SceneType {
             }
             itemVC.bind(viewModel: viewModel)
             return itemVC
+            
+    case .gameCenter(let viewController):
+            return viewController
             
         }
     }

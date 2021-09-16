@@ -2,15 +2,14 @@ import UIKit
 import GameKit
 import Firebase
 
-enum ControlScene {
+enum GameHelperScene {
     case alert(AlertMessage)
-    case gameCenter(UIViewController)
     case setting(MainViewModel)
     case howToPlay(HowToPlayViewModel)
     case story(StoryViewModel)
 }
 
-extension ControlScene: SceneType {
+extension GameHelperScene: SceneType {
     
     func instantiate(from identifier: String) -> UIViewController {
         let storyboard = UIStoryboard(name: identifier, bundle: nil)
@@ -22,9 +21,6 @@ extension ControlScene: SceneType {
             let confirmAction = UIAlertAction(title: message.content.confirm, style: .cancel)
             alertScene.addAction(confirmAction)
             return alertScene
-            
-        case .gameCenter(let viewController):
-            return viewController
             
         case .setting(let viewModel):
             guard var settingVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.setting) as? SettingViewController else {

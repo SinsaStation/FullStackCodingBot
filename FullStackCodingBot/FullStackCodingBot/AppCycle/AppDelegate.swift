@@ -70,7 +70,7 @@ private extension AppDelegate {
             
         case false:
             let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settings)
-            let storyScene = ControlScene.story(storyViewModel)
+            let storyScene = GameHelperScene.story(storyViewModel)
             return storyScene
             
         }
