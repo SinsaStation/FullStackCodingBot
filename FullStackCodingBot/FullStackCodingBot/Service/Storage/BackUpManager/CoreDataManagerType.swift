@@ -8,6 +8,6 @@ protocol CoreDataManagerType {
     
     func load() -> NetworkDTO?
     
-    func save(_ newUnit: Unit?, _ newMoney: Int?, _ newScore: Int?)
+    func save(gameData newUnit: Unit?, _ newMoney: Int?, _ newScore: Int?)
 
 }

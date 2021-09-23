@@ -27,7 +27,7 @@ final class BackUpCenter: BackUpCenterType {
                 return Disposables.create()
             }
             
-            firebaseManager.load(uuid)
+            firebaseManager.load(with: uuid)
                 .observe(on: MainScheduler.asyncInstance)
                 .subscribe { onlineData in
                     let onlineUpdate = onlineData.date
@@ -42,11 +42,11 @@ final class BackUpCenter: BackUpCenterType {
         }
     }
     
-    func save(_ newUnit: Unit?, _ newMoney: Int?, _ newScore: Int?) {
-        coreDataManager.save(newUnit, newMoney, newScore)
+    func save(gameData newUnit: Unit?, _ newMoney: Int?, _ newScore: Int?) {
+        coreDataManager.save(gameData: newUnit, newMoney, newScore)
     }
     
-    func save(_ info: NetworkDTO) {
-        firebaseManager.save(info)
+    func save(gameData: NetworkDTO) {
+        firebaseManager.save(gameData: gameData)
     }
 }

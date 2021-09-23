@@ -22,14 +22,14 @@ final class FirebaseManager: FirebaseManagerType {
         self.ref = ref
     }
     
-    func save(_ info: NetworkDTO) {
+    func save(gameData: NetworkDTO) {
         guard uid != "" else { return }
         
-        let unitData = try? DataFormatManager.transformToString(info.units)
-        let moneyData = try? DataFormatManager.transformToString(info.money)
-        let scoreData = try? DataFormatManager.transformToString(info.score)
-        let adsData = try? DataFormatManager.transformToString(info.ads)
-        let recentDate = try? DataFormatManager.transformToString(info.date)
+        let unitData = try? DataFormatManager.transformToString(gameData.units)
+        let moneyData = try? DataFormatManager.transformToString(gameData.money)
+        let scoreData = try? DataFormatManager.transformToString(gameData.score)
+        let adsData = try? DataFormatManager.transformToString(gameData.ads)
+        let recentDate = try? DataFormatManager.transformToString(gameData.date)
         
         ref.child(Keys.users).child(uid).setValue([Keys.info: [Keys.units: unitData,
                                                                Keys.money: moneyData,
@@ -39,7 +39,7 @@ final class FirebaseManager: FirebaseManagerType {
     }
     
     @discardableResult
-    func load(_ uuid: String) -> Observable<NetworkDTO> {
+    func load(with uuid: String) -> Observable<NetworkDTO> {
         Observable.create { [unowned self] observer in
             self.ref.child(Keys.users).child(uuid).getData { error, snapshot in
                 if let error = error {

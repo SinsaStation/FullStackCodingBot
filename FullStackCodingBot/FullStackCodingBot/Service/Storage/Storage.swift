@@ -57,7 +57,7 @@ extension Storage: StorageType {
         }
         let reward = ShopSetting.reward()
         gameStorage.raiseMoney(by: reward)
-        backUpCenter.save(.none, gameStorage.myMoney(), .none)
+        backUpCenter.save(gameData: .none, gameStorage.myMoney(), .none)
         return reward
     }
     
@@ -67,7 +67,7 @@ extension Storage: StorageType {
     
     func raiseLevel(of unit: Unit, using money: Int) -> Unit {
         let newUnit = gameStorage.raiseLevel(of: unit, using: money)
-        backUpCenter.save(newUnit, gameStorage.myMoney(), .none)
+        backUpCenter.save(gameData: newUnit, gameStorage.myMoney(), .none)
         return newUnit
     }
     
@@ -77,12 +77,12 @@ extension Storage: StorageType {
     
     func raiseMoney(by amount: Int) {
         gameStorage.raiseMoney(by: amount)
-        backUpCenter.save(.none, gameStorage.myMoney(), .none)
+        backUpCenter.save(gameData: .none, gameStorage.myMoney(), .none)
     }
     
     func updateHighScore(new score: Int) -> Bool {
         let isUpdatable = gameStorage.updateHighScore(new: score)
-        if isUpdatable { backUpCenter.save(.none, .none, score) }
+        if isUpdatable { backUpCenter.save(gameData: .none, .none, score) }
         return isUpdatable
     }
     
@@ -92,6 +92,6 @@ extension Storage: StorageType {
                                      score: gameStorage.myHighScore(),
                                      ads: adStorage.currentInformation(),
                                      date: Date())
-        backUpCenter.save(currentData)
+        backUpCenter.save(gameData: currentData)
     }
 }

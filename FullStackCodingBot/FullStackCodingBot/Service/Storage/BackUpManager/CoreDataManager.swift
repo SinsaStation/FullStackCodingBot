@@ -70,7 +70,7 @@ final class CoreDataManager: CoreDataManagerType {
         return localData
     }
     
-    func save(_ newUnit: Unit?, _ newMoney: Int?, _ newScore: Int?) {
+    func save(gameData newUnit: Unit?, _ newMoney: Int?, _ newScore: Int?) {
         if let newUnit = newUnit {
             try? updateUnit(to: newUnit)
         }
