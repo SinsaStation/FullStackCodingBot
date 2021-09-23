@@ -8,6 +8,16 @@ final class FirebaseManager: FirebaseManagerType {
     private let uid = Auth.auth().currentUser?.uid ?? ""
     private let disposedBag = DisposeBag()
     
+    enum Keys {
+        static let users = "users"
+        static let info = "info"
+        static let units = "units"
+        static let money = "money"
+        static let score = "score"
+        static let ads = "ads"
+        static let date = "date"
+    }
+    
     init(_ ref: DatabaseReference = Database.database().reference()) {
         self.ref = ref
     }
@@ -20,13 +30,18 @@ final class FirebaseManager: FirebaseManagerType {
         let scoreData = try? DataFormatManager.transformToString(info.score)
         let adsData = try? DataFormatManager.transformToString(info.ads)
         let recentDate = try? DataFormatManager.transformToString(info.date)
-        ref.child("users").child(uid).setValue(["info": ["units": unitData, "money": moneyData, "score": scoreData, "ads": adsData, "date": recentDate]])
+        
+        ref.child(Keys.users).child(uid).setValue([Keys.info: [Keys.units: unitData,
+                                                               Keys.money: moneyData,
+                                                               Keys.score: scoreData,
+                                                               Keys.ads: adsData,
+                                                               Keys.date: recentDate]])
     }
     
     @discardableResult
     func load(_ uuid: String) -> Observable<NetworkDTO> {
         Observable.create { [unowned self] observer in
-            self.ref.child("users").child(uuid).getData { error, snapshot in
+            self.ref.child(Keys.users).child(uuid).getData { error, snapshot in
                 if let error = error {
                     observer.onError(error)
                 }

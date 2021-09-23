@@ -4,8 +4,10 @@ import RxSwift
 
 final class CoreDataManager: CoreDataManagerType {
     
+    private let storageKey = "CoreDataStorage"
+    
     private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "CoreDataStorage")
+        let container = NSPersistentContainer(name: storageKey)
         container.loadPersistentStores { _, error in
             if let error = error {
                 fatalError()
@@ -16,6 +18,21 @@ final class CoreDataManager: CoreDataManagerType {
     
     private var context: NSManagedObjectContext {
         return persistentContainer.viewContext
+    }
+    
+    enum Entity {
+        static let item = "ItemInformation"
+        static let money = "MoneyInformation"
+        static let score = "ScoreInformation"
+    }
+    
+    enum Keys {
+        static let uuid = "uuid"
+        static let image = "image"
+        static let level = "level"
+        static let myMoney = "myMoney"
+        static let lastUpdated = "lastUpdated"
+        static let myScore = "myScore"
     }
     
     @discardableResult
@@ -75,11 +92,11 @@ extension CoreDataManager {
         guard fetchedUnit == nil else { return }
         
         try units.forEach { unit in
-            if let entity = NSEntityDescription.entity(forEntityName: "ItemInformation", in: context) {
+            if let entity = NSEntityDescription.entity(forEntityName: Entity.item, in: context) {
                 let info = NSManagedObject(entity: entity, insertInto: context)
-                info.setValue(unit.uuid, forKey: "uuid")
-                info.setValue(unit.image, forKey: "image")
-                info.setValue(unit.level, forKey: "level")
+                info.setValue(unit.uuid, forKey: Keys.uuid)
+                info.setValue(unit.image, forKey: Keys.image)
+                info.setValue(unit.level, forKey: Keys.level)
                 
                 do {
                     try context.save()
@@ -94,10 +111,10 @@ extension CoreDataManager {
         let fetchedMoney = try? fetchMoneyInfo().first
         guard fetchedMoney == nil else { return }
         
-        if let entity = NSEntityDescription.entity(forEntityName: "MoneyInformation", in: context) {
+        if let entity = NSEntityDescription.entity(forEntityName: Entity.money, in: context) {
             let info = NSManagedObject(entity: entity, insertInto: context)
-            info.setValue(money, forKey: "myMoney")
-            info.setValue(Date.init(timeIntervalSince1970: 0), forKey: "lastUpdated")
+            info.setValue(money, forKey: Keys.myMoney)
+            info.setValue(Date.init(timeIntervalSince1970: 0), forKey: Keys.lastUpdated)
             
             do {
                 try context.save()
@@ -111,9 +128,9 @@ extension CoreDataManager {
         let fetchedScore = try? fetchScoreInfo().first
         guard fetchedScore == nil else { return }
         
-        if let entity = NSEntityDescription.entity(forEntityName: "ScoreInformation", in: context) {
+        if let entity = NSEntityDescription.entity(forEntityName: Entity.score, in: context) {
             let info = NSManagedObject(entity: entity, insertInto: context)
-            info.setValue(score, forKey: "myScore")
+            info.setValue(score, forKey: Keys.myScore)
             
             do {
                 try context.save()
@@ -164,9 +181,9 @@ extension CoreDataManager {
         guard let fetchedUnit = try? fetchUnit() else { return }
         
         for info in fetchedUnit where info.uuid == unit.uuid {
-            info.setValue(unit.uuid, forKey: "uuid")
-            info.setValue(unit.image, forKey: "image")
-            info.setValue(unit.level, forKey: "level")
+            info.setValue(unit.uuid, forKey: Keys.uuid)
+            info.setValue(unit.image, forKey: Keys.image)
+            info.setValue(unit.level, forKey: Keys.level)
         }
         
         do {
@@ -179,8 +196,8 @@ extension CoreDataManager {
     private func updateMoney(money: Int) throws {
         do {
             let previousInfo = try fetchMoneyInfo().first ?? MoneyInformation(context: context)
-            previousInfo.setValue(money, forKey: "myMoney")
-            previousInfo.setValue(Date(), forKey: "lastUpdated")
+            previousInfo.setValue(money, forKey: Keys.myMoney)
+            previousInfo.setValue(Date(), forKey: Keys.lastUpdated)
             try context.save()
         } catch {
             throw CoreDataError.cannotSaveData
@@ -190,7 +207,7 @@ extension CoreDataManager {
     private func updateScore(score: Int) throws {
         do {
             let previousInfo = try fetchScoreInfo().first ?? ScoreInformation(context: context)
-            previousInfo.setValue(score, forKey: "myScore")
+            previousInfo.setValue(score, forKey: Keys.myScore)
             try context.save()
         } catch {
             throw CoreDataError.cannotSaveData
