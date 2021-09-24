@@ -449,15 +449,6 @@
 			path = SceneType;
 			sourceTree = "<group>";
 		};
-		71A5517E26A91C160083A4B0 /* FirebaseStorage */ = {
-			isa = PBXGroup;
-			children = (
-				71A5517F26A91C280083A4B0 /* DatabaseManager.swift */,
-				71A5518126A9277C0083A4B0 /* DatabaseManagerType.swift */,
-			);
-			path = FirebaseStorage;
-			sourceTree = "<group>";
-		};
 		71BC752C26A940870021BA1A /* DataFormatManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -856,7 +847,7 @@
 				E45B0AA82692929D006FDE3D /* Frameworks */,
 				E45B0AA92692929D006FDE3D /* Resources */,
 				7165CDD92695687300891214 /* ShellScript */,
-				DF44C2E6C913FEAEBC1352D3 /* [CP] Embed Pods Frameworks */,
+				9C633EB2541425896BED99AB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1020,7 +1011,7 @@
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
-		DF44C2E6C913FEAEBC1352D3 /* [CP] Embed Pods Frameworks */ = {
+		9C633EB2541425896BED99AB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

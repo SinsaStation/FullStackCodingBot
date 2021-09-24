@@ -161,7 +161,8 @@ extension MainViewModel {
     }
     
     private func showNetworkAlert() {
-        sceneCoordinator.transition(to: .alert(AlertMessage.networkLoad),
+        let alertScene = AlertScene.alert(AlertMessage.networkLoad)
+        sceneCoordinator.transition(to: alertScene,
                                     using: .alert,
                                     with: .main,
                                     animated: true)

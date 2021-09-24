@@ -54,7 +54,6 @@ private extension AppDelegate {
     
     private func getFirstScene(_ hasLaunchedOnce: Bool,
                                _ sceneCoordinator: SceneCoordinator,
-                               _ database: DatabaseManager,
                                _ settings: SettingInformation) -> SceneType {
         switch hasLaunchedOnce {
         

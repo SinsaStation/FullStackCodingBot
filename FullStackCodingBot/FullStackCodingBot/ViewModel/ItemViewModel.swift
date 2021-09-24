@@ -10,7 +10,7 @@ final class ItemViewModel: CommonViewModel {
     }
     
     var itemStorage: Driver<[Unit]> {
-        return BehaviorRelay<[Unit]>(value: storage.itemList()).asDriver(onErrorJustReturn:[])
+        return BehaviorRelay<[Unit]>(value: storage.itemList()).asDriver(onErrorJustReturn: [])
     }
     
     var money: Driver<Int> {
