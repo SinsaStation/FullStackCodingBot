@@ -33,8 +33,7 @@ final class GameViewModel: CommonViewModel {
     }
     
     init(sceneCoordinator: SceneCoordinatorType,
-         storage: PersistenceStorageType,
-         database: DatabaseManagerType,
+         storage: StorageType,
          pauseAction: CocoaAction? = nil,
          gameUnitManager: GameUnitManagerType,
          timeManager: TimeManagerType = TimeManager(),
@@ -42,7 +41,7 @@ final class GameViewModel: CommonViewModel {
         self.gameUnitManager = gameUnitManager
         self.timeManager = timeManager
         self.gameSoundStation = gameSoundStation
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
 }
 
@@ -205,7 +204,7 @@ private extension GameViewModel {
     @discardableResult
     private func toGameOverScene() -> Completable {
         let currentScore = try? currentScore.value()
-        let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database, finalScore: currentScore ?? 0, newGameStatus: newGameStatus)
+        let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, finalScore: currentScore ?? 0, newGameStatus: newGameStatus)
         let gameOverScene = GameScene.gameOver(gameOverViewModel)
         return self.sceneCoordinator.transition(to: gameOverScene, using: .pop, with: StoryboardType.game, animated: true)
     }
@@ -213,7 +212,7 @@ private extension GameViewModel {
     @discardableResult
     private func toPauseScene() -> Completable {
         let currentScore = try? currentScore.value()
-        let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, database: database, currentScore: currentScore ?? 0, newGameStatus: newGameStatus)
+        let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, currentScore: currentScore ?? 0, newGameStatus: newGameStatus)
         let pauseScene = GameScene.pause(pauseViewModel)
         return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, with: StoryboardType.game, animated: false)
     }

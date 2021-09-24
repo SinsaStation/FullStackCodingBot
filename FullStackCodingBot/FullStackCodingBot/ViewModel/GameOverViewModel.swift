@@ -23,12 +23,11 @@ final class GameOverViewModel: CommonViewModel {
     }()
     
     lazy var currentMoney: Driver<String> = {
-        return storage.availableMoeny().map { String($0) }.asDriver(onErrorJustReturn: "")
+        return storage.availableMoney().map { String($0) }.asDriver(onErrorJustReturn: "")
     }()
     
     init(sceneCoordinator: SceneCoordinatorType,
-         storage: PersistenceStorageType,
-         database: DatabaseManagerType,
+         storage: StorageType,
          finalScore: Int,
          newGameStatus: BehaviorRelay<GameStatus>,
          gameStoryManager: GameStoryManager = GameStoryManager()) {
@@ -36,7 +35,7 @@ final class GameOverViewModel: CommonViewModel {
         self.moneyInfo.accept(finalScore/10)
         self.newGameStatus = newGameStatus
         self.gameStoryManager = gameStoryManager
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage, database: database)
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
     
     func execute() {

@@ -1,9 +1,7 @@
 import Foundation
-import CoreData
 import RxSwift
-import RxCocoa
 
-protocol PersistenceStorageType {
+protocol GameStorageType {
     
     @discardableResult
     func myHighScore() -> Int
@@ -14,29 +12,20 @@ protocol PersistenceStorageType {
     @discardableResult
     func itemList() -> [Unit]
     
-    @discardableResult
-    func update(units: [Unit]) -> Observable<[Unit]>
+    func update(with data: NetworkDTO)
     
     @discardableResult
     func listUnit() -> Observable<[Unit]>
     
     @discardableResult
-    func raiseLevel(of unit: Unit, using moeny: Int) -> Unit
+    func raiseLevel(of unit: Unit, using money: Int) -> Unit
     
     @discardableResult
-    func availableMoeny() -> Observable<Int>
+    func availableMoney() -> Observable<Int>
     
     @discardableResult
     func raiseMoney(by money: Int) -> Observable<Int>
     
     @discardableResult
     func updateHighScore(new score: Int) -> Bool
-    
-    @discardableResult
-    func getCoreDataInfo() -> Completable
-    
-    @discardableResult
-    func setupInitialData() -> Completable
-    
-    func lastUpdated() -> Date
 }
