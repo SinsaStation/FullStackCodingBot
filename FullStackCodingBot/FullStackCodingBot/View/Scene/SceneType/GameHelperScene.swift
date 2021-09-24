@@ -3,7 +3,6 @@ import GameKit
 import Firebase
 
 enum GameHelperScene {
-    case alert(AlertMessage)
     case setting(MainViewModel)
     case howToPlay(HowToPlayViewModel)
     case story(StoryViewModel)
@@ -15,13 +14,6 @@ extension GameHelperScene: SceneType {
         let storyboard = UIStoryboard(name: identifier, bundle: nil)
         switch self {
         
-        case .alert(let message):
-            let alerMessage = message.content.message
-            let alertScene = UIAlertController(title: alerMessage.title, message: alerMessage.content, preferredStyle: .alert)
-            let confirmAction = UIAlertAction(title: message.content.confirm, style: .cancel)
-            alertScene.addAction(confirmAction)
-            return alertScene
-            
         case .setting(let viewModel):
             guard var settingVC = storyboard.instantiateViewController(withIdentifier: IdentifierVC.setting) as? SettingViewController else {
                 Firebase.Analytics.logEvent("ViewControllerError", parameters: nil)

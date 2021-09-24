@@ -138,7 +138,7 @@ extension MainViewModel: GKGameCenterControllerDelegate {
     
     private func loadOffline() {
         loadFromCoredata()
-        let scene = GameHelperScene.alert(AlertMessage.networkLoad)
+        let scene = AlertScene.alert(AlertMessage.networkLoad)
         sceneCoordinator.transition(to: scene,
                                     using: .alert,
                                     with: .main,

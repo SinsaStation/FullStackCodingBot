@@ -13,6 +13,7 @@
 		710D0D422693EA3200244A16 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D412693EA3200244A16 /* GameViewController.swift */; };
 		710D0D442693EA6900244A16 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D432693EA6900244A16 /* GameViewModel.swift */; };
 		710D0D4F2693F6E500244A16 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D0D4D2693F6E500244A16 /* ItemCell.swift */; };
+		7123C74026FD79A70049E6DC /* AlertScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7123C73F26FD79A70049E6DC /* AlertScene.swift */; };
 		712F500A26A831D900186948 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712F500926A831D900186948 /* GoogleService-Info.plist */; };
 		712F500B26A831D900186948 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712F500926A831D900186948 /* GoogleService-Info.plist */; };
 		71307A8926A529F400C3191F /* LevelUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71307A8826A529F400C3191F /* LevelUpButton.swift */; };
@@ -167,6 +168,7 @@
 		710D0D412693EA3200244A16 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		710D0D432693EA6900244A16 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		710D0D4D2693F6E500244A16 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		7123C73F26FD79A70049E6DC /* AlertScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertScene.swift; sourceTree = "<group>"; };
 		712F500926A831D900186948 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71307A8826A529F400C3191F /* LevelUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpButton.swift; sourceTree = "<group>"; };
 		71307A8A26A52A1F00C3191F /* LevelUpButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelUpButton.xib; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				719D0D8F26F1863200913BBE /* MainScene.swift */,
 				719D0D9126F186F100913BBE /* GameScene.swift */,
 				719D0D9326F1875100913BBE /* GameHelperScene.swift */,
+				7123C73F26FD79A70049E6DC /* AlertScene.swift */,
 				719D0D9526F1889700913BBE /* SceneType.swift */,
 			);
 			path = SceneType;
@@ -1029,6 +1032,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				719A6A9B26B11208006AC991 /* NetworkDTO.swift in Sources */,
+				7123C74026FD79A70049E6DC /* AlertScene.swift in Sources */,
 				E418F37526DC985B00F35AFB /* AverageColor.swift in Sources */,
 				E43B64A226ABD81C001D9896 /* GameBackgroundView.swift in Sources */,
 				E4C2C34D26A24666007BDF81 /* SkyView.swift in Sources */,
