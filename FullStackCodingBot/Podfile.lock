@@ -2,7 +2,6 @@ PODS:
   - Action (5.0.0):
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
-  - Alamofire (5.4.3)
   - Firebase/Auth (8.6.1):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 8.6.0)
@@ -54,7 +53,6 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/UserDefaults (~> 7.4)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GhostTypewriter (2.1.0)
   - Google-Mobile-Ads-SDK (8.9.0):
     - GoogleAppMeasurement (< 9.0, >= 7.0)
     - GoogleUserMessagingPlatform (>= 1.1)
@@ -115,11 +113,9 @@ PODS:
 
 DEPENDENCIES:
   - Action
-  - Alamofire
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
-  - GhostTypewriter
   - Google-Mobile-Ads-SDK
   - "NSObject+Rx"
   - RxCocoa
@@ -129,7 +125,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Action
-    - Alamofire
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -137,7 +132,6 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseDatabase
     - FirebaseInstallations
-    - GhostTypewriter
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -155,7 +149,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Action: 47f1825511907b4fcd79dd7a7db9526c20f78018
-  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   Firebase: e84d95f6d3a91f634abc384f0751c434cb3aecfa
   FirebaseAnalytics: 8f32ae54ad42754f503354782575c4ddfc1425c3
   FirebaseAuth: 223adeeb2262b417532e89bf06a960e3a0a1e9e4
@@ -163,7 +156,6 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 3721920bde3a9a6d5aa093c1d25e9d3e47f694af
   FirebaseDatabase: 917fbeed577a68eb1ba0eb48c52a3aa10ac13f92
   FirebaseInstallations: 0ede6ffcd215b8f93c19d9b06c1c54e2d4107e98
-  GhostTypewriter: 62540772d227fbfe633bfa728d08fe8af5b4d805
   Google-Mobile-Ads-SDK: 8494046b4d339275a381f6bcfafbff7adb2f515f
   GoogleAppMeasurement: 2c0c6e2a7ab3fe730ade6379f732bdefb46f50b0
   GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
@@ -179,6 +171,6 @@ SPEC CHECKSUMS:
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: 53f52a813cf20cabe3f6bcb0c64867ca42b773ea
+PODFILE CHECKSUM: bdce34f2ae6ceca45889e75fa0818ccb2cad524f
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.2

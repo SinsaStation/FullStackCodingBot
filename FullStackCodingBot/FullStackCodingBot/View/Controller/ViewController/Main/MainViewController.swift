@@ -42,7 +42,7 @@ final class MainViewController: UIViewController, ViewModelBindableType {
             self.viewModel.makeMoveAction(to: viewController)
         }
         
-        viewModel.firebaseDidLoad
+        viewModel.storageDidSetup
             .subscribe(onNext: { [unowned self] isLoaded in
                 guard isLoaded else { return }
                 self.unsetLoadingView()

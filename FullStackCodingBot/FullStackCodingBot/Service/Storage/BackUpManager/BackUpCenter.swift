@@ -1,0 +1,52 @@
+import Foundation
+import RxSwift
+
+final class BackUpCenter: BackUpCenterType {
+    
+    private var firebaseManager: FirebaseManagerType
+    private var coreDataManager: CoreDataManagerType
+    private var disposeBag = DisposeBag()
+    
+    init(firebaseManager: FirebaseManagerType = FirebaseManager(),
+         coreDataManager: CoreDataManagerType = CoreDataManager()) {
+        self.firebaseManager = firebaseManager
+        self.coreDataManager = coreDataManager
+    }
+    
+    func load(with uuid: String?, _ isFirstLaunched: Bool) -> Observable<NetworkDTO> {
+        Observable<NetworkDTO>.create { [unowned self] observer in
+            if isFirstLaunched {
+                self.coreDataManager.setupInitialData()
+            }
+            
+            let localData = self.coreDataManager.load() ?? NetworkDTO.empty()
+            
+            guard let uuid = uuid else {
+                observer.onNext(localData)
+                observer.onCompleted()
+                return Disposables.create()
+            }
+            
+            firebaseManager.load(with: uuid)
+                .observe(on: MainScheduler.asyncInstance)
+                .subscribe { onlineData in
+                    let onlineUpdate = onlineData.date
+                    let localUpdate = localData.date
+                    onlineUpdate > localUpdate ? observer.onNext(onlineData) : observer.onNext(localData)
+                    observer.onCompleted()
+                } onError: { error in
+                    observer.onError(error)
+                }.disposed(by: disposeBag)
+            
+            return Disposables.create()
+        }
+    }
+    
+    func save(gameData newUnit: Unit?, _ newMoney: Int?, _ newScore: Int?) {
+        coreDataManager.save(gameData: newUnit, newMoney, newScore)
+    }
+    
+    func save(gameData: NetworkDTO) {
+        firebaseManager.save(gameData: gameData)
+    }
+}

@@ -10,16 +10,14 @@ final class StoryViewModel: AdViewModel {
     private let isFirstTimePlay: Bool
 
     init(sceneCoordinator: SceneCoordinatorType,
-         storage: PersistenceStorageType,
-         adStorage: AdStorageType,
-         database: DatabaseManagerType,
+         storage: StorageType,
          settings: SettingInformation,
          storyManger: StoryManager = StoryManager(),
          isFirstTimePlay: Bool = true) {
         self.settings = settings
         self.storyManager = storyManger
         self.isFirstTimePlay = isFirstTimePlay
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database)
+        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
     }
     
     func setupStoryTimer() {
@@ -46,7 +44,7 @@ final class StoryViewModel: AdViewModel {
     }
     
     private func makeMoveActionToMain() {
-        let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settings)
+        let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator, storage: storage, settings: settings)
         let mainScene = Scene.main(mainViewModel)
         self.sceneCoordinator.transition(to: mainScene, using: .root, with: StoryboardType.main, animated: true)
     }
