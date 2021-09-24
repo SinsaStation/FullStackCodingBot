@@ -54,18 +54,18 @@ private extension AppDelegate {
     
     private func getFirstScene(_ hasLaunchedOnce: Bool,
                                _ sceneCoordinator: SceneCoordinator,
-                               _ settings: SettingInformation) -> Scene {
-        
+                               _ database: DatabaseManager,
+                               _ settings: SettingInformation) -> SceneType {
         switch hasLaunchedOnce {
         
         case true:
             let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator, storage: storage!, settings: settings)
-            let mainScene = Scene.main(mainViewModel)
+            let mainScene = MainScene.main(mainViewModel)
             return mainScene
             
         case false:
             let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage!, settings: settings)
-            let storyScene = Scene.story(storyViewModel)
+            let storyScene = GameHelperScene.story(storyViewModel)
             return storyScene
             
         }
