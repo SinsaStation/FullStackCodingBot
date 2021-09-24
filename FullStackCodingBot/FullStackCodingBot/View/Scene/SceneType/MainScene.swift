@@ -51,7 +51,7 @@ extension MainScene: SceneType {
             itemVC.bind(viewModel: viewModel)
             return itemVC
             
-    case .gameCenter(let viewController):
+        case .gameCenter(let viewController):
             return viewController
             
         }
