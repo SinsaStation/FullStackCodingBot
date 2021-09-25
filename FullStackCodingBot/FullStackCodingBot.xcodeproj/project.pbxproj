@@ -21,6 +21,7 @@
 		71307AB126A53C7B00C3191F /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71307AB026A53C7B00C3191F /* AlertMessage.swift */; };
 		71307AB926A5437C00C3191F /* StorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71307AB826A5437C00C3191F /* StorageTest.swift */; };
 		71307AC126A5461700C3191F /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B0AC82692F9CF006FDE3D /* Unit.swift */; };
+		7130B74026FEF8FD00DE90F3 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130B73F26FEF8FD00DE90F3 /* LoginManager.swift */; };
 		71310C2C26AA596B00733361 /* CoreDataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71310C2A26AA596B00733361 /* CoreDataStorage.xcdatamodeld */; };
 		71310C2D26AA596B00733361 /* CoreDataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71310C2A26AA596B00733361 /* CoreDataStorage.xcdatamodeld */; };
 		715A83EE269FE96300C9CEFF /* StoryboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A83ED269FE96300C9CEFF /* StoryboardType.swift */; };
@@ -180,6 +181,7 @@
 		71307AB626A5437C00C3191F /* Full StackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Full StackTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71307AB826A5437C00C3191F /* StorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTest.swift; sourceTree = "<group>"; };
 		71307ABA26A5437C00C3191F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7130B73F26FEF8FD00DE90F3 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		71310C2B26AA596B00733361 /* CoreDataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataStorage.xcdatamodel; sourceTree = "<group>"; };
 		715A83ED269FE96300C9CEFF /* StoryboardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardType.swift; sourceTree = "<group>"; };
 		715C1C9326BCF9FF0025C681 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
@@ -350,12 +352,21 @@
 			path = "Full StackTests";
 			sourceTree = "<group>";
 		};
+		7130B73E26FEF8F100DE90F3 /* LoginManager */ = {
+			isa = PBXGroup;
+			children = (
+				7130B73F26FEF8FD00DE90F3 /* LoginManager.swift */,
+			);
+			path = LoginManager;
+			sourceTree = "<group>";
+		};
 		715BB20426943CD100286B31 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				E4336F6426F08A8D0049A5D8 /* Storage */,
-				717EAD3B26A656E200E0CDB7 /* GameLogic */,
+				7130B73E26FEF8F100DE90F3 /* LoginManager */,
 				718F224726C377AA00B2648C /* ErrorManager */,
+				717EAD3B26A656E200E0CDB7 /* GameLogic */,
+				E4336F6426F08A8D0049A5D8 /* Storage */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1141,6 +1152,7 @@
 				71E91E1726BA33190016386E /* Extension.swift in Sources */,
 				7170CD4526B266BE00F03248 /* VersionErrorViewController.swift in Sources */,
 				719D0D9026F1863200913BBE /* MainScene.swift in Sources */,
+				7130B74026FEF8FD00DE90F3 /* LoginManager.swift in Sources */,
 				E4CA08B926A8287B00AA6F03 /* Font.swift in Sources */,
 				E4BF710B26B1324500E8645F /* ReadyView.swift in Sources */,
 				71DF64B92692C13A00557693 /* ShopViewController.swift in Sources */,
