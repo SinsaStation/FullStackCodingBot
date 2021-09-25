@@ -1,7 +1,6 @@
-import Foundation
+import UIKit
 
-enum LoginResult {
-    case needToLogin
-    case success
-    case failure
+struct LoginResult {
+    var gameVC: UIViewController?
+    var uuid: String?
 }
