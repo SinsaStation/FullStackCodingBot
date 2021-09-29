@@ -7,12 +7,12 @@ import AVFoundation
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    private let storage = PersistenceStorage()
-    private let adStorage = AdStorage()
+    private var storage: StorageType?
     private let userDefaults = UserDefaults.standard
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        storage = Storage()
         setAdMobs()
         setAudioSession()
         presentMainViewController()
@@ -20,10 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        let database = DatabaseManager(Database.database().reference())
-        let networkDTO = NetworkDTO(units: storage.itemList(), money: storage.myMoney(), score: storage.myHighScore(), ads: adStorage.currentInformation(), date: Date())
-        if storage.itemList().isEmpty { return }
-        database.updateDatabase(networkDTO)
+        storage?.save()
     }
 }
 
@@ -45,8 +42,7 @@ private extension AppDelegate {
         let hasLaunchedOnce = userDefaults.bool(forKey: IdentifierUD.hasLaunchedOnce)
         let settings = getSettingInformation(hasLaunchedOnce)
         let coordinator = SceneCoordinator(window: window!)
-        let database = DatabaseManager(Database.database().reference())
-        let scene = getFirstScene(hasLaunchedOnce, coordinator, database, settings)
+        let scene = getFirstScene(hasLaunchedOnce, coordinator, settings)
         coordinator.transition(to: scene, using: .root, with: StoryboardType.main, animated: false)
     }
     
@@ -58,19 +54,17 @@ private extension AppDelegate {
     
     private func getFirstScene(_ hasLaunchedOnce: Bool,
                                _ sceneCoordinator: SceneCoordinator,
-                               _ database: DatabaseManager,
-                               _ settings: SettingInformation) -> Scene {
-        
+                               _ settings: SettingInformation) -> SceneType {
         switch hasLaunchedOnce {
         
         case true:
-            let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settings)
-            let mainScene = Scene.main(mainViewModel)
+            let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator, storage: storage!, settings: settings)
+            let mainScene = MainScene.main(mainViewModel)
             return mainScene
             
         case false:
-            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage, adStorage: adStorage, database: database, settings: settings)
-            let storyScene = Scene.story(storyViewModel)
+            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage!, settings: settings)
+            let storyScene = GameHelperScene.story(storyViewModel)
             return storyScene
             
         }

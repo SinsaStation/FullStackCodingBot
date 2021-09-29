@@ -6,15 +6,15 @@ target 'Full Stack' do
   use_frameworks!
 
   # Pods for FullStackCodingBot
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod 'NSObject+Rx'
-  pod 'SwiftLint'
-  pod 'Google-Mobile-Ads-SDK'
-  pod 'Firebase/Core'
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
-  pod 'Action'
+   pod 'RxSwift'
+   pod 'RxCocoa'
+   pod 'NSObject+Rx'
+   pod 'SwiftLint'
+   pod 'Google-Mobile-Ads-SDK'
+   pod 'Firebase/Core'
+   pod 'Firebase/Database'
+   pod 'Firebase/Auth'
+   pod 'Action'
 
    target 'Full StackTests' do
 
