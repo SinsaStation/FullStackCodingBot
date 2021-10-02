@@ -5,6 +5,7 @@ import GameKit
 
 final class GameOverViewModel: CommonViewModel {
     
+    private let storage: HighScoreManagable & GameMoneyManagable
     private var gameStoryManager: GameStoryManager
     private(set) var newScript = BehaviorRelay<Script?>(value: nil)
     private(set) var rankInfo = BehaviorRelay<String>(value: "")
@@ -27,15 +28,16 @@ final class GameOverViewModel: CommonViewModel {
     }()
     
     init(sceneCoordinator: SceneCoordinatorType,
-         storage: StorageType,
+         storage: HighScoreManagable & GameMoneyManagable,
          finalScore: Int,
          newGameStatus: BehaviorRelay<GameStatus>,
          gameStoryManager: GameStoryManager = GameStoryManager()) {
+        self.storage = storage
         self.scoreInfo.accept(finalScore)
         self.moneyInfo.accept(finalScore/10)
         self.newGameStatus = newGameStatus
         self.gameStoryManager = gameStoryManager
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        super.init(sceneCoordinator: sceneCoordinator)
     }
     
     func execute() {

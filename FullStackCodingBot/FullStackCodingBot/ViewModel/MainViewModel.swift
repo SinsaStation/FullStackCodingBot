@@ -5,8 +5,9 @@ import Firebase
 import FirebaseAuth
 import GameKit
 
-final class MainViewModel: AdViewModel {
+final class MainViewModel: CommonViewModel {
     
+    private let storage: GameDataManagable & RewardManagable
     private var settingInfo: SettingInformation
     private let userDefaults = UserDefaults.standard
     
@@ -14,9 +15,10 @@ final class MainViewModel: AdViewModel {
     let storageDidSetup = BehaviorRelay<Bool>(value: false)
     private(set) var rewardAvailable = BehaviorRelay<Bool>(value: false)
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: StorageType, settings: SettingInformation) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: GameDataManagable & RewardManagable, settings: SettingInformation) {
         self.settingInfo = settings
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        self.storage = storage
+        super.init(sceneCoordinator: sceneCoordinator)
 
         bindRewardStates()
         setupAppleGameCenterLogin()
@@ -35,23 +37,27 @@ final class MainViewModel: AdViewModel {
         
         switch viewController {
         case .giftVC:
-            let shopViewModel = ShopViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
+            let shopViewModel = ShopViewModel(sceneCoordinator: sceneCoordinator,
+                                              storage: storage as! (GameMoneyManagable & RewardManagable))
             let shopScene = MainScene.shop(shopViewModel)
             self.sceneCoordinator.transition(to: shopScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .rankVC:
-            let rankViewModel = RankViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
+            let rankViewModel = RankViewModel(sceneCoordinator: sceneCoordinator)
             let rankScene = MainScene.rank(rankViewModel)
             self.sceneCoordinator.transition(to: rankScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .itemVC:
-            let itemViewModel = ItemViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage)
+            let itemViewModel = ItemViewModel(sceneCoordinator: sceneCoordinator,
+                                              storage: storage as! (GameItemManagable & GameMoneyManagable))
             let itemScene = MainScene.item(itemViewModel)
             self.sceneCoordinator.transition(to: itemScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .gameVC:
             let gameUnitManager = GameUnitManager(allKinds: Unit.initialValues())
-            let gameViewModel = GameViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, gameUnitManager: gameUnitManager)
+            let gameViewModel = GameViewModel(sceneCoordinator: sceneCoordinator,
+                                              storage: storage as! (HighScoreManagable & GameItemManagable),
+                                              gameUnitManager: gameUnitManager)
             let gameScene = GameScene.game(gameViewModel)
             self.sceneCoordinator.transition(to: gameScene, using: .fullScreen, with: StoryboardType.game, animated: true)
             
@@ -60,12 +66,14 @@ final class MainViewModel: AdViewModel {
             self.sceneCoordinator.transition(to: settingScene, using: .overCurrent, with: StoryboardType.main, animated: true)
             
         case .storyVC:
-            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage, settings: settingInfo, isFirstTimePlay: false)
+            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator,
+                                                settings: settingInfo,
+                                                isFirstTimePlay: false)
             let storyScene = GameHelperScene.story(storyViewModel)
             self.sceneCoordinator.transition(to: storyScene, using: .fullScreen, with: StoryboardType.main, animated: true)
             
         case .howToVC:
-            let howToViewModel = HowToPlayViewModel(sceneCoordinator: sceneCoordinator, storage: storage)
+            let howToViewModel = HowToPlayViewModel(sceneCoordinator: sceneCoordinator)
             let howToScene = GameHelperScene.howToPlay(howToViewModel)
             self.sceneCoordinator.transition(to: howToScene, using: .fullScreen, with: StoryboardType.main, animated: true)
         }

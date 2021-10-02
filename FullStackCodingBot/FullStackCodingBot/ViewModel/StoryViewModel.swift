@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class StoryViewModel: AdViewModel {
+final class StoryViewModel: CommonViewModel {
     
     lazy var script = BehaviorRelay<Script?>(value: storyManager.current())
     private var storyManager: StoryManager
@@ -10,14 +10,13 @@ final class StoryViewModel: AdViewModel {
     private let isFirstTimePlay: Bool
 
     init(sceneCoordinator: SceneCoordinatorType,
-         storage: StorageType,
          settings: SettingInformation,
          storyManger: StoryManager = StoryManager(),
          isFirstTimePlay: Bool = true) {
         self.settings = settings
         self.storyManager = storyManger
         self.isFirstTimePlay = isFirstTimePlay
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        super.init(sceneCoordinator: sceneCoordinator)
     }
     
     func setupStoryTimer() {
@@ -44,6 +43,7 @@ final class StoryViewModel: AdViewModel {
     }
     
     private func makeMoveActionToMain() {
+        let storage = Storage() // 임시
         let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator, storage: storage, settings: settings)
         let mainScene = MainScene.main(mainViewModel)
         self.sceneCoordinator.transition(to: mainScene, using: .root, with: StoryboardType.main, animated: true)

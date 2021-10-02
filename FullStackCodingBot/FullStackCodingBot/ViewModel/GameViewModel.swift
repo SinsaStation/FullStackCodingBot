@@ -6,6 +6,7 @@ import Action
 final class GameViewModel: CommonViewModel {
 
     // Helper Objects
+    private let storage: HighScoreManagable & GameItemManagable
     private var gameSoundStation: GameSoundEffectStation
     private var gameUnitManager: GameUnitManagerType
     private var timeManager: TimeManagerType
@@ -33,15 +34,16 @@ final class GameViewModel: CommonViewModel {
     }
     
     init(sceneCoordinator: SceneCoordinatorType,
-         storage: StorageType,
+         storage: HighScoreManagable & GameItemManagable,
          pauseAction: CocoaAction? = nil,
          gameUnitManager: GameUnitManagerType,
          timeManager: TimeManagerType = TimeManager(),
          gameSoundStation: GameSoundEffectStation = GameSoundEffectStation()) {
+        self.storage = storage
         self.gameUnitManager = gameUnitManager
         self.timeManager = timeManager
         self.gameSoundStation = gameSoundStation
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        super.init(sceneCoordinator: sceneCoordinator)
     }
 }
 
@@ -204,7 +206,10 @@ private extension GameViewModel {
     @discardableResult
     private func toGameOverScene() -> Completable {
         let currentScore = try? currentScore.value()
-        let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator, storage: storage, finalScore: currentScore ?? 0, newGameStatus: newGameStatus)
+        let gameOverViewModel = GameOverViewModel(sceneCoordinator: sceneCoordinator,
+                                                  storage: storage as! (GameMoneyManagable & HighScoreManagable),
+                                                  finalScore: currentScore ?? 0,
+                                                  newGameStatus: newGameStatus)
         let gameOverScene = GameScene.gameOver(gameOverViewModel)
         return self.sceneCoordinator.transition(to: gameOverScene, using: .pop, with: StoryboardType.game, animated: true)
     }
@@ -212,7 +217,7 @@ private extension GameViewModel {
     @discardableResult
     private func toPauseScene() -> Completable {
         let currentScore = try? currentScore.value()
-        let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, storage: storage, currentScore: currentScore ?? 0, newGameStatus: newGameStatus)
+        let pauseViewModel = PauseViewModel(sceneCoordinator: sceneCoordinator, currentScore: currentScore ?? 0, newGameStatus: newGameStatus)
         let pauseScene = GameScene.pause(pauseViewModel)
         return self.sceneCoordinator.transition(to: pauseScene, using: .fullScreen, with: StoryboardType.game, animated: false)
     }
