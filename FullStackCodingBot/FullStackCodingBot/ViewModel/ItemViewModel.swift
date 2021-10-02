@@ -5,6 +5,8 @@ import Action
 
 final class ItemViewModel: CommonViewModel {
     
+    private let storage: GameItemManagable & GameMoneyManagable
+    
     var defaultUnit: Unit {
         return storage.itemList().first!
     }
@@ -25,9 +27,10 @@ final class ItemViewModel: CommonViewModel {
     private let soundEffectStation: SingleSoundEffectStation
     
     init(sceneCoordinator: SceneCoordinatorType,
-         storage: StorageType,
+         storage: GameItemManagable & GameMoneyManagable,
          cancelAction: CocoaAction? = nil,
          soundEffectType: MainSoundEffect = .upgrade) {
+        self.storage = storage
         self.cancelAction = CocoaAction {
             if let action = cancelAction {
                 action.execute(())
@@ -35,7 +38,7 @@ final class ItemViewModel: CommonViewModel {
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
         self.soundEffectStation = SingleSoundEffectStation(soundEffectType: soundEffectType)
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        super.init(sceneCoordinator: sceneCoordinator)
     }
     
     func checkLevelUpPrice() {

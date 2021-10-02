@@ -5,8 +5,9 @@ import Action
 import Firebase
 import GoogleMobileAds
 
-final class ShopViewModel: AdViewModel {
+final class ShopViewModel: CommonViewModel {
     
+    private let storage: RewardManagable & GameMoneyManagable
     let cancelAction: CocoaAction
 
     var itemStorage: Driver<[ShopItem]> {
@@ -22,9 +23,10 @@ final class ShopViewModel: AdViewModel {
     private let soundEffectStation: SingleSoundEffectStation
         
     init(sceneCoordinator: SceneCoordinatorType,
-         storage: StorageType,
+         storage: RewardManagable & GameMoneyManagable,
          cancelAction: CocoaAction? = nil,
          soundEffectType: MainSoundEffect = .reward) {
+        self.storage = storage
         self.cancelAction = CocoaAction {
             if let action = cancelAction {
                 action.execute(())
@@ -32,7 +34,7 @@ final class ShopViewModel: AdViewModel {
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
         self.soundEffectStation = SingleSoundEffectStation(soundEffectType: soundEffectType)
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        super.init(sceneCoordinator: sceneCoordinator)
     }
     
     func execute() {

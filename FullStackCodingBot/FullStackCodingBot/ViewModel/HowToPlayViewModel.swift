@@ -9,14 +9,14 @@ final class HowToPlayViewModel: CommonViewModel {
     let currentPage = BehaviorRelay<Int>(value: 0)
     let currentManual = BehaviorRelay<Manual>(value: Manual.all[0])
         
-    init(sceneCoordinator: SceneCoordinatorType, storage: StorageType, cancelAction: CocoaAction? = nil) {
+    init(sceneCoordinator: SceneCoordinatorType, cancelAction: CocoaAction? = nil) {
         self.cancelAction = CocoaAction {
             if let action = cancelAction {
                 action.execute(())
             }
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }
         }
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        super.init(sceneCoordinator: sceneCoordinator)
     }
     
     func moveToPage(from direction: DirectionType) {

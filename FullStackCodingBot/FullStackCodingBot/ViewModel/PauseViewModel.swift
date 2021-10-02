@@ -11,10 +11,10 @@ final class PauseViewModel: CommonViewModel {
         return currentScore.map {String($0)}.asDriver(onErrorJustReturn: "")
     }()
     
-    init(sceneCoordinator: SceneCoordinatorType, storage: StorageType, currentScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
+    init(sceneCoordinator: SceneCoordinatorType, currentScore: Int, newGameStatus: BehaviorRelay<GameStatus>) {
         self.newGameStatus = newGameStatus
         self.currentScore.accept(currentScore)
-        super.init(sceneCoordinator: sceneCoordinator, storage: storage)
+        super.init(sceneCoordinator: sceneCoordinator)
     }
     
     func makeMoveAction(to viewController: PauseActionType) {

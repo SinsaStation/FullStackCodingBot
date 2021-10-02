@@ -58,12 +58,14 @@ private extension AppDelegate {
         switch hasLaunchedOnce {
         
         case true:
-            let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator, storage: storage!, settings: settings)
+            let mainViewModel = MainViewModel(sceneCoordinator: sceneCoordinator,
+                                              storage: storage! as (RewardManagable & GameDataManagable),
+                                              settings: settings)
             let mainScene = MainScene.main(mainViewModel)
             return mainScene
             
         case false:
-            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, storage: storage!, settings: settings)
+            let storyViewModel = StoryViewModel(sceneCoordinator: sceneCoordinator, settings: settings)
             let storyScene = GameHelperScene.story(storyViewModel)
             return storyScene
             
