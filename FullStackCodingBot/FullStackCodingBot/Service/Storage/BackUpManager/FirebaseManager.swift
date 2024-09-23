@@ -46,7 +46,9 @@ final class FirebaseManager: FirebaseManagerType {
                     observer.onError(error)
                 }
                 
-                if !snapshot.exists() {
+                guard let snapshot = snapshot else { return }
+                
+                if snapshot.exists() {
                     let initData = NetworkDTO(units: Unit.initialValues(), money: 0, score: 0, ads: AdsInformation.empty(), date: Date.init(timeIntervalSince1970: 0))
                     observer.onNext(initData)
                     observer.onCompleted()
